@@ -5,7 +5,11 @@ layout: page
 # callouts: home_callouts
 show_sidebar: false
 hide_footer: false
-hide_hero: false
+hero_height: is-large
+
+hero_link: /people/
+hero_link_text: Current Members
+
 ---
 
 # About Us
