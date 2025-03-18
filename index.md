@@ -7,4 +7,10 @@ show_sidebar: false
 hide_footer: false
 ---
 
-SPARO Lab Home Page Renewal
+About us
+
+News
+
+* [Apr. 2022] One paper is accepted to RA-L (Vivid++)
+* [Mar. 2022] Geonmo, Jooyong, and Juhui joined SPARO Lab! Welcome!
+
