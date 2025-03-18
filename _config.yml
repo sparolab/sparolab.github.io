@@ -32,7 +32,7 @@ github_username:  jekyll
 permalink: pretty
 favicon: favicon.png
 hide_share_buttons: true
-theme_color: '#405839'
+theme_color: '#104fd8'
 fixed_navbar: top
 
 livereload: true
