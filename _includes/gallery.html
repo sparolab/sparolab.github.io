@@ -1,6 +1,7 @@
 {% if page.gallery %}
     {% assign galleries=site.data.[page.gallery] %}
     {% for gallery in galleries %}
+    {% assign title=gallery.title %}
         <div class="columns is-multiline">
             <div class="column is-12">
                 <p class="title is-3 has-text-centered">{{ gallery.title }}</p>
