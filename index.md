@@ -5,6 +5,7 @@ layout: page
 # callouts: home_callouts
 show_sidebar: false
 hide_footer: false
+hide_hero: false
 ---
 
 # About Us
