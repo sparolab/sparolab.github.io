@@ -1,20 +1,25 @@
+<!-- album page style setting -->
+<head>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+
 <div class="album-container">
     <!-- 카테고리 네비게이션 -->
     <div class="box">
       <h2 class="title is-4">Album Categories</h2>
       <ul>
         {% for category in site.data.album.categories %}
-          <!-- <li><a href="#{{ category.id }}">{{ category.name }}</a></li> -->
-          <a href="#{{ category.id }}"> {{category.icon}} {{category.name }}</a>
+          <li><a href="#{{ category.id }}">{{ category.name }}</a></li>
+          <!-- <a href="#{{ category.id }}"> {{category.icon}} {{category.name }}</a> -->
         {% endfor %}
       </ul>
     </div>
   
-    {% for category in site.data.album.categories %}
+    <!-- {% for category in site.data.album.categories %}
       <h2 class="title is-4" id="{{ category.id }}">{{ category.name }}</h2>
       <div class="columns is-multiline">
-        {% for image in category.images %}
-          <div class="column is-one-third">
+        {% for image in category.images %} -->
+          <!-- <div class="column is-one-third">  
             <figure class="image {{ image.ratio }}">
               <img src="{{ image.link }}" alt="{{ image.description }}">
             </figure>
@@ -29,6 +34,33 @@
         {% endfor %}
       </div>
       <hr>
-    {% endfor %}
+    {% endfor %} -->
+
+
+    {% for image in category.images %}
+    <div class="columns is-vcentered"> <!-- 세로 정렬 -->
+      <!-- 왼쪽: 이미지 -->
+      <div class="column is-7"> 
+        <figure class="image is-16by9">
+          <img src="{{ image.link }}" alt="{{ image.description }}">
+        </figure>
+      </div>
+      
+      <!-- 오른쪽: 설명 (Bullet Point) -->
+      <div class="column is-5">
+        <div class="content">
+          <ul>
+            {% for line in image.description | split: '\n' %}
+              <li>{{ line }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr> <!-- 구분선 추가 -->
+  {% endfor %}
+  
+{% endfor %}
+
   </div>
   
