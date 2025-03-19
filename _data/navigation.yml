@@ -9,9 +9,6 @@
   - name: Alumni
     link: /people/
   
-- name: News
-  link: /news/news
-
 - name: Research
   dropdown:
   - name: Journal
@@ -20,7 +17,10 @@
     link: /research/conference  
 
 - name: Publication
-  link: /pubication/pubs
-  
+  link: /pubication/pubs 
+
+- name: News
+  link: /news/news
+
 - name: Album
   link: /album/

@@ -64,18 +64,20 @@ awards:
     title: "Prof. Cho receives 우수신진연구자상 at ICROS 2022."
 
 people:
-  - date: "Feb. 2025"
-    name: "Miryeong and Jiyun"
-    action: "joined our lab. Welcome!"
+  - date: "Mar. 2025"
+    description: "Miryeong and Jiyun joined our lab. Welcome!"
+
+  - date: "Sep. 2024"
+    description: "Minho and Juwon joined our lab. Welcome!"
+
+  - date: "Mar. 2024"
+    description: "Jiwon, Gihyeon, and Dongjin joined our lab. Welcome!"
 
   - date: "Mar. 2023"
-    name: "Six members"
-    action: "joined SPARO Lab! Hogyun, Seungjun, Seokhwan, Byunghee, Euncheol, and Jungwoo welcome!"
+    description: "Six members joined SPARO Lab! Hogyun, Seungjun, Seokhwan, Byunghee, Euncheol, and Jungwoo welcome!"
 
-  - date: "Aug. 2022"
-    name: "Gilhwan"
-    action: "joined SPARO Lab! Welcome!"
+  - date: "Sep. 2022"
+    action: "Gilhwan joined SPARO Lab! Welcome!"
 
   - date: "Mar. 2022"
-    name: "Geonmo, Jooyong, and Juhui"
-    action: "joined SPARO Lab! Welcome!"
+    action: "Geonmo, Jooyong, and Juhui joined SPARO Lab! Welcome!"
