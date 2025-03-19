@@ -34,7 +34,7 @@ show_sidebar: true
 ### <a id="people"></a> 👥 New Members
 <ul>
   {% for member in site.data.news.people %}
-    <li><strong>{{ member.date }}</strong> - {{ member.name }} {{ member.action }}</li>
+    <li><strong>{{ member.date }}</strong> - {{ member.name }} {{ member.description }}</li>
   {% endfor %}
 </ul>
 
