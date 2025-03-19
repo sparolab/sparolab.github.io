@@ -37,27 +37,30 @@
     {% endfor %} -->
 
 
-    {% for image in category.images %}
-      <div class="columns is-vcentered"> <!-- 세로 정렬 -->
-        <!-- 왼쪽: 이미지 -->
-        <div class="column is-7"> 
-          <figure class="image is-16by9">
-            <img src="{{ image.link }}" alt="{{ image.description }}">
-          </figure>
-        </div>
-        
-        <!-- 오른쪽: 설명 (Bullet Point) -->
-        <div class="column is-5">
-          <div class="content">
-            <ul>
-              {% for line in image.description | split: '\n' %}
-                <li>{{ line }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-      <hr> <!-- 구분선 추가 -->
+    <!-- {% for image in category.images %} -->
+    {% for category in site.data.album.categories %}
+      <h2 class="title is-4" id="{{ category.id }}">{{ category.name }}</h2>
+        <div class="columns is-vcentered"> <!-- 세로 정렬 -->
+          {% for image in category.images %}
+            <!-- 왼쪽: 이미지 -->
+            <div class="column is-7"> 
+              <figure class="image is-16by9">
+                <img src="{{ image.link }}">
+              </figure>
+            </div>
+          
+            <!-- 오른쪽: 설명 (Bullet Point) -->
+            <div class="column is-5">
+              <div class="content">
+                  <ul>
+                    {% for line in image.description | split: '\n' %}
+                      <li>{{ line }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr> <!-- 구분선 추가 -->
     {% endfor %}
 
 </div>
