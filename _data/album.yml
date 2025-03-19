@@ -1,0 +1,28 @@
+- title: Research
+  images:
+    - link: /img/album/research/2023_kros_jh_sj.jpg
+      # alt: Research in Spatial AI
+      description: |-
+        2023년 KROS 발표 **Spatial AI and Robotics**.
+      ratio: is-16by9
+      callout: 2023 2/15~2/18
+
+    # - link: /assets/images/research2.jpg
+    #   #alt: Deep Learning for Robotics
+    #   #description: |-
+    #   #  We integrate **deep learning** with robotic perception.
+    #   ratio: is-4by3
+
+- title: Lab Activities
+#   images:
+#     - link: /assets/images/lab_meeting.jpg
+#       alt: Lab Meeting
+#       description: |-
+#         Weekly lab meetings discussing research progress.
+#       ratio: is-16by9
+
+#     - link: /assets/images/conference.jpg
+#       alt: Conference Presentation
+#       description: |-
+#         Our team presenting at an **AI conference**.
+#       ratio: is-4by3
