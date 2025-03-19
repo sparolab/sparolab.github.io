@@ -1,67 +1,93 @@
 papers:
   - date: "Feb. 2025"
-    title: "Two papers (Diter++ and PoLaRIS) accepted at ICRA 2025!"
+    description: "Two papers (Diter++ and PoLaRIS) accepted at ICRA 2025!"
     authors: "Jiwon, Dongjin, and Juwon"
   
   - date: "Oct. 2024"
-    title: "Underwater image enhancement and depth estimation (TRIDENT) accepted by IEEE Sensors Journal."
+    description: "One paper about underwater image enhancement and depth estimation (TRIDENT) has been accepted by IEEE Sensors Journal."
     authors: "Geonmo"
 
   - date: "Sep. 2024"
-    title: "RADAR-based localization (Referee) accepted by IEEE RA-L."
+    description: One paper about RADAR-based localization (Referee) is accepted by IEEE Robotics and Automation Letters (RA-L)."
     authors: "Byunghee and Hogyun"
 
   - date: "Aug. 2024"
-    title: "LiDAR-based localization (Solid) accepted by IEEE RA-L."
+    description: "One paper about LiDAR-based localization (Solid) is accepted by IEEE Robotics and Automation Letters (RA-L)."
     authors: "Hogyun"
 
   - date: "Feb. 2024"
-    title: "One paper accepted at ICRA 2024!"
+    description: "One paper accepted at ICRA 2024!"
 
   - date: "Jan. 2024"
-    title: "One paper accepted by IEEE Sensors Letters!"
+    description: "One paper accepted by IEEE Sensors Letters!"
 
   - date: "Nov. 2023"
-    title: "One paper accepted by IEEE Sensors Journal!"
+    description: "One paper accepted by IEEE Sensors Journal!"
 
   - date: "Feb. 2023"
-    title: "Three papers accepted at ICRA 2023 (2 Regular, 1 RA-L)."
+    description: "Three papers are accepted at ICRA 2023 (2 Regular, 1 RA-L)."
 
   - date: "Jan. 2023"
-    title: "One paper accepted to Sensors."
+    description: "One paper is accepted to Sensors."
 
   - date: "Aug. 2022"
-    title: "One paper accepted to T-ITS (Nonparametric background model-based LiDAR SLAM)."
+    description: "One paper accepted to T-ITS (Nonparametric background model-based LiDAR SLAM)."
 
   - date: "Apr. 2022"
-    title: "One paper accepted to RA-L (Vivid++)."
+    description: "One paper accepted to RA-L (Vivid++)."
 
 awards:
-  - date: "Feb. 2025"
-    title: "Hogyun received outstanding research awards at Inha Univ."
-    description: "Excellence of journal publication and Most-applied patent."
 
   - date: "Feb. 2025"
-    title: "Jiyun received AFCV award at KRoC 2025."
-    link: "http://m.irobotnews.com/news/articleView.html?idxno=37582"
+    description: "Hogyun received outstanding research awards at Inha Univ.(Excellence of journal publication and Most-applied patent). Congrats!"
+
+  - date: "Feb. 2025"
+    description: "Jiyun received AFCV award at KRoC 2025."
+
+  - date: "July. 2024"
+    description: "Juwon, Euncheol, Minho, and Gihyeon won the competition at Hanhwa Aerospace for the future tech challenge!"
 
   - date: "June. 2024"
-    title: "Gihyeon and Dongjin received the best paper award at ICROS 2024."
+    description: "Gihyeon and Dongjin received the best paper award at ICROS 2024."
 
   - date: "May. 2024"
-    title: "Uni-mapper received the best research award (3rd prize) at ICRA 2024 Construction Robotics Workshop."
+    description: "Uni-mapper received the best research award (3rd prize) at ICRA 2024 Construction Robotics Workshop. Congrats!"
+
+  - date: "Nov. 2023"
+    description: "Our lab (4-luca team) won the industry-academia collaboration challenge (한국산업기술진흥원장상. Ranked in the Top 20 teams out of 489 teams)"
 
   - date: "Oct. 2023"
-    title: "Ugrad. Autonomous Driving Team (VI2RE) received an excellent algorithm award at the Virtual Seoul Driving Challenge."
+    description: "Ugrad. Autonomous Driving Team (VI2RE) received an excellent algorithm award at the Virtual Seoul Driving Challenge."
 
   - date: "Jun. 2023"
-    title: "Ugrad. project received the Excellent paper award in ICROS 2023."
+    description: "Ugrad. project received the Excellent paper award(우수논문상) in ICROS 2023! Congrats!"
+
+  - date: "Jan. 2023"
+    description: " Gilhwan got scholarship from Hyundai Motors Company."
+
+  - date: "Dec. 2022"
+    description: "NeRd-four team (Jooyong, Gilhwan, Geonmo, and Juhui) won the embedded software competition! Congrats!"
 
   - date: "Jul. 2022"
-    title: "Seungjun and Seokhwan received the Excellent paper award (우수논문상)."
+    description: "Seungjun and Seokhwan received the Excellent paper award(우수논문상)! Congrats!"
 
   - date: "Jun. 2022"
-    title: "Prof. Cho receives 우수신진연구자상 at ICROS 2022."
+    description: "Prof. Cho receives 우수신진연구자상 at ICROS 2022."
+
+projects:
+  - date: "Oct. 2023"
+    description: "SPARO Lab won a big grant from NRF-STEAM (미래유망융합기술파이오니어)."
+
+  - date: "Jun. 2022"
+    description: "SPARO Lab (with HD-DNA Lab.) won a big grant from NRF (NRF Basic Research Lab. 기초연구실)."
+
+  - date: "Apr. 2022"
+    description: "SPARO Lab started the joint project (Industry-academy collaboration, Partner: Neubility)."
+
+  - date: "Apr. 2022"
+    description: "SPARO Lab won a big grant from IITP (Deep Total Recall: Continual Learning for Human-Like Recall of Artificial Neural Networks)."
+  
+
 
 people:
   - date: "Mar. 2025"
