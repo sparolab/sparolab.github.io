@@ -1,0 +1,23 @@
+<div class="album-container">
+    {% for album in site.data.album %}
+      <h2 class="title is-4">{{ album.title }}</h2>
+      <div class="columns is-multiline">
+        {% for image in album.images %}
+          <div class="column is-one-third">
+            <figure class="image {{ image.ratio }}">
+              <img src="{{ image.link }}" alt="{{ image.alt }}">
+            </figure>
+            <p>{{ image.description | markdownify }}</p>
+  
+            {% if image.callout %}
+              <div class="notification is-info">
+                {{ image.callout }}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+    {% endfor %}
+  </div>
+  
