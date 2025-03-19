@@ -20,9 +20,11 @@ Spatial AI and Robotics in various fields (Vehicle, Construction, Logistics and 
 인공지능 및 로봇 인지 분야에 관심있는 연구원, 대학원생, 학부연구생을 모집합니다! 
 
 If you are Interested in SPARO Lab, please feel free to contact Prof. Younggun Cho (yg.cho (at) inha.ac.kr)
-
+---
 
 # Recent publications
+Recent publications
+---
 
 
 
