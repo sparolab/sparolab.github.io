@@ -15,11 +15,9 @@
 <ul>
   {% for award in site.data.news.awards %}
     <li><strong>{{ award.date }}</strong> - {{ award.description }}
-      <!-- {% if award.description %}
-        ({{ award.description }}) -->
       {% endif %}
-      {% if award.link %}
-        <a href="{{ award.link }}" target="_blank">[Read more]</a>
+      <!-- {% if award.link %}
+        <a href="{{ award.link }}" target="_blank">[Read more]</a> -->
       {% endif %}
     </li>
   {% endfor %}

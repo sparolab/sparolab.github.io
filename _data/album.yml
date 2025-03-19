@@ -31,11 +31,13 @@
 categories:
   - name: Research
     id: research
-    icon: 🔎
+    icon: 📄
     images:
       - link: /img/album/research/2023_kros_jh_sj.jpg
         description: |-
-          2023년 KROS 발표
+          - 주희, 승준 2023 KROS 학회 발표
+          - 2023-02-?? (check)
+          - 
         ratio: is-16by9
         # callout: 2023 2/15~2/18
 
