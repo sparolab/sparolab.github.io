@@ -4,6 +4,6 @@ layout: page
 show_sidebar: false
 ---
 
-# Image Album
+# Album Categories
 
 {% include album.html %}
