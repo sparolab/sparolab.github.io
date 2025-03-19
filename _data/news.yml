@@ -1,0 +1,81 @@
+papers:
+  - date: "Feb. 2025"
+    title: "Two papers (Diter++ and PoLaRIS) accepted at ICRA 2025!"
+    authors: "Jiwon, Dongjin, and Juwon"
+  
+  - date: "Oct. 2024"
+    title: "Underwater image enhancement and depth estimation (TRIDENT) accepted by IEEE Sensors Journal."
+    authors: "Geonmo"
+
+  - date: "Sep. 2024"
+    title: "RADAR-based localization (Referee) accepted by IEEE RA-L."
+    authors: "Byunghee and Hogyun"
+
+  - date: "Aug. 2024"
+    title: "LiDAR-based localization (Solid) accepted by IEEE RA-L."
+    authors: "Hogyun"
+
+  - date: "Feb. 2024"
+    title: "One paper accepted at ICRA 2024!"
+
+  - date: "Jan. 2024"
+    title: "One paper accepted by IEEE Sensors Letters!"
+
+  - date: "Nov. 2023"
+    title: "One paper accepted by IEEE Sensors Journal!"
+
+  - date: "Feb. 2023"
+    title: "Three papers accepted at ICRA 2023 (2 Regular, 1 RA-L)."
+
+  - date: "Jan. 2023"
+    title: "One paper accepted to Sensors."
+
+  - date: "Aug. 2022"
+    title: "One paper accepted to T-ITS (Nonparametric background model-based LiDAR SLAM)."
+
+  - date: "Apr. 2022"
+    title: "One paper accepted to RA-L (Vivid++)."
+
+awards:
+  - date: "Feb. 2025"
+    title: "Hogyun received outstanding research awards at Inha Univ."
+    description: "Excellence of journal publication and Most-applied patent."
+
+  - date: "Feb. 2025"
+    title: "Jiyun received AFCV award at KRoC 2025."
+    link: "http://m.irobotnews.com/news/articleView.html?idxno=37582"
+
+  - date: "June. 2024"
+    title: "Gihyeon and Dongjin received the best paper award at ICROS 2024."
+
+  - date: "May. 2024"
+    title: "Uni-mapper received the best research award (3rd prize) at ICRA 2024 Construction Robotics Workshop."
+
+  - date: "Oct. 2023"
+    title: "Ugrad. Autonomous Driving Team (VI2RE) received an excellent algorithm award at the Virtual Seoul Driving Challenge."
+
+  - date: "Jun. 2023"
+    title: "Ugrad. project received the Excellent paper award in ICROS 2023."
+
+  - date: "Jul. 2022"
+    title: "Seungjun and Seokhwan received the Excellent paper award (우수논문상)."
+
+  - date: "Jun. 2022"
+    title: "Prof. Cho receives 우수신진연구자상 at ICROS 2022."
+
+people:
+  - date: "Feb. 2025"
+    name: "Miryeong and Jiyun"
+    action: "joined our lab. Welcome!"
+
+  - date: "Mar. 2023"
+    name: "Six members"
+    action: "joined SPARO Lab! Hogyun, Seungjun, Seokhwan, Byunghee, Euncheol, and Jungwoo welcome!"
+
+  - date: "Aug. 2022"
+    name: "Gilhwan"
+    action: "joined SPARO Lab! Welcome!"
+
+  - date: "Mar. 2022"
+    name: "Geonmo, Jooyong, and Juhui"
+    action: "joined SPARO Lab! Welcome!"

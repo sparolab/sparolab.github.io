@@ -1,21 +1,44 @@
 ---
-title: SPAROLab
-subtitle: Spatial AI and Robotics Lab.
+title: "News"
 layout: page
-# callouts: home_callouts
-show_sidebar: false
-hide_footer: false
-hero_height: is-large
-
-hero_link: /people/
-hero_link_text: Current Members
-
+show_sidebar: true
 ---
 
-# About Us
+## News
 
+### <a id="papers"></a> 📄 Papers
+<ul>
+  {% for paper in site.data.news.papers %}
+    <li><strong>{{ paper.date }}</strong> - {{ paper.title }}
+    {% if paper.authors %}
+      <em>({{ paper.authors }})</em>
+    {% endif %}
+    </li>
+  {% endfor %}
+</ul>
 
+### <a id="awards"></a> 🏆 Awards
+<ul>
+  {% for award in site.data.news.awards %}
+    <li><strong>{{ award.date }}</strong> - {{ award.title }}
+      {% if award.description %}
+        ({{ award.description }})
+      {% endif %}
+      {% if award.link %}
+        <a href="{{ award.link }}" target="_blank">[Read more]</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
 
+### <a id="people"></a> 👥 New Members
+<ul>
+  {% for member in site.data.news.people %}
+    <li><strong>{{ member.date }}</strong> - {{ member.name }} {{ member.action }}</li>
+  {% endfor %}
+</ul>
+
+<!-- 
 ## News
 * [Feb. 2025] Hogyun received outstanding research awards at Inha Univ. (Excellence of journal publication and Most-applied patent). Congrats!
 * [Feb. 2025] Jiyun received AFCV award at KRoC 2025. [Congrats](http://m.irobotnews.com/news/articleView.html?idxno=37582)! 
@@ -49,4 +72,4 @@ hero_link_text: Current Members
 * [Apr. 2022] SPARO Lab started the joint project (Industry-academy collaboration, Partner: Neubility)
 * [Apr. 2022] One paper is accepted to RA-L (Vivid++)
 * [Mar. 2022] Geonmo, Jooyong, and Juhui joined SPARO Lab! Welcome!
-
+ -->
