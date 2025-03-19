@@ -4,7 +4,8 @@
       <h2 class="title is-4">Album Categories</h2>
       <ul>
         {% for category in site.data.album.categories %}
-          <li><a href="#{{ category.id }}">{{ category.name }}</a></li>
+          <!-- <li><a href="#{{ category.id }}">{{ category.name }}</a></li> -->
+          <a href="#{{ category.id }}"> {{category.icon}} {{category.name }}</a>
         {% endfor %}
       </ul>
     </div>

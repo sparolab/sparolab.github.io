@@ -31,6 +31,7 @@
 categories:
   - name: Research
     id: research
+    icon: 🔎
     images:
       - link: /img/album/research/2023_kros_jh_sj.jpg
         description: |-
@@ -40,6 +41,7 @@ categories:
 
   - name: Lab Activities
     id: lab-activities
+    icon: 🍕
     images:
       - link: /img/album/activity/2024_summer_workshop.jpeg
         description: |-
