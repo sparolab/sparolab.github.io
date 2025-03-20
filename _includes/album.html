@@ -10,7 +10,7 @@
   </div>
 
   <!-- categories Section -->
-  {% for categories in site.data.categories %}
+  {% for categories in site.data.album.categories %}
       <h2 class="title is-3" id="{{ categories.id | slugify }}">{{ categories.name }}</h2>
       <div class="columns is-multiline">
           {% for item in categories.images %}
