@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // 초기화: 첫 번째 이미지만 표시, 나머지는 숨김 
       slides.forEach((slide, i) => {
           slide.style.opacity = (i === 0) ? "1" : "0";
+          slide.style.display = (i === 0) ? "block" : "none";
           slide.style.position = "absolute";
           slide.style.transition = "opacity 0.5s ease-in-out";
       });
@@ -72,8 +73,10 @@ function changeSlide(button, n) {
   let slides = slideshow.querySelectorAll(".slide");
   let slideIndex = parseInt(slideshow.dataset.index);
 
-  // 버튼 클릭되면, 현재 이미지 숨기기 
+  // 현재 이미지는 숨기기 
   slides[slideIndex].style.opacity = "0";
+  slides[slideIndex].style.display = "none";  // 현재 이미지 숨기기
+
 
   // 슬라이드 인덱스 변경
   slideIndex += n;
@@ -82,6 +85,7 @@ function changeSlide(button, n) {
 
   // 다음 이미지 표시
   slides[slideIndex].style.opacity = "1";
+  slides[slideIndex].style.display = "block";  // 새 이미지 표시
   slideshow.dataset.index = slideIndex;
 }
 </script>
@@ -121,7 +125,7 @@ function changeSlide(button, n) {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 8px 12px;
   font-size: 18px;
@@ -132,6 +136,6 @@ function changeSlide(button, n) {
 .next { right: 5px; }
 
 .prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 </style>
