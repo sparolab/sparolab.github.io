@@ -1,0 +1,48 @@
+<!-- album page style setting -->
+<head>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+
+<div class="album-container">
+    <!-- 카테고리 네비게이션 -->
+    <div class="box">
+      <h2 class="title is-4">Album Categories</h2>
+      <ul>
+        {% for category in site.data.album.categories %}
+          <li><a href="#{{ category.id }}">{{ category.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% for category in site.data.album.categories %}
+      <h2 class="title is-4" id="{{ category.id }}">{{ category.name }}</h2>
+
+      {% for image in category.images %}
+        <div class="columns is-vcentered"> <!-- 🔹 한 행에 하나의 이미지 + 설명 -->
+          
+          <!-- 왼쪽: 이미지 -->
+          <div class="column is-7"> 
+            <figure class="image is-16by9">
+              <img src="{{ image.link }}" alt="{{ image.description }}">
+            </figure>
+          </div>
+        
+          <!-- 오른쪽: 설명 (Bullet Point) -->
+          <div class="column is-5">
+            <div class="content">
+                <ul>
+                  {% for line in image.description | split: '\n' %}
+                    <li>{{ line }}</li>
+                  {% endfor %}
+                </ul>
+            </div>
+          </div>
+        
+        </div> <!-- 🔹 columns 블록이 한 행을 올바르게 감싸도록 수정 -->
+        <hr> <!-- 🔹 이미지마다 구분선 추가 -->
+      {% endfor %}
+
+    {% endfor %}
+</div>
+
+  

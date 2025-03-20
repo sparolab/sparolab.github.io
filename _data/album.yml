@@ -1,33 +1,3 @@
-# - title: Research
-#   images:
-#     - link: /img/album/research/2023_kros_jh_sj.jpg
-#       # alt: Research in Spatial AI
-#       description: |-
-#         2023년 KROS 발표
-#       ratio: is-16by9
-#       callout: 2023 2/15~2/18
-
-#     # - link: /assets/images/research2.jpg
-#     #   #alt: Deep Learning for Robotics
-#     #   #description: |-
-#     #   #  We integrate **deep learning** with robotic perception.
-#     #   ratio: is-4by3
-
-# - title: Lab Activities
-# #   images:
-# #     - link: /assets/images/lab_meeting.jpg
-# #       alt: Lab Meeting
-# #       description: |-
-# #         Weekly lab meetings discussing research progress.
-# #       ratio: is-16by9
-
-# #     - link: /assets/images/conference.jpg
-# #       alt: Conference Presentation
-# #       description: |-
-# #         Our team presenting at an **AI conference**.
-# #       ratio: is-4by3
-
-
 categories:
   - name: Research
     id: research
@@ -45,14 +15,11 @@ categories:
     id: lab-activities
     icon: 🍕
     images:
-      - link: /img/album/activity/2024_summer_workshop.jpeg
-        description: |-
-          2024 여름 워크샵 
-        ratio: is-16by9
-        # callout: Weekly discussions
+      - description: "2023년도 상반기 졸업식 (박주용)"
+        date: "2023-02-16"
+        image_list:
+          - link: /img/album/activity/2023_02_16_주용이형졸업1.JPG
+          - link: /img/album/activity/2023_02_16_주용이형졸업2.JPG
+          
 
-      # - link: /img/album/lab/conference.jpg
-      #   description: |-
-      #     연구실 학회 발표
-      #   ratio: is-4by3
-      #   callout: AI Conference
+
