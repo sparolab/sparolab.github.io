@@ -3,7 +3,7 @@ categories:
     id: research
     icon: 📄
     images:
-      - description: "2023년도 상반기 졸업식(박주용)"
+      - description: "2023년도 상반기 졸업식(박주용)" 
         date: "2023-02-16"
         image_list:
           - link: /img/album/activity/2023_02_16_박주용졸업1.JPG
@@ -20,7 +20,7 @@ categories:
     id: lab-activities
     icon: 🍕
     images:
-      - description: "2023년도 상반기 졸업식(박주용)"
+      - description: "2023년도 상반기 졸업식(박주용)"  # 이 내용이 Title
         date: "2023-02-16"
         image_list:
           - link: /img/album/activity/2023_02_16_박주용졸업1.JPG
