@@ -3,8 +3,8 @@
   <div class="box">
       <h2 class="title is-4">Album Categories</h2>
       <ul>
-          {% for album in site.data.album %}
-              <li><a href="#{{ album.title | slugify }}">{{ album.title }}</a></li>
+          {% for category in site.data.album.categories %}
+              <li><a href="#{{ category.id | slugify }}">{{ category.name }}</a></li>
           {% endfor %}
       </ul>
   </div>
