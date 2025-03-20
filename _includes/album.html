@@ -57,8 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // 초기화: 첫 번째 이미지만 표시, 나머지는 숨김 
       slides.forEach((slide, i) => {
-          slide.style.opacity = (i === 0) ? "1" : "0";
-          slide.style.display = (i === 0) ? "block" : "none";
+          slide.style.opacity = (i == 0) ? "1" : "0";
           slide.style.position = "absolute";
           slide.style.transition = "opacity 0.5s ease-in-out";
       });
@@ -75,7 +74,6 @@ function changeSlide(button, n) {
 
   // 현재 이미지는 숨기기 
   slides[slideIndex].style.opacity = "0";
-  slides[slideIndex].style.display = "none";  // 현재 이미지 숨기기
 
 
   // 슬라이드 인덱스 변경
@@ -85,7 +83,6 @@ function changeSlide(button, n) {
 
   // 다음 이미지 표시
   slides[slideIndex].style.opacity = "1";
-  slides[slideIndex].style.display = "block";  // 새 이미지 표시
   slideshow.dataset.index = slideIndex;
 }
 </script>
@@ -117,7 +114,6 @@ function changeSlide(button, n) {
 
 .slide:first-child {
   opacity: 1;
-  display: block;
 }
 
 /* 좌우 버튼 스타일 */
