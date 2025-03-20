@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
       let slides = slideshow.querySelectorAll(".slide");
       let slideIndex = 0; // 첫 번째 이미지부터 시작
 
-      // 첫 번째 이미지만 표시, 나머지는 숨김
+      // 초기화: 첫 번째 이미지만 표시, 나머지는 숨김 
       slides.forEach((slide, i) => {
           slide.style.opacity = (i === 0) ? "1" : "0";
           slide.style.position = "absolute";
@@ -72,7 +72,7 @@ function changeSlide(button, n) {
   let slides = slideshow.querySelectorAll(".slide");
   let slideIndex = parseInt(slideshow.dataset.index);
 
-  // 현재 이미지 숨기기
+  // 버튼 클릭되면, 현재 이미지 숨기기 
   slides[slideIndex].style.opacity = "0";
 
   // 슬라이드 인덱스 변경
