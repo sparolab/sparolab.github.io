@@ -10,10 +10,10 @@
   </div>
 
   <!-- categories Section -->
-  {% for categories in site.data.album.categories %}
-      <h2 class="title is-3" id="{{ categories.id | slugify }}">{{ categories.name }}</h2>
+  {% for category in site.data.album.categories %}
+      <h2 class="title is-3" id="{{ category.id | slugify }}">{{ category.name }}</h2>
       <div class="columns is-multiline">
-          {% for item in categories.images %}
+          {% for item in category.images %}
           <!-- 한 줄에 4개 사진 배치 -->
               <div class="column is-one-quarter"> 
                   <div class="card">
@@ -22,20 +22,21 @@
                           <!-- 여러 장의 이미지 삽입 -->
                           {% for image in item.image_list %}
                               <div class="slide fade">
-                                  <img src="{{ image.link }}" alt="{{ image.alt }}" style="width:100%">
+                                  <img src="{{ image.link }}" alt="{{ image.alt }}" class="card-image">
                               </div>
                           {% endfor %}
 
                           <!-- 좌우 버튼 추가 -->
-                          <a class="prev" onclick="changeSlide(this, -1)">&#10094;</a>
-                          <a class="next" onclick="changeSlide(this, 1)">&#10095;</a>
+                          {% if item.image_list and item.image_list.size > 1 %}
+                              <a class="prev" onclick="changeSlide(this, -1)">&#10094;</a>
+                              <a class="next" onclick="changeSlide(this, 1)">&#10095;</a>
+                          {% endif %}
                       </div>
 
-                      <!-- 카드 내용을 저장 -->
+                      <!-- 카드 설명 (이미지 아래) -->
+                      <!-- slidshow-container 외부에 배치 -->
                       <div class="card-content">
-                          <p class="title is-6">  
-                              <a href="{{ item.link }}" target="_blank">{{ item.description }}</a>
-                          </p>
+                          <p class="title is-6">{{ item.description }}</p>
                           <p class="subtitle is-6">{{ item.date }}</p>
                       </div>
                   </div>
@@ -45,7 +46,7 @@
   {% endfor %}
 </div>
 
-<!-- 캐러셀(Slideshow) 스크립트 (자동전환 없음, 버튼 클릭 방식) -->
+<!-- 캐러셀(Slideshow) 스크립트 (버튼 클릭 방식) -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   let slideshows = document.querySelectorAll(".slideshow-container");
@@ -54,9 +55,11 @@ document.addEventListener("DOMContentLoaded", function() {
       let slides = slideshow.querySelectorAll(".slide");
       let slideIndex = 0; // 첫 번째 이미지부터 시작
 
-      // 첫 번째 이미지만 표시
+      // 첫 번째 이미지만 표시, 나머지는 숨김
       slides.forEach((slide, i) => {
-          slide.style.display = "block";
+          slide.style.opacity = (i === 0) ? "1" : "0";
+          slide.style.position = "absolute";
+          slide.style.transition = "opacity 0.5s ease-in-out";
       });
 
       slideshow.dataset.index = slideIndex; // 현재 인덱스 저장
@@ -69,33 +72,47 @@ function changeSlide(button, n) {
   let slides = slideshow.querySelectorAll(".slide");
   let slideIndex = parseInt(slideshow.dataset.index);
 
+  // 현재 이미지 숨기기
+  slides[slideIndex].style.opacity = "0";
+
   // 슬라이드 인덱스 변경
   slideIndex += n;
-  if (slideIndex >= slides.length) { slideIndex = 0; }  // 마지막 이미지에서 다음 클릭하면 처음으로
-  if (slideIndex < 0) { slideIndex = slides.length - 1; } // 첫 번째 이미지에서 이전 클릭하면 마지막으로
+  if (slideIndex >= slides.length) { slideIndex = 0; }  
+  if (slideIndex < 0) { slideIndex = slides.length - 1; }  
 
-  // 모든 이미지 숨기고, 해당 인덱스의 이미지만 표시
-  slides.forEach((slide, i) => {
-      slide.style.display = (i === slideIndex) ? "block" : "none";
-  });
-
-  slideshow.dataset.index = slideIndex; // 현재 인덱스 업데이트
+  // 다음 이미지 표시
+  slides[slideIndex].style.opacity = "1";
+  slideshow.dataset.index = slideIndex;
 }
 </script>
 
 <style>
+/* 카드 내부 이미지를 전체 크기로 조정 */
+.card-image {
+  width: 100%;
+  height: 250px; /* 카드 크기 조정 */
+  object-fit: cover; /* 이미지가 카드 크기에 맞게 조정됨 */
+}
+
 /* 슬라이드 스타일 */
 .slideshow-container {
   position: relative;
   max-width: 100%;
-  height: 200px;
+  height: 250px;
   overflow: hidden;
 }
 
-/* 이미지 슬라이드 기본 숨김 */
+/* 모든 슬라이드를 같은 위치에 겹쳐둠 */
 .slide {
-  display: none;
+  position: absolute;
   width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide:first-child {
+  opacity: 1;
 }
 
 /* 좌우 버튼 스타일 */
