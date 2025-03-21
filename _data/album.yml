@@ -3,14 +3,23 @@ categories:
     id: research
     icon: 📄
     images:
+      # 2023 ---------------------------------------------------------------------------------------
+      # 2022 ---------------------------------------------------------------------------------------
       - description: "2022년 IROS 학회 참석" 
-        date: "2022.10.25"
+        date: "2022.10.25."
         image_list:
           - link: /img/album/research/2022/2022_iros/2022_iros_교수님포함단체
           - link: /img/album/research/2022/2022_iros/2022_iros_단체_1
           - link: /img/album/research/2022/2022_iros/2022_iros_단체_2
           - link: /img/album/research/2022/2022_iros/2022_iros_석환_1
           - link: /img/album/research/2022/2022_iros/2022_iros_석환_2
+
+      - description: "2022년 KRoC 학회 참석" 
+        date: "2022.05.11."
+        image_list:
+          - link: /img/album/research/2022/2022_kros/2022_kros_단체_우수논문상
+          - link: /img/album/research/2022/2022_kros/2022_kros_단체
+
 
   - name: Lab Activities
     id: lab-activities
@@ -22,12 +31,12 @@ categories:
       id: workshop
       images: 
       - description: "2024년도 여름 워크샵(경기도 가평)"
-        date: "2024.08-19. ~ 2024.08.20."
+        date: "2024.08-19. ~ 20."
         image_list:
           - link: /img/album/activity/workshop/2024/2024_summer_workshop
 
-    - name: Graduation
-      id: graduation
+    - name: Entrance & Graduation
+      id: entrance_graduation
       images: 
       # 2023 ---------------------------------------------------------------------------------------
       - description: "2023년도 상반기 입학식(김호균, 마승준, 이정우, 정석환, 최은철, 최병희)"
