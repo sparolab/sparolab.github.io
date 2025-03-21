@@ -19,7 +19,7 @@
 <!-- categories Section -->
 {% for category in site.data.album.categories %}
     <h2 class="title is-3" id="{{ category.id | slugify }}">{{ category.name }}</h2>
-
+    <hr class="category-divider">
     <!-- 세부 카테고리 -->
     {% if category.subcategories %}
         {% for subcategory in category.subcategories %}
@@ -120,6 +120,15 @@ function changeSlide(button, n) {
 </script>
 
 <style>
+
+/* 카테고리 제목 아래 실선 스타일 */
+.category-divider {
+  border: none;
+  border-top: 1px solid #b8b6b6; /* 얇은 회색 실선 */
+  margin: 10px 0; /* 위아래 간격 */
+  width: 100%;
+}
+
 
 /*Navigation 박스 내의 글씨 색상*/
 .box ul li a {
