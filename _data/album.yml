@@ -16,34 +16,40 @@ categories:
     images:
       # 2025 ---------------------------------------------------------------------------------------
       # 2024 ---------------------------------------------------------------------------------------      
-      - description: "2024년도 여름 워크샵(경기도 가평)"
-        date: "2024.08-19. ~ 2024.08.20."
-        image_list:
-          - link: /img/album/activity/workshop/2024/2024_summer_workshop
+      subcategories:
+      - name: Workshops
+        id: workshop
+        images: 
+        - description: "2024년도 여름 워크샵(경기도 가평)"
+          date: "2024.08-19. ~ 2024.08.20."
+          image_list:
+            - link: /img/album/activity/workshop/2024/2024_summer_workshop
 
-      - description: "인천 미래산업 연계 글로컬리더쉽 프로그램 활동(로봇 분야 멘토링)"
-        date: "2024.04.03. ~ 2024.12.23."
-        image_list:
-          - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_1
-          - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_2
-          - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_3
-          - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_4
-          - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_5
-          - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_6
-          - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_7
-      # 2023 ---------------------------------------------------------------------------------------
-      - description: "2023년도 상반기 입학식(김호균, 마승준, 이정우, 정석환, 최은철, 최병희)"
-        date: "2023-02-17"
-        image_list:
-          - link: /img/album/activity/graduation/2023/2023_02_6명_입학
+      - name: Graduation
+        id: graduation
+        images: 
+        # 2023 ---------------------------------------------------------------------------------------
+        - description: "2023년도 상반기 입학식(김호균, 마승준, 이정우, 정석환, 최은철, 최병희)"
+          date: "2023-02-17"
+          image_list:
+            - link: /img/album/activity/graduation/2023/2023_02_6명_입학
 
-      - description: "2023년도 상반기 졸업식(박주용)"  # 이 내용이 Title
-        date: "2023-02-16"
-        image_list:
-          - link: /img/album/activity/graduation/2023/2023_02_16_박주용졸업_1
-          - link: /img/album/activity/graduation/2023/2023_02_16_박주용졸업_2
-
-
-      # 2022 ---------------------------------------------------------------------------------------
-
-
+        - description: "2023년도 상반기 졸업식(박주용)"  # 이 내용이 Title
+          date: "2023-02-16"
+          image_list:
+            - link: /img/album/activity/graduation/2023/2023_02_16_박주용졸업_1
+            - link: /img/album/activity/graduation/2023/2023_02_16_박주용졸업_2
+      
+      - name: Mentoring
+        id: mentoring
+        images: 
+        - description: "인천 미래산업 연계 글로컬리더쉽 프로그램 활동(로봇 분야 멘토링)"
+          date: "2024.04.03. ~ 2024.12.23."
+          image_list:
+            - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_1
+            - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_2
+            - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_3
+            - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_4
+            - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_5
+            - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_6
+            - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_7
