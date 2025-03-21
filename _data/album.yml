@@ -8,13 +8,7 @@ categories:
         image_list:
           - link: /img/album/activity/2023_02_16_박주용졸업1
           - link: /img/album/activity/2023_02_16_박주용졸업2    
-      # - link: /img/album/research/2023_kros_jh_sj.jpg
-      #   description: |-
-      #     - 주희, 승준 2023 KROS 학회 발표
-      #     - 2023-02-?? (check)
-      #     - 
-      #   ratio: is-16by9
-        
+
 
   - name: Lab Activities
     id: lab-activities
@@ -38,16 +32,17 @@ categories:
           - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_6
           - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_7
       # 2023 ---------------------------------------------------------------------------------------
+      - description: "2023년도 상반기 입학식(김호균, 마승준, 이정우, 정석환, 최은철, 최병희)"
+        date: "2023-02-17"
+        image_list:
+          - link: /img/album/activity/graduation/2023/2023_02_6명_입학
+
       - description: "2023년도 상반기 졸업식(박주용)"  # 이 내용이 Title
         date: "2023-02-16"
         image_list:
           - link: /img/album/activity/graduation/2023/2023_02_16_박주용졸업_1
           - link: /img/album/activity/graduation/2023/2023_02_16_박주용졸업_2
 
-      - description: "2023년도 상반기 입학식(김호균, 마승준, 이정우, 정석환, 최은철, 최병희)"
-        date: "2023-02-17"
-        image_list:
-          - link: /img/album/activity/graduation/2023/2023_02_6명_입학
 
       # 2022 ---------------------------------------------------------------------------------------
 
