@@ -1,7 +1,7 @@
 <div class="container">
 <!-- Navigation Box 유지 -->
 <div class="box">
-    <h2 class="title is-4">Album Categories</h2>
+    <h2 class="title is-3">Album Categories</h2>
     <ul>
         {% for category in site.data.album.categories %}
             <li><a href="#{{ category.id | slugify }}">{{ category.name }}</a></li>
@@ -120,6 +120,13 @@ function changeSlide(button, n) {
 </script>
 
 <style>
+
+/*Navigation 박스 내의 글씨 색상*/
+.box ul li a {
+    font-size: 18px;   
+    color: #1a0dab;    
+    text-decoration: none; /* 밑줄 제거 */
+}
 
 /* 카드 형식 정의*/
 .card {
