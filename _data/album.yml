@@ -3,11 +3,14 @@ categories:
     id: research
     icon: 📄
     images:
-      - description: "2023년도 상반기 졸업식(박주용)" 
-        date: "2023.02."
+      - description: "2022년 IROS 학회 참석" 
+        date: "2022.10.25"
         image_list:
-          - link: /img/album/activity/2023_02_16_박주용졸업1
-          - link: /img/album/activity/2023_02_16_박주용졸업2    
+          - link: /img/album/research/2022/2022_iros/2022_iros_교수님포함단체
+          - link: /img/album/research/2022/2022_iros/2022_iros_단체_1
+          - link: /img/album/research/2022/2022_iros/2022_iros_단체_2
+          - link: /img/album/research/2022/2022_iros/2022_iros_석환_1
+          - link: /img/album/research/2022/2022_iros/2022_iros_석환_2
 
   - name: Lab Activities
     id: lab-activities
