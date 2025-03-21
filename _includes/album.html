@@ -20,7 +20,7 @@
   {% for category in site.data.album.categories %}
       <h2 class="title is-3" id="{{ category.id | slugify }}">{{ category.name }}</h2>
 
-      <!-- 🔹 세부 카테고리가 존재할 경우 렌더링 -->
+      <!-- 세부 카테고리 -->
       {% if category.subcategories %}
           {% for subcategory in category.subcategories %}
               <h3 class="title is-4" id="{{ subcategory.id | slugify }}">{{ subcategory.name }}</h3>
@@ -77,3 +77,95 @@
       {% endif %}
   {% endfor %}
 </div>
+
+<!-- 캐러셀(Slideshow) 스크립트 (버튼 클릭 방식) -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let slideshows = document.querySelectorAll(".slideshow-container");
+  
+    slideshows.forEach((slideshow) => {
+        let slides = slideshow.querySelectorAll(".slide");
+        let slideIndex = 0; // 첫 번째 이미지부터 시작
+  
+        // 초기화: 첫 번째 이미지만 표시, 나머지는 숨김 
+        slides.forEach((slide, i) => {
+            slide.style.opacity = (i == 0) ? "1" : "0";
+            slide.style.position = "absolute";
+            slide.style.transition = "opacity 0.5s ease-in-out";
+        });
+  
+        slideshow.dataset.index = slideIndex; // 현재 인덱스 저장
+    });
+  });
+  
+  // 슬라이드 변경 함수 (이전/다음 버튼)
+  function changeSlide(button, n) {
+    let slideshow = button.parentElement;
+    let slides = slideshow.querySelectorAll(".slide");
+    let slideIndex = parseInt(slideshow.dataset.index);
+  
+    // 현재 이미지는 숨기기 
+    slides[slideIndex].style.opacity = "0";
+  
+  
+    // 슬라이드 인덱스 변경
+    slideIndex += n;
+    if (slideIndex >= slides.length) { slideIndex = 0; }  
+    if (slideIndex < 0) { slideIndex = slides.length - 1; }  
+  
+    // 다음 이미지 표시
+    slides[slideIndex].style.opacity = "1";
+    slideshow.dataset.index = slideIndex;
+  }
+  </script>
+  
+  <style>
+  /* 카드 내부 이미지를 전체 크기로 조정 */
+  .card-image {
+    width: 100%;
+    height: 250px; /* 카드 크기 조정 */
+    object-fit: cover; /* 이미지가 카드 크기에 맞게 조정됨 */
+  }
+  
+  /* 슬라이드 스타일 */
+  .slideshow-container {
+    position: relative;
+    max-width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+  
+  /* 모든 슬라이드를 같은 위치에 겹쳐둠 */
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .slide:first-child {
+    opacity: 1;
+    display: block;
+  }
+  
+  /* 좌우 버튼 스타일 */
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  
+  .prev { left: 5px; }
+  .next { right: 5px; }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  </style>
