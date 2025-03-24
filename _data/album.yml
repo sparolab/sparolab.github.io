@@ -103,6 +103,7 @@ categories:
             - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_2
             - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_3
 
+        # TODO: 수정
         - description: "24년 12월 연천 2차 실험" 
           date: "2024.12.23."
           image_list:
@@ -178,7 +179,6 @@ categories:
         date: "2024.05.12."
         image_list:
           - link: /img/album/activity/etc/2024/2024_icra/2024_icra_다리위에서
-          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_1
           - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_병희
           - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_길환_건모_석환
           - link: /img/album/activity/etc/2024/2024_icra/2024_icra_beatles
@@ -190,11 +190,6 @@ categories:
           - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_1
           - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_2
           - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_3
-
-      # - description: "2024년도 SPARO 회식"
-      #   date: "2024."
-      #   image_list:
-      #     - link: /img/album/activity/etc/2023/2023_예비군/2023_예비군_1
 
 
       # 2023 ---------------------------------------------------------------------------------------
