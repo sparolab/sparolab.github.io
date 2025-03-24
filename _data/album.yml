@@ -99,32 +99,32 @@ categories:
       - description: "2024 ICRA"
         date: "2024.05.12."
         image_list:
-          - link: /img/album/etc/2024/ICRA/2024_icra_다리위에서
-          - link: /img/album/etc/2024/ICRA/2024_icra_은철_1
-          - link: /img/album/etc/2024/ICRA/2024_icra_은철_병희
-          - link: /img/album/etc/2024/ICRA/2024_icra_은철_길환_건모_석환 
-          - link: /img/album/etc/2024/ICRA/2024_icra_beatles
+          - link: /img/album/activity/etc/2024/ICRA/2024_icra_다리위에서
+          - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_1
+          - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_병희
+          - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_길환_건모_석환 
+          - link: /img/album/activity/etc/2024/ICRA/2024_icra_beatles
 
       - description: "23년도, 24년도 예비군"
         date: "2023. , 2024."
         image_list:
-          - link: /img/album/etc/2023/2023_예비군/2023_예비군_1
-          - link: /img/album/etc/2024/2024_예비군/2024_예비군_1
-          - link: /img/album/etc/2024/2024_예비군/2024_예비군_2
-          - link: /img/album/etc/2024/2024_예비군/2024_예비군_3
+          - link: /img/album/activity/etc/2023/2023_예비군/2023_예비군_1
+          - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_1
+          - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_2
+          - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_3
 
 
       - description: "2024년도 SPARO 회식"
         date: "2024."
         image_list:
-          - link: /img/album/etc/2023/2023_예비군/2023_예비군_1
-          - link: /img/album/etc/2024/2024_예비군/2024_예비군_1
-          - link: /img/album/etc/2024/2024_예비군/2024_예비군_2
-          - link: /img/album/etc/2024/2024_예비군/2024_예비군_3
+          - link: /img/album/activity/etc/2023/2023_예비군/2023_예비군_1
+          - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_1
+          - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_2
+          - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_3
 
       # 2023 ---------------------------------------------------------------------------------------
       - description: "2023년도 SPARO 회식"
         date: "2023."
         image_list:
-          - link: /img/album/etc/2023/2023_sparo_회식/sparo_회식_1
-          - link: /img/album/etc/2023/2023_sparo_회식/sparo_회식_2
+          - link: /img/album/activity/etc/2023/2023_sparo_회식/sparo_회식_1
+          - link: /img/album/activity/etc/2023/2023_sparo_회식/sparo_회식_2
