@@ -1,5 +1,5 @@
 - name: People
-  link: /people
+  link: /people/people
   
 - name: Research
   dropdown:
@@ -15,4 +15,4 @@
   link: /news/news
 
 - name: Album
-  link: /album/
+  link: /album/album
