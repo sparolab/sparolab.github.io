@@ -1,14 +1,5 @@
 - name: People
-  link: /people/
-  # dropdown:
-  # - name: Faculty  
-  #   link: /people/
-  # - name: Ph.D. Students  
-  #   link: /people/
-  # - name: Master Students  
-  #   link: /people/
-  # - name: Alumni
-  #   link: /people/
+  link: /people
   
 - name: Research
   dropdown:
