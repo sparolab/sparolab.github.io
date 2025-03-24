@@ -28,6 +28,7 @@ categories:
           - link: /img/album/research/2022/2022_iros/2022_iros_단체_2
           - link: /img/album/research/2022/2022_iros/2022_iros_석환_1
           - link: /img/album/research/2022/2022_iros/2022_iros_석환_2
+          - link: /img/album/research/2022/2022_iros/
 
       - description: "2022년 KRoC 학회 참석" 
         date: "2022.05.11."
@@ -45,11 +46,22 @@ categories:
     - name: Workshops
       id: workshop
       images: 
-      - description: "2024년도 여름 워크샵(가평)"
+      - description: "2024년도 하계 워크샵(가평)"
         # date: "2024.08-19. ~ 20."
-        date: "2024.08-19"
+        date: "2024.08.19."
         image_list:
-          - link: /img/album/activity/workshop/2024/2024_summer_workshop
+          - link: /img/album/activity/workshop/2024/2024_가평_하계워크샵/2024_summer_workshop
+
+    - description: "2024년도 동계 워크샵(평창)"
+        date: "2024.02.21."
+        image_list:
+          - link: /img/album/activity/workshop/2024/2024_평창_동계워크샵/2024_평창_MT_단체_1
+          - link: /img/album/activity/workshop/2024/2024_평창_동계워크샵/2024_평창_MT_단체_2
+          - link: /img/album/activity/workshop/2024/2024_평창_동계워크샵/2024_평창_MT_1
+          - link: /img/album/activity/workshop/2024/2024_평창_동계워크샵/2024_평창_MT_2
+          - link: /img/album/activity/workshop/2024/2024_평창_동계워크샵/2024_평창_MT_3
+          - link: /img/album/activity/workshop/2024/2024_평창_동계워크샵/2024_평창_MT_병희_은철_정우
+
 
     - name: Entrance & Graduation
       id: entrance_graduation
@@ -79,3 +91,40 @@ categories:
           - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_5
           - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_6
           - link: /img/album/activity/mentoring/2024/글로컬리더쉽프로그램/글로컬_7
+
+    - name: ETC
+      id: etc
+      images: 
+      # 2024 ---------------------------------------------------------------------------------------
+      - description: "2024 ICRA"
+        date: "2024.05.12."
+        image_list:
+          - link: /img/album/etc/2024/ICRA/2024_icra_다리위에서
+          - link: /img/album/etc/2024/ICRA/2024_icra_은철_1
+          - link: /img/album/etc/2024/ICRA/2024_icra_은철_병희
+          - link: /img/album/etc/2024/ICRA/2024_icra_은철_길환_건모_석환 
+          - link: /img/album/etc/2024/ICRA/2024_icra_beatles
+
+      - description: "23년도, 24년도 예비군"
+        date: "2023. , 2024."
+        image_list:
+          - link: /img/album/etc/2023/2023_예비군/2023_예비군_1
+          - link: /img/album/etc/2024/2024_예비군/2024_예비군_1
+          - link: /img/album/etc/2024/2024_예비군/2024_예비군_2
+          - link: /img/album/etc/2024/2024_예비군/2024_예비군_3
+
+
+      - description: "2024년도 SPARO 회식"
+        date: "2024."
+        image_list:
+          - link: /img/album/etc/2023/2023_예비군/2023_예비군_1
+          - link: /img/album/etc/2024/2024_예비군/2024_예비군_1
+          - link: /img/album/etc/2024/2024_예비군/2024_예비군_2
+          - link: /img/album/etc/2024/2024_예비군/2024_예비군_3
+
+      # 2023 ---------------------------------------------------------------------------------------
+      - description: "2023년도 SPARO 회식"
+        date: "2023."
+        image_list:
+          - link: /img/album/etc/2023/2023_sparo_회식/sparo_회식_1
+          - link: /img/album/etc/2023/2023_sparo_회식/sparo_회식_2
