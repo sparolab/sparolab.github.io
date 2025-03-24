@@ -57,12 +57,12 @@ categories:
       id: conference
       images:
         # 2025 ---------------------------------------------------------------------------------------
-        - description: "2025년 KROS 우수논문상 수상" 
+        - description: "2025년 KROS 학회 참석 및 우수논문상 수상" 
           date: "2025.07.01"
           image_list:
             - link: /img/album/research/conference/2025/2025_kros/2025_kros_이지윤_우수논문상
         # 2024 ---------------------------------------------------------------------------------------
-        - description: "2024년 ICROS 최우수논문상 수상" 
+        - description: "2024년 ICROS 학회 참석 및 최우수논문상 수상" 
           date: "2024.07.01"
           image_list:
             - link: /img/album/research/conference/2024/2024_icros/2024_icros_이기현_최우수논문상
@@ -107,10 +107,10 @@ categories:
         - description: "2024년 임베디드SW 경진대회 최우수상 수상(산학협력프로젝트: 뉴빌리티)" 
           date: "2024.11.29."
           image_list:
-            - link: /img/album/research/awards/2024/2024_임베디드SW_경진대회_1
-            - link: /img/album/research/awards/2024/2024_임베디드SW_경진대회_2
+            - link: /img/album/research/awards/2024/2024_임베디드SW_경진대회/2024_임베디드SW_경진대회_1
+            - link: /img/album/research/awards/2024/2024_임베디드SW_경진대회/2024_임베디드SW_경진대회_2
 
-        - description: "2024년 한화에어로스페이스 2024 Aero Future Tech & Business 아이디어 공모전 우수상" 
+        - description: "2024년 한화에어로스페이스 아이디어 공모전 우수상(Tech 부문)" 
           date: "2024.11.29."
           image_list:
             - link: /img/album/research/awards/2024/2024_Aero_Future_Tech_Business_아이디어_공모전/2024_한화에어로_우수상_1
@@ -127,6 +127,40 @@ categories:
           image_list:
             - link: /img/album/research/awards/2023/2023_서울_버추얼_자율주행_챌린지/2023_우수알고리즘상
 
+    - name: Projects
+      id: projects
+      images:
+        # 2024 ---------------------------------------------------------------------------------------
+        - description: "24년 6월 제주 마장굴 실험(STEAM)" 
+          date: "2024.06.19."
+          image_list:
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_준비
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_교수님과_로봇개
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_로봇개_1
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_로봇개_2
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_개로버
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_실험중_1
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_실험중_2
+
+        - description: "24년 12월 연천 1차 실험" 
+          date: "2024.12.06."
+          image_list:
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_준비_1
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_준비_2
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_개로버
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_1
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_2
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_3
+
+        - description: "24년 12월 연천 2차 실험" 
+          date: "2024.12.23."
+          image_list:
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_준비_1
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_준비_2
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_개로버
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_1
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_2
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_3            
 
 
 
@@ -192,11 +226,11 @@ categories:
       - description: "2024 ICRA"
         date: "2024.05.12."
         image_list:
-          - link: /img/album/activity/etc/2024/ICRA/2024_icra_다리위에서
-          - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_1
-          - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_병희
-          - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_길환_건모_석환
-          - link: /img/album/activity/etc/2024/ICRA/2024_icra_beatles
+          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_다리위에서
+          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_1
+          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_병희
+          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_길환_건모_석환
+          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_beatles
 
       - description: "23년도, 24년도 예비군"
         date: "2023. , 2024."
