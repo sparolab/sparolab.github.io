@@ -7,20 +7,13 @@
         Assitant Professor
       ratio: is-1by1
 
-# - title: PhD Students
-#   images:
-#     - link: /img/team/phd/shiqi_zhao.jpeg
-#       alt: Shiqi Zhao
-#       description: |-
-#         [**Shiqi Zhao**](/team/phd/shiqi_zhao) <br>
-#         Phd Student
-#       ratio: is-4by3
-#     - link: /img/team/phd/jing_wang.jpeg
-#       alt: Jing Wang
-#       description: |-
-#         [**Jing Wang**](/team/phd/jing_wang) <br>
-#         Phd Student
-#       ratio: is-4by3
+- title: PhD Students
+  images:
+    - link: /img/album/people/양건모_증명사진
+      alt: Geonmo Yang
+      description: |-
+        **Geonmo Yang** <br>
+        Phd Student
 
 # - title: Master Students
 #   images:
