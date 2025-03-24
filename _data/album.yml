@@ -1,40 +1,122 @@
+# categories:
+#   - name: Research
+#     id: research
+#     icon: 📄
+#     images:
+#       # 2025 ---------------------------------------------------------------------------------------
+#       - description: "2025년 KROS 우수논문상 수상(이지윤)" 
+#         date: "2025.07.01"
+#         image_list:
+#           - link: /img/album/research/2025/2025_kros/2025_kros_이지윤_우수논문상
+#       # 2024 ---------------------------------------------------------------------------------------
+#       - description: "2024년 ICROS 최우수논문상 수상(이기현)" 
+#         date: "2024.07.01"
+#         image_list:
+#           - link: /img/album/research/2024/2024_icros/2024_icros_이기현_최우수논문상
+          
+#       # 2023 ---------------------------------------------------------------------------------------
+#       - description: "2023년 ICROS 학회 참석" 
+#         date: "2023.06.21"
+#         image_list:
+#           - link: /img/album/research/2023/2023_icros/2023_icros_단체_1
+#           - link: /img/album/research/2023/2023_icros/2023_icros_단체_2
+
+#       - description: "2023년 ICRA 학회 참석" 
+#         date: "2023.05.27"
+#         image_list:
+#           - link: /img/album/research/2023/2023_icra/2023_icra_단체_1
+#           - link: /img/album/research/2023/2023_icra/2023_icra_단체_2
+#           - link: /img/album/research/2023/2023_icra/2023_icra_호균_1
+#           - link: /img/album/research/2023/2023_icra/2023_icra_석환_1
+#           - link: /img/album/research/2023/2023_icra/2023_icra_석환_2
+
+#       # 2022 ---------------------------------------------------------------------------------------
+#       - description: "2022년 IROS 학회 참석" 
+#         date: "2022.10.25."
+#         image_list:
+#           - link: /img/album/research/2022/2022_iros/2022_iros_교수님포함단체
+#           - link: /img/album/research/2022/2022_iros/2022_iros_단체_1
+#           - link: /img/album/research/2022/2022_iros/2022_iros_단체_2
+#           - link: /img/album/research/2022/2022_iros/2022_iros_석환_1
+#           - link: /img/album/research/2022/2022_iros/2022_iros_석환_2
+#           - link: /img/album/research/2022/2022_iros/
+
+#       - description: "2022년 KRoC 학회 참석" 
+#         date: "2022.05.11."
+#         image_list:
+#           - link: /img/album/research/2022/2022_kros/2022_kros_단체_우수논문상
+#           - link: /img/album/research/2022/2022_kros/2022_kros_단체
+
+
 categories:
   - name: Research
     id: research
     icon: 📄
-    images:
-      # 2023 ---------------------------------------------------------------------------------------
-      - description: "2023년 ICROS 학회 참석" 
-        date: "2023.06.21"
-        image_list:
-          - link: /img/album/research/2023/2023_icros/2023_icros_단체_1
-          - link: /img/album/research/2023/2023_icros/2023_icros_단체_2
+    subcategories: 
+    - name: Conference
+      id: conference
+      images:
+        # 2025 ---------------------------------------------------------------------------------------
+        - description: "2025년 KROS 우수논문상 수상" 
+          date: "2025.07.01"
+          image_list:
+            - link: /img/album/research/conference/2025/2025_kros/2025_kros_이지윤_우수논문상
+        # 2024 ---------------------------------------------------------------------------------------
+        - description: "2024년 ICROS 최우수논문상 수상" 
+          date: "2024.07.01"
+          image_list:
+            - link: /img/album/research/conference/2024/2024_icros/2024_icros_이기현_최우수논문상
+            
+        # 2023 ---------------------------------------------------------------------------------------
+        - description: "2023년 ICROS 학회 참석" 
+          date: "2023.06.21"
+          image_list:
+            - link: /img/album/research/conference/2023/2023_icros/2023_icros_단체_1
+            - link: /img/album/research/conference/2023/2023_icros/2023_icros_단체_2
 
-      - description: "2023년 ICRA 학회 참석" 
-        date: "2023.05.27"
-        image_list:
-          - link: /img/album/research/2023/2023_icra/2023_icra_단체_1
-          - link: /img/album/research/2023/2023_icra/2023_icra_단체_2
-          - link: /img/album/research/2023/2023_icra/2023_icra_호균_1
-          - link: /img/album/research/2023/2023_icra/2023_icra_석환_1
-          - link: /img/album/research/2023/2023_icra/2023_icra_석환_2
+        - description: "2023년 ICRA 학회 참석" 
+          date: "2023.05.27"
+          image_list:
+            - link: /img/album/research/conference/2023/2023_icra/2023_icra_단체_1
+            - link: /img/album/research/conference/2023/2023_icra/2023_icra_단체_2
+            - link: /img/album/research/conference/2023/2023_icra/2023_icra_호균_1
+            - link: /img/album/research/conference/2023/2023_icra/2023_icra_석환_1
+            - link: /img/album/research/conference/2023/2023_icra/2023_icra_석환_2
 
-      # 2022 ---------------------------------------------------------------------------------------
-      - description: "2022년 IROS 학회 참석" 
-        date: "2022.10.25."
-        image_list:
-          - link: /img/album/research/2022/2022_iros/2022_iros_교수님포함단체
-          - link: /img/album/research/2022/2022_iros/2022_iros_단체_1
-          - link: /img/album/research/2022/2022_iros/2022_iros_단체_2
-          - link: /img/album/research/2022/2022_iros/2022_iros_석환_1
-          - link: /img/album/research/2022/2022_iros/2022_iros_석환_2
-          - link: /img/album/research/2022/2022_iros/
+        # 2022 ---------------------------------------------------------------------------------------
+        - description: "2022년 IROS 학회 참석" 
+          date: "2022.10.25."
+          image_list:
+            - link: /img/album/research/conference/2022/2022_iros/2022_iros_교수님포함단체
+            - link: /img/album/research/conference/2022/2022_iros/2022_iros_단체_1
+            - link: /img/album/research/conference/2022/2022_iros/2022_iros_단체_2
+            - link: /img/album/research/conference/2022/2022_iros/2022_iros_석환_1
+            - link: /img/album/research/conference/2022/2022_iros/2022_iros_석환_2
+            - link: /img/album/research/conference/2022/2022_iros/
 
-      - description: "2022년 KRoC 학회 참석" 
-        date: "2022.05.11."
-        image_list:
-          - link: /img/album/research/2022/2022_kros/2022_kros_단체_우수논문상
-          - link: /img/album/research/2022/2022_kros/2022_kros_단체
+        - description: "2022년 KRoC 학회 참석 및 우수논문상 수상" 
+          date: "2022.05.11."
+          image_list:
+            - link: /img/album/research/conference/2022/2022_kros/2022_kros_단체_우수논문상
+            - link: /img/album/research/conference/2022/2022_kros/2022_kros_단체
+
+    - name: Awards
+      id: awards
+      images:
+        # 2024 ---------------------------------------------------------------------------------------
+        - description: "2024년 임베디드SW 경진대회 최우수상 수상(산학협력프로젝트: 뉴빌리티)" 
+          date: "2024.11.29."
+          image_list:
+            - link: /img/album/research/awards/2024/2024_임베디드SW_경진대회_1
+            - link: /img/album/research/awards/2024/2024_임베디드SW_경진대회_2
+
+        # 2023 ---------------------------------------------------------------------------------------
+        - description: "2023년 서울 버추얼 자율주행 챌린지 우수알고리즘상 수상" 
+          date: "2023.11.01."
+          image_list:
+            - link: /img/album/research/awards/2023/2023_서울_버추얼_자율주행_챌린지/2023_우수알고리즘상
+
+
 
 
   - name: Lab Activities
@@ -102,7 +184,7 @@ categories:
           - link: /img/album/activity/etc/2024/ICRA/2024_icra_다리위에서
           - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_1
           - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_병희
-          - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_길환_건모_석환 
+          - link: /img/album/activity/etc/2024/ICRA/2024_icra_은철_길환_건모_석환
           - link: /img/album/activity/etc/2024/ICRA/2024_icra_beatles
 
       - description: "23년도, 24년도 예비군"
@@ -113,14 +195,11 @@ categories:
           - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_2
           - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_3
 
+      # - description: "2024년도 SPARO 회식"
+      #   date: "2024."
+      #   image_list:
+      #     - link: /img/album/activity/etc/2023/2023_예비군/2023_예비군_1
 
-      - description: "2024년도 SPARO 회식"
-        date: "2024."
-        image_list:
-          - link: /img/album/activity/etc/2023/2023_예비군/2023_예비군_1
-          - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_1
-          - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_2
-          - link: /img/album/activity/etc/2024/2024_예비군/2024_예비군_3
 
       # 2023 ---------------------------------------------------------------------------------------
       - description: "2023년도 SPARO 회식"
