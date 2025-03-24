@@ -110,7 +110,18 @@ categories:
             - link: /img/album/research/awards/2024/2024_임베디드SW_경진대회_1
             - link: /img/album/research/awards/2024/2024_임베디드SW_경진대회_2
 
+        - description: "2024년 한화에어로스페이스 2024 Aero Future Tech & Business 아이디어 공모전 우수상" 
+          date: "2024.11.29."
+          image_list:
+            - link: /img/album/research/awards/2024/2024_Aero_Future_Tech_Business_아이디어_공모전/2024_한화에어로_우수상_1
+            - link: /img/album/research/awards/2024/2024_Aero_Future_Tech_Business_아이디어_공모전/2024_한화에어로_우수상_2       
+
         # 2023 ---------------------------------------------------------------------------------------
+        - description: "2023년 산학프로젝트챌린지 우수상 수상" 
+          date: "2023.11.21."
+          image_list:
+            - link: /img/album/research/awards/2023/2023_산학협력프로젝트챌린지/2023_산학협력
+
         - description: "2023년 서울 버추얼 자율주행 챌린지 우수알고리즘상 수상" 
           date: "2023.11.01."
           image_list:
