@@ -22,7 +22,7 @@
 
 <div x-data="{ open: false }" markdown="0">
     <a x-on:click="open = true" title="View large image">
-      <figure class="image is-3by4" style="display: flex; justify-content: center;">
+      <figure class="image is-16by9" style="display: flex; justify-content: center;">
         <img src="{{ include.link | absolute_url }}" 
              alt="{{ include.alt }}">
              <!-- style="max-height: 200px; width: auto; object-fit: contain; border-radius: 10px;"> -->

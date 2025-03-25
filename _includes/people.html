@@ -9,8 +9,8 @@
         </div>
         {% for image in gallery.images %}
         <!-- 한 줄에 4장 -->
-        <!-- <div class="column is-one-fifth"> -->
-        <div class="column is-narrow">
+        <div class="column is-one-fifth">
+        <!-- <div class="column is-narrow"> -->
                 <div class="card">
                     <div class="card-image">
                         {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
@@ -37,8 +37,8 @@
             <h1 style="font-size:35px;">{{ gallery.title }}</h1>
         </div>
         {% for image in gallery.images %}
-        <!-- <div class="column is-one-fifth"> -->
-        <div class="column is-narrow">
+        <div class="column is-one-fifth">
+        <!-- <div class="column is-narrow"> -->
             <div class="card">
                 <div class="card-image">
                     {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
