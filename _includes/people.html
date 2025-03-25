@@ -16,10 +16,10 @@
                     <div class="content">
                         {{ image.description | markdownify }}
                         {% if image.email %}
-                        <p><strong>Email:</strong> <a href="mailto:{{ image.email }}">{{ image.email }}</a></p>
+                            <p><strong>Email:</strong> <a href="mailto:{{ image.email }}">{{ image.email }}</a></p>
                         {% endif %}
                         {% if image.keywords %}
-                        <p><strong>Keywords:</strong> {{ image.keywords }}</p>
+                            <p><strong>Keywords:</strong> {{ image.keywords }}</p>
                         {% endif %}                  
                     </div>
                 </div>
@@ -28,7 +28,9 @@
             <div class="column is-one-quarter">
             <!-- <div class="card">  -->
                 <div class="card-container">  
+                    <div class="card-image">
                     {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
+                    </div>
                     <div class="card-content">
                         <div class="content">
                             {{ image.description | markdownify }}
