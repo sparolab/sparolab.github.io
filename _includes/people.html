@@ -36,7 +36,7 @@
             <h1 style="font-size:35px;">{{ gallery.title }}</h1>
         </div>
         {% for image in gallery.images %}
-        <div class="column is-one-quarter">
+        <div class="column is-one-fitth">
             <div class="card">
                 <div class="card-image">
                     {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
