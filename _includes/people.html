@@ -63,7 +63,7 @@
  -->
 
 
- {% if page.gallery %}
+{% if page.gallery %}
     {% assign galleries=site.data.[page.gallery] %}
     {% for gallery in galleries %}
     {% assign title=gallery.title %}
@@ -71,7 +71,8 @@
     <div class="columns is-multiline">
         <div class="column is-12">
             <!-- <p class="title is-3 has-text-centered">{{ gallery.title }}</p> -->
-            <h1 style="font-size:35px;">{{ gallery.title }}</h1>
+            <!-- <h1 style="font-size:35px;">{{ gallery.title }}</h1>-->
+            <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
         </div>
         {% for image in gallery.images %}
         <div class="column is-3-desktop is-6-tablet">
@@ -93,7 +94,8 @@
     <div class="columns is-multiline">
         <div class="column is-12">
             <!-- <p class="title is-3 has-text-centered">{{ gallery.title }}</p> -->
-            <h1 style="font-size:35px;">{{ gallery.title }}</h1>
+            <!-- <h1 style="font-size:35px;">{{ gallery.title }}</h1> -->
+            <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
         </div>
         {% for image in gallery.images %}
         <div class="column is-one-fifth-desktop is-6-tablet">
