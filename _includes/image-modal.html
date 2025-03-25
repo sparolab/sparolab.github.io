@@ -2,8 +2,7 @@
     <a x-on:click="open = false" title="View large image">
         <figure class="image {{ include.ratio | default: is-16by9 }}">
             <img src="{{ include.link | absolute_url }}" 
-                 alt="{{ include.alt }}"
-                 class="card-image">
+                 alt="{{ include.alt }}">
         </figure>
     </a>
     <div class="modal" x-bind:class="open ? 'is-active' : ''" x-cloak>
