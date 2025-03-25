@@ -1,52 +1,67 @@
 {% if page.gallery %}
-    {% assign galleries=site.data.[page.gallery] %}
-    {% for gallery in galleries %}
-    {% assign title=gallery.title %}
-    {% if title == "Faculty" %}
-    <div class="columns is-multiline">
-        <div class="column is-12 has-text-left"> 
-            <!-- <p class="title is-3 has-text-centered">{{ gallery.title }}</p> -->
-            <h1 style="font-size:35px;">{{ gallery.title }}</h1>
-        </div>
-        {% for image in gallery.images %}
-        <div class="column is-3-desktop is-6-tablet">
-                <div class="card">
-                    <div class="card-image">
-                        {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
-                    </div>
-                    <div class="card-content">
-                        <div class="content">
-                            {{ image.description | markdownify }}
-                        </div>
-                    </div>
-                </div>
-        </div>
-        {% endfor %}
-    </div>
-    <hr>
-    {% else %}
-    <div class="columns is-multiline">
-        <div class="column is-12 has-text-left">
-            <!-- <p class="title is-3 has-text-centered">{{ gallery.title }}</p> -->
-            <h1 style="font-size:35px;">{{ gallery.title }}</h1>
-        </div>
-        {% for image in gallery.images %}
-        <div class="column is-one-fifth-desktop is-6-tablet">
-            <div class="card">
-                <div class="card-image">
-                    {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        {{ image.description | markdownify }}
-                    </div>
+  {% assign galleries=site.data.[page.gallery] %}
+  {% for gallery in galleries %}
+    {% assign title = gallery.title %}
 
+    <div class="columns is-multiline">
+      <div class="column is-12 has-text-left">
+        <h1 style="font-size:35px;">{{ gallery.title }}</h1>
+      </div>
+
+      {% for image in gallery.images %}
+
+        {% if title == "Faculty" %}
+          <div class="column is-3-desktop is-6-tablet">
+            <div class="faculty-card">
+              <div class="faculty-card-image">
+                {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  {{ image.description | markdownify }}
                 </div>
+              </div>
             </div>
-        </div>
-        {% endfor %}
+          </div>
+        {% else %}
+          <div class="column is-one-fifth-desktop is-6-tablet">
+            <div class="card">
+              <div class="card-image">
+                {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  {{ image.description | markdownify }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+      {% endfor %}
     </div>
     <hr>
-    {% endif %}
-    {% endfor %}
+  {% endfor %}
 {% endif %}
+
+
+.faculty-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
+  overflow: auto;
+}
+
+.faculty-card-image {
+  width: 100%;
+  height: 300px; /* Faculty는 더 큼 */
+  object-fit: cover;
+}
+
+/* 일반 카드 이미지 - 그대로 유지 */
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}

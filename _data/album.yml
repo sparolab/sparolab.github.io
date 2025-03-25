@@ -16,6 +16,17 @@ categories:
           date: "2024.07.01"
           image_list:
             - link: /img/album/research/conference/2024/2024_icros/2024_icros_이기현_최우수논문상
+
+        - description: "2024년 ICRA 학회 참석"
+          date: "2024.05.12"
+          image_list:
+            - link: /img/album/research/conference/2024/2024_icra/2024_icra_단체_1
+            - link: /img/album/research/conference/2024/2024_icra/2024_icra_단체_2
+            - link: /img/album/research/conference/2024/2024_icra/2024_icra_건담트리오 
+            - link: /img/album/research/conference/2024/2024_icra/2024_icra_은철
+            - link: /img/album/research/conference/2024/2024_icra/2024_icra_주용
+
+
             
         # 2023 ---------------------------------------------------------------------------------------
         - description: "2023년 ICROS 학회 참석" 
