@@ -12,7 +12,7 @@
         {% if title == "Faculty" %}
         <div class="column is-3">
         <div class="faculty-card">
-            <div class="faculty-card-image">
+            <!-- <div class="faculty-card-image"> -->
             {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
             </div>
             <div class="card-content">
@@ -65,15 +65,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 300px;
+  min-height: 100px;
   overflow: auto;
 }
 
+/*
 .faculty-card-image {
   width: 100%;
   min-height: 200px;
-  object-fit: contain;  /*전체 이미지 출력(잘리지 않게)*/
 }
+*/
 
 .card-image {
   width: 100%;
