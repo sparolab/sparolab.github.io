@@ -11,39 +11,40 @@
 
       {% for image in gallery.images %}
         {% if title == "Faculty" %}
-          <div class="column is-3">
-            <div class="faculty-card">
-              <div class="faculty-card-image">
-                {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
-              </div>
-              <div class="card-content">
-                <div class="content">
-                  {{ image.description | markdownify }}
-                  {% if image.email %}
-                    <p><strong>Email:</strong> <a href="mailto:{{ image.email }}">{{ image.email }}</a></p>
-                  {% endif %}
-                  {% if image.keywords %}
-                    <p><strong>Keywords:</strong> {{ image.keywords }}</p>
-                  {% endif %}                  
-                </div>
-              </div>
+        <div class="column is-3">
+        <div class="faculty-card">
+            <div class="faculty-card-image">
+            {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
             </div>
-          </div>
+            <div class="card-content">
+            <div class="content">
+                {{ image.description | markdownify }}
+                {% if image.email %}
+                <p><strong>Email:</strong> <a href="mailto:{{ image.email }}">{{ image.email }}</a></p>
+                {% endif %}
+                {% if image.keywords %}
+                <p><strong>Keywords:</strong> {{ image.keywords }}</p>
+                {% endif %}                  
+            </div>
+            </div>
+        </div>
+        </div>
+        <hr>
         {% else %}
-          <div class="column is-one-quarter">
-            <div class="card">
-              <div class="card-image">
-                {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
-              </div>
-              <div class="card-content">
-                <div class="content">
-                  {{ image.description | markdownify }}
-                </div>
-              </div>
+        <div class="column is-one-quarter">
+        <div class="card">
+            <div class="card-image">
+            {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
             </div>
-          </div>
+            <div class="card-content">
+            <div class="content">
+                {{ image.description | markdownify }}
+            </div>
+            </div>
+        </div>
+        </div>
+        <hr>
         {% endif %}
-
       {% endfor %}
     </div>
     <hr>
@@ -71,13 +72,12 @@
 .faculty-card-image {
   width: 100%;
   min-height: 200px;
-  object-fit: contain;  /*전체 이미지 출력(잘리지 않게)*/
+  object-fit: cover;  /*전체 이미지 출력(잘리지 않게)*/
 }
 
 .card-image {
   width: 100%;
   min-height: 200px;
-  object-fit: contain;
+  object-fit: cover;
 }
-
 </style>
