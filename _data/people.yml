@@ -3,7 +3,7 @@
     - link: /img/album/people/faculty/조영근_증명사진.jpeg
       alt: Younggun Cho
       description: |-
-        **Younggun Cho**
+        **Younggun Cho**  \n
         Assitant Professor
       email: yg.cho@inha.ac.kr
       keywords: Robust Sensing, SLAM, Long-term Autonomy 
@@ -14,7 +14,7 @@
     - link: /img/album/people/phd/양건모_증명사진.jpeg
       alt: Geonmo Yang
       description: |-
-        **Geonmo Yang**
+        **Geonmo Yang**  \n  
         MS-PhD Integrated
 
     - link: /img/album/people/phd/이주희_증명사진.jpg
@@ -26,19 +26,19 @@
     - link: /img/album/people/phd/이정우_증명사진.png
       alt: Jungwoo Lee
       description: |-
-        **Jungwoo Lee**
+        **Jungwoo Lee**  \n
         Phd Student
 
     - link: /img/album/people/phd/최지원_증명사진.jpg
       alt: Jiwon Choi
       description: |-
-        **Jiwon Choi**
+        **Jiwon Choi**  \n
         MS-PhD Integrated
 
     - link: /img/album/people/phd/김주원_증명사진.jpg
       alt: Juwon Kim
       description: |-
-        **Juwon Kim**
+        **Juwon Kim**  \n
         MS-PhD Integrated        
 
 - title: Master Students
@@ -46,49 +46,49 @@
     - link: /img/album/people/master/정석환_증명사진.png
       alt: SeokHwan Jung
       description: |-
-        **SeokHwan Jung**
+        **SeokHwan Jung**  \n
         Master Students
 
     - link: /img/album/people/master/최병희_증명사진.jpg
       alt: Byunghee Choi
       description: |-
-        **Byunghee Choi**
+        **Byunghee Choi**  \n
         Master Students
 
     - link: /img/album/people/master/최은철_증명사진.png
       alt: Euncheol Choi
       description: |-
-        **Euncheol Choi**
+        **Euncheol Choi**  \n
         Master Students
 
     - link: /img/album/people/master/이기현_증명사진.jpg
       alt: Gihyeon Lee
       description: |-
-        **Gihyeon Lee**
+        **Gihyeon Lee**  \n
         Master Students
 
     - link: /img/album/people/master/조동진_증명사진.jpg
       alt: Dongjin Cho
       description: |-
-        **Dongjin Cho**
+        **Dongjin Cho**  \n
         Master Students
       
     - link: /img/album/people/master/이민호_증명사진.jpg
       alt: Minho Lee
       description: |-
-        **Minho Lee**
+        **Minho Lee**  \n
         Master Students
 
     - link: /img/album/people/master/박미령_증명사진.jpg
       alt: Miryeong Park
       description: |-
-        **Miryeong Park**
+        **Miryeong Park**  \n
         Master Students
 
     - link: /img/album/people/master/이지윤_증명사진.jpg
       alt: Jiyun Lee
       description: |-
-        **Jiyun Lee**
+        **Jiyun Lee**  \n
         Master Students
 
 - title: Staff
@@ -96,5 +96,13 @@
     - link: /img/album/people/staff/김수현_증명사진.jpg
       alt: Soohyeon Kim
       description: |-
-        **Soohyeon Kim**
+        **Soohyeon Kim**  \n
+        Master Students
+
+- title: Alumni
+  images:
+    - link: /img/album/people/alumni/김수현_증명사진.jpg
+      alt: Soohyeon Kim
+      description: |-
+        **Soohyeon Kim**  \n
         Master Students
