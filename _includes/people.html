@@ -55,10 +55,11 @@
 
 /*우선순위 적용*/
 .people-divider {
-    border: none !important;
-    border-top: 1px solid #b8b6b6 !important;
-    margin: 10px 0 !important;
-    width: 100% !important;
+    all: unset;
+    border: none;
+    border-top: 1px solid #b8b6b6;
+    margin: 10px 0;
+    width: 100%;
 }
 
 .faculty-card {
@@ -72,12 +73,12 @@
 .faculty-card-image {
   width: 100%;
   min-height: 200px;
-  object-fit: cover;  /*전체 이미지 출력(잘리지 않게)*/
+  object-fit: contain;  /*전체 이미지 출력(잘리지 않게)*/
 }
 
 .card-image {
   width: 100%;
   min-height: 200px;
-  object-fit: cover;
+  object-fit: contain;
 }
 </style>
