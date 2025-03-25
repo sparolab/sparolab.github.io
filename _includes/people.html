@@ -10,7 +10,7 @@
 
       {% for image in gallery.images %}
         {% if title == "Faculty" %}
-          <div class="column is-3-desktop is-6-tablet">
+          <div class="column is-3">
             <div class="faculty-card">
               <div class="faculty-card-image">
                 {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
@@ -29,7 +29,7 @@
             </div>
           </div>
         {% else %}
-          <div class="column is-one-quarter-desktop is-6-tablet">
+          <div class="column is-one-quarter">
             <div class="card">
               <div class="card-image">
                 {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
@@ -68,4 +68,12 @@
   width: 100%;
   min-height: 200px;
   object-fit: contain;
+}
+
+/* 카테고리 제목 아래 실선 스타일 */
+.category-divider {
+  border: none;
+  border-top: 1px solid #b8b6b6; /* 얇은 회색 실선 */
+  margin: 10px 0; /* 위아래 간격 */
+  width: 100%;
 }
