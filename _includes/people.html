@@ -26,7 +26,8 @@
             </div>
         {% else %}
             <div class="column is-one-quarter">
-            <div class="card">
+            <!-- <div class="card">  -->
+            <div class="card-container">  
                 {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
                 <div class="card-content">
                 <div class="content">
@@ -61,12 +62,14 @@
   overflow: auto;
 }
 
-/*
-.card-image {
-  width: 100%;
-  min-height: 200px;
-  object-fit: contain;
-}
-*/
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
 
 </style>
