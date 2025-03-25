@@ -16,6 +16,12 @@
                     <div class="card-content">
                         <div class="content">
                             {{ image.description | markdownify }}
+                            {% if image.email %}
+                                <p><strong>Email:</strong> <a href="mailto:{{ image.email }}">{{ image.email }}</a></p>
+                            {% endif %}
+                            {% if image.keywords %}
+                                <p><strong>Keywords:</strong> {{ image.keywords }}</p>
+                            {% endif %}       
                         </div>
                     </div>
                 </div>
