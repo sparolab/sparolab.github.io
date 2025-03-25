@@ -27,14 +27,14 @@
         {% else %}
             <div class="column is-one-quarter">
             <!-- <div class="card">  -->
-            <div class="card-container">  
-                {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
-                <div class="card-content">
-                <div class="content">
-                    {{ image.description | markdownify }}
+                <div class="card-container">  
+                    {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
+                    <div class="card-content">
+                        <div class="content">
+                            {{ image.description | markdownify }}
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>        
         {% endif %}
       {% endfor %}
