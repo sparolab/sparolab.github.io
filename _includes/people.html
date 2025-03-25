@@ -49,19 +49,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 400px;
+  min-height: 300px;
   overflow: auto;
 }
 
 .faculty-card-image {
   width: 100%;
-  height: 300px; /* Faculty는 더 큼 */
-  object-fit: cover;
+  min-height: 200px;
+  object-fit: contain;  /*전체 이미지 출력(잘리지 않게)*/
 }
 
-/* 일반 카드 이미지 - 그대로 유지 */
 .card-image {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  min-height: 200px;
+  object-fit: contain;
 }
