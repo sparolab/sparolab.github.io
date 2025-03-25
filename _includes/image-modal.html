@@ -24,8 +24,8 @@
     <a x-on:click="open = true" title="View large image">
       <figure class="image is-3by4" style="display: flex; justify-content: center;">
         <img src="{{ include.link | absolute_url }}" 
-             alt="{{ include.alt }}"
-             style="max-height: 300px; width: auto; object-fit: contain; border-radius: 10px;">
+             alt="{{ include.alt }}">
+             <!-- style="max-height: 200px; width: auto; object-fit: contain; border-radius: 10px;"> -->
       </figure>
     </a>
     <div class="modal" x-bind:class="open ? 'is-active' : ''" x-cloak>

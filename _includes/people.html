@@ -38,7 +38,7 @@
         {% for image in gallery.images %}
         <div class="column is-one-fitth">
             <div class="card">
-                <div class="card-image">
+                <div class="card-image-custom">
                     {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
                 </div>
                 <div class="card-content">
@@ -62,14 +62,15 @@
     {% endfor %}
 {% endif %}
 
-<!-- <style>
-
-.card {
-    height: 400px;              /* 고정 높이 설정 */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-    }
-
-</style> -->
+<style>
+.card-image-custom {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 200px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+    </style>
+    
