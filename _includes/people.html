@@ -29,7 +29,7 @@
                 <!-- <div class="card-container">   -->
                 <div class="card"> 
                     <div class="card-image">
-                    {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
+                        {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
                     </div>
                     <div class="card-content">
                         <div class="content">
@@ -64,14 +64,11 @@
     overflow: auto;
 }
 
-.card-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    overflow: hidden;
+.card-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
 </style>
