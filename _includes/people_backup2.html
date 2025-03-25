@@ -1,0 +1,83 @@
+{% if page.gallery %}
+  {% assign galleries=site.data.[page.gallery] %}
+  {% for gallery in galleries %}
+    {% assign title = gallery.title %}
+
+    <div class="columns is-multiline">
+      <div class="column is-12 has-text-left">
+        <h1 style="font-size:35px;">{{ gallery.title }}</h1>
+      </div>
+
+      {% for image in gallery.images %}
+        {% if title == "Faculty" %}
+            <div class="column is-3">
+                {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
+                <div class="card-content">
+                    <div class="content">
+                        {{ image.description | markdownify }}
+                        {% if image.email %}
+                            <p><strong>Email:</strong> <a href="mailto:{{ image.email }}">{{ image.email }}</a></p>
+                        {% endif %}
+                        {% if image.keywords %}
+                            <p><strong>Keywords:</strong> {{ image.keywords }}</p>
+                        {% endif %}                  
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="column is-one-quarter">
+                <!-- <div class="card-container">   -->
+                <div class="card"> 
+                    <div class="card-image">
+                        {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            {{ image.description | markdownify }}
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        {% endif %}
+      {% endfor %}
+    </div>
+    <hr class="people-divider">
+  {% endfor %}
+{% endif %}
+
+
+<style>
+
+.people-divider {
+    all: unset;
+    border: none;
+    border-top: 1px solid #b8b6b6;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.faculty-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100px;
+    overflow: auto;
+}
+
+/* 카드 형식 정의*/
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px;
+    overflow: auto;   /*Text 넘칠 경우 스크롤 처리*/
+}
+
+.card-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+</style>
