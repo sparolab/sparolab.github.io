@@ -6,6 +6,7 @@
     <div class="columns is-multiline">
       <div class="column is-12 has-text-left">
         <h1 style="font-size:35px;">{{ gallery.title }}</h1>
+        <hr class="people-divider">
       </div>
 
       {% for image in gallery.images %}
@@ -70,8 +71,7 @@
   object-fit: contain;
 }
 
-/* 카테고리 제목 아래 실선 스타일 */
-.category-divider {
+.people-divider {
   border: none;
   border-top: 1px solid #b8b6b6; /* 얇은 회색 실선 */
   margin: 10px 0; /* 위아래 간격 */
