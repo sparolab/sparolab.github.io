@@ -1,11 +1,11 @@
 - title: Faculty
   images:
-    - link: /img/album/people/조영근_증명사진.jpeg
+    - link: /img/album/people/faculty/조영근_증명사진.jpeg
       alt: Younggun Cho
       description: |-
         **Younggun Cho**
         Assitant Professor
-      email: ygm7422@gmail.com
+      email: yg.cho@inha.ac.kr
       keywords: Robust Sensing, SLAM, Long-term Autonomy 
       ratio: is-1by1
 
