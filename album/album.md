@@ -1,23 +1,9 @@
-- title: Conference
-  images:
-    - link: https://via.placeholder.com/800x450
-      # alt: The alt text for the image
-      description: |-
-        The image description can be written in **markdown** if required
-      ratio: is-16by9
-    - link: https://via.placeholder.com/800x600
-      alt: The alt text for the image
-      description: The image description
-      ratio: is-4by3
+---
+title: "Album"
+layout: page
+show_sidebar: false
+---
 
-- title: Activities
-  images:
-    - link: https://via.placeholder.com/800x450
-      # alt: The alt text for the image
-      description: |-
-        The image description can be written in **markdown** if required
-      ratio: is-16by9
-    - link: https://via.placeholder.com/800x600
-      alt: The alt text for the image
-      description: The image description
-      ratio: is-4by3
+<!-- # Album Categories -->
+
+{% include album.html %}
