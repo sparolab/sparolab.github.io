@@ -8,6 +8,7 @@
             <h1 style="font-size:35px;">{{ gallery.title }}</h1>
         </div>
         {% for image in gallery.images %}
+        <!-- 한 줄에 4장 -->
         <div class="column is-3-desktop is-6-tablet">
                 <div class="card">
                     <div class="card-image">
@@ -55,3 +56,14 @@
     {% endfor %}
 {% endif %}
 
+<style>
+
+.card {
+    height: 400px;              /* 고정 높이 설정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    }
+
+</style>
