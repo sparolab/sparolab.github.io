@@ -9,7 +9,7 @@
         </div>
         {% for image in gallery.images %}
         <!-- 한 줄에 4장 -->
-        <div class="column is-3-desktop is-6-tablet">
+        <div class="column is-one-fitth">
                 <div class="card">
                     <div class="card-image">
                         {% include image-modal.html ratio=image.ratio link=image.link alt=image.alt large_link=image.large_link %}
