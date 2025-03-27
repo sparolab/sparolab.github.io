@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description"
         content="SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments">
-  <meta name="keywords" content="Quatro, Quatro++, Global registration">
+  <meta name="keywords" content="Distributed SLAM, SOLiD, KISS Matcher">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments</title>
 
@@ -83,7 +83,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Quatro++: Robust Global Registration Exploiting Ground Segmentation for Loop Closing in LiDAR SLAM</h1>
+          <h1 class="title is-1 publication-title">SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://github.com/hogyun2">Hogyun Kim</a><sup>1</sup>,</span>
@@ -194,19 +194,18 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Global registration is a fundamental task that estimates the relative pose between two viewpoints of 3D point clouds.
-            However, there are two issues that degrade the performance of global registration in LiDAR SLAM: one is the sparsity issue and the other is degeneracy. The sparsity issue is caused by the sparse characteristics of the 3D point cloud
-            measurements in a mechanically spinning LiDAR sensor. The degeneracy issue sometimes occurs because the outlier-rejection methods reject too many correspondences, leaving less than three inliers. These two issues have become
-            more severe as the pose discrepancy between the two viewpoints of 3D point clouds becomes greater. 
-            To tackle these problems, we propose a robust global registration framework, called Quatro++. 
-            Extending our previous work that solely focused on the global registration itself, we address the robust global registration in terms of the loop closing in LiDAR SLAM. 
-            To this end, ground segmentation is exploited to achieve robust global registration. 
-            Through the experiments, we demonstrate that our proposed method shows a higher success rate than the state-of-the-art global registration methods, overcoming the sparsity and degeneracy issues. 
-            In addition, we show that ground segmentation significantly helps to increase the success rate for ground vehicles. 
-            Finally, we apply our proposed method to the loop closing module in LiDAR SLAM and confirm that the quality of the loop constraints is improved, showing more precise mapping results. 
-            Therefore, the experimental evidence corroborated the suitability of our method as an initial alignment in the loop closing. 
-            Our code will be made available on publication.
-          </p>
+            Distributed LiDAR SLAM is crucial for achieving efficient robot autonomy and improving the scalability of mapping.
+            However, two issues need to be considered when applying it in field environments: one is resource limitation, and the other is inter/intra-robot association.
+            The resource limitation issue arises when the data size exceeds the processing capacity of the network or memory, especially when utilizing communication systems or onboard computers in the field.
+            % The inter/intra-robot association issue occurs due to the fundamental principles of ICP-based local registration.
+            % The ICP with a narrow convergence range restricts robot movement, making field robots, which must cope with various hazards, especially vulnerable.
+            The inter/intra-robot association issue occurs due to the limited convergence basin of ICP under large viewpoint differences, triggering many false negative loops and ultimately resulting in an inconsistent global map for multi-robot systems.
+            To tackle these problems, we propose a distributed LiDAR SLAM framework designed for versatile field applications, called \textit{SKiD-SLAM}.
+            Extending our previous work that solely focused on lightweight place recognition and fast and robust global registration, we present a multi-robot mapping framework that focuses on robust and lightweight inter-robot loop closure in distributed LiDAR SLAM. 
+            Through various environment experiments, we demonstrate that our method is more robust and lightweight compared to other state-of-the-art distributed SLAM approaches, overcoming resource limitation and inter/intra-robot association issues.
+            Also, we validated the field applicability of our approach through mapping experiments in real-world planetary emulation terrain and cave environments, which are in-house datasets.
+            Our code will be available at github.
+                      </p>
         </div>
       </div>
     </div>
