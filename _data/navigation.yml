@@ -2,11 +2,7 @@
   link: /people/people
   
 - name: Research
-  dropdown:
-  - name: Journal
-    link: /research/journal
-  - name: Conference
-    link: /research/conference  
+    link: /research/
 
 - name: Publication
   link: /pubication/pubs 
