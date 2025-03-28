@@ -172,12 +172,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div class="video-container">
-        <video id="teaser" autoplay muted loop playsinline class="full-video">
-          <source src="./static/videos/quatro-plusplus_title_video.mp4"
-          type="video/mp4">
-        </video>
-      </div>
+      <img src="./static/images/pipeline.png">
       <h2 class="subtitle has-text-centered">
         <span class="dnerf">TL;DR Quatro++: Quatro w/ ground segmentation achieves robust registration performance <br> when two point clouds with large discrepancy of viewpoints are given!</span>
       </h2>
@@ -205,191 +200,12 @@
             Through various environment experiments, we demonstrate that our method is more robust and lightweight compared to other state-of-the-art distributed SLAM approaches, overcoming resource limitation and inter/intra-robot association issues.
             Also, we validated the field applicability of our approach through mapping experiments in real-world planetary emulation terrain and cave environments, which are in-house datasets.
             Our code will be available at github.
-                      </p>
+            </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-   
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Introduction. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3" id="intro">Why Quatro++?</h2>
-        <div class="content has-text-justified">
-          <p>
-            The ultimate goal of our approach is to <strong><em>achieve robust global registration even though the quality of feature matching is degraded</em></strong>.
-            Of course, just as in the current research direction, improving the performance of feature matching and descriptors naturally enhances the performance of registration (and in this case, RANSAC still works very well).
-            However, we want to propose a method that can robustly handle registration even in situations where the performance of feature extraction and matching is undesirably compromised.
-            To this end, we propose a simple yet powerful approach, which consists of a) <a href="https://github.com/LimHyungTae/patchwork">ground segmentation</a> and b) <a href="https://arxiv.org/abs/2203.06612v1">Quatro</a>.
-          </p>
-          <img src="./static/images/Fig1.png">
-          <p>
-            One may argue that Quatro++ is just the combination of ground segmentation and Quatro.
-            It's true, but please kindly note that what we aim for is to solve a difficult problem with ease using this simple combination of two approaches; and it successfully shows significant performance.
-            In particular, it has been remarkable that our Quatro++ consistently succeeds even when two point clouds with large discrepancies of viewpoints are given, as can be seen in the video below:
-          </p>
-          <div class="video-container">
-            <video id="howitworks" autoplay controls muted loop playsinline class="full-video">
-            <source src="./static/videos/quatro-plusplus_explanation.mp4"
-                    type="video/mp4">
-            </video>
-          </div>
-        </div>
-        <h2 class="title is-3" id="probdef">Problem Definition: Challenge of 3D Point Cloud Registration in Distant and Partially Overlapped Cases</h2>
-        <div class="content has-text-justified">
-          <p>
-            Unlike object-level point cloud data whose points are evenly distributed, or indoor datasets acquired by RGB-D sensors,
-            a 3D point cloud captured by a spinning LiDAR sensor has somewhat different characteristics.
-            That is, as the distance from the origin of a point cloud becomes longer, the density dramatically decreases,
-            which is referred to as <strong><em>sparsity issue</em></strong> (for more details, I recommend reading my previous papers: <a href="https://arxiv.org/abs/2108.05560">Patchwork</a> and <a href="https://arxiv.org/abs/2203.06612v1">Quatro</a>).
-            The sparsity issue directly has a negative impact on the quality of feature descriptors and thus induces false matching results.
-          </p>
-          <p>
-            To be more concrete, most feature descriptor methods, including deep learning-based methods,
-            utilize the geometrical inter-relations between each point and its neighboring points to generate descriptors.
-            However, as the density becomes sparse, these neighboring points are insufficient to describe the actual geometrical inter-relations
-            because the distance between the two points becomes large. As a result, the expressibility of descriptors becomes worse.
-            Finally, if these degraded descriptors are taken as the inputs of descriptor matching, it will deteriorate the matching performance,
-            reducing the number of actual inliers while increasing the ratio of outliers, as shown in the figure below:
-          </p>
-          <p>
-            <strong>One sentence summary: As the actual pose discrepancy between two viewpoints of point clouds, the number of actual inliers reduces while the ratio of outliers inevitably increases.</strong>
-          </p>
-          <img src="./static/images/Fig2.png">
-        </div>
-
-        <div class="content has-text-justified">
-        <h2 class="title is-3" id="limitation">Four Takeaway Messages of Our Paper</h2>
-        <div class="content has-text-justified">
-          <p>
-          <h2 class="title is-5" id="robustness">1. Robustness of Quatro++ Against Large Pose Discrepancy and Partial Overlap</h2>
-            First, we demonstrate that Quatro++ becomes more robust in distant cases.
-            For instance, when the difference in viewpoints between the source and target clouds ranges between 10 to 12 m in the KITTI dataset,
-            our Quatro++ showed a substantial performance increase compared with the state-of-the-art methods, as shown in the figure below. Not only that, but there are also more results in our manuscript.
-          </p>
-          <img src="static/images/succeeded_registration.png">
-          <p><em>Examples of registration results. Green boxes indicate that our approaches only succeeded when two point clouds with large discrepancies of viewpoints were given</em></p>
-          <p>
-          <h2 class="title is-5" id="applicability">2. Applicability as a Loop Closing Module</h2>
-            Second, as an extension of the first message, we investigated the impact of Quatro++ to the LiDAR SLAM as a part of loop closing module.
-            Even now, most LiDAR SLAM methods heavily rely on ICP or G-ICP to estimate the relative pose of the loop candidate.
-            Under this circumstance, our proposed method can be utilized as a coarse alignment to provide an initial guess,
-            helping these local registration methods to successfully estimate the relative pose.
-            That is, because the performance of Quatro++ is less affected by the initial pose difference,
-            our global registration can initially transform the source cloud to the region where the estimate of local registration can converge into the global minimum.
-          </p>
-          <p>
-            As explained earlier, our proposed method showed more robust performance against these ambiguous scenes and reverse cases by leveraging ground segmentation. Accordingly, even
-            though distant or reversed loop pairs are given by the loop detection module, our proposed method can successfully estimate the relative pose in a coarse manner. Consequently,
-            the local registration method, which follows the global registration, can estimate the correct relative pose as a fine alignment.
-            Consequently, our Quatro++ significantly makes the quality of mapping better, particularly in large-scale environments,
-            presenting tightly aligned mapping results and fewer false loops.
-          </p>
-          <div class="video-container">
-            <video id="slam_demo" autoplay controls muted loop playsinline class="full-video">
-              <source src="./static/videos/quatro-plusplus_slam_demo.mp4"
-              type="video/mp4">
-            </video>
-          </div>
-          <img src="static/images/Fig20_DCC01_comparison.png">
-          <p><em>(T-B): Point cloud mapping results and the corresponding loop constraints in DCC01 of the MulRan dataset. (a) The original LeGO-LOAM.
-              (b) LeGO-LOAM with ScanContext as a loop detection. (c) LeGO-LOAM with both TEASER++ and ScanContext, named as TSC-LeGO-LOAM.
-              (d) LeGO-LOAM with both Quatro++ and ScanContext, named as QSC-LeGO-LOAM, showing a tightly aligned mapping result and fewer false loops.
-              The green lines denote the true positive loop constraints and red lines denote the false positive loop constraints (best viewed in color).</em></p>
-
-          <p>
-          <h2 class="title is-5" id="groundseg">3. Quantitative Analysis of the Impact of Ground Segmentation on Point Cloud Registration</h2>
-            Third, we quantitatively present exploiting ground segmentation enables global registration to robustly estimate the relative pose between the two point clouds whose pose discrepancy is large.
-            Empirically, while other researchers empirically use ground segmentation to improve the performance of their own tasks (e.g. <a href="https://github.com/robot-learning-freiburg/LCDNet#optional-ground-plane-removal">LCDNet</a>),
-            they seldom provide any in-depth analyses of the impact of ground segmentation on global registration.
-            Thus, we conducted thorough analyses and particularly validated the potential of synergy between our Quatro and ground segmentation.
-          </p>
-            <img src="static/images/tab_effect_of_ground_segmentation.png">
-          <p>
-            <h2 class="title is-5" id="notpnancea">4. Deep Learning-Based Approaches Are Not Panacea: From the Generalization Perspective</h2>
-            Note that our proposed method is a <em>learning-free</em> approach; thus, our approach could be directly exploited to own environments.
-            In particular, we focused on the limited generalization capabilities of deep learning-based approaches and
-            we observed that the performance of deep learning-based methods was more significantly degraded than our approach when the surroundings or sensor configuration was different from the training data.
-            We tested LCDNet which is trained using the KITTI dataset (captured by Velodyne HDL-64E) on the MulRan dataset (captured by Ouster OS1-64).
-            The results are shown in the table below, which supports our claim that our approach is more suitable for loop closing and applicable to various environments because our approach does not need any training procedure.
-          </p>
-          <img src="static/images/tab_kitti2mulran.png">
-          <p>
-            In addition, we tested <a href="https://github.com/lijx10/USIP">USIP</a>,
-            which is a learning-based feature extraction method, to run <a href="https://github.com/chenghao-shi/MDGAT-matcher">MDGAT-Matcher</a>, but it completely failed to extract proper feature points.
-            Therefore, these issues might be problems to be solved in the robotics community in the future.
-          </p>
-          <img src="static/images/failure_of_USIP.png">
-          <p><em>Visualization of wrong keypoint extraction in MulRan dataset using USIP, which is trained in the
-            KITTI dataset and tested in the MulRan dataset. The red points are the extracted keypoints. These experiments
-            showed that deep learning-based approaches are relatively hard to be generalized in other datasets.</em></p>
-        </div>
-      </div>
-    </div>
-    <!--/ Introduction. -->
   </div>
 </section>
-
-<section class="section" id="UseCases">
-  <div class="container is-max-desktop content">
-    <h2 class="title">Applications (Use Cases)</h2>
-    <h4 class="title">1. Loop-closing in SLAM</h4>
-    In addition to the previously mentioned <a href="https://github.com/url-kaist/Quatro-LeGO-LOAM">Quatro-Lego-LOAM</a>, we implemented real-time SLAM methods and publicized them to benefit the robotics community: <a href="https://github.com/engcang/FAST-LIO-SAM-QN">FAST-LIO-SAM-QN</a>
-     and <a href="https://github.com/engcang/FAST-LIO-SAM-SC-QN">FAST-LIO-SAM-SC-QN</a>. These methods utilize FAST-LIO2 as odometry estimates and Quatro as real-time loop closing module. 
-     Quatro robustly estimates the relative pose between two point clouds with large pose discrepancy, where plane ICP methods fail. 
-     Furthermore, Quatro is optimized with TBB and the `optimizeMatching` function to achieve real-time performance, while maintaining the robustness and accuracy of the registration.
-    <br>
-    <br>
-    <div class="video-container">
-      <video id="fast_lio_sam_qn" autoplay controls muted loop playsinline class="reduced-video">
-      <source src="./static/videos/fast_lio_sam_qn.mp4"
-              type="video/mp4">
-      </video>
-    </div>
-    <br>
-    <br>
-    <h4 class="title">2. Map-based matching for localization</h4>
-    As Quatro provides robust and accurate global registration, a real-time map-based localization is also implemented and publicized. 
-    <a href="https://github.com/engcang/FAST-LIO-localization-qn">Fast-LIO-Localizaiton-QN</a> accurately localizes the robots in the global coordinates by matching the current scan and the saved map.
-    This can be efficiently applied to autonomous robots that perform repetitive tasks in designated areas.
-    <br>
-    <br>
-    <div class="video-container">
-      <video id="fast_lio_localization" autoplay controls muted loop playsinline class="reduced-video">
-      <source src="./static/videos/fast_lio_localization_qn.mp4"
-              type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
-
-
-<section class="section" id="HowToUse">
-  <div class="container is-max-desktop content">
-    <h2 class="title">How to use in your packages</h2>
-    <h5 class="title">For detailed build steps and code examples of Quatro as a module, please visit <a href="https://github.com/engcang/Quatro">here</a></h2>
-    <pre><code class="language-shell">cd ~/your_workspace/src
-git clone https://github.com/engcang/Quatro
-cd ..
-catkin build -DCMAKE_BUILD_TYPE=Release -DQUATRO_TBB=ON</code></pre>
-  </div>
-</section>
-
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code class="language-latex">@article{lim2023quatro-plusplus,
-  author    = {Lim, Hyungtae and Kim, Beomsoo and Kim, Daebeom and Lee, Eungchang and Myung, Hyun},
-  title     = {Quatro++: Robust Global Registration Exploiting Ground Segmentation for Loop Closing in LiDAR SLAM},
-  booktitle = {International Journal of Robotics Research},
-  year      = {2023},
-}</code></pre>
-  </div>
-</section>
-
 
 <footer class="footer">
   <div class="container">
