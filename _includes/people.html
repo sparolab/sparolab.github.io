@@ -62,85 +62,42 @@
 {% endif %}
  -->
 
-<!--
+ 
  {% if page.gallery %}
- {% assign galleries = site.data.[page.gallery] %}
+ {% assign galleries = site.data[page.gallery] %}
  {% for gallery in galleries %}
-   {% assign title = gallery.title %}
-
    <div class="columns is-multiline">
      <div class="column is-12">
        <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
      </div>
 
      {% for image in gallery.images %}
-       <div class="column is-3-desktop is-6-tablet">
+       <div class="column is-2-desktop is-4-tablet is-6-mobile">
          <div class="card">
-           <div class="card-image" style="max-width:200px; margin:0 auto;">
+           <div class="card-image">
              {% include image-modal.html
-               ratio="is-1by1"         # 1:1 비율 (원한다면 "is-4by3" 등 다른 비율로 변경 가능)
+               ratio=image.ratio | default: "is-1by1"
                link=image.link
                alt=image.alt
-               large_link=image.large_link
+               large_link=image.large_link | default: image.link
              %}
            </div>
-           <div class="card-content">
-             <div class="content">
+           <div class="card-content" style="padding:10px;">
+             <div class="content has-text-centered" style="font-size:0.9rem;">
                {{ image.description | markdownify }}
                {% if image.email %}
-                 <p><strong>Email:</strong> <a href="mailto:{{ image.email }}">{{ image.email }}</a></p>
+                 <p style="margin-top:5px;"><strong>Email:</strong> <a href="mailto:{{ image.email }}">{{ image.email }}</a></p>
                {% endif %}
                {% if image.keywords %}
-                 <p><strong>Keywords:</strong> {{ image.keywords }}</p>
+                 <p style="margin-top:5px;"><strong>Keywords:</strong> {{ image.keywords }}</p>
                {% endif %}
              </div>
            </div>
          </div>
        </div>
      {% endfor %}
-   </div>
 
+   </div>
    <hr>
  {% endfor %}
 {% endif %}
--->
-{% if page.gallery %}
-{% assign galleries = site.data[page.gallery] %}
-{% for gallery in galleries %}
-  <!-- 그룹 섹션 -->
-  <div class="columns is-multiline">
-    <!-- 그룹 타이틀 -->
-    <div class="column is-12">
-      <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
-    </div>
-
-    {% for image in gallery.images %}
-      <div class="column is-2-desktop is-4-tablet is-6-mobile"> <!-- 카드 크기 축소 -->
-        <div class="card">
-          <div class="card-image">
-            {% include image-modal.html
-              ratio=image.ratio | default: "is-1by1"
-              link=image.link
-              alt=image.alt
-              large_link=image.large_link | default: image.link
-            %}
-          </div>
-          <div class="card-content" style="padding:0.5rem;">
-            <div class="content has-text-centered">
-              {{ image.description | markdownify }}
-              {% if image.email %}
-                <p style="font-size:0.8rem;"><strong>Email:</strong> <a href="mailto:{{ image.email }}">{{ image.email }}</a></p>
-              {% endif %}
-              {% if image.keywords %}
-                <p style="font-size:0.8rem;"><strong>Keywords:</strong> {{ image.keywords }}</p>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-  <hr>
-{% endfor %}
-{% endif %}
-
