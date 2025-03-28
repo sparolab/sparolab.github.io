@@ -8,7 +8,7 @@
 
   {% for image in gallery.images %}
     <div class="column is-2-desktop is-4-tablet is-6-mobile">
-      <div class="card" style="max-width:180px; margin:0 auto; padding: 5px;">
+      <div class="card" style="max-width:180px; margin:0 auto; padding:5px;">
         <div class="card-image">
           <figure class="image {{ image.ratio | default: 'is-1by1' }}">
             <img src="{{ image.link }}" alt="{{ image.alt }}" style="object-fit:cover;">
