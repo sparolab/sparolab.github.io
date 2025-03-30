@@ -3,6 +3,7 @@
 
 - name: People
   link: "#"   # 클릭 시 페이지 이동 없이 하위 메뉴만 표시됩니다.
+  has_children: true
   subitems:
     - name: Current Members
       link: /people/current
