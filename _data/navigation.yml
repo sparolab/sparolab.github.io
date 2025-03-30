@@ -4,7 +4,7 @@
 - name: People
   dropdown:
     - name: Current Members
-      link: /people/current
+      link: /people/current-members
     - name: Alumni
       link: /people/alumni
       
