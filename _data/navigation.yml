@@ -1,6 +1,14 @@
+# - name: People
+#   link: /people/people
+
 - name: People
-  link: /people/people
-  
+  link: "#"   # 클릭 시 페이지 이동 없이 하위 메뉴만 표시됩니다.
+  subitems:
+    - name: Current Members
+      link: /people/current
+    - name: Alumni
+      link: /people/alumni
+      
 - name: Research
   link: /research/
 
