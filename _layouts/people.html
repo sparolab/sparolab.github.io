@@ -28,11 +28,11 @@ layout: default
             </div>
             <div class="card-content" style="padding:0.5rem;">
               {% if gallery.title == "Faculty" %}
-                {% assign desc_font = "1.1rem" %}
+                <div class="content" style="text-align:left; font-size:1.1rem;">
               {% else %}
-                {% assign desc_font = "0.9rem" %}
+                <div class="content" style="text-align:left; font-size:0.9rem;">
               {% endif %}
-              <div class="content" style="text-align:left; font-size:{{ desc_font }};">
+              
                 {{ image.description | markdownify }}
 
                 {% if image.email %}
@@ -43,7 +43,7 @@ layout: default
                 {% endif %}
                 {% if image.at %}
                   <p style="margin-top:5px;">
-                    <strong>At:</strong> <a href="{{ image.at_link }}">@{{ image.at }}</a>
+                    <a href="{{ image.at_link }}">@{{ image.at }}</a>
                   </p>
                 {% endif %}
               </div>
