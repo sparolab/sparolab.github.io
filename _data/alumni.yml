@@ -1,9 +1,25 @@
 - title: Alumni
   images:
+    - link: /img/album/people/alumni/박주용_증명사진.jpg
+      alt: Jooyong Park
+      description: |-
+        **Jooyong Park**  
+        M.S. 2024
+      at: Klemove
+      at_link: https://www.hlklemove.com/main.do
+    
+    - link: /img/album/people/alumni/강길환_증명사진.jpg
+      alt: Gilhwan Kang
+      description: |-
+        **Gilhwan Kang**  
+        M.S. 2024
+      at: Hyundai Robotics LAB
+      at_link: https://robotics.hyundai.com/
+    
     - link: /img/album/people/alumni/마승준_증명사진.jpg
       alt: Seungjun Ma
       description: |-
         **Seungjun Ma**  
-        Master Students
+        M.S. 2025
       at: Hyundai Robotics LAB
       at_link: https://robotics.hyundai.com/
