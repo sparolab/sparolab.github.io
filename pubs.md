@@ -59,7 +59,7 @@ gallery: pubs
 <span style="font-size:0.8em;">Dongguw LEE, Myunghwan Jeon, Younggun Cho, Ayoung Kim</span>  
 
 <span style="font-size:1.2em; font-weight:bold;">Sparse depth-guided image enhancement using incremental GP with informative point selection</span> <a href="https://www.mdpi.com/1424-8220/23/3/1212" style="font-size:1.2em;">[Paper]</a>  
-<span style="font-size:1.0em;">MDPI Sensors, 2023</span>  
+<span style="font-size:1.0em;">MDPI SENSORS, 2023</span>  
 <span style="font-size:0.8em;">Geonmo Yang, Juhui Lee, Ayoung Kim and Younggun Cho</span>  
 
 # 2022
@@ -102,3 +102,65 @@ gallery: pubs
 <span style="font-size:0.8em;">Younggun Cho, Giseop Kim and Ayoung Kim</span>  
 
 # 2019
+<span style="font-size:1.2em; font-weight:bold;">Validation of a Multi–Sensor-Based Kiosk for Short Physical Performance Battery </span> <a href="https://agsjournals.onlinelibrary.wiley.com/doi/full/10.1111/jgs.16135" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">Journal of the American Geriatrics Society (JAGS) , 2019</span>  
+<span style="font-size:0.8em;">HeeWon Jung, Hyunchul Roh, Younggun Cho, Jinyong Jeong, YoungSik Shin, JaeYoung Lim, Jack M Guralnik, and Jihong Park</span>  
+
+<span style="font-size:1.2em; font-weight:bold;"> ViViD : Vision for Visibility Dataset  (Best Poster Award) </span>  
+<span style="font-size:1.0em;">ICRA Workshop on Dataset Generation and Benchmarking of SLAM Algorithms for Robotics and VR/AR , 2019</span>  
+<span style="font-size:0.8em;">Alex Junho Lee, Younggun Cho, Sungho Yoon, Youngsik Shin and Ayoung Kim  </span>  
+
+<span style="font-size:1.2em; font-weight:bold;"> Complex Urban Dataset with Multi-level Sensors from Highly Diverse Urban Environments </span> <a href="https://journals.sagepub.com/doi/full/10.1177/0278364919843996" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">International Journal of Robotics Research (IJRR), 2019</span>  
+<span style="font-size:0.8em;">Jinyong Jeong, Younggun Cho, Young-Sik Shin, Hyunchul Roh and Ayoung Kim </span>  
+
+<span style="font-size:1.2em; font-weight:bold;"> DeepLO: Geometry-Aware Deep LiDAR Odometry </span> <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://arxiv.org/pdf/1902.10562" style="font-size:1.2em;">[Arxiv]</a>  
+<span style="font-size:1.0em;">Arxiv, 2019</span>  
+<span style="font-size:0.8em;">Younggun Cho, Giseop Kim and Ayoung Kim </span>  
+
+# 2018
+<span style="font-size:1.2em; font-weight:bold;">Channel Invariant Online Visibility Enhancement for Visual SLAM in a Turbid Environment </span> <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/rob.21796" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">Journal of Field Robotics (JFR), 2018</span>  
+<span style="font-size:0.8em;">Younggun Cho and Ayoung Kim </span>  
+
+<span style="font-size:1.2em; font-weight:bold;">Model Assisted Multi-band Fusion for Single Image Enhancement and Applications to Robot Vision </span> <a href="https://ieeexplore.ieee.org/abstract/document/8370704" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">IEEE Robotics and Automation Letters (RA-L with IROS), 2018</span>  
+<span style="font-size:0.8em;">Younggun Cho, Jinyong Jeong and Ayoung Kim </span>  
+
+<span style="font-size:1.2em; font-weight:bold;">Complex Urban LiDAR Data Set </span> <a href="https://ieeexplore.ieee.org/abstract/document/8460834" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">IEEE International Conference on Robotics and Automation (ICRA), 2018</span>  
+<span style="font-size:0.8em;">Jinyong Jeong, Younggun Cho, Young-Sik Shin, Hyunchul Roh and Ayoung Kim  </span>  
+
+<span style="font-size:1.2em; font-weight:bold;">Exposure Control using Bayesian Optimization based on Entropy Weighted Image Gradient </span> <a href="https://ieeexplore.ieee.org/abstract/document/8462881" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">IEEE International Conference on Robotics and Automation (ICRA), 2018</span>  
+<span style="font-size:0.8em;">Joowan Kim, Younggun Cho and Ayoung Kim  </span>  
+
+<span style="font-size:1.2em; font-weight:bold;">DejavuGAN: Multi-temporal Image Translation toward Long-term Robot Autonomy </span>
+<span style="font-size:1.0em;">ICRA Workshop on Long-term Autonomy and Deployment of Intelligent Robots in the Real-world, 2018</span>  
+<span style="font-size:0.8em;">Younggun Cho, Jinyong Jeong, Youngsik Shin and Ayoung Kim  </span>  
+
+# 2017
+<span style="font-size:1.2em; font-weight:bold;">LiDAR Configuration Comparison for Urban Mapping System </span> <a href="https://ieeexplore.ieee.org/abstract/document/7992845" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">IEEE Ubiquitous Robots and Ambient Intelligence (URAI), 2017</span>  
+<span style="font-size:0.8em;">Joowan Kim, Jinyong Jeong, Young-Sik Shin, Younggun Cho, Hyunchul Roh and Ayoung Kim </span>  
+
+<span style="font-size:1.2em; font-weight:bold;">Road-SLAM : Road Marking based SLAM with Lane-level Accuracy </span> <a href="https://ieeexplore.ieee.org/abstract/document/7995958" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">IEEE Intelligent Vehicle Symposium (IV), 2017</span>  
+<span style="font-size:0.8em;">Jinyong Jeong, Younggun Cho and Ayoung Kim  </span>  
+
+<span style="font-size:1.2em; font-weight:bold;"> Visibility Enhancement for Underwater Visual SLAM based on Underwater Light Scattering Model </span> <a href="https://ieeexplore.ieee.org/abstract/document/7989087" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">IEEE International Conference on Robotics and Automation (ICRA), 2017</span>  
+<span style="font-size:0.8em;">Younggun Cho and Ayoung Kim </span>  
+
+# 2016
+<span style="font-size:1.2em; font-weight:bold;"> Estimation of Ambient Light and Transmission Map with Common Convolutional Architecture </span> <a href="https://ieeexplore.ieee.org/abstract/document/7761342" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">IEEE/MTS OCEANS Conference and Exhibition (Oceans), 2016</span>  
+<span style="font-size:0.8em;">Young-Sik Shin, Younggun Cho, Gaurav Pandey and Ayoung Kim  </span>  
+
+<span style="font-size:1.2em; font-weight:bold;"> Online Depth Estimation and Application to Underwater Image Dehazing </span> <a href="https://ieeexplore.ieee.org/abstract/document/7761109" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">IEEE/MTS OCEANS Conference and Exhibition (Oceans), 2016</span>  
+<span style="font-size:0.8em;">Younggun Cho, Young-Sik Shin and Ayoung Kim </span>  
+
+<span style="font-size:1.2em; font-weight:bold;"> Accurate Mobile Urban Mapping via Digital Map-Based SLAM </span> <a href="https://www.mdpi.com/1424-8220/16/8/1315" style="font-size:1.2em;">[Paper]</a>  
+<span style="font-size:1.0em;">MDPI SENSORS, 2016</span>  
+<span style="font-size:0.8em;">Hyunchul Roh, Jinyong Jeong, Younggun Cho and Ayoung Kim </span>  
