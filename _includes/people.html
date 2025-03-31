@@ -1,41 +1,38 @@
 {% if page.gallery %}
 {% assign galleries = site.data[page.gallery] %}
 {% for gallery in galleries %}
-  <!-- 한 섹션에 여러 카드(인물)들을 나열 -->
+  <!-- 한 그룹(예: Faculty, PhD Students 등)을 columns로 감싸기 -->
   <div class="columns is-multiline">
+    <!-- 그룹 제목 -->
     <div class="column is-12">
-      <!-- 섹션 타이틀 (예: Faculty, PhD Students 등) -->
       <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
     </div>
 
     {% for image in gallery.images %}
-      <!-- 데스크톱: 한 줄에 4개, 태블릿: 3개, 모바일: 2개 정도로 조정 -->
+      <!-- 데스크톱에서 한 줄에 4개, 태블릿 3개, 모바일 2개 카드 -->
       <div class="column is-3-desktop is-4-tablet is-6-mobile">
-        <div class="card" style="max-width:250px; margin:0 auto;">
+        <!-- 카드 자체를 가운데 정렬하고, 폭을 제한 -->
+        <div class="card" style="margin:0 auto; max-width:250px; text-align:center;">
           <!-- 이미지 영역 -->
-          <div class="card-image">
-            <!-- 4:3 비율로 이미지를 표시 (Bulma의 is-4by3 클래스) -->
-            <figure class="image is-4by3">
-              <!-- 이미지가 꽉 차도록 object-fit:cover -->
-              <img src="{{ image.link }}" alt="{{ image.alt }}" style="object-fit:cover;">
-            </figure>
+          <div class="card-image" style="display:flex; justify-content:center; margin-top:10px;">
+            {% include image-modal.html
+              link=image.link
+              alt=image.alt
+              large_link=image.large_link
+            %}
           </div>
 
           <!-- 텍스트 영역 -->
           <div class="card-content" style="padding:0.5rem;">
             <div class="content" style="text-align:center; font-size:0.9rem;">
-              <!-- Markdownify로 볼드 처리 등 가능 -->
               {{ image.description | markdownify }}
 
-              <!-- 이메일이 있는 경우에만 표시 -->
               {% if image.email %}
                 <p style="margin-top:5px;">
                   <strong>Email:</strong><br>
                   <a href="mailto:{{ image.email }}">{{ image.email }}</a>
                 </p>
               {% endif %}
-
-              <!-- 키워드가 있는 경우에만 표시 -->
               {% if image.keywords %}
                 <p style="margin-top:5px;">
                   <strong>Keywords:</strong><br>{{ image.keywords }}
