@@ -10,9 +10,9 @@
 
     {% for image in gallery.images %}
       <!-- 데스크톱에서 4개(12/3=4), 태블릿에서 3개(12/4=3), 모바일에서 2개(12/6=2) -->
-      <div class="column is-3-desktop is-4-tablet is-6-mobile">
+      <div class="column is-6-desktop is-6-tablet is-6-mobile">
         <!-- 카드 최대 폭 300px, 가운데 정렬 -->
-        <div class="card" style="max-width:300px; margin:0 auto; text-align:center;">
+        <div class="card" style="max-width:250px; margin:0 auto; text-align:center;">
           <!-- 이미지 영역 (image-modal.html 사용) -->
           <div class="card-image" style="padding:10px;">
             {% include image-modal.html
