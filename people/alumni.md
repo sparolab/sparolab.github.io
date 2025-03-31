@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: people
 title: Alumni
 show_sidebar: false
 hide_footer: false
