@@ -5,8 +5,6 @@
       description: |-
         **Younggun Cho**  
         Assitant Professor
-      email: yg.cho@inha.ac.kr
-      keywords: Robust Sensing, SLAM, Long-term Autonomy 
       ratio: is-1by1
 
 - title: PhD Students
@@ -16,36 +14,48 @@
       description: |-
         **Geonmo Yang**  
         MS-PhD Integrated
+      email: ygm7422@gmail.com
+      keywords: Robust Sensing, SLAM, Long-term Autonomy 
 
     - link: /img/album/people/phd/이주희_증명사진.jpg
       alt: Juhui Lee
       description: |-
         **Juhui Lee**  
         Phd Student
+      email: dlwngml6635@gmail.com
+      keywords: 3D Vision, Visual SLAM 
 
     - link: /img/album/people/phd/김호균_증명사진.jpg
       alt: Hogyun Kim
       description: |-
         **Hogyun Kim**  
-        Phd Student
+        MS-PhD Integrated
+      email: hg.kim@inha.edu
+      keywords: SLAM, Field Robotics 
 
     - link: /img/album/people/phd/이정우_증명사진.png
       alt: Jungwoo Lee
       description: |-
         **Jungwoo Lee**  
         Phd Student
+      email: ljw69700@gmail.com
+      keywords: Visual SLAM, Sensor Fusion 
 
     - link: /img/album/people/phd/최지원_증명사진.jpg
       alt: Jiwon Choi
       description: |-
         **Jiwon Choi**  
         MS-PhD Integrated
+      email: jivvon2@gmail.com
+      keywords: LiDAR SLAM, Long-term Autonomy 
 
     - link: /img/album/people/phd/김주원_증명사진.jpg
       alt: Juwon Kim
       description: |-
         **Juwon Kim**  
         MS-PhD Integrated
+      email: lambertkim317@gmail.com
+      keywords: SLAM, Field Robotics, Quadruped Robot, Multi Robot 
 
 - title: Master Students
   images:
@@ -54,48 +64,64 @@
       description: |-
         **SeokHwan Jung**  
         Master Students
+      email: jshwes5709@gmail.com
+      keywords: Visual SLAM, Calibration 
 
     - link: /img/album/people/master/최병희_증명사진.jpg
       alt: Byunghee Choi
       description: |-
         **Byunghee Choi**  
         Master Students
+      email: bhbhchoi@inha.edu
+      keywords: Range Sensor, SLAM 
 
     - link: /img/album/people/master/최은철_증명사진.png
       alt: Euncheol Choi
       description: |-
         **Euncheol Choi**  
         Master Students
+      email: 1997c0703@gmail.com
+      keywords: Visual SLAM, Deep Learning, Place Recognition 
 
     - link: /img/album/people/master/이기현_증명사진.jpg
       alt: Gihyeon Lee
       description: |-
         **Gihyeon Lee**  
         Master Students
+      email: leekh951@naver.com
+      keywords: Semantic SLAM, 3D scene understanding 
 
     - link: /img/album/people/master/조동진_증명사진.jpg
       alt: Dongjin Cho
       description: |-
         **Dongjin Cho**  
         Master Students
-      
+      email: d22g66@naver.com
+      keywords: Traversability Mapping, Simulation
+
     - link: /img/album/people/master/이민호_증명사진.jpg
       alt: Minho Lee
       description: |-
         **Minho Lee**  
         Master Students
+      email: mino@inha.edu
+      keywords: Embodied AI, Robot Task Planning, Open-World Navigation 
 
     - link: /img/album/people/master/박미령_증명사진.jpg
       alt: Miryeong Park
       description: |-
         **Miryeong Park**  
         Master Students
+      email: bark9757@naver.com
+      keywords: Graph-based Path Planning, Field Robotics, Autonomous Exploration 
 
     - link: /img/album/people/master/이지윤_증명사진.jpg
       alt: Jiyun Lee
       description: |-
         **Jiyun Lee**  
         Master Students
+      email: jywoo6315@gmail.com
+      keywords: Reinforcement Learning, Embodied AI, Autonomous Navigation 
 
 - title: Staff
   images:
@@ -103,4 +129,3 @@
       alt: Soohyeon Kim
       description: |-
         **Soohyeon Kim**  
-        Master Students
