@@ -1,5 +1,5 @@
 ---
-layout: people
+layout: page
 title: Current Members
 show_sidebar: false
 hide_footer: false

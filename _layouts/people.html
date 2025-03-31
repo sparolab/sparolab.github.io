@@ -1,0 +1,53 @@
+---
+layout: page
+---
+{% if page.gallery %}
+{% assign galleries = site.data[page.gallery] %}
+{% for gallery in galleries %}
+  <!-- 한 그룹(예: Faculty, PhD Students)을 columns로 감싸서 반응형 레이아웃 -->
+  <div class="columns is-multiline">
+    <!-- 그룹 타이틀 -->
+    <div class="column is-12">
+      <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
+    </div>
+
+    {% for image in gallery.images %}
+      <!-- 데스크톱에서 4개(12/3=4), 태블릿에서 3개(12/4=3), 모바일에서 2개(12/6=2) -->
+      <div class="column is-3-desktop is-3-tablet is-3-mobile">
+        <!-- 카드 최대 폭 300px, 가운데 정렬 -->
+        <div class="card" style="max-width:auto; margin:0 auto; text-align:center;">
+          <!-- 이미지 영역 (image-modal.html 사용) -->
+          <div class="card-image" style="padding:10px;">
+            {% include image-modal.html
+              link=image.link
+              alt=image.alt
+              large_link=image.large_link
+              ratio="is-16by9"
+            %}
+          </div>
+
+          <!-- 텍스트 영역 -->
+          <div class="card-content" style="padding:0.5rem;">
+            <div class="content" style="text-align:center; font-size:0.9rem;">
+              {{ image.description | markdownify }}
+
+              {% if image.email %}
+                <p style="margin-top:5px;">
+                  <strong>Email:</strong><br>
+                  <a href="mailto:{{ image.email }}">{{ image.email }}</a>
+                </p>
+              {% endif %}
+              {% if image.keywords %}
+                <p style="margin-top:5px;">
+                  <strong>Keywords:</strong><br>{{ image.keywords }}
+                </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <hr>
+{% endfor %}
+{% endif %}
