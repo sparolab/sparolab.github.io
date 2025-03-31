@@ -19,7 +19,7 @@
   </div>
    -->
 
-<div x-data="{ open: false }" markdown="0">
+<!-- <div x-data="{ open: false }" markdown="0">
     <a x-on:click="open = false" title="View large image">
         <figure class="image {{ include.ratio | default: is-16by9 }}">
             <img src="{{ include.link | absolute_url }}" alt="{{ include.alt }}">
@@ -36,4 +36,23 @@
         </div>
         <button class="modal-close is-large" aria-label="close" x-on:click="open = false"></button>
     </div>
+</div> -->
+
+<div x-data="{ open: false }" markdown="0">
+  <a x-on:click="open = true" title="View large image">
+      <figure class="image {{ include.ratio | default: 'is-16by9' }}" style="width:200px; height:100%; overflow:hidden;">
+          <img src="{{ include.link | absolute_url }}" alt="{{ include.alt }}" style="width:200px; height:100%; object-fit:cover;">
+      </figure>
+  </a>
+  <div class="modal" x-bind:class="open ? 'is-active' : ''" x-cloak>
+      <div class="modal-background" x-on:click="open = false"></div>
+      <div class="modal-content" style="max-width:800px; margin:0 auto;">
+          {% if include.large_link %}
+              <img src="{{ include.large_link | absolute_url }}" alt="{{ include.alt }}" style="width:200px;">
+          {% else %}
+              <img src="{{ include.link | absolute_url }}" alt="{{ include.alt }}" style="width:200px;">
+          {% endif %}
+      </div>
+      <button class="modal-close is-large" aria-label="close" x-on:click="open = false"></button>
+  </div>
 </div>

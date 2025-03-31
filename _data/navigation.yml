@@ -1,6 +1,13 @@
+# - name: People
+#   link: /people/people
+
 - name: People
-  link: /people/people
-  
+  dropdown:
+    - name: Current Members
+      link: /people/current-members
+    - name: Alumni
+      link: /people/alumni
+      
 - name: Research
   link: /research/
 
