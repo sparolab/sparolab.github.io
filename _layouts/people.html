@@ -36,11 +36,17 @@ layout: default
                     <a href="mailto:{{ image.email }}">{{ image.email }}</a>
                   </p>
                 {% endif %}
-                {% if image.keywords %}
+                <!-- {% if image.keywords %}
                   <p style="margin-top:5px;">
                     <strong>Keywords:</strong><br>{{ image.keywords }}
                   </p>
+                {% endif %} -->
+                {% if image.at %}
+                <p style="margin-top:5px;">
+                  <strong>At:</strong> <a href="{{ image.at_link }}">@{{ image.at }}</a>
+                </p>
                 {% endif %}
+  
               </div>
             </div>
           </div>

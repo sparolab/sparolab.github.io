@@ -39,7 +39,11 @@
                   <strong>Keywords:</strong><br>{{ image.keywords }}
                 </p>
               {% endif %}
-            </div>
+              {% if image.at %}
+              <p style="margin-top:5px;">
+                <strong>At:</strong> <a href="{{ image.at_link }}">@{{ image.at }}</a>
+              </p>
+              {% endif %}
           </div>
         </div>
       </div>
