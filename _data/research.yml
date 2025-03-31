@@ -1,0 +1,11 @@
+- title: "Conference"
+  images:
+    - link: /img/research/conference1.jpg
+      alt: Conference 1
+      description: |-
+      date: "2023.05.01"
+
+    - link: /img/research/conference2.jpg
+      alt: Conference 2
+      description: |-
+      date: "2024.01.10"
