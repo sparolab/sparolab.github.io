@@ -92,7 +92,7 @@
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Paper (TBU)</span>
                 </a>
               </span>
               <span class="link-block">
@@ -101,7 +101,7 @@
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>arXiv (TBU)</span>
                 </a>
               </span>
               <!-- Video Link. -->
@@ -156,12 +156,10 @@
             Distributed LiDAR SLAM is crucial for achieving efficient robot autonomy and improving the scalability of mapping.
             However, two issues need to be considered when applying it in field environments: one is resource limitation, and the other is inter/intra-robot association.
             The resource limitation issue arises when the data size exceeds the processing capacity of the network or memory, especially when utilizing communication systems or onboard computers in the field.
-            % The inter/intra-robot association issue occurs due to the fundamental principles of ICP-based local registration.
-            % The ICP with a narrow convergence range restricts robot movement, making field robots, which must cope with various hazards, especially vulnerable.
-            The inter/intra-robot association issue occurs due to the limited convergence basin of ICP under large viewpoint differences, triggering many false negative loops and ultimately resulting in an inconsistent global map for multi-robot systems.
-            To tackle these problems, we propose a distributed LiDAR SLAM framework designed for versatile field applications, called \textit{SKiD-SLAM}.
+            The inter/intra-robot association issue occurs due to the narrow convergence region of ICP under large viewpoint differences, triggering many false positive loops and ultimately resulting in an inconsistent global map for multi-robot systems.
+            To tackle these problems, we propose a distributed LiDAR SLAM framework designed for versatile field applications, called SKiD-SLAM.
             Extending our previous work that solely focused on lightweight place recognition and fast and robust global registration, we present a multi-robot mapping framework that focuses on robust and lightweight inter-robot loop closure in distributed LiDAR SLAM. 
-            Through various environment experiments, we demonstrate that our method is more robust and lightweight compared to other state-of-the-art distributed SLAM approaches, overcoming resource limitation and inter/intra-robot association issues.
+            Through various environmental experiments, we demonstrate that our method is more robust and lightweight compared to other state-of-the-art distributed SLAM approaches, overcoming resource limitation and inter/intra-robot association issues.
             Also, we validated the field applicability of our approach through mapping experiments in real-world planetary emulation terrain and cave environments, which are in-house datasets.
             Our code will be available at github.
             </p>
