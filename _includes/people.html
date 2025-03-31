@@ -1,24 +1,25 @@
 {% if page.gallery %}
 {% assign galleries = site.data[page.gallery] %}
 {% for gallery in galleries %}
-  <!-- 한 그룹(예: Faculty, PhD Students 등)을 columns로 감싸기 -->
+  <!-- 한 그룹(예: Faculty, PhD Students)을 columns로 감싸서 반응형 레이아웃 -->
   <div class="columns is-multiline">
-    <!-- 그룹 제목 -->
+    <!-- 그룹 타이틀 -->
     <div class="column is-12">
       <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
     </div>
 
     {% for image in gallery.images %}
-      <!-- 데스크톱에서 한 줄에 4개, 태블릿 3개, 모바일 2개 카드 -->
+      <!-- 데스크톱에서 4개(12/3=4), 태블릿에서 3개(12/4=3), 모바일에서 2개(12/6=2) -->
       <div class="column is-3-desktop is-4-tablet is-6-mobile">
-        <!-- 카드 자체를 가운데 정렬하고, 폭을 제한 -->
-        <div class="card" style="margin:0 auto; max-width:250px; text-align:center;">
-          <!-- 이미지 영역 -->
-          <div class="card-image" style="display:flex; justify-content:center; margin-top:10px;">
+        <!-- 카드 최대 폭 300px, 가운데 정렬 -->
+        <div class="card" style="max-width:300px; margin:0 auto; text-align:center;">
+          <!-- 이미지 영역 (image-modal.html 사용) -->
+          <div class="card-image" style="padding:10px;">
             {% include image-modal.html
               link=image.link
               alt=image.alt
               large_link=image.large_link
+              ratio="is-16by9"
             %}
           </div>
 
