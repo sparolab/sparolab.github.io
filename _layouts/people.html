@@ -13,10 +13,8 @@ layout: default
 
     {% for image in gallery.images %}
       {% if gallery.title == "Faculty" %}
-        <!-- Faculty: 한 줄에 4개(12/3=4) -->
         <div class="column is-3-desktop is-4-tablet is-6-mobile">
       {% else %}
-        <!-- 그 외: 한 줄에 5개( is-one-fifth-desktop ) -->
         <div class="column is-one-fifth-desktop is-half-tablet is-full-mobile">
       {% endif %}
           <div class="card" style="margin:0 auto; text-align:center;">
