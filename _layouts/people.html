@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 {% if page.gallery %}
 {% assign galleries = site.data[page.gallery] %}
 {% for gallery in galleries %}
@@ -39,7 +43,7 @@
                 {% endif %}
                 {% if image.at %}
                   <p style="margin-top:5px;">
-                    <a href="{{ image.at_link }}">@{{ image.at }}</a>
+                    <strong>At:</strong> <a href="{{ image.at_link }}">@{{ image.at }}</a>
                   </p>
                 {% endif %}
               </div>
