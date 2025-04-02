@@ -36,7 +36,7 @@ permalink: /people/Faculty/Younggun-Cho
       <a href="https://github.com/youngguncho" target="_blank" style="display:inline-block; font-size:24px; color:gray;">
         <i class="fab fa-github"></i>
       </a>
-      <a href="https://sites.google.com/site/ygchocv/home"  target="_blank" style="display:inline-block; font-size:24px; color:gray;">
+      <a href="https://sites.google.com/site/ygchocv/home" target="_blank" style="display:inline-block; font-size:24px; color:gray;">
         <i class="fas fa-home"></i>
       </a>
     </div>
