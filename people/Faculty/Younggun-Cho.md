@@ -21,12 +21,12 @@ permalink: /people/Faculty/Younggun-Cho
         I received the Ph. D. degree in the Department of Civil and Environmental Engineering with Robotics program at KAIST Daejeon, South Korea, advised by Prof. Ayoung Kim. Also, I received M.S. degree in the Department of Electrical Engineering at KAIST, advised by Prof. Myungjin Chung. Before that, I received the B.E. degree in the Department of Electrical in Inha University, Incheon, South Korea.
         <br><br>
       </p>
-      <p style="margin-top:20px;">
+      <p style="margin-top:50px;">
         <span style="font-size:2rem; font-weight:bold;">Email</span><br>
         <a href="mailto:yg.cho@inha.ac.kr" style="color: #0073e6; text-decoration: none;">yg.cho@inha.ac.kr</a>
       </p>
     </div>
-    <div style="margin-top:100px;">
+    <div style="margin-top:50px;">
       <a href="https://www.linkedin.com/in/younggun-cho-392799116/" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:gray;">
         <i class="fab fa-linkedin"></i>
       </a>
