@@ -15,6 +15,7 @@ subtitle: Assistant Professor
     <div class="content">
       <p>
         I am an assistant professor of the Department of Electrical Engineering at Inha University.  
+        <br><br>
         Before joining Inha University, I was an assistant professor in the Department of Robotics Engineering at Yeungnam. Also, I was a postdoctoral researcher at KAIST. My research interest is long-term autonomy and robust sensing, including SLAM (Simultaneous Localization and Mapping) for field robots, vision-based perception, and physical-based learning.  
         <br><br>
         I received the Ph. D. degree in the Department of Civil and Environmental Engineering with Robotics program at KAIST Daejeon, South Korea, advised by Prof. Ayoung Kim. Also, I received M.S. degree in the Department of Electrical Engineering at KAIST, advised by Prof. Myungjin Chung. Before that, I received the B.E. degree in the Department of Electrical in Inha University, Incheon, South Korea.
