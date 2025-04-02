@@ -70,7 +70,7 @@
         MS-PhD Integrated
       email: lambertkim317@gmail.com
       github: https://github.com/U-AMC
-      homepage: https://jivvon1.github.io/
+      homepage: https://U-AMC.github.io/
       scholar: https://scholar.google.ch/citations?user=2bvLmqQAAAAJ&hl=en
       linkedin: https://www.linkedin.com/in/json380/
       keywords: SLAM, Field Robotics, Quadruped Robot, Multi Robot 
@@ -83,6 +83,9 @@
         **SeokHwan Jung**  
         Master Students
       email: jshwes5709@gmail.com
+      github: https://github.com/Eric5709
+      scholar: https://scholar.google.co.kr/citations?user=ZAO6skQAAAAJ&hl=ko
+      linkedin: https://www.linkedin.com/in/seokhwan-jeong-19111331b/
       keywords: Visual SLAM, Calibration 
 
     - link: /img/album/people/master/최병희_증명사진.jpg
@@ -107,6 +110,9 @@
         **Gihyeon Lee**  
         Master Students
       email: leekh951@inha.edu
+      github: https://github.com/Leekh951
+      scholar: https://scholar.google.com/citations?user=iKsImcYAAAAJ&hl=ko
+      linkedin: https://www.linkedin.com/in/gihyeonlee99
       keywords: Semantic SLAM, 3D scene understanding 
 
     - link: /img/album/people/master/조동진_증명사진.jpg
@@ -114,7 +120,10 @@
       description: |-
         **Dongjin Cho**  
         Master Students
-      email: d22g66@naver.com
+      email: d22g66@inha.edu
+      github: https://github.com/dongjineee
+      scholar: https://scholar.google.com/citations?user=iKsImcYAAAAJ&hl=ko
+      linkedin: https://www.linkedin.com/in/dongjineee/
       keywords: Traversability Mapping, Simulation
 
     - link: /img/album/people/master/이민호_증명사진.jpg
@@ -123,6 +132,10 @@
         **Minho Lee**  
         Master Students
       email: mino@inha.edu
+      github: https://github.com/iminolee
+      homepage: https://roboxiv.com
+      scholar: https://scholar.google.com/citations?user=96AEAd0AAAAJ&hl=ko
+      linkedin: https://www.linkedin.com/in/iminolee/
       keywords: Embodied AI, Robot Task Planning, Open-World Navigation 
 
     - link: /img/album/people/master/박미령_증명사진.jpg
@@ -131,6 +144,9 @@
         **Miryeong Park**  
         Master Students
       email: bark9757@inha.edu
+      github: https://github.com/miiiiiryeong
+      scholar: https://scholar.google.com/citations?user=TVKnE_0AAAAJ&hl=ko
+      linkedin: https://www.linkedin.com/in/miryeong-park-802a7618b/
       keywords: Graph-based Path Planning, Field Robotics, Autonomous Exploration 
 
     - link: /img/album/people/master/이지윤_증명사진.jpg
@@ -138,7 +154,10 @@
       description: |-
         **Jiyun Lee**  
         Master Students
-      email: jywoo6315@gmail.com
+      email: dlwldbs6315@inha.edu
+      github: https://github.com/jiyuninha
+      scholar: https://scholar.google.com/citations?view_op=list_works&hl=ko&user=KD-dpyYAAAAJ&gmla=A
+      linkedin: https://www.linkedin.com/in/jiyun-lee-483728359/
       keywords: Reinforcement Learning, Embodied AI, Autonomous Navigation 
 
 - title: Staff
