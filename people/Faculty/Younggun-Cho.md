@@ -13,7 +13,7 @@ permalink: /people/Faculty/Younggun-Cho
   </figure>
   <div class="media-content" style="margin-left: 30px;"> 
     <div class="content">
-      <p>
+      <p style="margin-top:10px;">
         I am an assistant professor of the Department of Electrical Engineering at Inha University.  
         <br><br>
         Before joining Inha University, I was an assistant professor in the Department of Robotics Engineering at Yeungnam. Also, I was a postdoctoral researcher at KAIST. My research interest is long-term autonomy and robust sensing, including SLAM (Simultaneous Localization and Mapping) for field robots, vision-based perception, and physical-based learning.  
