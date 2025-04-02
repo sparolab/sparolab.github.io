@@ -23,9 +23,10 @@ permalink: /people/Faculty/Younggun-Cho
       </p>
       <p style="margin-top:20px;">
         <span style="font-size:2rem; font-weight:bold;">Email</span><br>
-        <span style="font-size:1rem;">yg.cho@inha.ac.kr</span>
+        <a href="mailto:yg.cho@inha.ac.kr" style="color: #0073e6; text-decoration: none;">yg.cho@inha.ac.kr</a>
       </p>
-      <p style="margin-top:10px;">
+    </div>
+    <div style="margin-top:10px;">
         <a href="https://www.linkedin.com/in/yourusername" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px;">
             <i class="fab fa-linkedin"></i>
         </a>
@@ -35,7 +36,7 @@ permalink: /people/Faculty/Younggun-Cho
         <a href="https://github.com/youngguncho" target="_blank" style="display:inline-block; font-size:24px;">
             <i class="fab fa-github"></i>
         </a>
-      </p>
-    </div>
+      </div>
+
   </div>
 </article>
