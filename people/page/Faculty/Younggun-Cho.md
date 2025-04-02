@@ -7,7 +7,7 @@ subtitle: Assistant Professor
 
 <article class="media">
   <figure class="media-left" style="margin-right: 30px;"> 
-    <p class="image" style="width:500px; height:100%;">
+    <p class="image" style="width:300px; height:100%;">
       <img src="/img/album/people/faculty/조영근_증명사진_.jpg" alt="Younggun Cho" style="object-fit:cover;">
     </p>
   </figure>
