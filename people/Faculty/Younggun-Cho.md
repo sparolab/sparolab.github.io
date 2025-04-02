@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /people/Faculty/Younggun-Cho
+permalink: /people/page/Faculty/Younggun-Cho
 title: Younggun Cho
 subtitle: Assistant Professor
 ---
@@ -22,7 +22,7 @@ subtitle: Assistant Professor
         <br><br>
       </p>
       <p style="margin-top:20px;">
-        <span style="font-size:2.2rem; font-weight:bold;">Email</span><br>
+        <span style="font-size:2.5rem; font-weight:bold;">Email</span><br>
         <span style="font-size:1rem;">yg.cho@inha.ac.kr</span>
       </p>
     </div>
