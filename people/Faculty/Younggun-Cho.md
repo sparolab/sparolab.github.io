@@ -26,17 +26,17 @@ permalink: /people/Faculty/Younggun-Cho
         <a href="mailto:yg.cho@inha.ac.kr" style="color: #0073e6; text-decoration: none;">yg.cho@inha.ac.kr</a>
       </p>
     </div>
-    <div style="margin-top:50px;">
-      <a href="https://www.linkedin.com/in/younggun-cho-392799116/" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:black;">
+    <div style="margin-top:100px;">
+      <a href="https://www.linkedin.com/in/younggun-cho-392799116/" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:gray;">
         <i class="fab fa-linkedin"></i>
       </a>
-      <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:black;">
+      <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:gray;">
         <i class="fa-brands fa-google-scholar"></i>
       </a>
-      <a href="https://github.com/youngguncho" target="_blank" style="display:inline-block; font-size:24px; color:black;">
+      <a href="https://github.com/youngguncho" target="_blank" style="display:inline-block; font-size:24px; color:gray;">
         <i class="fab fa-github"></i>
       </a>
-      <a href="https://sites.google.com/site/ygchocv/home" style="display:inline-block; font-size:24px; color:black;">
+      <a href="https://sites.google.com/site/ygchocv/home"  target="_blank" style="display:inline-block; font-size:24px; color:gray;">
         <i class="fas fa-home"></i>
       </a>
     </div>
