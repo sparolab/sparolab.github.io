@@ -17,10 +17,10 @@ layout: default
       {% else %}
         <div class="column is-one-fifth-desktop is-half-tablet is-full-mobile">
       {% endif %}
-      {% if image.page_link %}
-        <a href="{{ image.page_link }}" style="text-decoration:none; color:inherit;">
-      {% endif %}
           <div class="card" style="margin:0 auto; text-align:center;">
+            {% if image.page_link %}
+                <a href="{{ image.page_link }}" style="text-decoration:none; color:inherit;">
+            {% endif %}
             <div class="card-image" style="padding:10px;">
               {% include image-modal.html
                 link=image.link
@@ -51,6 +51,7 @@ layout: default
                 {% endif %}
               </div>
             </div>
+            </a>
           </div>
         </div>
     {% endfor %}
