@@ -8,7 +8,7 @@ position: Assistant Professor
 <article class="media">
   <figure class="media-left">
     <p class="image is-128x128">
-      <img src="/img/album/people/faculty/조영근_증명사진.jpg" alt="Younggun Cho">
+      <img src="/img/album/people/faculty/조영근_증명사진_.jpg" alt="Younggun Cho">
     </p>
   </figure>
   <div class="media-content">

@@ -12,6 +12,9 @@ layout: default
     </div>
 
     {% for image in gallery.images %}
+      {% if image.page_link %}
+        <a href="{{ image.page_link }}" style="display:block; text-decoration:none; color:inherit;">
+      {% endif %}
       {% if gallery.title == "Faculty" %}
         <div class="column is-3-desktop is-4-tablet is-6-mobile">
       {% else %}
@@ -49,6 +52,9 @@ layout: default
               </div>
             </div>
           </div>
+          {% if image.page_link %}
+            </a>
+          {% endif %}
         </div>
     {% endfor %}
   </div>
