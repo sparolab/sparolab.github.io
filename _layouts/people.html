@@ -49,33 +49,31 @@ layout: default
                     <a href="{{ image.at_link }}">@{{ image.at }}</a>
                   </p>
                 {% endif %}
-                <div>
-                    {% if image.email %}
-                        <a href="mailto:{{ image.email}}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                        <i class="fas fa-envelope"></i>
-                        </a>
-                    {% endif %}
-                    {% if image.linkedin %}
-                        <a href="{{ image.linkedin}}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                        <i class="fab fa-linkedin"></i>
-                        </a>
-                    {% endif %}
-                    {% if image.scholar %}
-                        <a href="{{ image.scholar }}" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                        <i class="fa-brands fa-google-scholar"></i>
-                        </a>
-                    {% endif %}
-                    {% if image.github %}
-                    <a href="{{ image.github }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                      <i class="fab fa-github"></i>
+                {% if image.email %}
+                    <a href="mailto:{{ image.email}}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                    <i class="fas fa-envelope"></i>
                     </a>
-                    {% endif %}
-                    {% if image.homepage %}
-                    <a href="{{ image.homepage }}" target="_blank" style="display:inline-block; font-size:20px; color:gray;">
-                      <i class="fas fa-home"></i>
+                {% endif %}
+                {% if image.linkedin %}
+                    <a href="{{ image.linkedin}}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                    <i class="fab fa-linkedin"></i>
                     </a>
-                    {% endif %}
-                </div>
+                {% endif %}
+                {% if image.scholar %}
+                    <a href="{{ image.scholar }}" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                    <i class="fa-brands fa-google-scholar"></i>
+                    </a>
+                {% endif %}
+                {% if image.github %}
+                <a href="{{ image.github }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                    <i class="fab fa-github"></i>
+                </a>
+                {% endif %}
+                {% if image.homepage %}
+                <a href="{{ image.homepage }}" target="_blank" style="display:inline-block; font-size:20px; color:gray;">
+                    <i class="fas fa-home"></i>
+                </a>
+                {% endif %}
               </div>
             </div>
           </div>
