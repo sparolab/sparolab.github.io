@@ -3,60 +3,55 @@ layout: default
 ---
 
 {% if page.gallery %}
-  {% assign galleries = site.data[page.gallery] %}
-  {% for gallery in galleries %}
-    <!-- 그룹 섹션 -->
-    <div class="columns is-multiline">
-      <div class="column is-12">
-        <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
-      </div>
-
-      {% for image in gallery.images %}
-        {% if gallery.title == "Faculty" %}
-          <div class="column is-3-desktop is-4-tablet is-6-mobile">
-        {% else %}
-          <div class="column is-one-fifth-desktop is-half-tablet is-full-mobile">
-        {% endif %}
-            {% if image.page_link %}
-              <a href="{{ image.page_link }}" style="text-decoration:none; color:inherit;">
-            {% endif %}
-                <div class="card" style="max-width:250px; margin:0 auto; text-align:center;">
-                  <div class="card-image" style="padding:10px;">
-                    {% include image-modal.html
-                      link=image.link
-                      alt=image.alt
-                      large_link=image.large_link
-                      ratio="is-16by9"
-                    %}
-                  </div>
-                  <div class="card-content" style="padding:0.5rem;">
-                    {% if gallery.title == "Faculty" %}
-                      <div class="content" style="text-align:left; font-size:1.1rem;">
-                    {% else %}
-                      <div class="content" style="text-align:left; font-size:0.9rem;">
-                    {% endif %}
-                        {{ image.description | markdownify }}
-
-                        {% if image.email %}
-                          <p style="margin-top:5px;">
-                            <strong>Email:</strong><br>
-                            <a href="mailto:{{ image.email }}">{{ image.email }}</a>
-                          </p>
-                        {% endif %}
-                        {% if image.at %}
-                          <p style="margin-top:5px;">
-                            <a href="{{ image.at_link }}">@{{ image.at }}</a>
-                          </p>
-                        {% endif %}
-                      </div>
-                  </div>
-                </div>
-            {% if image.page_link %}
-              </a>
-            {% endif %}
-          </div>
-      {% endfor %}
+{% assign galleries = site.data[page.gallery] %}
+{% for gallery in galleries %}
+  <!-- 그룹 섹션 -->
+  <div class="columns is-multiline">
+    <div class="column is-12">
+      <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
     </div>
-    <hr>
-  {% endfor %}
+
+    {% for image in gallery.images %}
+      {% if gallery.title == "Faculty" %}
+        <div class="column is-3-desktop is-4-tablet is-6-mobile">
+      {% else %}
+        <div class="column is-one-fifth-desktop is-half-tablet is-full-mobile">
+      {% endif %}
+          <div class="card" style="margin:0 auto; text-align:center;">
+            <div class="card-image" style="padding:10px;">
+              {% include image-modal.html
+                link=image.link
+                alt=image.alt
+                large_link=image.large_link
+                ratio="is-16by9"
+              %}
+            </div>
+            <div class="card-content" style="padding:0.5rem;">
+              {% if gallery.title == "Faculty" %}
+                <div class="content" style="text-align:left; font-size:1.1rem;">
+              {% else %}
+                <div class="content" style="text-align:left; font-size:0.9rem;">
+              {% endif %}
+              
+                {{ image.description | markdownify }}
+
+                <!-- {% if image.email %}
+                  <p style="margin-top:5px;">
+                    <strong>Email:</strong><br>
+                    <a href="mailto:{{ image.email }}">{{ image.email }}</a>
+                  </p>
+                {% endif %} -->
+                {% if image.at %}
+                  <p style="margin-top:5px;">
+                    <a href="{{ image.at_link }}">@{{ image.at }}</a>
+                  </p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+  <hr>
+{% endfor %}
 {% endif %}
