@@ -11,7 +11,7 @@ subtitle: Assistant Professor
       <img src="/img/album/people/faculty/조영근_증명사진_.jpg" alt="Younggun Cho" style="object-fit:cover;">
     </p>
   </figure>
-  <div class="media-content" style="margin-left: 10px;"> 
+  <div class="media-content" style="margin-left: 30px;"> 
     <div class="content">
       <p>
         I am an assistant professor of the Department of Electrical Engineering at Inha University.  
@@ -22,7 +22,7 @@ subtitle: Assistant Professor
         <br><br>
       </p>
       <p style="margin-top:20px;">
-        <span style="font-size:1.2rem; font-weight:bold;">Email</span><br>
+        <span style="font-size:2.5rem; font-weight:bold;">Email</span><br>
         <span style="font-size:1rem;">yg.cho@inha.ac.kr</span>
       </p>
     </div>
