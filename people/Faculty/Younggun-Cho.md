@@ -1,8 +1,8 @@
 ---
 layout: page
-permalink: /people/page/Faculty/Younggun-Cho
 title: Younggun Cho
 subtitle: Assistant Professor
+permalink: /people/Faculty/Younggun-Cho
 ---
 
 <article class="media">
@@ -22,9 +22,23 @@ subtitle: Assistant Professor
         <br><br>
       </p>
       <p style="margin-top:20px;">
-        <span style="font-size:2.5rem; font-weight:bold;">Email</span><br>
-        <span style="font-size:1rem;">yg.cho@inha.ac.kr</span>
+        <span style="font-size:2rem; font-weight:bold;">Email</span><br>
+        <a href="mailto:yg.cho@inha.ac.kr" style="color: #0073e6; text-decoration: none;">yg.cho@inha.ac.kr</a>
       </p>
     </div>
+    <div style="margin-top:20px;">
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/younggun-cho-392799116/" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px;">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <!-- Google Scholar (대체 아이콘: graduation-cap) -->
+    <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px;">
+      <i class="fa-brands fa-google-scholar"></i>
+    </a>
+    <!-- GitHub -->
+    <a href="https://github.com/youngguncho" target="_blank" style="display:inline-block; font-size:24px;">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
   </div>
 </article>
