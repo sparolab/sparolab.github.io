@@ -1,8 +1,8 @@
 ---
 layout: page
-permalink: /people/Faculty/Younggun-Cho
 title: Younggun Cho
 subtitle: Assistant Professor
+permalink: /people/Faculty/Younggun-Cho
 ---
 
 <article class="media">
@@ -22,9 +22,17 @@ subtitle: Assistant Professor
         <br><br>
       </p>
       <p style="margin-top:20px;">
-        <span style="font-size:2.2rem; font-weight:bold;">Email</span><br>
+        <span style="font-size:2rem; font-weight:bold;">Email</span><br>
         <span style="font-size:1rem;">yg.cho@inha.ac.kr</span>
       </p>
+      <div style="margin-top:10px;">
+        <a href="https://www.linkedin.com/in/yourusername" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px;">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1" target="_blank" style="display:inline-block; font-size:24px;">
+            <i class="fa-brands fa-google-scholar"></i>
+        </a>
+      </div>
     </div>
   </div>
 </article>
