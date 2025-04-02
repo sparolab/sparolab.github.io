@@ -30,7 +30,10 @@ permalink: /people/Faculty/Younggun-Cho
             <i class="fab fa-linkedin"></i>
         </a>
         <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1" target="_blank" style="display:inline-block; font-size:24px;">
-            <i class="fa-brands fa-google-scholar"></i>
+            <i class="fa-brands fa-graduation-cap"></i>
+        </a>
+        <a href="https://github.com/youngguncho" target="_blank" style="display:inline-block; font-size:24px;">
+            <i class="fab fa-github"></i>
         </a>
       </div>
     </div>
