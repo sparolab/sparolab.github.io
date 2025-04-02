@@ -7,7 +7,7 @@ permalink: /people/Faculty/Younggun-Cho
 
 <article class="media">
   <figure class="media-left" style="margin-right: 30px;"> 
-    <p class="image" style="width:400px; height:auto;">
+    <p class="image" style="width:400px; height:100%;">
       <img src="/img/album/people/faculty/조영근_증명사진_.jpg" alt="Younggun Cho" style="object-fit:cover;">
     </p>
   </figure>
@@ -21,24 +21,24 @@ permalink: /people/Faculty/Younggun-Cho
         I received the Ph. D. degree in the Department of Civil and Environmental Engineering with Robotics program at KAIST Daejeon, South Korea, advised by Prof. Ayoung Kim. Also, I received M.S. degree in the Department of Electrical Engineering at KAIST, advised by Prof. Myungjin Chung. Before that, I received the B.E. degree in the Department of Electrical in Inha University, Incheon, South Korea.
         <br><br>
       </p>
-      <p style="margin-top:90px;">
+      <p style="margin-top:20px;">
         <span style="font-size:2rem; font-weight:bold;">Email</span><br>
         <a href="mailto:yg.cho@inha.ac.kr" style="color: #0073e6; text-decoration: none;">yg.cho@inha.ac.kr</a>
       </p>
-    </div>
-    <div style="margin-top:20px;">
-      <a href="https://www.linkedin.com/in/younggun-cho-392799116/" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:gray;">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:gray;">
-        <i class="fa-brands fa-google-scholar"></i>
-      </a>
-      <a href="https://github.com/youngguncho" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:gray;">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://sites.google.com/site/ygchocv/home" target="_blank" style="display:inline-block; font-size:24px; color:gray;">
-        <i class="fas fa-home"></i>
-      </a>
+      <div style="margin-top:10px;">
+        <a href="https://www.linkedin.com/in/younggun-cho-392799116/" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:gray;">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:gray;">
+          <i class="fa-brands fa-google-scholar"></i>
+        </a>
+        <a href="https://github.com/youngguncho" target="_blank" style="display:inline-block; font-size:24px; margin-right:15px; color:gray;">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://sites.google.com/site/ygchocv/home" target="_blank" style="display:inline-block; font-size:24px; color:gray;">
+          <i class="fas fa-home"></i>
+        </a>
+      </div>
     </div>
   </div>
 </article>
