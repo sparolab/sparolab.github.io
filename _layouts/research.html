@@ -11,7 +11,7 @@ layout: default
       </div>
       {% for image in gallery.images %}
         {% if image.page_link %}
-            <a href="{{ url | image.page_link }}" style="display:block; text-decoration:none; color:inherit;">
+            <a href="{{ image.page_link }}" style="display:block; text-decoration:none; color:inherit;">
         {% endif %}
         <div class="column is-3-desktop is-4-tablet is-full-mobile">
           <div class="card" style="margin:0 auto; text-align:center;">
