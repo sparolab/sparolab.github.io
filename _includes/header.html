@@ -4,9 +4,18 @@
 >
     <div class="container">
         <div class="navbar-brand">
-            <a href="{{ site.baseurl }}/" class="navbar-item">
+            <!-- 여기 부분 수정 -->
+            <a href="{{ site.baseurl }}/" class="navbar-item" style="display:flex; align-items:center;">
+                <!-- 파비콘 이미지 -->
+                <img 
+                  src="{{ site.baseurl }}/assets/favicon.png"
+                  alt="Logo"
+                  style="height:20px; margin-right:8px;"
+                >
+                <!-- 사이트 타이틀 -->
                 {{ site.title }}
             </a>
+            <!-- 나머지 navbar-burger 버튼 동일 -->
             <a
                 role="button"
                 class="navbar-burger burger"
@@ -23,6 +32,7 @@
         </div>
         <div class="navbar-menu" id="navMenu" :class="{ 'is-active': openNav }">
             <div class="navbar-start">
+                <!-- 이하 동일 -->
                 <a href="{{ site.baseurl }}/" class="navbar-item {% if page.url == "/" %}is-active{% endif %}">Home</a>
                 {% if site.data.navigation %}
                     {% for item in site.data.navigation %}
@@ -56,7 +66,6 @@
                     {% endfor %}
                 {% endif %}
             </div>
-
             <div class="navbar-end">
                 {% if site.gh_sponsor %}
                     <a class="navbar-item" href="https://github.com/sponsors/{{ site.gh_sponsor }}">
