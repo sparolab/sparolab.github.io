@@ -36,7 +36,7 @@ layout: default
               </div>
               <div class="card-content" style="padding:10px;">
                 <div class="content" style="text-align:left; font-size:1.0rem; color:black; font-weight:bold;">
-                  {{ image.paper }}
+                    <a href="{{ image.alt_link }}" target="_blank" style="color:#0073e6; text-decoration:none;">[{{ image.alt }}]</a> {{ image.paper }}
                 </div>
                 <div style="margin-top:10px; font-size:0.8rem; color:gray;">
                   {{ image.authors }}
