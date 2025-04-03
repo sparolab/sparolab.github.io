@@ -3,25 +3,32 @@ layout: default
 ---
 
 {% if page.gallery %}
-{% assign galleries = site.data[page.gallery] %}
-{% for gallery in galleries %}
+  {% assign galleries = site.data[page.gallery] %}
+  {% for gallery in galleries %}
     <div class="columns is-multiline">
-        <div class="column is-12">
+      <div class="column is-12">
         <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
+      </div>
+      {% for image in gallery.images %}
+        <div class="column is-3-desktop is-4-tablet is-full-mobile">
+          <div class="card" style="margin:0 auto; text-align:center;">
+            <div class="card-image" style="padding:10px;">
+              {% include image-modal.html
+                link=image.link
+                alt=image.alt
+                large_link=image.large_link
+                ratio="is-16by9"
+              %}
+            </div>
+            <div class="card-content" style="padding:0.5rem;">
+              <div class="content" style="text-align:left; font-size:1.1rem;">
+                {{ image.paper }}
+              </div>
+            </div>
+          </div>
         </div>
-        {% for image in gallery.images %}
-            <div class="column is-3-desktop is-4-tablet is-full-mobile">
-                <div class="card" style="margin:0 auto; text-align:center;">
-                    <div class="card-image" style="padding:10px;">
-                      {% include image-modal.html
-                        link=image.link
-                        alt=image.alt
-                        large_link=image.large_link
-                        ratio="is-16by9"
-                      %}
-                    
-                      <div class="card-content" style="padding:0.5rem;">
-                        <div class="content" style="text-align:left; font-size:1.1rem;">
-                            {{ image.paper }}
-                        </div>
-                      </div>
+      {% endfor %}
+    </div>
+    <hr>
+  {% endfor %}
+{% endif %}
