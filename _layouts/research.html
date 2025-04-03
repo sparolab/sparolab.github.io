@@ -11,7 +11,7 @@ layout: default
       </div>
       {% for image in gallery.images %}
         <div class="column is-3-desktop is-half-tablet is-full-mobile">
-          <div class="card" style="margin:0 auto; text-align:center; height:600px; padding:20px;">
+          <div class="card" style="margin:0 auto; text-align:center; height:550px; padding:5px;">
             {% if image.page_link %}
               <a href="{{ image.page_link | absolute_url }}" class="custom-link" style="display:block; text-decoration:none; color:inherit;">
             {% endif %}
@@ -30,17 +30,18 @@ layout: default
                   <div style="margin-top:10px; font-size:0.8rem; color:gray;">
                     {{ image.authors }}
                   </div>
-                  {% if image.date %}
-                    <p style="margin-bottom:10px; text-align:center; font-size:0.8rem; color:black;">
-                      {{ image.date }}
+                  
+                  {% if image.tags %}
+                    <p style="margin-bottom:1px; text-align:center; font-size:0.8rem; color:#666;">
+                      {{ image.tags }}
                     </p>
                   {% endif %}
                   <div style="margin-bottom:10px;">
                     <hr style="width:70%; margin:0 auto;">
                   </div>
-                  {% if image.tags %}
-                    <p style="margin-bottom:10px; text-align:center; font-size:0.8rem; color:#666;">
-                      {{ image.tags }}
+                  {% if image.date %}
+                    <p style="margin-bottom:10px; text-align:center; font-size:0.8rem; color:black;">
+                      {{ image.date }}
                     </p>
                   {% endif %}
                 </div>
