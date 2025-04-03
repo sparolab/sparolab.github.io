@@ -1,21 +1,31 @@
-- title: "Conference"
+# - title: "Conference"
+#   images:
+#     - link: /img/research/conference1.jpg
+#       alt: IEEE ICRA
+#       # description: |-
+#       date: "2023.05"
+#       authors: 
+
+#     - link: /img/research/conference2.jpg
+#       alt: Conference 2
+#       description: |-
+#       date: "2024.01.10"
+
+#     - link: /img/research/conference3.jpg
+#       alt: Conference 2
+#       description: |-
+#       date: "2024.01.10"
+
+#     - link: /img/research/conference4.jpg
+#       alt: Conference 2
+#       description: |-
+#       date: "2024.01.10"
+
+- title: "Journal"
   images:
-    - link: /img/research/conference1.jpg
-      alt: Conference 1
-      description: |-
-      date: "2023.05.01"
-
-    - link: /img/research/conference2.jpg
-      alt: Conference 2
-      description: |-
-      date: "2024.01.10"
-
-    - link: /img/research/conference3.jpg
-      alt: Conference 2
-      description: |-
-      date: "2024.01.10"
-
-    - link: /img/research/conference4.jpg
-      alt: Conference 2
-      description: |-
-      date: "2024.01.10"
+    - link: /img/research/solid.png
+      alt: IEEE Ra-L
+      date: Nov 26, 2024
+      paper: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
+      authors: Hogyun Kim, Jiwon Choi, Taehu Sim, Giseop Kim, Younggun Cho
+      tags: LiDAR PR, LiDAR SLAM
