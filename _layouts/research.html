@@ -45,11 +45,26 @@ layout: default
             </div>
             <!-- 하단 영역 (맨 아래 고정) -->
             <div style="margin-top:auto;">
-              {% if image.tags %}
-                <p style="margin:1px 0; text-align:center; font-size:0.8rem; color:#666;">
-                  {{ image.tags }}
-                </p>
+                {% if image.tags %}
+                <div style="text-align:center; margin:5px 0;">
+                  {% for tag in image.tags %}
+                    {% assign tag_color = site.data.research_tags[tag] | default: "#666" %}
+                    <span style="
+                      display:inline-block;
+                      background-color:{{ tag_color }};
+                      color:white;
+                      border-radius:5px;
+                      padding:2px 5px;
+                      margin:2px;
+                      font-size:0.8rem;
+                    ">
+                      {{ tag }}
+                    </span>
+                  {% endfor %}
+                </div>
               {% endif %}
+              
+              
               <hr style="width:70%; margin:0 auto;">
               {% if image.date %}
                 <p style="margin-top: 10px; margin-bottom:10px; text-align:center; font-size:1.0rem; color:black;">
