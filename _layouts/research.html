@@ -48,13 +48,23 @@ layout: default
                 {% if image.tags %}
                 <div style="text-align:center; margin:2px 0;">
                   {% for tag in image.tags %}
-                  {% assign inline_style = 'background-color:' | append: tag_color | append: '; font-size:0.6rem; color:black; font-weight:bold;' %}
-                  <span class="tag-badge" style="{{ inline_style }}">
-                    {{ tag }}
-                  </span>
+                    {% assign tag_color = site.data.research_tags[tag] | default: "#666" %}
+                    <span style="
+                      display:inline-block;
+                      background-color:{{ tag_color }};
+                      color:black;
+                      border-radius:5px;
+                      padding:2px 5px;
+                      margin:2px;
+                      font-size:0.6rem;
+                      font-weight:bold;
+                    ">
+                      {{ tag }}
+                    </span>
                   {% endfor %}
                 </div>
               {% endif %}
+              
               
               <hr style="width:70%; margin:0 auto;">
               {% if image.date %}
