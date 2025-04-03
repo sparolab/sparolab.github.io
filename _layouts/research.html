@@ -11,7 +11,7 @@ layout: default
       </div>
       {% for image in gallery.images %}
         <div class="column is-3-desktop is-half-tablet is-full-mobile">
-          <div class="card" style="margin:0 auto; text-align:center; height:500px;">
+          <div class="card" style="margin:0 auto; text-align:center; height:600px; padding:20px;">
             {% if image.page_link %}
               <a href="{{ image.page_link | absolute_url }}" class="custom-link" style="display:block; text-decoration:none; color:inherit;">
             {% endif %}
@@ -24,7 +24,7 @@ layout: default
                   %}
                 </div>
                 <div class="card-content" style="padding:0.1rem;">
-                  <div class="content" style="text-align:left; font-size:1.1rem; color:black; font-weight:bold;">
+                  <div class="content" style="text-align:left; font-size:1.0rem; color:black; font-weight:bold;">
                     {{ image.paper }}
                   </div>
                   <div style="margin-top:10px; font-size:0.8rem; color:gray;">
