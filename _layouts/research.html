@@ -20,14 +20,13 @@ layout: default
                  margin:0 auto;
                  text-align:center;
                  height:550px;
-                 padding:5px;
                  display:flex;
                  flex-direction:column;
                  justify-content:space-between;
                ">
             <!-- 상단 영역 -->
             <div>
-              <div class="card-image" style="padding:10px;">
+              <div class="card-image">
                 {% include image-modal.html
                   link=image.link
                   alt=image.alt
@@ -35,7 +34,7 @@ layout: default
                   ratio="is-16by9"
                 %}
               </div>
-              <div class="card-content" style="padding:0.1rem;">
+              <div class="card-content" style="padding:10px;">
                 <div class="content" style="text-align:left; font-size:1.0rem; color:black; font-weight:bold;">
                   {{ image.paper }}
                 </div>
@@ -53,7 +52,7 @@ layout: default
               {% endif %}
               <hr style="width:70%; margin:0 auto;">
               {% if image.date %}
-                <p style="margin-top: auto; margin-bottom:10px; text-align:center; font-size:1.0rem; color:black;">
+                <p style="margin-top: 10px; margin-bottom:10px; text-align:center; font-size:1.0rem; color:black;">
                     Published: {{ image.date }}
                 </p>
               {% endif %}
