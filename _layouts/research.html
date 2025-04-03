@@ -10,7 +10,7 @@ layout: default
         <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
       </div>
       {% for image in gallery.images %}
-        <div class="column is-5-desktop is-half-tablet is-full-mobile">
+        <div class="column is-3-desktop is-half-tablet is-full-mobile">
           <div class="card" style="margin:0 auto; text-align:center; height:500px;">
             {% if image.page_link %}
               <a href="{{ image.page_link | absolute_url }}" class="custom-link" style="display:block; text-decoration:none; color:inherit;">
@@ -23,7 +23,7 @@ layout: default
                     ratio="is-16by9"
                   %}
                 </div>
-                <div class="card-content" style="padding:0.5rem;">
+                <div class="card-content" style="padding:0.1rem;">
                   <div class="content" style="text-align:left; font-size:1.1rem; color:black; font-weight:bold;">
                     {{ image.paper }}
                   </div>
@@ -31,15 +31,15 @@ layout: default
                     {{ image.authors }}
                   </div>
                   {% if image.date %}
-                    <p style="margin-top:15px; text-align:center; font-size:0.8rem; color:#666;">
+                    <p style="margin-bottom:10px; text-align:center; font-size:0.8rem; color:black;">
                       {{ image.date }}
                     </p>
                   {% endif %}
-                  <div style="margin-top:15px;">
+                  <div style="margin-bottom:10px;">
                     <hr style="width:70%; margin:0 auto;">
                   </div>
                   {% if image.tags %}
-                    <p style="margin-top:10px; text-align:center; font-size:0.8rem; color:#666;">
+                    <p style="margin-bottom:10px; text-align:center; font-size:0.8rem; color:#666;">
                       {{ image.tags }}
                     </p>
                   {% endif %}
