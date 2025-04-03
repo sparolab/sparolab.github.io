@@ -46,12 +46,12 @@ layout: default
             </div>
             <!-- 하단 영역 (맨 아래 고정) -->
             <div style="margin-top:auto;">
-              <hr style="width:70%; margin:0 auto;">
               {% if image.tags %}
-                <p style="margin:10px 0; text-align:center; font-size:0.8rem; color:#666;">
+                <p style="margin:1px 0; text-align:center; font-size:0.8rem; color:#666;">
                   {{ image.tags }}
                 </p>
               {% endif %}
+              <hr style="width:70%; margin:0 auto;">
               {% if image.date %}
                 <p style="margin-top: auto; margin-bottom:10px; text-align:center; font-size:1.0rem; color:black;">
                     Published: {{ image.date }}
