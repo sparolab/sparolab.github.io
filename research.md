@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: research
 title: Research
 show_sidebar: false
 hide_footer: false
