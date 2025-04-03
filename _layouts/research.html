@@ -10,7 +10,7 @@ layout: default
         <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
       </div>
       {% for image in gallery.images %}
-        <div class="column is-3-desktop is-half-tablet is-full-mobile">
+        <div class="column is-3-desktop is-4-tablet is-full-mobile">
           {% if image.page_link %}
             <a href="{{ image.page_link | absolute_url }}" class="custom-link" style="display:block; text-decoration:none; color:inherit;">
           {% endif %}
