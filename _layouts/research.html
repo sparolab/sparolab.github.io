@@ -10,32 +10,32 @@ layout: default
         <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
       </div>
       {% for image in gallery.images %}
-        {% if image.page_link %}
-          <a href="{{ image.page_link }}" class="custom-link" style="display:block; text-decoration:none; color:inherit;">
-        {% endif %}
         <div class="column is-4-desktop is-half-tablet is-full-mobile">
-          <div class="card" style="margin:0 auto; text-align:center; height:500px;">
-            <div class="card-image" style="padding:10px;">
-              {% include image-modal.html
-                link=image.link
-                alt=image.alt
-                large_link=image.large_link
-                ratio="is-16by9"
-              %}
-            </div>
-            <div class="card-content" style="padding:0.5rem;">
-              <div class="content" style="text-align:left; font-size:1.0rem; color:black; font-weight:bold;">
-                {{ image.paper }}
-              </div>
-              <div style="margin-top:10px; font-size:0.8rem; color:gray;">
-                {{ image.authors }}
-              </div>
-            </div>
+          <div class="card" style="max-width:250px; margin:0 auto; text-align:center; height:500px;">
+            {% if image.page_link %}
+              <a href="{{ image.page_link | absolute_url }}" class="custom-link" style="display:block; text-decoration:none; color:inherit;">
+            {% endif %}
+                <div class="card-image" style="padding:10px;">
+                  {% include image-modal.html
+                    link=image.link
+                    alt=image.alt
+                    large_link=image.large_link
+                    ratio="is-16by9"
+                  %}
+                </div>
+                <div class="card-content" style="padding:0.5rem;">
+                  <div class="content" style="text-align:left; font-size:1.1rem; color:black; font-weight:bold;">
+                    {{ image.paper }}
+                  </div>
+                  <div style="margin-top:10px; font-size:0.8rem; color:gray;">
+                    {{ image.authors }}
+                  </div>
+                </div>
+            {% if image.page_link %}
+              </a>
+            {% endif %}
           </div>
         </div>
-        {% if image.page_link %}
-          </a>
-        {% endif %}
       {% endfor %}
     </div>
     <hr>
