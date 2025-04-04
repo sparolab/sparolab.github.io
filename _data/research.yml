@@ -26,7 +26,7 @@
     - link: /img/research/solid.png
       alt: IEEE RA-L
       alt_link: https://www.ieee-ras.org/publications/ra-l
-      date: Nov 26, 2024
+      date: Aug 07, 2024
       paper: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
       authors: Hogyun Kim, Jiwon Choi, Taehu Sim, Giseop Kim, Younggun Cho
       tags:
