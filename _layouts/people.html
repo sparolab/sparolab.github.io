@@ -41,16 +41,16 @@ layout: default
                     {{ image.description | markdownify }}
                     {% if image.keywords %}
                       <p style="margin-top:5px; font-size:10px;">
-                        <strong>Keywords:</strong> {{ image.keywords }}
+                        <strong>Keywords:</strong><br> {{ image.keywords }}
                       </p>
                     {% endif %}
                     {% if image.at %}
-                      <p style="margin-top:5px;">
+                      <p style="margin-top:7px;">
                         <a href="{{ image.at_link }}">@{{ image.at }}</a>
                       </p>
                     {% endif %}
                   </div>
-                  <div style="text-align:center; margin-top:auto;">
+                  <div style="text-align:center; margin-top:2px;">
                     {% if image.email %}
                       <hr style="width:80%; margin:2px auto;">
                       <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
