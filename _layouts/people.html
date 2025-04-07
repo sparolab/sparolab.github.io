@@ -5,7 +5,6 @@ layout: default
 {% if page.gallery %}
   {% assign galleries = site.data[page.gallery] %}
   {% for gallery in galleries %}
-    <!-- 그룹 섹션 -->
     <div class="columns is-multiline">
       <div class="column is-12">
         <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
@@ -23,14 +22,11 @@ layout: default
         {% endif %}
 
           {% if gallery.title == "Faculty" %}
-            <!-- Faculty인 경우: 높이 고정 없음 -->
             <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column;">
           {% else %}
-            <!-- Faculty가 아닌 경우: 높이 430px 고정 -->
             <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:430px;">
           {% endif %}
 
-              <!-- 이미지 영역 -->
               <div class="card-image" style="padding:10px;">
                 {% include image-modal.html
                   link=image.link
@@ -40,17 +36,13 @@ layout: default
                 %}
               </div>
 
-              <!-- 내용 영역: Flex 컨테이너로 만들어 상하단 분리 -->
               {% if gallery.title == "Faculty" or gallery.title == "Staff" %}
                 <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
-                  <!-- 상단 내용 -->
                   <div style="text-align:left; font-size:1.1rem;">
               {% else %}
                 <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
-                  <!-- 상단 내용 -->
                   <div style="text-align:left; font-size:0.9rem;">
               {% endif %}
-                    <!-- 주된 텍스트 / 키워드 등 -->
                     {{ image.description | markdownify }}
 
                     {% if image.keywords %}
@@ -64,15 +56,11 @@ layout: default
                         <a href="{{ image.at_link }}">@{{ image.at }}</a>
                       </p>
                     {% endif %}
-                  </div> <!-- 상단 내용 닫힘 -->
+                  </div> 
 
-                  <!-- 하단 아이콘 영역 -->
                   <div style="text-align:center; margin-top:10px; margin-bottom:10px;">
-                    <!-- 구분선 -->
-                    <hr style="width:80%; margin:0 auto;">
-                    
-                    <!-- 아이콘들 -->
                     {% if image.email %}
+                      <hr style="width:80%; margin:0 auto;">
                       <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                         <i class="fas fa-envelope"></i>
                       </a>
