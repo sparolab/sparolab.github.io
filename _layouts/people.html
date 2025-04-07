@@ -36,12 +36,12 @@ layout: default
                 %}
               </div>
 
-              {% if gallery.title == "Faculty" or gallery.title == "Staff" or gallery.title == "Part-Time" %}
-                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column;">
-                  <div style="text-align:left; font-size:1.1rem; flex:1;">
+              {% if gallery.title == "Faculty" or gallery.title == "Staff" or gallery.title == "Part-Time"%}
+                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
+                  <div style="text-align:left; font-size:1.1rem;">
               {% else %}
-                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column;">
-                  <div style="text-align:left; font-size:0.9rem; flex:1;">
+                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
+                  <div style="text-align:left; font-size:0.9rem;">
               {% endif %}
                     {{ image.description | markdownify }}
 
@@ -56,9 +56,9 @@ layout: default
                         <a href="{{ image.at_link }}">@{{ image.at }}</a>
                       </p>
                     {% endif %}
-                  </div>
+                  </div> 
 
-                  <div style="text-align:center; margin-top:auto; margin-bottom:10px;">
+                  <div style="text-align:center; margin-top:10px; margin-bottom:10px;">
                     {% if image.email %}
                       <hr style="width:80%; margin:0 auto;">
                       <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
@@ -87,7 +87,7 @@ layout: default
                     {% endif %}
                   </div>
                 </div>
-            </div>
+            </div> <!-- card 닫힘 -->
 
           {% if image.page_link %}
             </a>
