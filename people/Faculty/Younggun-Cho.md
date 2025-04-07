@@ -6,14 +6,12 @@ permalink: /people/Faculty/Younggun-Cho
 ---
 
 <style>
-  /* 전체 미디어 영역을 플렉스 컨테이너로 설정합니다. */
   .media {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
   }
 
-  /* 이미지 영역의 기본 스타일 */
   .media-left {
     margin-right: 30px;
   }
@@ -24,13 +22,11 @@ permalink: /people/Faculty/Younggun-Cho
     object-fit: cover;
   }
 
-  /* 텍스트 영역의 기본 스타일 */
   .media-content {
     flex: 1;
     margin-left: 30px;
   }
 
-  /* 모바일 반응형 스타일 (화면 너비가 768px 이하인 경우) */
   @media (max-width: 768px) {
     .media {
       flex-direction: column;
@@ -41,6 +37,7 @@ permalink: /people/Faculty/Younggun-Cho
       text-align: center;
     }
     .media-content {
+      margin-top:10px;
       margin-left: 0;
     }
   }
@@ -63,7 +60,7 @@ permalink: /people/Faculty/Younggun-Cho
         <br><br>
       </p>
       <p>
-        <span style="font-size:2rem; font-weight:bold;">Email</span><br>
+        <span style="font-size:2rem; font-weight:bold; display:inline-block; margin-top:20px;">Email</span><br>
         <a href="mailto:yg.cho@inha.ac.kr" style="color: #0073e6; text-decoration: none;">yg.cho@inha.ac.kr</a>
       </p>
     </div>
