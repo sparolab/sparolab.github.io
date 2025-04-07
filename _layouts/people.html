@@ -15,84 +15,96 @@ layout: default
         {% if image.page_link %}
           <a href="{{ image.page_link }}" style="display:block; text-decoration:none; color:inherit;">
         {% endif %}
+
         {% if gallery.title == "Faculty" %}
           <div class="column is-3-desktop is-4-tablet is-full-mobile">
         {% else %}
           <div class="column is-one-fifth-desktop is-third-tablet is-full-mobile">
         {% endif %}
-            {% if gallery.title == "Faculty" %}
-              <div class="card" style="margin:0 auto; text-align:center;">
-            {% else %}
-              <div class="card" style="margin:0 auto; text-align:center; height:430px;">
-            {% endif %}
-                <div class="card-image" style="padding:10px;">
-                  {% include image-modal.html
-                    link=image.link
-                    alt=image.alt
-                    large_link=image.large_link
-                    ratio="is-16by9"
-                  %}
-                </div>
-                <div class="card-content" style="padding:0.5rem;">
-                  {% if gallery.title == "Faculty" or gallery.title == "Staff" %}
-                    <div class="content" style="text-align:left; font-size:1.1rem;">
-                  {% else %}
-                    <div class="content" style="text-align:left; font-size:0.9rem;">
-                  {% endif %}
-                    
+
+          {% if gallery.title == "Faculty" %}
+            <!-- Faculty인 경우: 높이 고정 없음 -->
+            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column;">
+          {% else %}
+            <!-- Faculty가 아닌 경우: 높이 430px 고정 -->
+            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:430px;">
+          {% endif %}
+
+              <!-- 이미지 영역 -->
+              <div class="card-image" style="padding:10px;">
+                {% include image-modal.html
+                  link=image.link
+                  alt=image.alt
+                  large_link=image.large_link
+                  ratio="is-16by9"
+                %}
+              </div>
+
+              <!-- 내용 영역: Flex 컨테이너로 만들어 상하단 분리 -->
+              {% if gallery.title == "Faculty" or gallery.title == "Staff" %}
+                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
+                  <!-- 상단 내용 -->
+                  <div style="text-align:left; font-size:1.1rem;">
+              {% else %}
+                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
+                  <!-- 상단 내용 -->
+                  <div style="text-align:left; font-size:0.9rem;">
+              {% endif %}
+                    <!-- 주된 텍스트 / 키워드 등 -->
                     {{ image.description | markdownify }}
-                    
-                    
+
                     {% if image.keywords %}
                       <p style="margin-top:5px; font-size:13px;">
                         <strong>Keywords:</strong> {{ image.keywords }}
                       </p>
-                    {% endif %}                 
-                    {% if image.at %}
-                          
-                    <p style="margin-top:5px;">
-                      <a href="{{ image.at_link }}">@{{ image.at }}</a>
-                    </p>
                     {% endif %}
+                    
+                    {% if image.at %}
+                      <p style="margin-top:5px;">
+                        <a href="{{ image.at_link }}">@{{ image.at }}</a>
+                      </p>
+                    {% endif %}
+                  </div> <!-- 상단 내용 닫힘 -->
 
-                    <div style="margin-top:auto;">
-                      <hr style="width:80%; margin:0 auto;">
-                      <div style="text-align:center; margin-top: 10px; margin-bottom:10px;">
-                        
-                        {% if image.email %}
-                          <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                            <i class="fas fa-envelope"></i>
-                          </a>
-                        {% endif %}
-                        {% if image.linkedin %}
-                          <a href="{{ image.linkedin }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                            <i class="fab fa-linkedin"></i>
-                          </a>
-                        {% endif %}
-                        {% if image.scholar %}
-                          <a href="{{ image.scholar }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                            <i class="fa-brands fa-google-scholar"></i>
-                          </a>
-                        {% endif %}
-                        {% if image.github %}
-                          <a href="{{ image.github }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                            <i class="fab fa-github"></i>
-                          </a>
-                        {% endif %}
-                        {% if image.homepage %}
-                          <a href="{{ image.homepage }}" target="_blank" style="display:inline-block; font-size:20px; color:gray;">
-                            <i class="fas fa-home"></i>
-                          </a>
-                        {% endif %}
-                      </div>
-                    </div>
+                  <!-- 하단 아이콘 영역 -->
+                  <div style="text-align:center; margin-top:10px; margin-bottom:10px;">
+                    <!-- 구분선 -->
+                    <hr style="width:80%; margin:0 auto;">
+                    
+                    <!-- 아이콘들 -->
+                    {% if image.email %}
+                      <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                        <i class="fas fa-envelope"></i>
+                      </a>
+                    {% endif %}
+                    {% if image.linkedin %}
+                      <a href="{{ image.linkedin }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                        <i class="fab fa-linkedin"></i>
+                      </a>
+                    {% endif %}
+                    {% if image.scholar %}
+                      <a href="{{ image.scholar }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                        <i class="fa-brands fa-google-scholar"></i>
+                      </a>
+                    {% endif %}
+                    {% if image.github %}
+                      <a href="{{ image.github }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                        <i class="fab fa-github"></i>
+                      </a>
+                    {% endif %}
+                    {% if image.homepage %}
+                      <a href="{{ image.homepage }}" target="_blank" style="display:inline-block; font-size:20px; color:gray;">
+                        <i class="fas fa-home"></i>
+                      </a>
+                    {% endif %}
                   </div>
                 </div>
-              </div>
-            {% if image.page_link %}
-              </a>
-            {% endif %}
-          </div>
+            </div> <!-- card 닫힘 -->
+
+          {% if image.page_link %}
+            </a>
+          {% endif %}
+        </div>
       {% endfor %}
     </div>
     <hr>
