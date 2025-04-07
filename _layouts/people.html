@@ -38,12 +38,11 @@ layout: default
               
                 {{ image.description | markdownify }}
 
-                <!-- {% if image.email %}
-                  <p style="margin-top:5px;">
-                    <strong>Email:</strong><br>
-                    <a href="mailto:{{ image.email }}">{{ image.email }}</a>
+                {% if image.keywords %}
+                  <p style="margin-top:5px; font-size:10px;">
+                    <strong>Keywords:</strong> {{ image.keywords }}
                   </p>
-                {% endif %} -->
+                {% endif %}
                 {% if image.at %}
                   <p style="margin-top:5px;">
                     <a href="{{ image.at_link }}">@{{ image.at }}</a>
