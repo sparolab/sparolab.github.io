@@ -21,7 +21,7 @@ layout: default
           {% if gallery.title == "Faculty" or gallery.title == "Staff" or gallery.title == "Part-Time" %}
             <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column;">
           {% else %}
-            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:430px;">
+            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:410px;">
           {% endif %}
               <div class="card-image" style="padding:10px;">
                 {% include image-modal.html
@@ -33,14 +33,14 @@ layout: default
               </div>
               {% if gallery.title == "Faculty" %}
                 <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column;">
-                  <div style="text-align:left; font-size:1.1rem; flex:1;">
+                  <div style="text-align:left; font-size:1.1rem;">
               {% else %}
                 <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column;">
-                  <div style="text-align:left; font-size:0.9rem; flex:1;">
+                  <div style="text-align:left; font-size:0.9rem;">
               {% endif %}
                     {{ image.description | markdownify }}
                     {% if image.keywords %}
-                      <p style="margin-top:5px; font-size:13px;">
+                      <p style="margin-top:5px; font-size:10px;">
                         <strong>Keywords:</strong> {{ image.keywords }}
                       </p>
                     {% endif %}
