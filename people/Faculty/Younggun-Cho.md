@@ -60,7 +60,7 @@ permalink: /people/Faculty/Younggun-Cho
         <br><br>
       </p>
       <p>
-        <span style="font-size:2rem; font-weight:bold; display:inline-block; margin-top:80px;">Email</span><br>
+        <span style="font-size:2rem; font-weight:bold; display:inline-block; margin-top:90px;">Email</span><br>
         <a href="mailto:yg.cho@inha.ac.kr" style="color: #0073e6; text-decoration: none;">yg.cho@inha.ac.kr</a>
       </p>
     </div>
