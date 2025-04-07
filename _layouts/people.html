@@ -23,7 +23,7 @@ layout: default
             {% if gallery.title == "Faculty" %}
               <div class="card" style="margin:0 auto; text-align:center;">
             {% else %}
-              <div class="card" style="margin:0 auto; text-align:center; height:300px;">
+              <div class="card" style="margin:0 auto; text-align:center; height:550px;">
             {% endif %}
                 <div class="card-image" style="padding:10px;">
                   {% include image-modal.html
@@ -43,7 +43,7 @@ layout: default
                     {{ image.description | markdownify }}
 
                     {% if image.keywords %}
-                      <p style="margin-top:5px; font-size:20px;">
+                      <p style="margin-top:5px; font-size:12px;">
                         Keywords: {{ image.keywords }}
                       </p>
                     {% endif %}
