@@ -23,7 +23,7 @@ layout: default
             {% if gallery.title == "Faculty" %}
               <div class="card" style="margin:0 auto; text-align:center;">
             {% else %}
-              <div class="card" style="margin:0 auto; text-align:center; height:450px;">
+              <div class="card" style="margin:0 auto; text-align:center; height:425px;">
             {% endif %}
                 <div class="card-image" style="padding:10px;">
                   {% include image-modal.html
@@ -34,7 +34,7 @@ layout: default
                   %}
                 </div>
                 <div class="card-content" style="padding:0.5rem;">
-                  {% if gallery.title == "Faculty" %}
+                  {% if gallery.title == "Faculty" or gallery.title == "Staff" %}
                     <div class="content" style="text-align:left; font-size:1.1rem;">
                   {% else %}
                     <div class="content" style="text-align:left; font-size:0.9rem;">
@@ -44,15 +44,13 @@ layout: default
 
                     {% if image.keywords %}
                       <p style="margin-top:5px; font-size:13px;">
-                        Keywords: {{ image.keywords }}
+                        <strong>Keywords:</strong> {{ image.keywords }}
                       </p>
                     {% endif %}
 
-                    <!-- 구분선 -->
-                    <hr style="width:70%; margin:0 auto;">
+                    <hr style="width:80%; margin:0 auto;">
 
-                    <!-- 중앙 정렬된 아이콘 및 at 정보 (카드 하단에 margin-bottom 적용) -->
-                    <div style="text-align:center; margin-bottom:10px;">
+                    <div style="text-align:center; margin-top: 10px; margin-bottom:10px;">
                       {% if image.at %}
                         <p style="margin-top:5px;">
                           <a href="{{ image.at_link }}">@{{ image.at }}</a>
