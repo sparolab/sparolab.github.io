@@ -21,7 +21,7 @@ layout: default
           {% if gallery.title == "Faculty" or gallery.title == "Staff" or gallery.title == "Part-Time" %}
             <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column;">
           {% else %}
-            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:430px;">
+            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:415px;">
           {% endif %}
               <div class="card-image" style="padding:10px;">
                 {% include image-modal.html
@@ -51,8 +51,8 @@ layout: default
                     {% endif %}
                   </div>
                   <div style="text-align:center; margin-top:auto;">
-                    <hr style="width:80%; margin:5px auto;">
                     {% if image.email %}
+                      <hr style="width:80%; margin:5px auto;">
                       <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                         <i class="fas fa-envelope"></i>
                       </a>
