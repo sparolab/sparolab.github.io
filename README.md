@@ -1,1 +1,1 @@
-# sparolab.github.io
+## Spatial AI and Robotics (SPARO) Lab
