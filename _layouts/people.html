@@ -9,24 +9,20 @@ layout: default
       <div class="column is-12">
         <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
       </div>
-
       {% for image in gallery.images %}
         {% if image.page_link %}
           <a href="{{ image.page_link }}" style="display:block; text-decoration:none; color:inherit;">
         {% endif %}
-
         {% if gallery.title == "Faculty" %}
           <div class="column is-3-desktop is-4-tablet is-full-mobile">
         {% else %}
           <div class="column is-one-fifth-desktop is-third-tablet is-full-mobile">
         {% endif %}
-
           {% if gallery.title == "Faculty" or gallery.title == "Staff" or gallery.title == "Part-Time" %}
             <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column;">
           {% else %}
             <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:430px;">
           {% endif %}
-
               <div class="card-image" style="padding:10px;">
                 {% include image-modal.html
                   link=image.link
@@ -35,32 +31,28 @@ layout: default
                   ratio="is-16by9"
                 %}
               </div>
-
               {% if gallery.title == "Faculty" %}
-                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
-                  <div style="text-align:left; font-size:1.1rem;">
+                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column;">
+                  <div style="text-align:left; font-size:1.1rem; flex:1;">
               {% else %}
-                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
-                  <div style="text-align:left; font-size:0.9rem;">
+                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column;">
+                  <div style="text-align:left; font-size:0.9rem; flex:1;">
               {% endif %}
                     {{ image.description | markdownify }}
-
                     {% if image.keywords %}
                       <p style="margin-top:5px; font-size:13px;">
                         <strong>Keywords:</strong> {{ image.keywords }}
                       </p>
                     {% endif %}
-                    
                     {% if image.at %}
                       <p style="margin-top:5px;">
                         <a href="{{ image.at_link }}">@{{ image.at }}</a>
                       </p>
                     {% endif %}
-                  </div> 
-
+                  </div>
                   <div style="text-align:center; margin-top:auto;">
                     {% if image.email %}
-                      <hr style="width:80%; margin:0 auto;">
+                      <hr style="width:80%; margin:2px auto;">
                       <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                         <i class="fas fa-envelope"></i>
                       </a>
@@ -87,8 +79,7 @@ layout: default
                     {% endif %}
                   </div>
                 </div>
-            </div> <!-- card 닫힘 -->
-
+            </div>
           {% if image.page_link %}
             </a>
           {% endif %}
