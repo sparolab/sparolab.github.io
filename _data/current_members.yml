@@ -76,7 +76,7 @@
       homepage: https://U-AMC.github.io/
       scholar: https://scholar.google.ch/citations?user=2bvLmqQAAAAJ&hl=en
       linkedin: https://www.linkedin.com/in/json380/
-      keywords: SLAM, Field Robotics
+      keywords: SLAM, Field Robotics, Quadruped, Multi Robot
 
 - title: Master Student
   images:
@@ -89,7 +89,7 @@
       github: https://github.com/Eric5709
       scholar: https://scholar.google.co.kr/citations?user=ZAO6skQAAAAJ&hl=ko
       linkedin: https://www.linkedin.com/in/seokhwan-jeong-19111331b/
-      keywords: Visual SLAM, Calibration 
+      keywords: Sensor Calibration, Sensor Fusion
 
     - link: /img/album/people/master/최병희_증명사진.jpg
       alt: Byunghee Choi
