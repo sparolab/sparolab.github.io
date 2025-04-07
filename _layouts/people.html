@@ -51,11 +51,11 @@ layout: default
                     {% endif %}
                   </div>
 
-                  {% if gallery.title != "Faculty" or gallery.title != "Staff"%}
-                    <hr style="width:80%; margin-top:5px;">
-                  {% endif %}
-
                   <div style="text-align:center; margin-top:auto;">
+                    {% if gallery.title != "Faculty" or gallery.title != "Staff"%}
+                      <hr style="width:80%; margin-top:5px;">
+                    {% endif %}
+                    
                     {% if image.email %}
                       <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                         <i class="fas fa-envelope"></i>
