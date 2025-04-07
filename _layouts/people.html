@@ -21,7 +21,7 @@ layout: default
           {% if gallery.title == "Faculty" or gallery.title == "Staff" or gallery.title == "Part-Time" %}
             <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column;">
           {% else %}
-            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:410px;">
+            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:430px;">
           {% endif %}
               <div class="card-image" style="padding:10px;">
                 {% include image-modal.html
@@ -33,10 +33,10 @@ layout: default
               </div>
               {% if gallery.title == "Faculty" %}
                 <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column;">
-                  <div style="text-align:left; font-size:1.1rem;">
+                  <div style="text-align:left; font-size:1.1rem; flex:1;">
               {% else %}
                 <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column;">
-                  <div style="text-align:left; font-size:0.9rem;">
+                  <div style="text-align:left; font-size:0.9rem; flex:1;">
               {% endif %}
                     {{ image.description | markdownify }}
                     {% if image.keywords %}
@@ -50,12 +50,8 @@ layout: default
                       </p>
                     {% endif %}
                   </div>
-
                   <div style="text-align:center; margin-top:auto;">
-                    {% if gallery.title != "Faculty" or gallery.title != "Staff"%}
-                      <hr style="width:80%; margin-top:5px;">
-                    {% endif %}
-                    
+                    <hr style="width:80%; margin:5px auto;">
                     {% if image.email %}
                       <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                         <i class="fas fa-envelope"></i>
