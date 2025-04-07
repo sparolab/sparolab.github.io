@@ -15,27 +15,19 @@ layout: default
           <a href="{{ image.page_link }}" style="display:block; text-decoration:none; color:inherit;">
         {% endif %}
 
-        {# 1) Faculty / Staff / Part-Time이면 큰 카드, 아니면 작은 카드 #}
-        {% if gallery.title == "Faculty" or gallery.title == "Staff" or gallery.title == "Part-Time" %}
+        {% if gallery.title == "Faculty" %}
           <div class="column is-3-desktop is-4-tablet is-full-mobile">
         {% else %}
           <div class="column is-one-fifth-desktop is-third-tablet is-full-mobile">
         {% endif %}
 
-          {# 2) Faculty / Staff / Part-Time이면 높이 고정 없음, 아니면 430px 고정 #}
-          {% if gallery.title == "Faculty" or gallery.title == "Staff" or gallery.title == "Part-Time" %}
-            <div class="card"
-                 style="margin:0 auto; text-align:center;
-                        display:flex; flex-direction:column;">
+          {% if gallery.title == "Faculty" %}
+            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column;">
           {% else %}
-            <div class="card"
-                 style="margin:0 auto; text-align:center;
-                        display:flex; flex-direction:column;
-                        height:430px;">
+            <div class="card" style="margin:0 auto; text-align:center; display:flex; flex-direction:column; height:430px;">
           {% endif %}
 
-              {# 3) 이미지 영역 (고정 높이가 아니므로 flex:0 0 auto; #}
-              <div class="card-image" style="padding:10px; flex:0 0 auto;">
+              <div class="card-image" style="padding:10px;">
                 {% include image-modal.html
                   link=image.link
                   alt=image.alt
@@ -44,24 +36,11 @@ layout: default
                 %}
               </div>
 
-              {# 4) 내용 영역: 남은 공간을 채우는 Flex 컨테이너 #}
               {% if gallery.title == "Faculty" or gallery.title == "Staff" or gallery.title == "Part-Time" %}
-                <div class="card-content"
-                     style="padding:0.5rem;
-                            flex:1 1 auto;
-                            display:flex;
-                            flex-direction:column;
-                            justify-content:space-between;">
-                  <!-- 상단 텍스트 -->
+                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
                   <div style="text-align:left; font-size:1.1rem;">
               {% else %}
-                <div class="card-content"
-                     style="padding:0.5rem;
-                            flex:1 1 auto;
-                            display:flex;
-                            flex-direction:column;
-                            justify-content:space-between;">
-                  <!-- 상단 텍스트 -->
+                <div class="card-content" style="padding:0.5rem; display:flex; flex-direction:column; justify-content:space-between;">
                   <div style="text-align:left; font-size:0.9rem;">
               {% endif %}
                     {{ image.description | markdownify }}
@@ -77,53 +56,45 @@ layout: default
                         <a href="{{ image.at_link }}">@{{ image.at }}</a>
                       </p>
                     {% endif %}
-                  </div>  <!-- 상단 텍스트 닫힘 -->
+                  </div> 
 
-                  <!-- 하단 아이콘 영역 -->
-                  <div style="text-align:center; margin-top:10px; margin-bottom:10px; flex:0 0 auto;">
-                    <hr style="width:80%; margin:0 auto;">
-
+                  <div style="text-align:center; margin-top: auto; margin-bottom:10px;">
                     {% if image.email %}
-                      <a href="mailto:{{ image.email }}" target="_blank"
-                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                      <hr style="width:80%; margin:0 auto;">
+                      <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                         <i class="fas fa-envelope"></i>
                       </a>
                     {% endif %}
                     {% if image.linkedin %}
-                      <a href="{{ image.linkedin }}" target="_blank"
-                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                      <a href="{{ image.linkedin }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                         <i class="fab fa-linkedin"></i>
                       </a>
                     {% endif %}
                     {% if image.scholar %}
-                      <a href="{{ image.scholar }}" target="_blank"
-                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                      <a href="{{ image.scholar }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                         <i class="fa-brands fa-google-scholar"></i>
                       </a>
                     {% endif %}
                     {% if image.github %}
-                      <a href="{{ image.github }}" target="_blank"
-                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                      <a href="{{ image.github }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                         <i class="fab fa-github"></i>
                       </a>
                     {% endif %}
                     {% if image.homepage %}
-                      <a href="{{ image.homepage }}" target="_blank"
-                         style="display:inline-block; font-size:20px; color:gray;">
+                      <a href="{{ image.homepage }}" target="_blank" style="display:inline-block; font-size:20px; color:gray;">
                         <i class="fas fa-home"></i>
                       </a>
                     {% endif %}
-                  </div>  <!-- 하단 아이콘 닫힘 -->
-                </div>  <!-- card-content 닫힘 -->
-
-            </div>  <!-- card 닫힘 -->
+                  </div>
+                </div>
+            </div>
 
           {% if image.page_link %}
             </a>
           {% endif %}
-        </div>  <!-- column 닫힘 -->
+        </div>
       {% endfor %}
-    </div>  <!-- columns 닫힘 -->
+    </div>
     <hr>
   {% endfor %}
 {% endif %}
