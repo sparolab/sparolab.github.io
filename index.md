@@ -7,9 +7,11 @@ show_sidebar: false
 hide_footer: false
 hero_height: is-large
 
-# hero_link: /people/current-members
-# hero_link_text: Current Members
+hero_link: https://github.com/sparolab
+hero_link_text: Github
 
+hero_link2: https://www.youtube.com/@sparolab/playlists
+hero_link_text2: Youtube
 ---
 
 # Join Us!
