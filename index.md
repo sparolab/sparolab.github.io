@@ -10,7 +10,7 @@ hero_height: is-large
 hero_link: https://github.com/sparolab
 hero_link_text: Github
 
-hero_link2: https://www.youtube.com/@sparolab/playlists
+hero_link2: https://www.youtube.com/@sparolab/featured
 hero_link_text2: Youtube
 ---
 
