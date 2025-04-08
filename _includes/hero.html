@@ -10,8 +10,15 @@
             <p class="subtitle is-3">{{ page.subtitle }}</p>
             {% if page.hero_link %}
                 <div class="my-4">
-                    <a href="{{ page.hero_link | relative_url }}" class="button is-info is-large">
+                    <a href="{{ page.hero_link | relative_url }}" class="button is-info is-large" target="_blank">
                         {{- page.hero_link_text -}}
+                    </a>
+                </div>
+            {% endif %}
+            {% if page.hero_link2 %}
+                <div class="my-4">
+                    <a href="{{ page.hero_link2 | relative_url }}" class="button is-info is-large" target="_blank">
+                        {{- page.hero_link_text2 -}}
                     </a>
                 </div>
             {% endif %}

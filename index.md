@@ -6,6 +6,7 @@ layout: page
 show_sidebar: false
 hide_footer: false
 hero_height: is-large
+# hero_image:
 
 hero_link: https://github.com/sparolab
 hero_link_text: Github
