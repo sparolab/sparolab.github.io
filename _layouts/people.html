@@ -44,19 +44,20 @@ layout: default
                     
                     <div style="margin-top:auto;">
                     {% if image.keywords %}
-                      <p style="margin-top:5px; font-size:12px;">
+                      <p style="margin-top:5px; font-size:10px;">
                         <strong>Keywords:</strong> {{ image.keywords }}
                       </p>
                     {% endif %}                    
 
                     <div style="text-align:center; margin-top: 10px; margin-bottom:10px;">
                       {% if image.at %}
-                        <hr style="width:80%; margin:0 auto;">
+                      <hr style="width:80%; margin:0 auto;">
                         <p style="margin-top:5px;">
                           <a href="{{ image.at_link }}">@{{ image.at }}</a>
                         </p>
                       {% endif %}
                       {% if image.email %}
+                        <hr style="width:80%; margin:0 auto;">
                         <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
                           <i class="fas fa-envelope"></i>
                         </a>
