@@ -16,9 +16,9 @@ layout: default
           <a href="{{ image.page_link }}" style="display:block; text-decoration:none; color:inherit;">
         {% endif %}
         {% if gallery.title == "Faculty" %}
-          <div class="column is-3-desktop is-4-tablet is-full-mobile">
+          <div class="column is-3-desktop is-half-tablet is-full-mobile">
         {% else %}
-          <div class="column is-one-fifth-desktop is-third-tablet is-full-mobile">
+          <div class="column is-one-fifth-desktop is-4-tablet is-full-mobile">
         {% endif %}
             {% if gallery.title == "Faculty" %}
               <div class="card" style="margin:0 auto; text-align:center;">
@@ -45,7 +45,7 @@ layout: default
                     <div style="margin-top:auto;">
                     {% if image.keywords %}
                       <p style="margin-top:5px; font-size:10px;">
-                        <strong>Keywords:</strong> {{ image.keywords }}
+                        <strong>Keywords:</strong><br> {{ image.keywords }}
                       </p>
                     {% endif %}                    
 
