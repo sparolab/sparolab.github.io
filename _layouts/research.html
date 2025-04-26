@@ -19,7 +19,7 @@ layout: default
                style="
                  margin:0 auto;
                  text-align:center;
-                 height:500px;
+                 height:550px;
                  display:flex;
                  flex-direction:column;
                  justify-content:space-between;
@@ -36,7 +36,7 @@ layout: default
               </div>
               <!-- 카드 본문: 논문 제목 및 정보 -->
               <div class="card-content" style="padding:10px;">
-                <div class="content" style="text-align:left; font: size 1rem; color:black; font-weight:bold;">
+                <div class="content" style="text-align:left; font-size:1.0rem; color:black; font-weight:bold;">
                   <!-- 내부 대체 링크는 그대로 <a> 사용 -->
                   <a href="{{ image.alt_link }}" target="_blank"
                      style="color:#0073e6; text-decoration:none;">
@@ -44,7 +44,7 @@ layout: default
                   </a>
                   {{ image.paper }}
                 </div>
-                <div style="margin-top:10px; font-size:0.6rem; color:gray;">
+                <div style="margin-top:10px; font-size:0.8rem; color:gray;">
                   {{ image.authors }}
                 </div>
               </div>
@@ -75,7 +75,7 @@ layout: default
               <hr style="width:70%; margin:0 auto;">
               
               {% if image.date %}
-                <p style="margin-top:10px; margin-bottom:10px; text-align:center; font-size:0.8rem; color:black;">
+                <p style="margin-top:10px; margin-bottom:10px; text-align:center; font-size:1.0rem; color:black;">
                   Published: {{ image.date }}
                 </p>
               {% endif %}
