@@ -2,6 +2,18 @@
 layout: default
 ---
 
+<!-- 호버 시 어두워짐 효과를 위한 CSS -->
+<style>
+  /* 링크(<a>)로 감싸진 카드에만 트랜지션 적용 */
+  a.clickable-card .card {
+    transition: filter 0.2s ease;
+  }
+  /* 링크가 있는 카드에만 호버 시 밝기 감소 */
+  a.clickable-card:hover .card {
+    filter: brightness(0.85);
+  }
+</style>
+
 {% if page.gallery %}
   {% assign galleries = site.data[page.gallery] %}
   {% for gallery in galleries %}
@@ -12,85 +24,97 @@ layout: default
       </div>
 
       {% for image in gallery.images %}
-        {% if image.page_link %}
-          <a href="{{ image.page_link }}" style="display:block; text-decoration:none; color:inherit;">
-        {% endif %}
-        {% if gallery.title == "Faculty" %}
-          <div class="column is-3-desktop is-half-tablet is-full-mobile">
-        {% else %}
-          <div class="column is-one-fifth-desktop is-4-tablet is-full-mobile">
-        {% endif %}
-            {% if gallery.title == "Faculty" %}
-              <div class="card" style="margin:0 auto; text-align:center;">
-            {% else %}
-              <div class="card" style="margin:0 auto; text-align:center; height:auto;">
-            {% endif %}
-                <div class="card-image" style="padding:10px;">
-                  {% include image-modal.html
-                    link=image.link
-                    alt=image.alt
-                    large_link=image.large_link
-                    ratio="is-16by9"
-                  %}
-                </div>
-                <div class="card-content" style="padding:0.5rem;">
-                  {% if gallery.title == "Faculty" or gallery.title == "Staff" %}
-                    <div class="content" style="text-align:left; font-size:1.1rem;">
-                  {% else %}
-                    <div class="content" style="text-align:left; font-size:0.9rem;">
-                  {% endif %}
-                    
-                    {{ image.description | markdownify }}
-                    
-                    <div style="margin-top:auto;">
-                    {% if image.keywords %}
-                      <p style="margin-top:5px; font-size:10px;">
-                        <strong>Keywords:</strong><br> {{ image.keywords }}
-                      </p>
-                    {% endif %}                    
+        <div class="column 
+                    {% if gallery.title == "Faculty" %}
+                      is-3-desktop is-half-tablet is-full-mobile
+                    {% else %}
+                      is-one-fifth-desktop is-4-tablet is-full-mobile
+                    {% endif %}">
+          {% if image.page_link %}
+            <!-- 링크가 있는 경우에만 클래스 부여 -->
+            <a href="{{ image.page_link }}"
+               class="clickable-card"
+               style="display:block; text-decoration:none; color:inherit;">
+          {% endif %}
 
-                    <div style="text-align:center; margin-top: 10px; margin-bottom:10px;">
-                      {% if image.at %}
+            <div class="card"
+                 style="margin:0 auto; text-align:center; {% unless gallery.title == 'Faculty' %}height:auto;{% endunless %}">
+              
+              <!-- 카드 이미지 -->
+              <div class="card-image" style="padding:10px;">
+                {% include image-modal.html
+                  link=image.link
+                  alt=image.alt
+                  large_link=image.large_link
+                  ratio="is-16by9"
+                %}
+              </div>
+
+              <!-- 카드 본문 -->
+              <div class="card-content" style="padding:0.5rem;">
+                <div class="content"
+                     style="text-align:left; font-size:
+                       {% if gallery.title == 'Faculty' or gallery.title == 'Staff' %}
+                         1.1rem;
+                       {% else %}
+                         0.9rem;
+                       {% endif %}">
+                  {{ image.description | markdownify }}
+
+                  {% if image.keywords %}
+                    <p style="margin-top:5px; font-size:10px;">
+                      <strong>Keywords:</strong><br> {{ image.keywords }}
+                    </p>
+                  {% endif %}
+
+                  <!-- 연락처 아이콘 등 -->
+                  <div style="text-align:center; margin-top:10px; margin-bottom:10px;">
+                    {% if image.at %}
                       <hr style="width:80%; margin:0 auto;">
-                        <p style="margin-top:5px;">
-                          <a href="{{ image.at_link }}">@{{ image.at }}</a>
-                        </p>
-                      {% endif %}
-                      {% if image.email %}
-                        <hr style="width:80%; margin:0 auto;">
-                        <a href="mailto:{{ image.email }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                          <i class="fas fa-envelope"></i>
-                        </a>
-                      {% endif %}
-                      {% if image.linkedin %}
-                        <a href="{{ image.linkedin }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                          <i class="fab fa-linkedin"></i>
-                        </a>
-                      {% endif %}
-                      {% if image.scholar %}
-                        <a href="{{ image.scholar }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                          <i class="fa-brands fa-google-scholar"></i>
-                        </a>
-                      {% endif %}
-                      {% if image.github %}
-                        <a href="{{ image.github }}" target="_blank" style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
-                          <i class="fab fa-github"></i>
-                        </a>
-                      {% endif %}
-                      {% if image.homepage %}
-                        <a href="{{ image.homepage }}" target="_blank" style="display:inline-block; font-size:20px; color:gray;">
-                          <i class="fas fa-home"></i>
-                        </a>
-                      {% endif %}
-                    </div>
-                    </div>
+                      <p style="margin-top:5px;">
+                        <a href="{{ image.at_link }}">@{{ image.at }}</a>
+                      </p>
+                    {% endif %}
+                    {% if image.email %}
+                      <hr style="width:80%; margin:0 auto;">
+                      <a href="mailto:{{ image.email }}" target="_blank"
+                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                        <i class="fas fa-envelope"></i>
+                      </a>
+                    {% endif %}
+                    {% if image.linkedin %}
+                      <a href="{{ image.linkedin }}" target="_blank"
+                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                        <i class="fab fa-linkedin"></i>
+                      </a>
+                    {% endif %}
+                    {% if image.scholar %}
+                      <a href="{{ image.scholar }}" target="_blank"
+                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                        <i class="fa-brands fa-google-scholar"></i>
+                      </a>
+                    {% endif %}
+                    {% if image.github %}
+                      <a href="{{ image.github }}" target="_blank"
+                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                        <i class="fab fa-github"></i>
+                      </a>
+                    {% endif %}
+                    {% if image.homepage %}
+                      <a href="{{ image.homepage }}" target="_blank"
+                         style="display:inline-block; font-size:20px; color:gray;">
+                        <i class="fas fa-home"></i>
+                      </a>
+                    {% endif %}
                   </div>
                 </div>
               </div>
-            {% if image.page_link %}
-              </a>
-            {% endif %}
-          </div>
+            </div>
+
+          {% if image.page_link %}
+            </a>
+          {% endif %}
+        </div>
       {% endfor %}
     </div>
     <hr>
