@@ -11,10 +11,11 @@ layout: default
         <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
       </div>
       {% for image in gallery.images %}
-        <div class="column is-3-desktop is-4-tablet is-full-mobile">
-          {% if image.page_link %}
+        {% if image.page_link %}
             <a href="{{ image.page_link | absolute_url }}" class="custom-link" style="display:block; text-decoration:none; color:inherit;">
-          {% endif %}
+        {% endif %}
+        <div class="column is-3-desktop is-4-tablet is-full-mobile">
+          
           <!-- 카드: Flexbox로 상단/하단 영역 구분 -->
           <div class="card"
                style="
