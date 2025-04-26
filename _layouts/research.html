@@ -2,6 +2,17 @@
 layout: default
 ---
 
+<!-- 호버 시 어두워짐 효과를 위한 CSS -->
+<style>
+  .clickable-card {
+    transition: filter 0.2s ease;
+  }
+  .clickable-card:hover {
+    /* 밝기를 85%로 낮춰 어두워지게 합니다 */
+    filter: brightness(0.85);
+  }
+</style>
+
 {% if page.gallery %}
   {% assign galleries = site.data[page.gallery] %}
   {% for gallery in galleries %}
@@ -13,7 +24,7 @@ layout: default
 
       {% for image in gallery.images %}
         <div class="column is-3-desktop is-4-tablet is-full-mobile">
-          <!-- 링크를 담당하는 data-href 속성을 가진 card -->
+          <!-- 클릭 가능한 카드 -->
           <div class="card clickable-card"
                data-href="{{ image.page_link }}"
                style="
@@ -37,7 +48,6 @@ layout: default
               <!-- 카드 본문: 논문 제목 및 정보 -->
               <div class="card-content" style="padding:10px;">
                 <div class="content" style="text-align:left; font-size:1.0rem; color:black; font-weight:bold;">
-                  <!-- 내부 대체 링크는 그대로 <a> 사용 -->
                   <a href="{{ image.alt_link }}" target="_blank"
                      style="color:#0073e6; text-decoration:none;">
                     [{{ image.alt }}]
@@ -94,9 +104,8 @@ layout: default
     document.querySelectorAll('.clickable-card').forEach(function(card) {
       card.style.cursor = 'pointer';
       card.addEventListener('click', function(e) {
-        // 내부 <a> 클릭 시 기본 동작을 유지하도록 예외 처리
         if (e.target.closest('a')) return;
-        window.location.href = card.getAttribute('data-href');
+        window.location.href = card.dataset.href;
       });
     });
   });
