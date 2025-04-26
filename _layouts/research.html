@@ -2,22 +2,20 @@
 layout: default
 ---
 
-
 {% if page.gallery %}
   {% assign galleries = site.data[page.gallery] %}
   {% for gallery in galleries %}
     <div class="columns is-multiline">
+      <!-- 갤러리 제목 -->
       <div class="column is-12">
         <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
       </div>
+
       {% for image in gallery.images %}
-        {% if image.page_link %}
-            <a href="{{ image.page_link | absolute_url }}" class="custom-link" style="display:block; text-decoration:none; color:inherit;">
-        {% endif %}
         <div class="column is-3-desktop is-4-tablet is-full-mobile">
-          
-          <!-- 카드: Flexbox로 상단/하단 영역 구분 -->
-          <div class="card"
+          <!-- 링크를 담당하는 data-href 속성을 가진 card -->
+          <div class="card clickable-card"
+               data-href="{{ image.page_link }}"
                style="
                  margin:0 auto;
                  text-align:center;
@@ -26,7 +24,7 @@ layout: default
                  flex-direction:column;
                  justify-content:space-between;
                ">
-            <!-- 상단 영역 -->
+            <!-- 카드 상단: 이미지 -->
             <div>
               <div class="card-image">
                 {% include image-modal.html
@@ -36,18 +34,25 @@ layout: default
                   ratio="is-16by9"
                 %}
               </div>
+              <!-- 카드 본문: 논문 제목 및 정보 -->
               <div class="card-content" style="padding:10px;">
                 <div class="content" style="text-align:left; font-size:1.0rem; color:black; font-weight:bold;">
-                    <a href="{{ image.alt_link }}" target="_blank" style="color:#0073e6; text-decoration:none;">[{{ image.alt }}]</a> {{ image.paper }}
+                  <!-- 내부 대체 링크는 그대로 <a> 사용 -->
+                  <a href="{{ image.alt_link }}" target="_blank"
+                     style="color:#0073e6; text-decoration:none;">
+                    [{{ image.alt }}]
+                  </a>
+                  {{ image.paper }}
                 </div>
                 <div style="margin-top:10px; font-size:0.8rem; color:gray;">
                   {{ image.authors }}
                 </div>
               </div>
             </div>
-            <!-- 하단 영역 (맨 아래 고정) -->
+
+            <!-- 카드 하단: 태그 및 출판일 -->
             <div style="margin-top:auto;">
-                {% if image.tags %}
+              {% if image.tags %}
                 <div style="text-align:center; margin:2px 0;">
                   {% for tag in image.tags %}
                     {% assign tag_color = site.data.research_tags[tag] | default: "#666" %}
@@ -67,21 +72,32 @@ layout: default
                 </div>
               {% endif %}
               
-              
               <hr style="width:70%; margin:0 auto;">
+              
               {% if image.date %}
-                <p style="margin-top: 10px; margin-bottom:10px; text-align:center; font-size:1.0rem; color:black;">
-                    Published: {{ image.date }}
+                <p style="margin-top:10px; margin-bottom:10px; text-align:center; font-size:1.0rem; color:black;">
+                  Published: {{ image.date }}
                 </p>
               {% endif %}
             </div>
           </div>
-          {% if image.page_link %}
-            </a>
-          {% endif %}
         </div>
       {% endfor %}
     </div>
     <hr>
   {% endfor %}
 {% endif %}
+
+<!-- 카드 전체 클릭 시 이동 스크립트 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.clickable-card').forEach(function(card) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function(e) {
+        // 내부 <a> 클릭 시 기본 동작을 유지하도록 예외 처리
+        if (e.target.closest('a')) return;
+        window.location.href = card.getAttribute('data-href');
+      });
+    });
+  });
+</script>
