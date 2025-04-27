@@ -71,14 +71,14 @@ layout: default
       </div>
 
       {% for image in gallery.images %}
-        <div class="column is-3-desktop is-4-tablet is-full-mobile gallery-item"
+        <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
              {% if image.tags %}data-tags="{{ image.tags | join:',' }}"{% endif %}>
           <div class="clickable-card" data-href="{{ image.page_link }}">
             <div class="card"
                  style="
                    margin:0 auto;
                    text-align:center;
-                   height:525px;
+                   height:530px;
                    display:flex;
                    flex-direction:column;
                    justify-content:space-between;
@@ -156,34 +156,45 @@ layout: default
   {% endfor %}
 {% endif %}
 
-<!-- 5. 스크립트: 태그 필터링, 카드 클릭 이동, 제목 드래그 데이터 설정 -->
+<!-- 기존 <script>…</script> 전부를 아래로 교체 -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const items     = Array.from(document.querySelectorAll('.gallery-item'));
     const filterBar = document.getElementById('tag-filter');
-
-    // 태그 컬렉션 수집
+  
+    // 1) 모든 태그 이름 수집
     const tagSet = new Set();
     items.forEach(item => {
       if (!item.dataset.tags) return;
-      item.dataset.tags.split(',').forEach(t => tagSet.add(t.trim()));
+      item.dataset.tags.split(',').map(t=>t.trim()).forEach(t=>tagSet.add(t));
     });
-
-    // 버튼 생성
+  
+    // 2) 'All' 버튼은 이미 있으니, 나머지 태그 버튼만 생성
     Array.from(tagSet).sort().forEach(tag => {
       const btn = document.createElement('span');
       btn.className    = 'tag-button';
-      btn.dataset.tag = tag;
-      btn.textContent = tag;
-      // Liquid 데이터에서 가져온 색상으로 스타일 적용
-      const color = tagColors[tag] || '#cccccc';
-      btn.style.background  = color;
-      btn.style.borderColor = color;
-      btn.style.color       = 'black';
+      btn.dataset.tag  = tag;
+      btn.textContent  = tag;
+  
+      // 3) 카드에서 같은 텍스트의 태그 <span>을 찾아 배경색을 추출
+      let color = '#cccccc';  // fallback
+      const tagSpans = document.querySelectorAll('.gallery-item .card span');
+      for (const span of tagSpans) {
+        if (span.textContent.trim() === tag) {
+          color = getComputedStyle(span).backgroundColor;
+          break;
+        }
+      }
+  
+      // 4) 버튼 스타일에 적용
+      btn.style.background    = color;
+      btn.style.borderColor   = color;
+      btn.style.color         = 'black';
+  
       filterBar.appendChild(btn);
     });
-
-    // 필터 함수
+  
+    // 5) 필터링 함수
     function filterItems(selectedTag) {
       items.forEach(item => {
         const tags = (item.dataset.tags||'').split(',').map(t=>t.trim());
@@ -191,8 +202,8 @@ layout: default
                              ? '' : 'none';
       });
     }
-
-    // 필터 바 클릭 이벤트
+  
+    // 6) 클릭 이벤트 바인딩
     filterBar.addEventListener('click', function(e) {
       const btn = e.target.closest('.tag-button');
       if (!btn) return;
@@ -200,11 +211,11 @@ layout: default
       btn.classList.add('active');
       filterItems(btn.dataset.tag);
     });
-
-    // 기본 “All” 필터 적용
+  
+    // 7) 기본 “All” 적용
     filterItems('All');
-
-    // 카드 클릭 시 이동
+  
+    // 8) 카드 클릭 이동
     document.querySelectorAll('.clickable-card').forEach(card => {
       card.style.cursor = 'pointer';
       card.addEventListener('click', function(e) {
@@ -212,12 +223,6 @@ layout: default
         window.location.href = card.dataset.href;
       });
     });
-
-    // 제목 드래그 시 텍스트 전송
-    document.querySelectorAll('.draggable-title').forEach(title => {
-      title.addEventListener('dragstart', function(e) {
-        e.dataTransfer.setData('text/plain', e.target.textContent);
-      });
-    });
   });
-</script>
+  </script>
+  
