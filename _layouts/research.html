@@ -40,7 +40,17 @@ layout: default
   }
 </style>
 
-<!-- 2. 태그 필터 바 -->
+<!-- 2. Liquid → JS: research_tags 해시를 tagColors 로 선언 -->
+<script>
+  const tagColors = {
+    {% assign tags = site.data.research_tags %}
+    {% for tag in tags %}
+      "{{ tag }}": "{{ tags[tag] }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+</script>
+
+<!-- 3. 태그 필터 바 -->
 <div id="tag-filter">
   <span>Filter by Tags: </span>
   <!-- 기본 “All” 버튼 -->
@@ -62,7 +72,7 @@ layout: default
       </div>
 
       {% for image in gallery.images %}
-        <div class="column is-3-desktop is-4-tablet is-full-mobile gallery-item"
+        <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
              {% if image.tags %}data-tags="{{ image.tags | join:',' }}"{% endif %}>
           <div class="clickable-card" data-href="{{ image.page_link }}">
             <div class="card"
@@ -126,7 +136,7 @@ layout: default
   {% endfor %}
 {% endif %}
 
-<!-- 3. 스크립트: 순환 팔레트 기반 태그 색 할당 및 필터링, 카드 클릭, 제목 드래그 -->
+<!-- 4. 스크립트: research_tags 기반 색 적용 + 필터링 + 카드 클릭 + 제목 드래그 -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const items     = Array.from(document.querySelectorAll('.gallery-item'));
@@ -140,32 +150,23 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   const tagArray = Array.from(tagSet).sort();
 
-  // 2) 순환 팔레트 정의 (원하시는 색을 추가 가능합니다)
-  const palette = [
-    "#FE72A9", "#FFC872", "#A8E6CF", "#FFD3B6",
-    "#FF8C94", "#DCE775", "#B39CD0", "#FFAB91"
-  ];
-
-  // 3) 태그별 색 매핑
-  const tagColors = {};
-  tagArray.forEach((tag, idx) => {
-    tagColors[tag] = palette[idx % palette.length];
-  });
-
-  // 4) 'All' 외 태그 버튼 생성
+  // 2) 'All' 외 태그 버튼 생성
   tagArray.forEach(tag => {
     const btn = document.createElement('span');
     btn.className   = 'tag-button';
     btn.dataset.tag = tag;
     btn.textContent = tag;
-    const color     = tagColors[tag];
+
+    // research_tags에서 가져온 색
+    const color = tagColors[tag] || '#cccccc';
     btn.style.background  = color;
     btn.style.borderColor = color;
     btn.style.color       = 'black';
+
     filterBar.appendChild(btn);
   });
 
-  // 5) 필터링 함수
+  // 3) 필터링 함수
   function filterItems(selectedTag) {
     items.forEach(item => {
       const tags = (item.dataset.tags||'').split(',').map(t=>t.trim());
@@ -173,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 6) 클릭 이벤트 바인딩
+  // 4) 클릭 이벤트
   filterBar.addEventListener('click', function(e) {
     const btn = e.target.closest('.tag-button');
     if (!btn) return;
@@ -182,10 +183,10 @@ document.addEventListener('DOMContentLoaded', function() {
     filterItems(btn.dataset.tag);
   });
 
-  // 7) 기본 “All” 필터 적용
+  // 5) 기본 “All” 적용
   filterItems('All');
 
-  // 8) 카드 클릭 시 페이지 이동
+  // 6) 카드 클릭 이동
   document.querySelectorAll('.clickable-card').forEach(card => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', function(e) {
@@ -194,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 9) 제목 드래그 지원
+  // 7) 제목 드래그
   document.querySelectorAll('.draggable-title').forEach(title => {
     title.addEventListener('dragstart', function(e) {
       e.dataTransfer.setData('text/plain', e.target.textContent);
