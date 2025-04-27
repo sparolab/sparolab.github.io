@@ -4,7 +4,7 @@ layout: default
 
 <!-- 1. 스타일 섹션 -->
 <style>
-  /* 호버 시 어두워짐 효과 */
+  /* 카드 호버 시 어두워짐 효과 */
   .clickable-card .card {
     transition: filter 0.2s ease;
   }
@@ -12,57 +12,66 @@ layout: default
     filter: brightness(0.85);
   }
 
-  /* 태그 필터 바 스타일 */
+  /* 태그 필터 바 전체 폰트 크기 및 간격 조정 */
   #tag-filter {
     margin: 1rem 0;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
+
+  /* 각 태그 버튼 크기 및 스타일 조정 */
   #tag-filter .tag-button {
     display: inline-block;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding: 0.3rem 0.6rem;
-    border: 1px solid #ccc;
+    margin: 0.2rem 0.4rem 0.2rem 0;
+    padding: 0.2rem 0.5rem;
     border-radius: 4px;
-    background: white;
+    border: 1px solid;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+    font-size: 0.8rem;
   }
+  /* 선택된(active) 버튼 강조 */
   #tag-filter .tag-button.active {
-    background: #0073e6;
-    color: white;
-    border-color: #0073e6;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.2);
   }
 </style>
 
-<!-- 2. 태그 필터 바 -->
+<!-- 2. 태그별 색상 매핑 (Liquid → JS) -->
+<script>
+  const tagColors = {
+    {% for tag, color in site.data.research_tags %}
+      "{{ tag }}": "{{ color }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+</script>
+
+<!-- 3. 태그 필터 바 -->
 <div id="tag-filter">
   <span>Filter by Tags: </span>
-  <!-- 기본 “All” 버튼 -->
-  <span class="tag-button active" data-tag="All">All</span>
+  <!-- 기본 “All” 버튼 (흰 배경, 회색 테두리) -->
+  <span class="tag-button active" data-tag="All"
+        style="background:#ffffff; border-color:#cccccc; color:#000000;">
+    All
+  </span>
 </div>
 
 {% if page.gallery %}
   {% assign galleries = site.data[page.gallery] %}
   {% for gallery in galleries %}
     <div class="columns is-multiline">
-      <!-- 갤러리 제목 -->
       <div class="column is-12">
         <h1 class="has-text-left" style="font-size:40px;">{{ gallery.title }}</h1>
       </div>
 
       {% for image in gallery.images %}
-        <!-- 3. gallery-item에 data-tags 속성 추가 -->
-        <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
+        <div class="column is-3-desktop is-4-tablet is-full-mobile gallery-item"
              {% if image.tags %}data-tags="{{ image.tags | join:',' }}"{% endif %}>
 
-          <!-- 클릭 가능한 카드 래퍼 -->
           <div class="clickable-card" data-href="{{ image.page_link }}">
             <div class="card"
                  style="
                    margin:0 auto;
                    text-align:center;
-                   height:500px;
+                   height:550px;
                    display:flex;
                    flex-direction:column;
                    justify-content:space-between;
@@ -99,7 +108,7 @@ layout: default
                 {% if image.tags %}
                   <div style="text-align:center; margin:2px 0;">
                     {% for tag in image.tags %}
-                      {% assign tag_color = site.data.research_tags[tag] | default: "#666" %}
+                      {% assign tag_color = site.data.research_tags[tag] | default: "#666666" %}
                       <span style="
                         display:inline-block;
                         background-color:{{ tag_color }};
@@ -140,59 +149,60 @@ layout: default
   {% endfor %}
 {% endif %}
 
-<!-- 4. 스크립트 섹션: 태그 필터, 카드 클릭 처리 -->
+<!-- 4. 스크립트 섹션: 태그 버튼 생성 → 필터링 → 카드 클릭 -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const items = Array.from(document.querySelectorAll('.gallery-item'));
-    const filterBar = document.getElementById('tag-filter');
-    const allButton = filterBar.querySelector('[data-tag="All"]');
+    const items    = Array.from(document.querySelectorAll('.gallery-item'));
+    const filterBar= document.getElementById('tag-filter');
 
-    // 4-1. 모든 태그 버튼 동적 생성
+    // 4-1. data-tags → Set 으로 키워드 수집
     const tagSet = new Set();
     items.forEach(item => {
-      const tags = item.dataset.tags;
-      if (!tags) return;
-      tags.split(',').forEach(t => tagSet.add(t.trim()));
+      if (!item.dataset.tags) return;
+      item.dataset.tags.split(',').forEach(t => tagSet.add(t.trim()));
     });
+
+    // 4-2. 동적으로 태그 버튼 생성 (All 제외)
     Array.from(tagSet).sort().forEach(tag => {
       const btn = document.createElement('span');
       btn.className = 'tag-button';
       btn.dataset.tag = tag;
       btn.textContent = tag;
+      const color = tagColors[tag] || '#cccccc';
+      btn.style.background    = color;
+      btn.style.borderColor   = color;
+      btn.style.color          = 'black';
       filterBar.appendChild(btn);
     });
 
-    // 4-2. 필터링 함수
+    // 4-3. 필터링 함수
     function filterItems(selectedTag) {
       items.forEach(item => {
-        if (selectedTag === 'All' || 
-            (item.dataset.tags||'').split(',').map(t=>t.trim()).includes(selectedTag)) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
+        const tags = (item.dataset.tags||'').split(',').map(t=>t.trim());
+        item.style.display = (selectedTag === 'All' || tags.includes(selectedTag))
+                             ? '' : 'none';
       });
     }
 
-    // 4-3. 버튼 클릭 이벤트
+    // 4-4. 클릭 이벤트 핸들러
     filterBar.addEventListener('click', function(e) {
-      const tgt = e.target.closest('.tag-button');
-      if (!tgt) return;
-      // active 토글
+      const btn = e.target.closest('.tag-button');
+      if (!btn) return;
+      // active 클래스 토글
       filterBar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
-      tgt.classList.add('active');
+      btn.classList.add('active');
       // 필터 적용
-      filterItems(tgt.dataset.tag);
+      filterItems(btn.dataset.tag);
     });
 
-    // 4-4. 기본 “All” 필터 적용
+    // 4-5. 초기 “All” 필터 적용
     filterItems('All');
 
-    // 4-5. 카드 클릭 이동 처리
+    // 4-6. 카드 클릭 시 페이지 이동
     document.querySelectorAll('.clickable-card').forEach(card => {
       card.style.cursor = 'pointer';
       card.addEventListener('click', function(e) {
-        if (e.target.closest('a')) return;
+        if (e.target.closest('a')) return;  // 내부 링크 예외
         window.location.href = card.dataset.href;
       });
     });
