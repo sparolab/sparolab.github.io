@@ -2,16 +2,45 @@
 layout: default
 ---
 
-<!-- 호버 시 어두워짐 효과를 위한 CSS -->
+<!-- 1. 스타일 섹션 -->
 <style>
-  .clickable-card {
+  /* 호버 시 어두워짐 효과 */
+  .clickable-card .card {
     transition: filter 0.2s ease;
   }
-  .clickable-card:hover {
-    /* 밝기를 85%로 낮춰 어두워지게 합니다 */
+  .clickable-card:hover .card {
     filter: brightness(0.85);
   }
+
+  /* 태그 필터 바 스타일 */
+  #tag-filter {
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  #tag-filter .tag-button {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  #tag-filter .tag-button.active {
+    background: #0073e6;
+    color: white;
+    border-color: #0073e6;
+  }
 </style>
+
+<!-- 2. 태그 필터 바 -->
+<div id="tag-filter">
+  <span>Filter by Tags: </span>
+  <!-- 기본 “All” 버튼 -->
+  <span class="tag-button active" data-tag="All">All</span>
+</div>
 
 {% if page.gallery %}
   {% assign galleries = site.data[page.gallery] %}
@@ -23,72 +52,85 @@ layout: default
       </div>
 
       {% for image in gallery.images %}
-        <div class="column is-3-desktop is-4-tablet is-full-mobile">
-          <!-- 클릭 가능한 카드 -->
-          <div class="card clickable-card"
-               data-href="{{ image.page_link }}"
-               style="
-                 margin:0 auto;
-                 text-align:center;
-                 height:550px;
-                 display:flex;
-                 flex-direction:column;
-                 justify-content:space-between;
-               ">
-            <!-- 카드 상단: 이미지 -->
-            <div>
-              <div class="card-image">
-                {% include image-modal.html
-                  link=image.link
-                  alt=image.alt
-                  large_link=image.large_link
-                  ratio="is-16by9"
-                %}
-              </div>
-              <!-- 카드 본문: 논문 제목 및 정보 -->
-              <div class="card-content" style="padding:10px;">
-                <div class="content" style="text-align:left; font-size:1.0rem; color:black; font-weight:bold;">
-                  <a href="{{ image.alt_link }}" target="_blank"
-                     style="color:#0073e6; text-decoration:none;">
-                    [{{ image.alt }}]
-                  </a>
-                  {{ image.paper }}
-                </div>
-                <div style="margin-top:10px; font-size:0.8rem; color:gray;">
-                  {{ image.authors }}
-                </div>
-              </div>
-            </div>
+        <!-- 3. gallery-item에 data-tags 속성 추가 -->
+        <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
+             {% if image.tags %}data-tags="{{ image.tags | join:',' }}"{% endif %}>
 
-            <!-- 카드 하단: 태그 및 출판일 -->
-            <div style="margin-top:auto;">
-              {% if image.tags %}
-                <div style="text-align:center; margin:2px 0;">
-                  {% for tag in image.tags %}
-                    {% assign tag_color = site.data.research_tags[tag] | default: "#666" %}
-                    <span style="
-                      display:inline-block;
-                      background-color:{{ tag_color }};
-                      color:black;
-                      border-radius:5px;
-                      padding:2px 5px;
-                      margin:2px;
-                      font-size:0.6rem;
-                      font-weight:bold;
-                    ">
-                      {{ tag }}
-                    </span>
-                  {% endfor %}
+          <!-- 클릭 가능한 카드 래퍼 -->
+          <div class="clickable-card" data-href="{{ image.page_link }}">
+            <div class="card"
+                 style="
+                   margin:0 auto;
+                   text-align:center;
+                   height:500px;
+                   display:flex;
+                   flex-direction:column;
+                   justify-content:space-between;
+                 ">
+              
+              <!-- 카드 상단: 이미지 -->
+              <div>
+                <div class="card-image">
+                  {% include image-modal.html
+                    link=image.link
+                    alt=image.alt
+                    large_link=image.large_link
+                    ratio="is-16by9"
+                  %}
                 </div>
-              {% endif %}
-              
-              <hr style="width:70%; margin:0 auto;">
-              
-              {% if image.date %}
-                <p style="margin-top:10px; margin-bottom:10px; text-align:center; font-size:1.0rem; color:black;">
-                  Published: {{ image.date }}
-                </p>
-              {% endif %}
+                <!-- 카드 본문 -->
+                <div class="card-content" style="padding:10px;">
+                  <div class="content"
+                       style="text-align:left; font-size:1.0rem; color:black; font-weight:bold;">
+                    <a href="{{ image.alt_link }}" target="_blank"
+                       style="color:#0073e6; text-decoration:none;">
+                      [{{ image.alt }}]
+                    </a>
+                    {{ image.paper }}
+                  </div>
+                  <div style="margin-top:10px; font-size:0.8rem; color:gray;">
+                    {{ image.authors }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- 카드 하단: 태그 및 출판일 -->
+              <div style="margin-top:auto;">
+                {% if image.tags %}
+                  <div style="text-align:center; margin:2px 0;">
+                    {% for tag in image.tags %}
+                      {% assign tag_color = site.data.research_tags[tag] | default: "#666" %}
+                      <span style="
+                        display:inline-block;
+                        background-color:{{ tag_color }};
+                        color:black;
+                        border-radius:5px;
+                        padding:2px 5px;
+                        margin:2px;
+                        font-size:0.6rem;
+                        font-weight:bold;
+                      ">
+                        {{ tag }}
+                      </span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                <hr style="width:70%; margin:0 auto;">
+
+                {% if image.date %}
+                  <p style="
+                      margin-top:10px;
+                      margin-bottom:10px;
+                      text-align:center;
+                      font-size:1.0rem;
+                      color:black;
+                    ">
+                    Published: {{ image.date }}
+                  </p>
+                {% endif %}
+              </div>
+
             </div>
           </div>
         </div>
@@ -98,10 +140,56 @@ layout: default
   {% endfor %}
 {% endif %}
 
-<!-- 카드 전체 클릭 시 이동 스크립트 -->
+<!-- 4. 스크립트 섹션: 태그 필터, 카드 클릭 처리 -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.clickable-card').forEach(function(card) {
+    const items = Array.from(document.querySelectorAll('.gallery-item'));
+    const filterBar = document.getElementById('tag-filter');
+    const allButton = filterBar.querySelector('[data-tag="All"]');
+
+    // 4-1. 모든 태그 버튼 동적 생성
+    const tagSet = new Set();
+    items.forEach(item => {
+      const tags = item.dataset.tags;
+      if (!tags) return;
+      tags.split(',').forEach(t => tagSet.add(t.trim()));
+    });
+    Array.from(tagSet).sort().forEach(tag => {
+      const btn = document.createElement('span');
+      btn.className = 'tag-button';
+      btn.dataset.tag = tag;
+      btn.textContent = tag;
+      filterBar.appendChild(btn);
+    });
+
+    // 4-2. 필터링 함수
+    function filterItems(selectedTag) {
+      items.forEach(item => {
+        if (selectedTag === 'All' || 
+            (item.dataset.tags||'').split(',').map(t=>t.trim()).includes(selectedTag)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // 4-3. 버튼 클릭 이벤트
+    filterBar.addEventListener('click', function(e) {
+      const tgt = e.target.closest('.tag-button');
+      if (!tgt) return;
+      // active 토글
+      filterBar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
+      tgt.classList.add('active');
+      // 필터 적용
+      filterItems(tgt.dataset.tag);
+    });
+
+    // 4-4. 기본 “All” 필터 적용
+    filterItems('All');
+
+    // 4-5. 카드 클릭 이동 처리
+    document.querySelectorAll('.clickable-card').forEach(card => {
       card.style.cursor = 'pointer';
       card.addEventListener('click', function(e) {
         if (e.target.closest('a')) return;
