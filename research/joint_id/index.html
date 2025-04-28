@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Joint-ID: Transformer-Based Joint Image Enhancement and Depth Estimation for Underwater Environment">
+  <meta name="keywords" content="Underwater Image Enhancement and Depth Estimation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joint-ID: Transformer-Based Joint Image Enhancement and Depth Estimation for Underwater Environment</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Joint-ID: Transformer-Based Joint Image Enhancement and Depth Estimation for Underwater Environment</h1>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">IEEE Sensors Journal 2023</span>            
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=en">Geonmo Yang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=F6dY8DoAAAAJ&hl=en">Gilhwan Kang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ&hl=en">Juhui Lee</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=en">Younggun Cho</a><sup>1*</sup>
+            </span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://ieeexplore.ieee.org/document/10351035"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=1GOoHCSpNXE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/sparolab/Joint_ID"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://www.dropbox.com/scl/fo/olr8awsue6uion5fng25j/h?rlkey=jy6pbnbop6ppc0703it7lmite&e=1&dl=0"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/joint_id.png" style="max-width: 90%; margin: 0px auto; display: block;">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">TL;DR  Image Enhancement and Depth Estimation for Underwater Environments!</span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Underwater imaging is a challenging task due to factors such as scattering, absorption, and turbulence, which degrade image quality and limit visibility. 
+            In this article, we propose a novel approach for enhancing underwater images that leverages the benefits of joint learning for simultaneous image enhancement and depth estimation. 
+            We introduce Joint-ID, a transformer-based neural network that can obtain high-perceptual image quality and depth information from raw underwater images. 
+            Our approach formulates a multimodal objective function that addresses invalid depth, lack of sharpness, and image degradation based on color and local texture. 
+            We design an end-to-end training pipeline that enables joint restoration and depth estimation in a shared hierarchical feature space. 
+            In addition, we propose a <strong>synthetic dataset</strong> with various distortions and scene depths for multitask learning. 
+            We evaluate Joint-ID on synthetic and standard datasets, as well as real underwater images with diverse spectra and harsh turbidity, 
+            demonstrating its effectiveness for <strong>underwater image enhancement (UIE)</strong> and <strong>depth estimation</strong>. 
+            Our proposed method has the potential to improve the visual perception of underwater environments and benefit applications such as oceanography and underwater robotics.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/method.png" style="width: 120%; margin: 20px auto; display: block;">
+          <p>
+            Our model Joint-ID has a Segformer as its backbone, which is a Transformer. Segformer is a model for the segmentation task, but it is also a good model for estimating the correlation between pixels. Understanding the correlation between pixels is very important for this study, which is to perform the Underwater Image Enhancement Task and Depth Estimation Task. In the decoder part of Joint-ID, a mix decoder is proposed to estimate the relationship from the local region to the global region.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Dataset. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Dataset</h2>
+        <div class="content has-text-justified">
+          <p>
+            We tried to form a synthetic dataset with depth D ∈ [1.5, 3, 5, 7.5, 10, 15] according to the water types in 'Inherent optical properties of Jerlov water types' paper. For water types I, IA, and IB, the depth was [3, 5, 7.5, 10, 15]. For type II, the depth was [3, 5, 7.5, 10]. For III and IC types, the depth was [3, 5, 7.5]. For 3C and 5C, the depth was [3, 5]. Finally, for 9C, it was [1.5, 3]. The ground dataset used was a dataset with an object detail called 'diml'. A total of 48,000 synthetic data were generated, of which <strong>47,000</strong> were selected for the training set and <strong>1,000</strong> for the test set.
+          </p>
+          <p>
+            This dataset was created through distortion optical modeling, and has <strong>Enhanced Images</strong> and <strong>Dense Depth Images</strong> as ground truth. This dataset will be of great help to those working on <strong>Underwater Depth Estimation</strong> and <strong>Underwater Image Enhancement</strong>.
+          </p>
+          <img src="./static/images/dataset.png" style="width: 120%; margin: 20px auto; display: block;">
+          
+          <h4 class="title is-4">Data in the Joint-ID_Dataset</h4>
+          <ul>
+            <li><em>Synthetic Underwater Train Set:</em> 47,000</li>
+            <li><em>Synthetic Underwater Test Set:</em> 1,000</li>
+          </ul>
+
+          <h4 class="title is-4">The structure in the Joint-ID_Dataset</h4>
+          <pre style="background-color: #f5f5f5; padding: 15px; border-radius: 5px;">
+/ train
+    /    LR
+    /    ...
+         / color
+             / &lt;enhanced images&gt;.png
+         / depth_filed    #
+             / &lt;dense depth images&gt;.png
+    /    synthetic
+         / &lt;synthetic distorted images&gt;.jpg
+/ test</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">BibTeX</h2>
+          <pre><code>@article{yang2023joint,
+  author    = {Yang, Geonmo and Kang, Gilhwan and Lee, Juhui and Cho, Younggun},
+  title     = {Joint-ID: Transformer-based Joint Image Enhancement and Depth Estimation for Underwater Environments},
+  journal   = {IEEE Sensors Journal},
+  year      = {2023}
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://ieeexplore.ieee.org/document/10351035">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/sparolab/Joint_ID" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

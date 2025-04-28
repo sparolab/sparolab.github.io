@@ -24,6 +24,17 @@
 - title: "Journal"
   images:
     - link: /img/research/solid.png
+      alt: IEEE Sensors Journal
+      alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
+      date: Nov 05, 2024
+      paper: "TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth and Uncertainty Estimation for Underwater 3D Robot Visual Perception"
+      authors: Geonmo Yang, Younggun Cho
+      tags:
+          - Image Enhancement
+          - Underwater Environments
+      page_link: /research/trident/
+
+    - link: /img/research/solid.png
       alt: IEEE RA-L
       alt_link: https://www.ieee-ras.org/publications/ra-l
       date: Aug 07, 2024
@@ -33,6 +44,18 @@
           - LiDAR PR
           - LiDAR SLAM
       page_link: /research/solid/
+
+    - link: /img/research/solid.png
+      alt: IEEE Sensors Journal
+      alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
+      date: Dec 08, 2023
+      paper: "Joint-ID: Transformer-based joint image enhancement and depth estimation for underwater environments
+"
+      authors: Geonmo Yang, Gilhwan Kang, Juhui Lee, Younggun Cho
+      tags:
+          - Image Enhancement
+          - Underwater Environments
+      page_link: /research/joint_id/
 
 - title: "Conference"
   images:
@@ -51,11 +74,11 @@
     - link: /img/research/sonar_context.png
       alt: IEEE ICRA
       alt_link: https://www.icra2023.org/
-      date: May 29, 2024
+      date: May 29, 2023
       paper: "Robust Imaging Sonar-based Place Recognition and Localization in Underwater Environments"
       authors: Hogyun Kim, Gilhwan Kang, Seokhwan Jeong, Seungjun Ma, Younggun Cho
       tags:
           - SONAR PR
           - SONAR Localization
           - Underwater Environments
-      page_link: /research/salient-ground-feature/
+      page_link: /research/sonar_context/
