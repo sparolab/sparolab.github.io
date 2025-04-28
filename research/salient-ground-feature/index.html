@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Salience-guided Ground Factor for Robust Localization of Delivery Robots in Complex Urban Environments">
+  <meta name="keywords" content="Localization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salience-guided Ground Factor for Robust Localization of Delivery Robots in Complex Urban Environments</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fluid">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Salience-guided Ground Factor for Robust Localization of <br> Delivery Robots in Complex Urban Environments</h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block"><i>2024 IEEE International Conference on Robotics and Automation (ICRA)</i></span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/jooyong-park-3a4282289/" target="_blank">Jooyong Park</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://jng-u.github.io/" target="_blank">Jungwoo Lee</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/%EC%9D%80%EC%B2%A0-%EC%B5%9C-103a34319/" target="_blank">Euncheol Choi</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              and <a href="https://scholar.google.com/citations?user=9mKOLX8AAAAJ&hl=ko" target="_blank">Younggun Cho</a><sup>2*</sup>
+            </span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>HL Klemove Corporation, Gyeonggi-do, South Korea</span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>2</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://ieeexplore.ieee.org/abstract/document/10611696"
+                   class="external-link button is-normal is-rounded is-dark"
+                   target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2405.11855"
+                   class="external-link button is-normal is-rounded is-dark"
+                   target="_blank">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=OkgGXKTLhOg"
+                   class="external-link button is-normal is-rounded is-dark"
+                   target="_blank">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-widescreen px-6">
+    <!-- Abstract. -->
+    <h2 class="title is-3 is-centered has-text-centered">Abstract</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-one-thirds">
+        <img src="./static/images/main.png">
+      </div>
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified">
+          <p>
+            In urban environments for delivery robots, particularly in areas such as campuses and towns, many custom features defy standard road semantic categorizations. Addressing this challenge, our paper introduces a method leveraging Salient Object Detection (SOD) to extract these unique features, employing them as pivotal factors for enhanced robot loop closure and localization. Traditional geometric feature-based localization is hampered by fluctuating illumination and appearance changes. Our preference for SOD over semantic segmentation sidesteps the intricacies of classifying a myriad of non-standardized urban features. To achieve consistent ground features, the Motion Compensate IPM (MC-IPM) technique is implemented, capitalizing on a motion for distortion compensation and subsequently selecting the most pertinent salient ground features through moment computations. For thorough evaluation, we validated the saliency detection and localiza- tion performances to the real urban scenarios. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 is-centered has-text-centered">Pipeline</h2>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- <h2 class="title is-4">Pipeline</h2> -->
+        <img src="./static/images/pipeline.png">
+
+        <!-- <div class="columns is-centered">
+          <div class="column is-one-thirds">
+            <h2 class="title is-4">MC-IPM</h2>
+            <img src="./static/images/mcipm.png">
+          </div>
+
+          <div class="column is-one-thirds">
+            <h2 class="title is-4">SGF Detection</h2>
+            <img src="./static/images/sgf_detection.png">
+          </div>
+
+          <div class="column is-one-thirds">
+            <h2 class="title is-4">SGF Description</h2>
+            <img src="./static/images/sgf_description.png">
+          </div>
+        </div> -->
+      </div>
+    </div>
+      <!-- <h2 class="subtitle has-text-centered">
+        <span class="dnerf">TL;DR  Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition!</span>
+      </h2> -->
+    <!-- </div> -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 is-centered has-text-centered">Experimetal Results</h2>
+
+    <h2 class="title is-4">Setup</h2>
+    <div class="columns is-centered is-vcentered">
+      <div class="column is-half">
+        <img src="./static/images/robots.png">
+        <div class="is-centered has-text-centered">
+          <span>Robots</span>
+        </div>
+      </div>
+      <div class="column is-half">
+        <img src="./static/images/environments.png">
+        <div class="is-centered has-text-centered">
+          <span>Environments</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-4">Localization Results</h2>
+    <div class="columns is-centered is-vcentered">
+      <div class="column is-half">
+        <img src="./static/images/qual_results.png">
+        <div class="is-centered has-text-centered">
+          <span>Qualitative Results</span>
+        </div>
+      </div>
+      <div class="column is-half">
+        <img src="./static/images/qaun_results.png">
+      </div>
+    </div>
+
+    <h2 class="title is-4">Video</h2>
+    <div class="video-container">
+      <video id="howitworks" autoplay controls muted loop playsinline class="full-video">
+        <source src="./static/videos/results.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/sparolab/solid" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

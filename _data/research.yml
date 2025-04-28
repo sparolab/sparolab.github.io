@@ -47,13 +47,14 @@
 
 - title: "Conference"
   images:
-    - link: /img/research/solid.png
-      alt: IEEE RA-L
-      alt_link: https://www.ieee-ras.org/publications/ra-l
-      date: Aug 07, 2024
-      paper: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
-      authors: Hogyun Kim, Jiwon Choi, Taehu Sim, Giseop Kim, Younggun Cho
+    - link: /img/research/saliency_feature.png
+      alt: IEEE ICRA
+      alt_link: https://2024.ieee-icra.org/
+      date: May 13, 2024
+      paper: "Salience-guided Ground Factor for Robust Localization of Delivery Robots in Complex Urban Environments"
+      authors: Jooyong Park, Jungwoo Lee, Euncheol Choi, Younggun Cho
       tags:
-          - test2
-          - LiDAR SLAM
-      page_link: /research/solid/
+          - Visual Localization
+          - Delivery Robot
+          - Urban Environments
+      page_link: /research/salient-ground-feature/
