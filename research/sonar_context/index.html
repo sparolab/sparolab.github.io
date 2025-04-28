@@ -45,20 +45,20 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition</h1>
+          <h1 class="title is-1 publication-title">Robust Imaging Sonar-based Place Recognition and Localization in Underwater Environments</h1>
           <div class="is-size-6 publication-authors">
-            <span class="author-block">IEEE Robotics and Automation Letters (RA-L) 2024</span>            
+            <span class="author-block">IEEE International Conference on Robotics and Automation (ICRA) 2024 </span>            
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko">Hogyun Kim</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&hl=ko">Jiwon Choi</a><sup>1</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=F6dY8DoAAAAJ&hl=ko">Gilhwan Kang</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=UPg-JuQAAAAJ&hl=ko">Taehu Shim</a><sup>1</sup>,
+              <a href="https://scholar.google.com/citations?user=ZAO6skQAAAAJ&hl=ko">Seokhwan Jeong</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=9mKOLX8AAAAJ&hl=ko">Giseop Kim</a><sup>2</sup>,
+              <a href="https://scholar.google.com/citations?user=BHO8C5YAAAAJ&hl=ko">Seungjun Ma</a><sup>1</sup>,
             </span>
             <span class="author-block">
               and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko">Younggun Cho</a><sup>1*</sup>
@@ -69,15 +69,11 @@
             <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
           </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>2</sup>Autonomy and Perceptual Robotics Lab (APRL), DGIST, South Korea</span>            
-          </div>
-
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://ieeexplore.ieee.org/abstract/document/10629042"
+                <a href="https://ieeexplore.ieee.org/document/10161518"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -86,7 +82,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2408.07330"
+                <a href="https://arxiv.org/abs/2305.14773"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -96,7 +92,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=4sAWWfZTwLs"
+                <a href="https://www.youtube.com/watch?v=JRD_xuqtHZU"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -106,7 +102,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/sparolab/solid"
+                <a href="https://github.com/sparolab/sonar_context"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -128,7 +124,7 @@
     <div class="hero-body">
       <img src="./static/images/pipeline.png">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">TL;DR  Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition!</span>
+        <span class="dnerf">TL;DR  Robust Global Descriptor for SOANR Place Recognition in Underwater Environments!</span>
       </h2>
     </div>
   </div>
@@ -143,16 +139,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We often encounter limited FOV situations due to various factors such as sensor fusion or sensor mount in real-world robot navigation. 
-            However, the limited FOV interrupts the generation of descriptions and impacts place recognition adversely. 
-            Therefore, we suffer from correcting accumulated drift errors in a consistent map using LiDAR-based place recognition with limited FOV. 
-            Thus, in this letter, we propose a robust LiDAR-based place recognition method for handling narrow FOV scenarios. 
-            The proposed method establishes spatial organization based on the range-elevation bin and azimuth-elevation bin to represent places. 
-            In addition, we achieve a robust place description through reweighting based on vertical direction information. 
-            Based on these representations, our method enables addressing rotational changes and determining the initial heading. 
-            Additionally, we designed a lightweight and fast approach for the robot's onboard autonomy. 
-            For rigorous validation, the proposed method was tested across various LiDAR place recognition scenarios (i.e., single-session, multi-session, and multi-robot scenarios).
-            To the best of our knowledge, we report the first method to cope with the restricted FOV.
+            Place recognition using SONAR images is an important task for SLAM in underwater environments. 
+            This paper proposes a robust and efficient imaging SONAR-based place recognition, SONAR context, and loop closure method. 
+            Unlike previous methods, our approach encodes geometric information based on the characteristics of raw SONAR measurements without prior knowledge or training. 
+            We also design a hierarchical searching procedure for fast retrieval of candidate SONAR frames and apply adaptive shifting and padding to achieve robust matching on rotation and translation changes. 
+            In addition, we can derive the initial pose through adaptive shifting and apply it to the ICP-based loop closure factor. 
+            We evaluate the SONAR context's performance in the various underwater sequences such as simulated open water, real water tank, and real underwater environments. 
+            The proposed approach shows the robustness and improvements of place recognition on various datasets and evaluation metrics. 
           </p>
         </div>
       </div>
@@ -163,7 +156,7 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link" href="https://github.com/sparolab/solid" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/sparolab/sonar_context" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>

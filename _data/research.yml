@@ -34,17 +34,6 @@
           - LiDAR SLAM
       page_link: /research/solid/
 
-    - link: /img/research/solid.png
-      alt: IEEE RA-L
-      alt_link: https://www.ieee-ras.org/publications/ra-l
-      date: Aug 07, 2024
-      paper: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
-      authors: Hogyun Kim, Jiwon Choi, Taehu Sim, Giseop Kim, Younggun Cho
-      tags:
-          - test1
-          - LiDAR SLAM
-      page_link: /research/solid/
-
 - title: "Conference"
   images:
     - link: /img/research/saliency_feature.png
@@ -57,4 +46,17 @@
           - Visual Localization
           - Delivery Robot
           - Urban Environments
+      page_link: /research/salient-ground-feature/
+
+  images:
+    - link: /img/research/sonar_context.png
+      alt: IEEE ICRA
+      alt_link: https://www.icra2023.org/
+      date: May 29, 2024
+      paper: "Robust Imaging Sonar-based Place Recognition and Localization in Underwater Environments"
+      authors: Hogyun Kim, Gilhwan Kang, Seokhwan Jeong, Seungjun Ma, Younggun Cho
+      tags:
+          - SONAR PR
+          - SONAR Localization
+          - Underwater Environments
       page_link: /research/salient-ground-feature/
