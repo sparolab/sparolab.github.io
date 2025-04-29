@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+{% if page.gallery %}
+  {% assign galleries = site.data[page.gallery] %}
+  {% for gallery in galleries %}
+    <div class="columns is-multiline">
+      <!-- 드래그 가능한 갤러리 제목 -->
+      <div class="column is-12">
+        <h1 class="has-text-left draggable-title" draggable="true" style="font-size:35px;">
+          {{ gallery.title }}
+        </h1>
+      </div>
+
+      {% for image in gallery.images %}
+        {% assign authors = image.authors %}
+        {% if authors contains "*" %}
+          {% assign authors = authors | append: " (*: Equal Contribution)" %}
+        {% endif %}
+        <div class="column is-12">
+          [{{ forloop.index }}] {{ image.alt }}<br>
+            {{ image.conf }} <a href="{{ image.conf_link }}">{{ image.conf_link }}</a><br>
+            {{ authors }}
+        </div>
+      {% endfor %}
+
+    </div>
+  {% endfor %}
+{% endif %}

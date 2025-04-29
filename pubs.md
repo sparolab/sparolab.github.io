@@ -1,13 +1,13 @@
 ---
-layout: page
+layout: publication
 title: Publication
 show_sidebar: false
 hide_footer: false
 hero_height: is-small
-gallery: pubs
+gallery: publication
 ---
 
-# 2025  
+<!-- # 2025  
 <span style="font-size:1.2em; font-weight:bold;">PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal</span> <a href="https://arxiv.org/abs/2412.06192" style="font-size:1.2em;">[Arxiv]</a>  
 <span style="font-size:1.0em;">IEEE International Conference on Robotics and Automation (ICRA), 2025</span>  
 <span style="font-size:0.8em;">Jiwon Choi\*, Dongjin Cho\*, Gihyeon Lee, Hogyun Kim, Geonmo Yang, Joowan Kim, and Younggun Cho (\*: Equal Contribution)</span>  
@@ -163,4 +163,4 @@ gallery: pubs
 
 <span style="font-size:1.2em; font-weight:bold;"> Accurate Mobile Urban Mapping via Digital Map-Based SLAM </span> <a href="https://www.mdpi.com/1424-8220/16/8/1315" style="font-size:1.2em;">[Paper]</a>  
 <span style="font-size:1.0em;">MDPI SENSORS, 2016</span>  
-<span style="font-size:0.8em;">Hyunchul Roh, Jinyong Jeong, Younggun Cho and Ayoung Kim </span>  
+<span style="font-size:0.8em;">Hyunchul Roh, Jinyong Jeong, Younggun Cho and Ayoung Kim </span>   -->

@@ -1,0 +1,177 @@
+- title: "2025"
+  images:
+    - alt: "PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal"
+      authors: "Jiwon Choi*, Dongjin Cho*, Gihyeon Lee, Hogyun Kim, Geonmo Yang, Joowan Kim, and Younggun Cho"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+
+    - alt: "DiTer++: Diverse Terrain and Multi-modal Dataset for Multi-Robot SLAM in Multi-session Environments"
+      authors: "Juwon Kim, Hogyun Kim, Seokhwan Jeong, Youngsik Shin, and Younggun Cho"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+
+
+- title: "2024"
+  images:
+    - alt: "Dynamic Multi-Object Analysis Using Particles for Social Navigation"
+      authors: "Minho Lee, Miryeong Park, Jiyun Lee, and Younggun Cho"
+      conf: "International Conference on Control, Automation and Systems (ICCAS)"
+      conf_link: "http://www.iccas.org"
+
+    - alt: "Thermal Chameleon: Task-Adaptive Tone-Mapping for Radiometric Thermal-Infrared Images"
+      authors: "Dongguw Lee, Jeongyun Kim, Younggun Cho, and Ayoung Kim"
+      conf: "IEEE Robotics and Automation Letters (RA-L)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+
+    - alt: "TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth and Uncertainty Estimation for Underwater 3D Robot Visual Perception"
+      authors: "Geonmo Yang and Younggun Cho"
+      conf: "IEEE Sensors Journal"
+      conf_link: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361"
+
+    - alt: "ReFeree: Radar-Based Lightweight and Robust Localization Using Feature and Free space"
+      authors: "Hogyun Kim, Byunghee Choi, Euncheol Choi, and Younggun Cho"
+      conf: "IEEE Robotics and Automation Letters (RA-L)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+
+    - alt: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
+      authors: "Hogyun Kim, Jiwon Choi, Taehu Shim, Giseop Kim, and Younggun Cho"
+      conf: "IEEE Robotics and Automation Letters (RA-L)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+
+    - alt: "Salience-guided Ground Factor for Robust Localization of Delivery Robots in Complex Urban Environments"
+      authors: "Jooyong Park, Jungwoo Lee, Euncheol Choi, and Younggun Cho"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+
+    - alt: "DiTer: Diverse Terrain and Multi-Modal Dataset for Field Robot Navigation in Outdoor Environments"
+      authors: "Seokhwan Jeong*, Hogyun Kim*, and Younggun Cho"
+      conf: "IEEE Sensors Letters"
+      conf_link: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=9085505"
+
+
+- title: "2023"
+  images:
+    - alt: "Joint-ID: Transformer-based Joint Image Enhancement and Depth Estimation for Underwater Environments"
+      authors: "Geonmo Yang, Gilhwan Kang, Juhui Lee, and Younggun Cho"
+      conf: "IEEE Sensors Journal"
+      conf_link: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361"
+
+    - alt: "Robust Imaging Sonar-based Place Recognition and Localization in Underwater Environments"
+      authors: "Hogyun Kim, Gilhwan Kang, Seokhwan Jeong, Seungjun Ma, and Younggun Cho"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+
+    - alt: "Edge-guided multi-domain rgb-to-tir image translation for training vision tasks with challenging labels"
+      authors: "Dongguw Lee, Myunghwan Jeon, Younggun Cho, and Ayoung Kim"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+
+    - alt: "Sparse depth-guided image enhancement using incremental GP with informative point selection"
+      authors: "Geonmo Yang, Juhui Lee, Ayoung Kim, and Younggun Cho"
+      conf: "MDPI Sensors"
+      conf_link: "https://www.mdpi.com/journal/sensors"
+
+
+- title: "2022"
+  images:
+    - alt: "Low-cost Thermal Mapping for Concrete Heat Monitoring"
+      authors: "Alex Junho Lee, Younggun Cho, and Hyun Myung"
+      conf: "arXiv"
+      conf_link: "https://arxiv.org"
+
+    - alt: "Nonparametric background model-based LiDAR SLAM in highly dynamic urban environments"
+      authors: "Joohyun Park, Younggun Cho, and Young-Sik Shin"
+      conf: "IEEE Transactions on Intelligent Transportation Systems (T-ITS)"
+      conf_link: "https://ieee-itss.org/pub/t-its/"
+
+    - alt: "ViViD++: Vision for visibility dataset"
+      authors: "Alex Junho Lee, Younggun Cho, Young-Sik Shin, Ayoung Kim, and Hyun Myung"
+      conf: "IEEE Robotics and Automation Letters (RA-L)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+
+
+- title: "2021"
+  images:
+    - alt: "Automatic wall slant angle map generation using 3D point clouds"
+      authors: "Jeongyun Kim, Seungsang Yun, Minwoo Jung, Ayoung Kim, and Younggun Cho"
+      conf: "ETRI Journal"
+      conf_link: "http://etrij.etri.re.kr"
+
+
+- title: "2020"
+  images:
+    - alt: "Dark Synthetic Vision: Lightweight Active Vision to Navigate in the Dark"
+      authors: "Joowan Kim, Myung-Hwan Jeon, Younggun Cho, and Ayoung Kim"
+      conf: "IEEE Robotics and Automation Letters (RA-L)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+
+    - alt: "HDMI-Loc: Exploiting High Definition Map Image for Precise Localization via Bitwise Particle Filter"
+      authors: "Jinyong Jeong, Younggun Cho, and Ayoung Kim"
+      conf: "IEEE Robotics and Automation Letters (RA-L)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+
+    - alt: "Proactive Camera Attribute Control using Bayesian Optimization for Illumination-Resilient Visual Navigation"
+      authors: "Joowan Kim, Younggun Cho, and Ayoung Kim"
+      conf: "IEEE Transactions on Robotics (T-RO)"
+      conf_link: "https://www.ieee-ras.org/publications/t-ro"
+
+    - alt: "Underwater Image Dehazing via Unpaired Image-to-image Translation"
+      authors: "Younggun Cho*, Hyesu Jang*, Ram Malav, Gaurav Pandey, and Ayoung Kim"
+      conf: "International Journal of Control, Automation and Systems (IJCAS)"
+      conf_link: "http://www.ijcas.org"
+
+    - alt: "Unsupervised Geometry-Aware Deep LiDAR Odometry"
+      authors: "Younggun Cho, Giseop Kim, and Ayoung Kim"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+
+
+- title: "2019"
+  images:
+    - alt: "Validation of a Multi–Sensor-Based Kiosk for Short Physical Performance Battery"
+      authors: "HeeWon Jung, Hyunchul Roh, Younggun Cho, Jinyong Jeong, YoungSik Shin, JaeYoung Lim, Jack M Guralnik, and Jihong Park"
+      conf: "Journal of the American Geriatrics Society (JAGS)"
+      conf_link: "https://onlinelibrary.wiley.com/journal/15325415"
+
+    - alt: "ViViD: Vision for Visibility Dataset (Best Poster Award)"
+      authors: "Alex Junho Lee, Younggun Cho, Sungho Yoon, Youngsik Shin, and Ayoung Kim"
+      conf: "ICRA Workshop on Dataset Generation and Benchmarking of SLAM Algorithms for Robotics and VR/AR"
+      conf_link: "https://icra2019.org"
+
+    - alt: "Complex Urban Dataset with Multi-level Sensors from Highly Diverse Urban Environments"
+      authors: "Jinyong Jeong, Younggun Cho, Young-Sik Shin, Hyunchul Roh, and Ayoung Kim"
+      conf: "International Journal of Robotics Research (IJRR)"
+      conf_link: "https://journals.sagepub.com/home/ijr"
+
+    - alt: "DeepLO: Geometry-Aware Deep LiDAR Odometry"
+      authors: "Younggun Cho, Giseop Kim, and Ayoung Kim"
+      conf: "arXiv"
+      conf_link: "https://arxiv.org"
+
+
+- title: "2018"
+  images:
+    - alt: "Channel Invariant Online Visibility Enhancement for Visual SLAM in a Turbid Environment"
+      authors: "Younggun Cho and Ayoung Kim"
+      conf: "Journal of Field Robotics (JFR)"
+      conf_link: "https://onlinelibrary.wiley.com/journal/15564967"
+
+    - alt: "Model Assisted Multi-band Fusion for Single Image Enhancement and Applications to Robot Vision"
+      authors: "Younggun Cho, Jinyong Jeong, and Ayoung Kim"
+      conf: "IEEE Robotics and Automation Letters (RA-L with IROS)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+
+    - alt: "Complex Urban LiDAR Data Set"
+      authors: "Jinyong Jeong, Younggun Cho, Young-Sik Shin, Hyunchul Roh, and Ayoung Kim"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+
+    - alt: "Exposure Control using Bayesian Optimization based on Entropy Weighted Image Gradient"
+      authors: "Joowan Kim, Younggun Cho, and Ayoung Kim"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+
+    - alt: "DejavuGAN: Multi-temporal Image Translation toward Long-term Robot Autonomy"
+      authors: "Younggun Cho, Jinyong Jeong, Youngsik Shin, and Ayoung Kim"
+      conf: "ICRA Workshop on Long-term Autonomy and Deployment of Intelligent Robots in the Real-world"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
