@@ -3,32 +3,36 @@ layout: default
 ---
 
 <style>
-  /* 갤러리 항목 전체 들여쓰기 */
-  .gallery-item {
-    padding-left: 1.5em;
-    text-indent: -1.5em;
+  /* 번호 칸 고정 너비, 우측 콘텐츠 들여쓰기 */
+  .pub-entry {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1em;
   }
-
-  /* 컨퍼런스명 및 저자 폰트 크기 */
+  .pub-entry__index {
+    flex: none;
+    width: 2ch;           /* 번호 영역 너비 (숫자 폭에 맞춰 조절) */
+  }
+  .pub-entry__content {
+    flex: 1;
+    margin-left: 1em;     /* Alt~버튼 들여쓰기 */
+  }
   .gallery-conf,
   .gallery-authors {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
-
-  /* arXiv 버튼 스타일 */
   .btn-arxiv {
     display: inline-block;
     white-space: nowrap;
-    box-sizing: border-box;    /* 패딩을 포함한 너비 계산 */
-    padding: 1px 6px;          /* 위아래 1px, 좌우 6px 여유 */
-    margin-top: 0.3em;
+    padding: 2px 8px;
     background-color: #001f3f;
     color: #fff;
-    font-size: 0.7em;
+    font-size: 0.6em;
     font-weight: bold;
-    line-height: 1em;          /* 텍스트가 버튼 박스 안에 딱 들어오도록 */
+    line-height: 1.2em;
     text-decoration: none;
     border-radius: 3px;
+    margin-top: 0.3em;
   }
 </style>
 
@@ -36,7 +40,6 @@ layout: default
   {% assign galleries = site.data[page.gallery] %}
   {% for gallery in galleries %}
     <div class="columns is-multiline">
-      <!-- 드래그 가능한 갤러리 제목 (볼드) -->
       <div class="column is-12">
         <h1 class="has-text-left draggable-title" draggable="true" style="font-size:40px;">
           <strong>{{ gallery.title }}</strong>
@@ -51,18 +54,25 @@ layout: default
         {% assign authors = authors | replace: "Younggun Cho", "<strong>Younggun Cho</strong>" %}
 
         <div class="column is-12">
-          <div class="gallery-item">
-            [{{ forloop.index }}] <strong>{{ image.alt }}</strong><br>
+          <div class="pub-entry">
+            <!-- 번호 -->
+            <div class="pub-entry__index">
+              [{{ forloop.index }}]
+            </div>
 
-            <span class="gallery-conf">
-              <a href="{{ image.conf_link }}" target="_blank" rel="noopener">{{ image.conf }}</a>
-            </span><br>
-
-            <span class="gallery-authors">{{ authors }}</span><br>
-
-            {% if image.arxiv %}
-              <a href="{{ image.arxiv }}" target="_blank" rel="noopener" class="btn-arxiv">arXiv</a>
-            {% endif %}
+            <!-- 내용(Alt, Conf, Authors, 버튼) -->
+            <div class="pub-entry__content">
+              <strong>{{ image.alt }}</strong><br>
+              <span class="gallery-conf">
+                <a href="{{ image.conf_link }}" target="_blank" rel="noopener">{{ image.conf }}</a>
+              </span><br>
+              <span class="gallery-authors">{{ authors }}</span><br>
+              {% if image.arxiv %}
+                <a href="{{ image.arxiv }}" target="_blank" rel="noopener" class="btn-arxiv">
+                  arXiv
+                </a>
+              {% endif %}
+            </div>
           </div>
         </div>
       {% endfor %}
@@ -70,5 +80,3 @@ layout: default
     </div>
   {% endfor %}
 {% endif %}
-
-
