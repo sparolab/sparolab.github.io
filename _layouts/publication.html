@@ -19,12 +19,14 @@ layout: default
   .btn-arxiv {
     display: inline-block;
     white-space: nowrap;
-    padding: 2px 6px;    /* em → px 로 고정 */
-    line-height: 1;       /* 글씨가 온전히 보이도록 */
+    box-sizing: border-box;    /* 패딩을 포함한 너비 계산 */
+    padding: 1px 6px;          /* 위아래 1px, 좌우 6px 여유 */
+    margin-top: 0.3em;
     background-color: #001f3f;
     color: #fff;
     font-size: 0.7em;
     font-weight: bold;
+    line-height: 1em;          /* 텍스트가 버튼 박스 안에 딱 들어오도록 */
     text-decoration: none;
     border-radius: 3px;
   }

@@ -176,3 +176,39 @@
       authors: "Younggun Cho, Jinyong Jeong, Youngsik Shin, and Ayoung Kim"
       conf: "ICRA Workshop on Long-term Autonomy and Deployment of Intelligent Robots in the Real-world"
       conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+
+- title: "2017"
+  images:
+    - alt: "LiDAR Configuration Comparison for Urban Mapping System"
+      conf: "IEEE Ubiquitous Robots and Ambient Intelligence (URAI)"
+      conf_link: "https://ieeexplore.ieee.org/xpl/conhome/1800607/all-proceedings"
+      authors: "Joowan Kim, Jinyong Jeong, Young-Sik Shin, Younggun Cho, Hyunchul Roh, and Ayoung Kim"
+
+    - alt: "Road-SLAM: Road Marking based SLAM with Lane-level Accuracy"
+      conf: "IEEE Intelligent Vehicle Symposium (IV)"
+      conf_link: "https://ieee-itss.org/conf/iv/"
+      authors: "Jinyong Jeong, Younggun Cho, and Ayoung Kim"
+
+    - alt: "Visibility Enhancement for Underwater Visual SLAM based on Underwater Light Scattering Model"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+      authors: "Younggun Cho and Ayoung Kim"
+
+
+- title: "2016"
+  images:
+    - alt: "Estimation of Ambient Light and Transmission Map with Common Convolutional Architecture"
+      conf: "IEEE/MTS OCEANS Conference and Exhibition (Oceans)"
+      conf_link: "https://www.oceansconference.org"
+      authors: "Young-Sik Shin, Younggun Cho, Gaurav Pandey, and Ayoung Kim"
+
+    - alt: "Online Depth Estimation and Application to Underwater Image Dehazing"
+      conf: "IEEE/MTS OCEANS Conference and Exhibition (Oceans)"
+      conf_link: "https://www.oceansconference.org"
+      authors: "Younggun Cho, Young-Sik Shin, and Ayoung Kim"
+
+    - alt: "Accurate Mobile Urban Mapping via Digital Map-Based SLAM"
+      conf: "MDPI Sensors"
+      conf_link: "https://www.mdpi.com/journal/sensors"
+      online_link: "URL_TO_ONLINE_VERSION"
+      authors: "Hyunchul Roh, Jinyong Jeong, Younggun Cho, and Ayoung Kim"
