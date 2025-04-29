@@ -4,9 +4,8 @@ title: Publication
 show_sidebar: false
 hide_footer: false
 hero_height: is-small
-gallery: publication
+gallery: publications
 ---
-
 <!-- # 2025  
 <span style="font-size:1.2em; font-weight:bold;">PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal</span> <a href="https://arxiv.org/abs/2412.06192" style="font-size:1.2em;">[Arxiv]</a>  
 <span style="font-size:1.0em;">IEEE International Conference on Robotics and Automation (ICRA), 2025</span>  
