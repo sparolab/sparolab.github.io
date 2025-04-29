@@ -23,6 +23,16 @@
 
 - title: "Journal"
   images:
+    - link: /img/research/polaris.gif
+      alt: IEEE ICRA
+      alt_link: https://arxiv.org/abs/2412.06192
+      date: May, 2025
+      paper: "PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal"
+      authors: Jiwon Choi*, Dongjin Cho*, Gihyeon Lee, Hogyun Kim, Geonmo Yang, Joowan Kim, and Younggun Cho
+      tags:
+          - Maritime Dataset
+      page_link: /research/trident/
+
     - link: /img/research/solid.png
       alt: IEEE Sensors Journal
       alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
