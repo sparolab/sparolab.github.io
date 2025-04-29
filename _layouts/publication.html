@@ -2,10 +2,38 @@
 layout: default
 ---
 
+<style>
+  /* 갤러리 항목 전체 들여쓰기 */
+  .gallery-item {
+    padding-left: 1.5em;
+    text-indent: -1.5em;
+  }
+
+  /* 컨퍼런스명 및 저자 폰트 크기 */
+  .gallery-conf,
+  .gallery-authors {
+    font-size: 0.9em;
+  }
+
+  /* arXiv 버튼 스타일 */
+  .btn-arxiv {
+    display: inline-block;
+    margin-top: 0.3em;
+    padding: 0.2em 0.5em;
+    background-color: #001f3f;
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 3px;
+  }
+</style>
+
 {% if page.gallery %}
   {% assign galleries = site.data[page.gallery] %}
   {% for gallery in galleries %}
     <div class="columns is-multiline">
+      <!-- 드래그 가능한 갤러리 제목 (볼드) -->
       <div class="column is-12">
         <h1 class="has-text-left draggable-title" draggable="true" style="font-size:40px;">
           <strong>{{ gallery.title }}</strong>
@@ -20,12 +48,18 @@ layout: default
         {% assign authors = authors | replace: "Younggun Cho", "<strong>Younggun Cho</strong>" %}
 
         <div class="column is-12">
-          <div style="padding-left:1.5em; text-indent:-1.5em;">
+          <div class="gallery-item">
             [{{ forloop.index }}] <strong>{{ image.alt }}</strong><br>
-            <span style="font-size:0.9em;">
+
+            <span class="gallery-conf">
               <a href="{{ image.conf_link }}" target="_blank" rel="noopener">{{ image.conf }}</a>
             </span><br>
-            <span style="font-size:0.9em;">{{ authors }}</span>
+
+            <span class="gallery-authors">{{ authors }}</span><br>
+
+            {% if image.arxiv %}
+              <a href="{{ image.arxiv }}" target="_blank" rel="noopener" class="btn-arxiv">arXiv</a>
+            {% endif %}
           </div>
         </div>
       {% endfor %}
