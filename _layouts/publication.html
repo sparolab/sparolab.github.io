@@ -6,7 +6,6 @@ layout: default
   {% assign galleries = site.data[page.gallery] %}
   {% for gallery in galleries %}
     <div class="columns is-multiline">
-      <!-- 드래그 가능한 갤러리 제목 (볼드) -->
       <div class="column is-12">
         <h1 class="has-text-left draggable-title" draggable="true" style="font-size:40px;">
           <strong>{{ gallery.title }}</strong>
@@ -18,11 +17,15 @@ layout: default
         {% if authors contains "*" %}
           {% assign authors = authors | append: " (*: Equal Contribution)" %}
         {% endif %}
+        {% assign authors = authors | replace: "Younggun Cho", "<strong>Younggun Cho</strong>" %}
+
         <div class="column is-12">
           <div style="padding-left:1.5em; text-indent:-1.5em;">
             [{{ forloop.index }}] <strong>{{ image.alt }}</strong><br>
-            <a href="{{ image.conf_link }}">{{ image.conf }}</a><br>
-            {{ authors }}
+            <span style="font-size:0.9em;">
+              <a href="{{ image.conf_link }}" target="_blank" rel="noopener">{{ image.conf }}</a>
+            </span><br>
+            <span style="font-size:0.9em;">{{ authors }}</span>
           </div>
         </div>
       {% endfor %}
@@ -30,3 +33,5 @@ layout: default
     </div>
   {% endfor %}
 {% endif %}
+
+
