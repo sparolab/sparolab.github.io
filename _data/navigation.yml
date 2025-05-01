@@ -11,8 +11,15 @@
 - name: Research
   link: /research/
 
+# - name: Publication
+#   link: /publications/
+
 - name: Publication
-  link: /publications/
+  dropdown:
+    - name: International
+      link: /pulication/international
+    - name: Domestic
+      link: /pulication/domestic
 
 - name: News
   link: /news/news

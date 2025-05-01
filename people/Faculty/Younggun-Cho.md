@@ -46,7 +46,7 @@ permalink: /people/Faculty/Younggun-Cho
 <article class="media">
   <figure class="media-left">
     <p class="image">
-      <img src="/img/album/people/faculty/조영근_증명사진_.jpg" alt="Younggun Cho">
+      <img src="/img/people/faculty/조영근_증명사진_.jpg" alt="Younggun Cho">
     </p>
   </figure>
   <div class="media-content">
@@ -80,3 +80,4 @@ permalink: /people/Faculty/Younggun-Cho
     </div>
   </div>
 </article>
+

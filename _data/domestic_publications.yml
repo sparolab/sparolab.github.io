@@ -1,0 +1,7 @@
+- title: "2025"
+  images:
+    - alt: "IML-SLAM: 주행 차량 모션을 고려한 LiDAR-Inertial SLAM 시스템"
+      authors: "Jiwon Choi, Hogyun Kim, Geonmo Yang, and Younggun Cho"
+      conf: "The Korean Society of Intelligent Transport Systems (ITS)"
+      conf_link: "https://www.kits.or.kr/"
+      # arxiv: "https://arxiv.org/abs/2412.06192"

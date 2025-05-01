@@ -1,6 +1,6 @@
 - title: Faculty
   images:
-    - link: /img/album/people/faculty/조영근_증명사진.jpg
+    - link: /img/people/faculty/조영근_증명사진.jpg
       alt: Younggun Cho
       description: |-
         **Younggun Cho**  
@@ -9,7 +9,7 @@
 
 - title: PhD Student
   images:
-    - link: /img/album/people/phd/양건모_증명사진.jpeg
+    - link: /img/people/phd/양건모_증명사진.jpeg
       alt: Geonmo Yang
       description: |-
         **Geonmo Yang**  
@@ -20,7 +20,7 @@
       linkedin: https://www.linkedin.com/in/geonmoyang7422/
       keywords: Robust State Estimation, Map Management 
 
-    - link: /img/album/people/phd/이주희_증명사진.jpg
+    - link: /img/people/phd/이주희_증명사진.jpg
       alt: Juhui Lee
       description: |-
         **Juhui Lee**  
@@ -31,7 +31,7 @@
       linkedin: https://www.linkedin.com/in/juhui-lee/
       keywords: 3D Vision, Visual SLAM 
 
-    - link: /img/album/people/phd/김호균_증명사진.jpg
+    - link: /img/people/phd/김호균_증명사진.jpg
       alt: Hogyun Kim
       description: |-
         **Hogyun Kim**  
@@ -42,7 +42,7 @@
       linkedin: https://www.linkedin.com/in/hogyun-kim/
       keywords: SLAM, Multi-Robot 
 
-    - link: /img/album/people/phd/이정우_증명사진.png
+    - link: /img/people/phd/이정우_증명사진.png
       alt: Jungwoo Lee
       description: |-
         **Jungwoo Lee**  
@@ -54,7 +54,7 @@
       linkedin: https://www.linkedin.com/in/jng-u/
       keywords: Visual SLAM, Sensor Fusion 
 
-    - link: /img/album/people/phd/최지원_증명사진.jpg
+    - link: /img/people/phd/최지원_증명사진.jpg
       alt: Jiwon Choi
       description: |-
         **Jiwon Choi**  
@@ -66,7 +66,7 @@
       linkedin: https://www.linkedin.com/in/jivvon2/
       keywords: LiDAR SLAM, Robust State Estimation 
 
-    - link: /img/album/people/phd/김주원_증명사진.jpg
+    - link: /img/people/phd/김주원_증명사진.jpg
       alt: Juwon Kim
       description: |-
         **Juwon Kim**  
@@ -80,7 +80,7 @@
 
 - title: Master Student
   images:
-    - link: /img/album/people/master/정석환_증명사진.png
+    - link: /img/people/master/정석환_증명사진.png
       alt: Seokhwan Jung
       description: |-
         **SeokHwan Jung**  
@@ -91,7 +91,7 @@
       linkedin: https://www.linkedin.com/in/seokhwan-jeong-19111331b/
       keywords: Sensor Calibration, Sensor Fusion
 
-    - link: /img/album/people/master/최병희_증명사진.jpg
+    - link: /img/people/master/최병희_증명사진.jpg
       alt: Byunghee Choi
       description: |-
         **Byunghee Choi**  
@@ -102,7 +102,7 @@
       linkedin: https://www.linkedin.com/in/refstop/
       keywords: Range Sensor, SLAM 
       
-    - link: /img/album/people/master/이기현_증명사진.jpg
+    - link: /img/people/master/이기현_증명사진.jpg
       alt: Gihyeon Lee
       description: |-
         **Gihyeon Lee**  
@@ -113,7 +113,7 @@
       linkedin: https://www.linkedin.com/in/gihyeonlee99
       keywords: Semantic SLAM, 3D Scene Understanding 
 
-    - link: /img/album/people/master/조동진_증명사진.jpg
+    - link: /img/people/master/조동진_증명사진.jpg
       alt: Dongjin Cho
       description: |-
         **Dongjin Cho**  
@@ -124,7 +124,7 @@
       linkedin: https://www.linkedin.com/in/dongjineee/
       keywords: Traversability, Long term Autonomy
 
-    - link: /img/album/people/master/이민호_증명사진.jpg
+    - link: /img/people/master/이민호_증명사진.jpg
       alt: Minho Lee
       description: |-
         **Minho Lee**  
@@ -136,7 +136,7 @@
       linkedin: https://www.linkedin.com/in/iminolee/
       keywords: Embodied AI, MM-LLMs
 
-    - link: /img/album/people/master/박미령_증명사진.jpg
+    - link: /img/people/master/박미령_증명사진.jpg
       alt: Miryeong Park
       description: |-
         **Miryeong Park**  
@@ -147,7 +147,7 @@
       linkedin: https://www.linkedin.com/in/miryeong-park-802a7618b/
       keywords: Exploration-planning, Field Robotics 
 
-    - link: /img/album/people/master/이지윤_증명사진.jpg
+    - link: /img/people/master/이지윤_증명사진.jpg
       alt: Jiyun Lee
       description: |-
         **Jiyun Lee**  
@@ -160,7 +160,7 @@
 
 - title: Part-Time
   images:
-    - link: /img/album/people/phd/김기섭_증명사진.jpg
+    - link: /img/people/phd/김기섭_증명사진.jpg
       alt: Kisup Kim
       description: |-
         **Kisup Kim**  
@@ -170,7 +170,7 @@
 
 - title: Staff
   images:
-    - link: /img/album/people/staff/김수현_증명사진.jpg
+    - link: /img/people/staff/김수현_증명사진.jpg
       alt: Soohyeon Kim
       description: |-
         **Soohyeon Kim**  
