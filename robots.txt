@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://github.com/sparolab/sparolab.github.io/sitemap.xml
+
