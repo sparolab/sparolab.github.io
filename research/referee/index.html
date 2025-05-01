@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="ReFeree: Radar-Based Lightweight and Robust Localization using Feature and Free space">
+  <meta name="keywords" content="Radar, Place Recognition, Localization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReFeree: Radar-Based Lightweight and Robust Localization using Feature and Free space</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://sparolab.github.io/research/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">ReFeree: Radar-Based Lightweight and Robust Localization using
+              Feature and Free space</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko">Hogyun
+                  Kim</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.co.kr/citations?user=JCJAwgIAAAAJ&hl=ko&oi=ao">ByungHee
+                  Choi</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.co.kr/citations?view_op=list_works&hl=ko&user=rcp7sWAAAAAJ">Euncheol
+                  Choi</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko">Younggun Cho</a><sup>1</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University,</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://ieeexplore.ieee.org/document/10705066"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2410.01325" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="https://youtu.be/aQ0OlHYJCYI?si=eWrS4sgvWD4MdsY8"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/sparolab/referee"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./static/images/main.png">
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf"> TL;DR Free space based lightweight descriptor mitigate the impact of multipath and
+            speckle noise!</span>
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Place recognition plays an important role in achieving robust long-term autonomy.
+              Real-world robots face a wide range of weather conditions (e.g. overcast, heavy rain, and snowing) and
+              most sensors (i.e. camera, LiDAR) essentially functioning within or near-visible electromagnetic waves are
+              sensitive to adverse weather conditions, making reliable localization difficult.
+              In contrast, radar is gaining traction due to long electromagnetic waves, which are less affected by
+              environmental changes and weather independence.
+              In this work, we propose a radar-based lightweight and robust place recognition.
+              We achieve rotational invariance and lightweight by selecting a one-dimensional ringshaped description and
+              robustness by mitigating the impact of false detection utilizing opposite noise characteristics between
+              free space and feature.
+              In addition, the initial heading can be estimated, which can assist in building a SLAM pipeline that
+              combines odometry and registration, which takes into account onboard computing.
+              The proposed method was tested for rigorous validation across various scenarios (i.e. single session,
+              multi-session, and different weather conditions).
+              In particular, we validate our descriptor achieving reliable place recognition performance through the
+              results of extreme environments that lacked structural information such as an OORD dataset.
+              Our supplementary materials and code are available on publication.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract.
+      -->
+
+      <section class="section">
+        <div class="container is-max-desktop">
+          <!-- Introduction. -->
+          <div class="columns is-centered">
+            <div class="column is-full-width">
+              <h2 class="title is-3" id="intro">Descriptor</h2>
+              <div class="content has-text-justified">
+                <img src="./static/images/freespace.png">
+                <p>
+                  Mitigating the impact of multipath and speckle noise is the key characteristic of free space we
+                  utilized.
+                  This is possible because free space spans a much larger area in radar measurements than the area of
+                  features.
+                  We propose two descriptors: R-ReFeree descriptor which is rotational invariance Place Recognition(PR)
+                  and A-ReFeree descriptor which can estimate the initial heading for registration step.
+                  R-ReFeree descriptor is a one-dimensional ring-shaped descriptor by compressing the free space and
+                  feature
+                  information.
+                  A-ReFeree descriptor is a one-dimensional descriptor that can estimate the initial heading by
+                  shifting.
+                </p>
+
+              </div>
+              <h2 class="title is-3" id="probdef">SLAM Pipeline</h2>
+              <div class="content has-text-justified">
+                <img src="./static/images/pipeline.png">
+                <p>
+                  We integrate our descriptor into the SLAM pipeline, using the structure of <a
+                    href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko">Navtech-Radar-SLAM</a>.
+                  The odometry and pose-graph optimization part is Yeti-Odometry and iSAM2, respectively.
+                </p>
+                <div class="video-container">
+                  <video id="howitworks" autoplay controls muted loop playsinline class="full-video"
+                    style="max-width: 80%;">
+                    <source src="./static/videos/referee_slam.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <p>
+                  <!-- <strong>One sentence summary: As the actual pose discrepancy between two viewpoints of point clouds,
+                    the number of actual inliers reduces while the ratio of outliers inevitably increases.</strong> -->
+                </p>
+              </div>
+            </div>
+            <!--/ Introduction. -->
+          </div>
+      </section>
+
+      <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+          <h2 class="title">BibTeX</h2>
+          <pre><code class="language-latex">@ARTICLE{10705066,
+  author={Kim, Hogyun and Choi, Byunghee and Choi, Euncheol and Cho, Younggun},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={ReFeree: Radar-Based Lightweight and Robust Localization Using Feature and Free Space}, 
+  year={2024},
+  volume={9},
+  number={12},
+  pages={11042-11049},
+  keywords={Radar;Feature extraction;Radar imaging;Noise;Radar cross-sections;Meteorology;Image recognition;Spaceborne radar;Simultaneous localization and mapping;Meteorological radar;Radar;place recognition;localization;SLAM;lightweight;onboard computing},
+  doi={10.1109/LRA.2024.3474554}
+}</code></pre>
+        </div>
+      </section>
+
+
+      <footer class="footer">
+        <div class="container">
+          <div class="content has-text-centered">
+            <a class="icon-link" href="https://github.com/limhyungtae" class="external-link" disabled>
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <div class="columns is-centered">
+            <div class="column is-8">
+              <div class="content">
+                <p>
+                  This website is licensed under a <a rel="license"
+                    href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                    Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+                <p>
+                  This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
+                    code</a> of this website,
+                  we just ask that you link back to this page in the footer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+</body>
+
+</html>

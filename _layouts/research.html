@@ -33,7 +33,7 @@ layout: default
     box-shadow: inset 0 0 0 2px rgba(0,0,0,0.2);
   }
 
-  /* 카드 내부 태그 스타일 (일단 기본 테두리만) */
+  /* 카드 내부 태그 스타일 (기본 테두리만) */
   .card-tag {
     display: inline-block;
     margin: 2px;
@@ -62,80 +62,69 @@ layout: default
   </span>
 </div>
 
-{% if page.gallery %}
-  {% assign galleries = site.data[page.gallery] %}
-  {% for gallery in galleries %}
-    <div class="columns is-multiline">
-      <!-- 드래그 가능한 갤러리 제목 -->
-      <div class="column is-12">
-        <h1 class="has-text-left draggable-title" draggable="true" style="font-size:35px;">
-          {{ gallery.title }}
-        </h1>
-      </div>
+{% comment %}
+  _data/research.yml 에 선언된 배열을 items 변수로 할당합니다.
+{% endcomment %}
+{% assign items = site.data[page.images_data] %}
 
-      {% for image in gallery.images %}
-        <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
-             {% if image.tags %}data-tags="{{ image.tags | join:',' }}"{% endif %}>
-          <div class="clickable-card" data-href="{{ image.page_link }}">
-            <div class="card"
-                 style="margin:0 auto; text-align:center; height:530px;
-                        display:flex; flex-direction:column; justify-content:space-between;">
-              
-              <!-- 카드 상단: 이미지 -->
-              <div>
-                <div class="card-image">
-                  {% include image-modal.html
-                    link=image.link
-                    alt=image.alt
-                    large_link=image.large_link
-                    ratio="is-16by9"
-                  %}
-                </div>
-                <!-- 카드 본문 -->
-                <div class="card-content" style="padding:10px;">
-                  <div class="content" style="text-align:left; font-size:1.0rem;
-                                               color:black; font-weight:bold;">
-                    <a href="{{ image.alt_link }}" target="_blank"
-                       style="color:#0073e6; text-decoration:none;">
-                      [{{ image.alt }}]
-                    </a>
-                    {{ image.paper }}
-                  </div>
-                  <div style="margin-top:10px; font-size:0.8rem; color:gray;">
-                    {{ image.authors }}
-                  </div>
-                </div>
-              </div>
+<div class="columns is-multiline">
+  {% for image in items %}
+    <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
+         {% if image.tags %}data-tags="{{ image.tags | join:',' }}"{% endif %}>
+      <div class="clickable-card" data-href="{{ image.page_link }}">
+        <div class="card"
+             style="margin:0 auto; text-align:center; height:530px;
+                    display:flex; flex-direction:column; justify-content:space-between;">
+          
+          <!-- 카드 상단: 이미지 -->
+          <div class="card-image">
+            {% include image-modal.html
+              link=image.link
+              alt=image.alt
+              large_link=image.alt_link
+              ratio="is-16by9"
+            %}
+          </div>
 
-              <!-- 카드 하단: JS 팔레트로 칠해질 .card-tag -->
-              <div style="margin-top:auto;">
-                {% if image.tags %}
-                  <div style="text-align:center; margin:2px 0;">
-                    {% for tag in image.tags %}
-                      <span class="card-tag" data-tag="{{ tag }}">
-                        {{ tag }}
-                      </span>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-                <hr style="width:70%; margin:0 auto;">
-                {% if image.date %}
-                  <p style="margin:10px 0; text-align:center; font-size:1.0rem; color:black;">
-                    Published: {{ image.date }}
-                  </p>
-                {% endif %}
-              </div>
-
+          <!-- 카드 본문: 논문명·저자 -->
+          <div class="card-content" style="padding:10px;">
+            <div class="content" style="text-align:left; font-size:1rem;
+                                         color:black; font-weight:bold;">
+              <a href="{{ image.alt_link }}" target="_blank"
+                 style="color:#0073e6; text-decoration:none;">
+                [{{ image.alt }}]
+              </a>
+              {{ image.paper }}
+            </div>
+            <div style="margin-top:10px; font-size:0.8rem; color:gray;">
+              {{ image.authors }}
             </div>
           </div>
-        </div>
-      {% endfor %}
-    </div>
-    <hr>
-  {% endfor %}
-{% endif %}
 
-<!-- 3. 스크립트: 전적으로 JS 팔레트 사용 -->
+          <!-- 카드 하단: 태그 및 발행일 -->
+          <div style="margin-top:auto;">
+            {% if image.tags %}
+              <div style="text-align:center; margin:2px 0;">
+                {% for tag in image.tags %}
+                  <span class="card-tag" data-tag="{{ tag }}">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+            <hr style="width:70%; margin:0 auto;">
+            {% if image.date %}
+              <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
+                Published: {{ image.date }}
+              </p>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- 3. 스크립트: JS 팔레트 및 필터링 로직 -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const items     = Array.from(document.querySelectorAll('.gallery-item'));
@@ -150,22 +139,22 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   const tagArray = Array.from(tagSet).sort();
 
-  // 2) 팔레트 정의 (필요한 만큼 확장하십시오)
+  // 2) 팔레트 정의 (필요한 만큼 확장 가능)
   const palette = [
-  "#FE72A9", "#FFC872", "#A8E6CF", "#FFD3B6", "#FF8C94", "#DCE775", "#B39CD0", "#FFAB91",
-  "#81C784", "#90CAF9", "#F48FB1", "#CE93D8", "#FFB74D", "#4DB6AC", "#BA68C8", "#AED581",
-  "#7986CB", "#E57373", "#4FC3F7", "#FFF176", "#A1887F", "#9575CD", "#FF8A65", "#64B5F6",
-  "#E0E0E0", "#F06292", "#81D4FA", "#E1BEE7", "#FFF59D", "#AED581", "#7986CB", "#E57373",
-  "#4FC3F7", "#4DD0E1", "#FDD835", "#90A4AE", "#FF7043", "#A5D6A7", "#F5F5F5", "#E0F7FA",
-  "#FFD54F", "#80CBC4", "#A1887F", "#E6EE9C", "#B2DFDB", "#FFCCBC", "#C5CAE9", "#D1C4E9",
-  "#B2EBF2", "#F8BBD0", "#DCEDC8", "#C8E6C9", "#F0F4C3", "#FFCDD2", "#B3E5FC", "#B39DDB",
-  "#FFE082", "#FFAB91", "#E6EE9C", "#A7FFEB", "#D7CCC8", "#CFD8DC", "#FFEB3B", "#00BCD4",
-  "#CDDC39", "#FF9800", "#8BC34A", "#00ACC1", "#F44336", "#03A9F4", "#673AB7", "#4CAF50",
-  "#2196F3", "#9C27B0", "#8BC34A", "#FFC107", "#03A9F4", "#9E9E9E", "#00BCD4", "#4CAF50",
-  "#E91E63", "#607D8B", "#3F51B5", "#009688", "#C2185B", "#7B1FA2", "#512DA8", "#1976D2",
-  "#0288D1", "#0097A7", "#00796B", "#388E3C", "#689F38", "#AFB42B", "#FBC02D", "#FFA000",
-  "#F57C00", "#E64A19", "#5D4037", "#616161", "#455A64"
-];
+    "#FE72A9", "#FFC872", "#A8E6CF", "#FFD3B6", "#FF8C94", "#DCE775", "#B39CD0", "#FFAB91",
+    "#81C784", "#90CAF9", "#F48FB1", "#CE93D8", "#FFB74D", "#4DB6AC", "#BA68C8", "#AED581",
+    "#7986CB", "#E57373", "#4FC3F7", "#FFF176", "#A1887F", "#9575CD", "#FF8A65", "#64B5F6",
+    "#E0E0E0", "#F06292", "#81D4FA", "#E1BEE7", "#FFF59D", "#AED581", "#7986CB", "#E57373",
+    "#4FC3F7", "#4DD0E1", "#FDD835", "#90A4AE", "#FF7043", "#A5D6A7", "#F5F5F5", "#E0F7FA",
+    "#FFD54F", "#80CBC4", "#A1887F", "#E6EE9C", "#B2DFDB", "#FFCCBC", "#C5CAE9", "#D1C4E9",
+    "#B2EBF2", "#F8BBD0", "#DCEDC8", "#C8E6C9", "#F0F4C3", "#FFCDD2", "#B3E5FC", "#B39DDB",
+    "#FFE082", "#FFAB91", "#E6EE9C", "#A7FFEB", "#D7CCC8", "#CFD8DC", "#FFEB3B", "#00BCD4",
+    "#CDDC39", "#FF9800", "#8BC34A", "#00ACC1", "#F44336", "#03A9F4", "#673AB7", "#4CAF50",
+    "#2196F3", "#9C27B0", "#8BC34A", "#FFC107", "#03A9F4", "#9E9E9E", "#00BCD4", "#4CAF50",
+    "#E91E63", "#607D8B", "#3F51B5", "#009688", "#C2185B", "#7B1FA2", "#512DA8", "#1976D2",
+    "#0288D1", "#0097A7", "#00796B", "#388E3C", "#689F38", "#AFB42B", "#FBC02D", "#FFA000",
+    "#F57C00", "#E64A19", "#5D4037", "#616161", "#455A64"
+  ];
 
   // 3) 태그별 색 매핑
   const tagColors = {};
@@ -173,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
     tagColors[tag] = palette[idx % palette.length];
   });
 
-  // 4) ‘All’ 외 필터 버튼 생성 (팔레트 색 적용)
+  // 4) ‘All’ 외 필터 버튼 생성
   tagArray.forEach(tag => {
     const btn = document.createElement('span');
     btn.className   = 'tag-button';
@@ -186,13 +175,13 @@ document.addEventListener('DOMContentLoaded', function() {
     filterBar.appendChild(btn);
   });
 
-  // 5) 카드 내부 태그(.card-tag)에도 동일 팔레트 적용
+  // 5) 카드 내부 태그에도 동일 팔레트 적용
   document.querySelectorAll('.card-tag').forEach(el => {
     const tag   = el.dataset.tag;
     const color = tagColors[tag] || '#cccccc';
-    el.style.background    = color;
-    el.style.borderColor   = color;
-    el.style.color         = 'black';
+    el.style.background  = color;
+    el.style.borderColor = color;
+    el.style.color       = 'black';
   });
 
   // 6) 필터링 함수
@@ -215,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // 8) 기본 “All” 필터 적용
   filterItems('All');
 
-  // 9) 카드 클릭 이동
+  // 9) 카드 클릭 시 페이지 이동
   document.querySelectorAll('.clickable-card').forEach(card => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', function(e) {
