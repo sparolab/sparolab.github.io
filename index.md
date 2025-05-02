@@ -15,14 +15,8 @@ hero_link2: https://www.youtube.com/@sparolab/featured
 hero_link_text2: Youtube
 ---
 
-# Join Us!
-We are looking for self-motivated researchers and students (graduate / intern) who are interested in
-Spatial AI and Robotics in various fields (Vehicle, Construction, Logistics and etc.).
-
-공간지능 및 로보틱스 연구실에서는 다양한 필드에 적용할 수 있는
-인공지능 및 로봇 인지 분야에 관심있는 연구원, 대학원생, 학부연구생을 모집합니다! 
-
-If you are Interested in SPARO Lab, please feel free to contact Prof. Younggun Cho (yg.cho (at) inha.ac.kr)
+At SPARO Lab, we develop **Spatial AI** that empowers robots with **seamless situational awareness**.
+Our autonomous multi-robot systems **perceive**, **adapt**, and **collaborate** anywhere in the real world.
 
 ---
 
