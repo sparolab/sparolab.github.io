@@ -5,3 +5,12 @@
       conf: "The Korean Society of Intelligent Transport Systems (ITS)"
       conf_link: "https://www.kits.or.kr/"
       # arxiv: "https://arxiv.org/abs/2412.06192"
+
+
+- title: "2024"
+  images:
+    - alt: "GNSS-Denied 환경에서 위성 이미지를 이용한 비전 기반의 UAV 지리적 위치추정 시스템"
+      authors: "Encheol Choi, Sungwook Jung, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main//"
+      pdf: ""
