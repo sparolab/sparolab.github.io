@@ -34,6 +34,19 @@ layout: default
     border-radius: 3px;
     margin-top: 0.3em;
   }
+  .btn-pdf {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 3px 5px;
+    background-color: #001f3f;
+    color: #fff;
+    font-size: 0.6em;
+    font-weight: bold;
+    line-height: 1.0em;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-top: 0.3em;}
+
 </style>
 
 {% if page.gallery %}
@@ -70,6 +83,11 @@ layout: default
               {% if image.arxiv %}
                 <a href="{{ image.arxiv }}" target="_blank" rel="noopener" class="btn-arxiv">
                   arXiv
+                </a>
+              {% endif %}
+              {% if image.pdf %}
+                <a href="{{ image.pdf }}" target="_blank" rel="noopener" class="btn-pdf">
+                  PDF
                 </a>
               {% endif %}
             </div>
