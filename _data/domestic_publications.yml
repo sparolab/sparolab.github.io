@@ -4,7 +4,7 @@
       authors: "Jiwon Choi, Hogyun Kim, Geonmo Yang, and Younggun Cho"
       conf: "The Korean Society of Intelligent Transport Systems (ITS)"
       conf_link: "https://www.kits.or.kr/"
-      # arxiv: "https://arxiv.org/abs/2412.06192"
+      pdf: ""
 
 
 - title: "2024"
@@ -65,6 +65,40 @@
 
     - alt: "도심 GPS 음영지역에서의 자율주행을 위한 ICP 기반 위치 추정 방법"
       authors: "Minho Lee, Gihyeon Lee, Miryeong Park, Jiyoon Lee, Jaeyong Lee, Gilhwan Kang, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+- title: "2023"
+  images:
+    - alt: "멀티 모달 시스템을 위한 가상 LiDAR기반의 다중 지도 융합 방법"
+      authors: "Gilhwan Kang and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+    - alt: "비정형 환경을 위한 4족보행 로봇 기반 매핑 시스템"
+      authors: "Euncheol Choi, Hogyun Kim, Seungjun Ma, Seokhwan Jeong, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+    - alt: "Visual marker 및 설계도면을 활용한 효율적인 다층 내비게이션에 관한 연구"
+      authors: "Gihyeon Lee, Sangwook Han, Taehu Sim, Jiwon Choi, Changhee Kim, Jaeyong Lee, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+- title: "2022"
+  images:
+    - alt: "특징점이 부족한 실내환경에서의 Visual Localization에 대한 연구"
+      authors: "Seungjun Ma, Seokhwan Jeong, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+    - alt: "도로 환경에서 Semantic Segmentation 및 Inverse Perspective Mapping을 통한 주행영역 검출 방법"
+      authors: "Junheok Kwon, Hogyun Kim, Juhui Lee, and Younggun Cho"
       conf: "Korea Robotics Society Annual Conference (KRoC)"
       conf_link: "https://kros.org/"
       pdf: ""
