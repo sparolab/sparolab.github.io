@@ -4,4 +4,101 @@
       authors: "Jiwon Choi, Hogyun Kim, Geonmo Yang, and Younggun Cho"
       conf: "The Korean Society of Intelligent Transport Systems (ITS)"
       conf_link: "https://www.kits.or.kr/"
-      # arxiv: "https://arxiv.org/abs/2412.06192"
+      pdf: ""
+
+
+- title: "2024"
+  images:
+    - alt: "GNSS-Denied 환경에서 위성 이미지를 이용한 비전 기반의 UAV 지리적 위치추정 시스템"
+      authors: "Encheol Choi, Sungwook Jung, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+    - alt: "가벼운  전역  설명자로  이루어진  위치  인식  기술을  이용한 강인한 슬램 기술"
+      authors: "Jjiwon Choi, Hogyun Kim, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+    - alt: "실내 환경에서의 평면 팩터 기반 그래프 SLAM 및 의미론적 물체 표현 방법"
+      authors: "Gihyeon Lee, Dongjin Cho, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+    - alt: "극한 환경 다중 로봇 협력을 위한 레이더 기반의 전역 설명자를 사용한 강건하고 가벼운 위치 인식 기술"
+      authors: "Hogyun Kim, Byunghee Choi, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+    - alt: "다층 환경 주행을 위한 모바일 매니퓰레이터 및 내비게이션 기술"
+      authors: "Jongmin Lee, Kyeonghun Han, Daum Park, Minjeong Kim, Seungjun Ma, Seokhwan Jeong, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+    - alt: "도심환경에서 배달로봇을 위한 현저성 기반 강건한 위치인식 기술"
+      authors: "Jeongwoo Lee and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+    - alt: "다양한 조도 환경을 표현하는 Implicit Neural Map 구축 및 로봇 주행 상황에서의 조도 정보 판별 연구"
+      authors: "Juhui Lee, Seungjun Ma, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+    - alt: "다양한 조도 환경을 표현하는 Implicit Neural Map 구축 및 로봇 주행 상황에서의 조도 정보 판별 연구"
+      authors: "Juhui Lee, Seungjun Ma, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+    - alt: "자율주행 차량의 지역 경로 계획을 위한 Lattice planner 기반의 간소화된 최적 경로 선택 알고리즘"
+      authors: "Miryeong Park, Jaeyong Lee, Jiyoon Lee, Minho Lee, Gihyeon Lee, Gilhwan Kang, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+    - alt: "도심 GPS 음영지역에서의 자율주행을 위한 ICP 기반 위치 추정 방법"
+      authors: "Minho Lee, Gihyeon Lee, Miryeong Park, Jiyoon Lee, Jaeyong Lee, Gilhwan Kang, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+- title: "2023"
+  images:
+    - alt: "멀티 모달 시스템을 위한 가상 LiDAR기반의 다중 지도 융합 방법"
+      authors: "Gilhwan Kang and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+    - alt: "비정형 환경을 위한 4족보행 로봇 기반 매핑 시스템"
+      authors: "Euncheol Choi, Hogyun Kim, Seungjun Ma, Seokhwan Jeong, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+    - alt: "Visual marker 및 설계도면을 활용한 효율적인 다층 내비게이션에 관한 연구"
+      authors: "Gihyeon Lee, Sangwook Han, Taehu Sim, Jiwon Choi, Changhee Kim, Jaeyong Lee, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+- title: "2022"
+  images:
+    - alt: "특징점이 부족한 실내환경에서의 Visual Localization에 대한 연구"
+      authors: "Seungjun Ma, Seokhwan Jeong, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+    - alt: "도로 환경에서 Semantic Segmentation 및 Inverse Perspective Mapping을 통한 주행영역 검출 방법"
+      authors: "Junheok Kwon, Hogyun Kim, Juhui Lee, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
