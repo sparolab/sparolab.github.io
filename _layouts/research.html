@@ -81,7 +81,7 @@ layout: default
   {% if gallery.title == "Paper" %}
     {% assign card_size = "min-height:530px; height:auto;" %}
   {% elsif gallery.title == "Project" %}
-    {% assign card_size = "min-height:350px; height:auto;" %}
+    {% assign card_size = "min-height:300px; height:auto;" %}
   {% else %}
     {% assign card_size = "min-height:530px; height:auto;" %}
   {% endif %}
@@ -133,27 +133,40 @@ layout: default
             </div>
 
             <!-- 카드 하단: 태그 및 발행일 -->
-            <div style="margin-top:auto;">
-              {% if image.tags %}
-                <div style="text-align:center; margin:2px 0;">
-                  {% for tag in image.tags %}
-                    <span class="card-tag" data-tag="{{ tag }}">{{ tag }}</span>
-                  {% endfor %}
-                </div>
-              {% endif %}
-              <hr style="width:70%; margin:0 auto;">
-              {% if image.pulished_date %}
-                <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
-                  Published: {{ image.pulished_date }}
-                </p>
-              {% endif %}
-              {% if image.project_date %}
-                <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
-                  {{ image.project_date }}
-                </p>
-              {% endif %}
-            </div>
-
+            {% if image.title == "Paper"%}
+              <div style="margin-top:auto;">
+                {% if image.tags %}
+                  <div style="text-align:center; margin:2px 0;">
+                    {% for tag in image.tags %}
+                      <span class="card-tag" data-tag="{{ tag }}">{{ tag }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                <hr style="width:70%; margin:0 auto;">
+                {% if image.pulished_date %}
+                  <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
+                    Published: {{ image.pulished_date }}
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}
+            {% if image.title == "Paper"%}
+              <div style="margin-top:auto;">
+                {% if image.tags %}
+                  <div style="text-align:center; margin:2px 0;">
+                    {% for tag in image.tags %}
+                      <span class="card-tag" data-tag="{{ tag }}">{{ tag }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                <hr style="width:70%; margin:0 auto;">
+                {% if image.project_date %}
+                  <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
+                    Published: {{ image.project_date }}
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}>
           </div>
         </div>
       </div>

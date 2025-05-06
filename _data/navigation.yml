@@ -13,9 +13,9 @@
       
 - name: Research
   dropdown:
-    - name: Papers
+    - name: Paper
       link: /research/paper
-    - name: Projects
+    - name: Project
       link: /research/project
 
 # - name: Publication
