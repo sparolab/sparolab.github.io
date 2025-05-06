@@ -81,7 +81,7 @@ layout: default
   {% if gallery.title == "Paper" %}
     {% assign card_size = "min-height:530px; height:auto;" %}
   {% elsif gallery.title == "Project" %}
-    {% assign card_size = "height:350px; overflow:hidden;" %}
+    {% assign card_size = "min-height:350px; height:auto;" %}
   {% else %}
     {% assign card_size = "min-height:530px; height:auto;" %}
   {% endif %}
