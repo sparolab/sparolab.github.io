@@ -81,7 +81,7 @@ layout: default
   {% if gallery.title == "Paper" %}
     {% assign card_size = "min-height:530px; height:auto;" %}
   {% elsif gallery.title == "Project" %}
-    {% assign card_size = "min-height:400px; height:auto;" %}
+    {% assign card_size = "min-height:350px; height:auto;" %}
   {% else %}
     {% assign card_size = "min-height:530px; height:auto;" %}
   {% endif %}
@@ -113,19 +113,15 @@ layout: default
             <!-- 카드 본문: 논문명·저자 -->
             <div class="card-content" style="padding:10px;">
               <div class="content" style="text-align:left; font-size:1rem; color:black; font-weight:bold;">
-                {%- if image.alt %}
-                  {%- if image.alt_link -%}
-                    <a href="{{ image.alt_link }}" target="_blank"
-                       style="color:#0073e6; text-decoration:none;">
-                      [{{ image.alt }}]
-                    </a>
-                  {%- else -%}
-                    {{ image.alt }}
-                  {%- endif -%}
-                {%- endif -%}
-                {% if image.paper %}
-                  {{ image.paper }}
+                {% if image.alt_link %}
+                  <a href="{{ image.alt_link }}" target="_blank"
+                     style="color:#0073e6; text-decoration:none;">
+                    [{{ image.alt | default: "No Title" }}]
+                  </a>
+                {% else %}
+                  {{ image.alt}}
                 {% endif %}
+                {{ image.paper }}
               </div>
               <div style="margin-top:10px; font-size:0.8rem; color:gray;">
                 {{ image.authors }}
@@ -133,40 +129,27 @@ layout: default
             </div>
 
             <!-- 카드 하단: 태그 및 발행일 -->
-            {% if image.title == "Paper"%}
-              <div style="margin-top:auto;">
-                {% if image.tags %}
-                  <div style="text-align:center; margin:2px 0;">
-                    {% for tag in image.tags %}
-                      <span class="card-tag" data-tag="{{ tag }}">{{ tag }}</span>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-                <hr style="width:70%; margin:0 auto;">
-                {% if image.pulished_date %}
-                  <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
-                    Published: {{ image.pulished_date }}
-                  </p>
-                {% endif %}
-              </div>
-            {% endif %}
-            {% if image.title == "Project"%}
-              <div style="margin-top:auto;">
-                {% if image.tags %}
-                  <div style="text-align:center; margin:2px 0;">
-                    {% for tag in image.tags %}
-                      <span class="card-tag" data-tag="{{ tag }}">{{ tag }}</span>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-                <hr style="width:70%; margin:0 auto;">
-                {% if image.project_date %}
-                  <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
-                    {{ image.project_date }}
-                  </p>
-                {% endif %}
-              </div>
-            {% endif %}
+            <div style="margin-top:auto;">
+              {% if image.tags %}
+                <div style="text-align:center; margin:2px 0;">
+                  {% for tag in image.tags %}
+                    <span class="card-tag" data-tag="{{ tag }}">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <hr style="width:70%; margin:0 auto;">
+              {% if image.pulished_date %}
+                <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
+                  Published: {{ image.pulished_date }}
+                </p>
+              {% endif %}
+              {% if image.project_date %}
+                <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
+                  {{ image.project_date }}
+                </p>
+              {% endif %}
+            </div>
+
           </div>
         </div>
       </div>
