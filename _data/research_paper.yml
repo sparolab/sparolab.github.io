@@ -1,0 +1,109 @@
+- link: /img/research/solid.png
+  alt: IEEE ICRA-W
+  alt_link: https://norlab-ulaval.github.io/icra_workshop_field_robotics/
+  date: May, 2025
+  paper: "SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments"
+  authors: Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho
+  tags:
+      - LiDAR SLAM
+      - Diverse Terrain
+  page_link: /research/polaris/
+
+- link: /img/research/polaris.gif
+  alt: IEEE ICRA
+  alt_link: https://2025.ieee-icra.org/
+  date: May, 2025
+  paper: "PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal"
+  authors: Jiwon Choi*, Dongjin Cho*, Gihyeon Lee, Hogyun Kim, Geonmo Yang, Joowan Kim, and Younggun Cho
+  tags:
+      - Dataset
+      - Maritime
+  page_link: /research/polaris/
+
+- link: /img/research/diter_plus.png
+  alt: IEEE ICRA
+  alt_link: https://2025.ieee-icra.org/
+  date: May, 2025
+  paper: "DiTer++ : Diverse Terrain and Multi-modal Dataset for Multi-Robot Navigation in Multi-session Outdoor Environments"
+  authors: Juwon Kim, Hogyun Kim, SeokHwan Jeong, Youngsik Shin, and Younggun Cho1
+  tags:
+      - Dataset
+      - Diverse Terrain
+  page_link: /research/diter_plus/
+
+- link: /img/research/referee.png
+  alt: IEEE RA-L
+  alt_link: https://www.ieee-ras.org/publications/ra-l
+  date: Dec 12, 2024
+  paper: "ReFeree: Radar-Based Lightweight and Robust Localization Using Feature and Free Space"
+  authors: Hogyun Kim, Jiwon Choi, Taehu Sim, Giseop Kim, Younggun Cho
+  tags:
+      - Radar PR
+      - Diverse Terrain
+  page_link: /research/referee/
+
+- link: /img/research/solid.png
+  alt: IEEE Sensors Journal
+  alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
+  date: Nov 05, 2024
+  paper: "TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth and Uncertainty Estimation for Underwater 3D Robot Visual Perception"
+  authors: Geonmo Yang, Younggun Cho
+  tags:
+      - Robust sensing
+      - Underwater
+  page_link: /research/trident/
+
+- link: /img/research/solid.gif
+  alt: IEEE RA-L
+  alt_link: https://www.ieee-ras.org/publications/ra-l
+  date: Aug 07, 2024
+  paper: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
+  authors: Hogyun Kim, Jiwon Choi, Taehu Sim, Giseop Kim, Younggun Cho
+  tags:
+      - LiDAR PR
+      - Diverse Terrain
+  page_link: /research/solid/
+
+- link: /img/research/saliency_feature.png
+  alt: IEEE ICRA
+  alt_link: https://2024.ieee-icra.org/
+  date: May 13, 2024
+  paper: "Salience-guided Ground Factor for Robust Localization of Delivery Robots in Complex Urban Environments"
+  authors: Jooyong Park, Jungwoo Lee, Euncheol Choi, Younggun Cho
+  tags:
+      - Visual Localization
+      - Urban
+  page_link: /research/salient-ground-feature/
+
+- link: /img/research/diter.gif
+  alt: IEEE Sensors Journal
+  alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
+  date: Jan 29, 2024
+  paper: "DiTer: Diverse Terrain and Multimodal Dataset for Field Robot Navigation in Outdoor Environments"
+  authors: Geonmo Yang, Gilhwan Kang, Juhui Lee, Younggun Cho
+  tags:
+      - Dataset
+      - Diverse Terrain
+  page_link: /research/diter/
+
+- link: /img/research/solid.png
+  alt: IEEE Sensors Journal
+  alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
+  date: Dec 08, 2023
+  paper: "Joint-ID: Transformer-based joint image enhancement and depth estimation for underwater environments"
+  authors: Geonmo Yang, Gilhwan Kang, Juhui Lee, Younggun Cho
+  tags:
+      - Robust sensing
+      - Underwater
+  page_link: /research/joint_id/
+
+- link: /img/research/sonar_context.png
+  alt: IEEE ICRA
+  alt_link: https://www.icra2023.org/
+  date: May 29, 2023
+  paper: "Robust Imaging Sonar-based Place Recognition and Localization in Underwater Environments"
+  authors: Hogyun Kim, Gilhwan Kang, Seokhwan Jeong, Seungjun Ma, Younggun Cho
+  tags:
+      - SONAR PR
+      - Underwater
+  page_link: /research/sonar_context/
