@@ -113,15 +113,19 @@ layout: default
             <!-- 카드 본문: 논문명·저자 -->
             <div class="card-content" style="padding:10px;">
               <div class="content" style="text-align:left; font-size:1rem; color:black; font-weight:bold;">
-                {% if image.alt_link %}
-                  <a href="{{ image.alt_link }}" target="_blank"
-                     style="color:#0073e6; text-decoration:none;">
-                    [{{ image.alt | default: "No Title" }}]
-                  </a>
-                {% else %}
-                  [{{ image.alt | default: "No Title" }}]
+                {%- if image.alt %}
+                  {%- if image.alt_link -%}
+                    <a href="{{ image.alt_link }}" target="_blank"
+                       style="color:#0073e6; text-decoration:none;">
+                      [{{ image.alt }}]
+                    </a>
+                  {%- else -%}
+                    {{ image.alt }}
+                  {%- endif -%}
+                {%- endif -%}
+                {% if image.paper %}
+                  {{ image.paper }}
                 {% endif %}
-                {{ image.paper }}
               </div>
               <div style="margin-top:10px; font-size:0.8rem; color:gray;">
                 {{ image.authors }}
