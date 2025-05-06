@@ -121,11 +121,15 @@ layout: default
                 {% else %}
                   {{ image.alt}}
                 {% endif %}
-                {{ image.paper }}
+                {% if image.paper %}
+                  {{ image.paper }}
+                {% endif %}
               </div>
-              <div style="margin-top:10px; font-size:0.8rem; color:gray;">
-                {{ image.authors }}
-              </div>
+              {% if image.authors %}
+                <div style="margin-top:10px; font-size:0.8rem; color:gray;">
+                  {{ image.authors }}
+                </div>
+              {% endif %}
             </div>
 
             <!-- 카드 하단: 태그 및 발행일 -->
