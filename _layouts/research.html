@@ -81,7 +81,7 @@ layout: default
   {% if gallery.title == "Paper" %}
     {% assign card_size = "min-height:530px; height:auto;" %}
   {% elsif gallery.title == "Project" %}
-    {% assign card_size = "min-height:300px; height:auto;" %}
+    {% assign card_size = "min-height:400px; height:auto;" %}
   {% else %}
     {% assign card_size = "min-height:530px; height:auto;" %}
   {% endif %}
@@ -162,7 +162,7 @@ layout: default
                 <hr style="width:70%; margin:0 auto;">
                 {% if image.project_date %}
                   <p style="margin:10px 0; text-align:center; font-size:1rem; color:black;">
-                    Published: {{ image.project_date }}
+                    {{ image.project_date }}
                   </p>
                 {% endif %}
               </div>
