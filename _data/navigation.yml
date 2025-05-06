@@ -8,8 +8,15 @@
     - name: Alumni
       link: /people/alumni
       
+# - name: Research
+#   link: /research/
+      
 - name: Research
-  link: /research/
+  dropdown:
+    - name: Papers
+      link: /research/paper
+    - name: Projects
+      link: /research/project
 
 # - name: Publication
 #   link: /publications/
