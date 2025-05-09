@@ -1,5 +1,12 @@
 - title: Project
   images:
+    - link: /img/research/icra_2025.jpg
+      alt: SPARO in ICRA 2025
+      project_date: May, 2025
+      tags:
+          - Conference
+      page_link: /research/icra_2025/
+      
     - link: /img/research/icra_2024.png
       alt: SPARO in ICRA 2024
       project_date: May, 2024
@@ -7,9 +14,4 @@
           - Conference
       page_link: /research/icra_2024/
 
-    - link: /img/research/icra_2025.jpg
-      alt: SPARO in ICRA 2025
-      project_date: May, 2025
-      tags:
-          - Conference
-      page_link: /research/icra_2025/
+    
