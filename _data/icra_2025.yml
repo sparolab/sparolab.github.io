@@ -1,0 +1,10 @@
+- title: Robust Visual SLAM with Auxiliary Range Factor for Degenerate Construction Environments
+  abstract: >
+    Robust localization in degenerate environments such as construction sites remains challenging due to frequent visual degradation and intermittent range sensing. 
+    To address this challenge, we propose a visual Simultaneous Localization and Mapping (SLAM) framework that tightly integrates visual-inertial odometry (VIO), visual loop closure, and Ultra-Wideband (UWB) range measurements through a factor graph optimization. 
+    The proposed system introduces an interpolated range factor, fully utilizing sparse and asynchronous UWB data by leveraging continuous-time pose interpolation. 
+    We evaluate the method on the public dataset under simulated degenerate scenarios, including visual degradation and partial UWB signal loss. 
+    Experimental results demonstrate that the proposed method significantly reduces drift and maintains accurate global localization, even under severe sensor degradation.
+  session: ICRA 2025 Workshop on Future of Construction
+  page_link: /research/icra_2025/vir-construction
+  image: /research/icra_2025/static/images/vir-construction.png

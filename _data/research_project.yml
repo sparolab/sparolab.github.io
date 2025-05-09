@@ -2,10 +2,14 @@
   images:
     - link: /img/research/icra_2024.png
       alt: SPARO in ICRA 2024
-      # alt_link: https://2024.ieee-icra.org/
       project_date: May, 2024
-      # paper: "SPARO in ICRA 2024"
-      # authors: Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho
       tags:
           - Conference
       page_link: /research/icra_2024/
+
+    - link: /img/research/icra_2025.jpg
+      alt: SPARO in ICRA 2025
+      project_date: May, 2025
+      tags:
+          - Conference
+      page_link: /research/icra_2025/
