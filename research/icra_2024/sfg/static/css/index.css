@@ -2,43 +2,6 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-.hero.has-bg-image {
-  background-image: url('/static/images/your-bg-image.jpg');
-  background-size: cover;
-  background-position: center center;
-  position: relative;
-}
-.hero.has-bg-image .hero-body {
-  position: relative;
-  z-index: 1;
-}
-.hero.has-bg-image::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: #000221;
-  color: #ffffff;
-
-  z-index: 0;
-}
-.hero.has-bg-image .title,
-.hero.has-bg-image .subtitle {
-  color: #ffffff;
-}
-
-.button.is-gradient {
-  background-image: linear-gradient(to right, #000221, #1a006c) !important;
-  border: none !important;
-  color: #ffffff !important;
-}
-.button.is-gradient:hover {
-  background-image: linear-gradient(to right, rgba(0,2,33,0.9), rgba(26,0,108,0.9)) !important;
-}
-.button.project-page-btn {
-  font-weight: bold;
-  font-size: 0.8rem;    /* 원하시는 크기로 조정 */
-  line-height: 1.5;       /* 높이가 어색하면 이 값도 조정 */
-}
 
 .footer .icon-link {
     font-size: 25px;
