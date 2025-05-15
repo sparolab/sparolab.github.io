@@ -7,42 +7,40 @@ title: SPARO in ICRA 2025
 
 <!DOCTYPE html>
 <html>
-<body>
-  <section class="section">
-    <div class="container">
-      {% for project in site.data.icra_2025 %}
-        <div class="columns is-vcentered is-variable is-8">
-          <!-- 이미지: 데스크톱 4, 태블릿 6, 모바일 12 -->
-          <div class="column is-4-desktop is-6-tablet is-12-mobile">
-            <figure class="image">
-              <img src="{{ project.image | relative_url }}" alt="{{ project.title }}">
-            </figure>
+  <body>
+    <section class="section">
+      <div class="container">
+        {% for project in site.data.icra_2025 %}
+          {% assign is_odd = forloop.index0 | modulo: 2 %}
+          <div class="columns is-vcentered is-variable is-8"
+               {% if is_odd == 1 %}style="flex-direction: row-reverse;"{% endif %}>
+            <!-- 이미지 -->
+            <div class="column is-4-desktop is-6-tablet is-12-mobile">
+              <figure class="image">
+                <img src="{{ project.image | relative_url }}" alt="{{ project.title }}">
+              </figure>
+            </div>
+            <!-- 텍스트 -->
+            <div class="column is-8-desktop is-6-tablet is-12-mobile">
+              <h2 class="title is-6">{{ project.title }}</h2>
+              <p class="content" style="font-size: 0.9rem; line-height: 1.4;">
+                <strong>Abstract:</strong> {{ project.abstract }}
+              </p>
+              <p class="has-text-weight-bold content" style="font-size: 0.9rem; line-height: 1.4;">
+                Session: {{ project.session }}
+              </p>
+              <a href="{{ project.page_link | relative_url }}"
+                 class="button is-gradient is-fullwidth is-small project-page-btn"
+                 target="_blank" rel="noopener noreferrer">
+                Project Page
+              </a>
+            </div>
           </div>
-          <!-- 텍스트: 데스크톱 8, 태블릿 6, 모바일 12 -->
-          <div class="column is-8-desktop is-6-tablet is-12-mobile">
-            <h2 class="title is-6">{{ project.title }}</h2>
-            <!-- <br> -->
-            <p class="content" style="font-size: 0.9rem; line-height: 1.4;">
-              <strong>Abstract:</strong> {{ project.abstract }}
-            </p>
-            <!-- <br> -->
-            <p class="has-text-weight-bold content" style="font-size: 0.9rem; line-height: 1.4;">
-              Session: {{ project.session }}
-            </p>
-            <!-- <br> -->
-            <a href="{{ project.page_link | relative_url }}"
-              class="button is-gradient is-fullwidth is-small project-page-btn"
-              target="_blank" rel="noopener noreferrer">
-              Project Page
-            </a>
-          </div>
-        </div>
-        {% unless forloop.last %}
-          <!-- 프로젝트 사이 구분선 -->
-          <hr class="project-divider">
-        {% endunless %}
-      {% endfor %}
-    </div>
-  </section>
-</body>
+          {% unless forloop.last %}
+            <hr class="project-divider">
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </section>
+  </body>
 </html>
