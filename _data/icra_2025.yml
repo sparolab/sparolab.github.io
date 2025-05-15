@@ -7,7 +7,7 @@
     To validate the dataset’s effectiveness as a reliable benchmark, we conducted evaluations using various methodologies, including state-of-the-art (SOTA) techniques for object detection and tracking. 
     These evaluations are expected to contribute to performance improvements, particularly in the complex maritime environment. 
     To the best of our knowledge, this is the first dataset offering multi-modal annotations specifically tailored to maritime environments.
-  session: ICRA 2025 Marine Robotics VI
+  session: Marine Robotics VI / Thursday, 11:30-11:35 / Paper ThCT7.4 
   page_link: /research/polaris/
   image: /img/research/polaris.gif
 
@@ -20,7 +20,7 @@
     Also, we utilize legged robots for terrain-agnostic traversing. 
     To generate the ground-truth of each robot, we first build the survey-grade prior map. 
     Then, we remove the dynamic objects and outliers from the prior map and extract the trajectory through scan-to-map matching.
-  session: ICRA 2025 SLAM VI
+  session: SLAM VI / Thursday, 10:10-10:15 / Paper ThBT2.4	
   page_link: /research/diter_plus/
   image: /img/research/diter_plus.png
 
@@ -35,7 +35,7 @@
     The proposed method was tested for rigorous validation across various scenarios (i.e. single session, multi-session, and different weather conditions). 
     In particular, we validate our descriptor achieving reliable place recognition performance through the results of extreme environments that lacked structural information such as an OORD dataset. 
     Our supplementary materials and code are available on publication.
-  session: ICRA 2025 Localization IV
+  session: Localization IV / Wednesday, 11:35-11:40 / Paper WeCT17.5
   page_link: /research/referee/
   image: /img/research/referee.png
 
@@ -51,7 +51,7 @@
     Additionally, we designed a lightweight and fast approach for the robot's onboard autonomy. 
     For rigorous validation, the proposed method was tested across various LiDAR place recognition scenarios (i.e., single-session, multi-session, and multi-robot scenarios). 
     To the best of our knowledge, we report the first method to cope with the restricted FOV.
-  session: ICRA 2025 Perception I
+  session: Perception I / Wednesday, 10:00-10:05 / Paper WeBT7.2
   page_link: /research/solid/
   image: /img/research/solid.gif
 
@@ -62,7 +62,7 @@
     The proposed system introduces an interpolated range factor, fully utilizing sparse and asynchronous UWB data by leveraging continuous-time pose interpolation. 
     We evaluate the method on the public dataset under simulated degenerate scenarios, including visual degradation and partial UWB signal loss. 
     Experimental results demonstrate that the proposed method significantly reduces drift and maintains accurate global localization, even under severe sensor degradation.
-  session: ICRA 2025 Workshop on Field Robotics
+  session: Workshop on Field Robotics / Monday, 8:30-17:30 
   page_link: /research/skid_slam/
   image: /img/research/skid_slam.gif
 
@@ -73,6 +73,6 @@
     The proposed system introduces an interpolated range factor, fully utilizing sparse and asynchronous UWB data by leveraging continuous-time pose interpolation. 
     We evaluate the method on the public dataset under simulated degenerate scenarios, including visual degradation and partial UWB signal loss. 
     Experimental results demonstrate that the proposed method significantly reduces drift and maintains accurate global localization, even under severe sensor degradation.
-  session: ICRA 2025 Workshop on Future of Construction
+  session: Workshop on Future of Construction / Monday, 8:30-17:30
   page_link: /research/icra_2025/vir-construction
   image: /research/icra_2025/static/images/vir-construction.png
