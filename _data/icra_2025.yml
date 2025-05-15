@@ -51,7 +51,7 @@
     Additionally, we designed a lightweight and fast approach for the robot's onboard autonomy. 
     For rigorous validation, the proposed method was tested across various LiDAR place recognition scenarios (i.e., single-session, multi-session, and multi-robot scenarios). 
     To the best of our knowledge, we report the first method to cope with the restricted FOV.
-  session: ICRA 2025 Workshop on Future of Construction
+  session: ICRA 2025 Perception I
   page_link: /research/solid/
   image: /img/research/solid.gif
 
