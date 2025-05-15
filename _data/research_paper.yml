@@ -9,7 +9,7 @@
       tags:
           - LiDAR SLAM
           - Diverse Terrain
-      page_link: /research/polaris/
+      page_link: /research/skid_slam/
 
     - link: /img/research/polaris.gif
       alt: IEEE ICRA
