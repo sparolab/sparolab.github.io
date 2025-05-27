@@ -60,8 +60,8 @@ categories:
         - description: "2023년 RSS 학회 참석" 
           date: "2023.07.10"
           image_list:
-            - link: /img/album/research/conference/2023/2023_rss/단쳬_1.jpg
-            - link: /img/album/research/conference/2023/2023_rss/단쳬_2.jpg
+            - link: /img/album/research/conference/2023/2023_rss/단체_1.jpg
+            - link: /img/album/research/conference/2023/2023_rss/단체_2.jpg
 
         - description: "2023년 ICROS 학회 참석" 
           date: "2023.06.21"
@@ -87,7 +87,7 @@ categories:
             - link: /img/album/research/conference/2022/2022_iros/2022_iros_단체_1.jpeg
             - link: /img/album/research/conference/2022/2022_iros/2022_iros_단체_2.jpeg
             - link: /img/album/research/conference/2022/2022_iros/2022_iros_석환_1.jpeg
-            - link: /img/album/research/conference/2022/2022_iros/2022_iros_석환_2.jpeg
+            - link: /img/album/research/conference/2022/2022_iros/2022_iros_석환_2.png
 
         - description: "2022년 KRoC 학회 참석 및 우수논문상 수상" 
           date: "2022.05.11."
