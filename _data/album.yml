@@ -7,8 +7,24 @@ categories:
       id: conference
       images:
         # 2025 ---------------------------------------------------------------------------------------
+        - description: "2025년 ICRA 학회 참석" 
+          date: "2025.05.19"
+          image_list:
+            # - link: /img/album/research/conference/2025/2025_icra/단체_1.jpg
+            # - link: /img/album/research/conference/2025/2025_icra/단체_2.jpg
+            - link: /img/album/research/conference/2025/2025_icra/단체_3.jpg
+            # - link: /img/album/research/conference/2025/2025_icra/단체_4.jpg
+            - link: /img/album/research/conference/2025/2025_icra/호균_1.jpg
+            - link: /img/album/research/conference/2025/2025_icra/병희_1.jpg
+            - link: /img/album/research/conference/2025/2025_icra/호균병희.jpg
+            - link: /img/album/research/conference/2025/2025_icra/정우_1.jpg
+            - link: /img/album/research/conference/2025/2025_icra/주원_1.jpg
+            - link: /img/album/research/conference/2025/2025_icra/지원_1.jpg
+            - link: /img/album/research/conference/2025/2025_icra/동진_1.jpg
+            - link: /img/album/research/conference/2025/2025_icra/sparo_1.jpg
+            - link: /img/album/research/conference/2025/2025_icra/sparo_2.jpg
         - description: "2025년 KROS 학회 참석 및 우수논문상 수상" 
-          date: "2025.07.01"
+          date: "2025.02.12"
           image_list:
             - link: /img/album/research/conference/2025/2025_kros/2025_kros_이지윤_우수논문상.jpeg
         # 2024 ---------------------------------------------------------------------------------------
