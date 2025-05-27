@@ -180,6 +180,7 @@ categories:
         date: "2024.08.19."
         image_list:
           - link: /img/album/activity/workshop/2024/2024_가평_하계워크샵/2024_summer_workshop.jpeg
+          - link: /img/album/activity/workshop/2024/2024_가평_하계워크샵/단체_1.jpg
 
       - description: "2024년도 동계 워크샵(평창)"
         date: "2024.02.21."
@@ -218,6 +219,11 @@ categories:
         image_list:
           - link: /img/album/activity/graduation/2023/2023_02_6명_입학.jpeg
 
+      - description: "2022년도 하반기 입학식(강길환)"  
+        date: "2024.08."
+        image_list:
+          - link: /img/album/activity/graduation/2022/강길환_입학.jpg
+
     - name: Mentoring
       id: mentoring
       images: 
@@ -243,6 +249,11 @@ categories:
       #     - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_병희.jpeg
       #     - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_길환_건모_석환.png
       #     - link: /img/album/activity/etc/2024/2024_icra/2024_icra_beatles.png
+
+      - description: "2024년도 SPARO 회식"
+        date: "2024."
+        image_list:
+          - link: /img/album/activity/etc/2024/2024_sparo_회식/회식_1.jpg
 
       - description: "23년도, 24년도 예비군"
         date: "2023. , 2024."
