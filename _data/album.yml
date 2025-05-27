@@ -30,6 +30,7 @@ categories:
         - description: "2025년 KROS 학회 참석 및 우수논문상 수상" 
           date: "2025.02.12"
           image_list:
+            - link: /img/album/research/conference/2025/2025_kros/단체_1.jpg
             - link: /img/album/research/conference/2025/2025_kros/2025_kros_이지윤_우수논문상.jpeg
         # 2024 ---------------------------------------------------------------------------------------
         - description: "2024년 ICROS 학회 참석 및 최우수논문상 수상" 
@@ -41,6 +42,7 @@ categories:
         - description: "2024년 ICRA 학회 참석"
           date: "2024.05.12"
           image_list:
+            - link: /img/album/research/conference/2024/2024_icra/단체_1.jpg
             - link: /img/album/research/conference/2024/2024_icra/2024_icra_길환.jpeg
             - link: /img/album/research/conference/2024/2024_icra/2024_icra_주희.jpeg
             - link: /img/album/research/conference/2024/2024_icra/2024_icra_은철.jpeg
@@ -55,6 +57,12 @@ categories:
 
             
         # 2023 ---------------------------------------------------------------------------------------
+        - description: "2023년 RSS 학회 참석" 
+          date: "2023.07.10"
+          image_list:
+            - link: /img/album/research/conference/2023/2023_rss/단쳬_1.jpg
+            - link: /img/album/research/conference/2023/2023_rss/단쳬_2.jpg
+
         - description: "2023년 ICROS 학회 참석" 
           date: "2023.06.21"
           image_list:
@@ -64,12 +72,13 @@ categories:
         - description: "2023년 ICRA 학회 참석" 
           date: "2023.05.27"
           image_list:
+            - link: /img/album/research/conference/2023/2023_icra/단체_1.jpg
             - link: /img/album/research/conference/2023/2023_icra/2023_icra_단체_1.jpeg
             - link: /img/album/research/conference/2023/2023_icra/2023_icra_단체_2.jpeg
             - link: /img/album/research/conference/2023/2023_icra/2023_icra_호균_1.jpeg
             - link: /img/album/research/conference/2023/2023_icra/2023_icra_석환_1.jpeg
             - link: /img/album/research/conference/2023/2023_icra/2023_icra_석환_2.jpeg
-
+        
         # 2022 ---------------------------------------------------------------------------------------
         - description: "2022년 IROS 학회 참석" 
           date: "2022.10.25."
