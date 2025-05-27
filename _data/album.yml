@@ -46,8 +46,11 @@ categories:
             - link: /img/album/research/conference/2024/2024_icra/2024_icra_주용.jpeg
             - link: /img/album/research/conference/2024/2024_icra/2024_icra_단체_1.jpeg
             - link: /img/album/research/conference/2024/2024_icra/2024_icra_단체_2.mpo
-            - link: /img/album/research/conference/2024/2024_icra/2024_icra_건담트리오 .jpeg
-
+            - link: /img/album/research/conference/2024/2024_icra/2024_icra_건담트리오.jpeg
+            - link: /img/album/activity/etc/2024/2024_icra/2024_icra_다리위에서.png
+            - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_병희.jpeg
+            - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_길환_건모_석환.png
+            - link: /img/album/activity/etc/2024/2024_icra/2024_icra_beatles.png
 
             
         # 2023 ---------------------------------------------------------------------------------------
@@ -97,7 +100,7 @@ categories:
           date: "2024.11.29."
           image_list:
             - link: /img/album/research/awards/2024/2024_Aero_Future_Tech_Business_아이디어_공모전/2024_한화에어로_우수상_1.jpeg
-            - link: /img/album/research/awards/2024/2024_Aero_Future_Tech_Business_아이디어_공모전/2024_한화에어로_우수상_2       .jpeg
+            - link: /img/album/research/awards/2024/2024_Aero_Future_Tech_Business_아이디어_공모전/2024_한화에어로_우수상_2.jpeg
 
         # 2023 ---------------------------------------------------------------------------------------
         - description: "2023년 산학프로젝트챌린지 우수상 수상" 
@@ -212,13 +215,13 @@ categories:
       id: etc
       images: 
       # 2024 ---------------------------------------------------------------------------------------
-      - description: "2024 ICRA"
-        date: "2024.05.12."
-        image_list:
-          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_다리위에서.png
-          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_병희.jpeg
-          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_길환_건모_석환.png
-          - link: /img/album/activity/etc/2024/2024_icra/2024_icra_beatles.png
+      # - description: "2024 ICRA"
+      #   date: "2024.05.12."
+      #   image_list:
+      #     - link: /img/album/activity/etc/2024/2024_icra/2024_icra_다리위에서.png
+      #     - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_병희.jpeg
+      #     - link: /img/album/activity/etc/2024/2024_icra/2024_icra_은철_길환_건모_석환.png
+      #     - link: /img/album/activity/etc/2024/2024_icra/2024_icra_beatles.png
 
       - description: "23년도, 24년도 예비군"
         date: "2023. , 2024."
