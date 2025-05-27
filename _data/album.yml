@@ -195,18 +195,24 @@ categories:
     - name: Entrance & Graduation
       id: entrance_graduation
       images: 
-      # 2023 ---------------------------------------------------------------------------------------
+      - description: "2025년도 상반기 졸업식(마승준, 이정우, 최은철)"  
+        date: "2025.02."
+        image_list:
+          - link: /img/album/activity/graduation/2024/2025_02_단체_1.jpg
+          - link: /img/album/activity/graduation/2024/2025_02_단체_2.jpg
+          - link: /img/album/activity/graduation/2024/2025_02_단체_3.jpg
+
+      - description: "2024년도 상반기 졸업식(박주용)"  
+        date: "2024.02."
+        image_list:
+          - link: /img/album/activity/graduation/2024/2024_02_16_박주용졸업_1.jpeg
+          - link: /img/album/activity/graduation/2024/2024_02_16_박주용졸업_2.jpeg
+
       - description: "2023년도 상반기 입학식(김호균, 마승준, 이정우, 정석환, 최은철, 최병희)"
         date: "2023.02."
         image_list:
           - link: /img/album/activity/graduation/2023/2023_02_6명_입학.jpeg
 
-      - description: "2024년도 상반기 졸업식(박주용)"  # 이 내용이 Title
-        date: "2024.02."
-        image_list:
-          - link: /img/album/activity/graduation/2024/2024_02_16_박주용졸업_1.jpeg
-          - link: /img/album/activity/graduation/2024/2024_02_16_박주용졸업_2.jpeg
-    
     - name: Mentoring
       id: mentoring
       images: 
