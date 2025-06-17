@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Uni-Mapper: Unified Mapping Framework for Multi-modal LiDARs in Complex and Dynamic Environments">
+  <meta name="keywords" content="LiDAR Place Recognition">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uni-Mapper: Unified Mapping Framework for Multi-modal LiDARs in Complex and Dynamic Environments</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Uni-Mapper: Unified Mapping Framework for Multi-modal LiDARs in Complex and Dynamic Environments</h1>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">IEEE Transactions on Intelligent Vehicles (T-IV) 2025</span>            
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=F6dY8DoAAAAJ&hl=ko">Gilhwan Kang</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko">Hogyun Kim</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=JCJAwgIAAAAJ&hl=ko">Byunghee Choi</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=ZAO6skQAAAAJ&hl=ko">Seokhwan Jeong</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=gGfBRawAAAAJ&hl=ko">Youngsik Shin</a><sup>3*</sup>,
+            </span>
+            <span class="author-block">
+              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko">Younggun Cho</a><sup>1*</sup>
+            </span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>2</sup>Hyundai Robotics Lab, South Korea</span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>3</sup>AI and Robotics Lab, Korea Institute of Machinery and Materials (KIMM), South Korea</span>            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper (TBU)</span>
+                </a>
+              </span>
+
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MjOGxNkyeOM"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/sparolab/uni-mapper"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/uni_mapper.jpg">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">TL;DR  Multi-modal LiDARs Map Merging Framework!</span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The unification of disparate maps is crucial for enabling scalable robot operation across multiple sessions and collaborative multi-robot scenarios. However, achieving a unified map robust to sensor modality and dynamic environments remains a challenging problem.
+            This paper presents **Uni-Mapper**, a dynamic-aware 3D point cloud map merging framework for multi-modal LiDAR systems. 
+            Our approach consists of three core components: dynamic object removal, dynamic-aware loop closure, and multi-modal LiDAR map merging. 
+            Firstly, a voxel-wise free space hash map is constructed in a coarse-to-fine manner. 
+            By combining sequential free spaces in sliding windows, dynamic objects with discrepancies in temporal occupancy are rejected. 
+            This dynamic removal module is integrated with the map-centric place description (DynaSTD).
+            As the removal module preserves static points only and the descriptor extracts multiple local features of the scene, DynaSTD is effective across multi-modal LiDARs in dynamic environments. 
+            Based on DynaSTD, multiple pose graph optimizations are conducted for both intra-session and inter-map loop closures. 
+            We adopt a centralized anchor-node-based approach for map merging to mitigate intra-session drift errors.
+            Our framework is evaluated on two datasets: HeLiPR and INHA dataset, both featuring abundant dynamic objects and equipped with various types of LiDAR sensors. 
+            Compared to state-of-the-art place recognition methods and map merging systems, our framework demonstrates superior performance in loop detection across sensor modalities, robust mapping in dynamic environments, and precise alignment of multiple maps. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/sparolab/uni-mapper" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
