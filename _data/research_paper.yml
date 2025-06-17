@@ -1,6 +1,6 @@
 - title: Paper
   images:
-    - link: /img/research/solid.png
+    - link: /img/research/paper/10_skid_slam.gif
       alt: IEEE ICRA-W
       alt_link: https://norlab-ulaval.github.io/icra_workshop_field_robotics/
       pulished_date: May, 2025
@@ -11,7 +11,7 @@
           - Diverse Terrain
       page_link: /research/skid_slam/
 
-    - link: /img/research/polaris.gif
+    - link: /img/research/paper/9_polaris.gif
       alt: IEEE ICRA
       alt_link: https://2025.ieee-icra.org/
       pulished_date: May, 2025
@@ -22,7 +22,7 @@
           - Maritime
       page_link: /research/polaris/
 
-    - link: /img/research/diter_plus.png
+    - link: /img/research/paper/8_diter_plus.png
       alt: IEEE ICRA
       alt_link: https://2025.ieee-icra.org/
       pulished_date: May, 2025
@@ -33,7 +33,7 @@
           - Diverse Terrain
       page_link: /research/diter_plus/
 
-    - link: /img/research/referee.png
+    - link: /img/research/paper/7_referee.png
       alt: IEEE RA-L
       alt_link: https://www.ieee-ras.org/publications/ra-l
       pulished_date: Dec 12, 2024
@@ -44,7 +44,7 @@
           - Diverse Terrain
       page_link: /research/referee/
 
-    - link: /img/research/trident.gif
+    - link: /img/research/paper/6_trident.gif
       alt: IEEE Sensors Journal
       alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
       pulished_date: Nov 05, 2024
@@ -55,7 +55,7 @@
           - Underwater
       page_link: /research/trident/
 
-    - link: /img/research/solid.gif
+    - link: /img/research/paper/5_solid.gif
       alt: IEEE RA-L
       alt_link: https://www.ieee-ras.org/publications/ra-l
       pulished_date: Aug 07, 2024
@@ -66,7 +66,7 @@
           - Diverse Terrain
       page_link: /research/solid/
 
-    - link: /img/research/saliency_feature.png
+    - link: /img/research/paper/4_saliency_feature.png
       alt: IEEE ICRA
       alt_link: https://2024.ieee-icra.org/
       pulished_date: May 13, 2024
@@ -77,7 +77,7 @@
           - Urban
       page_link: /research/salient-ground-feature/
 
-    - link: /img/research/diter.gif
+    - link: /img/research/paper/3_diter.gif
       alt: IEEE Sensors Journal
       alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
       pulished_date: Jan 29, 2024
@@ -88,7 +88,7 @@
           - Diverse Terrain
       page_link: /research/diter/
 
-    - link: /img/research/joint_id.png
+    - link: /img/research/paper/2_joint_id.png
       alt: IEEE Sensors Journal
       alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
       pulished_date: Dec 08, 2023
@@ -99,7 +99,7 @@
           - Underwater
       page_link: /research/joint_id/
 
-    - link: /img/research/sonar_context.png
+    - link: /img/research/paper/1_sonar_context.png
       alt: IEEE ICRA
       alt_link: https://www.icra2023.org/
       pulished_date: May 29, 2023

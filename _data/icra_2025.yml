@@ -9,7 +9,7 @@
     To the best of our knowledge, this is the first dataset offering multi-modal annotations specifically tailored to maritime environments.
   session: Marine Robotics VI / Thursday, 11:30-11:35 / Paper ThCT7.4 
   page_link: /research/polaris/
-  image: /img/research/polaris.gif
+  image: /img/research/paper/9_polaris.gif
 
 - title: "DiTer++: Diverse Terrain and Multi-modal Dataset for Multi-Robot SLAM in Multi-session Environments"
   abstract: >
@@ -22,7 +22,7 @@
     Then, we remove the dynamic objects and outliers from the prior map and extract the trajectory through scan-to-map matching.
   session: SLAM VI / Thursday, 10:10-10:15 / Paper ThBT2.4	
   page_link: /research/diter_plus/
-  image: /img/research/diter_plus.png
+  image: /img/research/paper/8_diter_plus.png
 
 - title: "ReFeree: Radar-Based Lightweight and Robust Localization Using Feature and Free Space"
   abstract: >
@@ -37,7 +37,7 @@
     Our supplementary materials and code are available on publication.
   session: Localization IV / Wednesday, 11:35-11:40 / Paper WeCT17.5
   page_link: /research/referee/
-  image: /img/research/referee.png
+  image: /img/research/paper/7_referee.png
 
 - title: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
   abstract: >
@@ -53,7 +53,7 @@
     To the best of our knowledge, we report the first method to cope with the restricted FOV.
   session: Perception I / Wednesday, 10:00-10:05 / Paper WeBT7.2
   page_link: /research/solid/
-  image: /img/research/solid.gif
+  image: /img/research/paper/6_solid.gif
 
 - title: "SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments"
   abstract: >
@@ -64,7 +64,7 @@
     Experimental results demonstrate that the proposed method significantly reduces drift and maintains accurate global localization, even under severe sensor degradation.
   session: Workshop on Field Robotics / Monday, 8:30-17:30 
   page_link: /research/skid_slam/
-  image: /img/research/skid_slam.gif
+  image: /img/research/paper/10_skid_slam.gif
 
 - title: "Robust Visual SLAM with Auxiliary Range Factor for Degenerate Construction Environments"
   abstract: >
