@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal">
+  <meta name="keywords" content="Maritime Dataset Object Detection Tracking">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="index.html" style="align-items: center;">
+            <img src="./static/images/logo.png" alt="PoLaRIS" style="max-height: 1.5rem; margin-right: 0.2rem;">
+            <span class="has-text-weight-bold is-size-5">PoLaRIS</span>
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasic" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="index.html">Home</a>
+            <a class="navbar-item" href="annotation.html">Annotation Process</a>
+            <a class="navbar-item" href="description.html">Description</a>
+            <a class="navbar-item has-text-weight-bold" href="benchmarks.html">Benchmarks</a>
+            <a class="navbar-item" href="downloads.html">Downloads</a>
+          </div>
+        </div>
+      </nav>
+      <section class="section">
+        <div class="container is-max-desktop">
+          <h2 class="title is-2 has-text-weight-bold has-text-centered">
+            <span style="color: #4169E1">PoLaRIS</span>-Dataset
+          </h2>
+
+            <section class="section">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-full-width">
+                    <h2 class="title is-4" style="color: #4169E1" id="intro">Overview</h2>
+                    <div class="content has-text-justified">
+                      <p><strong>
+                        To demonstrate validity for <span style="color: #429E9D">object detection</span> and <span style="color: #429E9D">tracking</span>
+                        across <span style="color: #429E9D">various modalities and lighting conditions</span>, we conducted tests in the 
+                        <span style="color: #429E9D"><em>Pohang00</em></span> sequence, which contains the highest number of multi-dynamic objects. 
+                        For evaluation in low-light conditions and scenarios involving single-dynamic objects, we utilized the 
+                        <span style="color: #429E9D"><em>Pohang01</em></span> sequence. Several metrics were used to assess performance on sequences containing obstacles. 
+                      </strong></p>
+                      
+                      <p><strong>
+                        All models were trained using the AdamW optimizer (learning rate: 0.000714, momentum: 0.9) on an NVIDIA GeForce RTX 3090 GPU. From the 
+                        <span style="color: #429E9D"><em>Pohang00</em></span> (during the day) and 
+                        <span style="color: #429E9D"><em>Pohang01</em></span> (during the night) sequences, 2,158 and 2,399 images were sampled for training, and 959 and 1,066 images for validation, respectively.
+                      </strong></p>
+                      
+                    </div>
+                    <hr>
+                    <h2 class="title is-4" style="color: #4169E1" id="intro">Object Detection</h2>
+                    <div class="content has-text-justified">
+                      <p><strong>
+                        We evaluated object detection models using state-of-the-art (SOTA) methods from both the 
+                        <em><span style="color: #429E9D">You Only Look Once (YOLO)</span></em> and 
+                        <em><span style="color: #429E9D">Detection Transformer (DETR)</span></em> series as closed-set models, alongside open-set models like 
+                        <em><span style="color: #429E9D">YOLO-World</span></em> and 
+                        <em><span style="color: #429E9D">Grounding DINO</span></em> to assess the generalization capabilities of our dataset. 
+                        The models were evaluated using the 
+                        <em><span style="color: #429E9D">mean Average Precision (mAP)</span></em> metric to measure their performance.
+                      </strong></p>
+                      <div class="content has-text-centered my-4" style="overflow-x:auto;">
+                        <p>$$\mathrm{Precision} = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}}, \quad 
+                             \mathrm{Recall}  = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}}$$
+                        </p>
+                        <p>$$\mathrm{AP} = \int_{0}^{1} p(r)\,\mathrm{d}r$$</p>
+                      </div>
+                      <div class="has-text-centered">
+                        <img src="./static/images/object_detection_figure.png" alt="Dynamic image Annotation Format" style="width: 100%; height: auto;">
+                      </div>
+                      <br>
+                      <div class="has-text-centered">
+                        <img src="./static/images/detection_results.png" alt="Dynamic image Annotation Format" style="width: 100%; height: auto;">
+                      </div>
+                    </div>
+                    <hr>
+                    <h2 class="title is-4" style="color: #4169E1" id="intro">Object Tracking</h2>
+                    <div class="content has-text-justified">
+                      <p><strong>
+                        We evaluated the performance of the tracker on dynamic objects using 
+                        <em><span style="color: #429E9D">heuristic-based multi object tracking methods</span></em>, including 
+                        <em><span style="color: #429E9D">SORT</span></em>, 
+                        <em><span style="color: #429E9D">ByteTrack</span></em>, 
+                        <em><span style="color: #429E9D">OC-SORT</span></em>, and 
+                        <em><span style="color: #429E9D">Hybrid-SORT</span></em>. 
+                        <br>
+                        All tracker experiments used YOLOv8-L as the detection model, with the IoU threshold fixed at 0.3. To evaluate performance, we used the 
+                        <em><span style="color: #429E9D">MOTA</span></em> and 
+                        <em><span style="color: #429E9D">IDF1</span></em> metrics to assess accuracy and ID matching.
+                      </strong></p>
+                      <div style="overflow-x:auto;">
+                        <p class="has-text-centered">
+                          $$\mathrm{MOTA} = 1 \;-\; \frac{|\mathrm{FN}| + |\mathrm{FP}| + |\mathrm{IDSW}|}{|\mathrm{gtDet}|}$$
+                          $$\mathrm{IDP} = \frac{\mathrm{IDTP}}{\mathrm{IDTP} + \mathrm{IDFP}}, \quad
+                          \mathrm{IDR} = \frac{\mathrm{IDTP}}{\mathrm{IDTP} + \mathrm{IDFN}}, \quad
+                          \mathrm{IDF1} = \frac{2 \times \mathrm{IDTP}}{2 \times \mathrm{IDTP} + \mathrm{IDFP} + \mathrm{IDFN}}$$
+                        </p>
+                      </div>
+                      <br>
+                      <div class="has-text-centered">
+                        <img src="./static/images/tracking_results.png" alt="Dynamic image Annotation Format" style="max-width:500px; width: 100%; height: auto;">
+                      </div>
+                  </div>
+
+                  </div>
+                  
+                </div>
+            </section>
+        </div>
+      </section>
+</body>
+</html>
