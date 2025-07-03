@@ -55,7 +55,7 @@
             <span style="color: #FFA62F;">Calib</span>ration in Field and Extraterrestrial Environments
           </h1>
           <div class="is-size-6 publication-authors">
-            <span class="author-block">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2025
+            <span class="author-block">IEEE International Conference on Intelligent Robotics and Systems (IROS) 2025
 </span>            
           </div>
           <div class="is-size-5 publication-authors">
@@ -131,7 +131,7 @@
     <div class="hero-body">
       <img src="./static/images/thumbnail.png">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">TL;DR  Spherical Target-based LiDAR-Camera Calibration for Multi-robot System and Extreme Environments!</span>
+        <span class="dnerf">TL;DR  Spherical target-based LiDAR-Camera Calibration for Multi-robot system under Extreme environments!</span>
       </h2>
     </div>
   </div>
@@ -143,7 +143,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="title is-3">🪐Abstract</h2>
         <div class="content has-text-justified">
           <p>
             This paper presents a novel spherical target-based LiDAR-camera extrinsic calibration method designed for 
@@ -166,6 +166,258 @@
     </div>
   </div>
 </section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">🪐Process</h2>
+        <div class="content has-text-justified">
+          <h4 class="title is-4">🌊Pipeline</h4>
+          <img src="./static/images/pipeline.png">
+          <p style="margin-top: 2rem;">
+            Overview of the proposed method. The camera pipeline (top) detects the spherical target and extracts 
+            its 2D center, while the LiDAR pipeline (bottom) estimates its 3D center.
+          </p>
+
+
+          <h4 class="title is-4" style="margin-top: 4rem;">📷Camera</h4>
+          <h5 class="title is-5">1️⃣ SAM</h5>
+
+          <p style="margin-top: 2rem;">
+            For a single input image, SAM produces about 90—and sometimes well over 100—candidate mask images. 
+            Thanks to SAM, even small, damaged, or contaminated targets region can be reliably distinguished.
+          </p>
+
+          <h6 class="title is-6" style="margin-top: 2rem;">⭐Example of input image</h6>
+
+          <figure style="display:inline-block;width:49%;margin:0 0 1.5rem 0;">
+            <img src="./static/images/raw_intact.png" style="width:100%;" alt="Intact">
+              <figcaption style="margin-top:0.5rem;font-weight:600;">
+                Intact target
+              </figcaption>
+          </figure>
+          <figure style="display:inline-block;width:49%;margin:0;">
+            <img src="./static/images/raw_contamination.png" style="width:100%;" alt="Contaminated">
+              <figcaption style="margin-top:0.5rem;font-weight:600;">
+                Contaminated target by soil
+              </figcaption>
+          </figure>
+
+          <h6 class="title is-6">⭐Output mask image</h6>
+
+          <figure style="display:inline-block;width:49%;margin:0;">
+            <img src="./static/images/mask_intact.png" style="width:100%;" alt="mask_intact">
+          </figure>
+          <figure style="display:inline-block;width:49%;margin:0;">
+            <img src="./static/images/mask_cont.png" style="width:100%;" alt="mask_cont">
+          </figure>
+
+
+          
+
+          <h5 class="title is-5" style="margin-top: 4rem;">2️⃣ Canny Edge Detection</h5>
+          <p>
+            Apply Canny edge detection to every mask image.
+          </p>
+
+          <h5 class="title is-5" style="margin-top: 4rem;">3️⃣ Initial Ellipse Detection</h5>
+          <p>
+            Fit ellipse iteratively using points sampled from edge. If any sampled point lies inside the fitted ellipse, remove such points from the sampling pool, and 
+            re-fit the ellipse. If the sampling pool is exhausted before a valid ellipse is found, the algorithm concludes that the target is not present in the edge image. 
+          </p>
+
+          <h6 class="title is-6" style="margin-top: 2rem;">⭐Example</h6>
+          <img src="./static/images/ied.png">
+
+          <!-- <figure style="display:inline-block;width:49%;margin:0;">
+            <img src="./static/images/crack1.png" style="width:100%;" alt="crack1">
+          </figure>
+          <figure style="display:inline-block;width:49%;margin:0;">
+            <img src="./static/images/crack2.png" style="width:100%;" alt="crack2">
+          </figure> -->
+
+          <p style="margin-top: 2rem;">
+            The left image shows an ellipse undergoing the detection process. Red dots indicate the sampled points. Sampled points that lie inside the fitted
+            ellipse (green) are excluded from the sampling pool. The right image shows an ellipse that has been classified as valid.
+          </p>
+
+          <h6 class="title is-6" style="margin-top: 2rem;">⭐Sample video</h6>
+          <video width="100%" controls muted playsinline>
+            <source src="./static/images/ied.mp4" type="video/mp4">
+          </video>
+          <p style="margin-top: 2rem;">
+            The video demonstrates the initial ellipse detection process applied to spheres with varying degrees of damage.
+            As shown in the video, even severely damaged ellipses can be successfully detected. However, there are cases where the detected ellipse differs in shape from the true ellipse.
+            It can be observed that the more severely the ellipse is damaged, the greater its eccentricity becomes compared to that of the true ellipse.
+          </p>
+
+
+          <h5 class="title is-5" style="margin-top: 4rem;">4️⃣ Ellipse Evaluation</h5>
+          <p>
+            At this stage, we determine whether the ellipse originates from (i) an intact sphere or (ii) a damaged sphere or a non-spherical object. To do so, we build an angle-based histogram 
+            of the sampled points: if the points are well distributed around the ellipse’s perimeter, the ellipse is deemed valid; otherwise, the ellipse forwarded to the next processing stage.
+          </p>
+
+          <h6 class="title is-6" style="margin-top: 2rem;">⭐Example</h6>
+
+          <div style="display: flex; gap: 0; width: 100%;">
+            <figure style="flex: 1 1 0; margin: 0;">
+              <img src="./static/images/ee_intact.png" style="width:100%;" alt="intact">
+            </figure>
+            <figure style="flex: 1 1 0; margin: 0;">
+              <img src="./static/images/ee_damage.png" style="width:90%;" alt="damage">
+            </figure>
+            <figure style="flex: 1 1 0; margin: 0;">
+              <img src="./static/images/ee_dog.png" style="width:100%;" alt="nonsphere">
+            </figure>
+          </div>
+          
+          <p style="margin-top: 2rem;">
+            In the first image, the sample points are well distributed around the ellipse, indicating that it originates from an intact sphere. In the second and third images, however, 
+            the points cluster in specific regions, showing that the ellipse stems from a damaged target or a non-spherical object.
+          </p>
+
+
+
+          <h5 class="title is-5" style="margin-top: 4rem;">5️⃣ Ellipse Rectification</h5>
+          <p>
+            At this stage, we distinguish whether an ellipse stems from a damaged sphere or from a non-target object. To do so, we fit the ellipse using two types of samples: points randomly 
+            selected from each cluster and one point randomly drawn from the sampling pool.
+          </p>
+
+          <h6 class="title is-6" style="margin-top: 2rem;">⭐Example</h6>
+          <img src="./static/images/er.png">
+
+          <!-- <div style="display: flex; gap: 0; width: 100%;">
+            <figure style="flex: 1 1 0; margin: 0;">
+              <img src="./static/images/er1.png" style="width:100%;" alt="er1">
+            </figure>
+            <figure style="flex: 1 1 0; margin: 0;">
+              <img src="./static/images/er2.png" style="width:100%;" alt="er2">
+            </figure>
+                        <figure style="flex: 1 1 0; margin: 0;">
+              <img src="./static/images/er4.png" style="width:100%;" alt="er4">
+            </figure>
+                        <figure style="flex: 1 1 0; margin: 0;">
+              <img src="./static/images/er5.png" style="width:100%;" alt="er5">
+            </figure>
+          </div> -->
+
+          <p style="margin-top: 2rem;">
+            As illustrated in the figure above, the shape of the fitted ellipse varies depending on which points are randomly sampled. To recover the true ellipse, we use two sets of points: 
+            points from the intact regions of the initially detected ellipse (red dots) and point that—despite potentially originating from intact region—is excluded from the sampling pool during the fitting process
+            (blue dots). As in the <em>Initial Ellipse Detection</em> stage, we seek a ellipse that contains no red inliers within fitted ellipse. If no such ellipse can be found, we conclude that the shape 
+            does not originate from a non-target object.
+          </p>
+
+
+
+          <h5 class="title is-5" style="margin-top: 4rem;">6️⃣ Center Compensation</h5>
+          <p>
+            Due to the perspective projection model as depicted below, the true center of the sphere does not coincide with the center of its projected ellipse in the image. Therefore, in this step we use the ellipse’s 
+            center to compute the corresponding projection of the sphere’s 3D center onto the image.
+          </p>  
+          <img src="./static/images/perspective.png" style="display: block; margin: 1rem auto; width: 80%;">
+          <img src="./static/images/cc.png" style="display: block; margin: 1rem auto; width: 80%;">
+
+
+                            
+          <h4 class="title is-4" style="margin-top:6rem;">
+            <img src="./static/images/lidar.png"
+                alt="Lidar icon"
+                style="
+                  width:1.2em;
+                  height:1.5em;
+                  vertical-align:text-bottom;
+                ">
+            LiDAR
+          </h4>
+          <h5 class="title is-5" style="margin-top: 4rem;">1️⃣ Filtering</h5>
+
+          <p>
+            Apply a Statistical Outlier Removal (SOR) filter to the aggregated point cloud and remove the ground plane, leaving only the robot and the spherical target.
+          </p>  
+          
+          <h6 class="title is-6" style="margin-top: 2rem;">⭐Example</h6>
+          <img src="./static/images/filtering.png"
+            style="display: block; margin: 1rem auto; width: 80%;"
+            alt="filtering example">
+
+          <p style="margin-top: 2rem;">
+            The left image shows the camera view, while in the right image, red points denote the segmented points belonging to the robot and the sphere,
+            and white points correspond to the ground.
+          </p> 
+
+
+          <h5 class="title is-5" style="margin-top: 4rem;">2️⃣ 2D projection & Hough transform</h5>
+          <p>
+            Project the previously obtained 3D points onto an image and apply a Hough transform to detect the circle. 3D point that projectss inside the circle is considered 
+            part of the sphere.
+          </p> 
+
+          <h6 class="title is-6" style="margin-top: 2rem;">⭐Example</h6>
+          <img src="./static/images/hough.png"
+            style="display: block; margin: 1rem auto; width: 80%;"
+            alt="Hough example">
+
+          <p style="margin-top: 2rem;">
+            The image shows the target being captured on a quadruped robot (left) and a manipulator (right).
+          </p> 
+
+
+
+          <h5 class="title is-5" style="margin-top: 4rem;">3️⃣ Clustering</h5>
+          <p>
+            Since data is accumulated and due to the sphere's geometric characteristic that contains significant noise, we can identify clusters of points that accumulate at specific locations 
+            on its surface. In this process, we discard any cluster whose spatial extent exceeds a predefined length, indicating that it contains excessive noise.
+          </p> 
+
+          <h6 class="title is-6" style="margin-top: 2rem;">⭐Example</h6>
+          <img src="./static/images/clustering.png"
+            style="display: block; margin: 1rem auto; width: 80%;"
+            alt="Hough example">
+
+
+
+
+          <h5 class="title is-5" style="margin-top: 4rem;">4️⃣ Representative Point Selection</h5>
+          <p>
+            Divide each cluster into 2mm cells and apply a weighted sum to each cluster using cell's location and number of points in the cell as the weight. 
+          </p> 
+
+
+
+
+          <h5 class="title is-5" style="margin-top: 4rem;">5️⃣ Sphere Fitting & Center Extraction</h5>
+          <p>
+            Since four non‐coplanar points can uniquely define a sphere, we generate all 4-point combinations from the previously computed representative points and fit a sphere to each combination. 
+            We then compute the final sphere center as a weighted sum of the centers obtained from all combinations.
+          </p> 
+
+          <h6 class="title is-6" style="margin-top: 2rem;">⭐Example</h6>
+          <img src="./static/images/final_center.png"
+            style="display: block; margin: 1rem auto; width: 90%;"
+            alt="final_center">
+
+          <p style="margin-top: 2rem;">
+            Red, green, and blue dot denote the representative points, candidate sphere centers, final sphere center, respectively.
+          </p> 
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 
 <!-- <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">

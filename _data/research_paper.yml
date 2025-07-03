@@ -1,5 +1,16 @@
 - title: Paper
   images:
+    - link: /img/research/paper/marscalib.png
+      alt: IEEE IROS
+      alt_link: https://www.iros25.org/
+      pulished_date: Oct, 2025
+      paper: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
+      authors: Seokhwan Jeong, Hogyun Kim, and Younggun Cho
+      tags:
+          - Calibration
+          - Diverse Terrain
+      page_link: /research/marscalib/
+
     - link: /img/research/paper/10_skid_slam.gif
       alt: IEEE ICRA-W
       alt_link: https://norlab-ulaval.github.io/icra_workshop_field_robotics/
