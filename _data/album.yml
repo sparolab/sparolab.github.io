@@ -128,17 +128,6 @@ categories:
       id: projects
       images:
         # 2024 ---------------------------------------------------------------------------------------
-        - description: "24년 6월 제주 마장굴 실험(STEAM)" 
-          date: "2024.06.19."
-          image_list:
-            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_준비.jpeg
-            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_교수님과_로봇개.jpeg
-            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_로봇개_1.jpeg
-            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_로봇개_2.jpeg
-            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_개로버.jpeg
-            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_실험중_1.jpeg
-            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_실험중_2.jpeg
-
         - description: "24년 12월 연천 2차 실험" 
           date: "2024.12.23."
           image_list:
@@ -160,18 +149,26 @@ categories:
             - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_2.mpo
             - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_3.mpo
 
-        
+        - description: "24년 6월 제주 마장굴 실험(STEAM)" 
+          date: "2024.06.19."
+          image_list:
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_준비.jpeg
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_교수님과_로봇개.jpeg
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_로봇개_1.jpeg
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_로봇개_2.jpeg
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_개로버.jpeg
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_실험중_1.jpeg
+            - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_실험중_2.jpeg
 
 
   - name: Lab Activities
     id: lab-activities
     icon: 🍕
-    # 2025 ---------------------------------------------------------------------------------------
-    # 2024 ---------------------------------------------------------------------------------------      
     subcategories:
     - name: Workshops
       id: workshop
       images: 
+      # 2025 ---------------------------------------------------------------------------------------
       - description: "2025년도 하계 워크샵(가평)"
         # date: "2025.08-05. ~ 06."
         date: "2025.08.05."
@@ -181,7 +178,7 @@ categories:
           - link: /img/album/activity/workshop/2025/2025_가평_하계워크샵/3.jpg
           - link: /img/album/activity/workshop/2025/2025_가평_하계워크샵/4.jpg
           - link: /img/album/activity/workshop/2025/2025_가평_하계워크샵/5.jpg
-
+      # 2024 --------------------------------------------------------------------------------------- 
       - description: "2024년도 하계 워크샵(가평)"
         # date: "2024.08-19. ~ 20."
         date: "2024.08.19."
