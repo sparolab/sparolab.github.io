@@ -1,5 +1,17 @@
 - title: "2025"
   images:
+    - alt: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
+      authors: "Seokhwan Jeong, Hogyun Kim, and Younggun Cho"
+      conf: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
+      conf_link: "https://www.iros25.org/"
+      arxiv: "https://www.arxiv.org/abs/2507.17130"
+
+    - alt: "Uni-Mapper: Unified Mapping Framework for Multi-modal LiDARs in Complex and Dynamic Environments"
+      authors: "Gilhwan Kang, Hogyun Kim, Byunghee Choi, Seokhwan Jeong, Young-Sik Shin, Younggun Cho"
+      conf: "IEEE Transactions on Intelligent Vehicles (T-IV)"
+      conf_link: "https://ieee-itss.org/pub/t-iv/"
+      pdf: "https://ieeexplore.ieee.org/abstract/document/11057931"
+
     - alt: "PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal"
       authors: "Jiwon Choi*, Dongjin Cho*, Gihyeon Lee, Hogyun Kim, Geonmo Yang, Joowan Kim, and Younggun Cho"
       conf: "IEEE International Conference on Robotics and Automation (ICRA)"
@@ -10,7 +22,6 @@
       authors: "Juwon Kim, Hogyun Kim, Seokhwan Jeong, Youngsik Shin, and Younggun Cho"
       conf: "IEEE International Conference on Robotics and Automation (ICRA)"
       conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
-
 
 - title: "2024"
   images:

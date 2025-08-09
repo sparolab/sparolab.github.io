@@ -1,7 +1,25 @@
 - title: "2025"
   images:
+    - alt: "보조적인 UWB 거리팩터를 활용한 시각-관성 SLAM"
+      authors: "Jungwoo Lee, Juwon Kim,  Seung-Woo Ko, Inwook Shim, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+    - alt: "실외 환경에서의 다중 로봇 시스템을 위한 구체 타겟 기반 LiDAR와 카메라 간의 캘리브레이션 기술"
+      authors: "Seokhwan Jeong, Hogyun Kim, Juwon Kim, and Younggun Cho"
+      conf: "Korean Institue of Information Technology (KIIT)"
+      conf_link: "https://ki-it.or.kr/"
+      pdf: ""
+
     - alt: "IML-SLAM: 주행 차량 모션을 고려한 LiDAR-Inertial SLAM 시스템"
       authors: "Jiwon Choi, Hogyun Kim, Geonmo Yang, and Younggun Cho"
+      conf: "The Korean Society of Intelligent Transport Systems (ITS)"
+      conf_link: "https://www.kits.or.kr/"
+      pdf: ""
+
+    - alt: "대규모 다층 실내 환경의 자동 매핑을 위한 자율 탐사 시스템 연구"
+      authors: "Miryeong Park, Jiyoon Lee, Gihyeon Lee, and Younggun Cho"
       conf: "The Korean Society of Intelligent Transport Systems (ITS)"
       conf_link: "https://www.kits.or.kr/"
       pdf: ""
@@ -42,12 +60,6 @@
     - alt: "도심환경에서 배달로봇을 위한 현저성 기반 강건한 위치인식 기술"
       authors: "Jeongwoo Lee and Younggun Cho"
       conf: "Institute of Control, Robotics and Systems (ICROS)"
-      conf_link: "https://icros.org/main/"
-      pdf: ""
-
-    - alt: "다양한 조도 환경을 표현하는 Implicit Neural Map 구축 및 로봇 주행 상황에서의 조도 정보 판별 연구"
-      authors: "Juhui Lee, Seungjun Ma, and Younggun Cho"
-      conf: "Korea Robotics Society Annual Conference (KRoC)"
       conf_link: "https://icros.org/main/"
       pdf: ""
 

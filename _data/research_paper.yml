@@ -1,6 +1,17 @@
 - title: Paper
   images:
-    - link: /img/research/paper/marscalib.png
+    - link: /img/research/paper/12_uni_mapper.png
+      alt: IEEE T-IV
+      alt_link: https://ieee-itss.org/pub/t-iv/
+      pulished_date: Oct, 2025
+      paper: "Uni-Mapper: Unified Mapping Framework for Multi-modal LiDARs in Complex and Dynamic Environments"
+      authors: Gilhwan Kang, Hogyun Kim, Byunghee Choi, Seokhwan Jeong, Young-Sik Shin, and Younggun Cho
+      tags:
+          - LiDAR SLAM
+          - Multi Robot
+      page_link: /research/uni_mapper/
+
+    - link: /img/research/paper/11_marscalib.png
       alt: IEEE IROS
       alt_link: https://www.iros25.org/
       pulished_date: Oct, 2025
@@ -19,7 +30,7 @@
       authors: Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho
       tags:
           - LiDAR SLAM
-          - Diverse Terrain
+          - Multi Robot
       page_link: /research/skid_slam/
 
     - link: /img/research/paper/9_polaris.gif

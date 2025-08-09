@@ -1,4 +1,12 @@
 papers:
+  - date: "Jun. 2025"
+    description: "One paper (MARSCalib) accepted at IROS 2025!"
+    authors: "Seokhwan"
+
+  - date: "Jun. 2025"
+    description: "One paper (Uni-Mapper) accepted at IEEE Transactions on Intelligent Vehicles (T-IV)."
+    authors: "Gilhwan"
+
   - date: "Feb. 2025"
     description: "Two papers (Diter++ and PoLaRIS) accepted at ICRA 2025!"
     authors: "Jiwon, Dongjin, and Juwon"
@@ -8,7 +16,7 @@ papers:
     authors: "Geonmo"
 
   - date: "Sep. 2024"
-    description: One paper about RADAR-based localization (Referee) is accepted by IEEE Robotics and Automation Letters (RA-L)."
+    description: "One paper about RADAR-based localization (Referee) is accepted by IEEE Robotics and Automation Letters (RA-L)."
     authors: "Byunghee and Hogyun"
 
   - date: "Aug. 2024"
