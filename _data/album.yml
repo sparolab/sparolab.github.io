@@ -139,16 +139,6 @@ categories:
             - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_실험중_1.jpeg
             - link: /img/album/research/project/steam/2024/2024_제주_마장굴/2024_제주마장굴_실험중_2.jpeg
 
-        - description: "24년 12월 연천 1차 실험" 
-          date: "2024.12.06."
-          image_list:
-            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_준비_1.mpo
-            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_준비_2.mpo
-            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_개로버.mpo
-            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_1.mpo
-            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_2.mpo
-            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_3.mpo
-
         - description: "24년 12월 연천 2차 실험" 
           date: "2024.12.23."
           image_list:
@@ -160,11 +150,17 @@ categories:
             - link: /img/album/research/project/steam/2024/2024_연천2차실험/b2/2024_연천2차실험_주원.jpeg
             - link: /img/album/research/project/steam/2024/2024_연천2차실험/b2/2024_연천2차실험_주원.jpeg
 
+        - description: "24년 12월 연천 1차 실험" 
+          date: "2024.12.06."
+          image_list:
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_준비_1.mpo
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_준비_2.mpo
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_개로버.mpo
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_1.mpo
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_2.mpo
+            - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_3.mpo
 
-            
-
-          
-
+        
 
 
   - name: Lab Activities
@@ -176,6 +172,16 @@ categories:
     - name: Workshops
       id: workshop
       images: 
+      - description: "2025년도 하계 워크샵(가평)"
+        # date: "2025.08-05. ~ 06."
+        date: "2025.08.05."
+        image_list:
+          - link: /img/album/activity/workshop/2025/2025_가평_하계워크샵/1.jpg
+          - link: /img/album/activity/workshop/2025/2025_가평_하계워크샵/2.jpg
+          - link: /img/album/activity/workshop/2025/2025_가평_하계워크샵/3.jpg
+          - link: /img/album/activity/workshop/2025/2025_가평_하계워크샵/4.jpg
+          - link: /img/album/activity/workshop/2025/2025_가평_하계워크샵/5.jpg
+
       - description: "2024년도 하계 워크샵(가평)"
         # date: "2024.08-19. ~ 20."
         date: "2024.08.19."
