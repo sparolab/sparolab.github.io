@@ -1,7 +1,7 @@
 - title: Paper
   images:
     - link: /img/research/paper/12_uni_mapper.png
-      alt: IEEE IROS
+      alt: IEEE T-IV
       alt_link: https://ieee-itss.org/pub/t-iv/
       pulished_date: Oct, 2025
       paper: "Uni-Mapper: Unified Mapping Framework for Multi-modal LiDARs in Complex and Dynamic Environments"
