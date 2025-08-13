@@ -169,6 +169,18 @@
       linkedin: https://www.linkedin.com/in/EHHU/
       keywords: 3D Vision, Visual SLAM 
 
+    - link: /img/people/master/윤승희_증명사진.png
+      alt: Seunghee Yun
+      description: |-
+        **Seunghee Yun**  
+        Master Student
+      email: 33shyun2833@gmail.com
+      github: https://github.com/shyun-28
+      scholar: https://scholar.google.com/citations?hl=ko&user=xPRLVb4AAAAJ
+      linkedin: https://www.linkedin.com/in/seungheeyun/
+      homepage: https://shyun-28.github.io/
+      keywords: Multiple Object tracking, Auto. Navigation
+
 - title: Part-Time
   images:
     - link: /img/people/phd/김기섭_증명사진.jpg
