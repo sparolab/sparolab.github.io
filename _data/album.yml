@@ -162,7 +162,7 @@ categories:
 
 
   - name: Lab Activities
-    id: lab-activities
+    id: lab-activities 
     icon: 🍕
     subcategories:
     - name: Workshops
