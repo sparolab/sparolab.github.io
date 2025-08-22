@@ -200,6 +200,12 @@ categories:
     - name: Entrance & Graduation
       id: entrance_graduation
       images: 
+      - description: "2025년도 하반기 졸업식(정석환, 최병희)"  
+        date: "2025.08."
+        image_list:
+          - link: /img/album/activity/graduation/2025/2025_08_단체_1.PNG
+          - link: /img/album/activity/graduation/2025/2025_08_단체_2.PNG
+
       - description: "2025년도 상반기 졸업식(마승준, 이정우, 최은철)"  
         date: "2025.02."
         image_list:
