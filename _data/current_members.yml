@@ -91,17 +91,6 @@
 
 - title: Master Student
   images:
-    - link: /img/people/master/최병희_증명사진.jpg
-      alt: Byunghee Choi
-      description: |-
-        **Byunghee Choi**  
-        Master Student
-      email: bhbhchoi@inha.edu
-      github: https://github.com/Refstop
-      scholar: https://scholar.google.com/citations?hl=en&user=JCJAwgIAAAAJ
-      linkedin: https://www.linkedin.com/in/refstop/
-      keywords: Range Sensor, SLAM 
-      
     - link: /img/people/master/이기현_증명사진.jpg
       alt: Gihyeon Lee
       description: |-
