@@ -1,5 +1,11 @@
 - title: "2025"
   images:
+    - alt: "GNSS 음영 환경을 위한 시각 파운데이션 모델 기반의 강건한 UAV 전역 위치 추정 시스템"
+      authors: "Encheol Choi, Sungwook Jung, and Younggun Cho"
+      conf: "Journal of Institute of Control, Robotics and Systems"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
     - alt: "보조적인 UWB 거리팩터를 활용한 시각-관성 SLAM"
       authors: "Jungwoo Lee, Juwon Kim,  Seung-Woo Ko, Inwook Shim, and Younggun Cho"
       conf: "Institute of Control, Robotics and Systems (ICROS)"
@@ -24,9 +30,26 @@
       conf_link: "https://www.kits.or.kr/"
       pdf: ""
 
-
 - title: "2024"
   images:
+    - alt: "IMRGB-TIR 특징 혼합을 활용한 조도 변화에 강건한 장소 인식 기법"
+      authors: "Seungjun Ma and Youngguon Cho"
+      conf: "The Korean Society of Intelligent Transport Systems (ITS)"
+      conf_link: "https://www.kits.or.kr/"
+      pdf: ""
+
+    - alt: "Thermal Infrared와 RGB 카메라 융합을 이용한 강건한 장소 인식 방법"
+      authors: "Seungjun Ma and Youngguon Cho"
+      conf: "Journal of Institute of Control, Robotics and Systems"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+    - alt: "자율 수중 로봇을 위한 사실적인 실시간 고밀도 3 차원 Mesh 지도 작성"
+      authors: "Jungwoo Lee and Youngguon Cho"
+      conf: "Journal of Korea Robotics Society"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
     - alt: "GNSS-Denied 환경에서 위성 이미지를 이용한 비전 기반의 UAV 지리적 위치추정 시스템"
       authors: "Encheol Choi, Sungwook Jung, and Younggun Cho"
       conf: "Institute of Control, Robotics and Systems (ICROS)"
@@ -81,8 +104,27 @@
       conf_link: "https://kros.org/"
       pdf: ""
 
+    - alt: "도심 GPS 음영지역에서의 자율주행을 위한 ICP 기반 위치 추정 방법"
+      authors: "Minho Lee, Gihyeon Lee, Miryeong Park, Jiyoon Lee, Jaeyong Lee, Gilhwan Kang, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
+    - alt: "Visual Marker 및 건축 도면을 활용한 효율적인 다층 내비게이션에 관한 연구"
+      authors: "Jiwon Choi, Taehu Sim, Gihyeon Lee, Jaeyong Lee, Gilhwan Kang, Hogyun Kim, and Younggun Cho"
+      conf: "Journal of Institute of Control, Robotics and Systems"
+      conf_link: "https://icros.org/main/"
+      pdf: ""
+
+
 - title: "2023"
   images:
+    - alt: "Extended and Adaptive Inverse Perspective Mapping for Ground Representation of Autonomous Mobile Robot"
+      authors: "Jooyong Park and Youngguon Cho"
+      conf: "Journal of Korea Robotics Society"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
     - alt: "멀티 모달 시스템을 위한 가상 LiDAR기반의 다중 지도 융합 방법"
       authors: "Gilhwan Kang and Younggun Cho"
       conf: "Korea Robotics Society Annual Conference (KRoC)"
@@ -103,6 +145,12 @@
 
 - title: "2022"
   images:
+    - alt: "Loosely Coupled LiDAR-visual Mapping and Navigation of AMR in Logistic Environments"
+      authors: "Byunghee Choi, Kyeongsu Kang, Yejin Noh, and Younggun Cho"
+      conf: "Journal of Korea Robotics Society"
+      conf_link: "https://kros.org/"
+      pdf: ""
+
     - alt: "특징점이 부족한 실내환경에서의 Visual Localization에 대한 연구"
       authors: "Seungjun Ma, Seokhwan Jeong, and Younggun Cho"
       conf: "Korea Robotics Society Annual Conference (KRoC)"
