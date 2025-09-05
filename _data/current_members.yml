@@ -54,6 +54,17 @@
       linkedin: https://www.linkedin.com/in/jng-u/
       keywords: Visual SLAM, Sensor Fusion 
 
+    - link: /img/people/phd/정석환_증명사진.png
+      alt: Seokhwan Jung
+      description: |-
+        **SeokHwan Jung**  
+        PhD Student
+      email: jshwes5709@gmail.com
+      github: https://github.com/Eric5709
+      scholar: https://scholar.google.co.kr/citations?user=ZAO6skQAAAAJ&hl=ko
+      linkedin: https://www.linkedin.com/in/seokhwan-jeong-19111331b/
+      keywords: Sensor Calibration, Sensor Fusion
+
     - link: /img/people/phd/최지원_증명사진.jpg
       alt: Jiwon Choi
       description: |-
@@ -80,28 +91,6 @@
 
 - title: Master Student
   images:
-    - link: /img/people/master/정석환_증명사진.png
-      alt: Seokhwan Jung
-      description: |-
-        **SeokHwan Jung**  
-        Master Student
-      email: jshwes5709@gmail.com
-      github: https://github.com/Eric5709
-      scholar: https://scholar.google.co.kr/citations?user=ZAO6skQAAAAJ&hl=ko
-      linkedin: https://www.linkedin.com/in/seokhwan-jeong-19111331b/
-      keywords: Sensor Calibration, Sensor Fusion
-
-    - link: /img/people/master/최병희_증명사진.jpg
-      alt: Byunghee Choi
-      description: |-
-        **Byunghee Choi**  
-        Master Student
-      email: bhbhchoi@inha.edu
-      github: https://github.com/Refstop
-      scholar: https://scholar.google.com/citations?hl=en&user=JCJAwgIAAAAJ
-      linkedin: https://www.linkedin.com/in/refstop/
-      keywords: Range Sensor, SLAM 
-      
     - link: /img/people/master/이기현_증명사진.jpg
       alt: Gihyeon Lee
       description: |-
@@ -143,6 +132,7 @@
         Master Student
       email: bark9757@inha.edu
       github: https://github.com/miiiiiryeong
+      homepage: https://miiiiiryeong.github.io/
       scholar: https://scholar.google.com/citations?user=TVKnE_0AAAAJ&hl=ko
       linkedin: https://www.linkedin.com/in/miryeong-park-802a7618b/
       keywords: Exploration-planning, Field Robotics 
@@ -157,6 +147,29 @@
       scholar: https://scholar.google.com/citations?view_op=list_works&hl=ko&user=KD-dpyYAAAAJ&gmla=A
       linkedin: https://www.linkedin.com/in/jiyun-lee-483728359/
       keywords: Reinforcement Learning, Auto. Navigation 
+
+    - link: /img/people/master/심태후_증명사진.png
+      alt: Taehu Sim
+      description: |-
+        **Taehu Sim**  
+        Master Student
+      email: xogn2359@gmail.com
+      github: https://github.com/EH-HU
+      scholar: https://scholar.google.com/citations?user=UPg-JuQAAAAJ&hl=ko
+      linkedin: https://www.linkedin.com/in/EHHU/
+      keywords: 3D Vision, Visual SLAM 
+
+    - link: /img/people/master/윤승희_증명사진.jpg
+      alt: Seunghee Yun
+      description: |-
+        **Seunghee Yun**  
+        Master Student
+      email: 33shyun2833@gmail.com
+      github: https://github.com/shyun-28
+      scholar: https://scholar.google.com/citations?hl=ko&user=xPRLVb4AAAAJ
+      linkedin: https://www.linkedin.com/in/seungheeyun/
+      homepage: https://shyun-28.github.io/
+      keywords: Multiple Object tracking, Auto. Navigation
 
 - title: Part-Time
   images:
