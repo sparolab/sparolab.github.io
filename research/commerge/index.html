@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="OptiX Mapper: Robust, Lightweight, and Fast Multi-robot Point Cloud Map Merging via Optimal Data Exchange">
-  <meta name="keywords" content="Distributed SLAM, SOLiD, KISS Matcher">
+        content="Commerge: Communication-Efficient, Robust and Fast LiDAR Map Merging Framework for Multi-robot Coordination in Resource-constrained Scenarios">
+  <meta name="keywords" content="Communication, Multi-Robot, Map Merging, Data Exchange">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OptiX Mapper: Robust, Lightweight, and Fast Multi-robot Point Cloud Map Merging via Optimal Data Exchange</title>
+  <title>Commerge: Communication-Efficient, Robust and Fast LiDAR Map Merging Framework for Multi-robot Coordination in Resource-constrained Scenarios</title>
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -45,7 +45,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">OptiX Mapper: Robust, Lightweight, and Fast Multi-robot Point Cloud Map Merging via Optimal Data Exchange</h1>
+          <h1 class="title is-1 publication-title">Commerge: Communication-Efficient, Robust and Fast LiDAR Map Merging Framework for Multi-robot Coordination in Resource-constrained Scenarios</h1>
           <div class="is-size-6 publication-authors">
             <span class="author-block"><sup>1</sup>* International Journal of Robotics Research (IJRR) 2025 submitted</span>            
           </div>
@@ -59,6 +59,9 @@
             </span>
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=ko">Geonmo Yang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=ZAO6skQAAAAJ&hl=ko">Seokhwan Jeong</a><sup>1</sup>,
             </span>
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=S1A3nbIAAAAJ&hl=ko&oi=ao">Hyungtae Lim*</a><sup>2</sup>,
@@ -113,7 +116,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/sparolab/SKiD-SLAM"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -135,7 +138,7 @@
     <div class="hero-body">
       <img src="./static/images/pipeline.png">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">TL;DR Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM <br> when resource-constrained field environments are given!</span>
+        <span class="dnerf">TL;DR Communication-Efficient, Robust and Fast LiDAR Map Merging <br> when communication-constrained field environments are given!</span>
       </h2>
     </div>
   </div>
@@ -150,17 +153,14 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Distributed LiDAR SLAM is crucial for achieving efficient robot autonomy and improving the scalability of mapping.
-            However, two issues need to be considered when applying it in field environments: one is resource limitation, and the other is inter/intra-robot association.
-            The resource limitation issue arises when the data size exceeds the processing capacity of the network or memory, especially when utilizing communication systems or onboard computers in the field.
-            % The inter/intra-robot association issue occurs due to the fundamental principles of ICP-based local registration.
-            % The ICP with a narrow convergence range restricts robot movement, making field robots, which must cope with various hazards, especially vulnerable.
-            The inter/intra-robot association issue occurs due to the limited convergence basin of ICP under large viewpoint differences, triggering many false negative loops and ultimately resulting in an inconsistent global map for multi-robot systems.
-            To tackle these problems, we propose a distributed LiDAR SLAM framework designed for versatile field applications, called \textit{SKiD-SLAM}.
-            Extending our previous work that solely focused on lightweight place recognition and fast and robust global registration, we present a multi-robot mapping framework that focuses on robust and lightweight inter-robot loop closure in distributed LiDAR SLAM. 
-            Through various environment experiments, we demonstrate that our method is more robust and lightweight compared to other state-of-the-art distributed SLAM approaches, overcoming resource limitation and inter/intra-robot association issues.
-            Also, we validated the field applicability of our approach through mapping experiments in real-world planetary emulation terrain and cave environments, which are in-house datasets.
-            Our code will be available at github.
+            Multi-robot LiDAR map merging enables faster exploration and efficient area coverage by maintaining a global consistency across robot teams. 
+            However, this requires exchanging massive sensory data between robots, creating a fundamental bottleneck in communication-constrained environments. 
+            We present Commerge, a hybrid framework that reduces inter-robot data exchange by 1000x while maintaining alignment accuracy.
+            Our key insight is that only a small subset of carefully selected scans is necessary for robust map merging. We formulate this selection as a progressive optimization on an exchange graph, where vertices represent robot keyframes and edges denote candidate inter-robot loops. 
+            Through three stages—sequential matching for temporal coherence, balanced minimum vertex cover for complete coverage with minimal transmission, and maximum edge-weighted clique for geometric consistency—we identify the minimal scan subset that preserves inter-robot alignment quality.
+            Unlike existing approaches that transmit complete datasets (GB-scale) or employ naive downsampling, Commerge exchanges only MB-scale data while achieving comparable or superior alignment accuracy. 
+            Extensive evaluation on six datasets shows 99.98% reduction in data exchange (from 7.0 GB to 1.7 MB on HeLiPR), while maintaining real-time performance across embedded to desktop platforms. 
+            The framework successfully operates on resource-constrained hardware where existing methods fail, enabling practical multi-robot deployment in bandwidth-limited field operations.
             </p>
         </div>
       </div>
@@ -171,7 +171,7 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link" href="https://github.com/limhyungtae" class="external-link" disabled>
+      <a class="icon-link" href="" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
