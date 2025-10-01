@@ -7,6 +7,11 @@ categories:
       id: conference
       images:
         # 2025 ---------------------------------------------------------------------------------------
+        - description: "2025년 CoRL & HUMANOIDS 학회 참석" 
+          date: "2025.09.27"
+          image_list:
+            - link: /img/album/research/conference/2025/2025_corl/단체_1.jpg
+            - link: /img/album/research/conference/2025/2025_corl/단체_2.jpg
         - description: "2025년 ICRA 학회 참석" 
           date: "2025.05.19"
           image_list:
@@ -33,6 +38,7 @@ categories:
           image_list:
             - link: /img/album/research/conference/2025/2025_kros/단체_1.jpg
             - link: /img/album/research/conference/2025/2025_kros/2025_kros_이지윤_우수논문상.jpeg
+            
         # 2024 ---------------------------------------------------------------------------------------
         - description: "2024년 ICROS 학회 참석 및 최우수논문상 수상" 
           date: "2024.07.01"
