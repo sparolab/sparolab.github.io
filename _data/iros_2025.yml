@@ -27,5 +27,5 @@
     Finally, the camera pose is estimated by selecting the solution that maximizes the Wasserstein-based alignment score between observed detections and projected landmark hypotheses.
     For rigorous validation, we evaluate on challenging TUM RGB-D sequences with occlusions, label noise, and diverse categories, showing consistent improvements over baselines in association and pose accuracy.
   session: Workshop on Open World Navigation in Human-centric Environments / Monday PM
-  page_link: /iros_2025/MUST-Loc/
-  image: /iros_2025/MUST-Loc/main.png
+  page_link: /iros_2025/must-loc/
+  image: /iros_2025/must-loc/main.png
