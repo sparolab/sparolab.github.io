@@ -1,5 +1,5 @@
 body {
-  font-family: 'IBM Plex Sans', 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 
@@ -24,7 +24,7 @@ body {
 }
 
 .teaser {
-  font-family: 'IBM Plex Sans', 'Google Sans', sans-serif;
+  font-family: 'Google Sans', sans-serif;
 }
 
 
@@ -48,11 +48,11 @@ body {
 }
 
 .publication-title {
-    font-family: 'IBM Plex Sans', 'Google Sans', sans-serif;
+    font-family: 'Google Sans', sans-serif;
 }
 
 .publication-authors {
-    font-family: 'IBM Plex Sans', 'Google Sans', sans-serif;
+    font-family: 'Google Sans', sans-serif;
 }
 
 .publication-venue {
