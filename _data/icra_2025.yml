@@ -53,7 +53,7 @@
     To the best of our knowledge, we report the first method to cope with the restricted FOV.
   session: Perception I / Wednesday, 10:00-10:05 / Paper WeBT7.2
   page_link: /research/solid/
-  image: /img/research/paper/6_solid.gif
+  image: /img/research/paper/5_solid.gif
 
 - title: "SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments"
   abstract: >
