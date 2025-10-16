@@ -41,4 +41,4 @@
     Through extensive experiments, we demonstrate that our method enables more accurate instruction following while maintaining path efficiency, with success rate improving from 26.9 to 88.5 and SPL from 29.3 to 76.4.       
   session: Workshop on Open World Navigation in Human-centric Environments / Monday, 13:15~18:00
   page_link: /research/cloi_nav/
-  image: /research/paper/13_cloi_nav.png
+  image: /img/research/paper/13_cloi_nav.png
