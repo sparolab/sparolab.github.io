@@ -1,5 +1,17 @@
 - title: Paper
   images:
+    - link: /img/research/paper/13_staticnerf.jpg
+      alt: IEEE RA-L
+      alt_link: https://www.ieee-ras.org/publications/ra-l
+      pulished_date: Oct, 2025
+      paper: "Freeze-Frame with StaticNeRF: Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes"
+      authors: Juhui Lee, Geonmo Yang, Seungjun Ma, and Younggun Cho
+      tags:
+          - NeRF
+          - Mapping
+          - Localization
+      page_link: /research/staticnerf/
+      
     - link: /img/research/paper/12_uni_mapper.png
       alt: IEEE T-IV
       alt_link: https://ieee-itss.org/pub/t-iv/

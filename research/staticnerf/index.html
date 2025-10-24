@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freeze-Frame with StaticNeRF: Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes</title>
+    <meta name="description" content="StaticNeRF paper. Official web with qualitative comparisons, links to the source code, and additional materials.">
+    <meta name="keywords" content="StaticNeRF,nerf,official,code" />
+    <meta name="author" content="Juhui Lee" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <span class="title-main"><img src="./cropped_icon.png" /><span>Freeze-Frame with StaticNeRF</span></span>
+        <span class="title-small">Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes</span>
+      </h1>
+    </header>
+
+    <!-- <div class="authors">
+        <div class="author">
+          <span class="author-name">
+            <a href="https://jkulhanek.github.io/">Juhui Lee</a>
+          </span>
+          <span class="author-affiliation">INHA University</span>
+          <span class="author-email"><a href="mailto:juhui@example.com">dlwngml6635@gmail.com</a></span>
+        </div>
+      
+        <div class="author">
+          <span class="author-name">
+            <a href="https://pengsongyou.github.io/">Seungjun Ma</a>
+          </span>
+          <span class="author-affiliation">Hyundai Robotics</span>
+          <span class="author-email"><a href="mailto:seungjun@example.com">richard7714@hyundai.com</a></span>
+        </div>
+      
+        <div class="author">
+          <span class="author-name">
+            <a href="https://cmp.felk.cvut.cz/~kukelova/">Geonmo Yang</a>
+          </span>
+          <span class="author-affiliation">INHA University</span>
+          <span class="author-email"><a href="mailto:geonmo@example.com">ygm7422@gmail.com</a></span>
+        </div>
+      
+        <div class="author">
+          <span class="author-name">
+            <a href="https://cmp.felk.cvut.cz/~kukelova/">Younggun Cho</a>
+          </span>
+          <span class="author-affiliation">INHA University</span>
+          <span class="author-email"><a href="mailto:younggun@example.com">yg.cho@inha.ac.kr</a></span>
+        </div>
+    </div> -->
+
+    <div class="links">
+        <!-- <a class="button" href="https://arxiv.org/pdf/2407.08447"><i class="ti ti-file-type-pdf"></i> Paper</a>
+        <a class="button" href="https://github.com/jkulhanek/wild-gaussians/"><i class="ti ti-brand-github-filled"></i> Code</a>
+        <a class="button" href="https://youtu.be/Ri-er40QUoU"><i class="ti ti-slideshow"></i> Video</a>
+        <a class="button" href="https://arxiv.org/pdf/2407.08447"><i class="ti ti-file-type-pdf"></i> Supplementary Materials</a> -->
+        <!-- <a class="button" href=""><i class="ti ti-file-type-pdf"></i>Paper</a>
+        <a class="button" href=""><i class="ti ti-brand-github-filled"></i>Code</a> -->
+        <a class="button" href="./assets/video/RAL 2025 anonymous.mp4"><i class="ti ti-slideshow"></i>Video</a>
+        <a class="button" href="./assets/supp/ral2025_staticnerf_anonymous.pdf" target="_blank"><i class="ti ti-file-type-pdf"></i>Supplementary Material</a>
+      </div>
+      <style>
+        .video.teaser-video::before {
+          padding-bottom: 50%;
+        }
+      </style>
+    <section>
+
+        <p class="justify">
+            <!-- <strong>StaticNeRF</strong> robustly removes dynamic objects across diverse real-world scenarios, while preserving high-fidelity reconstruction. -->
+            <strong>StaticNeRF</strong> enables high-fidelity dynamic object removal in diverse real-world scenes.
+        </p>
+
+          <div style="margin-bottom: 10px;">
+                <figcaption style="text-align: center; margin-top: 0px; margin-bottom: 5px">
+                <strong>Case A:</strong> Opposing camera motion to object movement
+              </figcaption>
+            <div style="display: flex; justify-content: center; gap: 10px; max-width: 960px; margin: auto;">
+              
+              <div style="position: relative; width: 320px; aspect-ratio: 640/480;">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="./assets/thumb/gt_rgbd_bonn_person_tracking.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; top: 12px; left: 50%;
+                            transform: translateX(-50%); color: white;
+                            font-weight: bold; text-shadow: 1px 1px 3px black;">
+                  Input
+                </div>
+              </div>
+              
+              <div style="position: relative; width: 320px; aspect-ratio: 640/480;">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="./assets/thumb/ours_rgbd_bonn_person_tracking.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; top: 12px; left: 50%;
+                            transform: translateX(-50%); color: white;
+                            font-weight: bold; text-shadow: 1px 1px 3px black;">
+                  Ours
+                </div>
+              </div>
+              
+              <div style="position: relative; width: 320px; aspect-ratio: 640/480;">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="./assets/thumb/others_rgbd_bonn_person_tracking.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; top: 12px; left: 50%;
+                            transform: translateX(-50%); color: white;
+                            font-weight: bold; text-shadow: 1px 1px 3px black;">
+                  NeRF-W
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 10px;">
+            <figcaption style="text-align: center; margin-top: 0px; margin-bottom: 5px">
+                <strong>Case B:</strong> Dominant camera motion, minor object movement
+              </figcaption>
+            <div style="display: flex; justify-content: center; gap: 10px; max-width: 960px; margin: auto;">
+              
+              <div style="position: relative; width: 320px; aspect-ratio: 640/480;">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="./assets/thumb/gt_rgbd_bonn_person_tracking2.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; top: 12px; left: 50%;
+                            transform: translateX(-50%); color: white;
+                            font-weight: bold; text-shadow: 1px 1px 3px black;">
+                  Input
+                </div>
+              </div>
+          
+              <div style="position: relative; width: 320px; aspect-ratio: 640/480;">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="./assets/thumb/ours_rgbd_bonn_person_tracking2.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; top: 12px; left: 50%;
+                            transform: translateX(-50%); color: white;
+                            font-weight: bold; text-shadow: 1px 1px 3px black;">
+                  Ours
+                </div>
+              </div>
+              
+              <div style="position: relative; width: 320px; aspect-ratio: 640/480;">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="./assets/thumb/others_rgbd_bonn_person_tracking2.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; top: 12px; left: 50%;
+                            transform: translateX(-50%); color: white;
+                            font-weight: bold; text-shadow: 1px 1px 3px black;">
+                            WildGaussians
+                </div>
+              </div>
+          
+            </div>
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <figcaption style="text-align: center; margin-top: 0px; margin-bottom: 5px">
+                <strong>Case C:</strong> Persistent crowd
+              </figcaption>
+
+            <div style="display: flex; justify-content: center; gap: 10px; max-width: 960px; margin: auto;">
+              <div style="position: relative; width: 320px; aspect-ratio: 640/480;">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="./assets/thumb/anony/gt_JH_2_s_1.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; top: 12px; left: 50%;
+                            transform: translateX(-50%); color: white;
+                            font-weight: bold; text-shadow: 1px 1px 3px black;">
+                  Input
+                </div>
+              </div>
+          
+              <div style="position: relative; width: 320px; aspect-ratio: 640/480;">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="./assets/thumb/ours_JH_2_s_1.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; top: 12px; left: 50%;
+                            transform: translateX(-50%); color: white;
+                            font-weight: bold; text-shadow: 1px 1px 3px black;">
+                  Ours
+                </div>
+              </div>
+              <div style="position: relative; width: 320px; aspect-ratio: 640/480;">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                  <!-- <source src="./assets/thumb/others_JH_2_s_1.mp4" type="video/mp4"> -->\
+                  <source src="./assets/thumb/anony/others_JH_2_s_1.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; top: 12px; left: 50%;
+                            transform: translateX(-50%); color: white;
+                            font-weight: bold; text-shadow: 1px 1px 3px black;">
+                  NeRF On-the-go
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+
+    <section class="abstract">
+      <h2>Abstract</h2>
+      <p>Recent advances in neural representations have shown great promise for enabling high-fidelity dense mapping in robotics. Given the inherently dynamic nature of real-world environments, many studies have focused on learning static scene representations from dynamic observations. However, existing methods often fail to remove subtly moving objects and struggle to recover occluded static backgrounds, leading to critical limitations in practice. Furthermore, when static neural maps are used for localization, dynamic content in query images must be handled effectively. To overcome these challenges, we propose a static neural mapping framework that is robust to diverse dynamic environments and capable of processing dynamic content during localization. We evaluate our approach through extensive experiments on both public and in-house datasets. 
+        Our method improves both dynamic object removal and localization robustness under dynamic conditions, representing a significant step toward resilient robot navigation in real-world environments.
+<figure style="margin: 0">
+      <img src="./assets/main_fig.jpg" alt="WildGaussians overview" style="width: 100%; margin: 1em auto 0.3em auto; display: block;" />
+      <figcaption>
+      <Strong>Overview of our proposed static neural rendering pipeline.</Strong> The top row illustrates stage-wise scene evolution during training, and the bottom row presents the corresponding method components aligned with each stage. Our framework follows a curriculum learning strategy consisting of three functional stages: (1) <strong>Initial Training</strong> involves learning coarse geometric and photometric representations through uniform sampling. (2) <strong>Uncertainty Compensation</strong> incorporates a CNN-based uncertainty network to address ambiguities that NeRF alone cannot resolve, enabling better disentanglement of static and transient fields through joint optimization. (3) <strong>High-fidelity Rendering</strong> adopts a data-driven sampling strategy and focuses on high-quality rendering. 
+      </figcaption>
+    </figure>
+    </section>
+
+    <section>
+      <h2>Static Neural Representation</h2>
+      <p class="justify" style="margin-top: 20px; margin-bottom: -10px;">
+        We compared our method against baseline methods and demonstrated that our approach reliably removes dynamic objects while maintaining high rendering quality.
+      </p>
+      
+      <div class="video-grid-3col">
+        <figure>
+          <div class="video-wrapper">
+            <video class="video-compare" style="aspect-ratio: 640/480" loop muted>
+              <source src="./assets/nerfw/final_rgbd_bonn_person_tracking.mp4" type="video/mp4">
+            </video>
+            <span class="video-label"><span>Ours</span><span>NeRF-W</span></span>
+          </div>
+        </figure>
+    
+        <figure>
+          <div class="video-wrapper">
+            <video class="video-compare" style="aspect-ratio: 640/480" loop muted>
+              <source src="./assets/wg/final_rgbd_bonn_person_tracking2.mp4" type="video/mp4">
+            </video>
+            <span class="video-label"><span>Ours</span><span>WildGaussians</span></span>
+          </div>
+        </figure>
+    
+        <figure>
+          <div class="video-wrapper">
+            <video class="video-compare" style="aspect-ratio: 640/480" loop muted>
+              <source src="./assets/on-the-go/anony/final_JH_2_s_1.mp4" type="video/mp4">
+            </video>
+            <span class="video-label"><span>Ours</span><span>NeRF On-the-go</span></span>
+          </div>
+        </figure>
+      </div>
+
+
+      <p class="justify" style="margin-top: -10px; margin-bottom: -10px;">
+        In addition, we observed that our method performs consistently well across a variety of datasets.
+      </p>
+
+      <div class="video-grid-3col">
+        <figure>
+          <div class="video-wrapper">
+            <video class="video-compare" style="aspect-ratio: 640/480" loop muted>
+              <source src="./assets/final_office_0.mp4" type="video/mp4">
+            </video>
+            <span class="video-label"><span>Input</span><span>Ours</span></span>
+          </div>
+        </figure>
+    
+        <figure>
+          <div class="video-wrapper">
+            <video class="video-compare" style="aspect-ratio: 640/480" loop muted>
+              <source src="./assets/final_rgbd_bonn_crowd3.mp4" type="video/mp4">
+            </video>
+            <span class="video-label"><span>Input</span><span>Ours</span></span>
+          </div>
+        </figure>
+    
+        <figure>
+          <div class="video-wrapper">
+            <video class="video-compare" style="aspect-ratio: 640/480" loop muted>
+              <source src="./assets/anony/final_H3_6_s_3.mp4" type="video/mp4">
+            </video>
+            <span class="video-label"><span>Input</span><span>Ours</span></span>
+          </div>
+        </figure>
+      </div>
+
+        <p class="justify" style="margin-top: -10px; margin-bottom: 8px;">
+            We simulated low-light environments through pixel scaling during preprocessing, and trained an appearance embedding to capture illumination variations. 
+            Based on this design, we demonstrated that our method achieves robust dynamic object removal even under diverse lighting conditions.
+        </p>
+        
+        <div style="display: flex; justify-content: center; gap: 10px;">
+            <div style="position: relative; max-width: 320px; width: 100%;">
+                <video autoplay loop muted playsinline style="width: 100%; height: auto; display: block;">
+                  <source src="./assets/app/JH_2_s_1/0.mp4" type="video/mp4">
+                </video>
+                <div style="
+                    position: absolute;
+                    top: 12px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    color: white;
+                    font-weight: bold;
+                    text-shadow: 1px 1px 3px black;
+                    font-size: 1.1rem;
+                  ">
+                  Normal
+                </div>
+              </div>
+
+          <div style="position: relative; max-width: 320px; width: 100%;">
+            <video autoplay loop muted playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./assets/app/JH_2_s_1/1.mp4" type="video/mp4">
+            </video>
+            <div style="
+                position: absolute;
+                top: 12px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                font-weight: bold;
+                text-shadow: 1px 1px 3px black;
+                font-size: 1.1rem;
+              ">
+              Low Light
+            </div>
+          </div>
+
+          <div style="position: relative; max-width: 320px; width: 100%;">
+            <video autoplay loop muted playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./assets/app/JH_2_s_1/2.mp4" type="video/mp4">
+            </video>
+            <div style="
+                position: absolute;
+                top: 12px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                font-weight: bold;
+                text-shadow: 1px 1px 3px black;
+                font-size: 1.1rem;
+              ">
+              Darkest
+            </div>
+          </div>
+      </section>
+
+    <!-- <section>
+      <h2>Acknowledgements</h2>
+      <p class="justify">
+        We would like to thank Weining Ren for his help with the NeRF On-the-go dataset and code and Tobias Fischer and Xi Wang for fruitful discussions.
+        This work was supported by the Czech Science Foundation (GAČR) EXPRO (grant no. 23-07973X)
+        and by the Ministry of Education, Youth and Sports of the Czech Republic through the e-INFRA CZ (ID:90254).
+        The renderer is built on 3DGS, Mip-Splatting. Please follow the license of 3DGS and Mip-Splatting. 
+        We thank all the authors for their great work and repos. Finally, we would also like to thank 
+        Dor Verbin for the video comparison tool used in this website.
+      </p>
+    </section>
+    <section class="citation">
+      <h2>Citation</h2>
+      <span>Please use the following citation:</span>
+      <pre><code>@article{kulhanek2024wildgaussians,
+  title={{W}ild{G}aussians: {3D} Gaussian Splatting in the Wild},
+  author={Kulhanek, Jonas and Peng, Songyou and Kukelova, Zuzana and Pollefeys, Marc and Sattler, Torsten},
+  journal={NeurIPS},
+  year={2024}
+}</code></pre>
+    </section> -->
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
