@@ -5,7 +5,7 @@
   {% for paper in site.data.news.papers %}
     <li><strong>{{ paper.date }}</strong> - {{ paper.description }}
     {% if paper.authors %}
-      <em>({{ paper.authors }})</em>
+      <code>({{ paper.authors }})</code>
     {% endif %}
     </li>
   {% endfor %}
