@@ -138,13 +138,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const isExternal = item.page_link && item.page_link.startsWith('http');
 
-    let tagsHtml = '';
-    if (item.tags) {
-      item.tags.forEach(tag => {
-        const color = tagColors[tag] || '#cccccc';
-        tagsHtml += `<span class="paper-card-tag" style="background:${color}; border-color:${color}; color:black;">${tag}</span>`;
-      });
-    }
+    // Project는 Conference, Paper는 Publication으로 표시
+    let categoryLabel = item.type === 'project' ? 'Conference' : 'Publication';
+    let categoryColor = item.type === 'project' ? '#90CAF9' : '#FFB74D';
+    let tagsHtml = `<span class="paper-card-tag" style="background:${categoryColor}; border-color:${categoryColor}; color:black;">${categoryLabel}</span>`;
 
     let dateHtml = '';
     if (item.pulished_date) {
