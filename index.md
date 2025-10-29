@@ -1,7 +1,7 @@
 ---
 title: SPAROLab
 subtitle: Spatial AI and Robotics Lab.
-layout: default
+layout: page
 # callouts: home_callouts
 show_sidebar: false
 hide_footer: false
@@ -15,18 +15,14 @@ hero_link2: https://www.youtube.com/@sparolab/featured
 hero_link_text2: Youtube
 ---
 
-<div class="content">
-  <p>At SPARO Lab, we develop <strong>Spatial AI</strong> that empowers robots with <strong>seamless situational awareness</strong>.
-  Our autonomous multi-robot systems <strong>perceive</strong>, <strong>adapt</strong>, and <strong>collaborate</strong> anywhere in the real world.</p>
+At SPARO Lab, we develop **Spatial AI** that empowers robots with **seamless situational awareness**.
+Our autonomous multi-robot systems **perceive**, **adapt**, and **collaborate** anywhere in the real world.
 
-  <hr>
+---
 
-  <h2>Recent Publications</h2>
-
-  {% include recent-papers.html %}
-
-  <hr>
-</div>
+# Recent publications
+Recent publications
+---
 
 
 
