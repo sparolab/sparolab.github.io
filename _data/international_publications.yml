@@ -1,5 +1,11 @@
 - title: "2025"
   images:
+    - alt: "Freeze-Frame with StaticNeRF Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes"
+      authors: "Juhui Lee, Geonmo Yang, Seungjun Ma, and Younggun Cho"
+      conf: "IEEE Robotics and Automation Letters (RA-L)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+      arxiv: ""
+
     - alt: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
       authors: "Seokhwan Jeong, Hogyun Kim, and Younggun Cho"
       conf: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"

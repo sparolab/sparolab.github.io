@@ -1,6 +1,10 @@
 papers:
+  - date: "Oct. 2025"
+    description: "One paper (StaticNeRF) accepted at IEEE Robotics and Automation Letters (RA-L) 2025!"
+    authors: "Juhui"
+
   - date: "Jun. 2025"
-    description: "One paper (MARSCalib) accepted at IROS 2025!"
+    description: "One paper (MARSCalib) accepted at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2025!"
     authors: "Seokhwan"
 
   - date: "Jun. 2025"

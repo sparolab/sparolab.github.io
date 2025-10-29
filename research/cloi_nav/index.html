@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CLOI-NAV: Open-World Vision-and-Language Navigation via Complex, Long-horizon Ordered Instructions">
+  <meta name="keywords" content="Vision-and-Language Navigation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CLOI-NAV: Open-World Vision-and-Language Navigation via Complex, Long-horizon Ordered Instructions</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const tocLinks = document.querySelectorAll('.navbar a[href^="#"]');
+      const sections = Array.from(tocLinks)
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+      function onScroll() {
+        const navbarOffset = 80;
+        const scrollPos = window.scrollY + navbarOffset + window.innerHeight / 6;
+
+        let currentSection = sections[0];
+        for (const section of sections) {
+          if (section.offsetTop <= scrollPos) currentSection = section;
+        }
+
+        tocLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.navbar a[href="#${currentSection.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+
+      onScroll();
+      window.addEventListener('scroll', onScroll);
+      window.addEventListener('resize', onScroll);
+
+      tocLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          tocLinks.forEach(a => a.classList.remove('active'));
+          link.classList.add('active');
+        });
+      });
+    });
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .navbar-item {
+      color: #333;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .navbar-item.active {
+      color: #3B82F6 !important;
+      font-weight: 700;
+      border-bottom: 2px solid #3B82F6;
+    }
+    body { padding-top: 4rem; }
+    section, #bibtex { scroll-margin-top: 72px; }
+  </style>
+</head>
+<body>
+
+<!-- Table of Contents -->
+<nav class="navbar is-fixed-top" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); box-shadow: 0 1px 4px rgba(0,0,0,0.1);">
+  <div class="container is-max-desktop" style="justify-content: center;">
+    <div class="navbar-menu is-active">
+      <div class="navbar-start" style="gap: 1.5rem; justify-content: center; width: 100%;">
+        <a href="#abstract" class="navbar-item has-text-weight-semibold">Abstract</a>
+        <a href="#method" class="navbar-item has-text-weight-semibold">Method</a>
+        <a href="#experiments" class="navbar-item has-text-weight-semibold">Experiments</a>
+        <a href="#simulation" class="navbar-item has-text-weight-semibold">Simulation</a>
+        <a href="#real" class="navbar-item has-text-weight-semibold">Real-World</a>
+        <a href="#bibtex" class="navbar-item has-text-weight-semibold">BibTeX</a>
+      </div>
+    </div>
+  </div>
+</nav>
+  
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1" style="font-weight: 800;
+            background: linear-gradient(90deg, #06B6D4, #3B82F6, #F472B6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;">
+            CLOI-NAV
+          </h1>
+          <h2 class="subtitle is-3" style="color: #555; font-weight: 400;">
+            Open-World Vision-and-Language Navigation via <br>
+            <span style="font-weight: 700; color:#06B6D4;">C</span>omplex, 
+            <span style="font-weight: 700; color:#3B82F6;">L</span>ong-horizon 
+            <span style="font-weight: 700; color:#F472B6;">O</span>rdered 
+            <span style="font-weight: 700; color:#9333EA;">I</span>nstructions
+          </h2>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">IEEE International Conference on Intelligent Robots and Systems (IROS) 2025 <br> Workshop on Open World Navigation in Human-centric Environments</span>            
+          </div>
+          <div class="is-size-5 publication-authors">
+
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=96AEAd0AAAAJ&hl=ko">Minho Lee</a><sup>1</sup>,
+            </span>
+
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=2I1ii9cAAAAJ&hl=ko">Jaeil Park</a><sup>1</sup>,
+            </span>
+
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=_RDRRWwAAAAJ&hl=ko">Jinyong Jeong</a><sup>2</sup>,
+            </span>
+
+            <span class="author-block">
+              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko">Younggun Cho</a><sup>1*</sup>
+            </span>
+          </div>
+
+          <div class="is-size-7 publication-authors">
+            <span class="author-block">(* means corresponding authors)</span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>2</sup>Robotics for Industrial Innovation (Riibotics), South Korea</span>            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video (TBU)</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/sparolab/CLOI-NAV"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <figure class="image">
+          <img src="./static/images/main.png" alt="main">
+        </figure>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">TL;DR  Vision-and-Language Navigation Framework with LLM Assistants <br> — Robust Execution of Any Long, Complex, and Ordered Instructions! </span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section id="abstract" class="section pt-3 pb-6">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Remarkable advances in Vision-Language Models (VLMs) and Large Language Models (LLMs) have accelerated progress in the field of intelligent robotics, enabling embodied agents to perceive, reason, and act in a human-like manner. 
+            One of the mainstream challenges in embodied AI is Vision-and-Language Navigation (VLN), where an agent is required to follow natural language instructions to navigate through previously unseen environments using visual observations.
+            Despite recent progress, existing VLN approaches often struggle to handle long-horizon and ordered instructions, which are prevalent in realistic navigation scenarios.
+            Such instructions involve multiple sequential substeps where later actions depend on earlier completions, requiring contextual order understanding and stepwise execution.
+            In this work, we present <em>CLOI-NAV</em>, a framework that performs sequential reasoning to follow navigation instructions in unseen environments while preserving the intended order.
+            We evaluate <em>CLOI-NAV</em> using our new instruction datasets featuring sequential dependencies in photorealistic environments.        
+            Through extensive experiments, we demonstrate that our method enables more accurate instruction following while maintaining path efficiency, with success rate improving from 26.9 to 88.5 and SPL from 29.3 to 76.4.                            
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method" class="section pt-3 pb-6">
+  <div class="container is-max-desktop">
+    <!-- Method -->
+    <div class="columns is-centered has-text-centered">
+      <div class="hero-body">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <figure class="image">
+            <img src="./static/images/pipeline.png" alt="pipeline" style="max-width: 13%; height: auto;">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiments" class="section pt-3 pb-6">
+  <div class="container is-max-desktop">
+    <!-- Experiments -->
+    <div class="columns is-centered has-text-centered">
+      <div class="hero-body">
+        <h2 class="title is-3">Experimental Results</h2>
+        <div class="content has-text-justified">
+          <figure class="image">
+            <img src="./static/images/experiments.png" alt="experiments" style="max-width: 20%; height: auto;">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="simulation" class="section pt-3 pb-6">
+  <div class="container is-max-desktop">
+    <!-- Simulation Demo. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Simulation Demo</h2>
+        <div class="content has-text-justified">
+          <p style="text-align: center; font-weight: bold;">
+              To be Updated... 🚀
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="real" class="section pt-3 pb-6">
+  <div class="container is-max-desktop">
+    <!-- Real-World Demo. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Real-World Demo</h2>
+        <div class="content has-text-justified">
+          <p style="text-align: center; font-weight: bold;">
+              To be Updated... 🚀
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="bibtex" style="max-width: 800px; margin: 0 auto; margin-bottom: 3rem;">
+  <h2 class="title is-4 mt-5 mb-4" style="color: #363636">
+    BibTeX
+  </h2>
+  <pre style="background: #f6f8fa; padding: 16px; border-radius: 6px; font-size: 0.9rem; line-height: 1.4; overflow-x: auto;">
+    <!-- <code>@article{,
+      title={},
+      author={},
+      journal={},
+      year={}
+  }</code> -->
+  </pre>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/sparolab/CLOI-NAV" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
