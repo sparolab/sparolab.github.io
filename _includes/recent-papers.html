@@ -18,99 +18,87 @@
   }
 </style>
 
-{% comment %}
-  research_paper와 research_project 데이터를 모두 수집
-{% endcomment %}
-{% assign all_items = "" | split: "" %}
-
-{% comment %} Paper 데이터 수집 {% endcomment %}
-{% for gallery in site.data.research_paper %}
-  {% if gallery.title == "Paper" %}
-    {% for image in gallery.images %}
-      {% assign all_items = all_items | push: image %}
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-
-{% comment %} Project 데이터 수집 {% endcomment %}
-{% for gallery in site.data.research_project %}
-  {% if gallery.title == "Project" %}
-    {% for image in gallery.images %}
-      {% assign all_items = all_items | push: image %}
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-
-<div class="columns is-multiline">
-  {% for image in all_items limit:4 %}
-    <div class="column is-3-desktop is-half-tablet is-full-mobile">
-      <div class="recent-paper-card" data-href="{{ image.page_link }}">
-        <div class="card"
-             style="margin:0 auto;
-                    text-align:center;
-                    min-height:350px;
-                    height:auto;
-                    display:flex;
-                    flex-direction:column;
-                    justify-content:space-between;">
-
-          <!-- 카드 상단: 이미지 -->
-          <div class="card-image">
-            {% include image-modal.html
-              link=image.link
-              alt=image.alt
-              large_link=image.alt_link
-              ratio="is-16by9"
-            %}
-          </div>
-
-          <!-- 카드 본문: 논문명/프로젝트명 (저자 제외) -->
-          <div class="card-content" style="padding:10px;">
-            <div class="content" style="text-align:left; font-size:0.9rem; color:black; font-weight:bold;">
-              {% if image.alt_link %}
-                <a href="{{ image.alt_link }}" target="_blank"
-                   style="color:#0073e6; text-decoration:none;">
-                  [{{ image.alt | default: "No Title" }}]
-                </a>
-              {% else %}
-                {{ image.alt}}
-              {% endif %}
-              {% if image.paper %}
-                {{ image.paper }}
-              {% endif %}
-            </div>
-          </div>
-
-          <!-- 카드 하단: 태그 및 날짜 -->
-          <div style="margin-top:auto;">
-            {% if image.tags %}
-              <div style="text-align:center; margin:2px 0;">
-                {% for tag in image.tags %}
-                  <span class="paper-card-tag" data-tag="{{ tag }}">{{ tag }}</span>
-                {% endfor %}
-              </div>
-            {% endif %}
-            <hr style="width:70%; margin:0 auto;">
-            {% if image.pulished_date %}
-              <p style="margin:10px 0; text-align:center; font-size:0.9rem; color:black;">
-                Published: {{ image.pulished_date }}
-              </p>
-            {% endif %}
-            {% if image.project_date %}
-              <p style="margin:10px 0; text-align:center; font-size:0.9rem; color:black;">
-                {{ image.project_date }}
-              </p>
-            {% endif %}
-          </div>
-
-        </div>
-      </div>
-    </div>
-  {% endfor %}
+<div id="recent-activities-container" class="columns is-multiline">
+  <!-- JavaScript로 동적 생성 -->
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // 데이터 수집
+  const paperData = {{ site.data.research_paper | jsonify }};
+  const projectData = {{ site.data.research_project | jsonify }};
+
+  const allItems = [];
+
+  // Paper 데이터 수집
+  paperData.forEach(gallery => {
+    if (gallery.title === "Paper") {
+      gallery.images.forEach(image => {
+        allItems.push({
+          ...image,
+          type: 'paper',
+          date_str: image.pulished_date || ''
+        });
+      });
+    }
+  });
+
+  // Project 데이터 수집
+  projectData.forEach(gallery => {
+    if (gallery.title === "Project") {
+      gallery.images.forEach(image => {
+        allItems.push({
+          ...image,
+          type: 'project',
+          date_str: image.project_date || ''
+        });
+      });
+    }
+  });
+
+  // 날짜 파싱 함수
+  function parseDate(dateStr) {
+    const months = {
+      'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+      'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12,
+      'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+      'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
+    };
+
+    // "Oct, 2025" 또는 "May 13, 2024" 형식 파싱
+    const parts = dateStr.replace(/,/g, '').split(' ').filter(p => p);
+    if (parts.length >= 2) {
+      const month = months[parts[0]] || 0;
+      const year = parseInt(parts[parts.length - 1]) || 0;
+      return { year, month };
+    }
+    return { year: 0, month: 0 };
+  }
+
+  // 날짜순 정렬 (최근순, 같은 달이면 project가 나중)
+  allItems.sort((a, b) => {
+    const dateA = parseDate(a.date_str);
+    const dateB = parseDate(b.date_str);
+
+    // Year 비교 (내림차순)
+    if (dateB.year !== dateA.year) {
+      return dateB.year - dateA.year;
+    }
+
+    // Month 비교 (내림차순)
+    if (dateB.month !== dateA.month) {
+      return dateB.month - dateA.month;
+    }
+
+    // 같은 연월이면 project를 나중에 (paper = 0, project = 1)
+    const typeA = a.type === 'paper' ? 0 : 1;
+    const typeB = b.type === 'paper' ? 0 : 1;
+    return typeB - typeA;
+  });
+
+  // 최근 4개만 선택
+  const recentItems = allItems.slice(0, 4);
+
   // 태그 색상 팔레트
   const palette = [
     "#FE72A9", "#FFC872", "#A8E6CF", "#FFD3B6", "#FF8C94", "#DCE775", "#B39CD0", "#FFAB91",
@@ -128,34 +116,96 @@ document.addEventListener('DOMContentLoaded', function() {
     "#F57C00", "#E64A19", "#5D4037", "#616161", "#455A64"
   ];
 
-  // 모든 태그 수집
+  // 모든 태그 수집 및 색상 매핑
   const tagSet = new Set();
-  document.querySelectorAll('.paper-card-tag').forEach(el => {
-    tagSet.add(el.dataset.tag);
+  recentItems.forEach(item => {
+    if (item.tags) {
+      item.tags.forEach(tag => tagSet.add(tag));
+    }
   });
   const tagArray = Array.from(tagSet).sort();
-
-  // 태그별 색상 매핑
   const tagColors = {};
   tagArray.forEach((tag, idx) => {
     tagColors[tag] = palette[idx % palette.length];
   });
 
-  // 태그에 색상 적용
-  document.querySelectorAll('.paper-card-tag').forEach(el => {
-    const tag = el.dataset.tag;
-    const color = tagColors[tag] || '#cccccc';
-    el.style.background = color;
-    el.style.borderColor = color;
-    el.style.color = 'black';
+  // HTML 생성
+  const container = document.getElementById('recent-activities-container');
+
+  recentItems.forEach(item => {
+    const column = document.createElement('div');
+    column.className = 'column is-3-desktop is-half-tablet is-full-mobile';
+
+    const isExternal = item.page_link && item.page_link.startsWith('http');
+
+    let tagsHtml = '';
+    if (item.tags) {
+      item.tags.forEach(tag => {
+        const color = tagColors[tag] || '#cccccc';
+        tagsHtml += `<span class="paper-card-tag" style="background:${color}; border-color:${color}; color:black;">${tag}</span>`;
+      });
+    }
+
+    let dateHtml = '';
+    if (item.pulished_date) {
+      dateHtml = `<p style="margin:10px 0; text-align:center; font-size:0.9rem; color:black;">Published: ${item.pulished_date}</p>`;
+    } else if (item.project_date) {
+      dateHtml = `<p style="margin:10px 0; text-align:center; font-size:0.9rem; color:black;">${item.project_date}</p>`;
+    }
+
+    let titleHtml = '';
+    if (item.alt_link) {
+      titleHtml = `<a href="${item.alt_link}" target="_blank" style="color:#0073e6; text-decoration:none;">[${item.alt || "No Title"}]</a>`;
+    } else {
+      titleHtml = item.alt || "No Title";
+    }
+    if (item.paper) {
+      titleHtml += ` ${item.paper}`;
+    }
+
+    column.innerHTML = `
+      <div class="recent-paper-card" data-href="${item.page_link}" ${isExternal ? 'data-external="true"' : ''} style="cursor:pointer;">
+        <div class="card" style="margin:0 auto; text-align:center; min-height:380px; height:auto; display:flex; flex-direction:column; justify-content:space-between;">
+          <div class="card-image">
+            <figure class="image is-16by9">
+              <img src="${item.link}" alt="${item.alt || ''}">
+            </figure>
+          </div>
+          <div class="card-content" style="padding:10px;">
+            <div class="content" style="text-align:left; font-size:0.9rem; color:black; font-weight:bold;">
+              ${titleHtml}
+            </div>
+          </div>
+          <div style="margin-top:auto;">
+            ${tagsHtml ? `<div style="text-align:center; margin:2px 0;">${tagsHtml}</div>` : ''}
+            <hr style="width:70%; margin:0 auto;">
+            ${dateHtml}
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(column);
   });
 
-  // 카드 클릭 시 페이지 이동
+  // 카드 클릭 이벤트
   document.querySelectorAll('.recent-paper-card').forEach(card => {
-    card.style.cursor = 'pointer';
     card.addEventListener('click', function(e) {
       if (e.target.closest('a')) return;
-      window.location.href = card.dataset.href;
+      if (card.dataset.external === 'true') {
+        window.open(card.dataset.href, '_blank');
+      } else {
+        window.location.href = card.dataset.href;
+      }
+    });
+
+    // 호버 효과
+    const cardElement = card.querySelector('.card');
+    card.addEventListener('mouseenter', () => {
+      cardElement.style.filter = 'brightness(0.85)';
+    });
+    card.addEventListener('mouseleave', () => {
+      cardElement.style.filter = 'brightness(1)';
     });
   });
 });
