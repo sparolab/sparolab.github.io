@@ -100,8 +100,8 @@
       page_link: /research/salient-ground-feature/
 
     - link: /img/research/paper/3_diter.gif
-      alt: IEEE Sensors Journal
-      alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
+      alt: IEEE Sensors Letters
+      alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7782634
       pulished_date: Jan 29, 2024
       paper: "DiTer: Diverse Terrain and Multimodal Dataset for Field Robot Navigation in Outdoor Environments"
       authors: Geonmo Yang, Gilhwan Kang, Juhui Lee, and Younggun Cho
