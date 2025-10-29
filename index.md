@@ -13,6 +13,7 @@ hero_link_text: Github
 
 hero_link2: https://www.youtube.com/@sparolab/featured
 hero_link_text2: Youtube
+gallery: research_paper
 ---
 
 At SPARO Lab, we develop **Spatial AI** that empowers robots with **seamless situational awareness**.
@@ -20,8 +21,10 @@ Our autonomous multi-robot systems **perceive**, **adapt**, and **collaborate** 
 
 ---
 
-# Recent publications
-Recent publications
+## Recent Activities
+
+{% include recent-papers.html %}
+
 ---
 
 
