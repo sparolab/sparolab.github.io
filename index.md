@@ -20,8 +20,10 @@ Our autonomous multi-robot systems **perceive**, **adapt**, and **collaborate** 
 
 ---
 
-# Recent publications
-Recent publications
+## Recent Publications
+
+{% include recent-papers.html %}
+
 ---
 
 
