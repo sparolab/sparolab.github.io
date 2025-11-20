@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CUTE-Planner: Confidence-aware Uneven Terrain Exploration Planner">
+  <meta name="keywords" content="Autonomous Exploration">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CUTE-Planner: Confidence-aware Uneven Terrain Exploration Planner
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <span style="color: #8d5099; font-weight: bold;">CUTE-Planner</span>: 
+            <span style="color: #8d5099;">C</span>onfidence-aware 
+            <span style="color: #8d5099;">U</span>neven 
+            <span style="color: #8d5099;">T</span>errain 
+            <span style="color: #8d5099;">E</span>xploration
+            <span style="color: #8d5099;">Planner</span>
+          </h1>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">International Conference on Space Robotics (iSpaRo) 2025
+</span>            
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=TVKnE_0AAAAJ&hl=ko">Miryeong Park</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=ko&user=dE64iRYAAAAJ">Dongjin Cho</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=ko&user=OAMAACIAAAAJ">Sanghyun Kim</a><sup>2</sup>,</span>
+            <span class="author-block">
+              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko">Younggun Cho</a><sup>1*</sup>
+            </span>            
+          </div>
+
+          <div class="is-size-7 publication-authors">
+            <span class="author-block">(* means corresponding authors)</span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>2</sup>Robot Control and Intelligence Laboratory (RCI Lab), Kyung Hee University, South Korea</span>            
+          </div>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+            <span class="link-block">
+              <a href="https://youtu.be/El7rOJfYT8E" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                </span>
+                <span>Video</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2511.12984" target="_blank"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a>
+            </span>
+            <!-- PDF Link.
+            </span>                
+              <span class="link-block">
+                <a href="https://ieeexplore.ieee.org/abstract/document/10629042"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2408.07330"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+
+              </span> -->
+
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/sparolab/marscalib"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/main_figure.png">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Process of generating an Exploration Path that integrates Traversability and Confidence to balance Safety, Efficiency, and Map reliability on Uneven terrain !
+        </span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Planetary exploration robots must navigate uneven terrain while building reliable maps for space missions. 
+            However, most existing methods incorporate traversability constraints but may not handle high uncertainty 
+            in elevation estimates near complex features like craters, do not consider exploration strategies for uncertainty reduction, 
+            and typically fail to address how elevation uncertainty affects navigation safety and map quality. To address the problems, 
+            we propose a framework integrating safe path generation, adaptive confidence updates, and confidence-aware exploration strategies. 
+            Using Kalman-based elevation estimation, our approach generates terrain traversability and confidence scores, then incorporates 
+            them into Graph-Based exploration Planner (GBP) to prioritize exploration of traversable low-confidence regions. We evaluate our 
+            framework through simulated lunar experiments using a novel low-confidence region ratio metric, achieving 69% uncertainty reduction 
+            compared to baseline GBP. In terms of mission success rate, our method achieves 100% while baseline GBP achieves 0%, demonstrating 
+            improvements in exploration safety and map reliability.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Process</h2>
+        <div class="content has-text-justified">
+          <h4 class="title is-4">🔎 Framework</h4>
+          <img src="./static/images/framework.png">
+          <p style="margin-top: 2rem;">
+            Overview of the proposed confidence-aware exploration framework. The digital elevation model estimates elevation and confidence using Kalman update. 
+            The traversability analysis module evaluates terrain difficulty from slope, roughness, and step height, and the autonomous exploration module plans and executes safe, 
+            efficient paths by integrating traversability cost and confidence score.
+          </p>
+          <h4 class="title is-4">🫧 Core stages</h4>
+
+          <img src="./static/images/visualization.png">
+          <style>
+            .fig-caption { margin-top: 2rem; line-height: 1.6; }
+            /* 항목별로 머리(좌)와 본문(우) 두 칸 격자 */
+            .fig-steps {
+              display: grid;
+              grid-template-columns: max-content 1fr;
+              column-gap: .6rem;
+              row-gap: .25rem;
+              margin: 0;        /* dl 기본 여백 제거 */
+            }
+            .fig-steps dt {
+              font-weight: 700;
+            }
+            .fig-steps dt::after { content: ":"; }  /* 콜론 자동 추가 */
+            .fig-steps dd { margin: 0; }            /* dd 기본 들여쓰기 제거 */
+          </style>
+          
+          <p class="fig-caption">The figure illustrates the core stages of the proposed planner.</p>
+          <dl class="fig-steps">
+            <dt>(1) <b>Traversability Analysis</b></dt>
+            <dd>The terrain is evaluated based on slope, roughness, and step height to generate a traversability cost map.</dd>
+          
+            <dt>(2) <b>Traversability-based Sampling</b></dt>
+            <dd>Candidate vertices <span style="color: #60e209;">(green dots)</span> are sampled only in traversable regions.</dd>
+          
+            <dt>(3) <b>Local Graph Construction</b></dt>
+            <dd>Sampled vertices are connected to form a local traversable graph <span style="color: #ff8800;">(orange lines)</span>.</dd>
+          
+            <dt>(4) <b>Optimal Path Selection</b></dt>
+            <dd>The planner selects the optimal exploration path <span style="color: #ff62cb;">(pink line)</span> by evaluating both volumetric gain and confidence gain, prioritizing low-confidence regions to reduce map uncertainty.</dd>
+          </dl>
+          
+
+          <h4 class="title is-4">⭐ Simulation Comparison</h4>
+          <video width="100%" controls muted playsinline>
+            <source src="./static/images/cute_planner_reduced.mp4" type="video/mp4">
+          </video>
+          <p style="margin-top: 2rem;">
+            This video presents a comparative analysis of three exploration methods in a simulated lunar environment: GBP (baseline), Only_Trav, and our proposed CUTE-Planner (Ours). GBP considers only basic slope information without comprehensive traversability constraints, leading the robot to fall into a crater and terminate prematurely. Only_Trav constrains node sampling to traversable regions based on geometric terrain attributes (slope, roughness, step height), but does not address elevation uncertainty. Consequently, misestimated traversability in high-uncertainty regions causes the robot to tip over during navigation. Ours integrates both traversability-based sampling and confidence-aware exploration strategies. By actively targeting low-confidence areas—visualized as red regions in the local confidence map—the planner refines elevation estimates and corrects potentially unreliable traversability assessments, enabling safe autonomous navigation throughout the full mission duration.
+          </p>
+          <video width="100%" controls muted playsinline>
+              <source src="./static/images/Graph_video.mp4" type="video/mp4">
+          </video>
+          
+          <p style="margin-top: 2rem;">
+            This video demonstrates graph expansion during exploration. GBP expands its planning graph without traversability filtering, resulting in nodes sampled in non-traversable regions. The mission terminates early after falling into a crater. Only_Trav incorporates traversability-based sampling, constraining graph expansion to navigable terrain. However, the robot still tips over due to unreliable traversability estimates in high-uncertainty regions. Ours successfully completes the 40-minute mission by integrating traversability-based sampling and confidence-aware exploration. The planning graph remains concentrated in safe, traversable regions while actively targeting low-confidence areas to reduce map uncertainty, achieving 100% mission success rate compared to 0% for GBP.
+          </p>
+
+          <img src="./static/images/mission_terminated.png">
+          <p style="margin-top: 2rem;"></p>
+            These images capture mission termination moments for the two methods. GBP (Left): The robot fell into a crater due to inadequate traversability assessment. Only_Trav (Right): Despite traversability constraints, the robot experienced tipping-over failure. This demonstrates that traversability-based sampling alone is insufficient when elevation estimates contain high uncertainty, as unreliable DEM in complex terrain features leads to misestimated traversability and compromised navigation safety.
+          </p>  
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">BibTex</h2>
+        <div class="content has-text-justified">    <pre><code class="language-latex">@ARTICLE{10705066,
+    author={Jeong, Seokhwan and Kim, Hogyun and Cho, Younggun},
+    journal={IEEE Robotics and Automation Letters}, 
+    title={ReFeree: Radar-Based Lightweight and Robust Localization Using Feature and Free Space}, 
+    year={2024},
+    volume={9},
+    number={12},
+    pages={11042-11049},
+    keywords={Radar;Feature extraction;Radar imaging;Noise;Radar cross-sections;Meteorology;Image recognition;Spaceborne radar;Simultaneous localization and mapping;Meteorological radar;Radar;place recognition;localization;SLAM;lightweight;onboard computing},
+    doi={10.1109/LRA.2024.3474554}
+}</code></pre>
+        </div>
+      </section> -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/sparolab/marscalib" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
