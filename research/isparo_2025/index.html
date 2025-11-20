@@ -10,7 +10,7 @@ title: SPARO Lab at iSpaRo 2025
   <body>
     <section class="section">
       <div class="container">
-        {% for project in site.data.iros_2025 %}
+        {% for project in site.data.isparo_2025 %}
           {% assign is_odd = forloop.index0 | modulo: 2 %}
           <div class="columns is-vcentered is-variable is-8"
                {% if is_odd == 1 %}style="flex-direction: row-reverse;"{% endif %}>

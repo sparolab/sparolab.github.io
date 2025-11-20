@@ -3,7 +3,7 @@
     - link: /img/research/paper/14_cute_planner.png
       alt: iSpaRo
       alt_link: https://www.isparo.space/
-      pulished_date: {Nov, 2025} # 추후 수정 예정
+      pulished_date: Dec, 2025
       paper: "CUTE-Planner: Confidence-aware Uneven Terrain Exploration Planner"
       authors: Miryeong Park, Dongjin Cho, Sanghyun Kim, and Younggun Cho
       tags:
