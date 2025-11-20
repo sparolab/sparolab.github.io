@@ -1,12 +1,5 @@
 - title: Project
   images:
-    - link: /img/research/project/isparo_2025.png
-      alt: SPARO in iSpaRo 2025
-      project_date: Dec, 2025
-      tags:
-          - Conference
-      page_link: /research/isparo_2025/
-
     - link: /img/research/project/iros_2025.png
       alt: SPARO in IROS 2025
       project_date: Oct, 2025
