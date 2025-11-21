@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization">
+  <meta name="keywords" content="Quatro, Quatro++, Global registration">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://limhyungtae.github.io/aboutme/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Relevant Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/MIT-SPARK/TEASER-plusplus">
+            TEASER++ (includes Quatro)
+          </a>
+          <a class="navbar-item" href="https://github.com/url-kaist/Quatro">
+            Quatro (PCL version)
+          </a>
+          <a class="navbar-item" href="https://github.com/LimHyungTae/patchwork">
+            Patchwork
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/leekh951">Gihyeon Lee</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.kimm.re.kr/">Young-Sik Shin</a><sup>2</sup>,</span>
+            <span class="author-block">
+              and <a href="https://sparolab.github.io/">Younggun Cho</a><sup>1</sup>,
+            </span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Inha University,</span>        
+            <span class="author-block"><sup>2</sup>Korea Institute of Machinery and Materials (KIMM),</span>     
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://journals.sagepub.com/doi/full/10.1177/02783649231207654"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://ieeexplore.ieee.org/document/9812018"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Conf. Version Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2311.00928"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/TZJjQ1AWPZA?si=1PdQJjumTB9-YzNP"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video (TBU)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/url-kaist/Quatro"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (TBU)</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="video-container">
+        <video id="teaser" autoplay muted loop playsinline class="full-video">
+          <source src="./static/videos/quatro-plusplus_title_video.mp4"
+          type="video/mp4">
+        </video>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">TL;DR MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization</span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Object-level global localization is highly sensitive to semantic uncertainty from viewpoint variations in open-set scenarios.
+            To address this problem, we present MUST-Loc, a multi-view, uncertainty-aware semantic token matching framework.
+            The key idea is to aggregate object-level tokens through online updates in the mapping process to form mean–variance descriptors, capturing viewpoint-induced variability while maintaining semantic consistency. 
+            At the localization query, we compute uncertainty-aware semantic similarity, which down-weights high-variance token dimensions to establish reliable correspondences under semantic ambiguity.
+            Finally, the camera pose is estimated by selecting the solution that maximizes the Wasserstein-based alignment score between observed detections and projected landmark hypotheses.
+            For rigorous validation, we evaluate on challenging TUM RGB-D sequences with occlusions, label noise, and diverse categories, showing consistent improvements over baselines in association and pose accuracy.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+   
+
+
+<!-- <section class="section" id="UseCases">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Applications (Use Cases)</h2>
+    <h4 class="title">1. Loop-closing in SLAM</h4>
+    In addition to the previously mentioned <a href="https://github.com/url-kaist/Quatro-LeGO-LOAM">Quatro-Lego-LOAM</a>, we implemented real-time SLAM methods and publicized them to benefit the robotics community: <a href="https://github.com/engcang/FAST-LIO-SAM-QN">FAST-LIO-SAM-QN</a>
+     and <a href="https://github.com/engcang/FAST-LIO-SAM-SC-QN">FAST-LIO-SAM-SC-QN</a>. These methods utilize FAST-LIO2 as odometry estimates and Quatro as real-time loop closing module. 
+     Quatro robustly estimates the relative pose between two point clouds with large pose discrepancy, where plane ICP methods fail. 
+     Furthermore, Quatro is optimized with TBB and the `optimizeMatching` function to achieve real-time performance, while maintaining the robustness and accuracy of the registration.
+    <br>
+    <br>
+    <div class="video-container">
+      <video id="fast_lio_sam_qn" autoplay controls muted loop playsinline class="reduced-video">
+      <source src="./static/videos/fast_lio_sam_qn.mp4"
+              type="video/mp4">
+      </video>
+    </div>
+    <br>
+    <br>
+    <h4 class="title">2. Map-based matching for localization</h4>
+    As Quatro provides robust and accurate global registration, a real-time map-based localization is also implemented and publicized. 
+    <a href="https://github.com/engcang/FAST-LIO-localization-qn">Fast-LIO-Localizaiton-QN</a> accurately localizes the robots in the global coordinates by matching the current scan and the saved map.
+    This can be efficiently applied to autonomous robots that perform repetitive tasks in designated areas.
+    <br>
+    <br>
+    <div class="video-container">
+      <video id="fast_lio_localization" autoplay controls muted loop playsinline class="reduced-video">
+      <source src="./static/videos/fast_lio_localization_qn.mp4"
+              type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="section" id="HowToUse">
+  <div class="container is-max-desktop content">
+    <h2 class="title">How to use in your packages</h2>
+    <h5 class="title">For detailed build steps and code examples of Quatro as a module, please visit <a href="https://github.com/engcang/Quatro">here</a></h2>
+    <pre><code class="language-shell">cd ~/your_workspace/src
+git clone https://github.com/engcang/Quatro
+cd ..
+catkin build -DCMAKE_BUILD_TYPE=Release -DQUATRO_TBB=ON</code></pre>
+  </div>
+</section> -->
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code class="language-latex">@article{lim2023quatro-plusplus,
+  author    = {Lim, Hyungtae and Kim, Beomsoo and Kim, Daebeom and Lee, Eungchang and Myung, Hyun},
+  title     = {MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization},
+  booktitle = {International Journal of Robotics Research},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/limhyungtae" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
