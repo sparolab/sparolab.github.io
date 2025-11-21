@@ -1,5 +1,15 @@
 - title: Paper
   images:
+    - link: /img/research/paper/15_msg_loc.png
+      alt: IEEE RA-L
+      alt_link: https://www.ieee-ras.org/publications/ra-l
+      pulished_date: Nov, 2025
+      paper: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
+      authors: Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho
+      tags:
+          - Semantic Scene Understanding
+          - Localization
+    page_link: /research/cute_planner/
     - link: /img/research/paper/14_cute_planner.png
       alt: IEEE iSpaRo
       alt_link: https://www.isparo.space/
