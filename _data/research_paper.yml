@@ -11,7 +11,7 @@
           - Localization
       page_link: /research/msg-loc/
     - link: /img/research/paper/14_cute_planner.png
-      alt: IEEE iSpaRo
+      alt: iSpaRo
       alt_link: https://www.isparo.space/
       pulished_date: Dec, 2025
       paper: "CUTE-Planner: Confidence-aware Uneven Terrain Exploration Planner"
