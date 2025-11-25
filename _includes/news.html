@@ -1,4 +1,4 @@
-## News
+<!-- ## News
 
 ### <a id="papers"></a> 📄 Papers
 <ul>
@@ -22,16 +22,60 @@
   {% endfor %}
 </ul>
 
+### <a id="projects"></a> 💼 Projects
+<ul>
+  {% for projects in site.data.news.projects %}
+    <li><strong>{{ projects.date }}</strong> - {{ projects.description }}</li>
+  {% endfor %}
+</ul>
+
 ### <a id="people"></a> 👥 New Members
 <ul>
   {% for member in site.data.news.people %}
     <li><strong>{{ member.date }}</strong> - {{ member.name }} {{ member.description }}</li>
   {% endfor %}
+</ul> -->
+
+## News
+
+### <a id="papers"></a> 📄 Papers
+<ul>
+  {% for paper in site.data.news.papers %}
+    <li>
+      <strong>{{ paper.date }}</strong> - {{ paper.description }}
+      {% if paper.authors %}
+        <strong style="color:#1f2a44;">({{ paper.authors }})</strong>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+### <a id="awards"></a> 🏆 Awards
+<ul>
+  {% for award in site.data.news.awards %}
+    <li>
+      <strong>{{ award.date }}</strong> - {{ award.description }}
+      {% if award.link %}
+        <a href="{{ award.link }}" target="_blank">[Read more]</a>
+      {% endif %}
+    </li>
+  {% endfor %}
 </ul>
 
 ### <a id="projects"></a> 💼 Projects
 <ul>
-  {% for projects in site.data.news.people %}
-    <li><strong>{{ projects.date }}</strong> - {{ projects.description }}</li>
+  {% for project in site.data.news.projects %}
+    <li>
+      <strong>{{ project.date }}</strong> - {{ project.description }}
+    </li>
+  {% endfor %}
+</ul>
+
+### <a id="people"></a> 👥 New Members
+<ul>
+  {% for person in site.data.news.people %}
+    <li>
+      <strong>{{ person.date }}</strong> - {{ person.description }}
+    </li>
   {% endfor %}
 </ul>
