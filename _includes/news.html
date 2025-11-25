@@ -24,8 +24,8 @@
 
 ### <a id="projects"></a> 💼 Projects
 <ul>
-  {% for member in site.data.news.people %}
-    <li><strong>{{ member.date }}</strong> - {{ member.description }}</li>
+  {% for projects in site.data.news.people %}
+    <li><strong>{{ projects.date }}</strong> - {{ projects.description }}</li>
   {% endfor %}
 </ul>
 
