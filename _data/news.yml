@@ -4,7 +4,7 @@ papers:
     authors: "Gihyeon"
 
   - date: "Oct. 2025"
-    description: "One paper (CUTE-Planner) accepted at IEEE International Conference on Space Robotics (iSpaRo) 2025!"
+    description: "One paper (CUTE-Planner) accepted at International Conference on Space Robotics (iSpaRo) 2025!"
     authors: "Miryeong"
 
   - date: "Oct. 2025"
@@ -109,7 +109,6 @@ projects:
   - date: "Apr. 2022"
     description: "SPARO Lab won a big grant from IITP (Deep Total Recall: Continual Learning for Human-Like Recall of Artificial Neural Networks)."
   
-
 
 people:
   - date: "Sep. 2025"
