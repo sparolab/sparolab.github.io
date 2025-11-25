@@ -22,17 +22,16 @@
   {% endfor %}
 </ul>
 
-### <a id="projects"></a> 💼 Projects
-<ul>
-  {% for projects in site.data.news.people %}
-    <li><strong>{{ projects.date }}</strong> - {{ projects.description }}</li>
-  {% endfor %}
-</ul>
-
-
 ### <a id="people"></a> 👥 New Members
 <ul>
   {% for member in site.data.news.people %}
     <li><strong>{{ member.date }}</strong> - {{ member.name }} {{ member.description }}</li>
+  {% endfor %}
+</ul>
+
+### <a id="projects"></a> 💼 Projects
+<ul>
+  {% for projects in site.data.news.people %}
+    <li><strong>{{ projects.date }}</strong> - {{ projects.description }}</li>
   {% endfor %}
 </ul>
