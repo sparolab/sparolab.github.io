@@ -1,9 +1,27 @@
 - title: "2025"
   images:
+    - alt: "CUTE-Planner: Confidence-aware Uneven Terrain Exploration Planner"
+      authors: "Miryeong Park, Dongjin Cho, Sanghyun Kim, and Younggun Cho"
+      conf: "International Conference on Space Robotics (iSpaRo) "
+      conf_link: "https://www.isparo.space/"
+      arxiv: ""
+
+    - alt: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
+      authors: "Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho"
+      conf: "IEEE Robotics and Automation Letters (RA-L)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+      arxiv: ""
+
     - alt: "Freeze-Frame with StaticNeRF Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes"
       authors: "Juhui Lee, Geonmo Yang, Seungjun Ma, and Younggun Cho"
       conf: "IEEE Robotics and Automation Letters (RA-L)"
       conf_link: "https://www.ieee-ras.org/publications/ra-l"
+      arxiv: ""
+
+    - alt: "RA-LLO: Robust Adaptive Legged-LiDAR Odometry with Gaussian Process Motion Prior over Error States"
+      authors: "Juwon Kim, Jungwoo Lee, Geonmo Yang, and Younggun Cho"
+      conf: "International Conference on Control, Automation and Systems (ICCAS)"
+      conf_link: "http://www.iccas.org"
       arxiv: ""
 
     - alt: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
