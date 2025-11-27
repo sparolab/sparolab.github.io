@@ -1,16 +1,6 @@
 - title: Paper
   images:
-    - link: /img/research/paper/15_msg-loc.png
-      alt: IEEE RA-L
-      alt_link: https://www.ieee-ras.org/publications/ra-l
-      pulished_date: Nov, 2025
-      paper: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
-      authors: Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho
-      tags:
-          - Semantic Scene Understanding
-          - Localization
-      page_link: /research/msg-loc/
-    - link: /img/research/paper/14_cute_planner.png
+    - link: /img/research/paper/15_cute_planner.png
       alt: iSpaRo
       alt_link: https://www.isparo.space/
       pulished_date: Dec, 2025
@@ -20,6 +10,18 @@
           - Autonomous Exploration
           - Uneven Terrain
       page_link: /research/cute_planner/
+
+    - link: /img/research/paper/14_msg-loc.png
+      alt: IEEE RA-L
+      alt_link: https://www.ieee-ras.org/publications/ra-l
+      pulished_date: Nov, 2025
+      paper: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
+      authors: Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho
+      tags:
+          - Semantic Scene Understanding
+          - Localization
+      page_link: /research/msg-loc/
+
     - link: /img/research/paper/13_staticnerf.jpg
       alt: IEEE RA-L
       alt_link: https://www.ieee-ras.org/publications/ra-l

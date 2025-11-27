@@ -1,11 +1,11 @@
 papers:
+  - date: "Dec. 2025"
+    description: "One paper (CUTE-Planner) accepted at International Conference on Space Robotics (iSpaRo) 2025!"
+    authors: "Miryeong"
+
   - date: "Nov. 2025"
     description: "One paper (MSG-Loc) accepted at IEEE Robotics and Automation Letters (RA-L)!"
     authors: "Gihyeon"
-
-  - date: "Oct. 2025"
-    description: "One paper (CUTE-Planner) accepted at International Conference on Space Robotics (iSpaRo) 2025!"
-    authors: "Miryeong"
 
   - date: "Oct. 2025"
     description: "One paper (StaticNeRF) accepted at IEEE Robotics and Automation Letters (RA-L)!"
