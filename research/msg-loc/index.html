@@ -48,14 +48,14 @@
         <div class="column has-text-centered">
           <!-- title -->
           <h1 class="title is-1 publication-title">
-            <span style="color: #ffc800;">MSG-Loc</span>: 
+            <span style="color: #ffc800;">📨 MSG-Loc</span>: 
             <span style="color: #ffc800;">M</span>ulti-Label Likelihood-based
             <span style="color: #ffc800;">S</span>emantic 
             <span style="color: #ffc800;">G</span>raph Matching for Object-Level Global
             <span style="color: #ffc800;">Loc</span>alization</h1>
           <div class="is-size-6 publication-authors">
             <span class="author-block">
-              <span style="color: #0080ff; font-weight: bold;">IEEE Robotics and Automation Letters 2025</span>
+              IEEE Robotics and Automation Letters (RA-L) 2025
             </span>            
           </div>
           <div class="is-size-5 publication-authors">
@@ -86,34 +86,16 @@
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. -->
-              <!-- <span class="link-block">
-                <a href="https://journals.sagepub.com/doi/full/10.1177/02783649231207654"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
+
               <span class="link-block">
-                <a href="https://ieeexplore.ieee.org/document/9812018"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Conf. Version Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2311.00928"
+                <a href="https://arxiv.org/abs/2512.03522"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span> -->
+              </span>
               <!-- Video Link. -->
               <span class="link-block">
                 <!-- <a href="https://youtu.be/TZJjQ1AWPZA?si=1PdQJjumTB9-YzNP"
@@ -147,10 +129,19 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./static/images/main0.png" alt="Pipeline figure">
+
+      <figure class="image" style="max-width: 700px; margin: 1.5rem auto;">
+        <img src="./static/images/main0.png" alt="Pipeline figure">
+        <!-- 캡션이 필요 없으면 아래 figcaption 줄 삭제 -->
+        <!-- <figcaption class="has-text-centered is-size-7" style="margin-top: 0.5rem;">
+         
+        </figcaption> -->
+      </figure>
+
       <h2 class="subtitle has-text-centered">
         <span class="dnerf">TL;DR Multi-label likelihood estimation and context-aware Semantic Graph matching framework for robust object-level global localization under semantic ambiguity.</span>
       </h2>
+
     </div>
   </div>
 </section>
@@ -164,10 +155,15 @@
         <h2 class="title is-3">Abstract</h2>
         
         <hr>
-
         <div class="content has-text-justified">
           <p>
- 
+            Robots are often required to localize in environments with unknown object classes and semantic ambiguity. 
+            However, when performing global localization using semantic objects, high semantic ambiguity intensifies object misclassification and increases the likelihood of incorrect associations, which in turn can cause significant errors in the estimated pose.
+            Thus, in this letter, we propose a multi-label likelihood-based semantic graph matching framework for object-level global localization.
+            The key idea is to exploit multi-label graph representations, rather than single-label alternatives, to capture and leverage the inherent semantic context of object observations.
+            Based on these representations, our approach enhances semantic correspondence across graphs by combining the likelihood of each node with the maximum likelihood of its neighbors via context-aware likelihood propagation.
+            For rigorous validation, data association and pose estimation performance are evaluated under both closed-set and open-set detection configurations.
+            In addition, we demonstrate the scalability of our approach to large-vocabulary object categories in both real-world indoor scenes and synthetic environments.
             </p>
         </div>
       </div>
@@ -176,22 +172,158 @@
   </div>
 </section>
 
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Acknowledgement</h2>
+        <h2 class="title is-3 has-text-left">Method</h2>
+        <hr>
+        <!-- Method 이미지 -->
+        <figure class="image" style="max-width: 900px; margin: 1.5rem auto;">
+          <img src="./static/images/pipe1.png" alt="Overview of our method">
+        </figure>
         <div class="content has-text-justified">
+          <p>
+            <Strong>Overview of our method.</Strong>
+            In the Multi-Label Graph Construction phase, we generate a k-nearest neighbor (KNN)-based semantic graph, embedding multi-label detection frequencies and normalized confidence scores via the Prior Graph Management (PGM) and Query Graph Management (QGM) modules.
+            Multi-Label Likelihood Estimation (M-LLE) then computes semantic likelihoods from these attributes for both landmarks and observations.
+            Context-Aware Likelihood Propagation (CALP) propagates the maximum likelihood from neighboring nodes to the root node, calculating its similarity score to ensure contextual consistency.
+            Finally, candidate node-pairs are extracted, and the stochastic optimal pose estimation module determines the camera pose.
+            </p>
+        </div>
+      </div>
+    </div>
 
+  </div>
+</section> 
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-3 has-text-left">Object-level Global Localization</h2>
+        <p class="has-text-left is-size-5 mb-3">
+          <strong>COCO category Open-set config.</strong>
+        </p>
         <hr>
 
-        <div class="container is-max-desktop">
-          <div class="hero-body has-text-centered py-3">
-            <img src="./static/images/ack.png" style="max-width: 600px; height: auto;">
+        <!-- Video 1: demo_desk -->
+        <figure style="max-width: 900px; margin: 1.5rem auto;">
+          <div class="video">
+            <video controls autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto;">
+              <source src="./static/videos/demo_desk.mp4" type="video/mp4">
+            </video>
           </div>
+          <figcaption class="has-text-centered" style="margin-top: 0.6rem;">
+            <span class="is-size-6 has-text-weight-semibold">TUM RGB-D Fr2-desk sequence</span>
+          </figcaption>
+        </figure>
+
+        <!-- Video 2: demo_walk -->
+        <figure style="max-width: 900px; margin: 1.5rem auto;">
+          <div class="video">
+            <video controls autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto;">
+              <source src="./static/videos/demo_walk.mp4" type="video/mp4">
+            </video>
+          </div>
+          <figcaption class="has-text-centered" style="margin-top: 0.6rem;">
+            <span class="is-size-6 has-text-weight-semibold">ICL-LM Walk sequence</span>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-left">BibTeX</h2>
+        <hr>
+
+        <div class="content">
+          <!-- Copy 버튼 -->
+          <div class="is-flex is-justify-content-flex-end mb-2">
+            <button class="button is-small is-link" type="button" onclick="copyBibtex(this)">
+              Copy
+            </button>
+          </div>
+
+          <pre><code id="bibtex-code">@ARTICLE{11297765,
+  author={Lee, Gihyeon and Lee, Jungwoo and Kim, Juwon and Shin, Young-Sik and Cho, Younggun},
+  journal={IEEE Robotics and Automation Letters},
+  title={MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization},
+  year={2025},
+  volume={},
+  number={},
+  pages={1-8},
+  keywords={Semantics;Location awareness;Simultaneous localization and mapping;Uncertainty;Three-dimensional displays;Artificial intelligence;Object oriented modeling;Nearest neighbor methods;Pose estimation;Maximum likelihood estimation;Semantic Scene Understanding;Localization;Graph Matching;Object-based SLAM},
+  doi={10.1109/LRA.2025.3643293}
+}</code></pre>
         </div>
+
+        <!-- 이 섹션 안에 script 배치 -->
+        <script>
+          function copyBibtex(btn) {
+            const codeEl = document.getElementById("bibtex-code");
+            if (!codeEl) return;
+
+            const text = codeEl.textContent.replace(/\r\n/g, "\n").trim();
+
+            if (navigator.clipboard && window.isSecureContext) {
+              navigator.clipboard.writeText(text).then(() => {
+                const old = btn.textContent;
+                btn.textContent = "Copied";
+                setTimeout(() => (btn.textContent = old), 1200);
+              });
+              return;
+            }
+
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            document.execCommand("copy");
+            document.body.removeChild(ta);
+
+            const old = btn.textContent;
+            btn.textContent = "Copied";
+            setTimeout(() => (btn.textContent = old), 1200);
+          }
+        </script>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Acknowledgement</h2>
+
+        <div class="content has-text-justified">
+          <hr>
+
+          <div class="container is-max-desktop">
+            <div class="hero-body has-text-centered py-3">
+              <img src="./static/images/ack.png" style="max-width: 600px; height: auto;" alt="Acknowledgement logos">
+
+              <p class="has-text-justified is-size-6 mt-3">
+                We sincerely thank the creators and maintainers of the public datasets used in this work (e.g., TUM RGB-D and ICL-LM) for providing high-quality resources that enabled reproducible evaluation. We also acknowledge the authors of the baseline methods and related open-source implementations for releasing their code and tools, which substantially supported our benchmarking and analysis. Finally, we would like to express our gratitude to the SPARO lab members and collaborators for their support and effort during the collection and curation of our own dataset and for valuable feedback throughout this project.
+              </p>
+            </div>
+          </div>
 
         </div>
       </div>
