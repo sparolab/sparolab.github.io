@@ -198,52 +198,227 @@
   </div>
 </section> 
 
+
+<!-- 실험 -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
 
         <h2 class="title is-3 has-text-left">Object-level Global Localization</h2>
+        
+        <!-- Main Tab Buttons -->
+        <div class="buttons is-centered mb-4">
+          <button id="btn-data" class="button is-primary" onclick="showMainTab('data')">
+            Data Association Results
+          </button>
+          <button id="btn-pose" class="button" onclick="showMainTab('pose')">
+            Pose Estimation Results
+          </button>
+        </div>
+
+        <!-- Sub Tab Buttons for Data Association -->
+        <div id="data-sub-buttons" class="buttons has-addons is-centered mb-4">
+          <button class="button is-info is-selected is-small" onclick="showSubTab('closed-coco')">
+            Closed-set COCO
+          </button>
+          <button class="button is-small" onclick="showSubTab('open-coco')">
+            Open-set COCO
+          </button>
+          <button class="button is-small" onclick="showSubTab('all-lvis')">
+            All config LVIS
+          </button>
+        </div>
+
+        <!-- Tab Content: Closed-Set COCO (Default) -->
+        <div id="closed-coco" class="tab-content">
+          <p class="has-text-left is-size-5 mb-3">
+            <strong>Closed-set configuration for COCO Categories</strong>
+          </p>
+          <hr>
+          <figure style="max-width: 900px; margin: 1.5rem auto;">
+            <div class="video">
+              <video controls autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto;">
+                <source src="./static/videos/closecoco_desk.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="has-text-centered" style="margin-top: 0.6rem;">
+              <span class="is-size-6 has-text-weight-semibold">TUM RGB-D Fr2-desk sequence</span>
+            </figcaption>
+          </figure>
+          <figure style="max-width: 900px; margin: 1.5rem auto;">
+            <div class="video">
+              <video controls autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto;">
+                <source src="./static/videos/closecoco_walk.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="has-text-centered" style="margin-top: 0.6rem;">
+              <span class="is-size-6 has-text-weight-semibold">ICL-LM Walk sequence</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Tab Content: Open-Set COCO -->
+        <div id="open-coco" class="tab-content" style="display: none;">
+          <p class="has-text-left is-size-5 mb-3">
+            <strong>Open-set configuration for COCO Categories</strong>
+          </p>
+          <hr>
+          <figure style="max-width: 900px; margin: 1.5rem auto;">
+            <div class="video">
+              <video controls autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto;">
+                <source src="./static/videos/opencoco_desk.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="has-text-centered" style="margin-top: 0.6rem;">
+              <span class="is-size-6 has-text-weight-semibold">TUM RGB-D Fr2-desk sequence</span>
+            </figcaption>
+          </figure>
+          <figure style="max-width: 900px; margin: 1.5rem auto;">
+            <div class="video">
+              <video controls autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto;">
+                <source src="./static/videos/opencoco_walk.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption class="has-text-centered" style="margin-top: 0.6rem;">
+              <span class="is-size-6 has-text-weight-semibold">ICL-LM Walk sequence</span>
+            </figcaption>
+          </figure>
+        </div>
+
+      <!-- Tab Content: All LVIS -->
+      <div id="all-lvis" class="tab-content" style="display: none;">
         <p class="has-text-left is-size-5 mb-3">
-          <strong>Open-Set Configuration for COCO Categories</strong>
+          <strong>All configuration for LVIS Categories</strong>
+        </p>
+        <p class="has-text-left is-size-6 mb-2">
+          &bull; <strong>Y</strong> : Closed-set configuration
+        </p>
+        <p class="has-text-left is-size-6 mb-3">
+          &bull; <strong>G+T</strong> : Open-set configuration
         </p>
         <hr>
-
-        <!-- Video 1: demo_desk -->
-        <figure style="max-width: 900px; margin: 1.5rem auto;">
+        <figure style="max-width: 1200px; margin: 1.5rem auto;">
           <div class="video">
             <video controls autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto;">
-              <source src="./static/videos/demo_desk.mp4" type="video/mp4">
+              <source src="./static/videos/alllvis_desk.mp4" type="video/mp4">
             </video>
           </div>
           <figcaption class="has-text-centered" style="margin-top: 0.6rem;">
             <span class="is-size-6 has-text-weight-semibold">TUM RGB-D Fr2-desk sequence</span>
           </figcaption>
         </figure>
-
-        <!-- Video 2: demo_walk -->
         <figure style="max-width: 900px; margin: 1.5rem auto;">
           <div class="video">
             <video controls autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto;">
-              <source src="./static/videos/demo_walk.mp4" type="video/mp4">
+              <source src="./static/videos/alllvis_walk.mp4" type="video/mp4">
             </video>
           </div>
           <figcaption class="has-text-centered" style="margin-top: 0.6rem;">
             <span class="is-size-6 has-text-weight-semibold">ICL-LM Walk sequence</span>
           </figcaption>
         </figure>
+      </div>
+
+        <!-- Tab Content: Pose Estimation -->
+        <div id="pose" class="tab-content" style="display: none;">
+          <p class="has-text-left is-size-5 mb-3">
+            <strong>Pose Estimation Results</strong>
+          </p>
+          <hr>
+          
+          <figure style="max-width: 900px; margin: 1.5rem auto;">
+            <img src="./static/images/pose1.png" alt="Pose Estimation Result 1" style="width: 100%; height: auto;">
+            <figcaption class="has-text-centered mt-2 mb-5">
+              <span class="is-size-6 has-text-weight-semibold">Closed-set COCO</span>
+            </figcaption>
+          </figure>
+
+          <figure style="max-width: 900px; margin: 1.5rem auto;">
+            <img src="./static/images/pose2.png" alt="Pose Estimation Result 2" style="width: 100%; height: auto;">
+            <figcaption class="has-text-centered mt-2 mb-5">
+              <span class="is-size-6 has-text-weight-semibold">Open-set COCO</span>
+            </figcaption>
+          </figure>
+
+          <figure style="max-width: 900px; margin: 1.5rem auto;">
+            <img src="./static/images/pose3.png" alt="Pose Estimation Result 3" style="width: 100%; height: auto;">
+            <figcaption class="has-text-centered mt-2 mb-5">
+              <span class="is-size-6 has-text-weight-semibold">Closed-set LVIS</span>
+            </figcaption>
+          </figure>
+
+          <figure style="max-width: 900px; margin: 1.5rem auto;">
+            <img src="./static/images/pose4.png" alt="Pose Estimation Result 4" style="width: 100%; height: auto;">
+            <figcaption class="has-text-centered mt-2">
+              <span class="is-size-6 has-text-weight-semibold">Open-set LVIS</span>
+            </figcaption>
+          </figure>
+          
+        </div>
 
       </div>
     </div>
   </div>
 </section>
 
+<script>
+function showMainTab(category) {
+  // Hide all tab contents
+  const contents = document.querySelectorAll('.tab-content');
+  contents.forEach(content => {
+    content.style.display = 'none';
+  });
+  
+  // Update main buttons
+  const dataBtn = document.getElementById('btn-data');
+  const poseBtn = document.getElementById('btn-pose');
+  
+  if (category === 'data') {
+    dataBtn.classList.add('is-primary');
+    poseBtn.classList.remove('is-primary');
+    document.getElementById('data-sub-buttons').style.display = 'flex';
+    // Show default: Closed-set COCO
+    document.getElementById('closed-coco').style.display = 'block';
+    // Reset sub buttons to default
+    resetSubButtons('closed-coco');
+  } else {
+    dataBtn.classList.remove('is-primary');
+    poseBtn.classList.add('is-primary');
+    document.getElementById('data-sub-buttons').style.display = 'none';
+    document.getElementById('pose').style.display = 'block';
+  }
+}
 
+function showSubTab(tabId) {
+  // Hide all tab contents
+  const contents = document.querySelectorAll('.tab-content');
+  contents.forEach(content => {
+    content.style.display = 'none';
+  });
+  
+  // Show selected tab content
+  document.getElementById(tabId).style.display = 'block';
+  
+  // Update sub buttons
+  resetSubButtons(tabId);
+}
+
+function resetSubButtons(activeTabId) {
+  const subButtons = document.querySelectorAll('#data-sub-buttons .button');
+  subButtons.forEach(btn => {
+    btn.classList.remove('is-info', 'is-selected');
+  });
+  document.querySelector(`#data-sub-buttons .button[onclick*="${activeTabId}"]`).classList.add('is-info', 'is-selected');
+}
+</script>
+
+<!-- BibTex -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-left">BibTeX</h2>
+        <h2 class="title is-3 has-text-left">Citation (BibTeX)</h2>
         <hr>
 
         <div class="content">
@@ -255,15 +430,15 @@
           </div>
 
           <pre><code id="bibtex-code">@ARTICLE{11297765,
-          author={Lee, Gihyeon and Lee, Jungwoo and Kim, Juwon and Shin, Young-Sik and Cho, Younggun},
-          journal={IEEE Robotics and Automation Letters},
-          title={MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization},
-          year={2025},
-          volume={},
-          number={},
-          pages={1-8},
-          keywords={Semantics;Location awareness;Simultaneous localization and mapping;Uncertainty;Three-dimensional displays;Artificial intelligence;Object oriented modeling;Nearest neighbor methods;Pose estimation;Maximum likelihood estimation;Semantic Scene Understanding;Localization;Graph Matching;Object-based SLAM},
-          doi={10.1109/LRA.2025.3643293}
+            author={Lee, Gihyeon and Lee, Jungwoo and Kim, Juwon and Shin, Young-Sik and Cho, Younggun},
+            journal={IEEE Robotics and Automation Letters},
+            title={MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization},
+            year={2025},
+            volume={},
+            number={},
+            pages={1-8},
+            keywords={Semantics;Location awareness;Simultaneous localization and mapping;Uncertainty;Three-dimensional displays;Artificial intelligence;Object oriented modeling;Nearest neighbor methods;Pose estimation;Maximum likelihood estimation;Semantic Scene Understanding;Localization;Graph Matching;Object-based SLAM},
+            doi={10.1109/LRA.2025.3643293}
         }</code></pre>
         </div>
 
@@ -310,6 +485,41 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-left">Contact</h2>
+
+        <div class="content has-text-justified">
+          <hr>
+
+          <div class="container is-max-desktop">
+            <div class="hero-body has-text-left py-3">
+              
+              <!-- Contact Instruction -->
+              <p class="is-size-6 mb-4">
+                If you have any questions about this research, please feel free to contact:
+              </p>
+
+              <!-- Contact Info -->
+              <p class="is-size-5 mb-5">
+                <strong>Gihyeon Lee</strong> 
+                (<a href="mailto:leekh951@inha.edu">leekh951@inha.edu</a>) 
+                [<a href="https://github.com/Leekh951/CV/blob/main/CV_ghlee.pdf" target="_blank">CV</a>] 
+                [<a href="https://www.linkedin.com/in/gihyeonlee99/" target="_blank">LinkedIn</a>]
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
         <h2 class="title is-3">Acknowledgement</h2>
 
         <div class="content has-text-justified">
@@ -320,7 +530,7 @@
               <img src="./static/images/ack.png" style="max-width: 600px; height: auto;" alt="Acknowledgement logos">
 
               <p class="has-text-justified is-size-6 mt-3">
-                We sincerely thank the creators and maintainers of the public datasets used in this work for enabling reproducible evaluation. We also acknowledge the authors of the baseline methods and related open-source implementations for releasing their code and tools, which supported our benchmarking and analysis. Finally, we thank the SPARO lab members and collaborators for their continued support, helpful feedback, and contributions throughout this project.
+                We sincerely thank the creators and maintainers of the public datasets used in this work for enabling reproducible evaluation. We also acknowledge the authors of the baseline methods and related open-source implementations for releasing their code and tools, which supported our benchmarking and analysis. Finally, we extend our sincere gratitude to our collaborators at the SPARO lab and Dr. Young-Sik Shin at KIMM for their invaluable contributions to this work.
               </p>
             </div>
           </div>
