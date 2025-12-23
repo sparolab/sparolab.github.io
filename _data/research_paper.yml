@@ -45,15 +45,15 @@
           - Multi Robot
       page_link: /research/uni_mapper/
 
-    - link: /img/research/paper/13_cloi.png
+    - link: /img/research/paper/13_cloi_nav.png
       alt: IEEE/RSJ IROS-W
       alt_link: https://adacompnus.github.io/open-world-navigation-25/
       pulished_date: Oct, 2025
-      paper: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
-      authors: Minho Lee, Hogyun Kim, and Younggun Cho
+      paper: "CLOI-NAV: Open-World Vision-and-Language Navigation via Complex, Long-horizon Ordered Instructions"
+      authors: Minho Lee, Jaeil Park, Jinyong Jeong, and Younggun Cho
       tags:
-          - Calibration
-          - Diverse Terrain
+          - VLM
+          - Navigation
       page_link: /research/cloi_nav/
 
     - link: /img/research/paper/12_must-loc.png

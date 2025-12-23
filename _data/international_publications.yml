@@ -24,11 +24,11 @@
       conf_link: "http://www.iccas.org"
       arxiv: ""
 
-    # - alt: "cloi"
-    #   authors: "Gihyeon Lee, Young-Sik Shin, and Younggun Cho"
-    #   conf: "IROS workshop: Open World Navigation in Human-centric Environments"
-    #   conf_link: "https://adacompnus.github.io/open-world-navigation-25/"
-    #   arxiv: ""
+    - alt: "CLOI-NAV: Open-World Vision-and-Language Navigation via Complex, Long-horizon Ordered Instructions"
+      authors: "Minho Lee, Jaeil Park, Jinyong Jeong, and Younggun Cho"
+      conf: "IROS workshop: Open World Navigation in Human-centric Environments"
+      conf_link: "https://adacompnus.github.io/open-world-navigation-25/"
+      arxiv: ""
 
     - alt: "MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization"
       authors: "Gihyeon Lee, Young-Sik Shin, and Younggun Cho"
