@@ -44,16 +44,17 @@
           - LiDAR SLAM
           - Multi Robot
       page_link: /research/uni_mapper/
+
     # - link: /img/research/paper/13_cloi.png
     #   alt: IEEE/RSJ IROS-W
-    #   alt_link: https://www.iros25.org/
+    #   alt_link: https://adacompnus.github.io/open-world-navigation-25/
     #   pulished_date: Oct, 2025
     #   paper: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
     #   authors: Seokhwan Jeong, Hogyun Kim, and Younggun Cho
     #   tags:
     #       - Calibration
     #       - Diverse Terrain
-    #   page_link: /research/marscalib/
+    #   page_link: /research/cloi_nav/
 
     - link: /img/research/paper/12_must-loc.png
       alt: IEEE/RSJ IROS-W

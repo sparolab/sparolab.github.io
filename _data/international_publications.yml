@@ -10,7 +10,7 @@
       authors: "Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho"
       conf: "IEEE Robotics and Automation Letters (RA-L)"
       conf_link: "https://www.ieee-ras.org/publications/ra-l"
-      arxiv: ""
+      arxiv: "https://doi.org/10.48550/arXiv.2512.03522"
 
     - alt: "Freeze-Frame with StaticNeRF Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes"
       authors: "Juhui Lee, Geonmo Yang, Seungjun Ma, and Younggun Cho"
@@ -24,6 +24,18 @@
       conf_link: "http://www.iccas.org"
       arxiv: ""
 
+    # - alt: "cloi"
+    #   authors: "Gihyeon Lee, Young-Sik Shin, and Younggun Cho"
+    #   conf: "IROS workshop: Open World Navigation in Human-centric Environments"
+    #   conf_link: "https://adacompnus.github.io/open-world-navigation-25/"
+    #   arxiv: ""
+
+    - alt: "MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization"
+      authors: "Gihyeon Lee, Young-Sik Shin, and Younggun Cho"
+      conf: "IROS workshop: Open World Navigation in Human-centric Environments"
+      conf_link: "https://adacompnus.github.io/open-world-navigation-25/"
+      arxiv: ""
+
     - alt: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
       authors: "Seokhwan Jeong, Hogyun Kim, and Younggun Cho"
       conf: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
@@ -35,6 +47,12 @@
       conf: "IEEE Transactions on Intelligent Vehicles (T-IV)"
       conf_link: "https://ieee-itss.org/pub/t-iv/"
       pdf: "https://ieeexplore.ieee.org/abstract/document/11057931"
+
+    - alt: "SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments"
+      authors: "Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho"
+      conf: "ICRA workshop"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
+      arxiv: ""
 
     - alt: "PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal"
       authors: "Jiwon Choi*, Dongjin Cho*, Gihyeon Lee, Hogyun Kim, Geonmo Yang, Joowan Kim, and Younggun Cho"
