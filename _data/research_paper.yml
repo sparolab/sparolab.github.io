@@ -1,6 +1,6 @@
 - title: Paper
   images:
-    - link: /img/research/paper/15_cute_planner.png
+    - link: /img/research/paper/17_cute_planner.png
       alt: iSpaRo
       alt_link: https://www.isparo.space/
       pulished_date: Dec, 2025
@@ -11,7 +11,7 @@
           - Uneven Terrain
       page_link: /research/cute_planner/
 
-    - link: /img/research/paper/14_msg-loc.png
+    - link: /img/research/paper/16_msg-loc.png
       alt: IEEE RA-L
       alt_link: https://www.ieee-ras.org/publications/ra-l
       pulished_date: Nov, 2025
@@ -22,7 +22,7 @@
           - Localization
       page_link: /research/msg-loc/
 
-    - link: /img/research/paper/13_staticnerf.jpg
+    - link: /img/research/paper/15_staticnerf.jpg
       alt: IEEE RA-L
       alt_link: https://www.ieee-ras.org/publications/ra-l
       pulished_date: Oct, 2025
@@ -34,7 +34,7 @@
           - Localization
       page_link: /research/staticnerf/
       
-    - link: /img/research/paper/12_uni_mapper.png
+    - link: /img/research/paper/14_uni_mapper.png
       alt: IEEE T-IV
       alt_link: https://ieee-itss.org/pub/t-iv/
       pulished_date: Oct, 2025
@@ -44,6 +44,27 @@
           - LiDAR SLAM
           - Multi Robot
       page_link: /research/uni_mapper/
+    # - link: /img/research/paper/13_cloi.png
+    #   alt: IEEE IROS
+    #   alt_link: https://www.iros25.org/
+    #   pulished_date: Oct, 2025
+    #   paper: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
+    #   authors: Seokhwan Jeong, Hogyun Kim, and Younggun Cho
+    #   tags:
+    #       - Calibration
+    #       - Diverse Terrain
+    #   page_link: /research/marscalib/
+
+    - link: /img/research/paper/12_must-loc.png
+      alt: IEEE IROS-W
+      alt_link: https://adacompnus.github.io/open-world-navigation-25/
+      pulished_date: Oct, 2025
+      paper: "MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization"
+      authors: Gihyeon Lee, Young-Sik Shin, and Younggun Cho
+      tags:
+          - Semantic Scene Understanding
+          - Localization
+      page_link: /research/must-loc/
 
     - link: /img/research/paper/11_marscalib.png
       alt: IEEE IROS
