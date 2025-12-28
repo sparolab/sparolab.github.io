@@ -41,7 +41,7 @@
       paper: "Uni-Mapper: Unified Mapping Framework for Multi-modal LiDARs in Complex and Dynamic Environments"
       authors: Gilhwan Kang, Hogyun Kim, Byunghee Choi, Seokhwan Jeong, Young-Sik Shin, and Younggun Cho
       tags:
-          - LiDAR SLAM
+          - SLAM
           - Multi Robot
       page_link: /research/uni_mapper/
 
