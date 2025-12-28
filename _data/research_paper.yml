@@ -85,7 +85,7 @@
       paper: "SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments"
       authors: Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho
       tags:
-          - LiDAR SLAM
+          - SLAM
           - Multi Robot
       page_link: /research/skid_slam/
 
@@ -118,7 +118,7 @@
       paper: "ReFeree: Radar-Based Lightweight and Robust Localization Using Feature and Free Space"
       authors: Hogyun Kim, ByungHee Choi, Euncheol Choi, and Younggun Cho
       tags:
-          - Radar PR
+          - SLAM
           - Diverse Terrain
       page_link: /research/referee/
 
@@ -140,7 +140,7 @@
       paper: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
       authors: Hogyun Kim, Jiwon Choi, Taehu Sim, Giseop Kim, and Younggun Cho
       tags:
-          - LiDAR PR
+          - SLAM
           - Diverse Terrain
       page_link: /research/solid/
 
@@ -151,7 +151,7 @@
       paper: "Salience-guided Ground Factor for Robust Localization of Delivery Robots in Complex Urban Environments"
       authors: Jooyong Park, Jungwoo Lee, Euncheol Choi, and Younggun Cho
       tags:
-          - Visual Localization
+          - SLAM
           - Urban
       page_link: /research/salient-ground-feature/
 
@@ -184,6 +184,6 @@
       paper: "Robust Imaging Sonar-based Place Recognition and Localization in Underwater Environments"
       authors: Hogyun Kim, Gilhwan Kang, Seokhwan Jeong, Seungjun Ma, and Younggun Cho
       tags:
-          - SONAR PR
+          - SLAM
           - Underwater
       page_link: /research/sonar_context/

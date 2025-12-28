@@ -4,7 +4,6 @@
       authors: "Miryeong Park, Dongjin Cho, Sanghyun Kim, and Younggun Cho"
       conf: "International Conference on Space Robotics (iSpaRo) "
       conf_link: "https://www.isparo.space/"
-      arxiv: ""
 
     - alt: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
       authors: "Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho"
@@ -16,25 +15,21 @@
       authors: "Juhui Lee, Geonmo Yang, Seungjun Ma, and Younggun Cho"
       conf: "IEEE Robotics and Automation Letters (RA-L)"
       conf_link: "https://www.ieee-ras.org/publications/ra-l"
-      arxiv: ""
 
     - alt: "RA-LLO: Robust Adaptive Legged-LiDAR Odometry with Gaussian Process Motion Prior over Error States"
       authors: "Juwon Kim, Jungwoo Lee, Geonmo Yang, and Younggun Cho"
       conf: "International Conference on Control, Automation and Systems (ICCAS)"
       conf_link: "http://www.iccas.org"
-      arxiv: ""
 
     - alt: "CLOI-NAV: Open-World Vision-and-Language Navigation via Complex, Long-horizon Ordered Instructions"
       authors: "Minho Lee, Jaeil Park, Jinyong Jeong, and Younggun Cho"
       conf: "IROS workshop: Open World Navigation in Human-centric Environments"
       conf_link: "https://adacompnus.github.io/open-world-navigation-25/"
-      arxiv: ""
 
     - alt: "MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization"
       authors: "Gihyeon Lee, Young-Sik Shin, and Younggun Cho"
       conf: "IROS workshop: Open World Navigation in Human-centric Environments"
       conf_link: "https://adacompnus.github.io/open-world-navigation-25/"
-      arxiv: ""
 
     - alt: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
       authors: "Seokhwan Jeong, Hogyun Kim, and Younggun Cho"
@@ -52,7 +47,6 @@
       authors: "Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho"
       conf: "ICRA workshop"
       conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
-      arxiv: ""
 
     - alt: "PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal"
       authors: "Jiwon Choi*, Dongjin Cho*, Gihyeon Lee, Hogyun Kim, Geonmo Yang, Joowan Kim, and Younggun Cho"
