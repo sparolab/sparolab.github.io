@@ -7,8 +7,8 @@
       paper: "CUTE-Planner: Confidence-aware Uneven Terrain Exploration Planner"
       authors: Miryeong Park, Dongjin Cho, Sanghyun Kim, and Younggun Cho
       tags:
-          - Autonomous Exploration
-          - Uneven Terrain
+          - Exploration
+          - Field
       page_link: /research/cute_planner/
 
     - link: /img/research/paper/16_msg-loc.png
@@ -18,8 +18,8 @@
       paper: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
       authors: Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho
       tags:
-          - Semantic Scene Understanding
-          - Localization
+          - Semantic
+          - Indoor
       page_link: /research/msg-loc/
 
     - link: /img/research/paper/15_staticnerf.jpg
@@ -29,9 +29,8 @@
       paper: "Freeze-Frame with StaticNeRF: Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes"
       authors: Juhui Lee, Geonmo Yang, Seungjun Ma, and Younggun Cho
       tags:
-          - NeRF
-          - Mapping
-          - Localization
+          - Neural Rendering
+          - Indoor
       page_link: /research/staticnerf/
       
     - link: /img/research/paper/14_uni_mapper.png
@@ -42,7 +41,7 @@
       authors: Gilhwan Kang, Hogyun Kim, Byunghee Choi, Seokhwan Jeong, Young-Sik Shin, and Younggun Cho
       tags:
           - SLAM
-          - Multi Robot
+          - Field
       page_link: /research/uni_mapper/
 
     - link: /img/research/paper/13_cloi_nav.png
@@ -53,7 +52,7 @@
       authors: Minho Lee, Jaeil Park, Jinyong Jeong, and Younggun Cho
       tags:
           - VLM
-          - Navigation
+          - Indoor
       page_link: /research/cloi_nav/
 
     - link: /img/research/paper/12_must-loc.png
@@ -63,8 +62,8 @@
       paper: "MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization"
       authors: Gihyeon Lee, Young-Sik Shin, and Younggun Cho
       tags:
-          - Semantic Scene Understanding
-          - Localization
+          - Semantic
+          - Indoor
       page_link: /research/must-loc/
 
     - link: /img/research/paper/11_marscalib.png
@@ -75,7 +74,7 @@
       authors: Seokhwan Jeong, Hogyun Kim, and Younggun Cho
       tags:
           - Calibration
-          - Diverse Terrain
+          - Field
       page_link: /research/marscalib/
 
     - link: /img/research/paper/10_skid_slam.gif
@@ -86,7 +85,7 @@
       authors: Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho
       tags:
           - SLAM
-          - Multi Robot
+          - Field
       page_link: /research/skid_slam/
 
     - link: /img/research/paper/9_polaris.gif
@@ -108,7 +107,7 @@
       authors: Juwon Kim, Hogyun Kim, SeokHwan Jeong, Youngsik Shin, and Younggun Cho
       tags:
           - Dataset
-          - Diverse Terrain
+          - Field
       page_link: /research/diter_plus/
 
     - link: /img/research/paper/7_referee.png
@@ -119,7 +118,7 @@
       authors: Hogyun Kim, ByungHee Choi, Euncheol Choi, and Younggun Cho
       tags:
           - SLAM
-          - Diverse Terrain
+          - Urban
       page_link: /research/referee/
 
     - link: /img/research/paper/6_trident.gif
@@ -141,7 +140,7 @@
       authors: Hogyun Kim, Jiwon Choi, Taehu Sim, Giseop Kim, and Younggun Cho
       tags:
           - SLAM
-          - Diverse Terrain
+          - Urban
       page_link: /research/solid/
 
     - link: /img/research/paper/4_saliency_feature.png
@@ -163,7 +162,7 @@
       authors: Geonmo Yang, Gilhwan Kang, Juhui Lee, and Younggun Cho
       tags:
           - Dataset
-          - Diverse Terrain
+          - Field
       page_link: /research/diter/
 
     - link: /img/research/paper/2_joint_id.png
