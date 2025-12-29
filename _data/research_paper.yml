@@ -51,7 +51,7 @@
       paper: "CLOI-NAV: Open-World Vision-and-Language Navigation via Complex, Long-horizon Ordered Instructions"
       authors: Minho Lee, Jaeil Park, Jinyong Jeong, and Younggun Cho
       tags:
-          - VLM
+          - VLN
           - Indoor
       page_link: /research/cloi_nav/
 
