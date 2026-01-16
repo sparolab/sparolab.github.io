@@ -92,7 +92,7 @@
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Paper (TBU)</span>
                 </a>
               </span>
               <span class="link-block">
@@ -101,11 +101,11 @@
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>arXiv (TBU)</span>
                 </a>
               </span>
               <!-- Video Link. -->
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -113,7 +113,7 @@
                   </span>
                   <span>Video (TBU)</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Code Link. -->
               <span class="link-block">
                 <a href=""
@@ -121,7 +121,7 @@
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (TBU)</span>
                   </a>
               </span>
             </div>
@@ -136,7 +136,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./static/images/pipeline.png">
+      <img src="./static/images/main.png">
       <h2 class="subtitle has-text-centered">
         <span class="dnerf">TL;DR Communication-Efficient, Robust and Fast LiDAR Map Merging <br> when communication-constrained field environments are given!</span>
       </h2>
@@ -153,14 +153,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Multi-robot LiDAR map merging enables faster exploration and efficient area coverage by maintaining a global consistency across robot teams. 
-            However, this requires exchanging massive sensory data between robots, creating a fundamental bottleneck in communication-constrained environments. 
-            We present Commerge, a hybrid framework that reduces inter-robot data exchange by 1000x while maintaining alignment accuracy.
-            Our key insight is that only a small subset of carefully selected scans is necessary for robust map merging. We formulate this selection as a progressive optimization on an exchange graph, where vertices represent robot keyframes and edges denote candidate inter-robot loops. 
-            Through three stages—sequential matching for temporal coherence, balanced minimum vertex cover for complete coverage with minimal transmission, and maximum edge-weighted clique for geometric consistency—we identify the minimal scan subset that preserves inter-robot alignment quality.
-            Unlike existing approaches that transmit complete datasets (GB-scale) or employ naive downsampling, Commerge exchanges only MB-scale data while achieving comparable or superior alignment accuracy. 
-            Extensive evaluation on six datasets shows 99.98% reduction in data exchange (from 7.0 GB to 1.7 MB on HeLiPR), while maintaining real-time performance across embedded to desktop platforms. 
-            The framework successfully operates on resource-constrained hardware where existing methods fail, enabling practical multi-robot deployment in bandwidth-limited field operations.
+            Multi-robot light detection and ranging (LiDAR) map merging enables faster exploration and efficient area coverage by maintaining a global consistency across robot teams. 
+            However, map merging requires exchanging massive sensor data between the server and robots, making communication the bottleneck, especially in communication-constrained environments. 
+            Therefore, we present *Commerge*, a communication-efficient map merging framework that achieves bandwidth reduction through graph-theoretic selective data exchange.
+            By doing so, our Commerge reduces inter-robot communication by up to 1,000x while maintaining alignment accuracy.
+            Our key insight is that only a small subset of carefully selected scans is sufficient for robust map merging. 
+            We formulate this as a three-stage cascaded optimization problem on an exchange graph, where vertices represent robot keyframes and edges denote candidate inter-robot loops.
+            Through three cascade stages, we select a sequentially overlapped, minimal-transmission-cost, and geometrically-perceptually optimal scan subset that preserves alignment quality while reducing communication.
+            Unlike existing approaches that transmit whole scans, which require GB-scale data exchange, or employ naive downsampling, our approach exchanges only MB-scale data while achieving comparable alignment accuracy. 
+            Extensive evaluation on five public datasets shows up to 99.98% reduction in data exchange (e.g., from 7,000MB to 1.3MB on the HeLiPR dataset), while maintaining alignment performance across embedded to desktop platforms. 
+            Finally, we demonstrate that our proposed framework successfully operates on resource-constrained hardware where existing methods fail, enabling real-world multi-robot deployment in bandwidth-limited field operations.
             </p>
         </div>
       </div>
