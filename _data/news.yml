@@ -25,15 +25,15 @@ papers:
 
   - date: "Feb. 2025"
     description: "Two papers (Diter++ and PoLaRIS) accepted at ICRA 2025!"
-    authors: "Jiwon, Dongjin, and Juwon"
+    authors: "Juwon, Jiwon and Dongjin"
   
   - date: "Oct. 2024"
     description: "One paper about underwater image enhancement and depth estimation (TRIDENT) has been accepted by IEEE Sensors Journal."
     authors: "Geonmo"
 
   - date: "Sep. 2024"
-    description: "One paper about RADAR-based localization (ReFeree) is accepted by IEEE Robotics and Automation Letters (RA-L)."
-    authors: "Byunghee and Hogyun"
+    description: "One paper about Radar-based localization (ReFeree) is accepted by IEEE Robotics and Automation Letters (RA-L)."
+    authors: "Hogyun and Byunghee"
 
   - date: "Aug. 2024"
     description: "One paper about LiDAR-based localization (SOLiD) is accepted by IEEE Robotics and Automation Letters (RA-L)."
@@ -44,7 +44,7 @@ papers:
     authors: "Jooyoung"
 
   - date: "Jan. 2024"
-    description: "One paper accepted by IEEE Sensors Letters!"
+    description: "One paper (DiTer) accepted by IEEE Sensors Letters!"
     authors: "Seokhwan and Hogyun"
 
   - date: "Nov. 2023"
@@ -52,18 +52,18 @@ papers:
     authors: "Geonmo"
 
   - date: "Feb. 2023"
-    description: "Three papers (Sonar Context, ViViD++, Thermal to RGB-to-TIR image Translation) are accepted at ICRA 2023 (2 Regular, 1 RA-L)."
+    description: "Two papers (Sonar Context and Thermal to RGB-to-TIR image Translation) are accepted at ICRA 2023!"
     authors: "Hogyun"
 
   - date: "Jan. 2023"
-    description: "One paper is accepted to MDPI Sensors."
+    description: "One paper is accepted to MDPI Sensors!"
     authors: "Geonmo and Juhui"
 
   - date: "Aug. 2022"
-    description: "One paper accepted to T-ITS (Nonparametric background model-based LiDAR SLAM)."
+    description: "One paper accepted to T-ITS (Nonparametric background model-based LiDAR SLAM)!"
 
   - date: "Apr. 2022"
-    description: "One paper accepted to RA-L (Vivid++)."
+    description: "One paper accepted to RA-L (ViViD++)!"
 
 awards:
   - date: "Jan. 2026"
