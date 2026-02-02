@@ -1,3 +1,15 @@
+- title: "2026"
+  images:
+    - alt: "로봇의 자율탐사를 위한 자기 지도 학습 기반 주행 가능성 추정 방법론"
+      authors: "Dongjin Cho, Seunghee Yun, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+
+    - alt: "LLM 기반 위상 그래프 추론을 활용한 상황 인식 시각-언어 네비게이션"
+      authors: "Minho Lee, Jaeil Park, and Younggun Cho"
+      conf: "Korea Robotics Society Annual Conference (KRoC)"
+      conf_link: "https://kros.org/"
+
 - title: "2025"
   images:
     - alt: "GNSS 음영 환경을 위한 시각 파운데이션 모델 기반의 강건한 UAV 전역 위치 추정 시스템"

@@ -1,3 +1,16 @@
+- title: "2026"
+  images:
+    - alt: "GSAT: Geometric Traversability Estimation using Self-supervised Learning with Anomaly Detection for Diverse Terrains"
+      authors: "Dongjin Cho, Miryeong Park, Juhui Lee, Geonmo Yang, and Younggun Cho"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://2026.ieee-icra.org/"
+      
+    - alt: "KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference"
+      authors: "Jiwon Choi, Hogyun Kim, Geonmo Yang, Juhui Lee, and Younggun Cho"
+      conf: "IEEE International Conference on Robotics and Automation (ICRA)"
+      conf_link: "https://2026.ieee-icra.org/"
+
+
 - title: "2025"
   images:
     - alt: "CUTE-Planner: Confidence-aware Uneven Terrain Exploration Planner"

@@ -1,4 +1,8 @@
 papers:
+  - date: "Jan. 2026"
+    description: "Two papers (KISS-IMU, GSAT) accepted at ICRA 2026!"
+    authors: "Jiwon and Dongjin"
+
   - date: "Dec. 2025"
     description: "One paper (CUTE-Planner) accepted at International Conference on Space Robotics (iSpaRo) 2025!"
     authors: "Miryeong"
@@ -21,42 +25,53 @@ papers:
 
   - date: "Feb. 2025"
     description: "Two papers (Diter++ and PoLaRIS) accepted at ICRA 2025!"
-    authors: "Jiwon, Dongjin, and Juwon"
+    authors: "Juwon, Jiwon and Dongjin"
   
   - date: "Oct. 2024"
     description: "One paper about underwater image enhancement and depth estimation (TRIDENT) has been accepted by IEEE Sensors Journal."
     authors: "Geonmo"
 
   - date: "Sep. 2024"
-    description: "One paper about RADAR-based localization (Referee) is accepted by IEEE Robotics and Automation Letters (RA-L)."
-    authors: "Byunghee and Hogyun"
+    description: "One paper about Radar-based localization (ReFeree) is accepted by IEEE Robotics and Automation Letters (RA-L)."
+    authors: "Hogyun and Byunghee"
 
   - date: "Aug. 2024"
-    description: "One paper about LiDAR-based localization (Solid) is accepted by IEEE Robotics and Automation Letters (RA-L)."
+    description: "One paper about LiDAR-based localization (SOLiD) is accepted by IEEE Robotics and Automation Letters (RA-L)."
     authors: "Hogyun"
 
   - date: "Feb. 2024"
-    description: "One paper accepted at ICRA 2024!"
+    description: "One paper about robust localization for delivery robots accepted at ICRA 2024!"
+    authors: "Jooyoung"
 
   - date: "Jan. 2024"
-    description: "One paper accepted by IEEE Sensors Letters!"
+    description: "One paper (DiTer) accepted by IEEE Sensors Letters!"
+    authors: "Seokhwan and Hogyun"
 
   - date: "Nov. 2023"
-    description: "One paper accepted by IEEE Sensors Journal!"
+    description: "One paper (Joint-ID) accepted by IEEE Sensors Journal!"
+    authors: "Geonmo"
 
   - date: "Feb. 2023"
-    description: "Three papers are accepted at ICRA 2023 (2 Regular, 1 RA-L)."
+    description: "Two papers (Sonar Context and Thermal to RGB-to-TIR image Translation) are accepted at ICRA 2023!"
+    authors: "Hogyun"
 
   - date: "Jan. 2023"
-    description: "One paper is accepted to Sensors."
+    description: "One paper is accepted to MDPI Sensors!"
+    authors: "Geonmo and Juhui"
 
   - date: "Aug. 2022"
-    description: "One paper accepted to T-ITS (Nonparametric background model-based LiDAR SLAM)."
+    description: "One paper accepted to T-ITS (Nonparametric background model-based LiDAR SLAM)!"
 
   - date: "Apr. 2022"
-    description: "One paper accepted to RA-L (Vivid++)."
+    description: "One paper accepted to RA-L (ViViD++)!"
 
 awards:
+  - date: "Jan. 2026"
+    description: "Hogyun received a silver prize at the 32nd Samsung HumanTech Paper Award. Congrats!"
+
+  - date: "Aug. 2025"
+    description: "Hogyun received a Ph.D Candidate Fellowship at the National Research Foundation (NRF). Congrats!"
+
   - date: "Apr. 2025"
     description: "Jiwon received an excellent research award at 2025 Korean Institute of ITS Conference. Congrats!"
 
