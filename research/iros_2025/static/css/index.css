@@ -1,7 +1,3 @@
-body {
-  font-family: 'Noto Sans', sans-serif;
-}
-
 .hero.has-bg-image {
   background-image: url('/static/images/your-bg-image.jpg');
   background-size: cover;
