@@ -73,6 +73,9 @@ awards:
     description: "Geonmo, Hogyun, Jiwon, and Juwon received a Graduate Research Award at Inha Univ. (Grand Prize). Congrats!"
 
   - date: "Jan. 2026"
+    description: "Hogyun and Geonmo received a Graduate Research Presentation Award at Inha Univ. (Grand Prize and Honorable Mention). Congrats!"
+
+  - date: "Jan. 2026"
     description: "Hogyun received a silver prize at the 32nd Samsung HumanTech Paper Award. Congrats!"
 
   - date: "Oct. 2025"
@@ -90,6 +93,9 @@ awards:
   - date: "Feb. 2025"
     description: "Jiyun received AFCV award at KRoC 2025. Congrats!"
 
+  - date: "Dec. 2024"
+    description: "Jungwoo, Dongjin, Minho, and Gihyeon received the Minister of Trade, Industry and Energy Award at the 2024 Embedded Software Competition! Congrats!"
+
   - date: "July. 2024"
     description: "Juwon, Euncheol, Minho, and Gihyeon won the competition at Hanhwa Aerospace for the future tech challenge! Congrats!"
 
@@ -105,11 +111,14 @@ awards:
   - date: "Oct. 2023"
     description: "Ugrad. Autonomous Driving Team (VI2RE) received an excellent algorithm award at the Virtual Seoul Driving Challenge. Congrats!"
 
+  - date: "Aug. 2023"
+    description: " Seungjun got a scholarship from Hyundai Motors Company. Congrats!"
+
   - date: "Jun. 2023"
     description: "Ugrad. project received the Excellent paper award(우수논문상) in ICROS 2023! Congrats!"
 
   - date: "Jan. 2023"
-    description: " Gilhwan got scholarship from Hyundai Motors Company. Congrats!"
+    description: " Gilhwan got a scholarship from Hyundai Motors Company. Congrats!"
 
   - date: "Dec. 2022"
     description: "NeRd-four team (Jooyong, Gilhwan, Geonmo, and Juhui) won the embedded software competition! Congrats!"
@@ -121,6 +130,9 @@ awards:
     description: "Prof. Cho receives 우수신진연구자상 at ICROS 2022. Congrats!"
 
 projects:
+  - date: "May. 2025"
+    description: "SPARO Lab won a big grant from NRF (NRF Basic Research Lab. 기초연구실)."
+
   - date: "Oct. 2023"
     description: "SPARO Lab won a big grant from NRF-STEAM (미래유망융합기술파이오니어)."
 
