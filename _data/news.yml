@@ -70,7 +70,13 @@ awards:
     description: "Dongjin and Seunghee received an AFCV award at KRoC 2026. Congrats!"
 
   - date: "Jan. 2026"
+    description: "Geonmo, Hogyun, Jiwon, and Juwon received a Graduate Research Award at Inha Univ. (Grand Prize). Congrats!"
+
+  - date: "Jan. 2026"
     description: "Hogyun received a silver prize at the 32nd Samsung HumanTech Paper Award. Congrats!"
+
+  - date: "Oct. 2025"
+    description: "Prof. Younggun received the New Generation Star Project Award at IROS."
 
   - date: "Aug. 2025"
     description: "Hogyun received a Ph.D Candidate Fellowship at the National Research Foundation (NRF). Congrats!"
@@ -79,31 +85,31 @@ awards:
     description: "Jiwon received an excellent research award at 2025 Korean Institute of ITS Conference. Congrats!"
 
   - date: "Feb. 2025"
-    description: "Hogyun received outstanding research awards at Inha Univ.(Excellence of journal publication and Most-applied patent). Congrats!"
+    description: "Hogyun received outstanding research awards at Inha Univ. (Excellence of journal publication and Most-applied patent). Congrats!"
 
   - date: "Feb. 2025"
-    description: "Jiyun received AFCV award at KRoC 2025."
+    description: "Jiyun received AFCV award at KRoC 2025. Congrats!"
 
   - date: "July. 2024"
-    description: "Juwon, Euncheol, Minho, and Gihyeon won the competition at Hanhwa Aerospace for the future tech challenge!"
+    description: "Juwon, Euncheol, Minho, and Gihyeon won the competition at Hanhwa Aerospace for the future tech challenge! Congrats!"
 
   - date: "June. 2024"
-    description: "Gihyeon and Dongjin received the best paper award at ICROS 2024."
+    description: "Gihyeon and Dongjin received the best paper award at ICROS 2024. Congrats!"
 
   - date: "May. 2024"
     description: "Uni-mapper received the best research award (3rd prize) at ICRA 2024 Construction Robotics Workshop. Congrats!"
 
   - date: "Nov. 2023"
-    description: "Our lab (4-luca team) won the industry-academia collaboration challenge (한국산업기술진흥원장상. Ranked in the Top 20 teams out of 489 teams)"
+    description: "Our lab (4-luca team) won the industry-academia collaboration challenge (한국산업기술진흥원장상. Ranked in the Top 20 teams out of 489 teams. Congrats!"
 
   - date: "Oct. 2023"
-    description: "Ugrad. Autonomous Driving Team (VI2RE) received an excellent algorithm award at the Virtual Seoul Driving Challenge."
+    description: "Ugrad. Autonomous Driving Team (VI2RE) received an excellent algorithm award at the Virtual Seoul Driving Challenge. Congrats!"
 
   - date: "Jun. 2023"
     description: "Ugrad. project received the Excellent paper award(우수논문상) in ICROS 2023! Congrats!"
 
   - date: "Jan. 2023"
-    description: " Gilhwan got scholarship from Hyundai Motors Company."
+    description: " Gilhwan got scholarship from Hyundai Motors Company. Congrats!"
 
   - date: "Dec. 2022"
     description: "NeRd-four team (Jooyong, Gilhwan, Geonmo, and Juhui) won the embedded software competition! Congrats!"
@@ -112,7 +118,7 @@ awards:
     description: "Seungjun and Seokhwan received the Excellent paper award(우수논문상)! Congrats!"
 
   - date: "Jun. 2022"
-    description: "Prof. Cho receives 우수신진연구자상 at ICROS 2022."
+    description: "Prof. Cho receives 우수신진연구자상 at ICROS 2022. Congrats!"
 
 projects:
   - date: "Oct. 2023"
