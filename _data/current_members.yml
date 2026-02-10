@@ -78,23 +78,11 @@
       linkedin: https://www.linkedin.com/in/jivvon2/
       keywords: LiDAR SLAM, Robust State Estimation 
 
-    - link: /img/people/phd/김주원_증명사진.jpg
-      alt: Juwon Kim
-      description: |-
-        **Juwon Kim**  
-        MS-PhD Integrated
-      email: lambertkim317@gmail.com
-      github: https://github.com/U-AMC
-      homepage: https://U-AMC.github.io/
-      scholar: https://scholar.google.ch/citations?user=2bvLmqQAAAAJ&hl=en
-      linkedin: https://www.linkedin.com/in/json380/
-      keywords: SLAM, Field Robotics, Quadruped, Multi Robot
-
     - link: /img/people/master/이기현_증명사진.jpg
       alt: Gihyeon Lee
       description: |-
         **Gihyeon Lee**  
-        Master Student
+        PhD Student
       email: leekh951@inha.edu
       github: https://github.com/Leekh951
       scholar: https://scholar.google.com/citations?user=iKsImcYAAAAJ&hl=ko
@@ -105,7 +93,7 @@
       alt: Dongjin Cho
       description: |-
         **Dongjin Cho**  
-        Master Student
+        PhD Student
       email: d22g66@inha.edu
       github: https://github.com/dongjineee
       scholar: https://scholar.google.com/citations?hl=ko&user=dE64iRYAAAAJ
@@ -118,7 +106,7 @@
       alt: Juwon Kim
       description: |-
         **Juwon Kim**  
-        MS-PhD Integrated
+        Master Student
       email: lambertkim317@gmail.com
       github: https://github.com/U-AMC
       homepage: https://U-AMC.github.io/
