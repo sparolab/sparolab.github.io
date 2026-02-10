@@ -156,6 +156,15 @@ categories:
       id: projects
       images:
         # 2024 ---------------------------------------------------------------------------------------
+        - description: "25년 7월 IQUA SPARUS II Training" 
+          date: "2025.07.02."
+          image_list:
+            - link: /img/album/research/project/iqua/1실험.jpeg
+            - link: /img/album/research/project/iqua/2로봇.jpeg
+            - link: /img/album/research/project/iqua/3축제.jpeg
+            - link: /img/album/research/project/iqua/4요리교실.jpeg
+
+        # 2024 ---------------------------------------------------------------------------------------
         - description: "24년 12월 연천 2차 실험" 
           date: "2024.12.23."
           image_list:
