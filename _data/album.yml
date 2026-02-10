@@ -155,13 +155,13 @@ categories:
     - name: Projects
       id: projects
       images:
-        # 2024 ---------------------------------------------------------------------------------------
+        # 2025 ---------------------------------------------------------------------------------------
         - description: "25년 7월 IQUA SPARUS II Training" 
           date: "2025.07.02."
           image_list:
             - link: /img/album/research/project/iqua/1실험.jpeg
             - link: /img/album/research/project/iqua/2로봇.jpeg
-            - link: /img/album/research/project/iqua/3축제.jpeg
+            - link: /img/album/research/project/iqua/3축제.jpg
             - link: /img/album/research/project/iqua/4요리교실.jpeg
 
         # 2024 ---------------------------------------------------------------------------------------
@@ -185,6 +185,14 @@ categories:
             - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_1.mpo
             - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_2.mpo
             - link: /img/album/research/project/steam/2024/2024_연천1차실험/2024_연천1차_로버_3.mpo
+
+        - description: "24년 7월 MRS Summer School" 
+          date: "2024.07.31."
+          image_list:
+            - link: /img/album/research/project/mrs_summer_school/1포스터.jpg
+            - link: /img/album/research/project/mrs_summer_school/2호균발표.jpg
+            - link: /img/album/research/project/mrs_summer_school/3주원발표.jpg
+            - link: /img/album/research/project/mrs_summer_school/4맥주.jpg
 
         - description: "24년 6월 제주 마장굴 실험(STEAM)" 
           date: "2024.06.19."
