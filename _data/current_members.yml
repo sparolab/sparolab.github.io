@@ -90,8 +90,6 @@
       linkedin: https://www.linkedin.com/in/json380/
       keywords: SLAM, Field Robotics, Quadruped, Multi Robot
 
-- title: Master Student
-  images:
     - link: /img/people/master/이기현_증명사진.jpg
       alt: Gihyeon Lee
       description: |-
@@ -113,6 +111,20 @@
       scholar: https://scholar.google.com/citations?hl=ko&user=dE64iRYAAAAJ
       linkedin: https://www.linkedin.com/in/dongjineee/
       keywords: Traversability, Long term Autonomy
+
+- title: Master Student
+  images:
+    - link: /img/people/phd/김주원_증명사진.jpg
+      alt: Juwon Kim
+      description: |-
+        **Juwon Kim**  
+        MS-PhD Integrated
+      email: lambertkim317@gmail.com
+      github: https://github.com/U-AMC
+      homepage: https://U-AMC.github.io/
+      scholar: https://scholar.google.ch/citations?user=2bvLmqQAAAAJ&hl=en
+      linkedin: https://www.linkedin.com/in/json380/
+      keywords: SLAM, Field Robotics, Quadruped, Multi Robot
 
     - link: /img/people/master/이민호_증명사진.jpg
       alt: Minho Lee
