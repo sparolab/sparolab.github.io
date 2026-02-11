@@ -1,0 +1,101 @@
+<div class="home-news-section content">
+  <ul id="home-news-list"></ul>
+
+  <div class="has-text-centered mt-4">
+    <a class="button is-link is-light" href="{{ '/news/news' | relative_url }}">More News</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  const monthMap = {
+    jan: 1,
+    feb: 2,
+    mar: 3,
+    apr: 4,
+    may: 5,
+    jun: 6,
+    jul: 7,
+    aug: 8,
+    sep: 9,
+    oct: 10,
+    nov: 11,
+    dec: 12
+  };
+
+  function parseDateValue(dateText) {
+    if (!dateText) {
+      return 0;
+    }
+
+    const yearMatch = dateText.match(/(\d{4})/);
+    const year = yearMatch ? parseInt(yearMatch[1], 10) : 0;
+
+    const monthMatch = dateText.toLowerCase().match(/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/);
+    const month = monthMatch ? (monthMap[monthMatch[1]] || 0) : 0;
+
+    return year * 100 + month;
+  }
+
+  const allNews = [
+    {% for paper in site.data.news.papers %}
+      {
+        date: {{ paper.date | jsonify }},
+        description: {{ paper.description | jsonify }},
+        authors: {{ paper.authors | default: '' | jsonify }}
+      },
+    {% endfor %}
+    {% for award in site.data.news.awards %}
+      {
+        date: {{ award.date | jsonify }},
+        description: {{ award.description | jsonify }},
+        link: {{ award.link | default: '' | jsonify }}
+      },
+    {% endfor %}
+    {% for project in site.data.news.projects %}
+      {
+        date: {{ project.date | jsonify }},
+        description: {{ project.description | jsonify }}
+      },
+    {% endfor %}
+    {% for person in site.data.news.people %}
+      {
+        date: {{ person.date | jsonify }},
+        description: {{ person.description | jsonify }}
+      },
+    {% endfor %}
+  ];
+
+  allNews.sort((a, b) => parseDateValue(b.date) - parseDateValue(a.date));
+
+  const latestNews = allNews.slice(0, 10);
+  const listEl = document.getElementById('home-news-list');
+
+  latestNews.forEach((item) => {
+    const li = document.createElement('li');
+    const strong = document.createElement('strong');
+    strong.textContent = item.date || '';
+
+    li.appendChild(strong);
+    li.appendChild(document.createTextNode(' - ' + (item.description || '')));
+
+    if (item.authors) {
+      const authorStrong = document.createElement('strong');
+      authorStrong.style.color = '#1f2a44';
+      authorStrong.textContent = ' (' + item.authors + ')';
+      li.appendChild(authorStrong);
+    }
+
+    if (item.link) {
+      const link = document.createElement('a');
+      link.href = item.link;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = ' [Read more]';
+      li.appendChild(link);
+    }
+
+    listEl.appendChild(li);
+  });
+})();
+</script>
