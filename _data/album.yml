@@ -128,6 +128,16 @@ categories:
     - name: Awards
       id: awards
       images:
+        # 2026 ---------------------------------------------------------------------------------------
+        - description: "2026년 삼성휴먼테크 논문대상 은상 수상" 
+          date: "2026.02.11."
+          image_list:
+            - link: /img/album/research/awards/2026/휴먼테크/1단체사진.jpg
+            - link: /img/album/research/awards/2026/휴먼테크/2인생네컷.jpg
+            - link: /img/album/research/awards/2026/휴먼테크/3MZ샷.jpg
+            - link: /img/album/research/awards/2026/휴먼테크/4등수.jpg
+            - link: /img/album/research/awards/2026/휴먼테크/5논문.jpg
+
         # 2024 ---------------------------------------------------------------------------------------
         - description: "2024년 임베디드SW 경진대회 최우수상 수상(산학협력프로젝트: 뉴빌리티)" 
           date: "2024.11.29."
