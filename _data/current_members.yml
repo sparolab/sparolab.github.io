@@ -100,6 +100,18 @@
       linkedin: https://www.linkedin.com/in/dongjineee/
       keywords: Traversability, Long term Autonomy
 
+    - link: /img/people/phd/백운영_증명사진.jpeg
+      alt: WoonYoung Baek
+      description: |-
+        **WoonYoung Baek**  
+        PhD Student
+      email: whitecl1031@gmail.com
+      github: https://github.com/Foxhead-Studio
+      homepage: https://velog.io/@whitecl1031/posts/
+      scholar: https://scholar.google.com/citations?hl=ko&user=_3sbzvcAAAAJ
+      linkedin: www.linkedin.com/in/운영-백-001191225/
+      keywords: 3D Computer Vision, Visual SLAM
+
 - title: Master Student
   images:
     - link: /img/people/phd/김주원_증명사진.jpg
