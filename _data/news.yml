@@ -1,5 +1,5 @@
 papers:
-  - date: "Jan. 2026"
+  - date: "Feb. 2026"
     description: "Two papers (KISS-IMU, GSAT) accepted at ICRA 2026!"
     authors: "Jiwon and Dongjin"
 
@@ -67,6 +67,9 @@ papers:
 
 awards:
   - date: "Feb. 2026"
+    description: "Hogyun received a silver prize at the 32nd Samsung HumanTech Paper Award. Congrats!"
+
+  - date: "Feb. 2026"
     description: "Dongjin received an AFCV award at KRoC 2026. Congrats!"
 
   - date: "Jan. 2026"
@@ -74,9 +77,6 @@ awards:
 
   - date: "Jan. 2026"
     description: "Hogyun and Geonmo received a Graduate Research Presentation Award at Inha Univ. (Grand Prize and Honorable Mention). Congrats!"
-
-  - date: "Jan. 2026"
-    description: "Hogyun received a silver prize at the 32nd Samsung HumanTech Paper Award. Congrats!"
 
   - date: "Oct. 2025"
     description: "Prof. Younggun received the New Generation Star Project Award at IROS."
