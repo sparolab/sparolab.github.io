@@ -146,6 +146,9 @@ projects:
     description: "SPARO Lab won a big grant from IITP (Deep Total Recall: Continual Learning for Human-Like Recall of Artificial Neural Networks)."
 
 people:
+  - date: "Mar. 2026"
+    description: "WoonYoung joined our lab. Welcome!"
+
   - date: "Sep. 2025"
     description: "Taehu and Seunghee joined our lab. Welcome!"
 
