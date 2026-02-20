@@ -250,10 +250,15 @@ categories:
           - link: /img/album/activity/workshop/2024/2024_평창_동계워크샵/2024_평창_MT_3.png
           - link: /img/album/activity/workshop/2024/2024_평창_동계워크샵/2024_평창_MT_병희_은철_정우.png
 
-
     - name: Entrance & Graduation
       id: entrance_graduation
       images: 
+      - description: "2026년도 상반기 졸업식(조동진, 이기현, 최지원)"  
+        date: "2026.02."
+        image_list:
+          - link: /img/album/activity/graduation/2026/2026_01_단체.jpg
+          - link: /img/album/activity/graduation/2026/2026_01_졸업자.jpg
+
       - description: "2025년도 하반기 졸업식(정석환, 최병희)"  
         date: "2025.08."
         image_list:
