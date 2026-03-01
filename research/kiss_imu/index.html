@@ -1,12 +1,59 @@
----
-layout: default
-title: "KISS-IMU"
-description: "KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference"
-hide_hero: true
----
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference">
+  <meta name="keywords" content="KISS-IMU, Inertial Odometry, Self-supervised Learning, IMU, LiDAR, Pose Graph Optimization, Quadruped Robot">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference</title>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-<link rel="stylesheet" href="./static/css/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body class="has-navbar-fixed-top">
+
+<!-- ==================== Navigation Bar ==================== -->
+<nav class="navbar is-fixed-top kiss-navbar" role="navigation" aria-label="main navigation">
+  <div class="container is-max-widescreen" style="display: flex; align-items: stretch;">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="kissNavbar">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="kissNavbar" class="navbar-menu">
+      <div class="navbar-start">
+      <a class="navbar-item navbar-brand-label" href="https://sparolab.github.io/">
+        <img src="./static/images/favicon.png" alt="SPARO Lab" class="navbar-brand-icon">
+        SPARO Lab
+      </a>
+      <a class="navbar-item nav-link" href="#abstract">Abstract</a>
+      <a class="navbar-item nav-link" href="#method">Method</a>
+      <a class="navbar-item nav-link" href="#stable-io">Stable IO</a>
+      <a class="navbar-item nav-link" href="#experiments">Experiments</a>
+      <a class="navbar-item nav-link" href="#BibTeX">BibTeX</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
 
 <!-- ==================== Related Research Sidebar ==================== -->
 <div id="related-sidebar" class="related-sidebar">
@@ -28,25 +75,11 @@ hide_hero: true
   </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var sidebar = document.getElementById('related-sidebar');
-  var toggle = document.getElementById('sidebar-toggle');
-  var chevron = document.getElementById('sidebar-chevron');
-  if (toggle && sidebar) {
-    toggle.addEventListener('click', function() {
-      sidebar.classList.toggle('is-open');
-      chevron.classList.toggle('fa-chevron-left');
-      chevron.classList.toggle('fa-chevron-right');
-    });
-  }
-});
-</script>
 
 <!-- ==================== Title & Authors ==================== -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-body">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">
@@ -58,15 +91,15 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://github.com/jivvon1">Jiwon Choi</a><sup>1</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&hl=ko&authuser=1">Jiwon Choi</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://github.com/hogyun2">Hogyun Kim</a><sup>1</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko&authuser=1">Hogyun Kim</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://github.com/ygm7422">Geonmo Yang</a><sup>1</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=ko&authuser=1">Geonmo Yang</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://github.com/dlwngml6635">Juhui Lee</a><sup>1</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ&hl=ko&authuser=1">Juhui Lee</a><sup>1</sup>,</span>
             <span class="author-block">
-              and <a href="https://sparolab.github.io/">Younggun Cho</a><sup>1&dagger;</sup>
+              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1">Younggun Cho</a><sup>1&dagger;</sup>
             </span>
           </div>
 
@@ -111,11 +144,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- ==================== TL;DR / Teaser ==================== -->
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <div class="container is-max-widescreen">
     <div class="hero-body">
-      <img src="./static/images/fig1_teaser.png" alt="KISS-IMU Teaser">
+      <div class="has-text-centered">
+        <figure class="image">
+          <img src="./static/images/fig1_teaser.png" alt="KISS-IMU Teaser">
+        </figure>
+      </div>
       <h2 class="subtitle has-text-centered" style="margin-top: 1.5rem;">
-        <span class="kiss-imu">TL;DR</span> &mdash; <span class="kiss-imu">KISS-IMU</span> learns inertial odometry without ground truth by using LiDAR-based pseudo-labels,
+        <b>TL;DR</b> &mdash; <span class="kiss-imu">KISS-IMU</span> learns inertial odometry without ground truth by using LiDAR-based pseudo-labels,
         GMM-balanced motion training for <b>stability</b>, and uncertainty-driven adaptive weighting for <b>strength</b>.
       </h2>
     </div>
@@ -123,9 +160,46 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 
+<!-- ==================== Key Insights ==================== -->
+<section class="section highlight-section">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">Key Insights</h2>
+    <div class="columns is-centered" style="margin-top: 1.5rem;">
+      <div class="column is-4">
+        <div class="highlight-card">
+          <h3 class="title is-5">
+            <span class="icon" style="color: #00d1b2;"><i class="fas fa-graduation-cap"></i></span>
+            Self-supervised
+          </h3>
+          <p>No ground truth needed. Uses LiDAR-based ICP and pose graph optimization as lightweight supervisory signals for training.</p>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="highlight-card">
+          <h3 class="title is-5">
+            <span class="icon" style="color: #3273dc;"><i class="fas fa-balance-scale"></i></span>
+            Stable
+          </h3>
+          <p>GMM-based motion analysis identifies and rebalances underrepresented motion patterns, ensuring robust learning across all dynamics.</p>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="highlight-card">
+          <h3 class="title is-5">
+            <span class="icon" style="color: #ff3860;"><i class="fas fa-bolt"></i></span>
+            Strong
+          </h3>
+          <p>Uncertainty-aware adaptive weighting during inference dynamically adjusts sensor confidence for reliable pose estimation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ==================== Abstract ==================== -->
-<section class="section">
-  <div class="container is-max-desktop">
+<section class="section" id="abstract">
+  <div class="container is-max-widescreen">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
@@ -158,14 +232,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <!-- ==================== Method Overview ==================== -->
-<section class="section" style="background-color: #fafafa;">
-  <div class="container is-max-desktop">
+<section class="section" id="method" style="background-color: #fafafa;">
+  <div class="container is-max-widescreen">
     <h2 class="title is-3 has-text-centered">Method Overview</h2>
 
     <div class="columns is-centered" style="margin-top: 1.5rem;">
       <div class="column is-12 has-text-centered">
         <figure class="image">
-          <img src="./static/images/fig2_pipeline.png" alt="KISS-IMU Overall Pipeline">
+          <img src="./static/images/fig2_pipeline.png" alt="KISS-IMU Overall Pipeline" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
           <b>Overall Framework.</b> Our inertial odometry framework follows the <i>Keep IMU Stable and Strong</i>
@@ -182,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="column is-8 has-text-centered">
         <h3 class="title is-4">Network Architecture</h3>
         <figure class="image">
-          <img src="./static/images/fig3_network.png" alt="CNN-GRU Network Architecture">
+          <img src="./static/images/fig3_network.png" alt="CNN-GRU Network Architecture" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
           <b>CNN-GRU Encoder.</b> Processes raw IMU measurements to extract features and estimate learned
@@ -196,16 +270,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <!-- ==================== Stable IO: GMM-based Training ==================== -->
-<section class="section">
-  <div class="container is-max-desktop">
+<section class="section" id="stable-io">
+  <div class="container is-max-widescreen">
     <h2 class="title is-3 has-text-centered">
-      Stable IO: GMM-based Motion Analysis
+      <span style="color: #00d1b2;">Stable</span> IO: GMM-based Motion Analysis
     </h2>
 
     <div class="columns is-centered is-vcentered" style="margin-top: 1.5rem;">
       <div class="column is-6 has-text-centered">
         <figure class="image">
-          <img src="./static/images/fig5_gmm_analysis.png" alt="GMM Motion Pattern Analysis">
+          <img src="./static/images/fig5_gmm_analysis.png" alt="GMM Motion Pattern Analysis" style="width:100%; height:auto;">
         </figure>
       </div>
       <div class="column is-6">
@@ -233,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
       <div class="column is-6 has-text-centered">
         <figure class="image">
-          <img src="./static/images/fig7_gmm_balance.png" alt="GMM Balancing Before and After">
+          <img src="./static/images/fig7_gmm_balance.png" alt="GMM Balancing Before and After" style="width:100%; height:auto;">
         </figure>
       </div>
     </div>
@@ -242,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="column is-10 has-text-centered">
         <h3 class="title is-4">Feature Space Visualization</h3>
         <figure class="image">
-          <img src="./static/images/fig4_tsne.png" alt="t-SNE Visualization of Motion Pattern Clustering">
+          <img src="./static/images/fig4_tsne.png" alt="t-SNE Visualization of Motion Pattern Clustering" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
           <b>t-SNE visualization.</b> Motion samples from GMM-determined labels (left turn, right turn, straight)
@@ -257,8 +331,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <!-- ==================== Experiments ==================== -->
-<section class="section" style="background-color: #fafafa;">
-  <div class="container is-max-desktop">
+<section class="section" id="experiments" style="background-color: #fafafa;">
+  <div class="container is-max-widescreen">
     <h2 class="title is-3 has-text-centered">Experiments</h2>
 
     <h3 class="title is-4" style="margin-top: 1.5rem;">Datasets & Platforms</h3>
@@ -297,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="columns is-centered">
       <div class="column is-12 has-text-centered">
         <figure class="image">
-          <img src="./static/images/table1_results.png" alt="Quantitative Comparison Results">
+          <img src="./static/images/table1_results.png" alt="Quantitative Comparison Results" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
           <b>Quantitative comparison</b> on Botanic Garden and DiTer++ datasets with varying training data
@@ -312,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="columns is-centered">
       <div class="column is-10 has-text-centered">
         <figure class="image">
-          <img src="./static/images/fig6_trajectory.png" alt="Trajectory Comparison on Unseen Sequences">
+          <img src="./static/images/fig6_trajectory.png" alt="Trajectory Comparison on Unseen Sequences" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
           <b>Trajectory comparison</b> on unseen sequences <b>(a)</b> 1006-01 and <b>(b)</b> LAWN,
@@ -326,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="columns is-centered">
       <div class="column is-10 has-text-centered">
         <figure class="image">
-          <img src="./static/images/fig9_ablation.png" alt="Ablation Study Box Plots">
+          <img src="./static/images/fig9_ablation.png" alt="Ablation Study Box Plots" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
           <b>APE box plots</b> on unseen sequences. Statistical significance (p-value &lt; 10<sup>-4</sup>)
@@ -340,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="columns is-centered is-vcentered">
       <div class="column is-6 has-text-centered">
         <figure class="image">
-          <img src="./static/images/fig8_inhouse.png" alt="In-House Dataset Mapping Results">
+          <img src="./static/images/fig8_inhouse.png" alt="In-House Dataset Mapping Results" style="width:100%; height:auto;">
         </figure>
       </div>
       <div class="column is-6">
@@ -352,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
             point cloud data.
           </p>
           <figure class="image" style="margin-top: 1rem;">
-            <img src="./static/images/table2_feasibility.png" alt="Feasibility Analysis Table">
+            <img src="./static/images/table2_feasibility.png" alt="Feasibility Analysis Table" style="width:100%; height:auto;">
           </figure>
         </div>
       </div>
@@ -362,8 +436,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <!-- ==================== BibTeX ==================== -->
-<section class="section">
-  <div class="container is-max-desktop content">
+<section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@inproceedings{choi2026kissimu,
   author    = {Choi, Jiwon and Kim, Hogyun and Yang, Geonmo and Lee, Juhui and Cho, Younggun},
@@ -373,3 +447,101 @@ document.addEventListener('DOMContentLoaded', function() {
 }</code></pre>
   </div>
 </section>
+
+
+<!-- ==================== Footer ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://sparolab.github.io/">
+        <i class="fas fa-home"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/sparolab">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ==================== Custom Scripts ==================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Navbar burger toggle (mobile)
+  var burger = document.querySelector('.navbar-burger');
+  var menu = document.getElementById('kissNavbar');
+  if (burger && menu) {
+    burger.addEventListener('click', function() {
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href').substring(1);
+      var target = document.getElementById(targetId);
+      if (target) {
+        var navHeight = document.querySelector('.kiss-navbar').offsetHeight;
+        var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+      }
+      if (burger && menu) {
+        burger.classList.remove('is-active');
+        menu.classList.remove('is-active');
+      }
+    });
+  });
+
+  // Active nav link highlight on scroll
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', function() {
+    var scrollPos = window.pageYOffset + 100;
+    sections.forEach(function(section) {
+      var top = section.offsetTop;
+      var height = section.offsetHeight;
+      var id = section.getAttribute('id');
+      if (scrollPos >= top && scrollPos < top + height) {
+        navLinks.forEach(function(link) {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+    });
+  });
+
+  // Sidebar toggle
+  var sidebar = document.getElementById('related-sidebar');
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  var chevron = document.getElementById('sidebar-chevron');
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener('click', function() {
+      sidebar.classList.toggle('is-open');
+      chevron.classList.toggle('fa-chevron-left');
+      chevron.classList.toggle('fa-chevron-right');
+    });
+  }
+});
+</script>
+
+</body>
+</html>
