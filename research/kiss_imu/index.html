@@ -1,0 +1,375 @@
+---
+layout: default
+title: "KISS-IMU"
+description: "KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference"
+hide_hero: true
+---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="./static/css/index.css">
+
+<!-- ==================== Related Research Sidebar ==================== -->
+<div id="related-sidebar" class="related-sidebar">
+  <div class="sidebar-toggle" id="sidebar-toggle">
+    <span class="icon"><i class="fas fa-chevron-left" id="sidebar-chevron"></i></span>
+    <span class="sidebar-toggle-text">Related</span>
+  </div>
+  <div class="sidebar-content">
+    <h4 class="sidebar-title">Related Research</h4>
+    <a href="https://sparolab.github.io/research/diter_plus/" target="_blank" class="sidebar-card">
+      <div class="sidebar-card-img">
+        <img src="/img/research/paper/8_diter_plus.png" alt="DiTer++">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">DiTer++</p>
+        <p class="sidebar-card-venue">ICRA 2025</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var sidebar = document.getElementById('related-sidebar');
+  var toggle = document.getElementById('sidebar-toggle');
+  var chevron = document.getElementById('sidebar-chevron');
+  if (toggle && sidebar) {
+    toggle.addEventListener('click', function() {
+      sidebar.classList.toggle('is-open');
+      chevron.classList.toggle('fa-chevron-left');
+      chevron.classList.toggle('fa-chevron-right');
+    });
+  }
+});
+</script>
+
+<!-- ==================== Title & Authors ==================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <span class="kiss-imu">KISS-IMU</span>: Self-supervised Inertial Odometry
+            with Motion-balanced Learning and Uncertainty-aware Inference
+          </h1>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">IEEE International Conference on Robotics and Automation (ICRA), 2026</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/jivvon1">Jiwon Choi</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/hogyun2">Hogyun Kim</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/ygm7422">Geonmo Yang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/dlwngml6635">Juhui Lee</a><sup>1</sup>,</span>
+            <span class="author-block">
+              and <a href="https://sparolab.github.io/">Younggun Cho</a><sup>1&dagger;</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code (Coming Soon)</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== TL;DR / Teaser ==================== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/fig1_teaser.png" alt="KISS-IMU Teaser">
+      <h2 class="subtitle has-text-centered" style="margin-top: 1.5rem;">
+        <span class="kiss-imu">TL;DR</span> &mdash; <span class="kiss-imu">KISS-IMU</span> learns inertial odometry without ground truth by using LiDAR-based pseudo-labels,
+        GMM-balanced motion training for <b>stability</b>, and uncertainty-driven adaptive weighting for <b>strength</b>.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Abstract ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Inertial measurement units (IMUs), which provide high-frequency linear acceleration
+            and angular velocity measurements, serve as fundamental sensing modalities in robotic systems.
+            Recent advances in deep neural networks have led to remarkable progress in inertial odometry.
+            However, the heavy reliance on ground truth data during training fundamentally limits
+            scalability and generalization to unseen and diverse environments.
+          </p>
+          <p>
+            We propose <span class="kiss-imu">KISS-IMU</span>, a novel self-supervised inertial odometry
+            framework that eliminates ground truth dependency by leveraging simple LiDAR-based ICP registration
+            and pose graph optimization as a supervisory signal. Our approach embodies two key principles:
+            keeping the IMU <b>stable</b> through motion-aware balanced training and keeping the IMU
+            <b>strong</b> through uncertainty-driven adaptive weighting during inference.
+          </p>
+          <p>
+            To evaluate performance across diverse motion patterns and scenarios, we conducted comprehensive
+            experiments on various real-world platforms, including quadruped robots. Importantly, we train
+            only the IMU network in a self-supervised manner, with LiDAR serving solely as a lightweight
+            supervisory signal rather than requiring additional learnable processes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Method Overview ==================== -->
+<section class="section" style="background-color: #fafafa;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+
+    <div class="columns is-centered" style="margin-top: 1.5rem;">
+      <div class="column is-12 has-text-centered">
+        <figure class="image">
+          <img src="./static/images/fig2_pipeline.png" alt="KISS-IMU Overall Pipeline">
+        </figure>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          <b>Overall Framework.</b> Our inertial odometry framework follows the <i>Keep IMU Stable and Strong</i>
+          philosophy through three components: <b>(a)</b> Self-supervised training combines an IMU network for
+          correction and uncertainty prediction with a LiDAR registration module for geometric constraints.
+          PGO fuses both modalities, followed by selective pseudo-label generation using symmetric overlap scores.
+          <b>(b)</b> GMM analysis stabilizes IO via motion clustering with balanced reweighting.
+          <b>(c)</b> Sensor confidence-aware PGO strengthens IO through adaptive weighting during inference.
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered" style="margin-top: 2rem;">
+      <div class="column is-8 has-text-centered">
+        <h3 class="title is-4">Network Architecture</h3>
+        <figure class="image">
+          <img src="./static/images/fig3_network.png" alt="CNN-GRU Network Architecture">
+        </figure>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          <b>CNN-GRU Encoder.</b> Processes raw IMU measurements to extract features and estimate learned
+          corrections and uncertainties. An integrator combines these with the previous state to produce
+          corrected measurements and associated uncertainty estimates.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Stable IO: GMM-based Training ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">
+      Stable IO: GMM-based Motion Analysis
+    </h2>
+
+    <div class="columns is-centered is-vcentered" style="margin-top: 1.5rem;">
+      <div class="column is-6 has-text-centered">
+        <figure class="image">
+          <img src="./static/images/fig5_gmm_analysis.png" alt="GMM Motion Pattern Analysis">
+        </figure>
+      </div>
+      <div class="column is-6">
+        <div class="content has-text-justified">
+          <p>
+            <b>Motion Pattern Analysis.</b> Using GMM with Bayesian information criterion, we determine
+            the optimal number of motion components (G=7). The distributions of normalized angular speed
+            reveal motion characteristics for each sequence. Lower Wasserstein distances indicate better
+            motion similarity between training and test sequences.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered is-vcentered" style="margin-top: 1.5rem;">
+      <div class="column is-6">
+        <div class="content has-text-justified">
+          <p>
+            <b>Motion-Aware Reweighting.</b> Our GMM-based strategy transitions motion component weights
+            from an imbalanced distribution to a balanced one. Components with lower frequency receive
+            higher weights, ensuring rare but critical motion patterns (e.g., sharp turns, sudden acceleration)
+            are adequately represented during training.
+          </p>
+        </div>
+      </div>
+      <div class="column is-6 has-text-centered">
+        <figure class="image">
+          <img src="./static/images/fig7_gmm_balance.png" alt="GMM Balancing Before and After">
+        </figure>
+      </div>
+    </div>
+
+    <div class="columns is-centered" style="margin-top: 1.5rem;">
+      <div class="column is-10 has-text-centered">
+        <h3 class="title is-4">Feature Space Visualization</h3>
+        <figure class="image">
+          <img src="./static/images/fig4_tsne.png" alt="t-SNE Visualization of Motion Pattern Clustering">
+        </figure>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          <b>t-SNE visualization.</b> Motion samples from GMM-determined labels (left turn, right turn, straight)
+          in seen (Forest) and unseen (LAWN) environments. Without GMM balancing, clustering exhibits limited
+          separation, whereas GMM-based training improves inter-class separation and intra-class compactness,
+          indicating better generalization.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Experiments ==================== -->
+<section class="section" style="background-color: #fafafa;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Experiments</h2>
+
+    <h3 class="title is-4" style="margin-top: 1.5rem;">Datasets & Platforms</h3>
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <div class="content has-text-justified">
+          <p>We evaluate on three diverse datasets with increasing complexity:</p>
+        </div>
+        <div class="columns is-centered" style="margin-top: 0.5rem;">
+          <div class="column is-4">
+            <div class="dataset-card has-text-centered">
+              <h4 class="title is-5">Botanic Garden</h4>
+              <p class="tag is-warning is-light">Complexity: 2/5</p>
+              <p style="margin-top: 0.5rem;">Wheeled robot, Velodyne VLP-16 LiDAR + Xsens IMU. Environmental challenges in natural settings.</p>
+            </div>
+          </div>
+          <div class="column is-4">
+            <div class="dataset-card has-text-centered">
+              <h4 class="title is-5">DiTer++</h4>
+              <p class="tag is-info is-light">Complexity: 3/5</p>
+              <p style="margin-top: 0.5rem;">Unitree GO2 quadruped, Ouster OS-1 LiDAR. Diverse terrains with dynamic gaits and motion complexity.</p>
+            </div>
+          </div>
+          <div class="column is-4">
+            <div class="dataset-card has-text-centered">
+              <h4 class="title is-5">In-House</h4>
+              <p class="tag is-danger is-light">Complexity: 5/5</p>
+              <p style="margin-top: 0.5rem;">Unitree B2 quadruped in crater-filled planetary terrain. Extreme motion variations; ground truth infeasible.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="title is-4" style="margin-top: 2rem;">Quantitative Results</h3>
+    <div class="columns is-centered">
+      <div class="column is-12 has-text-centered">
+        <figure class="image">
+          <img src="./static/images/table1_results.png" alt="Quantitative Comparison Results">
+        </figure>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          <b>Quantitative comparison</b> on Botanic Garden and DiTer++ datasets with varying training data
+          percentages (100%, 60%, 20%). Our approach consistently achieves stable performance across different
+          data scales and generalizes better to unseen environments. Notably, our method maintains robust
+          performance with only <b>20% training data</b>.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="title is-4" style="margin-top: 2rem;">Trajectory Comparison</h3>
+    <div class="columns is-centered">
+      <div class="column is-10 has-text-centered">
+        <figure class="image">
+          <img src="./static/images/fig6_trajectory.png" alt="Trajectory Comparison on Unseen Sequences">
+        </figure>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          <b>Trajectory comparison</b> on unseen sequences <b>(a)</b> 1006-01 and <b>(b)</b> LAWN,
+          showing our method versus comparative approaches. Our approach closely follows the ground truth
+          trajectory while other methods exhibit significant drift.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="title is-4" style="margin-top: 2rem;">Ablation Study</h3>
+    <div class="columns is-centered">
+      <div class="column is-10 has-text-centered">
+        <figure class="image">
+          <img src="./static/images/fig9_ablation.png" alt="Ablation Study Box Plots">
+        </figure>
+        <p class="has-text-justified" style="margin-top: 1rem;">
+          <b>APE box plots</b> on unseen sequences. Statistical significance (p-value &lt; 10<sup>-4</sup>)
+          confirms that each component (GMM balancing and adaptive weighting) contributes consistent
+          performance improvements.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="title is-4" style="margin-top: 2rem;">Extreme Conditions: Where Supervised Methods Fail</h3>
+    <div class="columns is-centered is-vcentered">
+      <div class="column is-6 has-text-centered">
+        <figure class="image">
+          <img src="./static/images/fig8_inhouse.png" alt="In-House Dataset Mapping Results">
+        </figure>
+      </div>
+      <div class="column is-6">
+        <div class="content has-text-justified">
+          <p>
+            On our In-House dataset with crater-filled planetary terrain, traditional supervised methods
+            (TLIO, AirIO, AirIMU) are <b>infeasible</b> due to the inability to acquire ground truth data.
+            Our self-supervised approach remains <b>fully deployable</b>, requiring only inertial and
+            point cloud data.
+          </p>
+          <figure class="image" style="margin-top: 1rem;">
+            <img src="./static/images/table2_feasibility.png" alt="Feasibility Analysis Table">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== BibTeX ==================== -->
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{choi2026kissimu,
+  author    = {Choi, Jiwon and Kim, Hogyun and Yang, Geonmo and Lee, Juhui and Cho, Younggun},
+  title     = {KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference},
+  booktitle = {IEEE International Conference on Robotics and Automation (ICRA)},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>

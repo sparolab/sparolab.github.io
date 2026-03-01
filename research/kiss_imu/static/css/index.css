@@ -1,0 +1,221 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.kiss-imu {
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==================== Related Research Sidebar ==================== */
+.related-sidebar {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) translateX(calc(100% - 40px));
+  z-index: 30;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.related-sidebar.is-open {
+  transform: translateY(-50%) translateX(0);
+}
+
+.sidebar-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  padding: 12px 0;
+  background: #191970;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.12);
+  transition: background 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background: #12124f;
+}
+
+.sidebar-toggle .icon {
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.sidebar-toggle-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+.sidebar-content {
+  background: #fff;
+  border-radius: 0 0 0 12px;
+  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.12);
+  padding: 16px 14px;
+  width: 220px;
+}
+
+.sidebar-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #191970;
+}
+
+.sidebar-card {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+  border: 1px solid #eee;
+}
+
+.sidebar-card:hover {
+  background: #eef0f8;
+  transform: translateX(-3px);
+  border-color: #191970;
+}
+
+.sidebar-card-img {
+  width: 56px;
+  height: 42px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f5f5f5;
+}
+
+.sidebar-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar-card-info {
+  margin-left: 10px;
+}
+
+.sidebar-card-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.2;
+  margin-bottom: 2px !important;
+}
+
+.sidebar-card-venue {
+  font-size: 0.7rem;
+  color: #888;
+  line-height: 1.2;
+  margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .related-sidebar {
+    display: none;
+  }
+}
+
+/* ==================== Dataset Cards ==================== */
+.dataset-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.25rem 1rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  height: 100%;
+}
+
+.dataset-card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* ==================== Section Styling ==================== */
+.section h2.title {
+  margin-bottom: 1rem;
+}
+
+.section h3.title {
+  margin-bottom: 0.75rem;
+}
+
+/* ==================== BibTeX ==================== */
+#BibTeX pre {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 1.25rem;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}

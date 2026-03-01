@@ -1,5 +1,16 @@
 - title: Paper
   images:
+    - link: /img/research/paper/18_kiss_imu.png
+      alt: IEEE ICRA
+      alt_link: https://2026.ieee-icra.org/
+      pulished_date: June, 2026
+      paper: "KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference"
+      authors: Jiwon Choi, Hogyun Kim, Geonmo Yang, Juhui Lee and Younggun Cho
+      tags:
+          - Learning
+          - Field
+      page_link: /research/kiss_imu/
+
     - link: /img/research/paper/17_cute_planner.png
       alt: iSpaRo
       alt_link: https://www.isparo.space/
