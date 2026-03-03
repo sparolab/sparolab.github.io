@@ -29,14 +29,6 @@ Our autonomous multi-robot systems **perceive**, **adapt**, and **collaborate** 
 
 {% include home-news.html %}
 
----
-
-## News
-
-{% include home-news.html %}
-
----
-
 
 
 
@@ -73,4 +65,3 @@ Our autonomous multi-robot systems **perceive**, **adapt**, and **collaborate** 
 * [Apr. 2022] SPARO Lab started the joint project (Industry-academy collaboration, Partner: Neubility)
 * [Apr. 2022] One paper is accepted to RA-L (Vivid++)
 * [Mar. 2022] Geonmo, Jooyong, and Juhui joined SPARO Lab! Welcome! -->
-
