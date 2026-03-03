@@ -30,7 +30,7 @@
 
 <!-- ==================== Navigation Bar ==================== -->
 <nav class="navbar is-fixed-top kiss-navbar" role="navigation" aria-label="main navigation">
-  <div class="container is-max-widescreen" style="display: flex; align-items: stretch;">
+  <div class="container is-max-fullhd">
     <div class="navbar-brand">
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="kissNavbar">
         <span aria-hidden="true"></span>
@@ -54,6 +54,65 @@
   </div>
 </nav>
 
+<!-- ==================== Hero Title Bar + Authors ==================== -->
+<section class="hero is-medium is-bold is-primary" id="top">
+  <div class="hero-body">
+    <div class="container is-max-fullhd has-text-centered">
+      <h1 class="title is-2 publication-title">
+        <span class="kiss-imu" style="color: #fff;">KISS-IMU</span>: Self-supervised Inertial Odometry
+        with Motion-balanced Learning and Uncertainty-aware Inference
+      </h1>
+      <div class="is-size-6 publication-authors" style="margin-top: 1rem;">
+        <span class="author-block">IEEE International Conference on Robotics and Automation (ICRA), 2026</span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&hl=ko&authuser=1" target="_blank">Jiwon Choi</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko&authuser=1" target="_blank">Hogyun Kim</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=ko&authuser=1" target="_blank">Geonmo Yang</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ&hl=ko&authuser=1" target="_blank">Juhui Lee</a><sup>1</sup>,</span>
+        <span class="author-block">
+          and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1" target="_blank">Younggun Cho</a><sup>1&dagger;</sup>
+        </span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.25rem;">
+        <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>
+      </div>
+      <div style="margin-top: 1.25rem;">
+        <div class="publication-links">
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper (Coming Soon)</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv (Coming Soon)</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="fab fa-youtube"></i></span>
+              <span>Video (Coming Soon)</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code (Coming Soon)</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ==================== Related Research Sidebar ==================== -->
 <div id="related-sidebar" class="related-sidebar">
@@ -76,75 +135,9 @@
 </div>
 
 
-<!-- ==================== Title & Authors ==================== -->
-<section class="hero" id="top">
-  <div class="hero-body">
-    <div class="container is-max-widescreen">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">
-            <span class="kiss-imu">KISS-IMU</span>: Self-supervised Inertial Odometry
-            with Motion-balanced Learning and Uncertainty-aware Inference
-          </h1>
-          <div class="is-size-6 publication-authors">
-            <span class="author-block">IEEE International Conference on Robotics and Automation (ICRA), 2026</span>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&hl=ko&authuser=1">Jiwon Choi</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko&authuser=1">Hogyun Kim</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=ko&authuser=1">Geonmo Yang</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ&hl=ko&authuser=1">Juhui Lee</a><sup>1</sup>,</span>
-            <span class="author-block">
-              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1">Younggun Cho</a><sup>1&dagger;</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper (Coming Soon)</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv (Coming Soon)</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-youtube"></i></span>
-                  <span>Video (Coming Soon)</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code (Coming Soon)</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- ==================== TL;DR / Teaser ==================== -->
 <section class="hero teaser">
-  <div class="container is-max-widescreen">
+  <div class="container is-max-fullhd">
     <div class="hero-body">
       <div class="has-text-centered">
         <figure class="image">
@@ -162,7 +155,7 @@
 
 <!-- ==================== Key Insights ==================== -->
 <section class="section highlight-section">
-  <div class="container is-max-widescreen">
+  <div class="container is-max-fullhd">
     <h2 class="title is-3 has-text-centered">Key Insights</h2>
     <div class="columns is-centered" style="margin-top: 1.5rem;">
       <div class="column is-4">
@@ -199,7 +192,7 @@
 
 <!-- ==================== Abstract ==================== -->
 <section class="section" id="abstract">
-  <div class="container is-max-widescreen">
+  <div class="container is-max-fullhd">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
@@ -233,7 +226,7 @@
 
 <!-- ==================== Method Overview ==================== -->
 <section class="section" id="method" style="background-color: #fafafa;">
-  <div class="container is-max-widescreen">
+  <div class="container is-max-fullhd">
     <h2 class="title is-3 has-text-centered">Method Overview</h2>
 
     <div class="columns is-centered" style="margin-top: 1.5rem;">
@@ -271,7 +264,7 @@
 
 <!-- ==================== Stable IO: GMM-based Training ==================== -->
 <section class="section" id="stable-io">
-  <div class="container is-max-widescreen">
+  <div class="container is-max-fullhd">
     <h2 class="title is-3 has-text-centered">
       <span style="color: #00d1b2;">Stable</span> IO: GMM-based Motion Analysis
     </h2>
@@ -332,7 +325,7 @@
 
 <!-- ==================== Experiments ==================== -->
 <section class="section" id="experiments" style="background-color: #fafafa;">
-  <div class="container is-max-widescreen">
+  <div class="container is-max-fullhd">
     <h2 class="title is-3 has-text-centered">Experiments</h2>
 
     <h3 class="title is-4" style="margin-top: 1.5rem;">Datasets & Platforms</h3>
@@ -437,7 +430,7 @@
 
 <!-- ==================== BibTeX ==================== -->
 <section class="section" id="BibTeX">
-  <div class="container is-max-widescreen content">
+  <div class="container is-max-fullhd content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@inproceedings{choi2026kissimu,
   author    = {Choi, Jiwon and Kim, Hogyun and Yang, Geonmo and Lee, Juhui and Cho, Younggun},
@@ -459,20 +452,6 @@
       <a class="icon-link" href="https://github.com/sparolab">
         <i class="fab fa-github"></i>
       </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content has-text-centered">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 </footer>

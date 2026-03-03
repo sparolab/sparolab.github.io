@@ -2,35 +2,34 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-/* ==================== Yellow Navigation Bar ==================== */
+/* ==================== Navigation Bar (Midnight Blue) ==================== */
 .kiss-navbar {
-  background-color: #ffc800;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #010042;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .kiss-navbar .navbar-burger span {
-  color: #333;
-  background-color: #333;
+  color: #fff;
+  background-color: #fff;
 }
 
 .kiss-navbar .navbar-brand-label {
-  color: #333 !important;
-  font-weight: 700;
+  color: #fff !important;
+  font-weight: 400;
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: all 0.2s ease;
 }
 
 .kiss-navbar .navbar-brand-label:hover {
-  background-color: rgba(0, 0, 0, 0.06) !important;
-  color: #111 !important;
+  background-color: transparent !important;
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .kiss-navbar .navbar-brand-icon {
-  height: 28px;
+  height: 20px;
   width: auto;
-  max-height: 28px;
+  max-height: 20px;
 }
 
 .kiss-navbar .navbar-start {
@@ -38,31 +37,24 @@ body {
 }
 
 .kiss-navbar .nav-link {
-  color: #333 !important;
-  transition: all 0.2s ease;
-  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
 }
 
 .kiss-navbar .nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.06) !important;
-  color: #111 !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
 }
 
 .kiss-navbar .nav-link.is-active {
-  border-bottom-color: #333;
-  background-color: rgba(0, 0, 0, 0.05) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
 }
 
 @media screen and (max-width: 1023px) {
   .kiss-navbar .navbar-menu {
-    background-color: #ffc800;
-  }
-  .kiss-navbar .nav-link {
-    border-bottom: none;
-    border-left: 3px solid transparent;
-  }
-  .kiss-navbar .nav-link.is-active {
-    border-left-color: #333;
+    background-color: #010042;
   }
 }
 
@@ -91,7 +83,7 @@ body {
   justify-content: center;
   width: 48px;
   padding: 14px 0;
-  background: #ffc800;
+  background: #010042;
   border-radius: 8px 0 0 8px;
   cursor: pointer;
   box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.12);
@@ -99,11 +91,11 @@ body {
 }
 
 .sidebar-toggle:hover {
-  background: #e6b400;
+  background: #000030;
 }
 
 .sidebar-toggle .icon {
-  color: #333;
+  color: #fff;
   font-size: 1.1rem;
 }
 
@@ -112,7 +104,7 @@ body {
   text-orientation: mixed;
   font-size: 0.95rem;
   font-weight: 700;
-  color: #333;
+  color: #fff;
   margin-top: 8px;
   font-family: 'Google Sans', sans-serif;
   letter-spacing: 1.5px;
@@ -133,7 +125,7 @@ body {
   color: #333;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 2px solid #ffc800;
+  border-bottom: 2px solid #010042;
 }
 
 .sidebar-card {
@@ -147,9 +139,9 @@ body {
 }
 
 .sidebar-card:hover {
-  background: #fffbe6;
+  background: #eeeef8;
   transform: translateX(-3px);
-  border-color: #ffc800;
+  border-color: #010042;
 }
 
 .sidebar-card-img {
@@ -347,6 +339,34 @@ body {
 /* ==================== Image Figures ==================== */
 figure.image img {
   border-radius: 6px;
+}
+
+/* ==================== Hero Title Bar (sparolab style) ==================== */
+.hero.is-primary {
+  background-color: #010042 !important;
+}
+
+.hero.is-primary .title,
+.hero.is-primary .subtitle {
+  color: #fff !important;
+}
+
+.hero.is-primary .publication-authors {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero.is-primary .publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+  text-decoration: none;
+}
+
+.hero.is-primary .publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.hero.is-primary.is-bold {
+  background-color: #010042 !important;
+  background-image: linear-gradient(141deg, #000020 0%, #010042 71%, #0a0a6e 100%) !important;
 }
 
 /* ==================== Scroll offset for fixed navbar ==================== */
