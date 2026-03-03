@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -47,6 +47,7 @@
       <a class="navbar-item nav-link" href="#abstract">Abstract</a>
       <a class="navbar-item nav-link" href="#method">Method</a>
       <a class="navbar-item nav-link" href="#stable-io">Stable IO</a>
+      <a class="navbar-item nav-link" href="#strong-io">Strong IO</a>
       <a class="navbar-item nav-link" href="#experiments">Experiments</a>
       <a class="navbar-item nav-link" href="#BibTeX">BibTeX</a>
       </div>
@@ -59,8 +60,8 @@
   <div class="hero-body">
     <div class="container is-max-fullhd has-text-centered">
       <h1 class="title is-2 publication-title">
-        <span class="kiss-imu" style="color: #fff;">KISS-IMU</span>: Self-supervised Inertial Odometry
-        with Motion-balanced Learning and Uncertainty-aware Inference
+        <span class="kiss-imu" style="color: #ffc800;">KISS-IMU</span>: Self-supervised Inertial Odometry<br>
+        with <span style="color: #ffc800;">Motion-balanced</span> Learning and <span style="color: #ffc800;">Uncertainty-aware</span> Inference
       </h1>
       <div class="is-size-6 publication-authors" style="margin-top: 1rem;">
         <span class="author-block">IEEE International Conference on Robotics and Automation (ICRA), 2026</span>
@@ -140,9 +141,13 @@
   <div class="container is-max-fullhd">
     <div class="hero-body">
       <div class="has-text-centered">
-        <figure class="image">
-          <img src="./static/images/fig1_teaser.png" alt="KISS-IMU Teaser">
-        </figure>
+        <div class="columns is-centered">
+          <div class="column is-10">
+            <video autoplay muted loop playsinline preload="auto" style="width: 100%; border-radius: 10px;">
+              <source src="./static/videos/main.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
       </div>
       <h2 class="subtitle has-text-centered" style="margin-top: 1.5rem;">
         <b>TL;DR</b> &mdash; <span class="kiss-imu">KISS-IMU</span> learns inertial odometry without ground truth by using LiDAR-based pseudo-labels,
@@ -171,7 +176,7 @@
         <div class="highlight-card">
           <h3 class="title is-5">
             <span class="icon" style="color: #3273dc;"><i class="fas fa-balance-scale"></i></span>
-            Stable
+            Stable Inertial Odometry
           </h3>
           <p>GMM-based motion analysis identifies and rebalances underrepresented motion patterns, ensuring robust learning across all dynamics.</p>
         </div>
@@ -180,7 +185,7 @@
         <div class="highlight-card">
           <h3 class="title is-5">
             <span class="icon" style="color: #ff3860;"><i class="fas fa-bolt"></i></span>
-            Strong
+            Strong Inertial Odometry
           </h3>
           <p>Uncertainty-aware adaptive weighting during inference dynamically adjusts sensor confidence for reliable pose estimation.</p>
         </div>
@@ -232,7 +237,7 @@
     <div class="columns is-centered" style="margin-top: 1.5rem;">
       <div class="column is-12 has-text-centered">
         <figure class="image">
-          <img src="./static/images/fig2_pipeline.png" alt="KISS-IMU Overall Pipeline" style="width:100%; height:auto;">
+          <img src="./static/images/fig2_pipeline.svg" alt="KISS-IMU Overall Pipeline" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
           <b>Overall Framework.</b> Our inertial odometry framework follows the <i>Keep IMU Stable and Strong</i>
@@ -245,11 +250,11 @@
       </div>
     </div>
 
-    <div class="columns is-centered" style="margin-top: 2rem;">
+    <!-- <div class="columns is-centered" style="margin-top: 2rem;">
       <div class="column is-8 has-text-centered">
         <h3 class="title is-4">Network Architecture</h3>
         <figure class="image">
-          <img src="./static/images/fig3_network.png" alt="CNN-GRU Network Architecture" style="width:100%; height:auto;">
+          <img src="./static/images/fig3_network.svg" alt="CNN-GRU Network Architecture" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
           <b>CNN-GRU Encoder.</b> Processes raw IMU measurements to extract features and estimate learned
@@ -257,7 +262,7 @@
           corrected measurements and associated uncertainty estimates.
         </p>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -265,58 +270,109 @@
 <!-- ==================== Stable IO: GMM-based Training ==================== -->
 <section class="section" id="stable-io">
   <div class="container is-max-fullhd">
-    <h2 class="title is-3 has-text-centered">
-      <span style="color: #00d1b2;">Stable</span> IO: GMM-based Motion Analysis
-    </h2>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">
+          <span style="color: #3273dc;">Stable</span> IO: GMM-based Motion Analysis
+        </h2>
 
-    <div class="columns is-centered is-vcentered" style="margin-top: 1.5rem;">
-      <div class="column is-6 has-text-centered">
-        <figure class="image">
-          <img src="./static/images/fig5_gmm_analysis.png" alt="GMM Motion Pattern Analysis" style="width:100%; height:auto;">
-        </figure>
-      </div>
-      <div class="column is-6">
-        <div class="content has-text-justified">
+        <div class="content has-text-justified" style="margin-top: 1.5rem;">
           <p>
-            <b>Motion Pattern Analysis.</b> Using GMM with Bayesian information criterion, we determine
-            the optimal number of motion components (G=7). The distributions of normalized angular speed
-            reveal motion characteristics for each sequence. Lower Wasserstein distances indicate better
-            motion similarity between training and test sequences.
+            In real-world deployment, the motion distribution of training sequences and test sequences
+            can differ significantly. For instance, a model trained primarily on straight-line trajectories
+            will struggle with sharp turns or sudden accelerations at test time.
           </p>
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <figure class="image has-text-centered">
+            <img src="./static/images/fig5_gmm_analysis.png" alt="GMM Motion Pattern Analysis" style="width:100%; height:auto;">
+          </figure>
+          <div class="content has-text-justified" style="margin-top: 1rem;">
+            <p>
+              As shown above, the distributions of normalized angular speed vary significantly across
+              sequences, and lower Wasserstein distances indicate better motion similarity between
+              training and test data. This distributional gap is a critical bottleneck for generalizable
+              inertial odometry. To address this, <span class="kiss-imu">KISS-IMU</span> introduces a
+              GMM-based motion analysis pipeline that identifies and rebalances under-represented motion
+              components during training, ensuring <b>stable</b> learning across the full spectrum of
+              motion dynamics.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <figure class="image has-text-centered">
+            <img src="./static/images/stable_io.svg" alt="Stable IO Pipeline" style="width:100%; height:auto;">
+          </figure>
+          <div class="content has-text-justified" style="margin-top: 1.5rem;">
+            <p>
+              We model the motion distribution using a Gaussian Mixture Model with Bayesian information
+              criterion to determine the optimal number of components. Each training sample is assigned
+              to its corresponding motion cluster, and under-represented components (e.g., sharp turns,
+              sudden acceleration) receive higher sampling weights. This motion-aware reweighting prevents
+              the model from being biased toward dominant motion patterns, enabling stable and generalizable
+              inertial odometry learning.
+            </p>
+          </div>
+        </div>
+
+        <div class="columns is-centered is-vcentered is-multiline" style="margin-top: 1.5rem;">
+          <div class="column is-5-desktop is-12-tablet has-text-centered">
+            <figure class="image">
+              <img src="./static/images/fig4_tsne.png" alt="t-SNE Visualization of Motion Pattern Clustering" style="width:100%; height:auto;">
+            </figure>
+          </div>
+          <div class="column is-7-desktop is-12-tablet">
+            <div class="content has-text-justified">
+              <p>
+                <b>Effect of Motion-Balanced Training.</b> The t-SNE visualization demonstrates
+                the impact of our GMM-based reweighting on the learned feature space.
+                Without balancing, motion clusters overlap significantly, making it difficult
+                for the network to learn motion-specific corrections.
+                With GMM-balanced training, distinct motion patterns (left turn, right turn, straight)
+                become clearly separated with tight intra-class compactness &mdash; even in unseen
+                environments &mdash; confirming that balanced training leads to more discriminative
+                and generalizable representations.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="columns is-centered is-vcentered" style="margin-top: 1.5rem;">
-      <div class="column is-6">
-        <div class="content has-text-justified">
-          <p>
-            <b>Motion-Aware Reweighting.</b> Our GMM-based strategy transitions motion component weights
-            from an imbalanced distribution to a balanced one. Components with lower frequency receive
-            higher weights, ensuring rare but critical motion patterns (e.g., sharp turns, sudden acceleration)
-            are adequately represented during training.
-          </p>
+
+<!-- ==================== Strong IO: Uncertainty-aware Inference ==================== -->
+<section class="section" id="strong-io" style="background-color: #fafafa;">
+  <div class="container is-max-fullhd">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">
+          <span style="color: #ff3860;">Strong</span> IO: Uncertainty-aware Adaptive Inference
+        </h2>
+
+        <div style="margin-top: 1.5rem;">
+          <figure class="image has-text-centered">
+            <img src="./static/images/strong_io.svg" alt="Strong IO Pipeline" style="width:100%; height:auto;">
+          </figure>
+          <div class="content has-text-justified" style="margin-top: 1.5rem;">
+            <p>
+              At inference time, <b>Strong IO</b> strengthens trajectory estimation through an
+              uncertainty-driven adaptive pipeline. The trained IMU network outputs corrected measurements
+              along with per-sample uncertainty estimates. These uncertainties are then used to construct
+              an adaptive information matrix within pose graph optimization (PGO), where confident
+              predictions receive higher weights while unreliable ones &mdash; caused by out-of-distribution
+              motions or noisy readings &mdash; are automatically suppressed.
+            </p>
+            <p>
+              This sensor confidence-aware weighting allows <span class="kiss-imu">KISS-IMU</span> to
+              self-assess its reliability at each time step, producing robust and accurate trajectories
+              even in unseen environments without any additional fine-tuning or ground truth supervision.
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="column is-6 has-text-centered">
-        <figure class="image">
-          <img src="./static/images/fig7_gmm_balance.png" alt="GMM Balancing Before and After" style="width:100%; height:auto;">
-        </figure>
-      </div>
-    </div>
-
-    <div class="columns is-centered" style="margin-top: 1.5rem;">
-      <div class="column is-10 has-text-centered">
-        <h3 class="title is-4">Feature Space Visualization</h3>
-        <figure class="image">
-          <img src="./static/images/fig4_tsne.png" alt="t-SNE Visualization of Motion Pattern Clustering" style="width:100%; height:auto;">
-        </figure>
-        <p class="has-text-justified" style="margin-top: 1rem;">
-          <b>t-SNE visualization.</b> Motion samples from GMM-determined labels (left turn, right turn, straight)
-          in seen (Forest) and unseen (LAWN) environments. Without GMM balancing, clustering exhibits limited
-          separation, whereas GMM-based training improves inter-class separation and intra-class compactness,
-          indicating better generalization.
-        </p>
       </div>
     </div>
   </div>
@@ -324,7 +380,7 @@
 
 
 <!-- ==================== Experiments ==================== -->
-<section class="section" id="experiments" style="background-color: #fafafa;">
+<section class="section" id="experiments">
   <div class="container is-max-fullhd">
     <h2 class="title is-3 has-text-centered">Experiments</h2>
 
@@ -336,18 +392,18 @@
         </div>
         <div class="columns is-centered" style="margin-top: 0.5rem;">
           <div class="column is-4">
-            <div class="dataset-card has-text-centered">
+            <a href="https://github.com/robot-pesg/BotanicGarden" target="_blank" class="dataset-card has-text-centered">
               <h4 class="title is-5">Botanic Garden</h4>
               <p class="tag is-warning is-light">Complexity: 2/5</p>
               <p style="margin-top: 0.5rem;">Wheeled robot, Velodyne VLP-16 LiDAR + Xsens IMU. Environmental challenges in natural settings.</p>
-            </div>
+            </a>
           </div>
           <div class="column is-4">
-            <div class="dataset-card has-text-centered">
+            <a href="https://github.com/sparolab/DiTer-plusplus" target="_blank" class="dataset-card has-text-centered">
               <h4 class="title is-5">DiTer++</h4>
               <p class="tag is-info is-light">Complexity: 3/5</p>
               <p style="margin-top: 0.5rem;">Unitree GO2 quadruped, Ouster OS-1 LiDAR. Diverse terrains with dynamic gaits and motion complexity.</p>
-            </div>
+            </a>
           </div>
           <div class="column is-4">
             <div class="dataset-card has-text-centered">
@@ -364,7 +420,7 @@
     <div class="columns is-centered">
       <div class="column is-12 has-text-centered">
         <figure class="image">
-          <img src="./static/images/table1_results.png" alt="Quantitative Comparison Results" style="width:100%; height:auto;">
+          <img src="./static/images/table1_results.svg" alt="Quantitative Comparison Results" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
           <b>Quantitative comparison</b> on Botanic Garden and DiTer++ datasets with varying training data
@@ -375,53 +431,31 @@
       </div>
     </div>
 
-    <h3 class="title is-4" style="margin-top: 2rem;">Trajectory Comparison</h3>
+    <h3 class="title is-4" style="margin-top: 2rem;">Qualitative Results</h3>
     <div class="columns is-centered">
-      <div class="column is-10 has-text-centered">
+      <div class="column is-12 has-text-centered">
         <figure class="image">
-          <img src="./static/images/fig6_trajectory.png" alt="Trajectory Comparison on Unseen Sequences" style="width:100%; height:auto;">
+          <img src="./static/images/qualitative_results.svg" alt="Qualitative Results on Botanic Garden and DiTer++" style="width:100%; height:auto;">
         </figure>
         <p class="has-text-justified" style="margin-top: 1rem;">
-          <b>Trajectory comparison</b> on unseen sequences <b>(a)</b> 1006-01 and <b>(b)</b> LAWN,
-          showing our method versus comparative approaches. Our approach closely follows the ground truth
-          trajectory while other methods exhibit significant drift.
+          <b>Qualitative comparison</b> on Botanic Garden and DiTer++ datasets.
+          Our method produces trajectories that closely align with the ground truth,
+          while competing approaches exhibit noticeable drift in challenging segments.
         </p>
       </div>
     </div>
 
-    <h3 class="title is-4" style="margin-top: 2rem;">Ablation Study</h3>
+    <h3 class="title is-4" style="margin-top: 2rem;">DiTer++ Video Results</h3>
     <div class="columns is-centered">
       <div class="column is-10 has-text-centered">
-        <figure class="image">
-          <img src="./static/images/fig9_ablation.png" alt="Ablation Study Box Plots" style="width:100%; height:auto;">
-        </figure>
+        <video autoplay muted loop playsinline preload="auto" style="width: 100%; border-radius: 10px;">
+          <source src="./static/videos/diter_results.mp4" type="video/mp4">
+        </video>
         <p class="has-text-justified" style="margin-top: 1rem;">
-          <b>APE box plots</b> on unseen sequences. Statistical significance (p-value &lt; 10<sup>-4</sup>)
-          confirms that each component (GMM balancing and adaptive weighting) contributes consistent
-          performance improvements.
+          <b>Trajectory estimation across varying training ratios</b> on DiTer++ dataset.
+          Even with reduced training data, <span class="kiss-imu">KISS-IMU</span> maintains consistent
+          trajectory quality, demonstrating robust generalization under data-scarce conditions.
         </p>
-      </div>
-    </div>
-
-    <h3 class="title is-4" style="margin-top: 2rem;">Extreme Conditions: Where Supervised Methods Fail</h3>
-    <div class="columns is-centered is-vcentered">
-      <div class="column is-6 has-text-centered">
-        <figure class="image">
-          <img src="./static/images/fig8_inhouse.png" alt="In-House Dataset Mapping Results" style="width:100%; height:auto;">
-        </figure>
-      </div>
-      <div class="column is-6">
-        <div class="content has-text-justified">
-          <p>
-            On our In-House dataset with crater-filled planetary terrain, traditional supervised methods
-            (TLIO, AirIO, AirIMU) are <b>infeasible</b> due to the inability to acquire ground truth data.
-            Our self-supervised approach remains <b>fully deployable</b>, requiring only inertial and
-            point cloud data.
-          </p>
-          <figure class="image" style="margin-top: 1rem;">
-            <img src="./static/images/table2_feasibility.png" alt="Feasibility Analysis Table" style="width:100%; height:auto;">
-          </figure>
-        </div>
       </div>
     </div>
   </div>

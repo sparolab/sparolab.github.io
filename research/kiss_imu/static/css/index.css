@@ -1,5 +1,5 @@
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* ==================== Navigation Bar (Midnight Blue) ==================== */
@@ -14,16 +14,19 @@ body {
 }
 
 .kiss-navbar .navbar-brand-label {
-  color: #fff !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
   font-weight: 400;
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: all 0.2s ease;
 }
 
 .kiss-navbar .navbar-brand-label:hover {
-  background-color: transparent !important;
-  color: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
 }
 
 .kiss-navbar .navbar-brand-icon {
@@ -37,9 +40,10 @@ body {
 }
 
 .kiss-navbar .nav-link {
-  color: rgba(255, 255, 255, 0.7) !important;
-  font-size: 1rem;
-  padding: 0.5rem 0.75rem;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 1.05rem;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
 }
 
 .kiss-navbar .nav-link:hover {
@@ -48,6 +52,7 @@ body {
 }
 
 .kiss-navbar .nav-link.is-active {
+  border-bottom-color: #fff;
   background-color: rgba(255, 255, 255, 0.08) !important;
   color: #fff !important;
 }
@@ -55,6 +60,13 @@ body {
 @media screen and (max-width: 1023px) {
   .kiss-navbar .navbar-menu {
     background-color: #010042;
+  }
+  .kiss-navbar .nav-link {
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+  .kiss-navbar .nav-link.is-active {
+    border-left-color: #fff;
   }
 }
 
@@ -106,7 +118,7 @@ body {
   font-weight: 700;
   color: #fff;
   margin-top: 8px;
-  font-family: 'Google Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   letter-spacing: 1.5px;
 }
 
@@ -119,7 +131,7 @@ body {
 }
 
 .sidebar-title {
-  font-family: 'Google Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   color: #333;
@@ -165,7 +177,7 @@ body {
 }
 
 .sidebar-card-title {
-  font-family: 'Google Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: #333;
@@ -202,6 +214,15 @@ body {
     margin-bottom: 5px;
 }
 
+.publication-links .button.is-dark {
+  background-color: #2F3349;
+  border-color: transparent;
+}
+
+.publication-links .button.is-dark:hover {
+  background-color: #232738;
+}
+
 .kiss-imu {
   font-variant: small-caps;
   font-weight: bold;
@@ -214,15 +235,15 @@ body {
 }
 
 .teaser {
-  font-family: 'Google Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .publication-title {
-    font-family: 'Google Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .publication-authors {
-    font-family: 'Google Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .publication-venue {
@@ -305,11 +326,20 @@ body {
 
 /* ==================== Dataset Cards ==================== */
 .dataset-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 1.25rem 1rem;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.dataset-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .dataset-card p {
