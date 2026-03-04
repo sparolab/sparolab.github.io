@@ -28,6 +28,11 @@ Our autonomous multi-robot systems **perceive**, **adapt**, and **collaborate** 
 ## News
 
 {% include home-news.html %}
+<<<<<<< HEAD
+=======
+
+---
+>>>>>>> origin/codex/locate-linked-repository-lde37p
 
 
 

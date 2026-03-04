@@ -10,6 +10,12 @@
       conf: "IEEE International Conference on Robotics and Automation (ICRA)"
       conf_link: "https://2026.ieee-icra.org/"
 
+    - alt: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
+      authors: "Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho"
+      conf: "IEEE Robotics and Automation Letters (RA-L)"
+      conf_link: "https://www.ieee-ras.org/publications/ra-l"
+      arxiv: "https://doi.org/10.48550/arXiv.2512.03522"
+
 
 - title: "2025"
   images:
@@ -17,12 +23,6 @@
       authors: "Miryeong Park, Dongjin Cho, Sanghyun Kim, and Younggun Cho"
       conf: "International Conference on Space Robotics (iSpaRo) "
       conf_link: "https://www.isparo.space/"
-
-    - alt: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
-      authors: "Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho"
-      conf: "IEEE Robotics and Automation Letters (RA-L)"
-      conf_link: "https://www.ieee-ras.org/publications/ra-l"
-      arxiv: "https://doi.org/10.48550/arXiv.2512.03522"
 
     - alt: "Freeze-Frame with StaticNeRF Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes"
       authors: "Juhui Lee, Geonmo Yang, Seungjun Ma, and Younggun Cho"
