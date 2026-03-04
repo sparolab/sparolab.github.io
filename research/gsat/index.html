@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="GSAT: Geometric Traversability Estimation using Self-supervised Learning with Anomaly Detection for Diverse Terrains">
+  <meta name="keywords" content="GSAT, Traversability, Self-supervised Learning, Anomaly Detection, LiDAR, Mobile Robot">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GSAT: Geometric Traversability Estimation using Self-supervised Learning for Diverse Terrains</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body class="has-navbar-fixed-top">
+
+<nav class="navbar is-fixed-top kiss-navbar" role="navigation" aria-label="main navigation">
+  <div class="container is-max-widescreen">
+    <div class="navbar-brand">
+      <a class="navbar-item navbar-brand-label" href="#top">
+        <img src="./static/images/favicon.png" alt="SPARO Lab" style="margin-right: 8px;"> SPARO Lab
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="kissNavbar">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="kissNavbar" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item nav-link" href="#abstract">Abstract</a>
+        <a class="navbar-item nav-link" href="#method">Method</a>
+        <!-- <a class="navbar-item nav-link" href="#stable-io">Experience</a> -->
+        <a class="navbar-item nav-link" href="#experiments">Experiments</a>
+        <a class="navbar-item nav-link" href="#BibTeX">BibTeX</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-body">
+    <div class="container is-max-widescreen has-text-centered">
+      <h1 class="title is-1 publication-title">
+        <span style="color: #3273dc;">GSAT</span>: Geometric Traversability Estimation using Self-supervised Learning with Anomaly Detection for Diverse Terrains
+      </h1>
+      <div class="is-size-6 mb-2"><b>IEEE ICRA 2026</b></div>
+      <div class="is-size-5 publication-authors">
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=dE64iRYAAAAJ&hl=ko&authuser=1">Dongjin Cho</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?hl=ko&user=TVKnE_0AAAAJ&authuser=1">Miryeong Park</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ&hl=ko&authuser=1">Juhui Lee</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=ko&authuser=1">Geonmo Yang</a><sup>1</sup>,</span>
+        <span class="author-block">
+          and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko&authuser=1">Younggun Cho</a><sup>1&dagger;</sup>
+        </span>
+      </div>
+        <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code (Coming Soon)</span>
+                </a>
+              </span>
+            </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen has-text-centered">
+    <img src="./static/images/fig1_teaser.png" style="max-width:700px; width:100%; margin-bottom: 2rem;">
+    <h2 class="subtitle">
+      <b>TL;DR</b> &mdash; GSAT learns robot-specific traversability by separating normal/anomalous latent samples without manual labeling.
+    </h2>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Safe autonomous navigation requires reliable estimation of environmental traversability. 
+            Prior research has relied on semantic or geometry-based approaches with human-defined thresholds, 
+            but these methods often yield unreliable predictions due to the inherent subjectivity of human supervision. 
+            While self-supervised approaches enable robots to learn from their own experience, they still face a fundamental challenge: 
+            the <b>positive-only learning problem</b>.
+          </p>
+          <p>
+            To address these limitations, recent studies have employed Positive-Unlabeled (PU) learning, 
+            where the core challenge is identifying positive samples without explicit negative supervision. 
+            In this work, we propose <span class="gsat" style="font-weight: bold; color: #3273dc;">GSAT</span>, 
+            which addresses these limitations by <b>constructing a positive hypersphere in latent space</b> 
+            to classify traversable regions through anomaly detection without explicit negative samples.
+          </p>
+          <p>
+            Furthermore, our approach employs <b>joint learning of anomaly classification and traversability prediction</b> 
+            to more effectively utilize robot experience. We comprehensively evaluate the proposed framework through ablation studies, 
+            validation on heterogeneous real-world robotic platforms (Wheeled and Legged), and autonomous navigation demonstrations 
+            in complex simulation environments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="method" style="background-color: #fafafa;">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+
+    <div class="columns is-centered" style="margin-top: 1.5rem;">
+      <div class="column is-12 has-text-centered">
+        <figure class="image">
+          <img src="./static/images/fig2_network_out.png" alt="GSAT Overall Pipeline" style="width:100%; height:auto;">
+          <figcaption class="has-text-centered mt-3 is-size-7 has-text-grey">
+            <i>Figure: The overall architecture of GSAT consisting of automated data generation, pillar-based encoding, and joint learning.</i>
+          </figcaption>
+        </figure>
+
+        <div class="content has-text-justified mt-6">
+          <p>
+            <b>Overall Framework.</b> The proposed <span class="gsat" style="font-weight: bold; color: #3273dc;">GSAT</span> framework systematically learns robot-specific traversability through three main components:
+          </p>
+          
+          <ul>
+            <li class="mb-3">
+              <b>(A) Automated Data Generation:</b> Generates supervision signals automatically by projecting robot trajectories derived from SLAM into the spatial domain. 3D point clouds are processed into 2D Bird's-Eye View (BEV) grids to maintain computational efficiency for real-time applications.
+            </li>
+            <li class="mb-3">
+              <b>(B) Traversability Network:</b> Extracts deep spatial features from the BEV grids using a Pillar-based architecture. These features are then encoded into a latent representation that captures the essential geometric characteristics of the terrain.
+            </li>
+            <li class="mb-3">
+              <b>(C) Experience-Aware Traversability Learning:</b> The core innovation where anomaly detection in the latent space effectively separates unlabeled data into normal and anomalous samples. This allows the model to refine a <b>positive hypersphere</b> and jointly optimize traversability estimation through a combination of <b>anomaly, reconstruction, and regression losses</b>.
+            </li>
+          </ul>
+
+          <p class="mt-4">
+            By integrating these components, <span class="gsat">GSAT</span> creates a robust latent boundary that clusters familiar terrains while isolating unseen or hazardous regions, ensuring safe navigation without manual labeling.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stable-io">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">Diverse Experience via Data Augmentation</h2>
+    
+    <div class="columns is-vcentered is-variable is-8" style="margin-top: 1.5rem;">
+      <div class="column is-6">
+        <figure class="image">
+          <img src="./static/images/fig_aug.png" alt="Data Augmentation Pipeline" 
+               style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+          <figcaption class="has-text-centered is-size-7 mt-3 has-text-grey">
+            <i>Figure: Overview of geometric augmentations including Flip, Yaw, and Pitch rotations to expand the positive hypersphere.</i>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="column is-6">
+        <div class="content has-text-justified">
+          <p>
+            To overcome the "positive-only" limitation inherent in self-supervised learning, <span class="gsat" style="font-weight: bold; color: #3273dc;">GSAT</span> artificially broadens the robot's familiar experiences. 
+            By applying diverse geometric transformations, we enable the model to learn a <b>robust and generalized positive hypersphere</b> that isn't confined to the exact path taken during training.
+          </p>
+
+          <div class="media mb-4">
+            <div class="media-content">
+              <p class="title is-5 mb-1"><i class="fas fa-sync-alt mr-2" style="color: #3273dc;"></i>Horizontal & Yaw Rotation</p>
+              <p class="is-size-6">
+                We apply <b>Flip</b> and <b>Random Yaw rotations</b> (up to 360°). 
+                This ensures the traversability head remains invariant to the robot's approach direction, allowing it to recognize the same terrain from any angle.
+              </p>
+            </div>
+          </div>
+
+          <div class="media mb-4">
+            <div class="media-content">
+              <p class="title is-5 mb-1"><i class="fas fa-mountain mr-2" style="color: #48c774;"></i>Pitch & Slope Transformation</p>
+              <p class="is-size-6">
+                By extracting ground planes and applying <b>Pitch transforms</b>, we simulate various uphill and downhill scenarios. 
+                This is crucial for enabling the robot to recognize sloping terrains as safe traversable areas rather than anomalous obstacles.
+              </p>
+            </div>
+          </div>
+
+          <div class="notification is-light mt-5" style="border-left: 5px solid #3273dc; border-radius: 4px;">
+            <p class="is-size-6">
+              <b>Key Insight:</b> These augmentations prevent <b>over-fitting</b> to specific trajectories and are the primary driver for forming a <b>continuous traversability boundary</b> in unstructured environments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experiments">
+  <div class="container is-max-widescreen">
+    <div class="has-text-centered mb-6">
+      <h2 class="title is-3">Experimental Evaluation</h2>
+    </div>
+    
+    <div class="tabs is-centered is-boxed is-medium mb-5">
+      <ul>
+        <li id="li-anomaly" class="is-active"><a onclick="showMainTab('anomaly')">Anomaly Classification</a></li>
+        <li id="li-downstream"><a onclick="showMainTab('downstream')">Downstream Tasks</a></li>
+      </ul>
+    </div>
+
+    <div id="anomaly-sub-buttons" class="buttons is-centered mb-6">
+      <button id="btn-ablation" class="button is-rounded is-info is-selected" onclick="showSubTab('ablation-study')">Ablation Study</button>
+      <button id="btn-aug-eval" class="button is-rounded" onclick="showSubTab('augmentation-eval')">Augmentation Analysis</button>
+      <button id="btn-demo" class="button is-rounded" onclick="showSubTab('demo-video')">Qualitative Demo</button>
+    </div>
+
+    <div id="downstream-sub-buttons" class="buttons is-centered mb-6" style="display: none;">
+      <button id="btn-mapping" class="button is-rounded" onclick="showDownstreamSub('mapping-task')">Mapping</button>
+      <button id="btn-nav" class="button is-rounded" onclick="showDownstreamSub('navigation-task')">Navigation</button>
+    </div>
+
+    <div class="box is-shadowless" style="background-color: #fbfbfb; border-radius: 20px; padding: 3rem;">
+      
+    <div id="ablation-study" class="tab-content">
+      <div class="mb-5">
+        <h3 class="title is-4">Quantitative Analysis: Anomaly Loss Formulation</h3>
+        <hr>
+      </div>
+      
+      <div class="columns is-variable is-5">
+        <div class="column is-6">
+          <div class="content has-text-justified is-size-6">
+            <p>
+              We analyze how different handling of unlabeled data within the anomaly loss affects traversability estimation across <b>RELLIS-3D</b> and <b>DITER++</b>.
+            </p>
+            
+            <ul class="is-size-7 ml-4">
+              <li class="mb-2">
+                <b>w/o Anomaly Loss:</b> Standard one-class learning (Deep-SVDD) suffers from <b>inflated recall</b> but fails to distinguish anomalous features.
+              </li>
+              <li class="mb-2">
+                <b>All Unlabeled as Anomalous:</b> Creates an <b>overly restrictive</b> hypersphere, leading to poor generalization in unexplored areas.
+              </li>
+              <li class="mb-2">
+                <b>Anomalous-only:</b> Improves the precision-recall balance but lacks the guidance to cluster <b>normal samples</b> toward the hypersphere center.
+              </li>
+            </ul>
+
+            <p class="mt-4" style="border-left: 4px solid #3273dc; padding-left: 1rem; color: #363636;">
+              <strong>Proposed (Normal/Anomalous):</strong> 
+              By leveraging both identified normal and anomalous samples, our method achieves the <b>highest F1-scores (77.61%, 88.04%)</b>, validating that incorporating normal samples is crucial for robust boundary refinement.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <figure class="image">
+            <img src="./static/images/ablation_quntity.png" alt="Ablation Table" 
+                style="border: 1px solid #eee; border-radius: 8px; width: 100%; height: auto; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+            <figcaption class="has-text-centered mt-3 is-size-7 has-text-grey">
+              <i>Table 1: Quantitative evaluation of anomaly loss configurations. Performance differences reflect ground-truth quality (RELLIS-3D vs. DITER++).</i>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div id="augmentation-eval" class="tab-content" style="display: none;">
+      <div class="mb-6">
+        <h3 class="title is-6 has-text-left mb-6">Qualitative Impact: Minimizing False Alarms</h3>
+        <figure class="image">
+          <img src="./static/images/augmentation_empact.png" alt="Augmentation Impact" 
+              style="border-radius: 12px; width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+          <figcaption class="has-text-centered mt-3 is-size-7 has-text-grey">
+            <b>Visual Comparison:</b> Yellow regions represent <b>False Negatives</b> (familiar but misclassified as anomalous). 
+            Our full augmentation pipeline effectively eliminates these gaps, ensuring a continuous traversability boundary.
+          </figcaption>
+        </figure>
+      </div>
+
+      <hr>
+
+      <div class="columns is-variable is-4">
+        
+        <div class="column is-6">
+          <div class="content has-text-justified is-size-6">
+            <h4 class="title is-5 mb-3">Recall & Generalization</h4>
+            <p>
+              Data augmentation is the primary driver for generalization in our self-supervised framework. Without these transformations, the model overfits to specific training paths, leading to a critical drop in <b>Recall (27.99%)</b>.
+            </p>
+            <p>
+              As shown in Table II, the integration of all geometric transforms surges the Recall to <b>64.93%</b>. Specifically:
+            </p>
+            <ul class="is-size-7 ml-4">
+              <li class="mb-2">
+                <b>Yaw Rotation:</b> Essential for directional invariance, allowing the robot to recognize terrains regardless of the approach angle.
+              </li>
+              <li>
+                <b>Pitch Transform:</b> Enables the model to generalize across various uphill and downhill slopes, recognizing them as safe rather than anomalous.
+              </li>
+            </ul>
+            <p style="border-left: 4px solid #ffdd57; padding-left: 1rem; color: #363636;" class="is-size-7 mt-4">
+              <strong>Key Insight:</strong> Diverse geometric experience is crucial for forming a <b>robust and continuous</b> traversability boundary in unstructured environments.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <h4 class="title is-5 mb-3">Quantitative Results (RELLIS-3D)</h4>
+          <figure class="image">
+            <img src="./static/images/aug_table.png" alt="Augmentation Table" 
+                style="border: 1px solid #eee; border-radius: 8px; width: 100%; height: auto; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+            <figcaption class="has-text-centered mt-3 is-size-7 has-text-grey">
+              <i>Table 2: Performance gain across different geometric augmentation components.</i>
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="mapping-task" class="tab-content" style="display: none;">
+      <h3 class="title is-4 mb-5">1. Continuous Traversability Mapping</h3>
+      
+      <div class="has-text-left mb-6">
+        <h4 class="title is-5 mb-4">Experimental Setup & Platform Criteria</h4>
+        <div class="content is-size-6 mb-5">
+          <p>
+            To verify GSAT's versatility, we utilize two distinct platforms with different mobility constraints: 
+            the <b>Wheeled (Scout Mini)</b> and <b>Legged (Unitree Go1)</b> robots. 
+            The testing environment consists of diverse terrains including <b>Road</b>, <b>Low Bush (&lt; 0.6m)</b>, and <b>High Bush (&gt; 0.6m)</b>.
+          </p>
+        </div>
+
+        <div class="notification is-white mb-5" style="border: 1px solid #eee; border-radius: 12px; padding: 1.5rem;">
+          <div class="columns is-mobile">
+            <div class="column">
+              <p class="has-text-weight-bold mb-2"><i class="fas fa-truck-monster mr-2"></i>Wheeled Robot</p>
+              <p class="is-size-7">
+                <span class="has-text-success">✔ Traverse:</span> [<b>Road</b>]<br>
+                <span class="has-text-danger">✘ Non-traverse:</span> [Low Bush, High Bush]
+              </p>
+            </div>
+            <div class="column" style="border-left: 1px solid #eee;">
+              <p class="has-text-weight-bold mb-2"><i class="fas fa-dog mr-2"></i>Legged Robot</p>
+              <p class="is-size-7">
+                <span class="has-text-success">✔ Traverse:</span> [<b>Road, Low Bush</b>]<br>
+                <span class="has-text-danger">✘ Non-traverse:</span> [High Bush]
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="image">
+          <img src="./static/images/robot_platform.png" alt="Robot Platforms and Experimental Setup" 
+              style="border-radius: 12px; width: 80%; margin: 0 auto; display: block; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <figcaption class="has-text-centered mt-3 is-size-7 has-text-grey">
+            <i>Figure 1: Experimental setup featuring robots equipped with OS1-32 LiDAR in a complex outdoor environment.</i>
+          </figcaption>
+        </figure>
+      </div>
+
+      <hr class="my-6">
+
+      <div class="has-text-left mt-6">
+        <h4 class="title is-5 mb-4">Qualitative Comparison of Traversability Maps</h4>
+        
+        <div class="content is-size-6 mb-5">
+          <p>
+            <b>GSAT (Ours)</b> successfully generates platform-specific maps that strictly adhere to the defined physical constraints, 
+            demonstrating superior risk-awareness compared to existing baselines like LeSTA and DEM-Trav.
+          </p>
+        </div>
+
+        <figure class="image mb-5">
+          <img src="./static/images/fiugre_mapping.png" alt="Traversability Mapping Comparison" 
+              style="border-radius: 12px; width: 70%; margin: 0 auto; display: block; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
+          <figcaption class="has-text-centered mt-3 is-size-7 has-text-grey">
+            <i>Figure 2: Qualitative comparison of traversability maps for Legged and Wheeled robots.</i>
+          </figcaption>
+        </figure>
+
+        <div class="content has-text-justified is-size-6 mt-4" style="background-color: #f9f9f9; padding: 1.5rem; border-radius: 10px;">
+          <ul class="ml-4">
+            <li class="mb-2">
+              <b>Legged Robot View:</b> Unlike baselines that struggle with varying heights, GSAT correctly identifies <b>Rocks</b> as dangerous (red) while recognizing <b>Low Bush</b> as a traversable region for the legged platform.
+            </li>
+            <li class="mt-3">
+              <b>Wheeled Robot View:</b> Our model precisely marks <b>Low Bush</b> as hazardous (red), reflecting the platform's inability to traverse dense vegetation, while other methods fail to detect the terrain risk with high fidelity.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="navigation-task" class="tab-content" style="display: none;">
+      <div class="has-text-left mb-6">
+        <h3 class="title is-4 mb-4">Experimental Setup: Environment & Data Configuration</h3>
+        <div class="content is-size-6 mb-5">
+          <p>
+            To evaluate autonomous navigation in extreme conditions, we designed a complex simulation environment featuring 
+            <b>Bush Zones</b> and <b>Up-hill</b> sections. The model is tested on its ability to distinguish between 
+            <b>Traversable Objects</b> (e.g., grass) and <b>Non-traversable Objects</b> (e.g., dense trees and bushes) to ensure safe path planning in unstructured terrains.
+          </p>
+        </div>
+
+        <figure class="image mb-5">
+          <img src="./static/images/navtest.png" alt="Simulation Environment and Data Configuration" 
+              style="border-radius: 12px; width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <figcaption class="has-text-centered mt-3 is-size-7 has-text-grey">
+            <i>Figure 1: Navigation environment layout and traversability data configuration for training.</i>
+          </figcaption>
+        </figure>
+      </div>
+
+      <hr class="my-6">
+
+      <div class="has-text-left mt-6">
+        <h3 class="title is-4 mb-4">Autonomous Navigation Performance & Failure Analysis</h3>
+        
+        <div class="content is-size-6 mb-5">
+          <p>
+            We conducted a comparative study between <b>GSAT (Ours)</b>, <b>LeSTA</b>, and <b>DEM-Trav</b>. 
+            GSAT successfully reaches the goal by accurately mapping risks in real-time, while baselines frequently suffer from <b>Failure Points</b> 
+            due to over-conservative or inaccurate traversability estimation.
+          </p>
+        </div>
+
+        <figure class="image mb-6">
+          <img src="./static/images/nav_res_f_2_out.png" alt="Navigation Results Comparison" 
+              style="border-radius: 12px; width: 60%; margin: 0 auto; display: block; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
+          <figcaption class="has-text-centered mt-3 is-size-7 has-text-grey">
+            <i>Figure 2: Trajectory comparison and failure point analysis. GSAT (Red) correctly identifies safe paths through vegetation.</i>
+          </figcaption>
+        </figure>
+
+        <h4 class="title is-5 mb-4">Detailed Risk-Mapping Comparison (Ablation)</h4>
+        <figure class="image mb-5">
+          <img src="./static/images/map_detail.png" alt="Map Detail Comparison" 
+              style="border-radius: 12px; width: 70%; margin: 0 auto; display: block; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
+          <figcaption class="has-text-centered mt-3 is-size-7 has-text-grey">
+            <i>Figure 3: Detailed comparison of risk-map generation across different methods.</i>
+          </figcaption>
+        </figure>
+
+        <div class="content has-text-justified is-size-6 mt-5" style="background-color: #f9f9f9; padding: 1.5rem; border-radius: 10px;">
+          <p class="has-text-weight-bold mb-3">Key Observations from Detailed Analysis:</p>
+          <ul class="ml-4">
+            <li class="mb-2">
+              <b>GSAT (Ours):</b> Exhibits high fidelity in distinguishing between traversable grass (yellow box) and non-traversable bushes (cyan box), preserving clear boundaries for safe navigation.
+            </li>
+            <li class="mt-3">
+              <b>LeSTA:</b> Shows a lack of detail in risk boundaries, often over-smoothing the maps and failing to recognize specific contours of obstacles.
+            </li>
+            <li class="mt-3">
+              <b>DEM-Trav:</b> Highly dependent on hand-crafted step-height thresholds, leading to either over-conservative behavior or failure to detect significant ground-level risks.
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+      <div id="demo-video" class="tab-content" style="display: none;">
+        <video controls autoplay muted loop style="width:100%; border-radius: 15px;">
+          <source src="./static/video/anomaly_demo.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{cho2026gsat,
+  author    = {Cho, Dongjin and Park, Miryeong and Lee, Juhui and Yang, Geonmo and Cho, Younggun},
+  title     = {GSAT: Geometric Traversability Estimation using Self-supervised Learning with Anomaly Detection for Diverse Terrains},
+  booktitle = {IEEE ICRA},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+<script>
+  function showMainTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+    const anomalyBtns = document.getElementById('anomaly-sub-buttons');
+    const downstreamBtns = document.getElementById('downstream-sub-buttons');
+    
+    if (tabId === 'anomaly') {
+      anomalyBtns.style.display = 'flex';
+      downstreamBtns.style.display = 'none';
+      document.getElementById('li-anomaly').classList.add('is-active');
+      document.getElementById('li-downstream').classList.remove('is-active');
+      showSubTab('ablation-study');
+    } else {
+      anomalyBtns.style.display = 'none';
+      downstreamBtns.style.display = 'flex';
+      document.getElementById('li-downstream').classList.add('is-active');
+      document.getElementById('li-anomaly').classList.remove('is-active');
+      showDownstreamSub('mapping-task');
+    }
+  }
+
+  function showSubTab(id) {
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+    document.querySelectorAll('#anomaly-sub-buttons .button').forEach(b => b.classList.remove('is-info', 'is-selected'));
+    document.getElementById('btn-' + id.split('-')[0]).classList.add('is-info', 'is-selected');
+  }
+
+  function showDownstreamSub(id) {
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+    document.querySelectorAll('#downstream-sub-buttons .button').forEach(b => b.classList.remove('is-info', 'is-selected'));
+    const btnId = id === 'mapping-task' ? 'btn-mapping' : 'btn-nav';
+    document.getElementById(btnId).classList.add('is-info', 'is-selected');
+  }
+</script>
+
+</body>
+</html>
