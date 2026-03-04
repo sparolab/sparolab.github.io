@@ -12,19 +12,13 @@
         rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
 </head>
 <body class="has-navbar-fixed-top">
 
@@ -32,7 +26,12 @@
 <nav class="navbar is-fixed-top kiss-navbar" role="navigation" aria-label="main navigation">
   <div class="container is-max-fullhd">
     <div class="navbar-brand">
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="kissNavbar">
+      <a class="navbar-item navbar-brand-label" href="https://sparolab.github.io/">
+        <img src="./static/images/favicon.png" alt="SPARO Lab" class="navbar-brand-icon">
+        SPARO Lab
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="kissNavbar"
+         onclick="this.classList.toggle('is-active');document.getElementById('kissNavbar').classList.toggle('is-active');">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -40,10 +39,6 @@
     </div>
     <div id="kissNavbar" class="navbar-menu">
       <div class="navbar-start">
-      <a class="navbar-item navbar-brand-label" href="https://sparolab.github.io/">
-        <img src="./static/images/favicon.png" alt="SPARO Lab" class="navbar-brand-icon">
-        SPARO Lab
-      </a>
       <a class="navbar-item nav-link" href="#abstract">Abstract</a>
       <a class="navbar-item nav-link" href="#method">Method</a>
       <a class="navbar-item nav-link" href="#stable-io">Stable IO</a>
@@ -118,8 +113,13 @@
 <!-- ==================== Related Research Sidebar ==================== -->
 <div id="related-sidebar" class="related-sidebar">
   <div class="sidebar-toggle" id="sidebar-toggle">
-    <span class="icon"><i class="fas fa-chevron-left" id="sidebar-chevron"></i></span>
-    <span class="sidebar-toggle-text">Related</span>
+    <span class="icon">
+      <i class="fas fa-chevron-left chevron-desktop chevron-closed"></i>
+      <i class="fas fa-chevron-right chevron-desktop chevron-open"></i>
+      <i class="fas fa-chevron-up chevron-mobile chevron-closed"></i>
+      <i class="fas fa-chevron-down chevron-mobile chevron-open"></i>
+    </span>
+    <span class="sidebar-toggle-text">Related Research</span>
   </div>
   <div class="sidebar-content">
     <h4 class="sidebar-title">Related Research</h4>
@@ -545,12 +545,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Sidebar toggle
   var sidebar = document.getElementById('related-sidebar');
   var sidebarToggle = document.getElementById('sidebar-toggle');
-  var chevron = document.getElementById('sidebar-chevron');
   if (sidebarToggle && sidebar) {
     sidebarToggle.addEventListener('click', function() {
       sidebar.classList.toggle('is-open');
-      chevron.classList.toggle('fa-chevron-left');
-      chevron.classList.toggle('fa-chevron-right');
     });
   }
 });

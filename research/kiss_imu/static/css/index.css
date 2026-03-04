@@ -14,7 +14,7 @@ body {
 }
 
 .kiss-navbar .navbar-brand-label {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: #fff !important;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.0rem;
   font-weight: 400;
@@ -40,7 +40,7 @@ body {
 }
 
 .kiss-navbar .nav-link {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: #fff !important;
   font-size: 1.05rem;
   transition: all 0.2s ease;
   border-bottom: 2px solid transparent;
@@ -60,13 +60,27 @@ body {
 @media screen and (max-width: 1023px) {
   .kiss-navbar .navbar-menu {
     background-color: #010042;
+    padding: 0.5rem 0;
+  }
+  .kiss-navbar .navbar-menu.is-active {
+    display: block;
   }
   .kiss-navbar .nav-link {
     border-bottom: none;
     border-left: 3px solid transparent;
+    padding: 0.5rem 1rem;
   }
   .kiss-navbar .nav-link.is-active {
     border-left-color: #fff;
+  }
+  .kiss-navbar .navbar-burger {
+    color: #fff;
+    height: 3.25rem;
+    width: 3.25rem;
+  }
+  .kiss-navbar .navbar-burger span {
+    background-color: #fff;
+    height: 2px;
   }
 }
 
@@ -110,6 +124,14 @@ body {
   color: #fff;
   font-size: 1.1rem;
 }
+
+/* Chevron: hide all by default, then show only the correct one */
+.chevron-desktop, .chevron-mobile { display: none !important; }
+/* Desktop closed: show left arrow */
+.related-sidebar .chevron-desktop.chevron-closed { display: inline-block !important; }
+/* Desktop open: show right arrow */
+.related-sidebar.is-open .chevron-desktop.chevron-closed { display: none !important; }
+.related-sidebar.is-open .chevron-desktop.chevron-open { display: inline-block !important; }
 
 .sidebar-toggle-text {
   writing-mode: vertical-rl;
@@ -194,8 +216,45 @@ body {
 
 @media screen and (max-width: 1200px) {
   .related-sidebar {
-    display: none;
+    top: auto;
+    bottom: 0;
+    transform: translateY(calc(100% - 48px)) translateX(0);
+    flex-direction: column;
+    right: 0;
+    left: 0;
+    width: 100%;
   }
+  .related-sidebar.is-open {
+    transform: translateY(0) translateX(0);
+  }
+  .sidebar-toggle {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 0;
+    gap: 8px;
+  }
+  .sidebar-toggle-text {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+    margin-top: 0;
+  }
+  .sidebar-content {
+    width: 100%;
+    border-radius: 0;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  /* Mobile: hide ALL desktop chevrons, show mobile ones */
+  .chevron-desktop { display: none !important; }
+  .related-sidebar .chevron-desktop.chevron-closed { display: none !important; }
+  .related-sidebar.is-open .chevron-desktop.chevron-open { display: none !important; }
+  /* Mobile closed: show up arrow */
+  .related-sidebar .chevron-mobile.chevron-closed { display: inline-block !important; }
+  /* Mobile open: show down arrow */
+  .related-sidebar.is-open .chevron-mobile.chevron-closed { display: none !important; }
+  .related-sidebar.is-open .chevron-mobile.chevron-open { display: inline-block !important; }
 }
 
 
