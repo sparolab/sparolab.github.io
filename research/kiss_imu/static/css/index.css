@@ -63,7 +63,7 @@ body {
     padding: 0.5rem 0;
   }
   .kiss-navbar .navbar-menu.is-active {
-    display: block;
+    display: block !important;
   }
   .kiss-navbar .nav-link {
     border-bottom: none;
