@@ -153,17 +153,18 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Multi-robot light detection and ranging (LiDAR) map merging enables faster exploration and efficient area coverage by maintaining a global consistency across robot teams. 
+            By maintaining global consistency across robot teams, multi-robot light detection and ranging (LiDAR) map merging enables faster exploration and efficient area coverage.
             However, map merging requires exchanging massive sensor data between the server and robots, making communication the bottleneck, especially in communication-constrained environments. 
             Therefore, we present *Commerge*, a communication-efficient map merging framework that achieves bandwidth reduction through graph-theoretic selective data exchange.
-            By doing so, our Commerge reduces inter-robot communication by up to 1,000x while maintaining alignment accuracy.
+            By doing so, our Commerge reduces inter-robot communication by up to 5,000x while maintaining alignment accuracy.
             Our key insight is that only a small subset of carefully selected scans is sufficient for robust map merging. 
             We formulate this as a three-stage cascaded optimization problem on an exchange graph, where vertices represent robot keyframes and edges denote candidate inter-robot loops.
-            Through three cascade stages, we select a sequentially overlapped, minimal-transmission-cost, and geometrically-perceptually optimal scan subset that preserves alignment quality while reducing communication.
-            Unlike existing approaches that transmit whole scans, which require GB-scale data exchange, or employ naive downsampling, our approach exchanges only MB-scale data while achieving comparable alignment accuracy. 
-            Extensive evaluation on five public datasets shows up to 99.98% reduction in data exchange (e.g., from 7,000MB to 1.3MB on the HeLiPR dataset), while maintaining alignment performance across embedded to desktop platforms. 
-            Finally, we demonstrate that our proposed framework successfully operates on resource-constrained hardware where existing methods fail, enabling real-world multi-robot deployment in bandwidth-limited field operations.
-            </p>
+            Through three cascade stages, we select a sequentially overlapped, \bl{balanced}-transmission-cost, and geometrically-perceptually optimal scan subset that preserves alignment quality while reducing communication.
+            Unlike existing approaches that either transmit whole scans, which require GB-scale data exchange, or employ naive downsampling, our approach exchanges only MB-scale data while achieving comparable alignment accuracy.
+            Extensive evaluation on five public datasets and four in-house datasets covering cave, planetary-analog, indoor, and outdoor campus environments shows up to 99.98% reduction in data exchange (e.g., from 7,000MB to 1.3MB on the HeLiPR dataset), while maintaining alignment performance across embedded to desktop platforms. 
+            Furthermore, we demonstrate that our proposed framework operates on resource-constrained hardware where existing methods fail, enabling real-world multi-robot deployment in bandwidth-limited field operations.
+            Finally, we validate system robustness under a real-world non-line-of-sight (NLOS) communication environment with up to 73.3% dropout rate, as well as under emulated network degradation scenarios including delay, bandwidth limitation, and packet loss, confirming reliable map merging even under severely degraded connectivity.
+          </p>
         </div>
       </div>
     </div>
