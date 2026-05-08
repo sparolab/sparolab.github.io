@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Robust Visual SLAM with Auxiliary Range Factor for Degenerate Construction Environment">
+  <meta name="keywords" content="Localization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robust Visual SLAM with Auxiliary Range Factor for Degenerate Construction Environment</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fluid">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Robust Visual SLAM with Auxiliary Range Factor <br> for Degenerate Construction Environment</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><i>ICRA 2025 4th Workshop on Future of Construction</i></span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jng-u.github.io/" target="_blank">Jungwoo Lee</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/json380/" target="_blank">Juwon Kim</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=ko&user=VgbALcoAAAAJ" target="_blank">Seung-Woo Ko</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=ko&user=uN8XRMQAAAAJ" target="_blank">Inwook Shim</a><sup>2</sup>,</span>
+            <span class="author-block">
+              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko" target="_blank">Younggun Cho</a><sup>1*</sup>
+            </span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Electrical and Computer Engineering, Inha University, South Korea</span>            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>2</sup>Smart Mobility Engineering, Inha University, South Korea</span>            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark is-static"
+                   target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Arxiv -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/"
+                   class="external-link button is-normal is-rounded is-dark is-static"
+                   target="_blank">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Github Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark is-static"
+                   target="_blank">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Github</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v="
+                   class="external-link button is-normal is-rounded is-dark is-static"
+                   target="_blank">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-widescreen px-6">
+    <!-- Abstract. -->
+    <h2 class="title is-3 is-centered has-text-centered">Abstract</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-one-thirds">
+        <img src="./static/images/main.png">
+      </div>
+      <div class="column is-two-thirds">
+        <div class="content has-text-justified">
+          <p>
+            Robust localization in degenerate environments such as construction sites remains challenging due to frequent visual degradation and intermittent range sensing. To address this challenge, we propose a visual Simultaneous Localizationand Mapping (SLAM) framework that tightly integrates visual-inertial odometry (VIO), visual loop closure, and Ultra-Wideband (UWB) range measurements through a factor graph optimization. The proposed system introduces an interpolated rangefactor, fully utilizing sparse and asynchronous UWB data by leveraging continuous-time pose interpolation. We evaluate themethod on the public dataset under simulated degenerate scenarios, including visual degradation and partial UWB signal loss. Experimental results demonstrate that the proposed method significantly reduces drift and maintains accurate global localization, even under severe sensor degradation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3 is-centered has-text-centered">Pipeline</h2>
+
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <!-- <h2 class="title is-4">Pipeline</h2> -->
+        <img src="./static/images/pipeline.png">
+
+        <!-- <div class="columns is-centered">
+          <div class="column is-one-thirds">
+            <h2 class="title is-4">MC-IPM</h2>
+            <img src="./static/images/mcipm.png">
+          </div>
+
+          <div class="column is-one-thirds">
+            <h2 class="title is-4">SGF Detection</h2>
+            <img src="./static/images/sgf_detection.png">
+          </div>
+
+          <div class="column is-one-thirds">
+            <h2 class="title is-4">SGF Description</h2>
+            <img src="./static/images/sgf_description.png">
+          </div>
+        </div> -->
+      </div>
+    </div>
+      <!-- <h2 class="subtitle has-text-centered">
+        <span class="dnerf">TL;DR  Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition!</span>
+      </h2> -->
+    <!-- </div> -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3 is-centered has-text-centered">Experimetal Results</h3>
+    
+    <div class="container">
+      <h4 class="title is-4">Standard Condition</h4>
+      <div>
+        <img src="./static/images/standard_quan.png">
+        <div class="is-centered has-text-centered">
+          <span>Quantitative Results (RMSE)</span>
+        </div>
+      </div>
+      <div>
+        <img src="./static/images/standard_qual.png">
+        <div class="is-centered has-text-centered">
+          <span>Qualitative Results</span>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="title is-4">Degenerate Scenarios</h4>
+    <h5 class="title is-5">Simulation Setup</h5>
+
+    <div class="has-text-centered mb-3">
+      <h6 class="title is-6 mb-1">Visual Degradation</h6> 
+      <img src="./static/images/visual_degrad.png">
+    </div>
+    
+    <div class="has-text-centered mb-3">
+      <h6 class="title is-6 mb-1">UWB Signal Drop</h6> 
+      <div class="columns is-centered is-vcentered">
+        
+        <div class="column is-half">
+          <div class="container is-clipped">
+            <div class="carousel" data-slides-to-show="1">
+              <div class="mb-3 mx-3">
+                <div class="is-centered has-text-centered">
+                  <span><i>eee_01</i></span>
+                </div>
+                <img src="./static/images/eee01_signal_drop.png">
+              </div>
+
+              <div class="mb-3 mx-3">
+                <div class="is-centered has-text-centered">
+                  <span><i>eee_02</i></span>
+                </div>
+                <img src="./static/images/eee02_signal_drop.png">
+              </div>
+
+              <div class="mb-3 mx-3">
+                <div class="is-centered has-text-centered">
+                  <span><i>eee_03</i></span>
+                </div>
+                <img src="./static/images/eee03_signal_drop.png">
+              </div>
+
+              <div class="mb-3 mx-3">
+                <div class="is-centered has-text-centered">
+                  <span><i>nya_01</i></span>
+                </div>
+                <img src="./static/images/nya01_signal_drop.png">
+              </div>
+
+              <div class="mb-3 mx-3">
+                <div class="is-centered has-text-centered">
+                  <span><i>nya_02</i></span>
+                </div>
+                <img src="./static/images/nya02_signal_drop.png">
+              </div>
+
+              <div class="mb-3 mx-3">
+                <div class="is-centered has-text-centered">
+                  <span><i>nya_03</i></span>
+                </div>
+                <img src="./static/images/nya03_signal_drop.png">
+              </div>
+            </div>
+          </div>
+          <div class="is-centered has-text-centered">
+            <span>UWB signal dropout</span>
+          </div>
+        </div>
+
+        <div class="column is-half">
+          <img src="./static/images/drop_stat.png">
+          <div class="is-centered has-text-centered">
+            <span>signal drop statistics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="title is-5">Absolute Trajetory Error</h2>
+    <div class="column is-half is-offset-one-quarter">
+      <img src="./static/images/degen_quan.png">
+      <div class="is-centered has-text-centered">
+        <span>Quantitative Results (RMSE)</span>
+      </div>
+    </div>
+    <div>
+      <img src="./static/images/degen_qual.png">
+      <div class="is-centered has-text-centered">
+        <span>Qualitative Results</span>
+      </div>
+    </div>
+
+    <h2 class="title is-4">Video</h2>
+    <div class="video-container">
+      <video id="howitworks" controls muted loop playsinline class="full-video">
+        <source src="./static/videos/icraw2025_CR_jwlee_video.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/sparolab/solid" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
