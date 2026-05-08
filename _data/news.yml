@@ -66,6 +66,12 @@ papers:
     description: "One paper accepted to RA-L (ViViD++)!"
 
 awards:
+  - date: "May. 2026"
+    description: "Jiwon was selected as an award finalist at the ICRA 2026. Congrats!"
+
+  - date: "Mar. 2026"
+    description: "Jiwon received travel support at the ICRA 2026. Congrats!"
+
   - date: "Feb. 2026"
     description: "Hogyun received a silver prize at the 32nd Samsung HumanTech Paper Award. Congrats!"
 
@@ -130,6 +136,12 @@ awards:
     description: "Prof. Cho receives 우수신진연구자상 at ICROS 2022. Congrats!"
 
 projects:
+  - date: "Apr. 2026"
+    description: "SPARO Lab won a big grant from NRF-STEAM (미래유망융합기술파이오니어)."
+
+  - date: "Mar. 2026"
+    description: "SPARO Lab was awarded a research grant from the Korea Heritage Service (KHS, 국가유산청)."
+
   - date: "May. 2025"
     description: "SPARO Lab won a big grant from NRF (NRF Basic Research Lab. 기초연구실)."
 
