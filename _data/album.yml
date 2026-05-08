@@ -296,6 +296,18 @@ categories:
     - name: ETC
       id: etc
       images: 
+      # 2026 ---------------------------------------------------------------------------------------
+      - description: "2026년도 SPARO 회식 모음"
+        date: "2026"
+        image_list:
+          - link: /img/album/activity/etc/2026/1차회식.jpg
+
+      - description: "2026년도 SPARO 딸기 파티"
+        date: "2026"
+        image_list:
+          - link: /img/album/activity/etc/2026/딸기파티1.jpg
+          - link: /img/album/activity/etc/2026/딸기파티2.jpg
+
       # 2025 ---------------------------------------------------------------------------------------
       - description: "2025년도 SPARO 회식 모음"
         date: "2025"
