@@ -34,7 +34,7 @@
     Based on these representations, our approach enhances semantic correspondence across graphs by combining the likelihood of each node with the maximum likelihood of its neighbors via context-aware likelihood propagation.
     For rigorous validation, data association and pose estimation performance are evaluated under both closed-set and open-set detection configurations. 
     In addition, we demonstrate the scalability of our approach to large-vocabulary object categories in both real-world indoor scenes and synthetic environments.
-  session: Wednesday, 15:00-16:30 / Interactive Session 4, Hall C / Paper ThI1I.342
+  session: Wednesday, 15:00-16:30 / Interactive Session 4, Hall C / Paper WeI2I.398
   page_link: /research/msg-loc/
   image: /img/research/paper/16_msg-loc.png
 
