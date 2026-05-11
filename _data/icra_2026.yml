@@ -1,54 +1,55 @@
-- title: "DiTer++: Diverse Terrain and Multi-modal Dataset for Multi-Robot SLAM in Multi-session Environments"
+- title: "Freeze-Frame With StaticNeRF: Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes"
   abstract: >
-    We encounter large-scale environments where both structured and unstructured spaces coexist, such as on campuses. 
-    In this environment, lighting conditions and dynamic objects change constantly. 
-    To tackle the challenges of large-scale mapping under such conditions, we introduce DiTer++, a diverse terrain and multi-modal dataset designed for multi-robot SLAM in multi-session environments. 
-    According to our datasets' scenarios, Agent-A and Agent-B scan the area designated for efficient large-scale mapping day and night, respectively. 
-    Also, we utilize legged robots for terrain-agnostic traversing. 
-    To generate the ground-truth of each robot, we first build the survey-grade prior map. 
-    Then, we remove the dynamic objects and outliers from the prior map and extract the trajectory through scan-to-map matching.
-  session: SLAM VI / Thursday, 10:10-10:15 / Paper ThBT2.4	
-  page_link: /research/diter_plus/
-  image: /img/research/paper/8_diter_plus.png
+    Recent advances in neural representations have shown great promise for enabling high-fidelity dense mapping in robotics. 
+    Given the inherently dynamic nature of real-world environments, many studies have attempted to learn static scene representations from dynamic observations. 
+    However, existing methods often fail to remove subtly moving objects and struggle to accurately recover occluded static backgrounds, which leads to critical limitations in practice. 
+    Furthermore, when static neural maps are used for localization, dynamic content in query images must be handled effectively. 
+    To overcome these challenges, we propose a static neural mapping framework that is robust to diverse dynamic environments and capable of processing dynamic content during localization. 
+    We evaluated our approach through extensive experiments on both public and in-house datasets. 
+    Our method improves both dynamic object removal and localization robustness under dynamic conditions, and constitutes a significant step toward resilient robot navigation in real-world environments.
+  session: Tuesday, 09:00-10:30 / Interactive Session 1 / Paper TuI1I.358	
+  page_link: /research/staticnerf/
+  image: /img/research/paper/15_staticnerf.jpg
 
-- title: "ReFeree: Radar-Based Lightweight and Robust Localization Using Feature and Free Space"
+- title: 'KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference <span style="color:red;">(Award Finalist)</span>'
   abstract: >
-    Place recognition plays an important role in achieving robust long-term autonomy. 
-    Real-world robots face a wide range of weather conditions (e.g. overcast, heavy rain, and snowing) and most sensors (i.e. camera, LiDAR) essentially functioning within or near-visible electromagnetic waves are sensitive to adverse weather conditions, making reliable localization difficult. 
-    In contrast, radar is gaining traction due to long electromagnetic waves, which are less affected by environmental changes and weather independence. 
-    In this work, we propose a radar-based lightweight and robust place recognition. 
-    We achieve rotational invariance and lightweight by selecting a one-dimensional ringshaped description and robustness by mitigating the impact of false detection utilizing opposite noise characteristics between free space and feature. 
-    In addition, the initial heading can be estimated, which can assist in building a SLAM pipeline that combines odometry and registration, which takes into account onboard computing. 
-    The proposed method was tested for rigorous validation across various scenarios (i.e. single session, multi-session, and different weather conditions). 
-    In particular, we validate our descriptor achieving reliable place recognition performance through the results of extreme environments that lacked structural information such as an OORD dataset. 
-    Our supplementary materials and code are available on publication.
-  session: Localization IV / Wednesday, 11:35-11:40 / Paper WeCT17.5
-  page_link: /research/referee/
-  image: /img/research/paper/7_referee.png
+    Inertial measurement units (IMUs), which provide high-frequency linear acceleration and angular velocity measurements, serve as fundamental sensing modalities in robotic systems. 
+    Recent advances in deep neural networks have led to remarkable progress in inertial odometry. 
+    However, the heavy reliance on ground truth data during training fundamentally limits scalability and generalization to unseen and diverse environments. 
+    We propose KISS-IMU, a novel self-supervised inertial odometry framework that eliminates ground truth dependency by leveraging simple LiDAR-based ICP registration and pose graph optimization as a supervisory signal. 
+    Our approach embodies two key principles: keeping the IMU stable through motion-aware balanced training and keeping the IMU strong through uncertainty-driven adaptive weighting during inference. 
+    To evaluate performance across diverse motion patterns and scenarios, we conducted comprehensive experiments on various real-world platforms, including quadruped robots. 
+    Importantly, we train only the IMU network in a self-supervised manner, with LiDAR serving solely as a lightweight supervisory signal rather than requiring additional learnable processes. 
+    This design enables the framework to ensure robustness without relying on joint multi-modal learning or ground truth supervision. 
+    The supplementary materials are available at https://sparolab.github.io/research/kiss_imu.
+  session: Tuesday, 18:05-18:15 / Award Session, Hall A2 / Paper TuBT1.9
+  page_link: /research/kiss_imu/
+  image: /img/research/paper/18_kiss_imu.png
 
-- title: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
+- title: " MSG-Loc: Multi-Label Likelihood-Based Semantic Graph Matching for Object-Level Global Localization"
   abstract: >
-    We often encounter limited FOV situations due to various factors such as sensor fusion or sensor mount in real-world robot navigation. 
-    However, the limited FOV interrupts the generation of descriptions and impacts place recognition adversely. 
-    Therefore, we suffer from correcting accumulated drift errors in a consistent map using LiDAR-based place recognition with limited FOV. 
-    Thus, in this letter, we propose a robust LiDAR-based place recognition method for handling narrow FOV scenarios. 
-    The proposed method establishes spatial organization based on the range-elevation bin and azimuth-elevation bin to represent places. 
-    In addition, we achieve a robust place description through reweighting based on vertical direction information. 
-    Based on these representations, our method enables addressing rotational changes and determining the initial heading. 
-    Additionally, we designed a lightweight and fast approach for the robot's onboard autonomy. 
-    For rigorous validation, the proposed method was tested across various LiDAR place recognition scenarios (i.e., single-session, multi-session, and multi-robot scenarios). 
-    To the best of our knowledge, we report the first method to cope with the restricted FOV.
-  session: Perception I / Wednesday, 10:00-10:05 / Paper WeBT7.2
-  page_link: /research/solid/
-  image: /img/research/paper/5_solid.gif
+    Robots are often required to localize in environments with unknown object classes and semantic ambiguity. 
+    However, when performing global localization using semantic objects, high semantic ambiguity intensifies object misclassification and increases the likelihood of incorrect associations, which in turn can cause significant errors in the estimated pose.
+    Thus, in this letter, we propose a multi-label likelihood-based semantic graph matching framework for object-level global localization. 
+    The key idea is to exploit multi-label graph representations, rather than single-label alternatives, to capture and leverage the inherent semantic context of object observations.
+    Based on these representations, our approach enhances semantic correspondence across graphs by combining the likelihood of each node with the maximum likelihood of its neighbors via context-aware likelihood propagation.
+    For rigorous validation, data …  
+  session: Wednesday, 15:00-16:30 / Interactive Session 4, Hall C / Paper ThI1I.342
+  page_link: /research/msg-loc/
+  image: /img/research/paper/12_must-loc.png
 
-- title: "SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments"
+- title: "GSAT: Geometric Traversability Estimation using Self-supervised Learning with Anomaly Detection for Diverse Terrains"
   abstract: >
-    Robust localization in degenerate environments such as construction sites remains challenging due to frequent visual degradation and intermittent range sensing. 
-    To address this challenge, we propose a visual Simultaneous Localization and Mapping (SLAM) framework that tightly integrates visual-inertial odometry (VIO), visual loop closure, and Ultra-Wideband (UWB) range measurements through a factor graph optimization. 
-    The proposed system introduces an interpolated range factor, fully utilizing sparse and asynchronous UWB data by leveraging continuous-time pose interpolation. 
-    We evaluate the method on the public dataset under simulated degenerate scenarios, including visual degradation and partial UWB signal loss. 
-    Experimental results demonstrate that the proposed method significantly reduces drift and maintains accurate global localization, even under severe sensor degradation.
-  session: Workshop on Field Robotics / Monday, 8:30-17:30 
-  page_link: /research/skid_slam/
-  image: /img/research/paper/10_skid_slam.gif
+    Safe autonomous navigation requires reliable estimation of environmental traversability. 
+    Traditional methods have relied on semantic or geometry-based approaches with human-defined thresholds, but these methods often yield unreliable predictions due to the inherent subjectivity of human supervision. 
+    While self-supervised approaches enable robots to learn from their own experience, they still face a fundamental challenge: the positive-only learning problem. 
+    To address these limitations, recent studies have employed Positive-Unlabeled (PU) learning, where the core challenge is identifying positive samples without explicit negative supervision. 
+    In this work, we propose GSAT, which addresses these limitations by constructing a positive hypersphere in latent space to classify traversable regions through anomaly detection without requiring additional prototypes (e.g., unlabeled or negative). Furthermore, our approach employs joint learning of anomaly classification and traversability prediction to more efficiently utilize robot experience. 
+    We comprehensively evaluate the proposed framework through ablation studies, validation on heterogeneous real-world robotic platforms, and autonomous navigation demonstrations in simulation environments.  
+  session: Thursday, 09:00-10:30 / Interactive Session 5, Hall C / Paper ThI1I.342
+  page_link: /research/gsat/
+  image: /img/research/paper/19_gsat.png
+
+# - title: " Hilti SLAM challenge 2026"
+#   abstract: >
+#   session: Friday / Workshop on 
