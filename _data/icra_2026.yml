@@ -36,7 +36,7 @@
     In addition, we demonstrate the scalability of our approach to large-vocabulary object categories in both real-world indoor scenes and synthetic environments.
   session: Wednesday, 15:00-16:30 / Interactive Session 4, Hall C / Paper ThI1I.342
   page_link: /research/msg-loc/
-  image: /img/research/paper/12_must-loc.png
+  image: /img/research/paper/16_msg-loc.png
 
 - title: "GSAT: Geometric Traversability Estimation using Self-supervised Learning with Anomaly Detection for Diverse Terrains"
   abstract: >
