@@ -7,11 +7,11 @@
     To overcome these challenges, we propose a static neural mapping framework that is robust to diverse dynamic environments and capable of processing dynamic content during localization. 
     We evaluated our approach through extensive experiments on both public and in-house datasets. 
     Our method improves both dynamic object removal and localization robustness under dynamic conditions, and constitutes a significant step toward resilient robot navigation in real-world environments.
-  session: Tuesday, 09:00-10:30 / Interactive Session 1 / Paper TuI1I.358	
+  session: Tuesday, 09:00-10:30 / Interactive Session 1, Hall C / Paper TuI1I.358	
   page_link: /research/staticnerf/
   image: /img/research/paper/15_staticnerf.jpg
 
-- title: 'KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference <span style="color:red;">(Award Finalist)</span>'
+- title: 'KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference <span style="color: red; font-weight: 700;">(Award Finalist)</span>'
   abstract: >
     Inertial measurement units (IMUs), which provide high-frequency linear acceleration and angular velocity measurements, serve as fundamental sensing modalities in robotic systems. 
     Recent advances in deep neural networks have led to remarkable progress in inertial odometry. 
@@ -21,7 +21,6 @@
     To evaluate performance across diverse motion patterns and scenarios, we conducted comprehensive experiments on various real-world platforms, including quadruped robots. 
     Importantly, we train only the IMU network in a self-supervised manner, with LiDAR serving solely as a lightweight supervisory signal rather than requiring additional learnable processes. 
     This design enables the framework to ensure robustness without relying on joint multi-modal learning or ground truth supervision. 
-    The supplementary materials are available at https://sparolab.github.io/research/kiss_imu.
   session: Tuesday, 18:05-18:15 / Award Session, Hall A2 / Paper TuBT1.9
   page_link: /research/kiss_imu/
   image: /img/research/paper/18_kiss_imu.png
@@ -33,7 +32,8 @@
     Thus, in this letter, we propose a multi-label likelihood-based semantic graph matching framework for object-level global localization. 
     The key idea is to exploit multi-label graph representations, rather than single-label alternatives, to capture and leverage the inherent semantic context of object observations.
     Based on these representations, our approach enhances semantic correspondence across graphs by combining the likelihood of each node with the maximum likelihood of its neighbors via context-aware likelihood propagation.
-    For rigorous validation, data …  
+    For rigorous validation, data association and pose estimation performance are evaluated under both closed-set and open-set detection configurations. 
+    In addition, we demonstrate the scalability of our approach to large-vocabulary object categories in both real-world indoor scenes and synthetic environments.
   session: Wednesday, 15:00-16:30 / Interactive Session 4, Hall C / Paper ThI1I.342
   page_link: /research/msg-loc/
   image: /img/research/paper/12_must-loc.png
