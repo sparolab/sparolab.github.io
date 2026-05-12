@@ -16,6 +16,18 @@
     border: 1px solid transparent;
     color: black;
   }
+
+  .recent-paper-card .card-image-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+  .recent-paper-card .card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 </style>
 
 <div id="recent-activities-container" class="columns is-multiline">
@@ -163,10 +175,8 @@ document.addEventListener('DOMContentLoaded', function() {
     column.innerHTML = `
       <div class="recent-paper-card" data-href="${item.page_link}" ${isExternal ? 'data-external="true"' : ''} style="cursor:pointer;">
         <div class="card" style="margin:0 auto; text-align:center; min-height:360px; height:auto; display:flex; flex-direction:column; justify-content:space-between;">
-          <div class="card-image">
-            <figure class="image is-16by9">
-              <img src="${item.link}" alt="${item.alt || ''}">
-            </figure>
+          <div class="card-image-wrapper">
+            <img src="${item.link}" alt="${item.alt || ''}">
           </div>
           <div class="card-content" style="padding:10px;">
             <div class="content" style="text-align:left; font-size:0.9rem; color:black; font-weight:bold;">
