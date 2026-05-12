@@ -28,6 +28,17 @@
     object-fit: cover;
     display: block;
   }
+
+  .recent-paper-card .card-title-clamp a,
+  .recent-paper-card .card-title-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
 </style>
 
 <div id="recent-activities-container" class="columns is-multiline">
@@ -174,12 +185,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     column.innerHTML = `
       <div class="recent-paper-card" data-href="${item.page_link}" ${isExternal ? 'data-external="true"' : ''} style="cursor:pointer;">
-        <div class="card" style="margin:0 auto; text-align:center; min-height:360px; height:auto; display:flex; flex-direction:column; justify-content:space-between;">
+        <div class="card" style="margin:0 auto; text-align:center; min-height:530px; height:auto; display:flex; flex-direction:column; justify-content:space-between;">
           <div class="card-image-wrapper">
             <img src="${item.link}" alt="${item.alt || ''}">
           </div>
           <div class="card-content" style="padding:10px;">
-            <div class="content" style="text-align:left; font-size:0.9rem; color:black; font-weight:bold;">
+            <div class="content card-title-clamp" style="text-align:left; font-size:0.9rem; color:black; font-weight:bold;">
               ${titleHtml}
             </div>
           </div>
