@@ -1,4 +1,5 @@
 - title: "Freeze-Frame With StaticNeRF: Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes"
+  authors: "<strong>Juhui Lee</strong>, Geonmo Yang, Seungjun Ma, and Younggun Cho"
   abstract: >
     Recent advances in neural representations have shown great promise for enabling high-fidelity dense mapping in robotics. 
     Given the inherently dynamic nature of real-world environments, many studies have attempted to learn static scene representations from dynamic observations. 
@@ -11,7 +12,8 @@
   page_link: /research/staticnerf/
   image: /img/research/paper/15_staticnerf.jpg
 
-- title: "KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference <span style='color: red; font-weight: 700;'>(Award Finalist)</span>"
+- title: 'KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference <span style="color: red; font-weight: 700;">(Award Finalist)</span>'
+  authors: "<strong>Jiwon Choi</strong>, Hogyun Kim, Geonmo Yang, Juhui Lee, and Younggun Cho"
   abstract: >
     Inertial measurement units (IMUs), which provide high-frequency linear acceleration and angular velocity measurements, serve as fundamental sensing modalities in robotic systems. 
     Recent advances in deep neural networks have led to remarkable progress in inertial odometry. 
@@ -26,6 +28,7 @@
   image: /img/research/paper/18_kiss_imu.png
 
 - title: " MSG-Loc: Multi-Label Likelihood-Based Semantic Graph Matching for Object-Level Global Localization"
+  authors: "<strong>Gihyeon Lee</strong>, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho"
   abstract: >
     Robots are often required to localize in environments with unknown object classes and semantic ambiguity. 
     However, when performing global localization using semantic objects, high semantic ambiguity intensifies object misclassification and increases the likelihood of incorrect associations, which in turn can cause significant errors in the estimated pose.
@@ -39,6 +42,7 @@
   image: /img/research/paper/16_msg-loc.png
 
 - title: "GSAT: Geometric Traversability Estimation using Self-supervised Learning with Anomaly Detection for Diverse Terrains"
+  authors: "<strong>Dongjin Cho</strong>, Miryeong Park, Juhui Lee, Geonmo Yang, and Younggun Cho"
   abstract: >
     Safe autonomous navigation requires reliable estimation of environmental traversability. 
     Traditional methods have relied on semantic or geometry-based approaches with human-defined thresholds, but these methods often yield unreliable predictions due to the inherent subjectivity of human supervision. 
@@ -51,5 +55,8 @@
   image: /img/research/paper/19_gsat.png
 
 # - title: " Hilti SLAM challenge 2026"
+#   authors: "<strong>Jungwoo Lee</strong>, Hogyun Kim, Jiwon Choi, Jinyoung Jeong, and Younggun Cho"
 #   abstract: >
-#   session: Friday / Workshop on 
+#   session: Friday / Workshop on Open Challenges in Robotics for Asset Inspection and Management
+#   page_link: 
+#   image: 
