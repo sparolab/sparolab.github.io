@@ -25,6 +25,12 @@ title: SPARO Lab at ICRA 2026
             <!-- 텍스트 -->
             <div class="column is-8-desktop is-6-tablet is-12-mobile">
               <h2 class="title is-6">{{ project.title }}</h2>
+              
+              {% if project.authors %}
+              <p class="content" style="font-size: 0.9rem; line-height: 1.4; margin-bottom: 1rem;">
+                <strong>Authors:</strong> {{ project.authors }}
+              </p>
+              {% endif %}
 
               <p class="content" style="font-size: 0.9rem; line-height: 1.4; text-align: justify;">
                 <strong>Abstract:</strong> {{ project.abstract }}
