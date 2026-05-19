@@ -164,10 +164,10 @@ permalink: /prospective-students/
     <h2 id="how-to-apply-en">How to Apply</h2>
     <p>Please apply using the Google Form below.</p>
     <div class="apply-button-wrap">
-      <a class="button is-link" href="https://forms.gle/ZVjmPErb3VBMSXj89" target="_blank" rel="noopener noreferrer">Apply via Google Form</a>
+      <a class="button is-link" href="https://forms.gle/K12Xfo9kbCGZQ5oJ9" target="_blank" rel="noopener noreferrer">Apply via Google Form</a>
     </div>
     <p>If you have questions, please contact the lab by email.</p>
-    <p><strong>Email:</strong> [lab-email-placeholder]</p>
+    <p><strong>Email:</strong> yg.cho at inha.ac.kr</p>
   </section>
 
   <hr class="lang-divider" />
@@ -272,9 +272,9 @@ permalink: /prospective-students/
     <h3>지원 방법</h3>
     <p>아래 구글 폼을 통해 지원해 주세요.</p>
     <div class="apply-button-wrap">
-      <a class="button is-link" href="https://forms.gle/ZVjmPErb3VBMSXj89" target="_blank" rel="noopener noreferrer">구글 폼으로 지원하기</a>
+      <a class="button is-link" href="https://forms.gle/K12Xfo9kbCGZQ5oJ9" target="_blank" rel="noopener noreferrer">구글 폼으로 지원하기</a>
     </div>
     <p>문의 사항은 이메일로 연락 바랍니다.</p>
-    <p><strong>이메일:</strong> [lab-email-placeholder]</p>
+    <p><strong>이메일:</strong> yg.cho at inha.ac.kr</p>
   </section>
 </div>
