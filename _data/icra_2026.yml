@@ -57,6 +57,13 @@
 # - title: " Hilti SLAM challenge 2026"
 #   authors: "<strong>Jungwoo Lee</strong>, Hogyun Kim, Jiwon Choi, Jinyoung Jeong, and Younggun Cho"
 #   abstract: >
+  # This report describes our submission to the 2026 Hilti-Trimble SLAM Challenge. 
+  # The system is a 360-camera visual-inertial pipeline that uses only the provided dual-fisheye image streams and IMU measurements. 
+  # First, raw images are preprocessed with low-light enhancement~\cite{zdcepp} and static/dynamic masking~\cite{yolo26}, and then fed into a $\sqrt{\text{VINS}}$~\cite{srvins} frontend as the local odometry, with deep learning-based SuperPoint features~\cite{superpoint}, ELSED line segments~\cite{elsed}, and LightGlue matching~\cite{lightglue}. 
+  # The resulting trajectory is refined using a GTSAM-based backend that performs tightly-coupled factor graph optimization with SALAD global descriptor~\cite{salad} and visual bundle adjustment~(BA)~\cite{smartfactor}. 
+  # The backend performs local-to-global structureless BA, tightly regularized intrinsic and extrinsic refinement, and global scale adjustment supported by the known inter-camera baseline and cross-view constraints. 
+  # The design targets long indoor sequences with dark regions, repetitive corridors, dynamic objects, and limited geometric parallax, while keeping the pipeline reproducible in the provided ROS2 workspace.
+  # Fig.~\ref{fig:pose_plots} demonstrates that our proposed method aligns well with the floorplan across several indoor sequences.
 #   session: Friday / Workshop on Open Challenges in Robotics for Asset Inspection and Management
 #   page_link: 
 #   image: 
