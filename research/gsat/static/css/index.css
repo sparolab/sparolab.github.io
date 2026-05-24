@@ -1,355 +1,863 @@
+/* GSAT project page — custom theme */
+:root {
+  --gsat-bg: #0b1120;
+  --gsat-bg-soft: #111827;
+  --gsat-surface: #ffffff;
+  --gsat-muted: #64748b;
+  --gsat-text: #1e293b;
+  --gsat-accent: #3b82f6;
+  --gsat-accent-dark: #2563eb;
+  --gsat-accent-glow: rgba(59, 130, 246, 0.35);
+  --gsat-accent-light: #93c5fd;
+  --gsat-warm: #f59e0b;
+  --gsat-border: #e2e8f0;
+  --gsat-radius: 14px;
+  --gsat-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  --gsat-nav-h: 3.25rem;
+  --motivation-ss-image-width: 480px;
+  --motivation-ss-list-max: 28rem;
+  scroll-padding-top: calc(var(--gsat-nav-h) + 1rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "DM Sans", "Noto Sans", system-ui, sans-serif;
+  color: var(--gsat-text);
+  background: #f8fafc;
+  line-height: 1.65;
 }
 
-/* ==================== Yellow Navigation Bar ==================== */
-.kiss-navbar {
-  background-color: #7FBF00;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.kiss-navbar .navbar-burger span {
-  color: #333;
-  background-color: #333;
-}
-
-.kiss-navbar .navbar-brand-label {
-  color: #333 !important;
+.gsat-brand {
+  font-family: "Outfit", "Google Sans", sans-serif;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.2s ease;
+  color: var(--gsat-accent);
+  letter-spacing: 0.02em;
 }
 
-.kiss-navbar .navbar-brand-label:hover {
-  background-color: rgba(0, 0, 0, 0.06) !important;
-  color: #111 !important;
+/* —— Navbar —— */
+.gsat-navbar {
+  background: rgba(11, 17, 32, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  min-height: var(--gsat-nav-h);
+  box-shadow: none;
 }
 
-.kiss-navbar .navbar-brand-icon {
-  height: 28px;
+.gsat-navbar .navbar-item {
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s, background 0.2s;
+}
+
+.gsat-navbar .navbar-item:hover,
+.gsat-navbar .navbar-item.is-active {
+  color: #fff !important;
+  background: rgba(59, 130, 246, 0.15) !important;
+}
+
+.gsat-navbar .navbar-brand-label {
+  color: #fff !important;
+  font-weight: 600;
+  gap: 0.5rem;
+}
+
+.gsat-navbar .navbar-brand-icon {
+  height: 26px;
   width: auto;
-  max-height: 28px;
 }
 
-.kiss-navbar .navbar-start {
-  align-items: center;
-}
-
-.kiss-navbar .nav-link {
-  color: #333 !important;
-  transition: all 0.2s ease;
-  border-bottom: 2px solid transparent;
-}
-
-.kiss-navbar .nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.06) !important;
-  color: #111 !important;
-}
-
-.kiss-navbar .nav-link.is-active {
-  border-bottom-color: #333;
-  background-color: rgba(0, 0, 0, 0.05) !important;
+.gsat-navbar .navbar-burger span {
+  background-color: #fff;
 }
 
 @media screen and (max-width: 1023px) {
-  .kiss-navbar .navbar-menu {
-    background-color: #ffc800;
-  }
-  .kiss-navbar .nav-link {
-    border-bottom: none;
-    border-left: 3px solid transparent;
-  }
-  .kiss-navbar .nav-link.is-active {
-    border-left-color: #333;
+  .gsat-navbar .navbar-menu {
+    background: var(--gsat-bg);
+    padding-bottom: 1rem;
   }
 }
 
+/* —— Hero —— */
+.gsat-hero {
+  background: linear-gradient(145deg, #0b1120 0%, #132238 50%, #0f1e3d 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 3.5rem;
+}
 
-/* ==================== Related Research Sidebar ==================== */
-.related-sidebar {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%) translateX(calc(100% - 48px));
-  z-index: 30;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+.gsat-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, var(--gsat-accent-glow), transparent),
+    radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.08), transparent 40%);
+  pointer-events: none;
+}
+
+.gsat-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.gsat-venue-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: var(--gsat-accent-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.gsat-hero-title {
+  font-family: "Outfit", "Google Sans", sans-serif;
+  font-size: clamp(1.65rem, 4vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #f8fafc;
+  max-width: 52rem;
+  margin: 0 auto 1rem;
+}
+
+.gsat-hero-subtitle {
+  color: rgba(248, 250, 252, 0.65);
+  font-size: 1rem;
+  max-width: 40rem;
+  margin: 0 auto 1.5rem;
+}
+
+.gsat-authors {
+  color: rgba(248, 250, 252, 0.88);
+  font-size: 1.05rem;
+}
+
+.gsat-authors a {
+  color: var(--gsat-accent-light) !important;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.gsat-authors a:hover {
+  border-bottom-color: var(--gsat-accent-light);
+  text-decoration: none !important;
+}
+
+.gsat-affiliation {
+  color: rgba(248, 250, 252, 0.5);
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+.gsat-links .button {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f1f5f9;
+  font-weight: 500;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.gsat-links .button:hover {
+  background: rgba(59, 130, 246, 0.22);
+  border-color: var(--gsat-accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.gsat-links .button.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* —— Stats strip —— */
+.gsat-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 720px;
+  margin: 2rem auto 0;
+}
+
+.gsat-stat {
+  text-align: center;
+  padding: 1rem;
+  border-radius: var(--gsat-radius);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gsat-stat-value {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gsat-accent);
+  line-height: 1.1;
+}
+
+.gsat-stat-label {
+  font-size: 0.75rem;
+  color: rgba(248, 250, 252, 0.55);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* —— Teaser —— */
+.gsat-teaser {
+  padding: 2.5rem 0 3rem;
+  background: #fff;
+}
+
+.gsat-teaser-figure {
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: var(--gsat-radius);
+  overflow: hidden;
+  box-shadow: var(--gsat-shadow);
+  border: 1px solid var(--gsat-border);
+}
+
+.gsat-teaser-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gsat-tldr {
+  max-width: 50rem;
+  margin: 1.5rem auto 0;
+  padding: 1rem 1.25rem;
+  border-radius: var(--gsat-radius);
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border-left: 4px solid var(--gsat-accent);
+  font-size: 1.15rem;
+  color: var(--gsat-text);
+}
+
+.gsat-tldr strong {
+  color: var(--gsat-accent-dark);
+}
+
+/* —— Sections —— */
+.gsat-section {
+  padding: 4rem 0;
+}
+
+.gsat-section-alt {
+  background: #f1f5f9;
+}
+
+.gsat-section-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gsat-accent-dark);
+  margin-bottom: 0.5rem;
+}
+
+.gsat-section h2.title {
+  font-family: "Outfit", "Google Sans", sans-serif;
+  font-weight: 700;
+  color: var(--gsat-bg);
+  margin-bottom: 1.25rem;
+}
+
+/* —— Contribution cards —— */
+.gsat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.gsat-card {
+  background: var(--gsat-surface);
+  border-radius: var(--gsat-radius);
+  padding: 1.5rem;
+  border: 1px solid var(--gsat-border);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.gsat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--gsat-shadow);
+}
+
+.gsat-card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 10px;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-.related-sidebar.is-open {
-  transform: translateY(-50%) translateX(0);
-}
-
-.sidebar-toggle {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  padding: 14px 0;
-  background: #ffc800;
-  border-radius: 8px 0 0 8px;
-  cursor: pointer;
-  box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.12);
-  transition: background 0.2s ease;
-}
-
-.sidebar-toggle:hover {
-  background: #e6b400;
-}
-
-.sidebar-toggle .icon {
-  color: #333;
+  background: #eff6ff;
+  color: var(--gsat-accent-dark);
   font-size: 1.1rem;
+  margin-bottom: 0.75rem;
 }
 
-.sidebar-toggle-text {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #333;
-  margin-top: 8px;
-  font-family: 'Google Sans', sans-serif;
-  letter-spacing: 1.5px;
+.gsat-card h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-.sidebar-content {
-  background: #fff;
-  border-radius: 0 0 0 12px;
-  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.12);
-  padding: 26px 24px;
-  width: 370px;
+.gsat-card p {
+  font-size: 1rem;
+  color: var(--gsat-muted);
+  margin: 0;
+  line-height: 1.6;
 }
 
-.sidebar-title {
-  font-family: 'Google Sans', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid #ffc800;
+/* —— Method pipeline —— */
+.gsat-pipeline-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
-.sidebar-card {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.2s ease, transform 0.15s ease;
-  border: 1px solid #eee;
-}
-
-.sidebar-card:hover {
-  background: #fffbe6;
-  transform: translateX(-3px);
-  border-color: #ffc800;
-}
-
-.sidebar-card-img {
-  width: 105px;
-  height: 78px;
-  border-radius: 6px;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: #f5f5f5;
-}
-
-.sidebar-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.sidebar-card-info {
-  margin-left: 14px;
-  min-width: 0;
-}
-
-.sidebar-card-title {
-  font-family: 'Google Sans', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #333;
-  line-height: 1.3;
-  margin-bottom: 3px !important;
-}
-
-.sidebar-card-venue {
-  font-size: 0.95rem;
-  color: #888;
-  line-height: 1.2;
-  margin-bottom: 0 !important;
-}
-
-@media screen and (max-width: 1200px) {
-  .related-sidebar {
-    display: none;
+@media (max-width: 768px) {
+  .gsat-pipeline-steps {
+    grid-template-columns: 1fr;
   }
 }
 
-
-/* ==================== General Styles ==================== */
-.footer .icon-link {
-    font-size: 25px;
-    color: #000;
+.gsat-step {
+  position: relative;
+  padding: 1.25rem;
+  border-radius: var(--gsat-radius);
+  background: #fff;
+  border: 1px solid var(--gsat-border);
 }
 
-.footer .icon-link:hover {
-    color: #3273dc;
+.gsat-step-num {
+  font-family: "Outfit", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: rgba(59, 130, 246, 0.28);
+  line-height: 1;
+  margin-bottom: 0.35rem;
 }
 
-.link-block a {
-    margin-top: 5px;
-    margin-bottom: 5px;
+.gsat-step h4 {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
 }
 
-.kiss-imu {
-  font-variant: small-caps;
-  font-weight: bold;
-  color: #363636;
+.gsat-step p {
+  font-size: 1rem;
+  color: var(--gsat-muted);
+  margin: 0;
+  line-height: 1.55;
 }
 
-.teaser .hero-body {
-  padding-top: 0;
-  padding-bottom: 3rem;
+.gsat-figure {
+  border-radius: var(--gsat-radius);
+  overflow: hidden;
+  border: 1px solid var(--gsat-border);
+  box-shadow: var(--gsat-shadow);
 }
 
-.teaser {
-  font-family: 'Google Sans', sans-serif;
+.gsat-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.publication-title {
-    font-family: 'Google Sans', sans-serif;
+.gsat-figure-medium {
+  max-width: var(--figure-max-width, 720px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.publication-authors {
-    font-family: 'Google Sans', sans-serif;
+/* Optional presets — combine with gsat-figure-medium */
+.gsat-figure-medium.gsat-figure-sm {
+  --figure-max-width: 560px;
 }
 
-.publication-venue {
-    color: #555;
-    width: fit-content;
-    font-weight: bold;
-    margin-top: 0.5rem;
+.gsat-figure-medium.gsat-figure-lg {
+  --figure-max-width: 880px;
 }
 
-.publication-authors a {
-   color: hsl(204, 86%, 53%) !important;
+.gsat-figcaption {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--gsat-text);
+  margin-top: 0.85rem;
+  font-style: italic;
+  line-height: 1.55;
 }
 
-.publication-authors a:hover {
-    text-decoration: underline;
+/* —— Augmentation —— */
+.gsat-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .gsat-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gsat-insight {
+  padding: 1rem 1.25rem;
+  border-radius: var(--gsat-radius);
+  background: #fff;
+  border-left: 4px solid var(--gsat-accent);
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.gsat-feature {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.gsat-feature-icon {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.gsat-feature-icon.blue {
+  background: #dbeafe;
+  color: var(--gsat-accent-dark);
+}
+
+.gsat-feature-icon.amber {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* —— Experiments tabs —— */
+.gsat-exp-panel {
+  background: #fff;
+  border-radius: calc(var(--gsat-radius) + 4px);
+  border: 1px solid var(--gsat-border);
+  padding: 2rem;
+  box-shadow: var(--gsat-shadow);
+}
+
+.gsat-tab-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.gsat-tab-main {
+  margin-bottom: 1.25rem;
+}
+
+.gsat-tab {
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--gsat-border);
+  background: #fff;
+  color: var(--gsat-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gsat-tab:hover {
+  border-color: var(--gsat-accent);
+  color: var(--gsat-accent-dark);
+}
+
+.gsat-tab.is-active {
+  background: var(--gsat-accent);
+  border-color: var(--gsat-accent);
+  color: #fff;
+}
+
+.gsat-tab-sub-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.gsat-tab-sub-wrap[hidden] {
+  display: none !important;
+}
+
+.gsat-tab-content[hidden] {
+  display: none !important;
+}
+
+.gsat-callout {
+  border-left: 4px solid var(--gsat-accent);
+  padding: 0.85rem 1.15rem;
+  background: #eff6ff;
+  border-radius: 0 var(--gsat-radius) var(--gsat-radius) 0;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.gsat-callout.warn {
+  border-left-color: var(--gsat-warm);
+  background: #fffbeb;
+}
+
+.gsat-platform-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+@media (max-width: 600px) {
+  .gsat-platform-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gsat-platform-box {
+  padding: 1.25rem;
+  border-radius: var(--gsat-radius);
+  border: 1px solid var(--gsat-border);
+  background: #f8fafc;
+}
+
+.gsat-video-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: var(--gsat-radius);
+  overflow: hidden;
+  box-shadow: var(--gsat-shadow);
+}
+
+.gsat-video-wrap video {
+  width: 100%;
+  display: block;
+}
+
+/* —— BibTeX —— */
+#BibTeX pre {
+  background: var(--gsat-bg-soft);
+  color: #e2e8f0;
+  border-radius: var(--gsat-radius);
+  padding: 1.5rem;
+  font-size: 0.82rem;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+#BibTeX .copy-btn {
+  float: right;
+  margin-bottom: 0.5rem;
+}
+
+/* —— Footer —— */
+.gsat-footer {
+  padding: 2rem 0;
+  text-align: center;
+  background: var(--gsat-bg);
+  color: rgba(248, 250, 252, 0.5);
+  font-size: 0.9rem;
+}
+
+.gsat-footer a {
+  color: var(--gsat-accent);
 }
 
 .author-block {
   display: inline-block;
 }
 
-.publication-video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    overflow: hidden;
-    border-radius: 10px !important;
+.link-block {
+  display: inline-block;
+  margin: 0.25rem;
 }
 
-.publication-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.publication-authors a {
+  color: inherit;
 }
 
-.results-carousel {
-  overflow: hidden;
-}
-
-.results-carousel .item {
-  margin: 5px;
-  overflow: hidden;
-  border: 1px solid #bbb;
-  border-radius: 10px;
-  padding: 0;
-  font-size: 0;
-}
-
-.results-carousel video {
-  margin: 0;
-}
-
-/* ==================== Highlight Cards ==================== */
-.highlight-section {
-  background-color: #f9f9f9;
-}
-
-.highlight-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.5rem 1.25rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  height: 100%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.highlight-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-}
-
-.highlight-card p {
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-/* ==================== Dataset Cards ==================== */
-.dataset-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 1.25rem 1rem;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
-  height: 100%;
-}
-
-.dataset-card p {
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.4;
-}
-
-/* ==================== Section Styling ==================== */
-.section h2.title {
-  margin-bottom: 1rem;
-}
-
-.section h3.title {
-  margin-bottom: 0.75rem;
-}
-
-/* ==================== BibTeX ==================== */
-#BibTeX pre {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  padding: 1.25rem;
-  font-size: 0.85rem;
-  overflow-x: auto;
-}
-
-/* ==================== Image Figures ==================== */
 figure.image img {
   border-radius: 6px;
 }
 
-/* ==================== Scroll offset for fixed navbar ==================== */
-html {
-  scroll-padding-top: 4rem;
+/* —— Motivation —— */
+.gsat-motivation-lead {
+  max-width: 46rem;
+  margin: 0 auto 2.5rem;
+  font-size: 1.2rem;
+  line-height: 1.75;
+  color: var(--gsat-text);
+}
+
+.gsat-motivation-block {
+  max-width: 56rem;
+  margin: 0 auto 2.5rem;
+}
+
+.gsat-motivation-block-wide {
+  max-width: none;
+  width: 100%;
+}
+
+.gsat-motivation-block:last-child {
+  margin-bottom: 0;
+}
+
+.gsat-motivation-heading {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--gsat-bg);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--gsat-accent);
+  display: inline-block;
+}
+
+.gsat-motivation-subheading {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--gsat-accent-dark);
+  margin: 1.25rem 0 1rem;
+  text-align: center;
+}
+
+.gsat-motivation-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.gsat-motivation-stack-row .gsat-motivation-item {
+  display: grid;
+  grid-template-columns: auto minmax(240px, 22rem);
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Human-defined method cards */
+.gsat-motivation-card {
+  background: transparent;
+  border: 1px solid var(--gsat-border);
+  border-radius: var(--gsat-radius);
+  padding: 1.35rem 1.5rem 1.5rem;
+  box-shadow: none;
+}
+
+.gsat-motivation-card-label {
+  font-family: "Outfit", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gsat-accent-dark);
+  margin: 0 0 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #dbeafe;
+}
+
+.gsat-motivation-stack-human .gsat-motivation-item {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 22rem);
+  margin: 0;
+}
+
+.gsat-motivation-stack-human .gsat-motivation-item .gsat-figure-mot {
+  height: auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.gsat-motivation-stack-human .gsat-motivation-item .gsat-figure-mot img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Self-supervised: fixed image column, wider list to reduce early line breaks */
+.gsat-motivation-stack-row:not(.gsat-motivation-stack-human) .gsat-motivation-item {
+  grid-template-columns: var(--motivation-ss-image-width) minmax(280px, var(--motivation-ss-list-max));
+  justify-content: center;
+  gap: 1.75rem;
+  max-width: none;
+  align-items: center;
+}
+
+.gsat-motivation-stack-row:not(.gsat-motivation-stack-human) .gsat-motivation-item .gsat-figure-mot {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-width: 0;
+  justify-self: center;
+}
+
+.gsat-motivation-stack-row:not(.gsat-motivation-stack-human) .gsat-motivation-item .gsat-figure-mot img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+  display: block;
+}
+
+.gsat-motivation-stack-row:not(.gsat-motivation-stack-human) .gsat-motivation-list {
+  align-self: center;
+  max-width: var(--motivation-ss-list-max);
+}
+
+.gsat-motivation-stack-row .gsat-motivation-list {
+  align-self: center;
+  max-width: 22rem;
+}
+
+.gsat-figure.gsat-figure-mot {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.gsat-motivation-list {
+  margin: 0;
+  padding-left: 1.35rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--gsat-text);
+  list-style: disc;
+}
+
+.gsat-motivation-list li + li {
+  margin-top: 0.65rem;
+}
+
+.gsat-motivation-caption {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  text-align: center;
+  color: var(--gsat-text);
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .gsat-motivation-stack-row .gsat-motivation-item,
+  .gsat-motivation-stack-human .gsat-motivation-item {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .gsat-motivation-stack-row .gsat-motivation-item .gsat-figure-mot {
+    width: 100%;
+    max-width: none;
+    height: auto;
+  }
+
+  .gsat-motivation-stack-row .gsat-motivation-item .gsat-figure-mot img {
+    width: 100%;
+    height: auto;
+  }
+
+  .gsat-motivation-stack-row .gsat-motivation-list {
+    align-self: stretch;
+    max-width: none;
+  }
+}
+
+.gsat-motivation-text {
+  font-size: 1.125rem;
+  color: var(--gsat-text);
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+.gsat-motivation-callout {
+  padding: 1.15rem 1.35rem;
+  border-radius: var(--gsat-radius);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.gsat-motivation-callout ul:not(.gsat-motivation-list) {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.gsat-motivation-callout ul:not(.gsat-motivation-list) li + li {
+  margin-top: 0.35rem;
+}
+
+.gsat-motivation-callout .gsat-motivation-list {
+  max-width: none;
+}
+
+.gsat-motivation-limit {
+  background: #f1f5f9;
+  border: 1px solid var(--gsat-border);
+  border-left: 4px solid #94a3b8;
+}
+
+.gsat-motivation-gap {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-left: 4px solid var(--gsat-accent);
+}
+
+.gsat-motivation-bridge {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--gsat-radius);
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Section body text */
+.gsat-section .content {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.gsat-section .content li {
+  margin-bottom: 0.5rem;
 }
