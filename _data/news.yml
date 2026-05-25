@@ -1,127 +1,130 @@
 papers:
   - date: "Feb. 2026"
-    description: "Two papers (KISS-IMU, GSAT) accepted at ICRA 2026!"
+    description: "Two papers (KISS-IMU, GSAT) accepted @ICRA 2026!"
     authors: "Jiwon and Dongjin"
 
   - date: "Dec. 2025"
-    description: "One paper (CUTE-Planner) accepted at International Conference on Space Robotics (iSpaRo) 2025!"
+    description: "One paper (CUTE-Planner) accepted @International Conference on Space Robotics (iSpaRo) 2025!"
     authors: "Miryeong"
 
   - date: "Nov. 2025"
-    description: "One paper (MSG-Loc) accepted at IEEE Robotics and Automation Letters (RA-L)!"
+    description: "One paper (MSG-Loc) accepted @IEEE Robotics and Automation Letters (RA-L)!"
     authors: "Gihyeon"
 
   - date: "Oct. 2025"
-    description: "One paper (StaticNeRF) accepted at IEEE Robotics and Automation Letters (RA-L)!"
+    description: "One paper (StaticNeRF) accepted @IEEE Robotics and Automation Letters (RA-L)!"
     authors: "Juhui"
 
   - date: "Jun. 2025"
-    description: "One paper (MARSCalib) accepted at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2025!"
+    description: "One paper (MARSCalib) accepted @IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2025!"
     authors: "Seokhwan"
 
   - date: "Jun. 2025"
-    description: "One paper (Uni-Mapper) accepted at IEEE Transactions on Intelligent Vehicles (T-IV)."
+    description: "One paper (Uni-Mapper) accepted @IEEE Transactions on Intelligent Vehicles (T-IV)."
     authors: "Gilhwan"
 
   - date: "Feb. 2025"
-    description: "Two papers (Diter++ and PoLaRIS) accepted at ICRA 2025!"
+    description: "Two papers (Diter++ and PoLaRIS) accepted @ICRA 2025!"
     authors: "Juwon, Jiwon and Dongjin"
   
   - date: "Oct. 2024"
-    description: "One paper about underwater image enhancement and depth estimation (TRIDENT) has been accepted by IEEE Sensors Journal."
+    description: "One paper about underwater image enhancement and depth estimation (TRIDENT) has been accepted @IEEE Sensors Journal."
     authors: "Geonmo"
 
   - date: "Sep. 2024"
-    description: "One paper about Radar-based localization (ReFeree) is accepted by IEEE Robotics and Automation Letters (RA-L)."
+    description: "One paper about Radar-based localization (ReFeree) is accepted @IEEE Robotics and Automation Letters (RA-L)."
     authors: "Hogyun and Byunghee"
 
   - date: "Aug. 2024"
-    description: "One paper about LiDAR-based localization (SOLiD) is accepted by IEEE Robotics and Automation Letters (RA-L)."
+    description: "One paper about LiDAR-based localization (SOLiD) is accepted @IEEE Robotics and Automation Letters (RA-L)."
     authors: "Hogyun"
 
   - date: "Feb. 2024"
-    description: "One paper about robust localization for delivery robots accepted at ICRA 2024!"
+    description: "One paper about robust localization for delivery robots accepted @ICRA 2024!"
     authors: "Jooyoung"
 
   - date: "Jan. 2024"
-    description: "One paper (DiTer) accepted by IEEE Sensors Letters!"
+    description: "One paper (DiTer) accepted @IEEE Sensors Letters!"
     authors: "Seokhwan and Hogyun"
 
   - date: "Nov. 2023"
-    description: "One paper (Joint-ID) accepted by IEEE Sensors Journal!"
+    description: "One paper (Joint-ID) accepted @IEEE Sensors Journal!"
     authors: "Geonmo"
 
   - date: "Feb. 2023"
-    description: "Two papers (Sonar Context and Thermal to RGB-to-TIR image Translation) are accepted at ICRA 2023!"
+    description: "Two papers (Sonar Context and Thermal to RGB-to-TIR image Translation) are accepted @ICRA 2023!"
     authors: "Hogyun"
 
   - date: "Jan. 2023"
-    description: "One paper is accepted to MDPI Sensors!"
+    description: "One paper is accepted @MDPI Sensors!"
     authors: "Geonmo and Juhui"
 
   - date: "Aug. 2022"
-    description: "One paper accepted to T-ITS (Nonparametric background model-based LiDAR SLAM)!"
+    description: "One paper accepted @T-ITS (Nonparametric background model-based LiDAR SLAM)!"
 
   - date: "Apr. 2022"
-    description: "One paper accepted to RA-L (ViViD++)!"
+    description: "One paper accepted @RA-L (ViViD++)!"
 
 awards:
   - date: "May. 2026"
-    description: "Jiwon was selected as an award finalist at the ICRA 2026. Congrats!"
+    description: "Jiwon was selected as a Finalist for the Outstanding WiRA Student Paper Award @ICRA 2026. Congrats!"
+
+  - date: "May. 2026"
+    description: "Jiwon was selected as an Award Finalist @ICRA 2026. Congrats!"
 
   - date: "Mar. 2026"
-    description: "Jiwon received travel support at the ICRA 2026. Congrats!"
+    description: "Jiwon received travel support @ICRA 2026. Congrats!"
 
   - date: "Feb. 2026"
-    description: "Hogyun received a silver prize at the 32nd Samsung HumanTech Paper Award. Congrats!"
+    description: "Hogyun received a silver prize @32nd Samsung HumanTech Paper Award. Congrats!"
 
   - date: "Feb. 2026"
-    description: "Dongjin received an AFCV award at KRoC 2026. Congrats!"
+    description: "Dongjin received an AFCV Award @KRoC 2026. Congrats!"
 
   - date: "Jan. 2026"
-    description: "Geonmo, Hogyun, Jiwon, and Juwon received a Graduate Research Award at Inha Univ. (Grand Prize). Congrats!"
+    description: "Geonmo, Hogyun, Jiwon, and Juwon received a Graduate Research Award @Inha Univ. (Grand Prize). Congrats!"
 
   - date: "Jan. 2026"
-    description: "Hogyun and Geonmo received a Graduate Research Presentation Award at Inha Univ. (Grand Prize and Honorable Mention). Congrats!"
+    description: "Hogyun and Geonmo received a Graduate Research Presentation Award @Inha Univ. (Grand Prize and Honorable Mention). Congrats!"
 
   - date: "Oct. 2025"
-    description: "Prof. Younggun received the New Generation Star Project Award at IROS."
+    description: "Prof. Younggun received the New Generation Star Project Award @IROS 2025."
 
   - date: "Aug. 2025"
-    description: "Hogyun received a Ph.D Candidate Fellowship at the National Research Foundation (NRF). Congrats!"
+    description: "Hogyun received a Ph.D Candidate Fellowship @National Research Foundation (NRF). Congrats!"
 
   - date: "Apr. 2025"
-    description: "Jiwon received an excellent research award at 2025 Korean Institute of ITS Conference. Congrats!"
+    description: "Jiwon received an excellent research award @Korean Institute of ITS Conference 2025. Congrats!"
 
   - date: "Feb. 2025"
-    description: "Hogyun received outstanding research awards at Inha Univ. (Excellence of journal publication and Most-applied patent). Congrats!"
+    description: "Hogyun received outstanding research awards @Inha Univ. (Excellence of journal publication and Most-applied patent). Congrats!"
 
   - date: "Feb. 2025"
-    description: "Jiyun received AFCV award at KRoC 2025. Congrats!"
+    description: "Jiyun received AFCV award @KRoC 2025. Congrats!"
 
   - date: "Dec. 2024"
-    description: "Jungwoo, Dongjin, Minho, and Gihyeon received the Minister of Trade, Industry and Energy Award at the 2024 Embedded Software Competition! Congrats!"
+    description: "Jungwoo, Dongjin, Minho, and Gihyeon received the Minister of Trade, Industry and Energy Award @Embedded Software Competition 2024! Congrats!"
 
   - date: "July. 2024"
-    description: "Juwon, Euncheol, Minho, and Gihyeon won the competition at Hanhwa Aerospace for the future tech challenge! Congrats!"
+    description: "Juwon, Euncheol, Minho, and Gihyeon won the competition @Hanhwa Aerospace for the future tech challenge! Congrats!"
 
   - date: "June. 2024"
-    description: "Gihyeon and Dongjin received the best paper award at ICROS 2024. Congrats!"
+    description: "Gihyeon and Dongjin received the best paper award @ICROS 2024. Congrats!"
 
   - date: "May. 2024"
-    description: "Uni-mapper received the best research award (3rd prize) at ICRA 2024 Construction Robotics Workshop. Congrats!"
+    description: "Gilhwan received the best research award (3rd prize) @ICRA 2024 Construction Robotics Workshop. Congrats!"
 
   - date: "Nov. 2023"
     description: "Our lab (4-luca team) won the industry-academia collaboration challenge (한국산업기술진흥원장상. Ranked in the Top 20 teams out of 489 teams. Congrats!"
 
   - date: "Oct. 2023"
-    description: "Ugrad. Autonomous Driving Team (VI2RE) received an excellent algorithm award at the Virtual Seoul Driving Challenge. Congrats!"
+    description: "Ugrad. Autonomous Driving Team (VI2RE) received an excellent algorithm award @Virtual Seoul Driving Challenge. Congrats!"
 
   - date: "Aug. 2023"
     description: " Seungjun got a scholarship from Hyundai Motors Company. Congrats!"
 
   - date: "Jun. 2023"
-    description: "Ugrad. project received the Excellent paper award(우수논문상) in ICROS 2023! Congrats!"
+    description: "Ugrad. project received the Excellent paper award(우수논문상) @ICROS 2023! Congrats!"
 
   - date: "Jan. 2023"
     description: " Gilhwan got a scholarship from Hyundai Motors Company. Congrats!"
@@ -133,7 +136,7 @@ awards:
     description: "Seungjun and Seokhwan received the Excellent paper award(우수논문상)! Congrats!"
 
   - date: "Jun. 2022"
-    description: "Prof. Cho receives 우수신진연구자상 at ICROS 2022. Congrats!"
+    description: "Prof. Younggun receives 우수신진연구자상 @ICROS 2022. Congrats!"
 
 projects:
   - date: "Apr. 2026"
