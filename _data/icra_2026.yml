@@ -12,7 +12,8 @@
   page_link: /research/staticnerf/
   image: /img/research/paper/15_staticnerf.jpg
 
-- title: 'KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference <span style="color: red; font-weight: 700;">(Finalist: WiRA Student Paper & Best Paper on Robot Perception)</span>'  authors: "<strong>Jiwon Choi</strong>, Hogyun Kim, Geonmo Yang, Juhui Lee, and Younggun Cho"
+- title: 'KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference <span style="color: red; font-weight: 700;">(Finalist: WiRA Student Paper & Best Paper on Robot Perception)</span>'
+  authors: "<strong>Jiwon Choi</strong>, Hogyun Kim, Geonmo Yang, Juhui Lee, and Younggun Cho"
   abstract: >
     Inertial measurement units (IMUs), which provide high-frequency linear acceleration and angular velocity measurements, serve as fundamental sensing modalities in robotic systems. 
     Recent advances in deep neural networks have led to remarkable progress in inertial odometry. 
