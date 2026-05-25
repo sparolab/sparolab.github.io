@@ -18,7 +18,7 @@ title: SPARO Lab at ICRA 2026
             <!-- 이미지 -->
             <div class="column is-4-desktop is-6-tablet is-12-mobile">
               <figure class="image">
-                <img src="{{ project.image | relative_url }}" alt="{{ project.title }}">
+                <img src="{{ project.image | relative_url }}" alt="{{ project.title | strip_html }}">
               </figure>
             </div>
 
@@ -31,29 +31,28 @@ title: SPARO Lab at ICRA 2026
                 <strong>Authors:</strong> {{ project.authors }}
               </p>
               {% endif %}
-
               <p class="content" style="font-size: 0.9rem; line-height: 1.4; text-align: justify;">
                 <strong>Abstract:</strong> {{ project.abstract }}
               </p>
-
-          {% if project.sessions %}
-            {% for s in project.sessions %}
-              <p class="has-text-weight-bold content" style="font-size: 0.9rem; line-height: 1.4; margin-bottom: 0.25rem;">
-                Session: {{ s }}
-              </p>
-            {% endfor %}
-          {% elsif project.session %}
-            <p class="has-text-weight-bold content" style="font-size: 0.9rem; line-height: 1.4;">
-              Session: {{ project.session }}
-            </p>
-          {% endif %}
-
+              {% if project.sessions %}
+                <div style="margin-bottom: 1rem;">
+                  {% for s in project.sessions %}
+                    <p class="has-text-weight-bold content" style="font-size: 0.9rem; line-height: 1.4; margin-bottom: 0.25rem;">
+                      Session: {{ s }}
+                    </p>
+                  {% endfor %}
+                </div>
+              {% elsif project.session %}
+                <p class="has-text-weight-bold content" style="font-size: 0.9rem; line-height: 1.4;">
+                  Session: {{ project.session }}
+                </p>
+              {% endif %}
               <a href="{{ project.page_link | relative_url }}"
                  class="button is-gradient is-fullwidth is-small project-page-btn"
                  target="_blank" rel="noopener noreferrer">
                 Project Page
               </a>
-            </div>
+            </div>          
           </div>
 
           {% unless forloop.last %}
