@@ -65,7 +65,6 @@
     The resulting trajectory is refined using a GTSAM-based backend that performs tightly-coupled factor graph optimization with SALAD global descriptors and visual bundle adjustment (BA).
     The backend performs local-to-global structureless BA, tightly regularized intrinsic and extrinsic refinement, and global scale adjustment supported by the known inter-camera baseline and cross-view constraints.
     The design targets long indoor sequences with dark regions, repetitive corridors, dynamic objects, and limited geometric parallax, while keeping the pipeline reproducible in the provided ROS2 workspace.
-    Fig. 1 demonstrates that our proposed method aligns well with the floorplan across several indoor sequences.
   session: "Friday, 11:40-12:10 / Workshop on Open Challenges in Robotics for Asset Inspection and Management (OCRAIM)"
   page_link:
-  image:
+  image: /img/research/paper/icra_2026_challenge.png
