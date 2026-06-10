@@ -1,4 +1,8 @@
 papers:
+  - date: "June. 2026"
+    description: "Commerge accepted @IJRR 2026!"
+    authors: "Hogyun"
+
   - date: "Feb. 2026"
     description: "KISS-IMU and GSAT accepted @ICRA 2026!"
     authors: "Jiwon and Dongjin"
@@ -66,6 +70,9 @@ papers:
     description: "ViViD++ accepted @RA-L!"
 
 awards:
+  - date: "June. 2026"
+    description: "Jiwon selected as the Winner of the Outstanding WiRA Student Paper Award @ICRA 2026! 🏆"
+    
   - date: "May. 2026"
     description: "Jungwoo, Hogyun, and Jiwon won 2nd place in the SLAM category of Hilti-Trimble SLAM Challenge @ICRA 2026!"
   
