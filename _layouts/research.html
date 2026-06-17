@@ -126,8 +126,16 @@ layout: default
                 {% endif %}
               </div>
               {% if image.authors %}
+                {% assign author_list = image.authors | split: ", " %}
+                {% assign author_count = author_list | size %}
                 <div style="margin-top:10px; font-size:0.8rem; color:gray;">
-                  {{ image.authors }}
+                  {% if author_count > 6 %}
+                    {% for author in author_list limit:6 %}
+                      {{ author }}{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}, et al.
+                  {% else %}
+                    {{ image.authors }}
+                  {% endif %}
                 </div>
               {% endif %}
             </div>
