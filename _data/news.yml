@@ -1,5 +1,9 @@
 papers:
   - date: "June. 2026"
+    description: "RadLoc accepted @IEEE/RSJ IROS 2026!"
+    authors: "Hogyun"
+
+  - date: "June. 2026"
     description: "Commerge accepted @IJRR 2026!"
     authors: "Hogyun"
 

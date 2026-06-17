@@ -1,10 +1,21 @@
 - title: Paper
   images:
+    - link: /img/research/paper/21_radloc.gif
+      alt: IEEE/RSJ IROS
+      alt_link: https://2026.ieee-iros.org/
+      pulished_date: June, 2026
+      paper: "RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios"
+      authors: Hogyun Kim, Jiwon Choi, Jungwoo Lee, and Younggun Cho
+      tags:
+          - SLAM
+          - Field
+      page_link: /research/radloc/
+
     - link: /img/research/paper/20_commerge.jpg
       alt: IJRR
       alt_link: https://journals.sagepub.com/home/IJR
       pulished_date: June, 2026
-      paper: "Commerge: Communication-Efficient, Robust and Fast LiDAR Map Merging Framework for Multi-Robot Coordination in Resource-Constrained Scenarios"
+      paper: "Commerge: Communication-Efficient, Robust, and Fast LiDAR Map Merging Framework for Multi-Robot Coordination in Resource-Constrained Scenarios"
       authors: Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Seokhwan Jeong, Hyungtae Lim, and Younggun Cho
       tags:
           - SLAM
