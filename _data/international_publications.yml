@@ -1,14 +1,26 @@
 - title: "2026"
   images:
+    - alt: "RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios"
+      authors: "Hogyun Kim, Jiwon Choi, Jungwoo Lee, and Younggun Cho"
+      conf: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
+      conf_link: "https://2026.ieee-iros.org/"
+
+    - alt: "Commerge: Communication-Efficient, Robust and Fast LiDAR Map Merging Framework for Multi-robot Coordination in Resource-constrained Scenarios"
+      authors: "Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Seokhwan Jeong, Hyungtae Lim, and Younggun Cho"
+      conf: "International Journal of Robotics Research (IJRR)"
+      conf_link: "https://journals.sagepub.com/home/IJR"
+
     - alt: "GSAT: Geometric Traversability Estimation using Self-supervised Learning with Anomaly Detection for Diverse Terrains"
       authors: "Dongjin Cho, Miryeong Park, Juhui Lee, Geonmo Yang, and Younggun Cho"
       conf: "IEEE International Conference on Robotics and Automation (ICRA)"
       conf_link: "https://2026.ieee-icra.org/"
-      
+      arxiv: "https://arxiv.org/abs/2603.07480"
+
     - alt: "KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference"
       authors: "Jiwon Choi, Hogyun Kim, Geonmo Yang, Juhui Lee, and Younggun Cho"
       conf: "IEEE International Conference on Robotics and Automation (ICRA)"
       conf_link: "https://2026.ieee-icra.org/"
+      arxiv: "https://arxiv.org/abs/2603.06205"
 
     - alt: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
       authors: "Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho"
