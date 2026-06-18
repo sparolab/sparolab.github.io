@@ -4,147 +4,184 @@
   <meta charset="utf-8">
   <meta name="description"
         content="RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios">
-  <meta name="keywords" content="Radar Localization">
+  <meta name="keywords" content="RadLoc, Radar Localization, Place Recognition, Global Localization, SLAM">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios</title>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/logo.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
 </head>
-<body>
+<body class="has-navbar-fixed-top">
 
-<section class="hero">
+<!-- ==================== Navigation Bar ==================== -->
+<nav class="navbar is-fixed-top kiss-navbar" role="navigation" aria-label="main navigation">
+  <div class="container is-max-fullhd">
+    <div class="navbar-brand">
+      <a class="navbar-item navbar-brand-label" href="https://sparolab.github.io/">
+        <img src="./static/images/logo.png" alt="SPARO Lab" class="navbar-brand-icon">
+        SPARO Lab
+      </a>
+      <a role="button" class="navbar-burger" id="navBurger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="radlocNavbar" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item nav-link" href="#abstract">Abstract</a>
+        <a class="navbar-item nav-link" href="#BibTeX">BibTeX</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== Hero Title Bar + Authors ==================== -->
+<section class="hero is-medium is-bold is-primary" id="top">
   <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios</h1>
-          <div class="is-size-6 publication-authors">
-            <span class="author-block">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026</span>            
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko">Hogyun Kim</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&hl=ko">Jiwon Choi</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?hl=ko&user=H0rvKXYAAAAJ">Jungwoo Lee</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko">Younggun Cho</a><sup>1*</sup>
-            </span>            
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper (TBD)</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv (TBD)</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://youtu.be/t0wPMGrp32o"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code (TBD)</span>
-                  </a>
-              </span>
-            </div>
-
-          </div>
+    <div class="container is-max-fullhd has-text-centered">
+      <h1 class="title is-2 publication-title">
+        <span style="color: #ffc800;">RadLoc</span>: Radar-based 3-DoF Global Localization<br>
+        via <span style="color: #ffc800;">Fast</span>, <span style="color: #ffc800;">Robust</span>, and <span style="color: #ffc800;">Lightweight</span> Spatial Descriptor<br>
+        Across Diverse Environmental Scenarios
+      </h1>
+      <div class="is-size-6 publication-authors" style="margin-top: 1rem;">
+        <span class="author-block">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2026</span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko" target="_blank">Hogyun Kim</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&hl=ko" target="_blank">Jiwon Choi</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?hl=ko&user=H0rvKXYAAAAJ" target="_blank">Jungwoo Lee</a><sup>1</sup>,</span>
+        <span class="author-block">
+          and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko" target="_blank">Younggun Cho</a><sup>1&dagger;</sup>
+        </span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.25rem;">
+        <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>
+      </div>
+      <div style="margin-top: 1.25rem;">
+        <div class="publication-links">
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper (TBD)</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv (TBD)</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="https://youtu.be/t0wPMGrp32o"
+               class="external-link button is-normal is-rounded is-dark"
+               target="_blank">
+              <span class="icon"><i class="fab fa-youtube"></i></span>
+              <span>Video</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code (TBD)</span>
+            </a>
+          </span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+
+<!-- ==================== Related Research Sidebar ==================== -->
+<div id="related-sidebar" class="related-sidebar">
+  <div class="sidebar-toggle" id="sidebar-toggle">
+    <span class="icon">
+      <i class="fas fa-chevron-left chevron-desktop chevron-closed"></i>
+      <i class="fas fa-chevron-right chevron-desktop chevron-open"></i>
+      <i class="fas fa-chevron-up chevron-mobile chevron-closed"></i>
+      <i class="fas fa-chevron-down chevron-mobile chevron-open"></i>
+    </span>
+    <span class="sidebar-toggle-text">Related Research</span>
+  </div>
+  <div class="sidebar-content">
+    <h4 class="sidebar-title">Related Research</h4>
+    <a href="https://sparolab.github.io/research/referee/" target="_blank" class="sidebar-card">
+      <div class="sidebar-card-img">
+        <img src="/img/research/paper/7_referee.png" alt="ReFeree">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">ReFeree</p>
+        <p class="sidebar-card-venue">RA-L 2024</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+
+<!-- ==================== TL;DR / Teaser ==================== -->
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <div class="container is-max-fullhd">
     <div class="hero-body">
-      <a href="https://youtu.be/t0wPMGrp32o" target="_blank">
-        <video autoplay muted loop playsinline width="100%">
-          <source src="./assets/IROS2026_RadLoc.mp4" type="video/mp4">
-        </video>
-      </a>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">TL;DR  Radar Localization!</span>
-      </h2>
+      <div class="has-text-centered">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <video autoplay muted loop playsinline preload="auto" style="width: 100%; border-radius: 10px;">
+              <source src="/research/radloc/assets/IROS2026_RadLoc.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered" style="margin-top: 1.5rem;">
+        <div class="column is-four-fifths">
+          <p class="has-text-centered">
+            <b>TL;DR</b> &mdash; <span style="font-variant: small-caps; font-weight: bold;">RadLoc</span> is a fast, robust, and lightweight end-to-end radar-based global localization pipeline
+            from place recognition to 3-DoF pose estimation, leveraging <b>1D CA-CFAR filtering</b> and a compact <b>hierarchical coarse-to-fine retrieval</b> strategy.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
+
+<!-- ==================== Abstract ==================== -->
+<section class="section" id="abstract">
+  <div class="container is-max-fullhd">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            While global localization using spinning radar has gained attention for its robustness to adverse weather and challenging environments, many studies have focused on individual components such as place recognition or pose estimation. 
-            In this paper, we take a holistic view of radar-based global localization and present RadLoc, a fast, robust, and lightweight end-to-end pipeline from place recognition to 3-DoF pose estimation. 
-            RadLoc accelerates pre-processing using 1D CA-CFAR filtering and leverages the near-range dominance in spinning radar images to design a compact descriptor and an efficient hierarchical coarse-to-fine retrieval strategy. 
-            Moreover, coupled with phase correlation-based 3-DoF pose estimation, it forms a versatile global localization module applicable to SLAM and multi-session SLAM systems. 
-            Extensive experiments on 15 sequences across 5 datasets demonstrate that RadLoc achieves robust performance while maintaining the smallest descriptor size and fastest retrieval time among state-of-the-art approaches.
-            Our code will be released upon acceptance.
+            While global localization using spinning radar has gained attention for its robustness to adverse weather
+            and challenging environments, many studies have focused on individual components such as place recognition
+            or pose estimation.
+          </p>
+          <p>
+            In this paper, we take a holistic view of radar-based global localization and present
+            <span style="font-variant: small-caps; font-weight: bold;">RadLoc</span>, a fast, robust, and lightweight
+            end-to-end pipeline from place recognition to 3-DoF pose estimation.
+            RadLoc accelerates pre-processing using 1D CA-CFAR filtering and leverages the near-range dominance in
+            spinning radar images to design a compact descriptor and an efficient hierarchical coarse-to-fine retrieval strategy.
+            Moreover, coupled with phase correlation-based 3-DoF pose estimation, it forms a versatile global localization
+            module applicable to SLAM and multi-session SLAM systems.
+          </p>
+          <p>
+            Extensive experiments on 15 sequences across 5 datasets demonstrate that RadLoc achieves robust performance
+            while maintaining the smallest descriptor size and fastest retrieval time among state-of-the-art approaches.
           </p>
         </div>
       </div>
@@ -152,31 +189,116 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link" href="" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-          </p>
-        </div>
+
+<!-- ==================== Pipeline ==================== -->
+<section class="section" id="method" style="background-color: #fafafa;">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3 has-text-centered">Pipeline Overview</h2>
+    <div class="columns is-centered" style="margin-top: 1.5rem;">
+      <div class="column is-four-fifths has-text-centered">
+        <figure class="image">
+          <img src="./static/images/pipeline.png" alt="RadLoc Pipeline" style="width:100%; height:auto;">
+        </figure>
       </div>
     </div>
   </div>
+</section>
+
+
+<!-- ==================== BibTeX ==================== -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-fullhd">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@inproceedings{kim2026radloc,
+  author    = {Kim, Hogyun and Choi, Jiwon and Lee, Jungwoo and Cho, Younggun},
+  title     = {RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios},
+  booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2026},
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Footer ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://sparolab.github.io/">
+        <i class="fas fa-home"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/sparolab">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
 </footer>
+
+
+<!-- ==================== Custom Scripts ==================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Navbar burger toggle (mobile)
+  var burger = document.querySelector('.navbar-burger');
+  var menu = document.getElementById('radlocNavbar');
+  if (burger && menu) {
+    burger.addEventListener('click', function() {
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href').substring(1);
+      var target = document.getElementById(targetId);
+      if (target) {
+        var navHeight = document.querySelector('.kiss-navbar').offsetHeight;
+        var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+      }
+      if (burger && menu) {
+        burger.classList.remove('is-active');
+        menu.classList.remove('is-active');
+      }
+    });
+  });
+
+  // Active nav link highlight on scroll
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', function() {
+    var scrollPos = window.pageYOffset + 100;
+    sections.forEach(function(section) {
+      var top = section.offsetTop;
+      var height = section.offsetHeight;
+      var id = section.getAttribute('id');
+      if (scrollPos >= top && scrollPos < top + height) {
+        navLinks.forEach(function(link) {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+    });
+  });
+
+  // Sidebar toggle
+  var sidebar = document.getElementById('related-sidebar');
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener('click', function() {
+      sidebar.classList.toggle('is-open');
+    });
+  }
+});
+</script>
 
 </body>
 </html>

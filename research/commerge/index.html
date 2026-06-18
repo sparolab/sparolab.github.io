@@ -3,167 +3,205 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Commerge: Communication-Efficient, Robust and Fast LiDAR Map Merging Framework for Multi-robot Coordination in Resource-constrained Scenarios">
-  <meta name="keywords" content="Communication, Multi-Robot, Map Merging, Data Exchange">
+        content="Commerge: Communication-Efficient, Robust, and Fast LiDAR Map Merging Framework for Multi-Robot Coordination in Resource-Constrained Scenarios">
+  <meta name="keywords" content="Commerge, Multi-Robot, Map Merging, LiDAR, Communication-Efficient, SLAM">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Commerge: Communication-Efficient, Robust and Fast LiDAR Map Merging Framework for Multi-robot Coordination in Resource-constrained Scenarios</title>
+  <title>Commerge: Communication-Efficient, Robust, and Fast LiDAR Map Merging Framework for Multi-Robot Coordination in Resource-Constrained Scenarios</title>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/logo.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
 </head>
-<body>
+<body class="has-navbar-fixed-top">
 
-<section class="hero">
+<!-- ==================== Navigation Bar ==================== -->
+<nav class="navbar is-fixed-top kiss-navbar" role="navigation" aria-label="main navigation">
+  <div class="container is-max-fullhd">
+    <div class="navbar-brand">
+      <a class="navbar-item navbar-brand-label" href="https://sparolab.github.io/">
+        <img src="./static/images/logo.png" alt="SPARO Lab" class="navbar-brand-icon">
+        SPARO Lab
+      </a>
+      <a role="button" class="navbar-burger" id="navBurger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="commergeNavbar" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item nav-link" href="#abstract">Abstract</a>
+        <a class="navbar-item nav-link" href="#BibTeX">BibTeX</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== Hero Title Bar + Authors ==================== -->
+<section class="hero is-medium is-bold is-primary" id="top">
   <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Commerge: Communication-Efficient, Robust and Fast LiDAR Map Merging Framework for Multi-robot Coordination in Resource-constrained Scenarios</h1>
-          <div class="is-size-6 publication-authors">
-            <span class="author-block">International Journal of Robotics Research (IJRR) 2026 submitted</span>            
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko">Hogyun Kim</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&hl=ko">Jiwon Choi</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=2bvLmqQAAAAJ&hl=ko">Juwon Kim</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=ko">Geonmo Yang</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=ZAO6skQAAAAJ&hl=ko">Seokhwan Jeong</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=S1A3nbIAAAAJ&hl=ko&oi=ao">Hyungtae Lim</a><sup>2*</sup>,
-            </span>
-            <span class="author-block">
-              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko">Younggun Cho</a><sup>1*</sup>
-            </span>            
-          </div>
-
-          <div class="is-size-7 publication-authors">
-            <span class="author-block">* means corresponding authors</span>            
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>2</sup>Laboratory for Information & Decision Systems (LID), Massachusetts Institute of Technologym, USA</span>            
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper (TBU)</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv (TBU)</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <!-- <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video (TBU)</span>
-                </a>
-              </span> -->
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code (TBU)</span>
-                  </a>
-              </span>
-            </div>
-
-          </div>
+    <div class="container is-max-fullhd has-text-centered">
+      <h1 class="title is-2 publication-title">
+        <span style="color: #ffc800;">Commerge</span>: Communication-Efficient, Robust, and Fast<br>
+        LiDAR Map Merging Framework for Multi-Robot Coordination<br>
+        in Resource-Constrained Scenarios
+      </h1>
+      <div class="is-size-6 publication-authors" style="margin-top: 1rem;">
+        <span class="author-block">International Journal of Robotics Research (IJRR), 2026 (Submitted)</span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko" target="_blank">Hogyun Kim</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&hl=ko" target="_blank">Jiwon Choi</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=2bvLmqQAAAAJ&hl=ko" target="_blank">Juwon Kim</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=ko" target="_blank">Geonmo Yang</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=ZAO6skQAAAAJ&hl=ko" target="_blank">Seokhwan Jeong</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=S1A3nbIAAAAJ&hl=ko&oi=ao" target="_blank">Hyungtae Lim</a><sup>2&dagger;</sup>,</span>
+        <span class="author-block">
+          and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko" target="_blank">Younggun Cho</a><sup>1&dagger;</sup>
+        </span>
+      </div>
+      <div class="is-size-6 publication-authors" style="margin-top: 0.25rem;">
+        <span class="author-block">&dagger; Corresponding authors</span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.25rem;">
+        <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.1rem;">
+        <span class="author-block"><sup>2</sup>Laboratory for Information &amp; Decision Systems (LIDS), MIT, USA</span>
+      </div>
+      <div style="margin-top: 1.25rem;">
+        <div class="publication-links">
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper (TBD)</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv (TBD)</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code (TBD)</span>
+            </a>
+          </span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+
+<!-- ==================== Related Research Sidebar ==================== -->
+<div id="related-sidebar" class="related-sidebar">
+  <div class="sidebar-toggle" id="sidebar-toggle">
+    <span class="icon">
+      <i class="fas fa-chevron-left chevron-desktop chevron-closed"></i>
+      <i class="fas fa-chevron-right chevron-desktop chevron-open"></i>
+      <i class="fas fa-chevron-up chevron-mobile chevron-closed"></i>
+      <i class="fas fa-chevron-down chevron-mobile chevron-open"></i>
+    </span>
+    <span class="sidebar-toggle-text">Related Research</span>
+  </div>
+  <div class="sidebar-content">
+    <h4 class="sidebar-title">Related Research</h4>
+    <a href="https://sparolab.github.io/research/solid/" target="_blank" class="sidebar-card" style="margin-bottom: 10px;">
+      <div class="sidebar-card-img">
+        <img src="/img/research/paper/5_solid.gif" alt="SOLiD">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">SOLiD</p>
+        <p class="sidebar-card-venue">RA-L 2024</p>
+      </div>
+    </a>
+    <a href="https://sparolab.github.io/research/skid_slam/" target="_blank" class="sidebar-card">
+      <div class="sidebar-card-img">
+        <img src="/img/research/paper/10_skid_slam.gif" alt="SKiD-SLAM">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">SKiD-SLAM</p>
+        <p class="sidebar-card-venue">ICRA-W 2025</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+
+<!-- ==================== TL;DR / Teaser ==================== -->
 <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="./static/images/main.png">
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">TL;DR Communication-Efficient, Robust and Fast LiDAR Map Merging <br> when communication-constrained field environments are given!</span>
-      </h2>
+  <div class="container is-max-fullhd">
+    <div class="hero-body" style="padding-top: 3rem;">
+      <div class="has-text-centered">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <figure class="image">
+              <img src="./static/images/main.png" alt="Commerge Overview" style="border-radius: 10px;">
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered" style="margin-top: 1.5rem;">
+        <div class="column is-four-fifths">
+          <p class="has-text-centered">
+            <b>TL;DR</b> &mdash; <span style="font-variant: small-caps; font-weight: bold;">Commerge</span> achieves up to <b>5,000&times;</b> inter-robot communication reduction
+            through graph-theoretic selective data exchange, while maintaining robust LiDAR map merging accuracy
+            across diverse environments.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
+<!-- ==================== Abstract ==================== -->
+<section class="section" id="abstract">
+  <div class="container is-max-fullhd">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            By maintaining global consistency across robot teams, multi-robot light detection and ranging (LiDAR) map merging enables faster exploration and efficient area coverage.
-            However, map merging requires exchanging massive sensor data between the server and robots, making communication the bottleneck, especially in communication-constrained environments. 
-            Therefore, we present *Commerge*, a communication-efficient map merging framework that achieves bandwidth reduction through graph-theoretic selective data exchange.
-            By doing so, our Commerge reduces inter-robot communication by up to 5,000x while maintaining alignment accuracy.
-            Our key insight is that only a small subset of carefully selected scans is sufficient for robust map merging. 
-            We formulate this as a three-stage cascaded optimization problem on an exchange graph, where vertices represent robot keyframes and edges denote candidate inter-robot loops.
-            Through three cascade stages, we select a sequentially overlapped, \bl{balanced}-transmission-cost, and geometrically-perceptually optimal scan subset that preserves alignment quality while reducing communication.
-            Unlike existing approaches that either transmit whole scans, which require GB-scale data exchange, or employ naive downsampling, our approach exchanges only MB-scale data while achieving comparable alignment accuracy.
-            Extensive evaluation on five public datasets and four in-house datasets covering cave, planetary-analog, indoor, and outdoor campus environments shows up to 99.98% reduction in data exchange (e.g., from 7,000MB to 1.3MB on the HeLiPR dataset), while maintaining alignment performance across embedded to desktop platforms. 
-            Furthermore, we demonstrate that our proposed framework operates on resource-constrained hardware where existing methods fail, enabling real-world multi-robot deployment in bandwidth-limited field operations.
-            Finally, we validate system robustness under a real-world non-line-of-sight (NLOS) communication environment with up to 73.3% dropout rate, as well as under emulated network degradation scenarios including delay, bandwidth limitation, and packet loss, confirming reliable map merging even under severely degraded connectivity.
+            By maintaining global consistency across robot teams, multi-robot LiDAR map merging enables
+            faster exploration and efficient area coverage. However, map merging requires exchanging massive
+            sensor data between the server and robots, making communication the bottleneck, especially in
+            communication-constrained environments.
+          </p>
+          <p>
+            Therefore, we present <span style="font-variant: small-caps; font-weight: bold;">Commerge</span>,
+            a communication-efficient map merging framework that achieves bandwidth reduction through
+            graph-theoretic selective data exchange. Our key insight is that only a small subset of carefully
+            selected scans is sufficient for robust map merging. We formulate this as a three-stage cascaded
+            optimization problem on an exchange graph, where vertices represent robot keyframes and edges
+            denote candidate inter-robot loops. Through three cascade stages, we select a sequentially
+            overlapped, balanced-transmission-cost, and geometrically-perceptually optimal scan subset that
+            preserves alignment quality while reducing communication.
+          </p>
+          <p>
+            Unlike existing approaches that either transmit whole scans requiring GB-scale data exchange,
+            or employ naive downsampling, our approach exchanges only MB-scale data while achieving comparable
+            alignment accuracy. Extensive evaluation on five public datasets and four in-house datasets covering
+            cave, planetary-analog, indoor, and outdoor campus environments shows up to <b>99.98%</b> reduction
+            in data exchange (e.g., from 7,000MB to 1.3MB on the HeLiPR dataset), while maintaining alignment
+            performance across embedded to desktop platforms.
           </p>
         </div>
       </div>
@@ -171,31 +209,101 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link" href="" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
+
+<!-- ==================== BibTeX ==================== -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-fullhd">
     <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-          </p>
-        </div>
+      <div class="column is-four-fifths content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{kim2026commerge,
+  author    = {Kim, Hogyun and Choi, Jiwon and Kim, Juwon and Yang, Geonmo and Jeong, Seokhwan and Lim, Hyungtae and Cho, Younggun},
+  title     = {Commerge: Communication-Efficient, Robust, and Fast LiDAR Map Merging Framework for Multi-Robot Coordination in Resource-Constrained Scenarios},
+  journal   = {International Journal of Robotics Research (IJRR)},
+  year      = {2026},
+}</code></pre>
       </div>
     </div>
   </div>
+</section>
+
+
+<!-- ==================== Footer ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://sparolab.github.io/">
+        <i class="fas fa-home"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/sparolab">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
 </footer>
+
+
+<!-- ==================== Custom Scripts ==================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Navbar burger toggle (mobile)
+  var burger = document.querySelector('.navbar-burger');
+  var menu = document.getElementById('commergeNavbar');
+  if (burger && menu) {
+    burger.addEventListener('click', function() {
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href').substring(1);
+      var target = document.getElementById(targetId);
+      if (target) {
+        var navHeight = document.querySelector('.kiss-navbar').offsetHeight;
+        var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+      }
+      if (burger && menu) {
+        burger.classList.remove('is-active');
+        menu.classList.remove('is-active');
+      }
+    });
+  });
+
+  // Active nav link highlight on scroll
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', function() {
+    var scrollPos = window.pageYOffset + 100;
+    sections.forEach(function(section) {
+      var top = section.offsetTop;
+      var height = section.offsetHeight;
+      var id = section.getAttribute('id');
+      if (scrollPos >= top && scrollPos < top + height) {
+        navLinks.forEach(function(link) {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+    });
+  });
+
+  // Sidebar toggle
+  var sidebar = document.getElementById('related-sidebar');
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener('click', function() {
+      sidebar.classList.toggle('is-open');
+    });
+  }
+});
+</script>
 
 </body>
 </html>

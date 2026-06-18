@@ -1,11 +1,271 @@
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ==================== Navigation Bar (Midnight Blue) ==================== */
+.kiss-navbar {
+  background-color: #010042;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.kiss-navbar .navbar-burger span {
+  color: #fff;
+  background-color: #fff;
+}
+
+.kiss-navbar .navbar-brand-label {
+  color: #fff !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.0rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.kiss-navbar .navbar-brand-label:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+.kiss-navbar .navbar-brand-icon {
+  height: 20px;
+  width: auto;
+  max-height: 20px;
+}
+
+.kiss-navbar .navbar-start {
+  align-items: center;
+}
+
+.kiss-navbar .nav-link {
+  color: #fff !important;
+  font-size: 1.05rem;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.kiss-navbar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+.kiss-navbar .nav-link.is-active {
+  border-bottom-color: #fff;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+}
+
+@media screen and (max-width: 1023px) {
+  .kiss-navbar .navbar-menu {
+    background-color: #010042;
+    padding: 0.5rem 0;
+  }
+  .kiss-navbar .navbar-menu.is-active {
+    display: block !important;
+  }
+  .kiss-navbar .nav-link {
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    padding: 0.5rem 1rem;
+  }
+  .kiss-navbar .nav-link.is-active {
+    border-left-color: #fff;
+  }
+  .kiss-navbar .navbar-burger {
+    color: #fff;
+    height: 3.25rem;
+    width: 3.25rem;
+  }
+  .kiss-navbar .navbar-burger span {
+    background-color: #fff;
+    height: 2px;
+  }
 }
 
 
+/* ==================== Related Research Sidebar ==================== */
+.related-sidebar {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) translateX(calc(100% - 48px));
+  z-index: 30;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.related-sidebar.is-open {
+  transform: translateY(-50%) translateX(0);
+}
+
+.sidebar-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  padding: 14px 0;
+  background: #010042;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.12);
+  transition: background 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background: #000030;
+}
+
+.sidebar-toggle .icon {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+/* Chevron: hide all by default, then show only the correct one */
+.chevron-desktop, .chevron-mobile { display: none !important; }
+/* Desktop closed: show left arrow */
+.related-sidebar .chevron-desktop.chevron-closed { display: inline-block !important; }
+/* Desktop open: show right arrow */
+.related-sidebar.is-open .chevron-desktop.chevron-closed { display: none !important; }
+.related-sidebar.is-open .chevron-desktop.chevron-open { display: inline-block !important; }
+
+.sidebar-toggle-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 8px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.sidebar-content {
+  background: #fff;
+  border-radius: 0 0 0 12px;
+  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.12);
+  padding: 26px 24px;
+  width: 370px;
+}
+
+.sidebar-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #010042;
+}
+
+.sidebar-card {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+  border: 1px solid #eee;
+}
+
+.sidebar-card:hover {
+  background: #eeeef8;
+  transform: translateX(-3px);
+  border-color: #010042;
+}
+
+.sidebar-card-img {
+  width: 105px;
+  height: 78px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f5f5f5;
+}
+
+.sidebar-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar-card-info {
+  margin-left: 14px;
+  min-width: 0;
+}
+
+.sidebar-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.3;
+  margin-bottom: 3px !important;
+}
+
+.sidebar-card-venue {
+  font-size: 0.95rem;
+  color: #888;
+  line-height: 1.2;
+  margin-bottom: 0 !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .related-sidebar {
+    top: auto;
+    bottom: 0;
+    transform: translateY(calc(100% - 48px)) translateX(0);
+    flex-direction: column;
+    right: 0;
+    left: 0;
+    width: 100%;
+  }
+  .related-sidebar.is-open {
+    transform: translateY(0) translateX(0);
+  }
+  .sidebar-toggle {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 0;
+    gap: 8px;
+  }
+  .sidebar-toggle-text {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+    margin-top: 0;
+  }
+  .sidebar-content {
+    width: 100%;
+    border-radius: 0;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  /* Mobile: hide ALL desktop chevrons, show mobile ones */
+  .chevron-desktop { display: none !important; }
+  .related-sidebar .chevron-desktop.chevron-closed { display: none !important; }
+  .related-sidebar.is-open .chevron-desktop.chevron-open { display: none !important; }
+  /* Mobile closed: show up arrow */
+  .related-sidebar .chevron-mobile.chevron-closed { display: inline-block !important; }
+  /* Mobile open: show down arrow */
+  .related-sidebar.is-open .chevron-mobile.chevron-closed { display: none !important; }
+  .related-sidebar.is-open .chevron-mobile.chevron-open { display: inline-block !important; }
+}
+
+
+/* ==================== General Styles ==================== */
 .footer .icon-link {
     font-size: 25px;
     color: #000;
+}
+
+.footer .icon-link:hover {
+    color: #3273dc;
 }
 
 .link-block a {
@@ -13,10 +273,20 @@ body {
     margin-bottom: 5px;
 }
 
-.dnerf {
-  font-variant: small-caps;
+.publication-links .button.is-dark {
+  background-color: #2F3349;
+  border-color: transparent;
 }
 
+.publication-links .button.is-dark:hover {
+  background-color: #232738;
+}
+
+.kiss-imu {
+  font-variant: small-caps;
+  font-weight: bold;
+  color: #363636;
+}
 
 .teaser .hero-body {
   padding-top: 0;
@@ -24,50 +294,22 @@ body {
 }
 
 .teaser {
-  font-family: 'Google Sans', sans-serif;
-}
-
-
-.publication-title {
-}
-
-.publication-banner {
-  max-height: parent;
-
-}
-
-.publication-banner video {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: fit;
-}
-
-.publication-header .hero-body {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .publication-title {
-    font-family: 'Google Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .publication-authors {
-    font-family: 'Google Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .publication-venue {
     color: #555;
     width: fit-content;
     font-weight: bold;
-}
-
-.publication-awards {
-    color: #ff3860;
-    width: fit-content;
-    font-weight: bolder;
-}
-
-.publication-authors {
+    margin-top: 0.5rem;
 }
 
 .publication-authors a {
@@ -82,19 +324,11 @@ body {
   display: inline-block;
 }
 
-.publication-banner img {
-}
-
-.publication-authors {
-  /*color: #4286f4;*/
-}
-
 .publication-video {
     position: relative;
     width: 100%;
     height: 0;
     padding-bottom: 56.25%;
-
     overflow: hidden;
     border-radius: 10px !important;
 }
@@ -105,9 +339,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.publication-body img {
 }
 
 .results-carousel {
@@ -127,16 +358,107 @@ body {
   margin: 0;
 }
 
-.video-container {
-  display: flex;
-  justify-content: center; /* 가로축 기준 가운데 정렬 */
+/* ==================== Highlight Cards ==================== */
+.highlight-section {
+  background-color: #f9f9f9;
 }
 
-.reduced-video {
-  width: 90%;
-  height: auto;
+.highlight-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.full-video {
-  width: 98%;
-  height: auto;
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.highlight-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ==================== Dataset Cards ==================== */
+.dataset-card {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.dataset-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.dataset-card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* ==================== Section Styling ==================== */
+.section h2.title {
+  margin-bottom: 1rem;
+}
+
+.section h3.title {
+  margin-bottom: 0.75rem;
+}
+
+/* ==================== BibTeX ==================== */
+#BibTeX pre {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 1.25rem;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+/* ==================== Image Figures ==================== */
+figure.image img {
+  border-radius: 6px;
+}
+
+/* ==================== Hero Title Bar (sparolab style) ==================== */
+.hero.is-primary {
+  background-color: #010042 !important;
+}
+
+.hero.is-primary .title,
+.hero.is-primary .subtitle {
+  color: #fff !important;
+}
+
+.hero.is-primary .publication-authors {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero.is-primary .publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+  text-decoration: none;
+}
+
+.hero.is-primary .publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.hero.is-primary.is-bold {
+  background-color: #010042 !important;
+  background-image: linear-gradient(141deg, #000020 0%, #010042 71%, #0a0a6e 100%) !important;
+}
+
+/* ==================== Scroll offset for fixed navbar ==================== */
+html {
+  scroll-padding-top: 4rem;
 }

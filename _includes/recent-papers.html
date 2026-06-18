@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 같은 연월이면 project를 나중에 (paper = 0, project = 1)
     const typeA = a.type === 'paper' ? 0 : 1;
     const typeB = b.type === 'paper' ? 0 : 1;
-    return typeB - typeA;
+    return typeA - typeB;
   });
 
   // 최근 4개만 선택
