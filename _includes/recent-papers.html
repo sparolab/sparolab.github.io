@@ -184,16 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 저자 처리 - 6명 초과 시 et al. 추가
-    let authorsHtml = '';
-    if (item.authors) {
-      const authorList = item.authors.split(', ');
-      if (authorList.length > 6) {
-        authorsHtml = authorList.slice(0, 6).join(', ') + ', et al.';
-      } else {
-        authorsHtml = item.authors;
-      }
-    }
-
     column.innerHTML = `
       <div class="recent-paper-card" data-href="${item.page_link}" ${isExternal ? 'data-external="true"' : ''} style="cursor:pointer;">
         <div class="card" style="margin:0 auto; text-align:center; min-height:450px; height:auto; display:flex; flex-direction:column; justify-content:space-between;">
@@ -204,7 +194,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="content card-title-clamp" style="text-align:left; font-size:0.9rem; color:black; font-weight:bold;">
               ${titleHtml}
             </div>
-            ${authorsHtml ? `<div style="margin-top:5px; font-size:0.7rem; color:gray; text-align:left;">${authorsHtml}</div>` : ''}
           </div>
           <div style="margin-top:auto;">
             ${tagsHtml ? `<div style="text-align:center; margin:2px 0;">${tagsHtml}</div>` : ''}
