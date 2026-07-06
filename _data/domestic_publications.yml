@@ -1,5 +1,10 @@
 - title: "2026"
   images:
+    - alt: "의미론적 모호성에 강건한 다중 라벨 우도 기반 객체 수준 전역 위치 추정"
+      authors: "Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho"
+      conf: "Institute of Control, Robotics and Systems (ICROS)"
+      conf_link: "https://icros.org/main/"
+
     - alt: "로봇의 자율탐사를 위한 자기 지도 학습 기반 주행 가능성 추정 방법론"
       authors: "Dongjin Cho, Seunghee Yun, and Younggun Cho"
       conf: "Korea Robotics Society Annual Conference (KRoC)"
