@@ -7,6 +7,23 @@ categories:
       id: conference
       images:
         # 2026 ---------------------------------------------------------------------------------------
+        - description: "2026년 ICROS 학회 참석" 
+          date: "2026.07.02"
+          image_list:
+            - link: /img/album/research/conference/2026/2026_icros/1.jpeg
+            - link: /img/album/research/conference/2026/2026_icros/2.jpeg
+
+        - description: "2026년 ICRA 학회 참석 및 수상" 
+          date: "2026.06.03"
+          image_list:
+            - link: /img/album/research/conference/2026/2026_icra/1.png
+            - link: /img/album/research/conference/2026/2026_icra/2.png
+            - link: /img/album/research/conference/2026/2026_icra/3.png
+            - link: /img/album/research/conference/2026/2026_icra/4.jpg
+            - link: /img/album/research/conference/2026/2026_icra/5.jpeg
+            - link: /img/album/research/conference/2026/2026_icra/6.jpeg
+            - link: /img/album/research/conference/2026/2026_icra/7.png
+
         - description: "2026년 KROS 학회 참석 및 우수논문상 수상" 
           date: "2026.02.05"
           image_list:
