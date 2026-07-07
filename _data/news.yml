@@ -74,11 +74,11 @@ papers:
     description: "ViViD++ accepted @RA-L!"
 
 awards:
-  - date: "Oct. 2026"
-    description: "Gihyeon received the ICRA 2001 Participation Fund Award for ICRA 2026 @ICROS!"
-    
   - date: "June. 2026"
     description: "Team INHA United (Dongjin and Minho) won 4th place in the Home Service category @RoboCup!"
+
+  - date: "June. 2026"
+    description: "Gihyeon received the ICRA 2001 Participation Fund Award for ICRA 2026 @ICROS!"
 
   - date: "June. 2026"
     description: "Jiwon selected as the Winner of the Outstanding WiRA Student Paper Award @ICRA 2026!"
