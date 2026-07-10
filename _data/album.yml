@@ -7,6 +7,16 @@ categories:
       id: conference
       images:
         # 2026 ---------------------------------------------------------------------------------------
+        - description: "2026년 Robocup 대회 참석 및 4등 수상" 
+          date: "2026.07.03"
+          image_list:
+            - link: /img/album/research/conference/2026/2026_robocup/1.jpeg
+            - link: /img/album/research/conference/2026/2026_robocup/2.jpeg
+            - link: /img/album/research/conference/2026/2026_robocup/3.jpeg
+            - link: /img/album/research/conference/2026/2026_robocup/4.jpeg
+            - link: /img/album/research/conference/2026/2026_robocup/5.jpeg
+            - link: /img/album/research/conference/2026/2026_robocup/6.jpeg
+
         - description: "2026년 ICROS 학회 참석" 
           date: "2026.07.02"
           image_list:
