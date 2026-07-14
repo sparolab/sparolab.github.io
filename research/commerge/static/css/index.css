@@ -462,3 +462,475 @@ figure.image img {
 html {
   scroll-padding-top: 4rem;
 }
+
+
+/* ============================================================
+   Flow / components ported from the hydra++ project page,
+   reskinned to the SPARO Lab palette (midnight blue #010042,
+   yellow accent #ffc800). Light, background-free styling.
+   ============================================================ */
+
+:root {
+  --cm-ink: #010042;
+  --cm-accent: #ffc800;
+  --cm-muted: #59666b;
+  --cm-border: #eeeeee;
+  --cm-card: #fafafa;
+}
+
+/* --- Section spacing (Bulma .section already gives padding) --- */
+.content-section {
+  scroll-margin-top: 4.5rem;
+}
+
+/* --- Figures --- */
+.figure-container {
+  margin: 1.6rem 0;
+  text-align: center;
+}
+
+.figure-container img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.figure-container.hero-figure img {
+  max-height: none;
+}
+
+.figure-container figcaption {
+  color: #666;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0.75rem auto 0;
+  max-width: 760px;
+}
+
+.wide-figure {
+  width: 100%;
+}
+
+/* --- Placeholder blocks (swap for real assets) --- */
+.figure-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  padding: 1.25rem;
+  color: #8a97a0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  background:
+    repeating-linear-gradient(45deg, #f6f7fb, #f6f7fb 12px, #f1f2f8 12px, #f1f2f8 24px);
+  border: 1px dashed #c7cce0;
+  border-radius: 8px;
+}
+
+.figure-placeholder code {
+  background: rgba(1, 0, 66, 0.06);
+  color: #010042;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.figure-placeholder.mini {
+  min-height: 110px;
+  font-size: 0.85rem;
+}
+
+/* --- Claim / method card grids --- */
+.claim-grid,
+.method-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0.4rem;
+}
+
+.method-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.claim-grid article,
+.method-grid article {
+  background: var(--cm-card);
+  border: 1px solid var(--cm-border);
+  border-radius: 10px;
+  padding: 1.1rem 1.15rem;
+  border-top: 3px solid var(--cm-ink);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.claim-grid article:hover,
+.method-grid article:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(1, 0, 66, 0.1);
+}
+
+.claim-grid h3,
+.method-grid h3 {
+  color: var(--cm-ink);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.claim-grid p,
+.method-grid p {
+  color: #555;
+  font-size: 0.94rem;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
+
+/* --- Environment / comparison grids --- */
+.centroid-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin: 1.2rem 0;
+}
+
+.scene-mesh-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 auto;
+}
+
+.centroid-grid > div,
+.scene-mesh-grid > div {
+  background: #fbfbfb;
+  border: 1px solid var(--cm-border);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.centroid-grid span,
+.scene-mesh-grid span {
+  display: block;
+  color: var(--cm-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* --- Metric dashboard (bar chart) --- */
+.metric-dashboard {
+  background: #fbfcfd;
+  border: 1px solid #e6edf0;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 1.4rem 0 0.5rem;
+  padding: 1.15rem;
+}
+
+.metric-dashboard-header {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.8fr);
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.chart-kicker {
+  display: block;
+  color: #687a82;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.metric-dashboard h3 {
+  color: var(--cm-ink);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #52656e;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chart-legend i {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: var(--legend-color);
+}
+
+.tau-note {
+  background: #f2f4fb;
+  border-left: 3px solid var(--cm-ink);
+  border-radius: 6px;
+  color: #4f5b6b;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+}
+
+.tau-note code {
+  background: rgba(1, 0, 66, 0.06);
+  color: #010042;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+.metric-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-grid-1 {
+  grid-template-columns: 1fr;
+}
+
+.metric-card {
+  background: #fff;
+  border: 1px solid #edf1f3;
+  border-radius: 8px;
+  padding: 0.95rem;
+}
+
+.metric-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.7rem;
+}
+
+.metric-card h4 {
+  color: var(--cm-ink);
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.metric-bars {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.metric-row {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr) 52px;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.metric-label {
+  color: #52656e;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-track {
+  display: block;
+  height: 11px;
+  background: #eef0f6;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--method-color);
+  width: 0;
+  transition: none;
+}
+
+.metric-dashboard.is-visible .bar-fill {
+  width: var(--bar-target);
+  transition: width 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-value {
+  color: #2d3d44;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.metric-row.best .metric-label,
+.metric-row.best .metric-value {
+  color: var(--cm-ink);
+}
+
+.metric-row.best .metric-label::after {
+  content: "best";
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.08rem 0.3rem;
+  background: var(--cm-accent);
+  color: #010042;
+  border-radius: 999px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.chart-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  justify-content: center;
+  color: #687a82;
+  font-size: 0.78rem;
+  font-weight: 500;
+  margin-top: 0.9rem;
+  text-align: center;
+}
+
+.note {
+  color: #687a82;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+/* --- Left rail table of contents --- */
+.toc-nav {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 178px;
+  max-height: 76vh;
+  overflow-y: auto;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.86rem;
+  z-index: 25;
+}
+
+.toc-nav h3 {
+  margin: 0 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--cm-border);
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.toc-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-nav li {
+  margin: 6px 0;
+  padding-left: 8px;
+  border-left: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.toc-nav a {
+  display: block;
+  padding: 4px 7px;
+  border-radius: 4px;
+  color: #666;
+}
+
+.toc-nav a:hover {
+  background: #f2f2fa;
+  color: var(--cm-ink);
+  text-decoration: none;
+}
+
+.toc-nav li.active {
+  border-left-color: var(--cm-ink);
+}
+
+.toc-nav li.active a {
+  color: var(--cm-ink);
+  font-weight: 600;
+}
+
+/* Keep body content at a comfortable reading width so the fixed
+   left TOC has gutter room and never overlaps the content. The hero
+   and navbar keep the full is-max-fullhd width. */
+.content-section > .container.is-max-fullhd {
+  max-width: 1000px;
+}
+
+/* Show the left TOC only when the centered content leaves enough
+   side room for it; otherwise hide it (content stays centered). */
+.toc-nav {
+  display: none;
+}
+
+@media screen and (min-width: 1430px) {
+  .toc-nav {
+    display: block;
+  }
+}
+
+/* --- Responsive grids --- */
+@media screen and (max-width: 880px) {
+  .claim-grid,
+  .method-grid,
+  .method-grid-3,
+  .scene-mesh-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .metric-dashboard-header,
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+  .chart-legend {
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .claim-grid,
+  .method-grid,
+  .method-grid-3,
+  .scene-mesh-grid,
+  .centroid-grid {
+    grid-template-columns: 1fr;
+  }
+  .metric-row {
+    grid-template-columns: 112px minmax(0, 1fr) 46px;
+  }
+}

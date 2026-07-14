@@ -39,10 +39,28 @@
     <div id="commergeNavbar" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item nav-link" href="#abstract">Abstract</a>
+        <a class="navbar-item nav-link" href="#contributions">Contributions</a>
+        <a class="navbar-item nav-link" href="#pipeline">Method</a>
+        <a class="navbar-item nav-link" href="#evaluation">Evaluation</a>
         <a class="navbar-item nav-link" href="#BibTeX">BibTeX</a>
       </div>
     </div>
   </div>
+</nav>
+
+<!-- ==================== Table of Contents (left rail) ==================== -->
+<nav class="toc-nav" aria-label="Page navigation">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#contributions">Contributions</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+    <li><a href="#cascade">Cascade Stages</a></li>
+    <li><a href="#evaluation">Evaluation</a></li>
+    <li><a href="#BibTeX">BibTeX</a></li>
+  </ul>
 </nav>
 
 <!-- ==================== Hero Title Bar + Authors ==================== -->
@@ -145,35 +163,23 @@
 </div>
 
 
-<!-- ==================== TL;DR / Teaser ==================== -->
-<section class="hero teaser">
+<!-- ==================== Overview / Teaser ==================== -->
+<section class="section content-section" id="overview" data-toc-title="Overview">
   <div class="container is-max-fullhd">
-    <div class="hero-body" style="padding-top: 3rem;">
-      <div class="has-text-centered">
-        <div class="columns is-centered">
-          <div class="column is-four-fifths">
-            <figure class="image">
-              <img src="./static/images/main.png" alt="Commerge Overview" style="border-radius: 10px;">
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div class="columns is-centered" style="margin-top: 1.5rem;">
-        <div class="column is-four-fifths">
-          <p class="has-text-centered">
-            <b>TL;DR</b> &mdash; <span style="font-variant: small-caps; font-weight: bold;">Commerge</span> achieves up to <b>5,000&times;</b> inter-robot communication reduction
-            through graph-theoretic selective data exchange, while maintaining robust LiDAR map merging accuracy
-            across diverse environments.
-          </p>
-        </div>
-      </div>
-    </div>
+    <figure class="figure-container hero-figure">
+      <img src="./static/images/main.png" alt="Commerge Overview" style="border-radius: 10px;">
+      <figcaption>
+        <b>TL;DR</b> &mdash; <span class="kiss-imu">Commerge</span> achieves up to <b>5,000&times;</b> inter-robot
+        communication reduction through graph-theoretic selective data exchange, while maintaining robust LiDAR
+        map merging accuracy across diverse environments.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
 
 <!-- ==================== Abstract ==================== -->
-<section class="section" id="abstract">
+<section class="section content-section" id="abstract" data-toc-title="Abstract">
   <div class="container is-max-fullhd">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -186,7 +192,7 @@
             communication-constrained environments.
           </p>
           <p>
-            Therefore, we present <span style="font-variant: small-caps; font-weight: bold;">Commerge</span>,
+            Therefore, we present <span class="kiss-imu">Commerge</span>,
             a communication-efficient map merging framework that achieves bandwidth reduction through
             graph-theoretic selective data exchange. Our key insight is that only a small subset of carefully
             selected scans is sufficient for robust map merging. We formulate this as a three-stage cascaded
@@ -210,8 +216,245 @@
 </section>
 
 
+<!-- ==================== Motivation ==================== -->
+<section class="section content-section" id="motivation" data-toc-title="Motivation">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Motivation</h2>
+    <div class="content has-text-justified">
+      <p>
+        Multi-robot LiDAR map merging keeps a robot team globally consistent, but every merge decision rests on
+        raw scan exchange between robots and the server. In bandwidth-limited field settings &mdash; caves,
+        planetary-analog sites, disaster zones &mdash; transmitting whole scans is infeasible, while naive
+        downsampling discards exactly the geometry needed for reliable alignment.
+      </p>
+      <p>
+        <span class="kiss-imu">Commerge</span> targets this gap: instead of sending everything or blindly
+        subsampling, it reasons about <em>which</em> scans are worth transmitting, exchanging only an MB-scale
+        subset that preserves merge accuracy.
+      </p>
+    </div>
+
+    <!-- PLACEHOLDER: replace with the motivation figure (e.g. bandwidth-vs-accuracy trade-off) -->
+    <figure class="figure-container">
+      <div class="figure-placeholder">Motivation figure &mdash; add <code>static/images/motivation.png</code></div>
+      <figcaption>
+        Whole-scan exchange is accurate but bandwidth-heavy; naive downsampling is cheap but degrades alignment.
+        Commerge selects a small, informative subset that stays on the favorable side of this trade-off.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Contributions ==================== -->
+<section class="section content-section" id="contributions" data-toc-title="Contributions">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">What <span class="kiss-imu">Commerge</span> adds</h2>
+    <div class="claim-grid">
+      <article>
+        <h3>Graph-theoretic exchange</h3>
+        <p>An exchange graph whose vertices are robot keyframes and edges are candidate inter-robot loops turns
+          "what to transmit" into a principled selection problem instead of ad-hoc downsampling.</p>
+      </article>
+      <article>
+        <h3>Three-stage cascade</h3>
+        <p>A cascaded optimization selects a sequentially overlapped, transmission-cost-balanced, and
+          geometrically&ndash;perceptually optimal scan subset that preserves alignment quality.</p>
+      </article>
+      <article>
+        <h3>MB-scale communication</h3>
+        <p>Up to <b>99.98%</b> reduction in data exchange (e.g., 7,000&nbsp;MB &rarr; 1.3&nbsp;MB on HeLiPR),
+          reaching up to <b>5,000&times;</b> lower inter-robot communication.</p>
+      </article>
+      <article>
+        <h3>Embedded to desktop</h3>
+        <p>Robust, fast merging validated on five public and four in-house datasets across cave, planetary-analog,
+          indoor, and outdoor campus environments, from embedded to desktop platforms.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Pipeline ==================== -->
+<section class="section content-section" id="pipeline" data-toc-title="Pipeline">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Pipeline</h2>
+    <div class="content has-text-justified">
+      <p>
+        <span class="kiss-imu">Commerge</span> builds an exchange graph over robot keyframes and candidate
+        inter-robot loops, then runs a three-stage cascaded optimization to pick a minimal, informative scan
+        subset. Only the selected scans are transmitted and used for robust map merging on the server.
+      </p>
+    </div>
+
+    <!-- PLACEHOLDER: replace with the system pipeline figure -->
+    <figure class="figure-container">
+      <div class="figure-placeholder">Pipeline figure &mdash; add <code>static/images/pipeline.png</code></div>
+      <figcaption>
+        Keyframes and candidate inter-robot loops form the exchange graph; the cascade selects the subset to
+        transmit; the server merges maps from the received scans.
+      </figcaption>
+    </figure>
+
+    <div class="method-grid">
+      <article>
+        <h3>Exchange graph</h3>
+        <p>Vertices are per-robot keyframes; edges denote candidate inter-robot loop closures that could align
+          the maps.</p>
+      </article>
+      <article>
+        <h3>Selective transmission</h3>
+        <p>Only scans chosen by the cascade cross the network, cutting exchange from GB-scale to MB-scale.</p>
+      </article>
+      <article>
+        <h3>Robust merging</h3>
+        <p>The server aligns received scans to recover a globally consistent multi-robot map.</p>
+      </article>
+      <article>
+        <h3>Platform-agnostic</h3>
+        <p>The same pipeline runs from embedded compute to desktop, keeping merging fast under tight resource
+          budgets.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Cascade Stages ==================== -->
+<section class="section content-section" id="cascade" data-toc-title="Cascade Stages">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Three-Stage Cascaded Selection</h2>
+    <div class="content has-text-justified">
+      <p>
+        Scan selection is formulated as a cascaded optimization on the exchange graph. Each stage refines the
+        candidate subset, so the final selection is simultaneously well-overlapped, cheap to transmit, and
+        geometrically informative.
+      </p>
+    </div>
+
+    <div class="method-grid method-grid-3">
+      <article>
+        <h3>1 &middot; Sequential overlap</h3>
+        <p>Select scans that stay sequentially overlapped along each trajectory, so the transmitted subset still
+          covers the shared structure needed for alignment.</p>
+      </article>
+      <article>
+        <h3>2 &middot; Balanced cost</h3>
+        <p>Balance the transmission cost across robots and links so no single channel dominates the exchange
+          budget.</p>
+      </article>
+      <article>
+        <h3>3 &middot; Geometric&ndash;perceptual</h3>
+        <p>Keep the geometrically and perceptually most informative scans, preserving alignment quality with the
+          fewest bytes.</p>
+      </article>
+    </div>
+
+    <!-- PLACEHOLDER: replace with cascade illustration -->
+    <figure class="figure-container">
+      <div class="figure-placeholder">Cascade illustration &mdash; add <code>static/images/cascade.png</code></div>
+      <figcaption>
+        The exchange graph is filtered through three cascade stages, progressively narrowing candidate scans to a
+        minimal, alignment-preserving subset.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Evaluation ==================== -->
+<section class="section content-section" id="evaluation" data-toc-title="Evaluation">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Evaluation</h2>
+    <div class="content has-text-justified">
+      <p>
+        <span class="kiss-imu">Commerge</span> is evaluated on five public datasets and four in-house datasets
+        spanning cave, planetary-analog, indoor, and outdoor campus environments, on platforms ranging from
+        embedded to desktop. We report both communication cost and map-merging accuracy.
+      </p>
+    </div>
+
+    <!-- Environment coverage -->
+    <div class="centroid-grid" aria-label="Evaluation environments">
+      <div><div class="figure-placeholder mini">Cave</div><span>Cave</span></div>
+      <div><div class="figure-placeholder mini">Planetary-analog</div><span>Planetary-analog</span></div>
+      <div><div class="figure-placeholder mini">Indoor</div><span>Indoor</span></div>
+      <div><div class="figure-placeholder mini">Outdoor campus</div><span>Outdoor campus</span></div>
+    </div>
+
+    <!-- Communication cost dashboard -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Communication cost comparison">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Data exchanged per merge</span>
+          <h3>Communication Cost</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Whole-scan exchange</span>
+          <span><i style="--legend-color: #b9a24a;"></i>Naive downsampling</span>
+          <span><i style="--legend-color: #010042;"></i>Commerge</span>
+        </div>
+      </div>
+
+      <p class="tau-note">
+        Values below are illustrative placeholders except the reported HeLiPR figures (7,000&nbsp;MB &rarr;
+        1.3&nbsp;MB). Replace the <code>--bar-target</code> and displayed numbers with per-dataset results from
+        the paper. Bars use a log scale so the MB-scale bar stays visible against the GB-scale baseline.
+      </p>
+
+      <div class="metric-grid metric-grid-1">
+        <article class="metric-card">
+          <div class="metric-card-header">
+            <h4>HeLiPR &mdash; Data Exchanged (MB) &darr;</h4>
+          </div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">Whole-scan</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">7000</span>
+            </div>
+            <div class="metric-row" style="--method-color: #b9a24a; --bar-target: 58%;">
+              <span class="metric-label">Naive downsample</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">TBD</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 12%;">
+              <span class="metric-label">Commerge</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">1.3</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chart-notes">
+        <span>Lower is better (&darr;).</span>
+        <span>Bar lengths are log-scaled and illustrative until per-dataset numbers are filled in.</span>
+      </div>
+    </div>
+    <p class="note">
+      Placeholder dashboard &mdash; drop in the paper's per-dataset communication and accuracy tables here.
+    </p>
+
+    <!-- Qualitative merged-map comparison -->
+    <figure class="figure-container wide-figure">
+      <div class="scene-mesh-grid">
+        <div><div class="figure-placeholder">Whole-scan merge</div><span>Whole-scan</span></div>
+        <div><div class="figure-placeholder">Naive downsample</div><span>Naive downsample</span></div>
+        <div><div class="figure-placeholder">Commerge merge</div><span>Commerge</span></div>
+      </div>
+      <figcaption>
+        Qualitative merged-map comparison &mdash; Commerge preserves alignment quality while transmitting only an
+        MB-scale subset. Replace with rendered merged maps.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
 <!-- ==================== BibTeX ==================== -->
-<section class="section" id="BibTeX">
+<section class="section content-section" id="BibTeX" data-toc-title="BibTeX">
   <div class="container is-max-fullhd">
     <div class="columns is-centered">
       <div class="column is-four-fifths content">
@@ -256,17 +499,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Smooth scroll for nav links
-  document.querySelectorAll('.nav-link').forEach(function(link) {
+  // Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
     link.addEventListener('click', function(e) {
-      e.preventDefault();
       var targetId = this.getAttribute('href').substring(1);
       var target = document.getElementById(targetId);
-      if (target) {
-        var navHeight = document.querySelector('.kiss-navbar').offsetHeight;
-        var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
-        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-      }
+      if (!target) { return; }
+      e.preventDefault();
+      var navHeight = document.querySelector('.kiss-navbar').offsetHeight;
+      var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+      window.scrollTo({ top: targetPos, behavior: 'smooth' });
       if (burger && menu) {
         burger.classList.remove('is-active');
         menu.classList.remove('is-active');
@@ -274,25 +516,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Active nav link highlight on scroll
+  // Active link highlight on scroll (top navbar + left TOC)
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-link');
+  var tocItems = document.querySelectorAll('.toc-nav li');
   window.addEventListener('scroll', function() {
-    var scrollPos = window.pageYOffset + 100;
+    var scrollPos = window.pageYOffset + 120;
     sections.forEach(function(section) {
       var top = section.offsetTop;
       var height = section.offsetHeight;
       var id = section.getAttribute('id');
       if (scrollPos >= top && scrollPos < top + height) {
         navLinks.forEach(function(link) {
-          link.classList.remove('is-active');
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('is-active');
-          }
+          link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+        });
+        tocItems.forEach(function(item) {
+          var a = item.querySelector('a');
+          item.classList.toggle('active', a && a.getAttribute('href') === '#' + id);
         });
       }
     });
   });
+
+  // Animate metric bars when they scroll into view
+  var barBlocks = document.querySelectorAll('[data-animate-bars]');
+  if ('IntersectionObserver' in window && barBlocks.length) {
+    var barObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) { return; }
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0.18 });
+    barBlocks.forEach(function(block) { barObserver.observe(block); });
+  } else {
+    barBlocks.forEach(function(block) { block.classList.add('is-visible'); });
+  }
 
   // Sidebar toggle
   var sidebar = document.getElementById('related-sidebar');
