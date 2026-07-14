@@ -110,9 +110,9 @@
             </a>
           </span>
           <span class="link-block">
-            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2606.25386" target="_blank" rel="noopener">
               <span class="icon"><i class="ai ai-arxiv"></i></span>
-              <span>arXiv (TBD)</span>
+              <span>arXiv</span>
             </a>
           </span>
           <span class="link-block">
@@ -181,36 +181,32 @@
 <!-- ==================== Abstract ==================== -->
 <section class="section content-section" id="abstract" data-toc-title="Abstract">
   <div class="container is-max-fullhd">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            By maintaining global consistency across robot teams, multi-robot LiDAR map merging enables
-            faster exploration and efficient area coverage. However, map merging requires exchanging massive
-            sensor data between the server and robots, making communication the bottleneck, especially in
-            communication-constrained environments.
-          </p>
-          <p>
-            Therefore, we present <span class="kiss-imu">Commerge</span>,
-            a communication-efficient map merging framework that achieves bandwidth reduction through
-            graph-theoretic selective data exchange. Our key insight is that only a small subset of carefully
-            selected scans is sufficient for robust map merging. We formulate this as a three-stage cascaded
-            optimization problem on an exchange graph, where vertices represent robot keyframes and edges
-            denote candidate inter-robot loops. Through three cascade stages, we select a sequentially
-            overlapped, balanced-transmission-cost, and geometrically-perceptually optimal scan subset that
-            preserves alignment quality while reducing communication.
-          </p>
-          <p>
-            Unlike existing approaches that either transmit whole scans requiring GB-scale data exchange,
-            or employ naive downsampling, our approach exchanges only MB-scale data while achieving comparable
-            alignment accuracy. Extensive evaluation on five public datasets and four in-house datasets covering
-            cave, planetary-analog, indoor, and outdoor campus environments shows up to <b>99.98%</b> reduction
-            in data exchange (e.g., from 7,000MB to 1.3MB on the HeLiPR dataset), while maintaining alignment
-            performance across embedded to desktop platforms.
-          </p>
-        </div>
-      </div>
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        By maintaining global consistency across robot teams, multi-robot LiDAR map merging enables
+        faster exploration and efficient area coverage. However, map merging requires exchanging massive
+        sensor data between the server and robots, making communication the bottleneck, especially in
+        communication-constrained environments.
+      </p>
+      <p>
+        Therefore, we present <span class="kiss-imu">Commerge</span>,
+        a communication-efficient map merging framework that achieves bandwidth reduction through
+        graph-theoretic selective data exchange. Our key insight is that only a small subset of carefully
+        selected scans is sufficient for robust map merging. We formulate this as a three-stage cascaded
+        optimization problem on an exchange graph, where vertices represent robot keyframes and edges
+        denote candidate inter-robot loops. Through three cascade stages, we select a sequentially
+        overlapped, balanced-transmission-cost, and geometrically-perceptually optimal scan subset that
+        preserves alignment quality while reducing communication.
+      </p>
+      <p>
+        Unlike existing approaches that either transmit whole scans requiring GB-scale data exchange,
+        or employ naive downsampling, our approach exchanges only MB-scale data while achieving comparable
+        alignment accuracy. Extensive evaluation on five public datasets and four in-house datasets covering
+        cave, planetary-analog, indoor, and outdoor campus environments shows up to <b>99.98%</b> reduction
+        in data exchange (e.g., from 7,000MB to 1.3MB on the HeLiPR dataset), while maintaining alignment
+        performance across embedded to desktop platforms.
+      </p>
     </div>
   </div>
 </section>
@@ -456,16 +452,14 @@
 <!-- ==================== BibTeX ==================== -->
 <section class="section content-section" id="BibTeX" data-toc-title="BibTeX">
   <div class="container is-max-fullhd">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths content">
-        <h2 class="title">BibTeX</h2>
-        <pre><code>@article{kim2026commerge,
+    <div class="content">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre><code>@article{kim2026commerge,
   author    = {Kim, Hogyun and Choi, Jiwon and Kim, Juwon and Yang, Geonmo and Jeong, Seokhwan and Lim, Hyungtae and Cho, Younggun},
   title     = {Commerge: Communication-Efficient, Robust, and Fast LiDAR Map Merging Framework for Multi-Robot Coordination in Resource-Constrained Scenarios},
   journal   = {International Journal of Robotics Research (IJRR)},
   year      = {2026},
 }</code></pre>
-      </div>
     </div>
   </div>
 </section>
