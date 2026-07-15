@@ -20,33 +20,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body class="has-navbar-fixed-top">
-
-<!-- ==================== Navigation Bar ==================== -->
-<nav class="navbar is-fixed-top kiss-navbar" role="navigation" aria-label="main navigation">
-  <div class="container is-max-fullhd">
-    <div class="navbar-brand">
-      <a class="navbar-item navbar-brand-label" href="https://sparolab.github.io/">
-        <img src="./static/images/logo.png" alt="SPARO Lab" class="navbar-brand-icon">
-        SPARO Lab
-      </a>
-      <a role="button" class="navbar-burger" id="navBurger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <div id="commergeNavbar" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item nav-link" href="#abstract">Abstract</a>
-        <a class="navbar-item nav-link" href="#contributions">Contributions</a>
-        <a class="navbar-item nav-link" href="#pipeline">Method</a>
-        <a class="navbar-item nav-link" href="#evaluation">Evaluation</a>
-        <a class="navbar-item nav-link" href="#BibTeX">BibTeX</a>
-      </div>
-    </div>
-  </div>
-</nav>
+<body>
 
 <!-- ==================== Table of Contents (left rail) ==================== -->
 <nav class="toc-nav" aria-label="Page navigation">
@@ -65,6 +39,9 @@
 
 <!-- ==================== Hero Title Bar + Authors ==================== -->
 <section class="hero is-medium is-bold is-primary" id="top">
+  <a href="https://sparolab.github.io/" target="_blank" rel="noopener" class="sparo-logo-link" aria-label="SPARO Lab home">
+    <img src="./static/images/logo.png" alt="SPARO Lab">
+  </a>
   <div class="hero-body">
     <div class="container is-max-fullhd has-text-centered">
       <h1 class="title is-2 publication-title">
@@ -116,9 +93,9 @@
             </a>
           </span>
           <span class="link-block">
-            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/sparolab/Commerge" target="_blank" rel="noopener">
               <span class="icon"><i class="fab fa-github"></i></span>
-              <span>Code (TBD)</span>
+              <span>Code</span>
             </a>
           </span>
         </div>
@@ -150,6 +127,15 @@
         <p class="sidebar-card-venue">RA-L 2024</p>
       </div>
     </a>
+    <a href="https://github.com/mit-spark/kiss-matcher" target="_blank" class="sidebar-card" style="margin-bottom: 10px;">
+      <div class="sidebar-card-img">
+        <img src="./static/images/kiss_matcher.png" alt="KISS-Matcher">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">KISS-Matcher</p>
+        <p class="sidebar-card-venue">ICRA 2025</p>
+      </div>
+    </a>
     <a href="https://sparolab.github.io/research/skid_slam/" target="_blank" class="sidebar-card">
       <div class="sidebar-card-img">
         <img src="/img/research/paper/10_skid_slam.gif" alt="SKiD-SLAM">
@@ -167,11 +153,10 @@
 <section class="section content-section" id="overview" data-toc-title="Overview">
   <div class="container is-max-fullhd">
     <figure class="figure-container hero-figure">
-      <img src="./static/images/main.png" alt="Commerge Overview" style="border-radius: 10px;">
+      <video src="./static/videos/commerge.mp4" alt="Commerge Overview" style="border-radius: 10px; width: 100%;"
+             autoplay loop muted playsinline></video>
       <figcaption>
-        <b>TL;DR</b> &mdash; <span class="kiss-imu">Commerge</span> achieves up to <b>5,000&times;</b> inter-robot
-        communication reduction through graph-theoretic selective data exchange, while maintaining robust LiDAR
-        map merging accuracy across diverse environments.
+        <b>TL;DR</b> &mdash; Only carefully selected scan is sufficient for map merging!
       </figcaption>
     </figure>
   </div>
@@ -483,16 +468,6 @@
 <!-- ==================== Custom Scripts ==================== -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Navbar burger toggle (mobile)
-  var burger = document.querySelector('.navbar-burger');
-  var menu = document.getElementById('commergeNavbar');
-  if (burger && menu) {
-    burger.addEventListener('click', function() {
-      burger.classList.toggle('is-active');
-      menu.classList.toggle('is-active');
-    });
-  }
-
   // Smooth scroll for internal links
   document.querySelectorAll('a[href^="#"]').forEach(function(link) {
     link.addEventListener('click', function(e) {
@@ -500,19 +475,13 @@ document.addEventListener('DOMContentLoaded', function() {
       var target = document.getElementById(targetId);
       if (!target) { return; }
       e.preventDefault();
-      var navHeight = document.querySelector('.kiss-navbar').offsetHeight;
-      var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+      var targetPos = target.getBoundingClientRect().top + window.pageYOffset - 20;
       window.scrollTo({ top: targetPos, behavior: 'smooth' });
-      if (burger && menu) {
-        burger.classList.remove('is-active');
-        menu.classList.remove('is-active');
-      }
     });
   });
 
-  // Active link highlight on scroll (top navbar + left TOC)
+  // Active link highlight on scroll (left TOC)
   var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav-link');
   var tocItems = document.querySelectorAll('.toc-nav li');
   window.addEventListener('scroll', function() {
     var scrollPos = window.pageYOffset + 120;
@@ -521,9 +490,6 @@ document.addEventListener('DOMContentLoaded', function() {
       var height = section.offsetHeight;
       var id = section.getAttribute('id');
       if (scrollPos >= top && scrollPos < top + height) {
-        navLinks.forEach(function(link) {
-          link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
-        });
         tocItems.forEach(function(item) {
           var a = item.querySelector('a');
           item.classList.toggle('active', a && a.getAttribute('href') === '#' + id);

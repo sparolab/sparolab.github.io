@@ -458,9 +458,45 @@ figure.image img {
   background-image: linear-gradient(141deg, #000020 0%, #010042 71%, #0a0a6e 100%) !important;
 }
 
-/* ==================== Scroll offset for fixed navbar ==================== */
+/* ==================== Scroll offset for anchored sections ==================== */
 html {
-  scroll-padding-top: 4rem;
+  scroll-padding-top: 1.5rem;
+}
+
+/* ==================== SPARO logo (top-left of hero) ==================== */
+.hero#top {
+  position: relative;
+}
+
+.sparo-logo-link {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  z-index: 30;
+  display: block;
+  line-height: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.sparo-logo-link:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.sparo-logo-link img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .sparo-logo-link {
+    top: 14px;
+    left: 16px;
+  }
+  .sparo-logo-link img {
+    height: 34px;
+  }
 }
 
 
