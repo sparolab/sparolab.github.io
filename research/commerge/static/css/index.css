@@ -625,6 +625,159 @@ html {
   text-align: left;
 }
 
+/* --- Paper-style hyphenation across the page (avoids large gaps) --- */
+body {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+/* Keep headings, UI chrome, pills, and code unhyphenated */
+h1, h2, h3, h4, h5, h6,
+.title, .subtitle,
+.publication-title, .publication-authors,
+.button, .navbar, .toc-nav, .sidebar-title, .sidebar-toggle,
+.sidebar-card-title, .sidebar-card-venue,
+.flow-actor, .flow-chip, .stage-tag, .chart-kicker,
+code, pre, kbd {
+  -webkit-hyphens: manual;
+  -ms-hyphens: manual;
+  hyphens: manual;
+}
+
+/* --- Reason / Method pills inside cascade cards --- */
+.method-grid .stage-tag {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.12rem 0.55rem;
+  margin-right: 0.45rem;
+  vertical-align: 0.08em;
+}
+
+.method-grid .stage-tag.is-reason {
+  color: var(--cm-ink);
+  background: #f1f1f8;
+  border: 1.5px solid var(--cm-ink);
+}
+
+.method-grid .stage-tag.is-method {
+  color: #fff;
+  background: var(--cm-ink);
+}
+
+/* --- Pipeline flow (single-row step diagram) --- */
+.pipeline-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.pipeline-flow .flow-step {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e6e6ef;
+  border-top: 4px solid var(--cm-ink);
+  border-radius: 12px;
+  padding: 1.7rem 1.15rem;
+  min-height: 178px;
+  box-shadow: 0 2px 6px rgba(1, 0, 66, 0.08);
+}
+
+.pipeline-flow .flow-actor {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.22rem 0.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.pipeline-flow .flow-actor.is-robot {
+  color: #fff;
+  background: var(--cm-ink);
+}
+
+.pipeline-flow .flow-actor.is-server {
+  color: var(--cm-ink);
+  background: var(--cm-accent);
+}
+
+.pipeline-flow .flow-step h4 {
+  color: var(--cm-ink);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.pipeline-flow .flow-arrow {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0 0.35rem;
+  min-width: 74px;
+}
+
+.pipeline-flow .flow-chip {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--cm-ink);
+  background: #f1f1f8;
+  border: 1.5px solid var(--cm-ink);
+  border-radius: 999px;
+  padding: 0.14rem 0.6rem;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.pipeline-flow .flow-arrow-line {
+  color: var(--cm-ink);
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media screen and (max-width: 900px) {
+  .pipeline-flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pipeline-flow .flow-step {
+    min-height: 0;
+  }
+  .pipeline-flow .flow-arrow {
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.55rem 0;
+  }
+  .pipeline-flow .flow-arrow-line {
+    transform: rotate(90deg);
+  }
+}
+
 /* --- Environment / comparison grids --- */
 .centroid-grid {
   display: grid;
@@ -677,13 +830,17 @@ html {
 }
 
 .chart-kicker {
-  display: block;
-  color: #687a82;
-  font-size: 0.74rem;
+  display: inline-block;
+  color: var(--cm-ink);
+  background: #f1f1f8;
+  border: 1.5px solid var(--cm-ink);
+  border-radius: 999px;
+  padding: 0.14rem 0.65rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .metric-dashboard h3 {
@@ -776,7 +933,7 @@ html {
 
 .metric-row {
   display: grid;
-  grid-template-columns: 132px minmax(0, 1fr) 52px;
+  grid-template-columns: 216px minmax(0, 1fr) 58px;
   gap: 0.6rem;
   align-items: center;
 }
@@ -786,9 +943,7 @@ html {
   font-size: 0.76rem;
   font-weight: 600;
   text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.25;
 }
 
 .bar-track {
@@ -820,6 +975,78 @@ html {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   text-align: right;
+}
+
+/* --- Stacked (multi-stage) bars --- */
+.stacked-row {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr) 64px;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.stacked-row + .stacked-row {
+  margin-top: 0.55rem;
+}
+
+.stacked-track {
+  display: flex;
+  height: 13px;
+  background: #eef0f6;
+  border-radius: 999px;
+  overflow: hidden;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.metric-dashboard.is-visible .stacked-track {
+  transform: scaleX(1);
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stacked-seg {
+  height: 100%;
+  min-width: 1.5px;
+}
+
+/* --- Ablation: compact metric bars, three metrics side by side --- */
+.metric-grid.metric-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ablation-metrics .metric-row {
+  grid-template-columns: 56px minmax(0, 1fr) 66px;
+  gap: 0.4rem;
+}
+
+.ablation-metrics .metric-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.ablation-metrics .metric-card-header h4 {
+  font-size: 0.9rem;
+}
+
+.ablation-metrics .metric-value {
+  font-size: 0.72rem;
+}
+
+.ablation-metrics .metric-row.best .metric-label::after {
+  display: none;
+}
+
+.ablation-metrics .metric-row.best .metric-value {
+  background: rgba(255, 200, 0, 0.4);
+  border-radius: 5px;
+  padding: 0.04rem 0.3rem;
+  color: var(--cm-ink);
+}
+
+@media screen and (max-width: 900px) {
+  .metric-grid.metric-grid-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 .metric-row.best .metric-label,

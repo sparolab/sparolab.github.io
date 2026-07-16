@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
@@ -34,6 +34,7 @@
     <li><a href="#pipeline">Pipeline</a></li>
     <li><a href="#cascade">Cascade Stages</a></li>
     <li><a href="#evaluation">Evaluation</a></li>
+    <li><a href="#ablation">Ablation Study</a></li>
     <li><a href="#BibTeX">BibTeX</a></li>
   </ul>
 </nav>
@@ -261,23 +262,26 @@
     <div class="claim-grid">
       <article>
         <h3>Graph-theoretic exchange</h3>
-        <p>An exchange graph whose vertices are robot keyframes and edges are candidate inter-robot loops turns
-          "what to transmit" into a principled selection problem instead of ad-hoc downsampling.</p>
+        <p style="text-align: justify;">An exchange graph whose vertices are robot keyframes and edges are candidate
+          inter-robot loops turns "what to transmit" into a principled selection problem instead of ad-hoc
+          downsampling.</p>
       </article>
       <article>
         <h3>Three-stage cascade</h3>
-        <p>A cascaded optimization selects a sequentially overlapped, transmission-cost-balanced, and
-          geometrically&ndash;perceptually optimal scan subset that preserves alignment quality.</p>
+        <p style="text-align: justify;">A cascaded optimization selects a sequentially overlapped,
+          transmission-cost-balanced, and geometrically-perceptually optimal scan subset that preserves
+          alignment quality.</p>
       </article>
       <article>
         <h3>MB-scale communication</h3>
-        <p>Up to <b>99.98%</b> reduction in data exchange (e.g., 7,000&nbsp;MB &rarr; 1.3&nbsp;MB on HeLiPR),
-          reaching up to <b>5,000&times;</b> lower inter-robot communication.</p>
+        <p style="text-align: justify;">Up to <b>99.98%</b> reduction in data exchange (e.g., 7,000&nbsp;MB &rarr;
+          1.3&nbsp;MB on HeLiPR dataset), reaching up to <b>5,000&times;</b> lower inter-robot communication.</p>
       </article>
       <article>
-        <h3>Embedded to desktop</h3>
-        <p>Robust, fast merging validated on five public and four in-house datasets across cave, planetary-analog,
-          indoor, and outdoor campus environments, from embedded to desktop platforms.</p>
+        <h3>Robust and fast</h3>
+        <p style="text-align: justify;">Robust, fast merging validated on five public and four in-house datasets
+          across cave, planetary-analog, indoor, and outdoor campus environments, from desktop to embedded
+          platform (i.e., Jetson Nano).</p>
       </article>
     </div>
   </div>
@@ -290,42 +294,52 @@
     <h2 class="title is-3">Pipeline</h2>
     <div class="content has-text-justified">
       <p>
-        <span class="kiss-imu">Commerge</span> builds an exchange graph over robot keyframes and candidate
-        inter-robot loops, then runs a three-stage cascaded optimization to pick a minimal, informative scan
-        subset. Only the selected scans are transmitted and used for robust map merging on the server.
+        Each robot runs intra-robot SLAM and sends only its lightweight SOLiD descriptors and poses to the server.
+        On the server, <span class="kiss-imu">Commerge</span> builds an exchange graph over the received keyframes
+        and candidate inter-robot loops, then runs a three-stage cascaded optimization that decides which scans are
+        worth exchanging. This selection policy is returned to the robots, which then transmit only the selected
+        scans. Finally, the server merges these scans into a globally consistent multi-robot submap.
       </p>
     </div>
 
-    <!-- PLACEHOLDER: replace with the system pipeline figure -->
+    <div class="pipeline-flow">
+      <div class="flow-step">
+        <span class="flow-actor is-robot">Robots</span>
+        <h4>Perform SLAM</h4>
+      </div>
+      <div class="flow-arrow">
+        <span class="flow-chip flow-chip-top">SOLiD</span>
+        <span class="flow-arrow-line">&rarr;</span>
+        <span class="flow-chip flow-chip-bottom">Pose</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-actor is-server">Server</span>
+        <h4>Three-step cascaded stages</h4>
+      </div>
+      <div class="flow-arrow">
+        <span class="flow-chip flow-chip-top">Policy</span>
+        <span class="flow-arrow-line">&rarr;</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-actor is-robot">Robots</span>
+        <h4>Selective scan transmission</h4>
+      </div>
+      <div class="flow-arrow">
+        <span class="flow-chip flow-chip-top">Scan</span>
+        <span class="flow-arrow-line">&rarr;</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-actor is-server">Server</span>
+        <h4>Submap merging</h4>
+      </div>
+    </div>
+
     <figure class="figure-container">
-      <div class="figure-placeholder">Pipeline figure: add <code>static/images/pipeline.png</code></div>
-      <figcaption>
-        Keyframes and candidate inter-robot loops form the exchange graph; the cascade selects the subset to
-        transmit; the server merges maps from the received scans.
-      </figcaption>
+      <img src="./static/images/pipeline.png" alt="Commerge pipeline" style="border-radius: 10px; width: 100%;">
     </figure>
 
-    <div class="method-grid">
-      <article>
-        <h3>Exchange graph</h3>
-        <p>Vertices are per-robot keyframes; edges denote candidate inter-robot loop closures that could align
-          the maps.</p>
-      </article>
-      <article>
-        <h3>Selective transmission</h3>
-        <p>Only scans chosen by the cascade cross the network, cutting exchange from GB-scale to MB-scale.</p>
-      </article>
-      <article>
-        <h3>Robust merging</h3>
-        <p>The server aligns received scans to recover a globally consistent multi-robot map.</p>
-      </article>
-      <article>
-        <h3>Platform-agnostic</h3>
-        <p>The same pipeline runs from embedded compute to desktop, keeping merging fast under tight resource
-          budgets.</p>
-      </article>
     </div>
-  </div>
+
 </section>
 
 
@@ -335,37 +349,45 @@
     <h2 class="title is-3">Three-Stage Cascaded Selection</h2>
     <div class="content has-text-justified">
       <p>
-        Scan selection is formulated as a cascaded optimization on the exchange graph. Each stage refines the
-        candidate subset, so the final selection is simultaneously well-overlapped, cheap to transmit, and
-        geometrically informative.
+        Scan selection is formulated as a three-step cascaded optimization on the exchange graph. The steps are
+        applied in order, and each one further lowers the communication load while keeping the per-robot
+        communication cost balanced and preserving geometric-perceptual consistency.
       </p>
     </div>
 
     <div class="method-grid method-grid-3">
       <article>
-        <h3>1 &middot; Sequential overlap</h3>
-        <p>Select scans that stay sequentially overlapped along each trajectory, so the transmitted subset still
-          covers the shared structure needed for alignment.</p>
+        <h3>Step (A): Sequential matching via connectivity</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          Map merging assumes robots traverse overlapping regions, so a sequentially overlapped region always
+          exists between their trajectories.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          Match scans sequentially through connectivity, so the retained candidates still cover the shared
+          structure required for alignment.</p>
       </article>
       <article>
-        <h3>2 &middot; Balanced cost</h3>
-        <p>Balance the transmission cost across robots and links so no single channel dominates the exchange
-          budget.</p>
+        <h3>Step (B): Balanced minimum vertex cover</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          Thinning candidates can be cast as a minimum vertex cover, but solving it directly may pile the
+          communication load onto one robot.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          Add a balancing constraint to the vertex cover so the transmission cost is shared evenly across all
+          participating robots.</p>
       </article>
       <article>
-        <h3>3 &middot; Geometric&ndash;perceptual</h3>
-        <p>Keep the geometrically and perceptually most informative scans, preserving alignment quality with the
-          fewest bytes.</p>
+        <h3>Step (C): Maximum edge-weighted clique selection</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          A plain vertex cover keeps only one scan per loop, so it can throw away geometrically and perceptually
+          informative observations.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          Select a maximum edge-weighted clique, keeping the mutually consistent scans that preserve
+          geometric-perceptual consistency.</p>
       </article>
     </div>
 
     <!-- PLACEHOLDER: replace with cascade illustration -->
     <figure class="figure-container">
-      <div class="figure-placeholder">Cascade illustration: add <code>static/images/cascade.png</code></div>
-      <figcaption>
-        The exchange graph is filtered through three cascade stages, progressively narrowing candidate scans to a
-        minimal, alignment-preserving subset.
-      </figcaption>
+      <img src="./static/images/summary.png" alt="Commerge pipeline" style="border-radius: 10px; width: 100%;">
     </figure>
   </div>
 </section>
@@ -377,55 +399,66 @@
     <h2 class="title is-3">Evaluation</h2>
     <div class="content has-text-justified">
       <p>
-        <span class="kiss-imu">Commerge</span> is evaluated on five public datasets and four in-house datasets
-        spanning cave, planetary-analog, indoor, and outdoor campus environments, on platforms ranging from
-        embedded to desktop. We report both communication cost and map-merging accuracy.
+        We evaluate <span class="kiss-imu">Commerge</span> on five public and four in-house datasets spanning cave,
+        planetary-analog, indoor, and outdoor campus environments, on platforms from desktop to embedded. Mirroring
+        the three properties in its title, we show that Commerge is <b>communication-efficient</b>, <b>robust</b>,
+        and <b>fast</b>: it exchanges orders of magnitude less data, keeps merging under degraded connectivity, and
+        runs from desktop down to a Jetson Nano.
       </p>
     </div>
 
-    <!-- Environment coverage -->
-    <div class="centroid-grid" aria-label="Evaluation environments">
-      <div><div class="figure-placeholder mini">Cave</div><span>Cave</span></div>
-      <div><div class="figure-placeholder mini">Planetary-analog</div><span>Planetary-analog</span></div>
-      <div><div class="figure-placeholder mini">Indoor</div><span>Indoor</span></div>
-      <div><div class="figure-placeholder mini">Outdoor campus</div><span>Outdoor campus</span></div>
+    <!-- Robustness dashboard -->
+    <div class="metric-dashboard">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Robust</span>
+          <h3>Robustness</h3>
+        </div>
+      </div>
+
+      <figure class="figure-container" style="margin: 0;">
+        <video src="./static/videos/results.mp4" alt="Commerge robustness under degraded connectivity"
+               style="border-radius: 10px; width: 100%;" autoplay loop muted playsinline></video>
+        <figcaption>
+          Consistent map merging across <b>23 sequences</b> from <b>7 datasets</b>, spanning diverse environments
+          and platforms, demonstrates the robustness of Commerge.
+        </figcaption>
+      </figure>
     </div>
 
     <!-- Communication cost dashboard -->
     <div class="metric-dashboard" data-animate-bars aria-label="Communication cost comparison">
       <div class="metric-dashboard-header">
         <div>
-          <span class="chart-kicker">Data exchanged per merge</span>
+          <span class="chart-kicker">Communication-Efficient</span>
           <h3>Communication Cost</h3>
         </div>
         <div class="chart-legend" aria-label="Chart legend">
-          <span><i style="--legend-color: #8a98a4;"></i>Whole-scan exchange</span>
-          <span><i style="--legend-color: #b9a24a;"></i>Naive downsampling</span>
-          <span><i style="--legend-color: #010042;"></i>Commerge</span>
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines (Whole scans)</span>
+          <span><i style="--legend-color: #b9a24a;"></i>KISS-Matcher (Naive downsampling)</span>
+          <span><i style="--legend-color: #010042;"></i>Commerge (Proposed)</span>
         </div>
       </div>
 
       <p class="tau-note">
-        Values below are illustrative placeholders except the reported HeLiPR figures (7,000&nbsp;MB &rarr;
-        1.3&nbsp;MB). Replace the <code>--bar-target</code> and displayed numbers with per-dataset results from
-        the paper. Bars use a log scale so the MB-scale bar stays visible against the GB-scale baseline.
+        Data exchanged per merge on the Town sequence of HeLiPR dataset.
       </p>
 
       <div class="metric-grid metric-grid-1">
         <article class="metric-card">
           <div class="metric-card-header">
-            <h4>HeLiPR: Data Exchanged (MB) &darr;</h4>
+            <h4>Data Exchanged (MB) &darr;</h4>
           </div>
           <div class="metric-bars">
             <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
-              <span class="metric-label">Whole-scan</span>
+              <span class="metric-label">Baselines</span>
               <span class="bar-track"><span class="bar-fill"></span></span>
               <span class="metric-value">7000</span>
             </div>
-            <div class="metric-row" style="--method-color: #b9a24a; --bar-target: 58%;">
-              <span class="metric-label">Naive downsample</span>
+            <div class="metric-row" style="--method-color: #b9a24a; --bar-target: 42%;">
+              <span class="metric-label">KISS-Matcher</span>
               <span class="bar-track"><span class="bar-fill"></span></span>
-              <span class="metric-value">TBD</span>
+              <span class="metric-value">24.0</span>
             </div>
             <div class="metric-row best" style="--method-color: #010042; --bar-target: 12%;">
               <span class="metric-label">Commerge</span>
@@ -438,25 +471,242 @@
 
       <div class="chart-notes">
         <span>Lower is better (&darr;).</span>
-        <span>Bar lengths are log-scaled and illustrative until per-dataset numbers are filled in.</span>
       </div>
     </div>
-    <p class="note">
-      Placeholder dashboard: drop in the paper's per-dataset communication and accuracy tables here.
-    </p>
 
-    <!-- Qualitative merged-map comparison -->
-    <figure class="figure-container wide-figure">
-      <div class="scene-mesh-grid">
-        <div><div class="figure-placeholder">Whole-scan merge</div><span>Whole-scan</span></div>
-        <div><div class="figure-placeholder">Naive downsample</div><span>Naive downsample</span></div>
-        <div><div class="figure-placeholder">Commerge merge</div><span>Commerge</span></div>
+    <!-- Runtime dashboard -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Runtime comparison">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Fast</span>
+          <h3>Runtime</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #010042;"></i>Seq. Matching (A)</span>
+          <span><i style="--legend-color: #4b57a8;"></i>BMVC (B)</span>
+          <span><i style="--legend-color: #8a98a4;"></i>MEWC (C)</span>
+          <span><i style="--legend-color: #ffc800;"></i>Merging</span>
+        </div>
       </div>
-      <figcaption>
-        Qualitative merged-map comparison: Commerge preserves alignment quality while transmitting only an
-        MB-scale subset. Replace with rendered merged maps.
-      </figcaption>
-    </figure>
+
+      <p class="tau-note">
+        End-to-end execution time on the HeLiPR Town sequence, broken down by stage, from desktop to embedded.
+      </p>
+
+      <div class="metric-grid metric-grid-1">
+        <article class="metric-card">
+          <div class="metric-card-header">
+            <h4>Execution Time (s) &darr;</h4>
+          </div>
+          <div class="metric-bars">
+            <div class="stacked-row">
+              <span class="metric-label">Desktop</span>
+              <span class="stacked-track">
+                <span class="stacked-seg" style="width: 1.08%; background: #010042;"></span>
+                <span class="stacked-seg" style="width: 0.07%; background: #4b57a8;"></span>
+                <span class="stacked-seg" style="width: 0.07%; background: #8a98a4;"></span>
+                <span class="stacked-seg" style="width: 0.16%; background: #ffc800;"></span>
+              </span>
+              <span class="metric-value">1.38</span>
+            </div>
+            <div class="stacked-row">
+              <span class="metric-label">IPC-6000</span>
+              <span class="stacked-track">
+                <span class="stacked-seg" style="width: 64.94%; background: #010042;"></span>
+                <span class="stacked-seg" style="width: 0.36%; background: #4b57a8;"></span>
+                <span class="stacked-seg" style="width: 0.36%; background: #8a98a4;"></span>
+                <span class="stacked-seg" style="width: 1.47%; background: #ffc800;"></span>
+              </span>
+              <span class="metric-value">66.5</span>
+            </div>
+            <div class="stacked-row">
+              <span class="metric-label">Jetson Nano</span>
+              <span class="stacked-track">
+                <span class="stacked-seg" style="width: 96.87%; background: #010042;"></span>
+                <span class="stacked-seg" style="width: 0.50%; background: #4b57a8;"></span>
+                <span class="stacked-seg" style="width: 0.50%; background: #8a98a4;"></span>
+                <span class="stacked-seg" style="width: 2.12%; background: #ffc800;"></span>
+              </span>
+              <span class="metric-value">99.1</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chart-notes">
+        <span>Lower is better (&darr;).</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== Ablation Study ==================== -->
+<section class="section content-section" id="ablation" data-toc-title="Ablation Study">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Ablation Study</h2>
+    <div class="content has-text-justified">
+      <p>
+        We ablate the three cascade steps (A: sequential matching, B: balanced minimum vertex cover,
+        C: maximum edge-weighted clique) on two datasets of different scale. Sequential matching (A) alone already merges accurately but exchanges the most data. Adding the
+        balanced minimum vertex cover (B) cuts both the optimization time and the data exchanged, while the maximum
+        edge-weighted clique (C) on its own is intractable, with its optimization time exploding. Only the full
+        cascade (B&nbsp;+&nbsp;C) is simultaneously the fastest to optimize and the cheapest to transmit, while
+        keeping RMSE competitive.
+      </p>
+      <p>
+        The advantage grows with data scale: on the larger <b>HeLiPR</b> sequences the full cascade cuts the
+        clique's optimization time from <b>283,638&nbsp;s</b> down to <b>17&nbsp;s</b> and data from
+        <b>209.8&nbsp;MB</b> to <b>14.4&nbsp;MB</b>, a far larger margin than on the smaller <b>NTU</b> sequences.
+      </p>
+    </div>
+
+    <!-- Dataset 1: HeLiPR -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Ablation on HeLiPR">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">HeLiPR Town 01-03</span>
+          <h3>Cascade Ablation</h3>
+        </div>
+      </div>
+
+      <p class="tau-note">A: Sequential Matching &middot; B: Balanced Minimum Vertex Cover &middot; C: Maximum Edge-Weighted Clique.</p>
+
+      <div class="metric-grid metric-grid-3 ablation-metrics">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>RMSE (m) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 86%;">
+              <span class="metric-label">A</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">2.988</span>
+            </div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 100%;">
+              <span class="metric-label">A+B</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">3.464</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #4b57a8; --bar-target: 83%;">
+              <span class="metric-label">A+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">2.887</span>
+            </div>
+            <div class="metric-row" style="--method-color: #010042; --bar-target: 87%;">
+              <span class="metric-label">A+B+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">3.005</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Computation Time (s) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 45%;">
+              <span class="metric-label">A</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">276.9</span>
+            </div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 39%;">
+              <span class="metric-label">A+B</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">140.2</span>
+            </div>
+            <div class="metric-row" style="--method-color: #4b57a8; --bar-target: 100%;">
+              <span class="metric-label">A+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">283638</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 23%;">
+              <span class="metric-label">A+B+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">17.1</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Data Exchanged (MB) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">A</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">232.9</span>
+            </div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 51%;">
+              <span class="metric-label">A+B</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">117.9</span>
+            </div>
+            <div class="metric-row" style="--method-color: #4b57a8; --bar-target: 90%;">
+              <span class="metric-label">A+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">209.8</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 6%;">
+              <span class="metric-label">A+B+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">14.4</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chart-notes">
+        <span>Lower is better (&darr;).</span>
+        <span>Best value highlighted.</span>
+      </div>
+    </div>
+
+    <!-- Dataset 2: NTU (MCD) -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Ablation on NTU">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">NTU 01-10 (MCD)</span>
+          <h3>Cascade Ablation</h3>
+        </div>
+      </div>
+
+      <p class="tau-note">A: Sequential Matching &middot; B: Balanced Minimum Vertex Cover &middot; C: Maximum Edge-Weighted Clique.</p>
+
+      <div class="metric-grid metric-grid-3 ablation-metrics">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>RMSE (m) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 85%;">
+              <span class="metric-label">A</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">1.826</span>
+            </div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 100%;">
+              <span class="metric-label">A+B</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">2.148</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #4b57a8; --bar-target: 83%;">
+              <span class="metric-label">A+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">1.792</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 83%;">
+              <span class="metric-label">A+B+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">1.792</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Computation Time (s) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 65%;">
+              <span class="metric-label">A</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">24.1</span>
+            </div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 55%;">
+              <span class="metric-label">A+B</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">14.3</span>
+            </div>
+            <div class="metric-row" style="--method-color: #4b57a8; --bar-target: 100%;">
+              <span class="metric-label">A+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">131.1</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 32%;">
+              <span class="metric-label">A+B+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">4.6</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Data Exchanged (MB) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">A</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">20.3</span>
+            </div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 59%;">
+              <span class="metric-label">A+B</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">12.0</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #4b57a8; --bar-target: 19%;">
+              <span class="metric-label">A+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">3.9</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 19%;">
+              <span class="metric-label">A+B+C</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">3.9</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chart-notes">
+        <span>Lower is better (&darr;).</span>
+        <span>Best value highlighted.</span>
+      </div>
+    </div>
   </div>
 </section>
 
