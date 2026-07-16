@@ -368,8 +368,8 @@
           Map merging assumes robots traverse overlapping regions, so a sequentially overlapped region always
           exists between their trajectories.</p>
         <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
-          Match scans sequentially through connectivity, so the retained candidates still cover the shared
-          structure required for alignment.</p>
+          Match scans through connectivity built from <span class="inline-pill">SOLiD</span> similarity, so the
+          retained candidates still cover the shared structure required for alignment.</p>
       </article>
       <article>
         <h3>Step (B): Balanced minimum vertex cover</h3>
@@ -377,8 +377,8 @@
           Thinning candidates can be cast as a minimum vertex cover, but solving it directly may pile the
           communication load onto one robot.</p>
         <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
-          Add a balancing constraint to the vertex cover so the transmission cost is shared evenly across all
-          participating robots.</p>
+          Add a balancing constraint on <span class="inline-pill">vertex cardinality</span> to the vertex cover so
+          the transmission cost is shared evenly across all participating robots.</p>
       </article>
       <article>
         <h3>Step (C): Maximum edge-weighted clique selection</h3>
@@ -386,8 +386,8 @@
           A plain vertex cover keeps only one scan per loop, so it can throw away geometrically and perceptually
           informative observations.</p>
         <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
-          Select a maximum edge-weighted clique, keeping the mutually consistent scans that preserve
-          geometric-perceptual consistency.</p>
+          Select a maximum edge-weighted clique whose weights fuse <span class="inline-pill">SOLiD</span> and
+          <span class="inline-pill">pose</span> cues, keeping the mutually geometric-perceptual consistent scans.</p>
       </article>
     </div>
 
