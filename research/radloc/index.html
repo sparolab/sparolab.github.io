@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
@@ -20,38 +20,33 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body class="has-navbar-fixed-top">
+<body>
 
-<!-- ==================== Navigation Bar ==================== -->
-<nav class="navbar is-fixed-top kiss-navbar" role="navigation" aria-label="main navigation">
-  <div class="container is-max-fullhd">
-    <div class="navbar-brand">
-      <a class="navbar-item navbar-brand-label" href="https://sparolab.github.io/">
-        <img src="./static/images/logo.png" alt="SPARO Lab" class="navbar-brand-icon">
-        SPARO Lab
-      </a>
-      <a role="button" class="navbar-burger" id="navBurger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <div id="radlocNavbar" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item nav-link" href="#abstract">Abstract</a>
-        <a class="navbar-item nav-link" href="#BibTeX">BibTeX</a>
-      </div>
-    </div>
-  </div>
+<!-- ==================== Table of Contents (left rail) ==================== -->
+<nav class="toc-nav" aria-label="Page navigation">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+    <li><a href="#evaluation">Evaluation</a></li>
+    <li><a href="#ablation">Ablation Study</a></li>
+    <li><a href="#BibTeX">BibTeX</a></li>
+  </ul>
 </nav>
 
 <!-- ==================== Hero Title Bar + Authors ==================== -->
 <section class="hero is-medium is-bold is-primary" id="top">
+  <a href="https://sparolab.github.io/" target="_blank" rel="noopener" class="sparo-logo-link" aria-label="SPARO Lab home">
+    <img src="./static/images/logo.png" alt="SPARO Lab">
+  </a>
   <div class="hero-body">
     <div class="container is-max-fullhd has-text-centered">
       <h1 class="title is-2 publication-title">
-        <span style="color: #ffc800;">RadLoc</span>: Radar-based 3-DoF Global Localization<br>
-        via <span style="color: #ffc800;">Fast</span>, <span style="color: #ffc800;">Robust</span>, and <span style="color: #ffc800;">Lightweight</span> Spatial Descriptor<br>
+        <span style="color: #ffc800;">RadLoc</span>: <span style="color: #ffc800;">Rad</span>ar-based 3-DoF Global <span style="color: #ffc800;">Loc</span>alization<br>
+        via Fast, Robust, and Lightweight Spatial Descriptor<br>
         Across Diverse Environmental Scenarios
       </h1>
       <div class="is-size-6 publication-authors" style="margin-top: 1rem;">
@@ -68,6 +63,9 @@
           and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko" target="_blank">Younggun Cho</a><sup>1&dagger;</sup>
         </span>
       </div>
+      <div class="is-size-6 publication-authors" style="margin-top: 0.25rem;">
+        <span class="author-block">&dagger; Corresponding author</span>
+      </div>
       <div class="is-size-5 publication-authors" style="margin-top: 0.25rem;">
         <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>
       </div>
@@ -80,23 +78,21 @@
             </a>
           </span>
           <span class="link-block">
-            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2607.08115" target="_blank" rel="noopener">
               <span class="icon"><i class="ai ai-arxiv"></i></span>
-              <span>arXiv (TBD)</span>
+              <span>arXiv</span>
             </a>
           </span>
           <span class="link-block">
-            <a href="https://youtu.be/t0wPMGrp32o"
-               class="external-link button is-normal is-rounded is-dark"
-               target="_blank">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://www.youtube.com/watch?v=q8iaEpMSANU" target="_blank" rel="noopener">
               <span class="icon"><i class="fab fa-youtube"></i></span>
               <span>Video</span>
             </a>
           </span>
           <span class="link-block">
-            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/sparolab/RadLoc" target="_blank" rel="noopener">
               <span class="icon"><i class="fab fa-github"></i></span>
-              <span>Code (TBD)</span>
+              <span>Code</span>
             </a>
           </span>
         </div>
@@ -132,79 +128,616 @@
 </div>
 
 
-<!-- ==================== TL;DR / Teaser ==================== -->
-<section class="hero teaser">
+<!-- ==================== Overview / Teaser ==================== -->
+<section class="section content-section" id="overview" data-toc-title="Overview">
   <div class="container is-max-fullhd">
-    <div class="hero-body">
-      <div class="has-text-centered">
-        <div class="columns is-centered">
-          <div class="column is-four-fifths">
-            <video autoplay muted loop playsinline preload="auto" style="width: 100%; border-radius: 10px;">
-              <source src="/research/radloc/assets/IROS2026_RadLoc.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-      <div class="columns is-centered" style="margin-top: 1.5rem;">
-        <div class="column is-four-fifths">
-          <p class="has-text-centered">
-            <b>TL;DR</b> &mdash; <span style="font-variant: small-caps; font-weight: bold;">RadLoc</span> is a fast, robust, and lightweight end-to-end radar-based global localization pipeline
-            from place recognition to 3-DoF pose estimation, leveraging <b>1D CA-CFAR filtering</b> and a compact <b>hierarchical coarse-to-fine retrieval</b> strategy.
-          </p>
-        </div>
-      </div>
-    </div>
+    <figure class="figure-container hero-figure">
+      <img src="/research/radloc/assets/radloc.gif" alt="RadLoc Overview" style="border-radius: 10px; width: 50%; display: block; margin: 0 auto;">
+      <figcaption>
+        <b>TL;DR:</b> <span class="kiss-imu">Fast, Robust, and Lightweight Radar-based 3-DoF Global Localization</span> <span class="kiss-imu">
+      </figcaption>
+    </figure>
   </div>
 </section>
 
 
 <!-- ==================== Abstract ==================== -->
-<section class="section" id="abstract">
+<section class="section content-section" id="abstract" data-toc-title="Abstract">
   <div class="container is-max-fullhd">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            While global localization using spinning radar has gained attention for its robustness to adverse weather
-            and challenging environments, many studies have focused on individual components such as place recognition
-            or pose estimation.
-          </p>
-          <p>
-            In this paper, we take a holistic view of radar-based global localization and present
-            <span style="font-variant: small-caps; font-weight: bold;">RadLoc</span>, a fast, robust, and lightweight
-            end-to-end pipeline from place recognition to 3-DoF pose estimation.
-            RadLoc accelerates pre-processing using 1D CA-CFAR filtering and leverages the near-range dominance in
-            spinning radar images to design a compact descriptor and an efficient hierarchical coarse-to-fine retrieval strategy.
-            Moreover, coupled with phase correlation-based 3-DoF pose estimation, it forms a versatile global localization
-            module applicable to SLAM and multi-session SLAM systems.
-          </p>
-          <p>
-            Extensive experiments on 15 sequences across 5 datasets demonstrate that RadLoc achieves robust performance
-            while maintaining the smallest descriptor size and fastest retrieval time among state-of-the-art approaches.
-          </p>
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        While global localization using spinning radar has gained attention for its robustness to adverse weather and challenging environments, many studies have focused on individual components such as place recognition or pose estimation. 
+        In this paper, we take a holistic view of radar sensor-based global localization and present RadLoc, a fast, robust, and lightweight end-to-end pipeline from place recognition to 3-DoF pose estimation. 
+        RadLoc accelerates pre-processing using 1D CA-CFAR filtering and leverages the near-range dominance in spinning radar images to design a compact descriptor and an efficient hierarchical coarse-to-fine retrieval strategy. 
+        Moreover, coupled with phase correlation-based 3-DoF pose estimation, it forms a versatile global localization module applicable to SLAM and multi-session SLAM systems. 
+        Extensive experiments on 15 sequences across 5 datasets demonstrate that RadLoc achieves robust performance while maintaining the smallest descriptor size and fastest retrieval time among state-of-the-art approaches.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Motivation ==================== -->
+<section class="section content-section" id="motivation" data-toc-title="Motivation">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Motivation</h2>
+    <div class="content has-text-justified">
+      <p>
+        Radar-based global localization has advanced rapidly, but most prior work optimizes a
+        <em>single</em> component in isolation. As a result, each line of research is tuned for its own
+        sub-problem rather than for a complete localization system.
+      </p>
+    </div>
+
+    <div class="method-grid method-grid-3">
+      <article>
+        <h3>Place Recognition</h3>
+        <p style="text-align: justify;">Many radar studies focus solely on recognizing revisited places, designing
+          descriptors and retrieval pipelines while leaving metric pose estimation out of scope.</p>
+      </article>
+      <article>
+        <h3>Pose Estimation</h3>
+        <p style="text-align: justify;">Others concentrate on estimating relative or absolute pose from radar
+          scans, assuming the matching place is already known or coarsely provided.</p>
+      </article>
+      <article>
+        <h3>SLAM</h3>
+        <p style="text-align: justify;">Radar SLAM does cover the full localization-and-mapping loop, but
+          higher-level tasks such as multi-session SLAM remain underexplored and insufficiently supported.</p>
+      </article>
+    </div>
+
+    <div class="content has-text-justified" style="margin-top: 1.75rem;">
+      <p>
+        Our <span class="kiss-imu">RadLoc</span> takes a holistic view, covering the full stack from place
+        recognition and 3-DoF pose estimation to SLAM and multi-session SLAM in one fast, robust, and lightweight
+        pipeline.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Demo ==================== -->
+<section class="section content-section" id="demo" data-toc-title="Demo">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Demo</h2>
+    <div class="content has-text-justified">
+      <p>
+        <span class="kiss-imu">RadLoc</span> runs end-to-end across the full localization stack: place recognition,
+        3-DoF pose estimation, and SLAM, including multi-session settings under long-term and cross-weather
+        variations.
+      </p>
+    </div>
+
+    <div class="demo-grid">
+      <figure class="figure-container" style="margin: 0;">
+        <video src="/research/radloc/assets/pr_demo.mp4" alt="Place recognition demo"
+               style="border-radius: 10px; width: 100%;" autoplay loop muted playsinline></video>
+        <figcaption><b>Demo #1:</b> Place Recognition</figcaption>
+      </figure>
+      <figure class="figure-container" style="margin: 0;">
+        <video src="/research/radloc/assets/mspr_demo.mp4" alt="Multi-session place recognition demo"
+               style="border-radius: 10px; width: 100%;" autoplay loop muted playsinline></video>
+        <figcaption><b>Demo #2:</b> Multi-Session Place Recognition</figcaption>
+      </figure>
+      <figure class="figure-container" style="margin: 0;">
+        <video src="/research/radloc/assets/slam_demo.mp4" alt="SLAM demo"
+               style="border-radius: 10px; width: 100%;" autoplay loop muted playsinline></video>
+        <figcaption><b>Demo #3:</b> SLAM</figcaption>
+      </figure>
+      <figure class="figure-container" style="margin: 0;">
+        <video src="/research/radloc/assets/msslam_demo.mp4" alt="Multi-session SLAM demo"
+               style="border-radius: 10px; width: 100%;" autoplay loop muted playsinline></video>
+        <figcaption><b>Demo #4:</b> Multi-Session SLAM</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Pipeline ==================== -->
+<section class="section content-section" id="pipeline" data-toc-title="Pipeline">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Pipeline</h2>
+    <div class="content has-text-justified">
+      <p>
+        An overview of the <span class="kiss-imu">RadLoc</span> pipeline is summarized below. Given a polar radar
+        image from a spinning radar sensor, we convert it into a Cartesian representation for pose estimation
+        while retaining the original polar image for descriptor construction. We then apply lightweight
+        pre-processing to suppress radar-specific noise, and the processed image is used to construct a compact
+        descriptor, which is stored in a database for efficient retrieval. At query time, RadLoc performs
+        hierarchical coarse-to-fine place retrieval against the database, and retrieves the corresponding polar
+        and Cartesian images of the matched place for 3-DoF pose estimation via phase correlation.
+      </p>
+    </div>
+
+    <figure class="figure-container">
+      <img src="/research/radloc/assets/pipeline.png" alt="RadLoc pipeline" style="border-radius: 10px; width: 75%; display: block; margin: 0 auto;">
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Evaluation ==================== -->
+<section class="section content-section" id="evaluation" data-toc-title="Evaluation">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Evaluation</h2>
+    <div class="content has-text-justified">
+      <p>
+        We evaluate <span class="kiss-imu">RadLoc</span> on five public radar datasets (Oxford Radar Robotcar,
+        OORD, MulRan, Boreas, and Hercules) spanning structured urban and unstructured off-road scenes, multiple
+        weather conditions, and three Navtech radar sensors. We compare against learning-based (SHeRLoc, Kidnapped
+        Radar) and handcrafted (RSC, RaPlace, RadVLAD, RadFFTVLAD, ReFeree) descriptors, and a feature + GICP
+        pipeline for pose estimation. 
+
+        In every table, the top three results are highlighted as
+        <span class="rank-chip" style="background:#c0e5cd;"><b>1st</b></span>,
+        <span class="rank-chip" style="background:#e4eebe;">2nd</span>, and
+        <span class="rank-chip" style="background:#fef8c7;">3rd</span>.
+      </p>
+    </div>
+
+    <div class="metric-dashboard" data-animate-bars aria-label="Single-session place recognition (mean R@1)">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Robust</span>
+          <h3>Single-Session Place Recognition</h3>
         </div>
+      </div>
+      <p class="tau-note">Mean R@1 over 15 sequences from 5 datasets. Higher is better; best highlighted.</p>
+      <div class="metric-grid">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>R@1 @10&nbsp;m &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 48%;"><span class="metric-label">Kidnapped</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.349</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 72%;"><span class="metric-label">SHeRLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.528</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90%;"><span class="metric-label">RSC</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.655</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 67%;"><span class="metric-label">RaPlace</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.489</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 64%;"><span class="metric-label">RadVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.466</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 85%;"><span class="metric-label">RadFFTVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.624</span></div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 95%;"><span class="metric-label">ReFeree</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.695</span></div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100%;"><span class="metric-label">RadLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.731</span></div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>R@1 @20&nbsp;m &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 48%;"><span class="metric-label">Kidnapped</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.361</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 71%;"><span class="metric-label">SHeRLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.529</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90%;"><span class="metric-label">RSC</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.674</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 63%;"><span class="metric-label">RaPlace</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.470</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 61%;"><span class="metric-label">RadVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.458</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 86%;"><span class="metric-label">RadFFTVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.645</span></div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 96%;"><span class="metric-label">ReFeree</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.716</span></div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100%;"><span class="metric-label">RadLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.750</span></div>
+          </div>
+        </article>
+      </div>
+      <div class="chart-notes"><span>Higher is better (&uarr;).</span><span>Best value highlighted.</span></div>
+    </div>
+
+    <div class="metric-dashboard" data-animate-bars aria-label="Multi-session place recognition (mean)">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Robust</span>
+          <h3>Multi-Session Place Recognition</h3>
+        </div>
+      </div>
+      <p class="tau-note">Mean over 3 OORD sequences (Bellmouth, Hydro, Maree). Higher is better; best highlighted.</p>
+      <div class="metric-grid">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>R@1 &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 1%;"><span class="metric-label">Kidnapped</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.006</span></div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 98%;"><span class="metric-label">SHeRLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.966</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 80%;"><span class="metric-label">RSC</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.787</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 55%;"><span class="metric-label">RaPlace</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.539</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 1%;"><span class="metric-label">RadVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.007</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 91%;"><span class="metric-label">RadFFTVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.900</span></div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 98%;"><span class="metric-label">ReFeree</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.967</span></div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100%;"><span class="metric-label">RadLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.986</span></div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>AUC &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 1%;"><span class="metric-label">Kidnapped</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.006</span></div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 96%;"><span class="metric-label">SHeRLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.891</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90%;"><span class="metric-label">RSC</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.830</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 25%;"><span class="metric-label">RaPlace</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.233</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 1%;"><span class="metric-label">RadVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.008</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 67%;"><span class="metric-label">RadFFTVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.623</span></div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 91%;"><span class="metric-label">ReFeree</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.840</span></div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100%;"><span class="metric-label">RadLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.926</span></div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>F1 &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 1%;"><span class="metric-label">Kidnapped</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.013</span></div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 99%;"><span class="metric-label">SHeRLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.881</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 85%;"><span class="metric-label">RSC</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.756</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 53%;"><span class="metric-label">RaPlace</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.471</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 2%;"><span class="metric-label">RadVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.016</span></div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 84%;"><span class="metric-label">RadFFTVLAD</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.744</span></div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 96%;"><span class="metric-label">ReFeree</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.851</span></div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100%;"><span class="metric-label">RadLoc</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.887</span></div>
+          </div>
+        </article>
+      </div>
+      <div class="chart-notes"><span>Higher is better (&uarr;).</span><span>Best value highlighted.</span></div>
+    </div>
+
+    <!-- 3-DoF pose estimation dashboard -->
+    <div class="metric-dashboard" data-animate-bars aria-label="3-DoF pose estimation comparison">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Accurate &amp; Fast</span>
+          <h3>3-DoF Pose Estimation</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Feat. + GICP</span>
+          <span><i style="--legend-color: #010042;"></i>RadLoc (Proposed)</span>
+        </div>
+      </div>
+
+      <p class="tau-note">
+        Mean over the 7 Hercules sequences (Mountain 01-03, Parking 01-04) of the per-sequence values in the paper.
+      </p>
+
+      <div class="metric-grid">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>RTE (m) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">Feat. + GICP</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">0.78</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 87%;">
+              <span class="metric-label">RadLoc</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">0.68</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>RRE (&deg;) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">Feat. + GICP</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">3.24</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 59%;">
+              <span class="metric-label">RadLoc</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">1.91</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Success Rate (%) &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 96%;">
+              <span class="metric-label">Feat. + GICP</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">96.2</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100%;">
+              <span class="metric-label">RadLoc</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">99.8</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Runtime (s) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">Feat. + GICP</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">0.296</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 19%;">
+              <span class="metric-label">RadLoc</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">0.057</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chart-notes">
+        <span>&darr; lower is better, &uarr; higher is better.</span>
+        <span>Best value highlighted.</span>
+      </div>
+    </div>
+
+    <!-- Descriptor size dashboard -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Descriptor size comparison">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Lightweight</span>
+          <h3>Descriptor Size</h3>
+        </div>
+      </div>
+
+      <p class="tau-note">
+        Total descriptor storage across two sessions (sunny + snowy) on Hercules. Smaller is better for scalable
+        multi-session map management.
+      </p>
+
+      <div class="metric-grid metric-grid-1">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Descriptor Size (MB) &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 91%;">
+              <span class="metric-label">Kidnapped</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">499.31</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 29%;">
+              <span class="metric-label">SHeRLoc</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">4.88</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 28%;">
+              <span class="metric-label">RSC</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">4.57</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 40%;">
+              <span class="metric-label">RaPlace</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">10.98</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">RadVLAD</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">998.62</span>
+            </div>
+            <div class="metric-row" style="--method-color: #6b7f8c; --bar-target: 11%;">
+              <span class="metric-label">ReFeree</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">1.30</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 10%;">
+              <span class="metric-label">RadLoc</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">1.22</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chart-notes">
+        <span>Lower is better (&darr;).</span>
+        <span>Bars are log-scaled so MB-scale bars stay visible against the GB-scale baselines.</span>
       </div>
     </div>
   </div>
 </section>
 
 
+<!-- ==================== Ablation Study ==================== -->
+<section class="section content-section" id="ablation" data-toc-title="Ablation Study">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Ablation Study</h2>
+    <div class="content has-text-justified">
+      <p>
+        We ablate the two core design choices of <span class="kiss-imu">RadLoc</span>: the range-dependent
+        weighting and the hierarchical coarse-to-fine retrieval, and analyze the sensitivity to the radial
+        partition index.
+      </p>
+    </div>
+
+    <!-- Radial partition K: Mountain 03 -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Radial partition K on Mountain 03">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Mountain 03</span>
+          <h3>I. Radial Partition <em>K</em></h3>
+        </div>
+      </div>
+      <p class="tau-note">Larger <em>K</em> improves R@1 by using more structure, while AUC and F1 decrease as far-range bins enter the coarse stage. Higher is better; <em>K</em>&nbsp;=&nbsp;20 (selected default) highlighted.</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>R@1 &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 93%;">
+              <span class="metric-label">K=8</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.934</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 95%;">
+              <span class="metric-label">K=10</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.946</span>
+            </div>
+            <div class="metric-row is-selected" style="--method-color: #010042; --bar-target: 96%;">
+              <span class="metric-label">K=20</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.960</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 97%;">
+              <span class="metric-label">K=40</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.972</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>AUC &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90%;">
+              <span class="metric-label">K=8</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.897</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90%;">
+              <span class="metric-label">K=10</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.901</span>
+            </div>
+            <div class="metric-row is-selected" style="--method-color: #010042; --bar-target: 89%;">
+              <span class="metric-label">K=20</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.893</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 88%;">
+              <span class="metric-label">K=40</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.875</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>F1 &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 80%;">
+              <span class="metric-label">K=8</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.803</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 80%;">
+              <span class="metric-label">K=10</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.800</span>
+            </div>
+            <div class="metric-row is-selected" style="--method-color: #010042; --bar-target: 79%;">
+              <span class="metric-label">K=20</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.790</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 77%;">
+              <span class="metric-label">K=40</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.767</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Radial partition K: 21-01-19 -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Radial partition K on 21-01-19">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Boreas 21-01-19</span>
+          <h3>Radial Partition <em>K</em></h3>
+        </div>
+      </div>
+      <p class="tau-note">Higher is better for all metrics. <em>K</em>&nbsp;=&nbsp;20 (selected default) highlighted.</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>R@1 &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 35%;">
+              <span class="metric-label">K=8</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.354</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 39%;">
+              <span class="metric-label">K=10</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.387</span>
+            </div>
+            <div class="metric-row is-selected" style="--method-color: #010042; --bar-target: 50%;">
+              <span class="metric-label">K=20</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.499</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 55%;">
+              <span class="metric-label">K=40</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.551</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>AUC &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 65%;">
+              <span class="metric-label">K=8</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.654</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 65%;">
+              <span class="metric-label">K=10</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.650</span>
+            </div>
+            <div class="metric-row is-selected" style="--method-color: #010042; --bar-target: 58%;">
+              <span class="metric-label">K=20</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.582</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 55%;">
+              <span class="metric-label">K=40</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.546</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>F1 &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 60%;">
+              <span class="metric-label">K=8</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.603</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 58%;">
+              <span class="metric-label">K=10</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.582</span>
+            </div>
+            <div class="metric-row is-selected" style="--method-color: #010042; --bar-target: 50%;">
+              <span class="metric-label">K=20</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.503</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 46%;">
+              <span class="metric-label">K=40</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.459</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="metric-dashboard">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Discriminability</span>
+          <h3>II. Range-dependent Weighting</h3>
+        </div>
+      </div>
+      <p class="tau-note">
+        The proposed weighting aligns descriptor distances with ground-truth spatial separation: it yields lower
+        Kolmogorov-Smirnov statistics than the unweighted variant for both positive and negative pairs, mitigating
+        the near-range bias.
+      </p>
+      <figure class="figure-container" style="margin: 0;">
+        <img src="/research/radloc/assets/ks_plot.png" alt="KS plot: range-dependent weighting"
+             style="border-radius: 10px; width: 60%; display: block; margin: 0 auto;">
+      </figure>
+    </div>
+
+    <div class="metric-dashboard">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Recall preserved</span>
+          <h3>III. Hierarchical Retrieval</h3>
+        </div>
+      </div>
+      <p class="tau-note">
+        Hierarchical coarse-to-fine retrieval preserves recall comparable to exhaustive flat search while
+        substantially cutting runtime, with the advantage growing as the database size increases.
+      </p>
+      <figure class="figure-container" style="margin: 0;">
+        <img src="/research/radloc/assets/prcurve_ablation.png" alt="PR curves: hierarchical vs flat retrieval"
+             style="border-radius: 10px; width: 75%; display: block; margin: 0 auto;">
+      </figure>
+    </div>
+
+    <div class="metric-dashboard">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Scalable</span>
+          <h3>IV. Runtime</h3>
+        </div>
+      </div>
+      <p class="tau-note">
+        The retrieval runtime of the hierarchical search scales far better than exhaustive flat search, with the
+        gap widening as the database grows.
+      </p>
+      <figure class="figure-container" style="margin: 0;">
+        <img src="/research/radloc/assets/runtime.png" alt="Retrieval runtime: hierarchical vs flat"
+             style="border-radius: 10px; width: 75%; display: block; margin: 0 auto;">
+      </figure>
+    </div>
+  </div>
+</section>
 
 
 <!-- ==================== BibTeX ==================== -->
-<section class="section" id="BibTeX">
+<section class="section content-section" id="BibTeX" data-toc-title="BibTeX">
   <div class="container is-max-fullhd">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths content">
-        <h2 class="title">BibTeX</h2>
-        <pre><code>@inproceedings{kim2026radloc,
+    <div class="content">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre><code>@inproceedings{kim2026radloc,
   author    = {Kim, Hogyun and Choi, Jiwon and Lee, Jungwoo and Cho, Younggun},
   title     = {RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios},
   booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
   year      = {2026},
+}
+
+@article{kim2026radloc,
+  title={RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios},
+  author={Kim, Hogyun and Choi, Jiwon and Lee, Jungwoo and Cho, Younggun},
+  journal={arXiv preprint arXiv:2607.08115},
+  year={2026}
 }</code></pre>
-      </div>
     </div>
   </div>
 </section>
@@ -228,53 +761,50 @@
 <!-- ==================== Custom Scripts ==================== -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Navbar burger toggle (mobile)
-  var burger = document.querySelector('.navbar-burger');
-  var menu = document.getElementById('radlocNavbar');
-  if (burger && menu) {
-    burger.addEventListener('click', function() {
-      burger.classList.toggle('is-active');
-      menu.classList.toggle('is-active');
-    });
-  }
-
-  // Smooth scroll for nav links
-  document.querySelectorAll('.nav-link').forEach(function(link) {
+  // Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
     link.addEventListener('click', function(e) {
-      e.preventDefault();
       var targetId = this.getAttribute('href').substring(1);
       var target = document.getElementById(targetId);
-      if (target) {
-        var navHeight = document.querySelector('.kiss-navbar').offsetHeight;
-        var targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
-        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-      }
-      if (burger && menu) {
-        burger.classList.remove('is-active');
-        menu.classList.remove('is-active');
-      }
+      if (!target) { return; }
+      e.preventDefault();
+      var targetPos = target.getBoundingClientRect().top + window.pageYOffset - 20;
+      window.scrollTo({ top: targetPos, behavior: 'smooth' });
     });
   });
 
-  // Active nav link highlight on scroll
+  // Active link highlight on scroll (left TOC)
   var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav-link');
+  var tocItems = document.querySelectorAll('.toc-nav li');
   window.addEventListener('scroll', function() {
-    var scrollPos = window.pageYOffset + 100;
+    var scrollPos = window.pageYOffset + 120;
     sections.forEach(function(section) {
       var top = section.offsetTop;
       var height = section.offsetHeight;
       var id = section.getAttribute('id');
       if (scrollPos >= top && scrollPos < top + height) {
-        navLinks.forEach(function(link) {
-          link.classList.remove('is-active');
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('is-active');
-          }
+        tocItems.forEach(function(item) {
+          var a = item.querySelector('a');
+          item.classList.toggle('active', a && a.getAttribute('href') === '#' + id);
         });
       }
     });
   });
+
+  // Animate metric bars when they scroll into view
+  var barBlocks = document.querySelectorAll('[data-animate-bars]');
+  if ('IntersectionObserver' in window && barBlocks.length) {
+    var barObserver = new IntersectionObserver(function(entries, obs) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) { return; }
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0.18 });
+    barBlocks.forEach(function(block) { barObserver.observe(block); });
+  } else {
+    barBlocks.forEach(function(block) { block.classList.add('is-visible'); });
+  }
 
   // Sidebar toggle
   var sidebar = document.getElementById('related-sidebar');
