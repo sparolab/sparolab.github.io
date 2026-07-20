@@ -51,6 +51,19 @@ layout: default
     cursor: move;
     user-select: none;
   }
+
+  /* Award 뱃지 */
+  .award-badge {
+    display: inline-block;
+    margin: 2px auto 4px;
+    padding: 3px 11px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 999px;
+    background: #ffe08a;
+    color: #010042;
+    border: 1px solid #e0b83a;
+  }
 </style>
 
 <!-- 2. 태그 필터 바 -->
@@ -142,6 +155,11 @@ layout: default
 
             <!-- 카드 하단: 태그 및 발행일 -->
             <div style="margin-top:auto;">
+              {% if image.award %}
+                <div style="text-align:center; margin:4px 0;">
+                  <span class="award-badge">🏆 {{ image.award }}</span>
+                </div>
+              {% endif %}
               {% if image.tags %}
                 <div style="text-align:center; margin:2px 0;">
                   {% for tag in image.tags %}
