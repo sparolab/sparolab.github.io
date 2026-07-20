@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let awardHtml = '';
     if (item.award) {
-      awardHtml = `<div style="text-align:center; margin:4px 0;"><span style="display:inline-block; padding:3px 11px; font-size:0.72rem; font-weight:700; border-radius:999px; background:#ffe08a; color:#010042; border:1px solid #e0b83a;">🏆 ${item.award}</span></div>`;
+      awardHtml = `<span style="display:inline-block; margin:0 5px 0 0; padding:1px 8px; font-size:0.72rem; font-weight:700; line-height:1.4; vertical-align:1px; white-space:nowrap; border-radius:999px; background:#ffe08a; color:#010042; border:1px solid #e0b83a;">🏆 ${item.award}</span>`;
     }
 
     let dateHtml = '';
@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (item.paper) {
       titleHtml += ` ${item.paper}`;
     }
+    titleHtml = awardHtml + titleHtml;
 
     // 저자 처리 - 6명 초과 시 et al. 추가
     column.innerHTML = `
@@ -201,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           </div>
           <div style="margin-top:auto;">
-            ${awardHtml}
             ${tagsHtml ? `<div style="text-align:center; margin:2px 0;">${tagsHtml}</div>` : ''}
             <hr style="width:70%; margin:0 auto;">
             ${dateHtml}
