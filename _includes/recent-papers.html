@@ -39,6 +39,22 @@
     background: #e2e2ef;
   }
 
+  .recent-paper-card .award-badge {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    padding: 1px 9px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    vertical-align: 2px;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: #ffc800;
+    color: #010042;
+    border: 1.5px solid #010042;
+  }
+
   .recent-paper-card .card-image-wrapper {
     width: 100%;
     height: 250px;
@@ -51,7 +67,6 @@
     display: block;
   }
 
-  .recent-paper-card .card-title-clamp a,
   .recent-paper-card .card-title-clamp {
     display: -webkit-box;
     -webkit-line-clamp: 1;
@@ -195,12 +210,11 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (item.project_date) {
       dateHtml = `<p style="margin:10px 0; text-align:center; font-size:0.9rem; color:black;">${item.project_date}</p>`;
     }
-
-    let titleHtml = '';
+    let titleHtml = item.award ? `<span class="award-badge">🏆 ${item.award}</span>` : '';
     if (item.alt_link) {
-      titleHtml = `<a class="venue-badge" href="${item.alt_link}" target="_blank">${item.alt || "No Title"}</a>`;
+      titleHtml += `<a class="venue-badge" href="${item.alt_link}" target="_blank">${item.alt || "No Title"}</a>`;
     } else {
-      titleHtml = `<span class="venue-badge">${item.alt || "No Title"}</span>`;
+      titleHtml += `<span class="venue-badge">${item.alt || "No Title"}</span>`;
     }
     if (item.paper) {
       titleHtml += ` ${item.paper}`;
