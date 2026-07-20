@@ -52,20 +52,44 @@ layout: default
     user-select: none;
   }
 
-  /* Award 뱃지 (제목 앞 인라인) */
-  .award-badge {
+  /* Venue 뱃지 (예: IEEE ICRA) - Commerge outline pill */
+  .venue-badge {
     display: inline-block;
     margin: 0 5px 0 0;
-    padding: 1px 8px;
-    font-size: 0.72rem;
+    padding: 1px 9px;
+    font-size: 0.76rem;
     font-weight: 700;
-    line-height: 1.4;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
     vertical-align: 2px;
     white-space: nowrap;
     border-radius: 999px;
-    background: #ffe08a;
+    background: #f1f1f8;
     color: #010042;
-    border: 1px solid #e0b83a;
+    border: 1.5px solid #010042;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  a.venue-badge:hover {
+    background: #e2e2ef;
+  }
+
+  /* Award 뱃지 (제목 앞 인라인) - Commerge accent pill */
+  .award-badge {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    padding: 1px 9px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    vertical-align: 2px;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: #ffc800;
+    color: #010042;
+    border: 1.5px solid #010042;
   }
 </style>
 
@@ -131,12 +155,9 @@ layout: default
               <div class="content" style="text-align:left; font-size:1rem; color:black; font-weight:bold;">
                 {% if image.award %}<span class="award-badge">🏆 {{ image.award }}</span>{% endif %}
                 {% if image.alt_link %}
-                  <a href="{{ image.alt_link }}" target="_blank"
-                     style="color:#0073e6; text-decoration:none;">
-                    [{{ image.alt | default: "No Title" }}]
-                  </a>
+                  <a class="venue-badge" href="{{ image.alt_link }}" target="_blank">{{ image.alt | default: "No Title" }}</a>
                 {% else %}
-                  {{ image.alt}}
+                  <span class="venue-badge">{{ image.alt }}</span>
                 {% endif %}
                 {% if image.paper %}
                   {{ image.paper }}

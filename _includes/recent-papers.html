@@ -166,10 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let categoryColor = item.type === 'project' ? '#90CAF9' : '#FFB74D';
     let tagsHtml = `<span class="paper-card-tag" style="background:${categoryColor}; border-color:${categoryColor}; color:black;">${categoryLabel}</span>`;
 
-    let awardHtml = '';
-    if (item.award) {
-      awardHtml = `<span style="display:inline-block; margin:0 5px 0 0; padding:1px 8px; font-size:0.72rem; font-weight:700; line-height:1.4; vertical-align:1px; white-space:nowrap; border-radius:999px; background:#ffe08a; color:#010042; border:1px solid #e0b83a;">🏆 ${item.award}</span>`;
-    }
 
     let dateHtml = '';
     if (item.pulished_date) {
@@ -187,7 +183,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (item.paper) {
       titleHtml += ` ${item.paper}`;
     }
-    titleHtml = awardHtml + titleHtml;
 
     // 저자 처리 - 6명 초과 시 et al. 추가
     column.innerHTML = `
