@@ -13,12 +13,14 @@ layout: default
   }
 
   /* 태그 필터 바 스타일 */
+  #category-filter,
   #tag-filter,
   #year-filter {
     margin: 1rem 0;
     font-size: 0.8rem;
     font-weight: bold;
   }
+  #category-filter .tag-button,
   #tag-filter .tag-button,
   #year-filter .tag-button {
     display: inline-block;
@@ -35,10 +37,12 @@ layout: default
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
   }
+  #category-filter .tag-button:hover,
   #tag-filter .tag-button:hover,
   #year-filter .tag-button:hover {
     background: #e2e2ef;
   }
+  #category-filter .tag-button.active,
   #tag-filter .tag-button.active,
   #year-filter .tag-button.active {
     background: #010042;
@@ -66,8 +70,9 @@ layout: default
     letter-spacing: 0.02em;
     line-height: 1.45;
     border-radius: 999px;
-    border: 1.5px solid transparent;
-    color: black;
+    background: #f1f1f8;
+    color: #010042;
+    border: 1.5px solid #010042;
     transition: background 0.2s, border-color 0.2s;
   }
 
@@ -120,8 +125,16 @@ layout: default
 </style>
 
 <!-- 2. 태그 필터 바 -->
-<div id="tag-filter">
+<div id="category-filter">
   <span>Filter by Tags: </span>
+  <span class="tag-button active" data-category="All">All</span>
+  <span class="tag-button" data-category="Spatial AI">Spatial AI</span>
+  <span class="tag-button" data-category="Robotics">Robotics</span>
+  <span class="tag-button detail-toggle" id="detail-toggle">Detailed Tags &#9662;</span>
+</div>
+
+<div id="tag-filter" hidden>
+  <span>Detailed: </span>
   <span class="tag-button active" data-tag="All">All</span>
 </div>
 
@@ -147,11 +160,11 @@ layout: default
     title 에 따라 카드 기본 높이 설정
   {%- endcomment -%}
   {% if gallery.title == "Paper" %}
-    {% assign card_size = "min-height:530px; height:auto;" %}
+    {% assign card_size = "min-height:410px; height:auto;" %}
   {% elsif gallery.title == "Project" %}
-    {% assign card_size = "min-height:350px; height:auto;" %}
+    {% assign card_size = "min-height:300px; height:auto;" %}
   {% else %}
-    {% assign card_size = "min-height:530px; height:auto;" %}
+    {% assign card_size = "min-height:410px; height:auto;" %}
   {% endif %}
 
   <div class="columns is-multiline">
@@ -268,7 +281,13 @@ document.addEventListener('DOMContentLoaded', function() {
     tagColors[tag] = palette[idx % palette.length];
   });
 
-  // 4) 필터 버튼 생성
+  // 3-1) 대분류 <-> 세부 태그 매핑 (수정하려면 이 목록만 바꾸면 됩니다)
+  const CATEGORY_MAP = {
+    'Spatial AI': ['SLAM', 'Semantic', 'Neural Rendering', 'Learning', 'Calibration', 'Robust sensing', 'Dataset'],
+    'Robotics':   ['Field', 'Indoor', 'Urban', 'Underwater', 'Maritime', 'Exploration', 'Traverability', 'VLN']
+  };
+
+  // 4) 세부 태그 버튼 생성
   tagArray.forEach(tag => {
     const btn = document.createElement('span');
     btn.className   = 'tag-button';
@@ -294,28 +313,52 @@ document.addEventListener('DOMContentLoaded', function() {
       yearBar.appendChild(btn);
     });
 
-  // 5) 카드 내부 태그에도 색 적용
-  document.querySelectorAll('.card-tag').forEach(el => {
-    const tag   = el.dataset.tag;
-    const color = tagColors[tag] || '#cccccc';
-    el.style.background  = color;
-    el.style.borderColor = color;
-    el.style.color       = 'black';
-  });
 
   // 6) 필터링 (태그 AND 연도)
-  let selectedTag  = 'All';
-  let selectedYear = 'All';
+  let selectedCategory = 'All';
+  let selectedTag      = 'All';
+  let selectedYear     = 'All';
 
   function applyFilters() {
     items.forEach(item => {
-      const tags = (item.dataset.tags || '').split(',').map(t => t.trim());
+      const tags = (item.dataset.tags || '').split(',').map(t => t.trim()).filter(Boolean);
       const year = (item.dataset.year || '').trim();
-      const tagOk  = selectedTag  === 'All' || tags.includes(selectedTag);
-      const yearOk = selectedYear === 'All' || year === selectedYear;
-      item.style.display = (tagOk && yearOk) ? '' : 'none';
+
+      const catList = CATEGORY_MAP[selectedCategory] || [];
+      const catOk   = selectedCategory === 'All' || tags.some(t => catList.includes(t));
+      const tagOk   = selectedTag      === 'All' || tags.includes(selectedTag);
+      const yearOk  = selectedYear     === 'All' || year === selectedYear;
+
+      item.style.display = (catOk && tagOk && yearOk) ? '' : 'none';
     });
   }
+
+  // 대분류 필터 + 세부 태그 토글
+  const categoryBar = document.getElementById('category-filter');
+  const tagBar      = document.getElementById('tag-filter');
+  const detailToggle = document.getElementById('detail-toggle');
+
+  detailToggle.addEventListener('click', function() {
+    const open = !tagBar.hasAttribute('hidden');
+    if (open) {
+      tagBar.setAttribute('hidden', '');
+      detailToggle.innerHTML = 'Detailed Tags &#9662;';
+      detailToggle.classList.remove('active');
+    } else {
+      tagBar.removeAttribute('hidden');
+      detailToggle.innerHTML = 'Detailed Tags &#9652;';
+      detailToggle.classList.add('active');
+    }
+  });
+
+  categoryBar.addEventListener('click', function(e) {
+    const btn = e.target.closest('.tag-button');
+    if (!btn || btn === detailToggle) return;
+    categoryBar.querySelectorAll('.tag-button[data-category]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedCategory = btn.dataset.category;
+    applyFilters();
+  });
 
   // 7) 버튼 클릭 시 필터 적용
   filterBar.addEventListener('click', function(e) {
