@@ -1,3 +1,21 @@
+<style>
+  .home-news-section .news-date {
+    display: inline-block;
+    margin-right: 7px;
+    padding: 1px 9px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    vertical-align: 1px;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: #f1f1f8;
+    color: #010042;
+    border: 1.5px solid #010042;
+  }
+</style>
+
 <div class="home-news-section content">
   <ul id="home-news-list"></ul>
 
@@ -73,11 +91,12 @@
 
   latestNews.forEach((item) => {
     const li = document.createElement('li');
-    const strong = document.createElement('strong');
-    strong.textContent = item.date || '';
+    const dateBadge = document.createElement('span');
+    dateBadge.className = 'news-date';
+    dateBadge.textContent = item.date || '';
 
-    li.appendChild(strong);
-    li.appendChild(document.createTextNode(' - ' + (item.description || '')));
+    li.appendChild(dateBadge);
+    li.appendChild(document.createTextNode(item.description || ''));
 
     if (item.authors) {
       const authorStrong = document.createElement('strong');

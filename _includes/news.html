@@ -36,13 +36,31 @@
   {% endfor %}
 </ul> -->
 
+<style>
+  .news-date {
+    display: inline-block;
+    margin-right: 7px;
+    padding: 1px 9px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    vertical-align: 1px;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: #f1f1f8;
+    color: #010042;
+    border: 1.5px solid #010042;
+  }
+</style>
+
 ## News
 
 ### <a id="papers"></a> 📄 Papers
 <ul>
   {% for paper in site.data.news.papers %}
     <li>
-      <strong>{{ paper.date }}</strong> - {{ paper.description }}
+      <span class="news-date">{{ paper.date }}</span>{{ paper.description }}
       {% if paper.authors %}
         <strong style="color:#1f2a44;">({{ paper.authors }})</strong>
       {% endif %}
@@ -54,7 +72,7 @@
 <ul>
   {% for award in site.data.news.awards %}
     <li>
-      <strong>{{ award.date }}</strong> - {{ award.description }}
+      <span class="news-date">{{ award.date }}</span>{{ award.description }}
       {% if award.link %}
         <a href="{{ award.link }}" target="_blank">[Read more]</a>
       {% endif %}
@@ -66,7 +84,7 @@
 <ul>
   {% for project in site.data.news.projects %}
     <li>
-      <strong>{{ project.date }}</strong> - {{ project.description }}
+      <span class="news-date">{{ project.date }}</span>{{ project.description }}
     </li>
   {% endfor %}
 </ul>
@@ -75,7 +93,7 @@
 <ul>
   {% for person in site.data.news.people %}
     <li>
-      <strong>{{ person.date }}</strong> - {{ person.description }}
+      <span class="news-date">{{ person.date }}</span>{{ person.description }}
     </li>
   {% endfor %}
 </ul>
