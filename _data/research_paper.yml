@@ -6,6 +6,7 @@
       pulished_date: June, 2026
       paper: "RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios"
       authors: Hogyun Kim, Jiwon Choi, Jungwoo Lee, and Younggun Cho
+      category: "Robotics"
       tags:
           - SLAM
           - Field
@@ -17,6 +18,7 @@
       pulished_date: June, 2026
       paper: "Commerge: Communication-Efficient, Robust, and Fast LiDAR Map Merging Framework for Multi-Robot Coordination in Resource-Constrained Scenarios"
       authors: Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Seokhwan Jeong, Hyungtae Lim, and Younggun Cho
+      category: "Robotics"
       tags:
           - SLAM
           - Field
@@ -29,6 +31,7 @@
       paper: "KISS-IMU: Self-supervised Inertial Odometry with Motion-balanced Learning and Uncertainty-aware Inference"
       authors: Jiwon Choi, Hogyun Kim, Geonmo Yang, Juhui Lee and Younggun Cho
       award: "Award Finalist"
+      category: "Spatial AI"
       tags:
           - Learning
           - Field
@@ -40,6 +43,7 @@
       pulished_date: June, 2026
       paper: "GSAT: Geometric Traversability Estimation using Self-supervised Learning with Anomaly Detection for Diverse Terrains"
       authors: Dongjin Cho, Miryeong Park, Juhui Lee, Geonmo Yang, and Younggun Cho
+      category: "Spatial AI"
       tags:
           - Traverability
           - Field
@@ -51,6 +55,7 @@
       pulished_date: Dec, 2025
       paper: "CUTE-Planner: Confidence-aware Uneven Terrain Exploration Planner"
       authors: Miryeong Park, Dongjin Cho, Sanghyun Kim, and Younggun Cho
+      category: "Robotics"
       tags:
           - Exploration
           - Field
@@ -62,6 +67,7 @@
       pulished_date: Nov, 2025
       paper: "MSG-Loc: Multi-Label Likelihood-based Semantic Graph Matching for Object-Level Global Localization"
       authors: Gihyeon Lee, Jungwoo Lee, Juwon Kim, Young-Sik Shin, and Younggun Cho
+      category: "Spatial AI"
       tags:
           - Semantic
           - Indoor
@@ -73,6 +79,7 @@
       pulished_date: Oct, 2025
       paper: "Freeze-Frame with StaticNeRF: Uncertainty-Guided NeRF Map Reconstruction in Dynamic Scenes"
       authors: Juhui Lee, Geonmo Yang, Seungjun Ma, and Younggun Cho
+      category: "Spatial AI"
       tags:
           - Neural Rendering
           - Indoor
@@ -84,6 +91,7 @@
       pulished_date: Oct, 2025
       paper: "Uni-Mapper: Unified Mapping Framework for Multi-modal LiDARs in Complex and Dynamic Environments"
       authors: Gilhwan Kang, Hogyun Kim, Byunghee Choi, Seokhwan Jeong, Young-Sik Shin, and Younggun Cho
+      category: "Robotics"
       tags:
           - SLAM
           - Urban
@@ -95,6 +103,7 @@
       pulished_date: Oct, 2025
       paper: "CLOI-NAV: Open-World Vision-and-Language Navigation via Complex, Long-horizon Ordered Instructions"
       authors: Minho Lee, Jaeil Park, Jinyong Jeong, and Younggun Cho
+      category: "Spatial AI"
       tags:
           - VLN
           - Indoor
@@ -106,6 +115,7 @@
       pulished_date: Oct, 2025
       paper: "MUST-Loc: Multi-view Uncertainty-aware Semantic Token Association for Object-level Global Localization"
       authors: Gihyeon Lee, Young-Sik Shin, and Younggun Cho
+      category: "Spatial AI"
       tags:
           - Semantic
           - Indoor
@@ -117,6 +127,7 @@
       pulished_date: Oct, 2025
       paper: "MARSCalib: Multi-robot, Automatic, Robust, Spherical Target-based Extrinsic Calibration in Field and Extraterrestrial Environments"
       authors: Seokhwan Jeong, Hogyun Kim, and Younggun Cho
+      category: "Robotics"
       tags:
           - Calibration
           - Field
@@ -128,6 +139,7 @@
       pulished_date: May, 2025
       paper: "SKiD-SLAM: Robust, Lightweight, and Distributed Multi-Robot LiDAR SLAM in Resource-Constrained Field Environments"
       authors: Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho
+      category: "Robotics"
       tags:
           - SLAM
           - Field
@@ -139,6 +151,7 @@
       pulished_date: May, 2025
       paper: "PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal"
       authors: Jiwon Choi*, Dongjin Cho*, Gihyeon Lee, Hogyun Kim, Geonmo Yang, Joowan Kim, and Younggun Cho
+      category: "Robotics"
       tags:
           - Dataset
           - Maritime
@@ -150,6 +163,7 @@
       pulished_date: May, 2025
       paper: "DiTer++ : Diverse Terrain and Multi-modal Dataset for Multi-Robot Navigation in Multi-session Outdoor Environments"
       authors: Juwon Kim, Hogyun Kim, SeokHwan Jeong, Youngsik Shin, and Younggun Cho
+      category: "Robotics"
       tags:
           - Dataset
           - Field
@@ -161,6 +175,7 @@
       pulished_date: Dec 12, 2024
       paper: "ReFeree: Radar-Based Lightweight and Robust Localization Using Feature and Free Space"
       authors: Hogyun Kim, ByungHee Choi, Euncheol Choi, and Younggun Cho
+      category: "Robotics"
       tags:
           - SLAM
           - Urban
@@ -172,6 +187,7 @@
       pulished_date: Nov 05, 2024
       paper: "TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth and Uncertainty Estimation for Underwater 3D Robot Visual Perception"
       authors: Geonmo Yang, and Younggun Cho
+      category: "Spatial AI"
       tags:
           - Robust sensing
           - Underwater
@@ -183,6 +199,7 @@
       pulished_date: Aug 07, 2024
       paper: "Narrowing your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-constrained LiDAR Place Recognition"
       authors: Hogyun Kim, Jiwon Choi, Taehu Sim, Giseop Kim, and Younggun Cho
+      category: "Robotics"
       tags:
           - SLAM
           - Urban
@@ -194,6 +211,7 @@
       pulished_date: May 13, 2024
       paper: "Salience-guided Ground Factor for Robust Localization of Delivery Robots in Complex Urban Environments"
       authors: Jooyong Park, Jungwoo Lee, Euncheol Choi, and Younggun Cho
+      category: "Robotics"
       tags:
           - SLAM
           - Urban
@@ -205,6 +223,7 @@
       pulished_date: Jan 29, 2024
       paper: "DiTer: Diverse Terrain and Multimodal Dataset for Field Robot Navigation in Outdoor Environments"
       authors: Geonmo Yang, Gilhwan Kang, Juhui Lee, and Younggun Cho
+      category: "Robotics"
       tags:
           - Dataset
           - Field
@@ -216,6 +235,7 @@
       pulished_date: Dec 08, 2023
       paper: "Joint-ID: Transformer-based joint image enhancement and depth estimation for underwater environments"
       authors: Geonmo Yang, Gilhwan Kang, Juhui Lee, and Younggun Cho
+      category: "Spatial AI"
       tags:
           - Robust sensing
           - Underwater
@@ -227,6 +247,7 @@
       pulished_date: May 29, 2023
       paper: "Robust Imaging Sonar-based Place Recognition and Localization in Underwater Environments"
       authors: Hogyun Kim, Gilhwan Kang, Seokhwan Jeong, Seungjun Ma, and Younggun Cho
+      category: "Robotics"
       tags:
           - SLAM
           - Underwater

@@ -49,6 +49,19 @@ layout: default
     color: #ffffff;
   }
 
+  /* 카드 저자 2줄 클램프 (넘치면 JS가 et al. 처리) */
+  .card-authors {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: gray;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
+  }
+
   /* 카드 제목 2줄 클램프 (메인 페이지와 동일) */
   .card-title-clamp {
     display: -webkit-box;
@@ -70,9 +83,9 @@ layout: default
     letter-spacing: 0.02em;
     line-height: 1.45;
     border-radius: 999px;
-    background: #f1f1f8;
-    color: #010042;
-    border: 1.5px solid #010042;
+    background: #ffffff;
+    color: #5a5a72;
+    border: 1.5px solid #c9c9d8;
     transition: background 0.2s, border-color 0.2s;
   }
 
@@ -174,6 +187,7 @@ layout: default
       {% assign yr = yparts | last | replace: ",", "" %}
       <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
            data-year="{{ yr }}"
+           data-category="{{ image.category }}"
            {% if image.tags %}data-tags="{{ image.tags | join:',' }}"{% endif %}>
         <div class="clickable-card" data-href="{{ image.page_link }}">
           <div class="card"
@@ -209,17 +223,7 @@ layout: default
                 {% endif %}
               </div>
               {% if image.authors %}
-                {% assign author_list = image.authors | split: ", " %}
-                {% assign author_count = author_list | size %}
-                <div style="margin-top:10px; font-size:0.8rem; color:gray;">
-                  {% if author_count > 6 %}
-                    {% for author in author_list limit:6 %}
-                      {{ author }}{% unless forloop.last %}, {% endunless %}
-                    {% endfor %}, et al.
-                  {% else %}
-                    {{ image.authors }}
-                  {% endif %}
-                </div>
+                <div class="card-authors" data-authors="{{ image.authors | escape }}">{{ image.authors }}</div>
               {% endif %}
             </div>
 
@@ -281,12 +285,6 @@ document.addEventListener('DOMContentLoaded', function() {
     tagColors[tag] = palette[idx % palette.length];
   });
 
-  // 3-1) 대분류 <-> 세부 태그 매핑 (수정하려면 이 목록만 바꾸면 됩니다)
-  const CATEGORY_MAP = {
-    'Spatial AI': ['SLAM', 'Semantic', 'Neural Rendering', 'Learning', 'Calibration', 'Robust sensing', 'Dataset'],
-    'Robotics':   ['Field', 'Indoor', 'Urban', 'Underwater', 'Maritime', 'Exploration', 'Traverability', 'VLN']
-  };
-
   // 4) 세부 태그 버튼 생성
   tagArray.forEach(tag => {
     const btn = document.createElement('span');
@@ -324,8 +322,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const tags = (item.dataset.tags || '').split(',').map(t => t.trim()).filter(Boolean);
       const year = (item.dataset.year || '').trim();
 
-      const catList = CATEGORY_MAP[selectedCategory] || [];
-      const catOk   = selectedCategory === 'All' || tags.some(t => catList.includes(t));
+      const category = (item.dataset.category || '').trim();
+      const catOk    = selectedCategory === 'All' || category === selectedCategory;
       const tagOk   = selectedTag      === 'All' || tags.includes(selectedTag);
       const yearOk  = selectedYear     === 'All' || year === selectedYear;
 
@@ -381,6 +379,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 8) 초기 필터
   applyFilters();
+
+  // 8-1) 저자: 2줄을 넘기면 et al. 로 축약
+  function fitAuthors(el) {
+    const full = (el.dataset.authors || el.textContent || '').trim();
+    if (!full) return;
+    el.textContent = full;
+    const fits = () => el.scrollHeight <= el.clientHeight + 1;
+    if (fits()) return;
+    const parts = full.split(',').map(t => t.trim()).filter(Boolean);
+    for (let n = parts.length - 1; n >= 1; n--) {
+      el.textContent = parts.slice(0, n).join(', ') + ', et al.';
+      if (fits()) return;
+    }
+  }
+  const authorEls = Array.from(document.querySelectorAll('.card-authors'));
+  authorEls.forEach(fitAuthors);
+  window.addEventListener('resize', () => authorEls.forEach(fitAuthors));
 
   // 9) 카드 클릭 시 이동
   document.querySelectorAll('.clickable-card').forEach(card => {
