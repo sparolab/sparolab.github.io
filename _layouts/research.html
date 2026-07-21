@@ -49,6 +49,25 @@ layout: default
     color: #ffffff;
   }
 
+  /* 카드 하단 날짜 pill (메인 페이지와 동일) */
+  .card-date {
+    display: inline-block;
+    min-width: 5.2rem;
+    text-align: center;
+    box-sizing: border-box;
+    font-variant-numeric: tabular-nums;
+    padding: 2px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: #f1f1f8;
+    color: #010042;
+    border: 1.5px solid #010042;
+  }
+
   /* 카드 저자 2줄 클램프 (넘치면 JS가 et al. 처리) */
   .card-authors {
     margin-top: 10px;
@@ -108,15 +127,15 @@ layout: default
     vertical-align: 1px;
     white-space: nowrap;
     border-radius: 999px;
-    background: #f1f1f8;
-    color: #010042;
+    background: #010042;
+    color: #ffffff;
     border: 1.5px solid #010042;
     text-decoration: none;
     transition: background 0.2s;
   }
 
   a.venue-badge:hover {
-    background: #e2e2ef;
+    background: #1a1a6b;
   }
 
   /* Award 뱃지 (제목 앞 인라인) - Commerge accent pill */
@@ -235,6 +254,23 @@ layout: default
                     <span class="card-tag" data-tag="{{ tag }}">{{ tag }}</span>
                   {% endfor %}
                 </div>
+              {% endif %}
+              <hr style="width:70%; margin:0 auto;">
+              {% if image.pulished_date %}
+                {% assign dp = image.pulished_date | split: " " %}
+                {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}
+                {% assign drest = image.pulished_date | remove_first: dp[0] %}
+                <p style="margin:8px 0; text-align:center;">
+                  <span class="card-date">{{ mon3 }}.{{ drest }}</span>
+                </p>
+              {% endif %}
+              {% if image.project_date %}
+                {% assign dp2 = image.project_date | split: " " %}
+                {% assign mon3b = dp2[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}
+                {% assign drest2 = image.project_date | remove_first: dp2[0] %}
+                <p style="margin:8px 0; text-align:center;">
+                  <span class="card-date">{{ mon3b }}.{{ drest2 }}</span>
+                </p>
               {% endif %}
 
             </div>
