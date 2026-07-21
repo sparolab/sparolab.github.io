@@ -13,24 +13,47 @@ layout: default
   }
 
   /* 태그 필터 바 스타일 */
-  #tag-filter {
+  #tag-filter,
+  #year-filter {
     margin: 1rem 0;
     font-size: 0.8rem;
     font-weight: bold;
   }
-  #tag-filter .tag-button {
+  #tag-filter .tag-button,
+  #year-filter .tag-button {
     display: inline-block;
     margin: 0.1rem 0.3rem;
     padding: 2px 10px;
     font-size: 0.72rem;
-    font-weight: bold;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
     border-radius: 999px;
-    border: 1px solid;
+    background: #f1f1f8;
+    color: #010042;
+    border: 1.5px solid #010042;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
   }
-  #tag-filter .tag-button.active {
-    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.2);
+  #tag-filter .tag-button:hover,
+  #year-filter .tag-button:hover {
+    background: #e2e2ef;
+  }
+  #tag-filter .tag-button.active,
+  #year-filter .tag-button.active {
+    background: #010042;
+    color: #ffffff;
+  }
+
+  /* 카드 제목 2줄 클램프 (메인 페이지와 동일) */
+  .card-title-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
   }
 
   /* 카드 내부 태그 스타일 */
@@ -39,27 +62,15 @@ layout: default
     margin: 2px;
     padding: 2px 10px;
     font-size: 0.72rem;
-    font-weight: bold;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
     border-radius: 999px;
-    border: 1px solid transparent;
+    border: 1.5px solid transparent;
     color: black;
     transition: background 0.2s, border-color 0.2s;
   }
 
-  /* 카드 하단 날짜 pill (News 날짜와 동일 스타일) */
-  .card-date {
-    display: inline-block;
-    padding: 2px 10px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    line-height: 1.45;
-    white-space: nowrap;
-    border-radius: 999px;
-    background: #f1f1f8;
-    color: #010042;
-    border: 1.5px solid #010042;
-  }
 
   /* 제목 드래그 커서 */
   .draggable-title {
@@ -76,7 +87,7 @@ layout: default
     font-weight: 700;
     letter-spacing: 0.02em;
     line-height: 1.45;
-    vertical-align: 2px;
+    vertical-align: 1px;
     white-space: nowrap;
     border-radius: 999px;
     background: #f1f1f8;
@@ -99,7 +110,7 @@ layout: default
     font-weight: 700;
     letter-spacing: 0.02em;
     line-height: 1.45;
-    vertical-align: 2px;
+    vertical-align: 1px;
     white-space: nowrap;
     border-radius: 999px;
     background: #ffc800;
@@ -111,10 +122,12 @@ layout: default
 <!-- 2. 태그 필터 바 -->
 <div id="tag-filter">
   <span>Filter by Tags: </span>
-  <span class="tag-button active" data-tag="All"
-        style="background:#ffffff; border-color:#cccccc; color:#000000;">
-    All
-  </span>
+  <span class="tag-button active" data-tag="All">All</span>
+</div>
+
+<div id="year-filter">
+  <span>Filter by Year: </span>
+  <span class="tag-button active" data-year="All">All</span>
 </div>
 
 {% comment %}
@@ -143,7 +156,11 @@ layout: default
 
   <div class="columns is-multiline">
     {% for image in gallery.images %}
+      {% assign ydate = image.pulished_date | default: image.project_date %}
+      {% assign yparts = ydate | split: " " %}
+      {% assign yr = yparts | last | replace: ",", "" %}
       <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
+           data-year="{{ yr }}"
            {% if image.tags %}data-tags="{{ image.tags | join:',' }}"{% endif %}>
         <div class="clickable-card" data-href="{{ image.page_link }}">
           <div class="card"
@@ -167,7 +184,7 @@ layout: default
               
             <!-- 카드 본문: 논문명·저자 -->
             <div class="card-content" style="padding:10px;">
-              <div class="content" style="text-align:left; font-size:1rem; color:black; font-weight:bold;">
+              <div class="content card-title-clamp" style="text-align:left; font-size:1rem; color:black; font-weight:bold;">
                 {% if image.award %}<span class="award-badge">🏆 {{ image.award }}</span>{% endif %}
                 {% if image.alt_link %}
                   <a class="venue-badge" href="{{ image.alt_link }}" target="_blank">{{ image.alt | default: "No Title" }}</a>
@@ -202,23 +219,7 @@ layout: default
                   {% endfor %}
                 </div>
               {% endif %}
-              <hr style="width:70%; margin:0 auto;">
-              {% if image.pulished_date %}
-                {% assign dp = image.pulished_date | split: " " %}
-                {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}
-                {% assign drest = image.pulished_date | remove_first: dp[0] %}
-                <p style="margin:10px 0; text-align:center;">
-                  <span class="card-date">{{ mon3 }}.{{ drest }}</span>
-                </p>
-              {% endif %}
-              {% if image.project_date %}
-                {% assign dp2 = image.project_date | split: " " %}
-                {% assign mon3b = dp2[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}
-                {% assign drest2 = image.project_date | remove_first: dp2[0] %}
-                <p style="margin:10px 0; text-align:center;">
-                  <span class="card-date">{{ mon3b }}.{{ drest2 }}</span>
-                </p>
-              {% endif %}
+
             </div>
 
           </div>
@@ -273,12 +274,25 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.className   = 'tag-button';
     btn.dataset.tag = tag;
     btn.textContent = tag;
-    const color     = tagColors[tag];
-    btn.style.background  = color;
-    btn.style.borderColor = color;
-    btn.style.color       = 'black';
     filterBar.appendChild(btn);
   });
+
+  // 4-1) 연도 필터 버튼 생성
+  const yearBar = document.getElementById('year-filter');
+  const yearSet = new Set();
+  items.forEach(item => {
+    const y = (item.dataset.year || '').trim();
+    if (y) yearSet.add(y);
+  });
+  Array.from(yearSet)
+    .sort((a, b) => Number(b) - Number(a))
+    .forEach(year => {
+      const btn = document.createElement('span');
+      btn.className    = 'tag-button';
+      btn.dataset.year = year;
+      btn.textContent  = year;
+      yearBar.appendChild(btn);
+    });
 
   // 5) 카드 내부 태그에도 색 적용
   document.querySelectorAll('.card-tag').forEach(el => {
@@ -289,11 +303,17 @@ document.addEventListener('DOMContentLoaded', function() {
     el.style.color       = 'black';
   });
 
-  // 6) 필터링 함수
-  function filterItems(selectedTag) {
+  // 6) 필터링 (태그 AND 연도)
+  let selectedTag  = 'All';
+  let selectedYear = 'All';
+
+  function applyFilters() {
     items.forEach(item => {
-      const tags = (item.dataset.tags||'').split(',').map(t=>t.trim());
-      item.style.display = (selectedTag === 'All' || tags.includes(selectedTag)) ? '' : 'none';
+      const tags = (item.dataset.tags || '').split(',').map(t => t.trim());
+      const year = (item.dataset.year || '').trim();
+      const tagOk  = selectedTag  === 'All' || tags.includes(selectedTag);
+      const yearOk = selectedYear === 'All' || year === selectedYear;
+      item.style.display = (tagOk && yearOk) ? '' : 'none';
     });
   }
 
@@ -301,13 +321,23 @@ document.addEventListener('DOMContentLoaded', function() {
   filterBar.addEventListener('click', function(e) {
     const btn = e.target.closest('.tag-button');
     if (!btn) return;
-    filterBar.querySelectorAll('.tag-button').forEach(b=>b.classList.remove('active'));
+    filterBar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    filterItems(btn.dataset.tag);
+    selectedTag = btn.dataset.tag;
+    applyFilters();
   });
 
-  // 8) 초기 All 필터
-  filterItems('All');
+  yearBar.addEventListener('click', function(e) {
+    const btn = e.target.closest('.tag-button');
+    if (!btn) return;
+    yearBar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedYear = btn.dataset.year;
+    applyFilters();
+  });
+
+  // 8) 초기 필터
+  applyFilters();
 
   // 9) 카드 클릭 시 이동
   document.querySelectorAll('.clickable-card').forEach(card => {

@@ -1,7 +1,7 @@
 <!-- ## News
 
 ### <a id="papers"></a> <i class="fa-solid fa-file-lines news-icon"></i>Papers
-<ul>
+<ul class="news-list">
   {% for paper in site.data.news.papers %}
     <li><strong>{{ paper.date }}</strong> - {{ paper.description }}
     {% if paper.authors %}
@@ -12,7 +12,7 @@
 </ul>
 
 ### <a id="awards"></a> <i class="fa-solid fa-trophy news-icon"></i>Awards
-<ul>
+<ul class="news-list">
   {% for award in site.data.news.awards %}
     <li><strong>{{ award.date }}</strong> - {{ award.description }}
       {% if award.link %}
@@ -23,14 +23,14 @@
 </ul>
 
 ### <a id="projects"></a> <i class="fa-solid fa-diagram-project news-icon"></i>Projects
-<ul>
+<ul class="news-list">
   {% for projects in site.data.news.projects %}
     <li><strong>{{ projects.date }}</strong> - {{ projects.description }}</li>
   {% endfor %}
 </ul>
 
 ### <a id="people"></a> <i class="fa-solid fa-user-group news-icon"></i>New Members
-<ul>
+<ul class="news-list">
   {% for member in site.data.news.people %}
     <li><strong>{{ member.date }}</strong> - {{ member.name }} {{ member.description }}</li>
   {% endfor %}
@@ -39,6 +39,10 @@
 <style>
   .news-date {
     display: inline-block;
+    min-width: 5.2rem;
+    text-align: center;
+    box-sizing: border-box;
+    font-variant-numeric: tabular-nums;
     margin-right: 7px;
     padding: 2px 10px;
     font-size: 0.72rem;
@@ -53,6 +57,18 @@
     border: 1.5px solid #010042;
   }
 
+  .content ul.news-list,
+  ul.news-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  ul.news-list li {
+    margin-bottom: 0.55rem;
+    line-height: 1.6;
+  }
+
   .news-icon {
     color: #010042;
     margin-right: 8px;
@@ -62,7 +78,7 @@
 ## News
 
 ### <a id="papers"></a> <i class="fa-solid fa-file-lines news-icon"></i>Papers
-<ul>
+<ul class="news-list">
   {% for paper in site.data.news.papers %}
     <li>
       {% assign dp = paper.date | split: " " %}{% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = paper.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ paper.description }}
@@ -74,7 +90,7 @@
 </ul>
 
 ### <a id="awards"></a> <i class="fa-solid fa-trophy news-icon"></i>Awards
-<ul>
+<ul class="news-list">
   {% for award in site.data.news.awards %}
     <li>
       {% assign dp = award.date | split: " " %}{% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = award.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ award.description }}
@@ -86,7 +102,7 @@
 </ul>
 
 ### <a id="projects"></a> <i class="fa-solid fa-diagram-project news-icon"></i>Projects
-<ul>
+<ul class="news-list">
   {% for project in site.data.news.projects %}
     <li>
       {% assign dp = project.date | split: " " %}{% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = project.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ project.description }}
@@ -95,7 +111,7 @@
 </ul>
 
 ### <a id="people"></a> <i class="fa-solid fa-user-group news-icon"></i>New Members
-<ul>
+<ul class="news-list">
   {% for person in site.data.news.people %}
     <li>
       {% assign dp = person.date | split: " " %}{% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = person.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ person.description }}
