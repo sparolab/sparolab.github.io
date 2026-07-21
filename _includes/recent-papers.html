@@ -9,19 +9,33 @@
   .paper-card-tag {
     display: inline-block;
     margin: 2px;
-    padding: 2px 5px;
-    font-size: 0.6rem;
+    padding: 2px 10px;
+    font-size: 0.72rem;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 999px;
     border: 1px solid transparent;
     color: black;
+  }
+
+  .recent-paper-card .card-date {
+    display: inline-block;
+    padding: 2px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: #f1f1f8;
+    color: #010042;
+    border: 1.5px solid #010042;
   }
 
   .recent-paper-card .venue-badge {
     display: inline-block;
     margin: 0 5px 0 0;
-    padding: 1px 9px;
-    font-size: 0.76rem;
+    padding: 2px 10px;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     line-height: 1.45;
@@ -42,8 +56,8 @@
   .recent-paper-card .award-badge {
     display: inline-block;
     margin: 0 5px 0 0;
-    padding: 1px 9px;
-    font-size: 0.76rem;
+    padding: 2px 10px;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     line-height: 1.45;
@@ -117,6 +131,14 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // 날짜 파싱 함수
+  function shortMonth(dateText) {
+    if (!dateText) return '';
+    const t = String(dateText).trim();
+    const first = t.split(/\s+/)[0];
+    const rest = t.slice(first.length);
+    return first.replace(/[.,]/g, '').slice(0, 3) + '.' + rest;
+  }
+
   function parseDate(dateStr) {
     const months = {
       'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
@@ -206,9 +228,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let dateHtml = '';
     if (item.pulished_date) {
-      dateHtml = `<p style="margin:10px 0; text-align:center; font-size:0.9rem; color:black;">Published: ${item.pulished_date}</p>`;
+      dateHtml = `<p style="margin:10px 0; text-align:center;"><span class="card-date">${shortMonth(item.pulished_date)}</span></p>`;
     } else if (item.project_date) {
-      dateHtml = `<p style="margin:10px 0; text-align:center; font-size:0.9rem; color:black;">${item.project_date}</p>`;
+      dateHtml = `<p style="margin:10px 0; text-align:center;"><span class="card-date">${shortMonth(item.project_date)}</span></p>`;
     }
     let titleHtml = item.award ? `<span class="award-badge">🏆 ${item.award}</span>` : '';
     if (item.alt_link) {

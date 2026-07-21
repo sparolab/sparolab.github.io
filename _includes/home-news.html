@@ -2,8 +2,8 @@
   .home-news-section .news-date {
     display: inline-block;
     margin-right: 7px;
-    padding: 1px 9px;
-    font-size: 0.76rem;
+    padding: 2px 10px;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     line-height: 1.45;
@@ -40,6 +40,14 @@
     nov: 11,
     dec: 12
   };
+
+  function shortMonth(dateText) {
+    if (!dateText) return '';
+    const t = String(dateText).trim();
+    const first = t.split(/\s+/)[0];
+    const rest = t.slice(first.length);
+    return first.replace(/[.,]/g, '').slice(0, 3) + '.' + rest;
+  }
 
   function parseDateValue(dateText) {
     if (!dateText) {
@@ -93,7 +101,7 @@
     const li = document.createElement('li');
     const dateBadge = document.createElement('span');
     dateBadge.className = 'news-date';
-    dateBadge.textContent = item.date || '';
+    dateBadge.textContent = shortMonth(item.date);
 
     li.appendChild(dateBadge);
     li.appendChild(document.createTextNode(item.description || ''));

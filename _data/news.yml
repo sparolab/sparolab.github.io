@@ -36,15 +36,15 @@ papers:
     authors: "Juwon, Jiwon and Dongjin"
 
   - date: "Oct. 2024"
-    description: "TRIDENT (underwater image enhancement & depth estimation) accepted @IEEE Sensors Journal!"
+    description: "TRIDENT accepted @IEEE Sensors Journal!"
     authors: "Geonmo"
 
   - date: "Sep. 2024"
-    description: "ReFeree (radar-based localization) accepted @RA-L!"
+    description: "ReFeree accepted @RA-L!"
     authors: "Hogyun and Byunghee"
 
   - date: "Aug. 2024"
-    description: "SOLiD (LiDAR-based localization) accepted @RA-L!"
+    description: "SOLiD accepted @RA-L!"
     authors: "Hogyun"
 
   - date: "Feb. 2024"
