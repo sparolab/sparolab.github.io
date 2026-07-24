@@ -438,14 +438,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 4-2) 발표처 필터 버튼 생성 (카드에 등장하는 순서 = 최신순)
+  // 4-2) 발표처 필터 버튼 생성 (지정 순서, 데이터에 존재하는 것만)
   const venueBar = document.getElementById('venue-filter');
   if (venueBar) {
-    const venueSeen = [];
+    const venueOrder = ['IJRR', 'RA-L', 'ICRA', 'IROS', 'T-IV', 'IEEE SJ', 'IEEE SL', 'iSpaRo', 'Workshop'];
+    const venuePresent = new Set();
     items.forEach(item => {
       const v = (item.dataset.venue || '').trim();
-      if (v && !venueSeen.includes(v)) venueSeen.push(v);
+      if (v) venuePresent.add(v);
     });
+    // 지정 순서 우선, 목록에 없는 새 venue 는 뒤에 알파벳 순으로
+    const venueSeen = venueOrder.filter(v => venuePresent.has(v))
+      .concat([...venuePresent].filter(v => !venueOrder.includes(v)).sort());
     venueSeen.forEach(v => {
       const btn = document.createElement('span');
       btn.className     = 'tag-button';
