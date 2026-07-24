@@ -15,6 +15,7 @@ layout: default
   /* 태그 필터 바 스타일 */
   #category-filter,
   #tag-filter,
+  #venue-filter,
   #year-filter {
     margin: 1rem 0;
     font-size: 0.8rem;
@@ -22,6 +23,7 @@ layout: default
   }
   #category-filter .tag-button,
   #tag-filter .tag-button,
+  #venue-filter .tag-button,
   #year-filter .tag-button {
     display: inline-block;
     margin: 0.1rem 0.3rem;
@@ -39,11 +41,13 @@ layout: default
   }
   #category-filter .tag-button:hover,
   #tag-filter .tag-button:hover,
+  #venue-filter .tag-button:hover,
   #year-filter .tag-button:hover {
     background: #e2e2ef;
   }
   #category-filter .tag-button.active,
   #tag-filter .tag-button.active,
+  #venue-filter .tag-button.active,
   #year-filter .tag-button.active {
     background: #010042;
     color: #ffffff;
@@ -68,10 +72,13 @@ layout: default
     border: 1.5px solid #010042;
   }
 
-  /* 카드 저자 2줄 클램프 (넘치면 JS가 et al. 처리) */
+  /* 카드 저자 2줄 클램프 (넘치면 JS가 et al. 처리)
+     저자가 1줄뿐인 논문도 카드 높이가 같도록 2줄 높이를 항상 확보 */
   .card-authors {
     margin-top: 10px;
     font-size: 0.8rem;
+    line-height: 1.35;
+    min-height: 2.7em;
     color: gray;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -81,8 +88,10 @@ layout: default
     word-break: break-word;
   }
 
-  /* 카드 제목 2줄 클램프 (메인 페이지와 동일) */
+  /* 카드 제목 2줄 클램프 (메인 페이지와 동일) - 높이도 2줄로 고정 */
   .card-title-clamp {
+    line-height: 1.35;
+    min-height: 2.7em;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -173,12 +182,20 @@ layout: default
     <span>Detailed: </span>
     <span class="tag-button active" data-tag="All">All</span>
   </div>
+
 {% endif %}
 
 <div id="year-filter">
   <span>Filter by Year: </span>
   <span class="tag-button active" data-year="All">All</span>
 </div>
+
+{% if show_tag_filter %}
+  <div id="venue-filter">
+    <span>Filter by Venue: </span>
+    <span class="tag-button active" data-venue="All">All</span>
+  </div>
+{% endif %}
 
 {% comment %}
   _data/research.yml 에 선언된 배열을 galleries 변수로 할당합니다.
@@ -212,6 +229,7 @@ layout: default
       <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
            data-year="{{ yr }}"
            data-category="{{ image.category }}"
+           data-venue="{{ image.venue_type }}"
            {% if image.tags %}data-tags="{{ image.tags | join:',' }}"{% endif %}>
         <div class="clickable-card" data-href="{{ image.page_link }}">
           <div class="card"
@@ -355,9 +373,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-  // 6) 필터링 (태그 AND 연도)
+  // 6) 필터링 (분류 AND 태그 AND 발표형태 AND 연도)
   let selectedCategory = 'All';
   let selectedTag      = 'All';
+  let selectedVenue    = 'All';
   let selectedYear     = 'All';
 
   function applyFilters() {
@@ -366,11 +385,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const year = (item.dataset.year || '').trim();
 
       const category = (item.dataset.category || '').trim();
+      const venue    = (item.dataset.venue || '').trim();
       const catOk    = selectedCategory === 'All' || category === selectedCategory;
-      const tagOk   = selectedTag      === 'All' || tags.includes(selectedTag);
-      const yearOk  = selectedYear     === 'All' || year === selectedYear;
+      const tagOk    = selectedTag      === 'All' || tags.includes(selectedTag);
+      const venueOk  = selectedVenue    === 'All' || venue === selectedVenue;
+      const yearOk   = selectedYear     === 'All' || year === selectedYear;
 
-      item.style.display = (catOk && tagOk && yearOk) ? '' : 'none';
+      item.style.display = (catOk && tagOk && venueOk && yearOk) ? '' : 'none';
     });
   }
 
@@ -413,6 +434,32 @@ document.addEventListener('DOMContentLoaded', function() {
       filterBar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       selectedTag = btn.dataset.tag;
+      applyFilters();
+    });
+  }
+
+  // 4-2) 발표처 필터 버튼 생성 (카드에 등장하는 순서 = 최신순)
+  const venueBar = document.getElementById('venue-filter');
+  if (venueBar) {
+    const venueSeen = [];
+    items.forEach(item => {
+      const v = (item.dataset.venue || '').trim();
+      if (v && !venueSeen.includes(v)) venueSeen.push(v);
+    });
+    venueSeen.forEach(v => {
+      const btn = document.createElement('span');
+      btn.className     = 'tag-button';
+      btn.dataset.venue = v;
+      btn.textContent   = v;
+      venueBar.appendChild(btn);
+    });
+
+    venueBar.addEventListener('click', function(e) {
+      const btn = e.target.closest('.tag-button');
+      if (!btn) return;
+      venueBar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedVenue = btn.dataset.venue;
       applyFilters();
     });
   }
