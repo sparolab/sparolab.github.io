@@ -156,19 +156,24 @@ layout: default
   }
 </style>
 
-<!-- 2. 태그 필터 바 -->
-<div id="category-filter">
-  <span>Filter by Tags: </span>
-  <span class="tag-button active" data-category="All">All</span>
-  <span class="tag-button" data-category="Spatial AI">Spatial AI</span>
-  <span class="tag-button" data-category="Robotics">Robotics</span>
-  <span class="tag-button detail-toggle" id="detail-toggle">Detailed Tags &#9662;</span>
-</div>
+<!-- 2. 태그 필터 바 (Paper 갤러리에서만 분류/세부 태그 필터를 노출) -->
+{% assign show_tag_filter = false %}
+{% if page.gallery == "research_paper" %}{% assign show_tag_filter = true %}{% endif %}
 
-<div id="tag-filter" hidden>
-  <span>Detailed: </span>
-  <span class="tag-button active" data-tag="All">All</span>
-</div>
+{% if show_tag_filter %}
+  <div id="category-filter">
+    <span>Filter by Tags: </span>
+    <span class="tag-button active" data-category="All">All</span>
+    <span class="tag-button" data-category="Spatial AI">Spatial AI</span>
+    <span class="tag-button" data-category="Robotics">Robotics</span>
+    <span class="tag-button detail-toggle" id="detail-toggle">Detailed Tags &#9662;</span>
+  </div>
+
+  <div id="tag-filter" hidden>
+    <span>Detailed: </span>
+    <span class="tag-button active" data-tag="All">All</span>
+  </div>
+{% endif %}
 
 <div id="year-filter">
   <span>Filter by Year: </span>
@@ -321,14 +326,16 @@ document.addEventListener('DOMContentLoaded', function() {
     tagColors[tag] = palette[idx % palette.length];
   });
 
-  // 4) 세부 태그 버튼 생성
-  tagArray.forEach(tag => {
-    const btn = document.createElement('span');
-    btn.className   = 'tag-button';
-    btn.dataset.tag = tag;
-    btn.textContent = tag;
-    filterBar.appendChild(btn);
-  });
+  // 4) 세부 태그 버튼 생성 (Project 페이지에는 태그 필터 바가 없음)
+  if (filterBar) {
+    tagArray.forEach(tag => {
+      const btn = document.createElement('span');
+      btn.className   = 'tag-button';
+      btn.dataset.tag = tag;
+      btn.textContent = tag;
+      filterBar.appendChild(btn);
+    });
+  }
 
   // 4-1) 연도 필터 버튼 생성
   const yearBar = document.getElementById('year-filter');
@@ -368,41 +375,47 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // 대분류 필터 + 세부 태그 토글
-  const categoryBar = document.getElementById('category-filter');
-  const tagBar      = document.getElementById('tag-filter');
+  const categoryBar  = document.getElementById('category-filter');
+  const tagBar       = document.getElementById('tag-filter');
   const detailToggle = document.getElementById('detail-toggle');
 
-  detailToggle.addEventListener('click', function() {
-    const open = !tagBar.hasAttribute('hidden');
-    if (open) {
-      tagBar.setAttribute('hidden', '');
-      detailToggle.innerHTML = 'Detailed Tags &#9662;';
-      detailToggle.classList.remove('active');
-    } else {
-      tagBar.removeAttribute('hidden');
-      detailToggle.innerHTML = 'Detailed Tags &#9652;';
-      detailToggle.classList.add('active');
-    }
-  });
+  if (detailToggle && tagBar) {
+    detailToggle.addEventListener('click', function() {
+      const open = !tagBar.hasAttribute('hidden');
+      if (open) {
+        tagBar.setAttribute('hidden', '');
+        detailToggle.innerHTML = 'Detailed Tags &#9662;';
+        detailToggle.classList.remove('active');
+      } else {
+        tagBar.removeAttribute('hidden');
+        detailToggle.innerHTML = 'Detailed Tags &#9652;';
+        detailToggle.classList.add('active');
+      }
+    });
+  }
 
-  categoryBar.addEventListener('click', function(e) {
-    const btn = e.target.closest('.tag-button');
-    if (!btn || btn === detailToggle) return;
-    categoryBar.querySelectorAll('.tag-button[data-category]').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    selectedCategory = btn.dataset.category;
-    applyFilters();
-  });
+  if (categoryBar) {
+    categoryBar.addEventListener('click', function(e) {
+      const btn = e.target.closest('.tag-button');
+      if (!btn || btn === detailToggle) return;
+      categoryBar.querySelectorAll('.tag-button[data-category]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedCategory = btn.dataset.category;
+      applyFilters();
+    });
+  }
 
   // 7) 버튼 클릭 시 필터 적용
-  filterBar.addEventListener('click', function(e) {
-    const btn = e.target.closest('.tag-button');
-    if (!btn) return;
-    filterBar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    selectedTag = btn.dataset.tag;
-    applyFilters();
-  });
+  if (filterBar) {
+    filterBar.addEventListener('click', function(e) {
+      const btn = e.target.closest('.tag-button');
+      if (!btn) return;
+      filterBar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedTag = btn.dataset.tag;
+      applyFilters();
+    });
+  }
 
   yearBar.addEventListener('click', function(e) {
     const btn = e.target.closest('.tag-button');

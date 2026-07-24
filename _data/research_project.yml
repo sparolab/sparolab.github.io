@@ -3,7 +3,6 @@
     - link: /img/research/project/icra_2026.png
       alt: SPARO in ICRA 2026
       project_date: June, 2026
-      category: "Robotics"
       tags:
           - Conference
       page_link: /research/icra_2026/
@@ -11,7 +10,6 @@
     - link: /img/research/project/iros_2025.png
       alt: SPARO in IROS 2025
       project_date: Oct, 2025
-      category: "Robotics"
       tags:
           - Conference
       page_link: /research/iros_2025/
@@ -19,7 +17,6 @@
     - link: /img/research/project/icra_2025.jpg
       alt: SPARO in ICRA 2025
       project_date: May, 2025
-      category: "Robotics"
       tags:
           - Conference
       page_link: /research/icra_2025/
@@ -27,7 +24,6 @@
     - link: /img/research/project/icra_2024.png
       alt: SPARO in ICRA 2024
       project_date: May, 2024
-      category: "Robotics"
       tags:
           - Conference
       page_link: /research/icra_2024/
