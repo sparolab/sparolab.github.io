@@ -3,11 +3,57 @@ layout: default
 ---
 
 <style>
+  /* 히어로(제목) 아래 여백을 News 페이지와 동일하게 맞춤 */
+  .section {
+    padding-top: 1.75rem;
+  }
+
+  /* 연도 필터 카드 (News 페이지와 동일한 스타일) */
+  .filter-card {
+    background: #f7f7fa;
+    border: 1px solid #dcdce6;
+    border-radius: 10px;
+    padding: 0.85rem 1.1rem;
+    margin: 0 0 2.2rem;
+    box-shadow: 0 1px 3px rgba(1, 0, 66, 0.06);
+  }
+  .filter-card > div:first-child { margin-top: 0; }
+  .filter-card > div:last-child { margin-bottom: 0; }
+
+  #pub-year-filter {
+    margin: 0.3rem 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  #pub-year-filter .tag-button {
+    display: inline-block;
+    margin: 0.1rem 0.3rem;
+    padding: 2px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    border-radius: 999px;
+    background: #f1f1f8;
+    color: #010042;
+    border: 1.5px solid #010042;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  #pub-year-filter .tag-button:hover { background: #e2e2ef; }
+  #pub-year-filter .tag-button.active {
+    background: #010042;
+    color: #ffffff;
+  }
+
+  /* 테마 CSS 의 display 지정이 [hidden] 을 덮어쓰지 않도록 명시적으로 숨김 */
+  .pub-year[hidden] { display: none !important; }
+
   /* 번호 칸 고정 너비, 우측 콘텐츠 들여쓰기 */
   .pub-entry {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1em;
+    margin-bottom: 0.55em;
   }
   .pub-entry__index {
     flex: none;
@@ -21,38 +67,51 @@ layout: default
   .gallery-authors {
     font-size: 0.8em;
   }
-  .btn-arxiv {
-    display: inline-block;
-    white-space: nowrap;
-    padding: 3px 5px;
-    background-color: #001f3f;
-    color: #fff;
-    font-size: 0.6em;
-    font-weight: bold;
-    line-height: 1.0em;
-    text-decoration: none;
-    border-radius: 3px;
-    margin-top: 0.3em;
-  }
-  .btn-pdf {
-    display: inline-block;
-    white-space: nowrap;
-    padding: 3px 5px;
-    background-color: #001f3f;
-    color: #fff;
-    font-size: 0.6em;
-    font-weight: bold;
-    line-height: 1.0em;
-    text-decoration: none;
-    border-radius: 3px;
-    margin-top: 0.3em;}
 
+  /* 논문별 링크 pill (arXiv / Paper / Project / Video / Code) */
+  .pub-links {
+    margin-top: 0.12em;
+    line-height: 1.7;
+  }
+  .pub-pill {
+    display: inline-block;
+    padding: 2px 10px;
+    margin: 0 5px 0 0;
+    font-size: 0.68em;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    border-radius: 999px;
+    border: 1.4px solid #010042;
+    color: #010042;
+    background: #f1f1f8;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  .pub-pill:hover {
+    background: #010042;
+    color: #ffffff;
+  }
+  .pub-pill i { margin-right: 4px; }
 </style>
 
 {% if page.gallery %}
   {% assign galleries = site.data[page.gallery] %}
+
+  <!-- 연도 필터 카드 -->
+  <div class="filter-card">
+    <div id="pub-year-filter">
+      <span>Filter by Year: </span>
+      <span class="tag-button active" data-year="All">All</span>
+      {% for gallery in galleries %}
+        <span class="tag-button" data-year="{{ gallery.title }}">{{ gallery.title }}</span>
+      {% endfor %}
+    </div>
+  </div>
+
   {% for gallery in galleries %}
-    <div class="columns is-multiline">
+    <div class="columns is-multiline pub-year" data-year="{{ gallery.title }}">
       <div class="column is-12">
         <h1 class="has-text-left draggable-title" draggable="true" style="font-size:40px;">
           <strong>{{ gallery.title }}</strong>
@@ -73,22 +132,43 @@ layout: default
               [{{ forloop.index }}]
             </div>
 
-            <!-- 내용(Alt, Conf, Authors, 버튼) -->
+            <!-- 내용(Alt, Conf, Authors, 링크 pill) -->
             <div class="pub-entry__content">
               <strong>{{ image.alt }}</strong><br>
               <span class="gallery-conf">
                 <a href="{{ image.conf_link }}" target="_blank" rel="noopener">{{ image.conf }}</a>
               </span><br>
-              <span class="gallery-authors">{{ authors }}</span><br>
-              {% if image.arxiv %}
-                <a href="{{ image.arxiv }}" target="_blank" rel="noopener" class="btn-arxiv">
-                  arXiv
-                </a>
-              {% endif %}
-              {% if image.pdf %}
-                <a href="{{ image.pdf }}" target="_blank" rel="noopener" class="btn-pdf">
-                  PDF
-                </a>
+              <span class="gallery-authors">{{ authors }}</span>
+
+              {% assign paper_link = image.paper | default: image.pdf %}
+              {% if image.arxiv or paper_link or image.project or image.video or image.code %}
+                <div class="pub-links">
+                  {% if image.arxiv %}
+                    <a href="{{ image.arxiv }}" target="_blank" rel="noopener" class="pub-pill">
+                      <i class="fa-solid fa-file-lines"></i>arXiv
+                    </a>
+                  {% endif %}
+                  {% if paper_link %}
+                    <a href="{{ paper_link }}" target="_blank" rel="noopener" class="pub-pill">
+                      <i class="fa-solid fa-file-pdf"></i>Paper
+                    </a>
+                  {% endif %}
+                  {% if image.project %}
+                    <a href="{{ image.project }}" target="_blank" rel="noopener" class="pub-pill">
+                      <i class="fa-solid fa-globe"></i>Project
+                    </a>
+                  {% endif %}
+                  {% if image.video %}
+                    <a href="{{ image.video }}" target="_blank" rel="noopener" class="pub-pill">
+                      <i class="fa-solid fa-video"></i>Video
+                    </a>
+                  {% endif %}
+                  {% if image.code %}
+                    <a href="{{ image.code }}" target="_blank" rel="noopener" class="pub-pill">
+                      <i class="fa-solid fa-code"></i>Code
+                    </a>
+                  {% endif %}
+                </div>
               {% endif %}
             </div>
           </div>
@@ -97,4 +177,31 @@ layout: default
 
     </div>
   {% endfor %}
+
+  <p id="pub-empty" hidden style="color:#5a5a72; margin:1rem 0;">No publications for the selected year.</p>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sections = Array.from(document.querySelectorAll('.pub-year'));
+    const bar      = document.getElementById('pub-year-filter');
+    const emptyMsg = document.getElementById('pub-empty');
+    if (!sections.length || !bar) return;
+
+    bar.addEventListener('click', function (e) {
+      const btn = e.target.closest('.tag-button');
+      if (!btn || !bar.contains(btn)) return;
+      bar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const year = btn.dataset.year;
+      let visible = 0;
+      sections.forEach(sec => {
+        const ok = year === 'All' || sec.dataset.year === year;
+        sec.hidden = !ok;
+        if (ok) visible++;
+      });
+      if (emptyMsg) emptyMsg.hidden = visible > 0;
+    });
+  });
+  </script>
 {% endif %}
