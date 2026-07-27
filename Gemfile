@@ -32,3 +32,9 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 # do not have a Java counterpart.
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 gem "webrick", "~> 1.8"
+
+# Ruby 3.4+/4.0 unbundled several former default gems; Jekyll still requires them.
+gem "logger"
+gem "csv"
+gem "base64"
+gem "bigdecimal"

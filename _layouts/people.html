@@ -12,6 +12,44 @@ layout: default
   a.clickable-card:hover .card {
     filter: brightness(0.85);
   }
+
+  /* 키워드 영역: 라벨 + pill, 2줄 기준으로 높이 통일 */
+  .kw-block {
+    text-align: left;
+    margin-top: 6px;
+  }
+  /* Bulma의 .content p 여백을 반드시 덮어써야 하므로 !important 사용 */
+  .kw-block .kw-label {
+    font-size: 0.72rem;
+    margin: 0 0 1px !important;
+  }
+  .kw-block .kw-pills {
+    /* pill 2줄 높이만큼 항상 확보해서 카드 높이를 균일하게 */
+    min-height: 44px;
+    margin: 0 !important;
+  }
+  /* 키워드 pill (SPARO 팔레트) */
+  .kw-pill {
+    display: inline-block;
+    font-size: 0.52rem;
+    line-height: 1.4;
+    padding: 2px 9px;
+    margin: 2px 2px 0;
+    border: 1.3px solid #010042;
+    border-radius: 999px;
+    color: #010042;
+    background: #f1f1f8;
+    white-space: nowrap;
+  }
+
+  /* 연락처 아이콘: SPARO 네이비 → hover 시 accent 옐로우 */
+  .member-icon {
+    color: #010042 !important;
+    transition: color 0.15s ease;
+  }
+  .member-icon:hover {
+    color: #ffc800 !important;
+  }
 </style>
 
 {% if page.gallery %}
@@ -62,9 +100,16 @@ layout: default
                   {{ image.description | markdownify }}
 
                   {% if image.keywords %}
-                    <p style="margin-top:5px; font-size:10px;">
-                      <strong>Keywords:</strong><br> {{ image.keywords }}
-                    </p>
+                    <div class="kw-block">
+                      <p class="kw-label"><strong>Keywords</strong></p>
+                      <p class="kw-pills">
+                        {% assign kws = image.keywords | split: "," %}
+                        {% for kw in kws %}
+                          {% assign k = kw | strip %}
+                          {% if k != "" %}<span class="kw-pill">{{ k }}</span>{% endif %}
+                        {% endfor %}
+                      </p>
+                    </div>
                   {% endif %}
 
                   <!-- 연락처 아이콘 등 -->
@@ -78,31 +123,36 @@ layout: default
                     {% if image.email %}
                       <hr style="width:80%; margin:0 auto;">
                       <a href="mailto:{{ image.email }}" target="_blank"
-                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                         class="member-icon"
+                         style="display:inline-block; font-size:20px; margin-right:5px;">
                         <i class="fas fa-envelope"></i>
                       </a>
                     {% endif %}
                     {% if image.linkedin %}
                       <a href="{{ image.linkedin }}" target="_blank"
-                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                         class="member-icon"
+                         style="display:inline-block; font-size:20px; margin-right:5px;">
                         <i class="fab fa-linkedin"></i>
                       </a>
                     {% endif %}
                     {% if image.scholar %}
                       <a href="{{ image.scholar }}" target="_blank"
-                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                         class="member-icon"
+                         style="display:inline-block; font-size:20px; margin-right:5px;">
                         <i class="fa-brands fa-google-scholar"></i>
                       </a>
                     {% endif %}
                     {% if image.github %}
                       <a href="{{ image.github }}" target="_blank"
-                         style="display:inline-block; font-size:20px; margin-right:5px; color:gray;">
+                         class="member-icon"
+                         style="display:inline-block; font-size:20px; margin-right:5px;">
                         <i class="fab fa-github"></i>
                       </a>
                     {% endif %}
                     {% if image.homepage %}
                       <a href="{{ image.homepage }}" target="_blank"
-                         style="display:inline-block; font-size:20px; color:gray;">
+                         class="member-icon"
+                         style="display:inline-block; font-size:20px;">
                         <i class="fas fa-home"></i>
                       </a>
                     {% endif %}
