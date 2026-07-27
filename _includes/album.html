@@ -1,32 +1,49 @@
 <div class="container">
-<!-- Navigation Box 유지 -->
-<div class="box">
-    <h2 class="title is-3">Album Categories</h2>
-    <ul>
+<!-- 필터 카드 (Research / News 페이지와 동일한 위치·스타일) -->
+<div class="filter-card">
+    <div id="album-category-filter">
+        <span>Filter by Category: </span>
+        <span class="tag-button active" data-category="All">All</span>
         {% for category in site.data.album.categories %}
-            <li><a href="#{{ category.id | slugify }}">{{ category.name }}</a></li>
-            {% if category.subcategories %}
-                <ul>
-                    {% for subcategory in category.subcategories %}
-                        <li><a href="#{{ subcategory.id | slugify }}">{{ subcategory.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
+            <span class="tag-button" data-category="{{ category.id | slugify }}">{{ category.icon }} {{ category.name }} <span class="cat-caret">&#9656;</span></span>
         {% endfor %}
-    </ul>
+    </div>
+
+    <div id="album-type-filter" hidden>
+        <span>Filter by Type: </span>
+        <span class="tag-button active" data-type="All">All</span>
+        {% for category in site.data.album.categories %}
+            {% for subcategory in category.subcategories %}
+                <span class="tag-button"
+                      data-type="{{ subcategory.id | slugify }}"
+                      data-parent="{{ category.id | slugify }}">{{ subcategory.name }}</span>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+    <div id="album-year-filter">
+        <span>Filter by Year: </span>
+        <span class="tag-button active" data-year="All">All</span>
+    </div>
 </div>
 
 <!-- categories Section -->
 {% for category in site.data.album.categories %}
-    <h2 class="title is-3" id="{{ category.id | slugify }}">{{ category.name }}</h2>
+    {% assign cat_id = category.id | slugify %}
+    <div class="album-category" data-category="{{ cat_id }}">
+    <h2 class="title is-3" id="{{ cat_id }}">{{ category.name }}</h2>
     <hr class="category-divider">
     <!-- 세부 카테고리 -->
     {% if category.subcategories %}
         {% for subcategory in category.subcategories %}
+            <div class="album-group" data-category="{{ cat_id }}" data-type="{{ subcategory.id | slugify }}">
             <h3 class="title is-4" id="{{ subcategory.id | slugify }}">{{ subcategory.name }}</h3>
             <div class="columns is-multiline">
                 {% for item in subcategory.images %}
-                    <div class="column is-one-quarter"> 
+                    {%- assign ytoks = item.date | replace: ".", " " | replace: ",", " " | replace: "~", " " | split: " " -%}
+                    {%- assign yrs = "" -%}
+                    {%- for t in ytoks -%}{%- if t.size == 4 -%}{%- assign yrs = yrs | append: t | append: "," -%}{%- endif -%}{%- endfor -%}
+                    <div class="column is-one-quarter album-item" data-years="{{ yrs }}">
                         <div class="card">
                             <!-- 이미지 슬라이드 (캐러셀) -->
                             <div class="slideshow-container" data-index="0">
@@ -48,11 +65,16 @@
                     </div>
                 {% endfor %}
             </div>
+            </div>
         {% endfor %}
     {% else %}
+        <div class="album-group" data-category="{{ cat_id }}" data-type="{{ cat_id }}">
         <div class="columns is-multiline">
             {% for item in category.images %}
-                <div class="column is-one-quarter"> 
+                {%- assign ytoks = item.date | replace: ".", " " | replace: ",", " " | replace: "~", " " | split: " " -%}
+                {%- assign yrs = "" -%}
+                {%- for t in ytoks -%}{%- if t.size == 4 -%}{%- assign yrs = yrs | append: t | append: "," -%}{%- endif -%}{%- endfor -%}
+                <div class="column is-one-quarter album-item" data-years="{{ yrs }}">
                     <div class="card">
                         <!-- 이미지 슬라이드 (캐러셀) -->
                         <div class="slideshow-container" data-index="0">
@@ -74,8 +96,12 @@
                 </div>
             {% endfor %}
         </div>
+        </div>
     {% endif %}
+    </div>
 {% endfor %}
+
+<p id="album-empty" hidden>No album matches the selected filters.</p>
 </div>
 
 <!-- 캐러셀(Slideshow) 스크립트 (버튼 클릭 방식) -->
@@ -119,13 +145,212 @@ function changeSlide(button, n) {
 }
 </script>
 
+<!-- 앨범 필터 스크립트 -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const items      = Array.from(document.querySelectorAll('.album-item'));
+  const groups     = Array.from(document.querySelectorAll('.album-group'));
+  const categories = Array.from(document.querySelectorAll('.album-category'));
+  const catBar     = document.getElementById('album-category-filter');
+  const typeBar    = document.getElementById('album-type-filter');
+  const yearBar    = document.getElementById('album-year-filter');
+  const emptyMsg   = document.getElementById('album-empty');
+  if (!items.length || !catBar || !typeBar || !yearBar) return;
+
+  const yearsOf = el => (el.dataset.years || '').split(',').map(s => s.trim()).filter(Boolean);
+
+  // 데이터에 실제로 존재하는 연도만 최신순으로 버튼 생성
+  const allYears = [...new Set(items.flatMap(yearsOf))].sort((a, b) => Number(b) - Number(a));
+  allYears.forEach(y => {
+    const btn = document.createElement('span');
+    btn.className = 'tag-button';
+    btn.dataset.year = y;
+    btn.textContent = y;
+    yearBar.appendChild(btn);
+  });
+
+  let activeCategory = 'All';
+  let activeType     = 'All';
+  let activeYear     = 'All';
+
+  // Category 를 고르면 그 하위 Type 버튼만 남긴다.
+  // Type 행의 펼침 여부는 각 Category 버튼의 삼각형이 나타낸다.
+  function syncTypeButtons() {
+    const hasCategory = activeCategory !== 'All';
+    typeBar.querySelectorAll('.tag-button[data-parent]').forEach(btn => {
+      btn.hidden = hasCategory && btn.dataset.parent !== activeCategory;
+    });
+    if (!hasCategory) typeBar.hidden = true;
+    syncCarets();
+  }
+
+  // 선택되어 펼쳐진 Category 만 ▾, 나머지는 ▸
+  function syncCarets() {
+    catBar.querySelectorAll('.tag-button[data-category] .cat-caret').forEach(caret => {
+      const btn = caret.closest('.tag-button');
+      const open = btn.dataset.category === activeCategory && !typeBar.hidden;
+      caret.innerHTML = open ? '&#9662;' : '&#9656;';
+    });
+  }
+
+  function resetType() {
+    activeType = 'All';
+    typeBar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
+    typeBar.querySelector('.tag-button[data-type="All"]').classList.add('active');
+  }
+
+  function apply() {
+    let visibleTotal = 0;
+    categories.forEach(cat => {
+      const catOk = activeCategory === 'All' || cat.dataset.category === activeCategory;
+      let catShown = 0;
+      cat.querySelectorAll('.album-group').forEach(group => {
+        const typeOk = activeType === 'All' || group.dataset.type === activeType;
+        let shown = 0;
+        group.querySelectorAll('.album-item').forEach(item => {
+          const ok = catOk && typeOk &&
+                     (activeYear === 'All' || yearsOf(item).includes(activeYear));
+          item.hidden = !ok;
+          if (ok) shown++;
+        });
+        // 남은 항목이 없는 소분류는 제목까지 통째로 숨김
+        group.hidden = shown === 0;
+        catShown += shown;
+      });
+      cat.hidden = catShown === 0;
+      visibleTotal += catShown;
+    });
+    if (emptyMsg) emptyMsg.hidden = visibleTotal > 0;
+  }
+
+  function bind(bar, key, onPick) {
+    bar.addEventListener('click', function (e) {
+      const btn = e.target.closest('.tag-button');
+      // 토글 버튼처럼 해당 키가 없는 버튼은 선택지로 취급하지 않는다
+      if (!btn || !bar.contains(btn) || btn.dataset[key] === undefined) return;
+      bar.querySelectorAll('.tag-button[data-' + key + ']').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      onPick(btn.dataset[key]);
+      apply();
+    });
+  }
+
+  bind(catBar, 'category', v => {
+    // 이미 선택된 Category 를 다시 누르면 Type 행을 접었다 편다
+    const reclick = v === activeCategory;
+    activeCategory = v;
+    // 상위 분류를 바꾸면 하위 Type 선택은 All 로 초기화
+    resetType();
+    typeBar.hidden = v === 'All' ? true : (reclick ? !typeBar.hidden : false);
+    syncTypeButtons();
+  });
+  bind(typeBar, 'type', v => { activeType = v; });
+  bind(yearBar, 'year', v => { activeYear = v; });
+
+  syncTypeButtons();
+  apply();
+});
+</script>
+
 <style>
+/* 히어로(제목) 아래 여백과 필터 카드 아래 여백을 Research 페이지와 동일하게 2.5rem 로 맞춤 */
+.section {
+  padding-top: 1.75rem;
+}
+
+/* 필터 바 전체를 감싸는 카드 (Research / News 페이지와 동일) */
+.filter-card {
+  background: #f7f7fa;
+  border: 1px solid #dcdce6;
+  border-radius: 10px;
+  padding: 0.85rem 1.1rem;
+  margin: 0 0 2.5rem;
+  box-shadow: 0 1px 3px rgba(1, 0, 66, 0.06);
+}
+.filter-card > div:first-child { margin-top: 0; }
+.filter-card > div:last-child  { margin-bottom: 0; }
+
+/* 태그 필터 바 스타일 (Research / News 페이지와 동일) */
+#album-category-filter,
+#album-type-filter,
+#album-year-filter {
+  margin: 0.3rem 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+#album-category-filter .tag-button,
+#album-type-filter .tag-button,
+#album-year-filter .tag-button {
+  display: inline-block;
+  margin: 0.1rem 0.3rem;
+  padding: 2px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  border-radius: 999px;
+  background: #f1f1f8;
+  color: #010042;
+  border: 1.5px solid #010042;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+#album-category-filter .tag-button:hover,
+#album-type-filter .tag-button:hover,
+#album-year-filter .tag-button:hover {
+  background: #e2e2ef;
+}
+#album-category-filter .tag-button.active,
+#album-type-filter .tag-button.active,
+#album-year-filter .tag-button.active {
+  background: #010042;
+  color: #ffffff;
+}
+
+/* Category 버튼 안의 펼침 삼각형 */
+#album-category-filter .cat-caret {
+  font-size: 0.62rem;
+  opacity: 0.75;
+  vertical-align: 1px;
+}
+
+/* Bulma 의 .column{display:block} / 위 .tag-button{display:inline-block} 이
+   브라우저 기본 [hidden]{display:none} 을 덮어써서 JS 로 hidden 을 걸어도
+   숨겨지지 않는다. 필터가 동작하려면 여기서 명시적으로 되돌려야 한다. */
+.album-item[hidden],
+.album-group[hidden],
+.album-category[hidden],
+#album-type-filter[hidden],
+#album-category-filter .tag-button[hidden],
+#album-type-filter .tag-button[hidden],
+#album-year-filter .tag-button[hidden] {
+  display: none !important;
+}
+
+/* 필터 결과가 하나도 없을 때 안내 문구 */
+#album-empty {
+  color: #5a5a72;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+/* 섹션 제목 여백.
+   h2(대분류) / h3(소분류) 모두 앞 카드 그리드에 바짝 붙어 있어서 상단 여백을 준다.
+   첫 h2 는 위쪽 filter-card 의 margin-bottom(2.5rem) 과 마진 병합되어 그대로 유지된다. */
+.album-category > .title.is-3 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+.album-group > .title.is-4 {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
 
 /* 카테고리 제목 아래 실선 스타일 */
 .category-divider {
   border: none;
   border-top: 1px solid #b8b6b6; /* 얇은 회색 실선 */
-  margin: 10px 0; /* 위아래 간격 */
+  margin: 0; /* 위아래 간격은 인접한 제목의 margin 이 담당 */
   width: 100%;
 }
 
@@ -144,6 +369,18 @@ function changeSlide(button, n) {
     justify-content: space-between;
     min-height: 350px;
     overflow: auto;   /*Text 넘칠 경우 스크롤 처리*/
+}
+
+/* 카드 설명(title)과 날짜(subtitle) 사이 여백.
+   Bulma 기본값이 .title + .subtitle 에 margin-top:-1.25rem 을 걸어 둬서
+   너무 붙어 보이므로 여기서 되돌린다. */
+.card-content .title.is-6 {
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+.card-content .title.is-6 + .subtitle.is-6 {
+  margin-top: 0.6rem;
+  margin-bottom: 0;
 }
 
 /* 카드 내부 이미지를 전체 크기로 조정 */

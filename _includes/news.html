@@ -1,42 +1,74 @@
-<!-- ## News
-
-### <a id="papers"></a> <i class="fa-solid fa-file-lines news-icon"></i>Papers
-<ul class="news-list">
-  {% for paper in site.data.news.papers %}
-    <li><strong>{{ paper.date }}</strong> - {{ paper.description }}
-    {% if paper.authors %}
-      <strong style="color:#1f2a44;">({{ paper.authors }})</strong>
-    {% endif %}
-    </li>
-  {% endfor %}
-</ul>
-
-### <a id="awards"></a> <i class="fa-solid fa-trophy news-icon"></i>Awards
-<ul class="news-list">
-  {% for award in site.data.news.awards %}
-    <li><strong>{{ award.date }}</strong> - {{ award.description }}
-      {% if award.link %}
-        <a href="{{ award.link }}" target="_blank">[Read more]</a>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
-
-### <a id="projects"></a> <i class="fa-solid fa-diagram-project news-icon"></i>Projects
-<ul class="news-list">
-  {% for projects in site.data.news.projects %}
-    <li><strong>{{ projects.date }}</strong> - {{ projects.description }}</li>
-  {% endfor %}
-</ul>
-
-### <a id="people"></a> <i class="fa-solid fa-user-group news-icon"></i>New Members
-<ul class="news-list">
-  {% for member in site.data.news.people %}
-    <li><strong>{{ member.date }}</strong> - {{ member.name }} {{ member.description }}</li>
-  {% endfor %}
-</ul> -->
-
 <style>
+  /* 히어로(제목) 아래 여백과 필터 카드 아래 여백을 Research 페이지와 동일하게 2.5rem 로 맞춤.
+     section 기본 padding-top 3rem + column padding 0.75rem = 3.75rem 이므로
+     padding-top 을 1.75rem 으로 줄여 1.75 + 0.75 = 2.5rem 을 만든다. */
+  .section {
+    padding-top: 1.75rem;
+  }
+
+  /* 필터 바 전체를 감싸는 카드 (Research 페이지와 동일) */
+  .filter-card {
+    background: #f7f7fa;
+    border: 1px solid #dcdce6;
+    border-radius: 10px;
+    padding: 0.85rem 1.1rem;
+    margin: 0 0 2.5rem;
+    box-shadow: 0 1px 3px rgba(1, 0, 66, 0.06);
+  }
+  .filter-card > div:first-child {
+    margin-top: 0;
+  }
+  .filter-card > div:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 태그 필터 바 스타일 (Research 페이지와 동일) */
+  #news-category-filter,
+  #news-year-filter {
+    margin: 0.3rem 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  #news-category-filter .tag-button,
+  #news-year-filter .tag-button {
+    display: inline-block;
+    margin: 0.1rem 0.3rem;
+    padding: 2px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    border-radius: 999px;
+    background: #f1f1f8;
+    color: #010042;
+    border: 1.5px solid #010042;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  #news-category-filter .tag-button:hover,
+  #news-year-filter .tag-button:hover {
+    background: #e2e2ef;
+  }
+  #news-category-filter .tag-button.active,
+  #news-year-filter .tag-button.active {
+    background: #010042;
+    color: #ffffff;
+  }
+
+  /* 테마 CSS 가 display 를 지정한 요소는 브라우저 기본 [hidden]{display:none} 이
+     덮여 숨겨지지 않을 수 있으므로 명시적으로 되돌린다. */
+  .news-item[hidden],
+  .news-section[hidden] {
+    display: none !important;
+  }
+
+  /* 필터 결과가 하나도 없을 때 안내 문구 */
+  #news-empty {
+    color: #5a5a72;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+
   .news-date {
     display: inline-block;
     min-width: 5.2rem;
@@ -79,44 +111,133 @@
   }
 </style>
 
-### <a id="papers"></a> <i class="fa-solid fa-file-lines news-icon"></i>Papers
-<ul class="news-list">
-  {% for paper in site.data.news.papers %}
-    <li>
-      {% assign dp = paper.date | split: " " %}{% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = paper.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ paper.description }}
-      {% if paper.authors %}
-        <strong style="color:#1f2a44;">({{ paper.authors }})</strong>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
+<!-- 필터 카드 (Research 페이지와 동일한 위치/스타일) -->
+<div class="filter-card">
+  <div id="news-category-filter">
+    <span>Filter by Category: </span>
+    <span class="tag-button active" data-category="All">All</span>
+    <span class="tag-button" data-category="papers">Papers</span>
+    <span class="tag-button" data-category="awards">Awards</span>
+    <span class="tag-button" data-category="projects">Projects</span>
+    <span class="tag-button" data-category="people">New Members</span>
+  </div>
 
-### <a id="awards"></a> <i class="fa-solid fa-trophy news-icon"></i>Awards
-<ul class="news-list">
-  {% for award in site.data.news.awards %}
-    <li>
-      {% assign dp = award.date | split: " " %}{% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = award.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ award.description }}
-      {% if award.link %}
-        <a href="{{ award.link }}" target="_blank">[Read more]</a>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
+  <div id="news-year-filter">
+    <span>Filter by Year: </span>
+    <span class="tag-button active" data-year="All">All</span>
+  </div>
+</div>
 
-### <a id="projects"></a> <i class="fa-solid fa-diagram-project news-icon"></i>Projects
-<ul class="news-list">
-  {% for project in site.data.news.projects %}
-    <li>
-      {% assign dp = project.date | split: " " %}{% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = project.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ project.description }}
-    </li>
-  {% endfor %}
-</ul>
+<div class="news-section" data-category="papers">
+  <h3 id="-papers"><a id="papers"></a> <i class="fa-solid fa-file-lines news-icon"></i>Papers</h3>
+  <ul class="news-list">
+    {% for paper in site.data.news.papers %}
+      {% assign dp = paper.date | split: " " %}
+      <li class="news-item" data-category="papers" data-year="{{ dp | last }}">
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = paper.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ paper.description }}
+        {% if paper.authors %}
+          <strong style="color:#1f2a44;">({{ paper.authors }})</strong>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-### <a id="people"></a> <i class="fa-solid fa-user-group news-icon"></i>New Members
-<ul class="news-list">
-  {% for person in site.data.news.people %}
-    <li>
-      {% assign dp = person.date | split: " " %}{% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = person.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ person.description }}
-    </li>
-  {% endfor %}
-</ul>
+<div class="news-section" data-category="awards">
+  <h3 id="-awards"><a id="awards"></a> <i class="fa-solid fa-trophy news-icon"></i>Awards</h3>
+  <ul class="news-list">
+    {% for award in site.data.news.awards %}
+      {% assign dp = award.date | split: " " %}
+      <li class="news-item" data-category="awards" data-year="{{ dp | last }}">
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = award.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ award.description }}
+        {% if award.link %}
+          <a href="{{ award.link }}" target="_blank">[Read more]</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="news-section" data-category="projects">
+  <h3 id="-projects"><a id="projects"></a> <i class="fa-solid fa-diagram-project news-icon"></i>Projects</h3>
+  <ul class="news-list">
+    {% for project in site.data.news.projects %}
+      {% assign dp = project.date | split: " " %}
+      <li class="news-item" data-category="projects" data-year="{{ dp | last }}">
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = project.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ project.description }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="news-section" data-category="people">
+  <h3 id="-new-members"><a id="people"></a> <i class="fa-solid fa-user-group news-icon"></i>New Members</h3>
+  <ul class="news-list">
+    {% for person in site.data.news.people %}
+      {% assign dp = person.date | split: " " %}
+      <li class="news-item" data-category="people" data-year="{{ dp | last }}">
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = person.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ person.description }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<p id="news-empty" hidden>No news matches the selected filters.</p>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const items    = Array.from(document.querySelectorAll('.news-item'));
+  const sections = Array.from(document.querySelectorAll('.news-section'));
+  const catBar   = document.getElementById('news-category-filter');
+  const yearBar  = document.getElementById('news-year-filter');
+  const emptyMsg = document.getElementById('news-empty');
+  if (!items.length || !catBar || !yearBar) return;
+
+  // 데이터에 실제로 존재하는 연도만 최신순으로 버튼 생성
+  const years = [...new Set(items.map(i => i.dataset.year).filter(Boolean))]
+    .sort((a, b) => Number(b) - Number(a));
+  years.forEach(y => {
+    const btn = document.createElement('span');
+    btn.className = 'tag-button';
+    btn.dataset.year = y;
+    btn.textContent = y;
+    yearBar.appendChild(btn);
+  });
+
+  let activeCategory = 'All';
+  let activeYear     = 'All';
+
+  function apply() {
+    let visibleTotal = 0;
+    sections.forEach(section => {
+      const catOk = activeCategory === 'All' || section.dataset.category === activeCategory;
+      let shown = 0;
+      section.querySelectorAll('.news-item').forEach(item => {
+        const ok = catOk && (activeYear === 'All' || item.dataset.year === activeYear);
+        item.hidden = !ok;
+        if (ok) shown++;
+      });
+      // 항목이 하나도 안 남은 섹션은 제목까지 통째로 숨김
+      section.hidden = shown === 0;
+      visibleTotal += shown;
+    });
+    if (emptyMsg) emptyMsg.hidden = visibleTotal > 0;
+  }
+
+  function bind(bar, key, onPick) {
+    bar.addEventListener('click', function (e) {
+      const btn = e.target.closest('.tag-button');
+      if (!btn || !bar.contains(btn)) return;
+      bar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      onPick(btn.dataset[key]);
+      apply();
+    });
+  }
+
+  bind(catBar,  'category', v => { activeCategory = v; });
+  bind(yearBar, 'year',     v => { activeYear = v; });
+
+  apply();
+});
+</script>

@@ -12,6 +12,31 @@ layout: default
     filter: brightness(0.85);
   }
 
+  /* 히어로(제목) 아래 여백과 필터 카드 아래 여백을 동일하게 2.5rem 로 맞춤.
+     section 기본 padding-top 3rem + column padding 0.75rem = 3.75rem 이므로
+     padding-top 을 1.75rem 으로 줄여 1.75 + 0.75 = 2.5rem 을 만든다. */
+  .section {
+    padding-top: 1.75rem;
+  }
+
+  /* 필터 바 전체를 감싸는 카드 */
+  .filter-card {
+    background: #f7f7fa;
+    border: 1px solid #dcdce6;
+    border-radius: 10px;
+    padding: 0.85rem 1.1rem;
+    /* 아래 .columns 의 margin-top:-0.75rem 과 .column 의 padding:0.75rem 이
+       서로 상쇄되므로, margin-bottom 값이 그대로 카드까지의 여백이 된다. */
+    margin: 0 0 2.5rem;
+    box-shadow: 0 1px 3px rgba(1, 0, 66, 0.06);
+  }
+  .filter-card > div:first-child {
+    margin-top: 0;
+  }
+  .filter-card > div:last-child {
+    margin-bottom: 0;
+  }
+
   /* 태그 필터 바 스타일 */
   #category-filter,
   #tag-filter,
@@ -169,6 +194,7 @@ layout: default
 {% assign show_tag_filter = false %}
 {% if page.gallery == "research_paper" %}{% assign show_tag_filter = true %}{% endif %}
 
+<div class="filter-card">
 {% if show_tag_filter %}
   <div id="category-filter">
     <span>Filter by Tags: </span>
@@ -196,6 +222,8 @@ layout: default
     <span class="tag-button active" data-venue="All">All</span>
   </div>
 {% endif %}
+</div>
+
 
 {% comment %}
   _data/research.yml 에 선언된 배열을 galleries 변수로 할당합니다.
