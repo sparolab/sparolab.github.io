@@ -124,7 +124,11 @@
     dateBadge.textContent = shortMonth(item.date);
 
     li.appendChild(dateBadge);
-    li.appendChild(document.createTextNode(item.description || ''));
+    // description 은 신뢰된 사이트 데이터(_data/news.yml)이며 <strong> 등 마크업을
+    // 포함할 수 있으므로 텍스트 노드가 아니라 HTML 로 렌더링한다.
+    const descSpan = document.createElement('span');
+    descSpan.innerHTML = item.description || '';
+    li.appendChild(descSpan);
 
     if (item.authors) {
       const authorStrong = document.createElement('strong');
