@@ -46,6 +46,13 @@ layout: default
     color: #ffffff;
   }
 
+  /* 저자 표기 범례 (필터 밑, 작게) */
+  .pub-legend {
+    font-size: 0.72rem;
+    color: #5a5a72;
+    margin: -1.4rem 0 1.7rem 0.2rem;
+  }
+
   /* 테마 CSS 의 display 지정이 [hidden] 을 덮어쓰지 않도록 명시적으로 숨김 */
   .pub-year[hidden] { display: none !important; }
 
@@ -110,6 +117,9 @@ layout: default
     </div>
   </div>
 
+  <!-- 저자 표기 범례 -->
+  <p class="pub-legend"><u>Underline</u>: First Author&nbsp;&nbsp;·&nbsp;&nbsp;<strong>Bold</strong>: Corresponding Author&nbsp;&nbsp;·&nbsp;&nbsp;<sup>&dagger;</sup>: Principal Investigator (PI)</p>
+
   {% for gallery in galleries %}
     <div class="columns is-multiline pub-year" data-year="{{ gallery.title }}">
       <div class="column is-12">
@@ -119,11 +129,51 @@ layout: default
       </div>
 
       {% for image in gallery.images %}
-        {% assign authors = image.authors %}
-        {% if authors contains "*" %}
-          {% assign authors = authors | append: " (*: Equal Contribution)" %}
-        {% endif %}
-        {% assign authors = authors | replace: "Younggun Cho", "<strong>Younggun Cho</strong>" %}
+        {%- comment -%}
+          저자 표기 규칙:
+            - 1저자(및 데이터에서 * 로 표시된 공동 1저자) → 밑줄
+            - 교신저자(corr_authors, 기본값 "Younggun Cho") → 진하게
+            - * 기호 자체는 화면에 표시하지 않음
+        {%- endcomment -%}
+        {%- comment -%} 저자 문자열: 표시는 원본(콤마/and 유지, * 제거), 파싱은 구분자 정규화 {%- endcomment -%}
+        {%- assign authors = image.authors | remove: "*" -%}
+        {%- assign _work = image.authors | replace: ", and ", "," | replace: " and ", "," -%}
+        {%- assign _toks = _work | split: "," -%}
+        {%- assign firstname = _toks | first | remove: "*" | strip -%}
+
+        {%- comment -%} 밑줄 대상 이름 모으기: 1저자 + * 표시된 공동 1저자 {%- endcomment -%}
+        {%- assign ul_names = firstname | append: "||" -%}
+        {%- for _t in _toks -%}
+          {%- assign _ts = _t | strip -%}
+          {%- if _ts contains "*" -%}
+            {%- assign _nm = _ts | remove: "*" | strip -%}
+            {%- unless ul_names contains _nm -%}
+              {%- assign ul_names = ul_names | append: _nm | append: "||" -%}
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- assign _ullist = ul_names | split: "||" -%}
+        {%- for _nm in _ullist -%}
+          {%- assign _nm = _nm | strip -%}
+          {%- if _nm != "" -%}
+            {%- capture _uw -%}<u>{{ _nm }}</u>{%- endcapture -%}
+            {%- assign authors = authors | replace_first: _nm, _uw -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%} 교신저자 진하게 {%- endcomment -%}
+        {%- assign _corr = image.corr_authors | default: "Younggun Cho" -%}
+        {%- assign _corrlist = _corr | split: "," -%}
+        {%- for _c in _corrlist -%}
+          {%- assign _cn = _c | strip -%}
+          {%- capture _bw -%}<strong>{{ _cn }}</strong>{%- endcapture -%}
+          {%- assign authors = authors | replace: _cn, _bw -%}
+        {%- endfor -%}
+
+        {%- comment -%} PI(Younggun Cho) 이름 뒤에 dagger 표시 {%- endcomment -%}
+        {%- capture _piname -%}Younggun Cho<sup class="pi-dagger">&dagger;</sup>{%- endcapture -%}
+        {%- assign authors = authors | replace: "Younggun Cho", _piname -%}
 
         <div class="column is-12">
           <div class="pub-entry">
