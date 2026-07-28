@@ -59,7 +59,8 @@
                             </div>
                             <div class="card-content">
                                 <p class="title is-6">{{ item.description }}</p>
-                                <p class="subtitle is-6">{{ item.date }}</p>
+                                <hr class="album-date-divider">
+                                <span class="album-date">{{ item.date }}</span>
                             </div>
                         </div>
                     </div>
@@ -90,7 +91,8 @@
                         </div>
                         <div class="card-content">
                             <p class="title is-6">{{ item.description }}</p>
-                            <p class="subtitle is-6">{{ item.date }}</p>
+                            <hr class="album-date-divider">
+                            <span class="album-date">{{ item.date }}</span>
                         </div>
                     </div>
                 </div>
@@ -377,10 +379,31 @@ document.addEventListener('DOMContentLoaded', function () {
 .card-content .title.is-6 {
   margin-bottom: 0;
   line-height: 1.4;
+  /* 제목이 1줄이든 2줄이든 카드 높이를 동일하게: 2줄 높이만큼 항상 확보 */
+  min-height: 2.8em;
 }
-.card-content .title.is-6 + .subtitle.is-6 {
-  margin-top: 0.6rem;
-  margin-bottom: 0;
+
+/* 날짜: paper 페이지처럼 구분선 + pill */
+.card-content .album-date-divider {
+  border: none;
+  border-top: 1px solid #dcdce6;
+  margin: 0.7rem 0 0.6rem;
+  width: 100%;
+}
+.card-content .album-date {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 2px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  border-radius: 999px;
+  background: #f1f1f8;
+  color: #010042;
+  border: 1.5px solid #010042;
+  font-variant-numeric: tabular-nums;
 }
 
 /* 카드 내부 이미지를 전체 크기로 조정 */
