@@ -45,17 +45,17 @@
 - title: "2024"
   images:
     - alt: "IMRGB-TIR 특징 혼합을 활용한 조도 변화에 강건한 장소 인식 기법"
-      authors: "Seungjun Ma and Youngguon Cho"
+      authors: "Seungjun Ma and Younggun Cho"
       conf: "The Korean Society of Intelligent Transport Systems (ITS)"
       conf_link: "https://www.kits.or.kr/"
 
     - alt: "Thermal Infrared와 RGB 카메라 융합을 이용한 강건한 장소 인식 방법"
-      authors: "Seungjun Ma and Youngguon Cho"
+      authors: "Seungjun Ma and Younggun Cho"
       conf: "Journal of Institute of Control, Robotics and Systems"
       conf_link: "https://icros.org/main/"
 
     - alt: "자율 수중 로봇을 위한 사실적인 실시간 고밀도 3 차원 Mesh 지도 작성"
-      authors: "Jungwoo Lee and Youngguon Cho"
+      authors: "Jungwoo Lee and Younggun Cho"
       conf: "Journal of Korea Robotics Society"
       conf_link: "https://kros.org/"
 
@@ -118,7 +118,7 @@
 - title: "2023"
   images:
     - alt: "Extended and Adaptive Inverse Perspective Mapping for Ground Representation of Autonomous Mobile Robot"
-      authors: "Jooyong Park and Youngguon Cho"
+      authors: "Jooyong Park and Younggun Cho"
       conf: "Journal of Korea Robotics Society"
       conf_link: "https://kros.org/"
 
