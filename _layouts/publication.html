@@ -20,12 +20,14 @@ layout: default
   .filter-card > div:first-child { margin-top: 0; }
   .filter-card > div:last-child { margin-bottom: 0; }
 
-  #pub-year-filter {
+  #pub-year-filter,
+  #pub-type-filter {
     margin: 0.3rem 0;
     font-size: 0.8rem;
     font-weight: bold;
   }
-  #pub-year-filter .tag-button {
+  #pub-year-filter .tag-button,
+  #pub-type-filter .tag-button {
     display: inline-block;
     margin: 0.1rem 0.3rem;
     padding: 2px 10px;
@@ -40,8 +42,10 @@ layout: default
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
   }
-  #pub-year-filter .tag-button:hover { background: #e2e2ef; }
-  #pub-year-filter .tag-button.active {
+  #pub-year-filter .tag-button:hover,
+  #pub-type-filter .tag-button:hover { background: #e2e2ef; }
+  #pub-year-filter .tag-button.active,
+  #pub-type-filter .tag-button.active {
     background: #010042;
     color: #ffffff;
   }
@@ -53,8 +57,10 @@ layout: default
     margin: -1.4rem 0 1.7rem 0.2rem;
   }
 
-  /* 테마 CSS 의 display 지정이 [hidden] 을 덮어쓰지 않도록 명시적으로 숨김 */
-  .pub-year[hidden] { display: none !important; }
+  /* 테마 CSS(.column{display:block}) 가 [hidden] 을 덮어쓰지 않도록 명시적으로 숨김 */
+  .pub-year[hidden],
+  .pub-item[hidden],
+  #pub-type-filter .tag-button[hidden] { display: none !important; }
 
   /* 번호 칸 고정 너비, 우측 콘텐츠 들여쓰기 */
   .pub-entry {
@@ -106,8 +112,17 @@ layout: default
 {% if page.gallery %}
   {% assign galleries = site.data[page.gallery] %}
 
-  <!-- 연도 필터 카드 -->
+  <!-- 필터 카드 -->
   <div class="filter-card">
+    <div id="pub-type-filter">
+      <span>Filter by Type: </span>
+      <span class="tag-button active" data-type="All">All</span>
+      <span class="tag-button" data-type="journal">Journal</span>
+      <span class="tag-button" data-type="conference">Conference</span>
+      <span class="tag-button" data-type="workshop">Workshop</span>
+      <span class="tag-button" data-type="preprint">Preprint</span>
+    </div>
+
     <div id="pub-year-filter">
       <span>Filter by Year: </span>
       <span class="tag-button active" data-year="All">All</span>
@@ -175,11 +190,29 @@ layout: default
         {%- capture _piname -%}Younggun Cho<sup class="pi-dagger">&dagger;</sup>{%- endcapture -%}
         {%- assign authors = authors | replace: "Younggun Cho", _piname -%}
 
-        <div class="column is-12">
+        {%- comment -%}
+          발표 형태(venue_type) 판정.
+          데이터에 venue_type 이 있으면 그 값을 쓰고, 없으면 conf 문자열에서 자동 분류한다.
+          workshop 을 가장 먼저 봐야 "ICRA Workshop on ..." 이 Conference 로 새지 않는다.
+        {%- endcomment -%}
+        {%- assign _conf = image.conf | downcase -%}
+        {%- if image.venue_type -%}
+          {%- assign vtype = image.venue_type | downcase -%}
+        {%- elsif _conf contains "workshop" -%}
+          {%- assign vtype = "workshop" -%}
+        {%- elsif _conf contains "arxiv" -%}
+          {%- assign vtype = "preprint" -%}
+        {%- elsif _conf contains "journal" or _conf contains "letters" or _conf contains "transactions" -%}
+          {%- assign vtype = "journal" -%}
+        {%- else -%}
+          {%- assign vtype = "conference" -%}
+        {%- endif -%}
+
+        <div class="column is-12 pub-item" data-type="{{ vtype }}">
           <div class="pub-entry">
-            <!-- 번호 -->
+            <!-- 번호 (필터링 시 JS 가 다시 매긴다) -->
             <div class="pub-entry__index">
-              [{{ forloop.index }}]
+              [<span class="pub-num">{{ forloop.index }}</span>]
             </div>
 
             <!-- 내용(Alt, Conf, Authors, 링크 pill) -->
@@ -228,30 +261,64 @@ layout: default
     </div>
   {% endfor %}
 
-  <p id="pub-empty" hidden style="color:#5a5a72; margin:1rem 0;">No publications for the selected year.</p>
+  <p id="pub-empty" hidden style="color:#5a5a72; margin:1rem 0;">No publications match the selected filters.</p>
 
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     const sections = Array.from(document.querySelectorAll('.pub-year'));
-    const bar      = document.getElementById('pub-year-filter');
+    const yearBar  = document.getElementById('pub-year-filter');
+    const typeBar  = document.getElementById('pub-type-filter');
     const emptyMsg = document.getElementById('pub-empty');
-    if (!sections.length || !bar) return;
+    if (!sections.length || !yearBar || !typeBar) return;
 
-    bar.addEventListener('click', function (e) {
-      const btn = e.target.closest('.tag-button');
-      if (!btn || !bar.contains(btn)) return;
-      bar.querySelectorAll('.tag-button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    let activeYear = 'All';
+    let activeType = 'All';
 
-      const year = btn.dataset.year;
-      let visible = 0;
-      sections.forEach(sec => {
-        const ok = year === 'All' || sec.dataset.year === year;
-        sec.hidden = !ok;
-        if (ok) visible++;
-      });
-      if (emptyMsg) emptyMsg.hidden = visible > 0;
+    // 데이터에 실제로 존재하지 않는 Type 버튼은 감춘다 (예: 국내 논문에는 Preprint 가 없음)
+    const presentTypes = new Set(
+      Array.from(document.querySelectorAll('.pub-item')).map(i => i.dataset.type)
+    );
+    typeBar.querySelectorAll('.tag-button[data-type]').forEach(btn => {
+      if (btn.dataset.type !== 'All' && !presentTypes.has(btn.dataset.type)) btn.hidden = true;
     });
+
+    function apply() {
+      let visibleTotal = 0;
+      sections.forEach(sec => {
+        const yearOk = activeYear === 'All' || sec.dataset.year === activeYear;
+        let shown = 0;
+        sec.querySelectorAll('.pub-item').forEach(item => {
+          const ok = yearOk && (activeType === 'All' || item.dataset.type === activeType);
+          item.hidden = !ok;
+          // 남은 항목만으로 번호를 다시 매겨 [1],[2],... 가 연속되게 한다
+          if (ok) {
+            shown++;
+            const num = item.querySelector('.pub-num');
+            if (num) num.textContent = shown;
+          }
+        });
+        // 남은 논문이 없는 연도는 제목까지 통째로 숨김
+        sec.hidden = shown === 0;
+        visibleTotal += shown;
+      });
+      if (emptyMsg) emptyMsg.hidden = visibleTotal > 0;
+    }
+
+    function bind(bar, key, onPick) {
+      bar.addEventListener('click', function (e) {
+        const btn = e.target.closest('.tag-button');
+        if (!btn || !bar.contains(btn) || btn.dataset[key] === undefined) return;
+        bar.querySelectorAll('.tag-button[data-' + key + ']').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        onPick(btn.dataset[key]);
+        apply();
+      });
+    }
+
+    bind(yearBar, 'year', v => { activeYear = v; });
+    bind(typeBar, 'type', v => { activeType = v; });
+
+    apply();
   });
   </script>
 {% endif %}
