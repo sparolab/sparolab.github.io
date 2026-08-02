@@ -1,5 +1,19 @@
 - title: Paper
   images:
+    # === SKiD-SLAM (IEEE T-FR, accepted) — newest ===
+    - link: /img/research/paper/10_skid_slam.gif   # PLACEHOLDER image — replace with new figure
+      alt: IEEE T-FR
+      alt_link: https://www.ieee-ras.org/publications/t-fr/
+      pulished_date: Aug, 2026
+      paper: "SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions with Field Deployments at Analog Sites"
+      authors: Hogyun Kim, Juwon Kim, Dongjin Cho, Jiwon Choi, Geonmo Yang, Seokhwan Jeong, Jiyun Lee, Miryeong Park, Hyungtae Lim, and Younggun Cho
+      venue_type: "T-FR"
+      category: "Robotics"
+      tags:
+          - SLAM
+          - Field
+      page_link: /research/skid_slam/
+
     - link: /img/research/paper/21_radloc.gif
       alt: IEEE/RSJ IROS
       alt_link: https://2026.ieee-iros.org/
@@ -143,20 +157,6 @@
           - Calibration
           - Field
       page_link: /research/marscalib/
-
-    # === SKiD-SLAM (IEEE T-FR, accepted) ===
-    - link: /img/research/paper/10_skid_slam.gif   # PLACEHOLDER image — replace with new figure
-      alt: IEEE T-FR
-      alt_link: https://www.ieee-ras.org/publications/t-fr/
-      pulished_date: Aug, 2026
-      paper: "SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions with Field Deployments at Analog Sites"
-      authors: Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho
-      venue_type: "T-FR"
-      category: "Robotics"
-      tags:
-          - SLAM
-          - Field
-      page_link: /research/skid_slam/
 
     # === SKiD-SLAM Workshop (ICRA-W 2025) — renamed folder skid_slam_w ===
     - link: /img/research/paper/10_skid_slam.gif

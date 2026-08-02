@@ -1,7 +1,7 @@
 - title: "2026"
   images:
     - alt: "SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions with Field Deployments at Analog Sites"
-      authors: "Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho"
+      authors: "Hogyun Kim, Juwon Kim, Dongjin Cho, Jiwon Choi, Geonmo Yang, Seokhwan Jeong, Jiyun Lee, Miryeong Park, Hyungtae Lim, and Younggun Cho"
       corr_authors: "Younggun Cho, Hyungtae Lim"
       conf: "IEEE Transactions on Field Robotics (T-FR)"
       conf_link: "https://www.ieee-ras.org/publications/t-fr/"
