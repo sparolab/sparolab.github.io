@@ -1,4 +1,8 @@
 papers:
+  - date: "Aug. 2026"
+    description: "SKiD-SLAM accepted @IEEE T-FR 2026!"
+    authors: "Hogyun"
+
   - date: "June. 2026"
     description: "RadLoc accepted @IEEE/RSJ IROS 2026!"
     authors: "Hogyun"

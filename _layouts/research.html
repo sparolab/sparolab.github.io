@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // 4-2) 발표처 필터 버튼 생성 (지정 순서, 데이터에 존재하는 것만)
   const venueBar = document.getElementById('venue-filter');
   if (venueBar) {
-    const venueOrder = ['IJRR', 'RA-L', 'ICRA', 'IROS', 'T-IV', 'IEEE SJ', 'IEEE SL', 'iSpaRo', 'Workshop'];
+    const venueOrder = ['IJRR', 'T-FR', 'RA-L', 'ICRA', 'IROS', 'T-IV', 'IEEE SJ', 'IEEE SL', 'iSpaRo', 'Workshop'];
     const venuePresent = new Set();
     items.forEach(item => {
       const v = (item.dataset.venue || '').trim();

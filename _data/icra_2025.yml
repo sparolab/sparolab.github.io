@@ -63,7 +63,7 @@
     We evaluate the method on the public dataset under simulated degenerate scenarios, including visual degradation and partial UWB signal loss. 
     Experimental results demonstrate that the proposed method significantly reduces drift and maintains accurate global localization, even under severe sensor degradation.
   session: Workshop on Field Robotics / Monday, 8:30-17:30 
-  page_link: /research/skid_slam/
+  page_link: /research/skid_slam_w/
   image: /img/research/paper/10_skid_slam.gif
 
 - title: "Robust Visual SLAM with Auxiliary Range Factor for Degenerate Construction Environments"

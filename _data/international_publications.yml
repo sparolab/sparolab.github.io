@@ -1,5 +1,14 @@
 - title: "2026"
   images:
+    - alt: "SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions with Field Deployments at Analog Sites"
+      authors: "Hogyun Kim, Jiwon Choi, Juwon Kim, Geonmo Yang, Dongjin Cho, Hyungtae Lim, and Younggun Cho"
+      corr_authors: "Younggun Cho, Hyungtae Lim"
+      conf: "IEEE Transactions on Field Robotics (T-FR)"
+      conf_link: "https://www.ieee-ras.org/publications/t-fr/"
+      arxiv: "https://arxiv.org/abs/2505.08230"
+      project: "/research/skid_slam/"
+      code: "https://github.com/sparolab/SKiD-SLAM"
+
     - alt: "RadLoc: Radar-based 3-DoF Global Localization via Fast, Robust, and Lightweight Spatial Descriptor Across Diverse Environmental Scenarios"
       authors: "Hogyun Kim, Jiwon Choi, Jungwoo Lee, and Younggun Cho"
       conf: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
@@ -111,7 +120,7 @@
       conf: "ICRA workshop"
       conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
       arxiv: "https://arxiv.org/abs/2505.08230"
-      project: "/research/skid_slam/"
+      project: "/research/skid_slam_w/"
       code: "https://github.com/sparolab/SKiD-SLAM"
 
     - alt: "PoLaRIS Dataset: A Maritime Object Detection and Tracking Dataset in Pohang Canal"
