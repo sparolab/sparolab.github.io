@@ -110,10 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const allItems = [];
 
-  // Paper 데이터 수집
+  // Paper 데이터 수집 (Workshop 논문은 메인 페이지에서 제외)
   paperData.forEach(gallery => {
     if (gallery.title === "Paper") {
       gallery.images.forEach(image => {
+        if (image.venue_type === "Workshop") return;
         allItems.push({
           ...image,
           type: 'paper',
