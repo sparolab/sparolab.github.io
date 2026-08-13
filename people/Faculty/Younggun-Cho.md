@@ -308,8 +308,9 @@ permalink: /people/Faculty/Younggun-Cho
       </article>
 
       <article class="yg-profile__card">
-        <h3>Editorial Roles</h3>
+        <h3>Editorial and Technical Committee Roles</h3>
         <ul class="yg-profile__list">
+          <li><strong>IEEE RAS Technical Committee on Marine Robotics</strong> — Co-Chair, January 2026–Present</li>
           <li><strong>IEEE Robotics and Automation Letters (RA-L)</strong> — Associate Editor, Localization and Mapping</li>
           <li><strong>IEEE International Conference on Robotics and Automation (ICRA 2026)</strong> — Associate Editor, Autonomy for Mobility and Manipulation 2</li>
           <li><strong>Intelligent Service Robotics (ISR)</strong> — Associate Editor, 2025–Present</li>
