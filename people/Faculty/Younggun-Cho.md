@@ -216,8 +216,8 @@ permalink: /people/Faculty/Younggun-Cho
         <a class="yg-profile__link" href="https://github.com/youngguncho" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span>
         </a>
-        <a class="yg-profile__link" href="https://sites.google.com/site/ygchocv/home" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-home" aria-hidden="true"></i><span>Personal Website</span>
+        <a class="yg-profile__link" href="https://raw.githubusercontent.com/youngguncho/cv_ygcho/main/output/pdf/cv_ygcho.pdf" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-file-pdf" aria-hidden="true"></i><span>CV</span>
         </a>
       </nav>
     </div>
