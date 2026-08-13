@@ -54,6 +54,7 @@ footer_menu: footer_menu
 # their entries' file path in the `include:` list.
 #
 exclude:
+  - vender
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/
