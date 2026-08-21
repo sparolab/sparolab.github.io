@@ -92,6 +92,17 @@
       linkedin: https://www.linkedin.com/in/dongjineee/
       keywords: Traversability, Long term Autonomy
 
+    - link: /img/people/master/이민호_증명사진.jpg
+      alt: Minho Lee
+      description: |-
+        **Minho Lee** (2024.08~)
+      email: mino@inha.edu
+      github: https://github.com/iminolee
+      homepage: https://roboxiv.com
+      scholar: https://scholar.google.com/citations?user=96AEAd0AAAAJ&hl=ko
+      linkedin: https://www.linkedin.com/in/iminolee/
+      keywords: Embodied AI, MM-LLMs
+
     - link: /img/people/phd/백운영_증명사진.jpeg
       alt: WoonYoung Baek
       description: |-
@@ -105,28 +116,6 @@
 
 - title: Master Student
   images:
-    - link: /img/people/phd/김주원_증명사진.jpg
-      alt: Juwon Kim
-      description: |-
-        **Juwon Kim** (2024.08~)
-      email: lambertkim317@gmail.com
-      github: https://github.com/U-AMC
-      homepage: https://U-AMC.github.io/
-      scholar: https://scholar.google.ch/citations?user=2bvLmqQAAAAJ&hl=en
-      linkedin: https://www.linkedin.com/in/json380/
-      keywords: SLAM, Field Robotics, Quadruped, Multi Robot
-
-    - link: /img/people/master/이민호_증명사진.jpg
-      alt: Minho Lee
-      description: |-
-        **Minho Lee** (2024.08~)
-      email: mino@inha.edu
-      github: https://github.com/iminolee
-      homepage: https://roboxiv.com
-      scholar: https://scholar.google.com/citations?user=96AEAd0AAAAJ&hl=ko
-      linkedin: https://www.linkedin.com/in/iminolee/
-      keywords: Embodied AI, MM-LLMs
-
     - link: /img/people/master/박미령_증명사진.jpg
       alt: Miryeong Park
       description: |-

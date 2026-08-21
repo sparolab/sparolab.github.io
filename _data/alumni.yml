@@ -1,5 +1,13 @@
 - title: Alumni
   images:
+    - link: /img/people/phd/김주원_증명사진.jpg
+      alt: Juwon Kim
+      description: |-
+        **Juwon Kim**  
+        M.S. 2026
+      at: Urban Robotics Lab, KAIST
+      at_link: https://urobot.kaist.ac.kr/?lang=ko
+
     - link: /img/people/master/최은철_증명사진.png
       alt: Euncheol Choi
       description: |-
