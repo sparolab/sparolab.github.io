@@ -110,6 +110,13 @@
         description: {{ person.description | jsonify }}
       },
     {% endfor %}
+    {% for etc in site.data.news.etc %}
+      {
+        date: {{ etc.date | jsonify }},
+        description: {{ etc.description | jsonify }},
+        link: {{ etc.link | default: '' | jsonify }}
+      },
+    {% endfor %}
   ];
 
   allNews.sort((a, b) => parseDateValue(b.date) - parseDateValue(a.date));

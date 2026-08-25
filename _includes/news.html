@@ -129,6 +129,7 @@
     <span class="tag-button" data-category="awards">Awards</span>
     <span class="tag-button" data-category="projects">Projects</span>
     <span class="tag-button" data-category="people">New Members</span>
+    <span class="tag-button" data-category="etc">ETC</span>
   </div>
 
   <div id="news-year-filter">
@@ -186,6 +187,21 @@
       {% assign dp = person.date | split: " " %}
       <li class="news-item" data-category="people" data-year="{{ dp | last }}">
         {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = person.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ person.description }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="news-section" data-category="etc">
+  <h3 id="-etc"><a id="etc"></a> <i class="fa-solid fa-bullhorn news-icon"></i>ETC</h3>
+  <ul class="news-list">
+    {% for etc in site.data.news.etc %}
+      {% assign dp = etc.date | split: " " %}
+      <li class="news-item" data-category="etc" data-year="{{ dp | last }}">
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = etc.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ etc.description }}
+        {% if etc.link %}
+          <a href="{{ etc.link }}" target="_blank">[Read more]</a>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
