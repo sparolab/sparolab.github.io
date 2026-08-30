@@ -8,6 +8,6 @@
     Extensive experiments on 15 sequences across 5 datasets demonstrate that RadLoc achieves robust performance while maintaining the smallest descriptor size and fastest retrieval time among state-of-the-art approaches.
   sessions:
     - "Localization and Odometry in Challenging Conditions / Monday, 09:01-09:03 / Paper #3941"
-    - "Poster Session / Monday, Exhibition Hall B"
+    - "Poster Session / Monday, 11:00-12:30 / Exhibition Hall B"
   page_link: /research/radloc/
   image: /img/research/paper/21_radloc.gif
