@@ -280,6 +280,12 @@ categories:
     - name: Entrance & Graduation
       id: entrance_graduation
       images: 
+      - description: "2026년도 하반기 졸업식(이민호, 김주원)"  
+        date: "2026.08"
+        image_list:
+          - link: /img/album/activity/graduation/2026/2026_02_단체.jpg
+          - link: /img/album/activity/graduation/2026/2026_02_졸업자.jpg
+
       - description: "2026년도 상반기 졸업식(조동진, 이기현, 최지원)"  
         date: "2026.02"
         image_list:
