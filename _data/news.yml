@@ -173,6 +173,9 @@ awards:
     description: "Prof. <strong>Younggun</strong> received 우수신진연구자상 @ICROS 2022!"
 
 projects:
+  - date: "Aug. 2026"
+    description: "SPARO Lab won a big grant @MOTIE (산업통상자원부)!"
+
   - date: "Apr. 2026"
     description: "SPARO Lab won a big grant @NRF-STEAM (미래유망융합기술파이오니어)!"
 
