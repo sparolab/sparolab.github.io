@@ -11,3 +11,33 @@
     - "Poster Session / Monday, 11:00-12:30 / Exhibition Hall B"
   page_link: /research/radloc/
   image: /img/research/paper/21_radloc.gif
+  
+  
+  - title: "Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment"
+  authors: "<strong>Seokhwan Jeong</strong> and Younggun Cho"
+  abstract: >
+    This paper presents an introspective perception
+framework that extends reliability assessment from downstream
+perception outputs to the sensor alignment underlying multi-
+sensor fusion. LiDAR–camera misalignment is a persistent
+upstream failure that can corrupt fused representations even
+when both sensors continue to operate normally. We translate
+LiDAR–camera alignment integrity into an object-level visual
+assessment problem, enabling a vision–language model (VLM)
+to evaluate projected LiDAR depth patterns using a common
+set of human-defined criteria. After generating object-level
+projection images, we adapt a VLM to classify each object
+as Pass, Fail, or Unknown and aggregate the resulting evi-
+dence using a soft-voting ensemble for frame-level Pass/Fail
+classification. With all task-specific fine-tuning and ensemble
+training performed only on the KITTI Odometry benchmark
+and no target-domain adaptation applied, the proposed method
+demonstrates comparatively consistent performance across un-
+seen urban, lawn, and maritime environments. The results
+suggest that representing sensor alignment as an object-level
+visual assessment problem provides a transferable alternative
+to criteria based solely on environment-specific geometric cues.
+  sessions:
+    - "3rd AI Meets Autonomy: Vision, Language, and Autonomous Systems Workshop / Thursday, 08:30-12:30 / TBD"
+  page_link: /research/miscalib/
+  image: /img/research/paper/22_miscalib.png

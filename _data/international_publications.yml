@@ -1,5 +1,11 @@
 - title: "2026"
   images:
+    - alt: "Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment"
+      authors: "Seokhwan Jeong and Younggun Cho"
+      conf: "IROS workshop: 3rd AI Meets Autonomy: Vision, Language, and Autonomous Systems Workshop"
+      conf_link: "https://www.ai-meets-autonomy.com/"
+      project: "/research/miscalib/"
+      
     - alt: "SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions with Field Deployments at Analog Sites"
       authors: "Hogyun Kim, Juwon Kim, Dongjin Cho, Jiwon Choi, Geonmo Yang, Seokhwan Jeong, Jiyun Lee, Miryeong Park, Hyungtae Lim, and Younggun Cho"
       corr_authors: "Younggun Cho, Hyungtae Lim"
