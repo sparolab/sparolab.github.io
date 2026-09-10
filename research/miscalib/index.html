@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment">
+  <meta name="keywords" content="LiDAR-camera misalignment, introspective perception, vision-language model, cross-environment generalization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-menu is-active">
+      <div class="navbar-start" style="flex-grow:1; justify-content:center;">
+        <a class="navbar-item" href="https://sparolab.github.io/" aria-label="SPARO Lab home">
+          <span class="icon"><i class="fas fa-home" aria-hidden="true"></i></span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Seokhwan Jeong<sup>1</sup>,</span>
+              <span class="author-block">and <a href="https://sparolab.github.io/">Younggun Cho</a><sup>1†</sup></span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Department of Electrical and Computer Engineering, Inha University</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h2 class="subtitle has-text-centered">An introspective perception framework that turns LiDAR–camera alignment integrity into an object-level visual assessment task and transfers across unseen environments without target-domain adaptation.</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>This paper extends introspective perception from downstream outputs to the sensor alignment underlying multi-sensor fusion. LiDAR–camera misalignment can corrupt fused representations even while both sensors operate normally. We formulate alignment integrity as an object-level visual assessment problem: projected LiDAR depth patterns are evaluated by a vision–language model using common human-defined criteria. The adapted VLM labels each object as <strong>Pass</strong>, <strong>Fail</strong>, or <strong>Unknown</strong>, and a soft-voting ensemble aggregates this evidence into a frame-level Pass/Fail decision. All task-specific training uses KITTI Odometry only, yet the method maintains comparatively consistent performance in unseen urban, lawn, and maritime environments without target-domain adaptation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <figure class="image" style="margin-bottom:2rem;">
+        <img src="./static/images/pipeline.png" alt="Pipeline for object-level LiDAR-camera misalignment detection and frame-level ensemble classification">
+        <figcaption class="has-text-centered is-size-6" style="margin-top:0.75rem;">Overview of the proposed LiDAR–camera misalignment detection pipeline.</figcaption>
+      </figure>
+      <div class="columns is-variable is-6">
+        <div class="column content">
+          <h3 class="title is-5">1. Object-level projection</h3>
+          <p>Grounding DINO detects open-set objects, SAM produces their masks, and Canny edges define object boundaries. LiDAR points are projected with depth-based colors. Local Z-buffering suppresses occluded background points using a 5-pixel neighborhood and a 0.7 m depth tolerance.</p>
+        </div>
+        <div class="column content">
+          <h3 class="title is-5">2. VLM assessment</h3>
+          <p>A LoRA-adapted Qwen2.5-VL-32B judges whether depth colors inside an object boundary are distinct from the surrounding region. It returns Pass for consistent alignment, Fail for mixed colors caused by misalignment, and Unknown when evidence is sparse or ambiguous.</p>
+        </div>
+        <div class="column content">
+          <h3 class="title is-5">3. Frame-level ensemble</h3>
+          <p>Mean/max-pooled VLM embeddings, prediction statistics, and bounding-box geometry form a 143-dimensional feature. Logistic regression, random forest, Extra Trees, and histogram gradient boosting combine their probabilities by soft voting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Cross-Environment Evaluation</h2>
+      <figure class="image" style="margin-bottom:2rem;">
+        <img src="./static/images/four-environments.png" alt="Raw camera images and LiDAR projections from KITTI, WOD, DiTer++, and Pohang">
+        <figcaption class="has-text-centered is-size-6" style="margin-top:0.75rem;">Representative camera images and LiDAR projections across four evaluation environments.</figcaption>
+      </figure>
+      <div class="content has-text-justified">
+        <p>The VLM was fine-tuned on 8,546 augmented object projections derived from KITTI. Frame-level training used 660 KITTI frames. Evaluation covered KITTI sequence 00, Waymo Open Dataset, the DiTer++ lawn sequence, and the Pohang Canal maritime dataset, with no additional training or target-domain adaptation.</p>
+      </div>
+      <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth has-text-centered">
+          <thead><tr><th>Dataset</th><th>Environment</th><th>Pass / Fail Frames</th><th>Accuracy (%)</th><th>Balanced Accuracy (%)</th></tr></thead>
+          <tbody>
+            <tr><td>KITTI</td><td>Urban</td><td>160 / 240</td><td>89.50</td><td>90.21</td></tr>
+            <tr><td>WOD</td><td>Urban</td><td>30 / 45</td><td>76.00</td><td>70.00</td></tr>
+            <tr><td>DiTer++</td><td>Rural / lawn</td><td>95 / 143</td><td>74.79</td><td>72.48</td></tr>
+            <tr><td>Pohang</td><td>Maritime</td><td>30 / 45</td><td>82.67</td><td>81.11</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="content has-text-justified">
+        <p>Across the three unseen datasets, the proposed method achieves <strong>77.8% mean accuracy</strong> with a <strong>3.5 percentage-point standard deviation</strong>, compared with ST-Calib's 66.8% and 14.1 points. Mean balanced accuracy is 74.5% versus 62.1%, supporting more stable transfer across environmental domains.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths content">
+          <h2 class="title is-3 has-text-centered">Limitations and Future Work</h2>
+          <p>The current evaluation covers a limited number of datasets and primarily changes the environment while retaining similar sensor configurations. Because the approach relies on object-level projections, it cannot operate when no objects are present. Future work will extend evaluation to cross-sensor settings and add frame-level abstention when alignment evidence is insufficient.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8 content has-text-centered">
+          <p>Spatial AI and Robotics Laboratory, Inha University</p>
+          <p>This website is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
