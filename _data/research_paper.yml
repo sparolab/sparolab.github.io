@@ -1,5 +1,18 @@
 - title: Paper
   images:
+    - link: /img/research/paper/22_miscalib.png
+      alt: IEEE/RSJ IROS-W
+      alt_link: https://www.ai-meets-autonomy.com/
+      pulished_date: Oct, 2026
+      paper: "Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment"
+      authors: Seokhwan Jeong and Younggun Cho
+      venue_type: "Workshop"
+      category: "Spatial AI"
+      tags:
+          - Calibration
+          - Field
+      page_link: /research/miscalib/
+
     # === SKiD-SLAM (IEEE T-FR, accepted) — newest ===
     - link: /img/research/paper/10_skid_slam.gif   # PLACEHOLDER image — replace with new figure
       alt: IEEE T-FR
