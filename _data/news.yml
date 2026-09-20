@@ -1,5 +1,9 @@
 papers:
   - date: "Sep. 2026"
+    description: "Three workshop papers accepted @IROSW 2026!"
+    authors: "Geonmo, Seokhwan and Taehu"
+
+  - date: "Sep. 2026"
     description: "Radiation-Guided Exploration accepted @SSRR 2026!"
     authors: "Miryeong"
 
@@ -30,6 +34,10 @@ papers:
   - date: "Oct. 2025"
     description: "StaticNeRF accepted @RA-L!"
     authors: "Juhui"
+
+  - date: "Sep. 2025"
+    description: "Two workshop papers accepted @IROSW 2025!"
+    authors: "Gihyeon and Minho"
 
   - date: "Jun. 2025"
     description: "MARSCalib accepted @IROS 2025!"
