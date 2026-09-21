@@ -140,10 +140,13 @@
     li.appendChild(descSpan);
 
     if (item.authors) {
-      const authorStrong = document.createElement('strong');
-      authorStrong.style.color = '#1f2a44';
-      authorStrong.textContent = ' (' + item.authors + ')';
-      li.appendChild(authorStrong);
+      const authorSpan = document.createElement('span');
+      authorSpan.style.color = '#1f2a44';
+      // authors 역시 신뢰된 사이트 데이터이며, 이름만 굵게 하고 'and' 같은
+      // 연결어는 굵게 표시하지 않기 위해 HTML 로 렌더링한다.
+      authorSpan.innerHTML =
+        ' (<strong>' + item.authors.replace(/ and /g, '</strong> and <strong>') + '</strong>)';
+      li.appendChild(authorSpan);
     }
 
     if (item.link) {

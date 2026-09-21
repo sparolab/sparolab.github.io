@@ -146,7 +146,8 @@
       <li class="news-item" data-category="papers" data-year="{{ dp | last }}">
         {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = paper.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ paper.description }}
         {% if paper.authors %}
-          <strong style="color:#1f2a44;">({{ paper.authors }})</strong>
+          {%- comment -%} 이름만 굵게, 'and' 같은 연결어는 굵게 표시하지 않는다. {%- endcomment -%}
+          <span style="color:#1f2a44;">(<strong>{{ paper.authors | replace: ' and ', '</strong> and <strong>' }}</strong>)</span>
         {% endif %}
       </li>
     {% endfor %}
