@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Co-GS SLAM: Collaborative 3D Gaussian Splatting SLAM with Pose-Dependent Gaussian Model. IROS 2026 Workshop on Intelligent Information Gathering for Single and Multi-Robot Systems."
+    />
+    <meta
+      name="keywords"
+      content="Co-GS SLAM, collaborative SLAM, multi-agent SLAM, 3D Gaussian Splatting, pose-dependent Gaussian"
+    />
+    <meta name="theme-color" content="#6366f1" />
+    <meta property="og:title" content="Co-GS SLAM" />
+    <meta
+      property="og:description"
+      content="Collaborative 3D Gaussian Splatting SLAM with Pose-Dependent Gaussian Model"
+    />
+    <meta property="og:image" content="./static/images/paper/teaser_a.webp" />
+    <title>
+      Co-GS SLAM: Collaborative 3D Gaussian Splatting SLAM with Pose-Dependent
+      Gaussian Model
+    </title>
+    <link rel="icon" href="./static/images/cogs.gif" />
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <script src="./static/js/page.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#abstract">Skip to content</a>
+    <nav class="site-nav" aria-label="Page sections">
+      <a class="brand" href="#top">Co-GS <span>SLAM</span></a>
+      <div>
+        <a href="#method">Method</a><a href="#results">Results</a
+        ><a href="#qualitative">Qualitative</a><a href="#bibtex">BibTeX</a>
+      </div>
+    </nav>
+    <header class="top" id="top">
+      <div class="wrap">
+        <p class="eyebrow">IROS 2026 Workshop</p>
+        <h1>
+          <span class="project-name"
+            ><img
+              class="title-icon"
+              src="./static/images/cogs.gif"
+              alt=""
+              aria-hidden="true"
+            />Co-GS SLAM</span
+          ><span class="paper-sub"
+            >Collaborative 3D Gaussian Splatting SLAM <br />with Pose-Dependent
+            Gaussian Model</span
+          >
+        </h1>
+        <p class="authors">
+          <span>Taehu Sim<sup>1</sup></span
+          ><span
+            ><a
+              href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&amp;hl=ko"
+              target="_blank"
+              rel="noopener"
+              >Hogyun Kim</a
+            ><sup>1</sup></span
+          ><span
+            ><a
+              href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&amp;hl=ko"
+              target="_blank"
+              rel="noopener"
+              >Jiwon Choi</a
+            ><sup>1</sup></span
+          ><span
+            ><a
+              href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ&amp;hl=ko"
+              target="_blank"
+              rel="noopener"
+              >Juhui Lee</a
+            ><sup>1</sup></span
+          ><span
+            >and
+            <a
+              href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&amp;hl=ko"
+              target="_blank"
+              rel="noopener"
+              >Younggun Cho</a
+            ><sup>1†</sup></span
+          >
+        </p>
+        <p class="affiliation">
+          <sup>1</sup
+          ><a href="https://sparolab.github.io/" target="_blank" rel="noopener"
+            >Spatial AI and Robotics (SPARO) Lab</a
+          >, Inha University, South Korea <br /><span>† Corresponding author</span>
+        </p>
+        <div class="venue">
+          <strong
+            >The Workshop and Competition on Intelligent Information Gathering
+            for Single and Multi-Robot Systems</strong
+          >
+          <span>IROS 2026 · Sunday, 8:30–12:30 · Paper #16</span>
+        </div>
+        <div class="resource-links" aria-label="Project resources">
+          <span class="resource">Paper <small>Coming soon</small></span
+          ><span class="resource">Code <small>Coming soon</small></span
+          ><a class="resource active" href="#bibtex">BibTeX</a
+          ><a
+            class="resource active outline"
+            href="https://sparolab.github.io/research/iros_2026/"
+            >SPARO Lab at IROS 2026</a
+          >
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="teaser wrap wide" aria-label="Project overview">
+        <figure class="teaser-figure">
+          <a
+            href="./static/images/paper/teaser_a.webp"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open full-size merged map"
+            ><img
+              class="paper-figure"
+              src="./static/images/paper/teaser_a.webp"
+              width="2600"
+              height="1370"
+              fetchpriority="high"
+              alt="Merged Gaussian map of the in-house sequence with the keyframe poses of agent 1 (blue) and agent 2 (pink) drawn as camera frusta."
+          /></a>
+          <p class="panel-label">(a) Merged Gaussian map</p>
+          <div class="teaser-pair">
+            <figure>
+              <img
+                src="./static/images/paper/teaser_b.webp"
+                width="1400"
+                height="1055"
+                alt="Novel view rendered without the pose-dependent Gaussian model: the checkerboard shows double edges and blur."
+              />
+              <figcaption>(b) Rendering w/o PD model</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="./static/images/paper/teaser_c.webp"
+                width="1401"
+                height="1048"
+                alt="The same novel view with the pose-dependent Gaussian model: the checkerboard is sharp."
+              />
+              <figcaption>(c) Rendering w/ PD model</figcaption>
+            </figure>
+          </div>
+          <figcaption>
+            <strong>Co-GS SLAM</strong> on our in-house dataset. (a) The merged
+            map of two agents, with their keyframe poses drawn as camera frusta.
+            (b) Without the pose-dependent (PD) Gaussian model, the misalignment
+            left by the merge is absorbed into the map as double surfaces and
+            blur. (c) With the PD model, the poses move together with the map
+            and the surface is recovered. Both renders start from the same merge
+            and differ only in the map representation.
+          </figcaption>
+        </figure>
+        <div class="highlights">
+          <div>
+            <strong>8<span>/9</span></strong>
+            <p>Sequences with the lowest <br />trajectory error</p>
+          </div>
+          <div>
+            <strong>+5.9–10.5 <span>dB</span></strong>
+            <p>PSNR gain over the best baseline <br />on all seven keyframe benchmarks</p>
+          </div>
+          <div>
+            <strong>4.1 <span>cm</span></strong>
+            <p>Average in-house ATE, <br />against 11.8 cm</p>
+          </div>
+        </div>
+      </section>
+      <section class="block" id="abstract">
+        <div class="wrap wide">
+          <p class="eyebrow">The idea</p>
+          <h2>Consistency starts with the poses.</h2>
+          <h3 class="abstract-label">Abstract</h3>
+          <p class="abstract-text">
+            Collaborative 3D Gaussian splatting (3DGS) simultaneous localization
+            and mapping (SLAM) provides scalable intelligence by merging the
+            Gaussian maps that multiple agents build. To bring those maps into a
+            common frame, each agent tracks its own odometry, and the server
+            then closes loops between the agents by recognizing revisited places
+            and estimating the relative pose of the matched keyframes. Building
+            on this, state-of-the-art multi-agent 3DGS SLAM methods reconstruct
+            scenes with remarkable rendering quality. However, once they are
+            deployed in the real-world, they often suffer from two challenges:
+            (i) <em>intra-agent odometry error</em>, where the odometry of each
+            agent is not consistently accurate, and (ii)
+            <em>inter-agent constraint noise</em>, where sensor noise corrupts
+            the loop closures between the agents. To address these challenges,
+            we present <em>Co-GS SLAM</em>, which refines the merged map and the
+            keyframe poses of every agent together using a pose-dependent (PD)
+            Gaussian model, achieving a geometrically and photometrically
+            consistent merged map. Experiments on nine multi-agent sequences
+            from four datasets demonstrate the highest rendering fidelity and
+            the lowest trajectory error on all but one sequence. In addition, on
+            our in-house dataset, recorded in the real-world, our Co-GS SLAM
+            shows robust performance compared with state-of-the-art methods,
+            averaging 4.1 cm of trajectory error against 11.8 cm and 10.0 dB
+            more PSNR. Our code will be available upon acceptance.
+          </p>
+        </div>
+      </section>
+      <section class="block tint" id="method">
+        <div class="wrap wide">
+          <div class="section-heading">
+            <p class="eyebrow">How it works</p>
+            <h2>From local maps to one shared map.</h2>
+            <p>
+              The server merges the agents’ maps with no prior on their relative
+              pose, then refines the map and every keyframe pose together.
+            </p>
+          </div>
+          <figure class="figure-card">
+            <a
+              href="./static/images/paper/pipeline.webp"
+              target="_blank"
+              rel="noopener"
+              aria-label="Open full-size pipeline figure"
+              ><img
+                loading="lazy"
+                class="paper-figure"
+                src="./static/images/paper/pipeline.webp"
+                width="2600"
+                height="808"
+                alt="Pipeline: (a) each agent maps into Gaussian submaps in its own frame, (b) the server closes loops between agents and solves a pose graph over the submaps, (c) the merged map is refined together with the keyframe poses of every agent."
+            /></a>
+            <figcaption>
+              Each agent tracks its own RGB-D stream and maps it into Gaussian
+              submaps in its own reference frame (a). The server detects the
+              loops between agents and solves a pose graph over the submaps,
+              which places them in a common frame as one rigid transform each
+              (b). We then refine the merged map together with the keyframe
+              poses of every agent, with each Gaussian defined in the camera
+              frame of the keyframe that created it (c).
+            </figcaption>
+          </figure>
+          <div class="steps">
+            <article>
+              <span class="step-number">01 / AGENT</span>
+              <h3>Map in its own frame</h3>
+              <p>
+                Each agent estimates its keyframe poses by frame-to-model G-ICP
+                and builds Gaussian submaps in its own reference frame. Its
+                odometry error accumulates as it moves.
+              </p>
+            </article>
+            <article>
+              <span class="step-number">02 / SERVER</span>
+              <h3>Merge into a common frame</h3>
+              <p>
+                Loop closures between agents enter a pose graph over all
+                submaps. Optimizing it moves each submap rigidly, so errors
+                inside a submap and noisy loop constraints remain after the
+                merge.
+              </p>
+            </article>
+            <article>
+              <span class="step-number">03 / SERVER</span>
+              <h3>Refine map and poses together</h3>
+              <p>
+                The rendering loss over the keyframes of all agents is minimized
+                over the Gaussians and the keyframe poses of every agent at
+                once, starting from the merged map.
+              </p>
+            </article>
+          </div>
+          <div class="pd-panel">
+            <div>
+              <p class="eyebrow">The key representation</p>
+              <h3>Gaussians that move <br />with their anchor poses.</h3>
+              <p>
+                Freeing the poses is not enough: from a poor merge, the joint
+                refinement can settle with the region two agents share
+                reconstructed twice.
+              </p>
+              <p>
+                The <strong>pose-dependent (PD) Gaussian model</strong> defines
+                each Gaussian in the camera frame of the keyframe that added it,
+                its <em>anchor</em>. A render then constrains not only its own
+                viewing pose but also the anchor poses of every Gaussian it
+                draws. Some of those anchors belong to the other agent, so the
+                agents correct each other where their views overlap.
+              </p>
+              <dl class="pd-stats">
+                <div>
+                  <dt>w/o PD</dt>
+                  <dd>7.31 <span>cm ATE</span></dd>
+                </div>
+                <div class="ours">
+                  <dt>w/ PD</dt>
+                  <dd>3.38 <span>cm ATE</span></dd>
+                </div>
+              </dl>
+            </div>
+            <div>
+              <div class="pd-comparison">
+                <figure>
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/pd_wo_pd.webp"
+                    width="1400"
+                    height="1004"
+                    alt="Without PD: double contours along the red chair and the arm of the black chair in Aria room 0."
+                  />
+                  <figcaption>(a) w/o PD</figcaption>
+                </figure>
+                <figure class="ours">
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/pd_w_pd.webp"
+                    width="1400"
+                    height="1006"
+                    alt="With PD: a single surface along both chairs in Aria room 0."
+                  />
+                  <figcaption>(b) w/ PD</figcaption>
+                </figure>
+                <figure>
+                  <img
+                    loading="lazy"
+                    src="./static/images/paper/pd_gt.webp"
+                    width="1400"
+                    height="1004"
+                    alt="Ground truth keyframe of Aria room 0."
+                  />
+                  <figcaption>(c) Ground truth</figcaption>
+                </figure>
+              </div>
+              <p class="caption">
+                Aria <code>room 0</code> after the joint refinement, with noise
+                injected into the inter-agent loop constraints. Keeping the
+                Gaussians in the world frame (a) leaves a second contour along
+                the back of the red chair and the arm of the black chair; the PD
+                model (b) recovers a single surface. The two renders differ by
+                only 0.15 dB PSNR, so this misalignment is one that PSNR barely
+                reports.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="block" id="results">
+        <div class="wrap wide">
+          <div class="section-heading">
+            <p class="eyebrow">Quantitative results</p>
+            <h2>Sharper maps. More accurate trajectories.</h2>
+            <p>
+              Nine multi-agent sequences from four datasets, evaluated on the
+              keyframes of the merged map.
+            </p>
+          </div>
+          <div class="results-controls" hidden>
+            <label for="scene-select">Explore a sequence</label
+            ><select id="scene-select"></select>
+          </div>
+          <div id="results-charts" class="chart-grid" aria-live="polite"></div>
+          <p class="chart-note" hidden>
+            Linear scale from zero. A bar with a break runs past the axis; its
+            exact value is printed.
+          </p>
+          <details class="results-table" open>
+            <summary>All results · exact values from the paper</summary>
+            <h4>Table I · Tracking accuracy</h4>
+            <!-- TABLE:ate -->
+            <div class="table-scroll">
+              <table>
+                <caption>Table I: tracking accuracy (ATE RMSE) on nine sequences</caption>
+                <thead>
+                  <tr><th scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="4" class="group">Replica</th><th scope="colgroup" colspan="2" class="group">Aria</th><th scope="colgroup" colspan="1" class="group">TUM</th><th scope="colgroup" colspan="2" class="group">In-house</th></tr>
+                  <tr><th scope="col">apt 0</th><th scope="col">apt 1</th><th scope="col">apt 2</th><th scope="col">office 0</th><th scope="col">room 0</th><th scope="col">room 1</th><th scope="col">desk</th><th scope="col">Dream 1</th><th scope="col">Dream 2</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="metric-head"><th scope="rowgroup" colspan="10">ATE RMSE ↓ (cm)</th></tr>
+                  <tr><th scope="row">MAGiC-SLAM</th><td>0.240</td><td>0.382</td><td>0.482</td><td>0.285</td><td>1.751</td><td><strong>0.737</strong></td><td>14.30</td><td>7.9</td><td>15.7</td></tr>
+                  <tr><th scope="row">MAC-Ego3D*</th><td>286.0</td><td>396.1</td><td>390.3</td><td>217.4</td><td>224.9</td><td>166.7</td><td>15.0</td><td>52.5</td><td>156.5</td></tr>
+                  <tr><th scope="row">CoKo-SLAM</th><td>0.62</td><td>0.56</td><td>0.35</td><td>0.55</td><td>2.77</td><td>1.62</td><td>4815</td><td>15.4</td><td>38.8</td></tr>
+                  <tr class="variant"><th scope="row">Ours (map only)</th><td>0.201</td><td>0.262</td><td>0.154</td><td>0.162</td><td>0.799</td><td>1.380</td><td>4.240</td><td>5.211</td><td>6.711</td></tr>
+                  <tr class="ours"><th scope="row">Co-GS SLAM (w/ PD)</th><td><strong>0.190</strong></td><td><strong>0.248</strong></td><td><strong>0.148</strong></td><td><strong>0.122</strong></td><td><strong>0.805</strong></td><td>1.362</td><td><strong>2.114</strong></td><td><strong>3.394</strong></td><td><strong>4.783</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /TABLE:ate -->
+            <h4>Table II · Rendering quality and depth accuracy</h4>
+            <!-- TABLE:render -->
+            <div class="table-scroll">
+              <table>
+                <caption>Table II: rendering quality and depth accuracy on keyframes</caption>
+                <thead>
+                  <tr><th scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="4" class="group">Replica</th><th scope="colgroup" colspan="1" class="group">TUM</th><th scope="colgroup" colspan="2" class="group">In-house</th></tr>
+                  <tr><th scope="col">apt 0</th><th scope="col">apt 1</th><th scope="col">apt 2</th><th scope="col">office 0</th><th scope="col">desk</th><th scope="col">Dream 1</th><th scope="col">Dream 2</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="metric-head"><th scope="rowgroup" colspan="8">PSNR ↑ (dB)</th></tr>
+                  <tr><th scope="row">MAGiC-SLAM</th><td>37.53</td><td>31.31</td><td>31.35</td><td>39.46</td><td>15.77</td><td>23.56</td><td>21.56</td></tr>
+                  <tr><th scope="row">MAC-Ego3D*</th><td>31.16</td><td>22.30</td><td>29.23</td><td>27.58</td><td>17.19</td><td>25.15</td><td>24.40</td></tr>
+                  <tr><th scope="row">CoKo-SLAM</th><td>36.65</td><td>29.25</td><td>31.27</td><td>39.27</td><td>14.81</td><td>23.11</td><td>20.98</td></tr>
+                  <tr class="variant"><th scope="row">Ours (map only)</th><td>46.32</td><td>38.49</td><td>40.72</td><td>44.63</td><td>17.23</td><td>28.44</td><td>29.25</td></tr>
+                  <tr class="ours"><th scope="row">Co-GS SLAM (w/ PD)</th><td><strong>46.89</strong></td><td><strong>38.99</strong></td><td><strong>41.36</strong></td><td><strong>45.34</strong></td><td><strong>23.39</strong></td><td><strong>34.55</strong></td><td><strong>34.93</strong></td></tr>
+                </tbody>
+                <tbody>
+                  <tr class="metric-head"><th scope="rowgroup" colspan="8">SSIM ↑</th></tr>
+                  <tr><th scope="row">MAGiC-SLAM</th><td>0.982</td><td>0.963</td><td>0.961</td><td><strong>0.992</strong></td><td>0.615</td><td>0.846</td><td>0.772</td></tr>
+                  <tr><th scope="row">MAC-Ego3D*</th><td>0.942</td><td>0.855</td><td>0.928</td><td>0.916</td><td>0.722</td><td>0.896</td><td>0.897</td></tr>
+                  <tr><th scope="row">CoKo-SLAM</th><td>0.977</td><td>0.945</td><td>0.959</td><td>0.991</td><td>0.522</td><td>0.821</td><td>0.742</td></tr>
+                  <tr class="variant"><th scope="row">Ours (map only)</th><td>0.991</td><td>0.981</td><td>0.984</td><td>0.990</td><td>0.667</td><td>0.907</td><td>0.912</td></tr>
+                  <tr class="ours"><th scope="row">Co-GS SLAM (w/ PD)</th><td><strong>0.992</strong></td><td><strong>0.982</strong></td><td><strong>0.986</strong></td><td>0.991</td><td><strong>0.826</strong></td><td><strong>0.961</strong></td><td><strong>0.960</strong></td></tr>
+                </tbody>
+                <tbody>
+                  <tr class="metric-head"><th scope="rowgroup" colspan="8">LPIPS ↓</th></tr>
+                  <tr><th scope="row">MAGiC-SLAM</th><td>0.098</td><td>0.148</td><td>0.179</td><td>0.058</td><td>0.517</td><td>0.342</td><td>0.415</td></tr>
+                  <tr><th scope="row">MAC-Ego3D*</th><td>0.176</td><td>0.287</td><td>0.180</td><td>0.191</td><td>0.337</td><td><strong>0.115</strong></td><td><strong>0.119</strong></td></tr>
+                  <tr><th scope="row">CoKo-SLAM</th><td>0.112</td><td>0.187</td><td>0.185</td><td>0.062</td><td>0.611</td><td>0.347</td><td>0.437</td></tr>
+                  <tr class="variant"><th scope="row">Ours (map only)</th><td>0.024</td><td>0.054</td><td>0.049</td><td>0.026</td><td>0.437</td><td>0.235</td><td>0.237</td></tr>
+                  <tr class="ours"><th scope="row">Co-GS SLAM (w/ PD)</th><td><strong>0.022</strong></td><td><strong>0.053</strong></td><td><strong>0.047</strong></td><td><strong>0.024</strong></td><td><strong>0.259</strong></td><td>0.147</td><td>0.152</td></tr>
+                </tbody>
+                <tbody>
+                  <tr class="metric-head"><th scope="rowgroup" colspan="8">Depth L1 ↓ (cm)</th></tr>
+                  <tr><th scope="row">MAGiC-SLAM</th><td>0.63</td><td>1.57</td><td>0.98</td><td>0.39</td><td>9.40</td><td>11.47</td><td>25.72</td></tr>
+                  <tr><th scope="row">MAC-Ego3D*</th><td>9.04</td><td>29.02</td><td>18.98</td><td>22.97</td><td>6.10</td><td>10.56</td><td>16.14</td></tr>
+                  <tr><th scope="row">CoKo-SLAM</th><td>0.73</td><td>2.15</td><td>1.31</td><td>0.41</td><td>9.50</td><td>13.56</td><td>28.99</td></tr>
+                  <tr class="variant"><th scope="row">Ours (map only)</th><td>0.22</td><td>0.79</td><td>0.43</td><td>0.27</td><td><strong>4.42</strong></td><td><strong>1.83</strong></td><td><strong>3.00</strong></td></tr>
+                  <tr class="ours"><th scope="row">Co-GS SLAM (w/ PD)</th><td><strong>0.20</strong></td><td><strong>0.75</strong></td><td><strong>0.40</strong></td><td><strong>0.24</strong></td><td>5.85</td><td>2.42</td><td>4.15</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /TABLE:render -->
+            <h4>Table III · Novel and training view synthesis on Aria</h4>
+            <!-- TABLE:novel -->
+            <div class="table-scroll">
+              <table>
+                <caption>Table III: novel and training view synthesis on AriaMultiagent</caption>
+                <thead>
+                  <tr><th scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="3" class="group">Novel views</th><th scope="colgroup" colspan="3" class="group">Training views</th></tr>
+                  <tr><th scope="col">room 0</th><th scope="col">room 1</th><th scope="col">Avg.</th><th scope="col">room 0</th><th scope="col">room 1</th><th scope="col">Avg.</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="metric-head"><th scope="rowgroup" colspan="7">PSNR ↑ (dB)</th></tr>
+                  <tr><th scope="row">MAGiC-SLAM</th><td>22.16</td><td>22.08</td><td>22.12</td><td>26.85</td><td>27.44</td><td>27.15</td></tr>
+                  <tr><th scope="row">MAC-Ego3D*</th><td>13.37</td><td>16.24</td><td>14.81</td><td>22.49</td><td>22.76</td><td>22.63</td></tr>
+                  <tr><th scope="row">CoKo-SLAM</th><td>20.98</td><td>21.34</td><td>21.16</td><td>27.57</td><td>27.67</td><td>27.62</td></tr>
+                  <tr class="ours"><th scope="row">Co-GS SLAM (w/ PD)</th><td><strong>25.97</strong></td><td><strong>22.39</strong></td><td><strong>24.18</strong></td><td><strong>30.41</strong></td><td><strong>31.97</strong></td><td><strong>31.19</strong></td></tr>
+                </tbody>
+                <tbody>
+                  <tr class="metric-head"><th scope="rowgroup" colspan="7">SSIM ↑</th></tr>
+                  <tr><th scope="row">MAGiC-SLAM</th><td>0.767</td><td><strong>0.797</strong></td><td>0.782</td><td>0.923</td><td>0.936</td><td>0.930</td></tr>
+                  <tr><th scope="row">MAC-Ego3D*</th><td>0.527</td><td>0.693</td><td>0.610</td><td>0.807</td><td>0.839</td><td>0.823</td></tr>
+                  <tr><th scope="row">CoKo-SLAM</th><td>0.740</td><td>0.770</td><td>0.755</td><td><strong>0.933</strong></td><td>0.935</td><td><strong>0.934</strong></td></tr>
+                  <tr class="ours"><th scope="row">Co-GS SLAM (w/ PD)</th><td><strong>0.861</strong></td><td>0.774</td><td><strong>0.817</strong></td><td>0.920</td><td><strong>0.949</strong></td><td><strong>0.934</strong></td></tr>
+                </tbody>
+                <tbody>
+                  <tr class="metric-head"><th scope="rowgroup" colspan="7">LPIPS ↓</th></tr>
+                  <tr><th scope="row">MAGiC-SLAM</th><td>0.391</td><td>0.323</td><td>0.357</td><td>0.203</td><td>0.157</td><td>0.180</td></tr>
+                  <tr><th scope="row">MAC-Ego3D*</th><td>0.592</td><td>0.566</td><td>0.579</td><td>0.359</td><td>0.446</td><td>0.403</td></tr>
+                  <tr><th scope="row">CoKo-SLAM</th><td>0.407</td><td>0.344</td><td>0.376</td><td>0.201</td><td>0.164</td><td>0.183</td></tr>
+                  <tr class="ours"><th scope="row">Co-GS SLAM (w/ PD)</th><td><strong>0.245</strong></td><td><strong>0.281</strong></td><td><strong>0.263</strong></td><td><strong>0.176</strong></td><td><strong>0.136</strong></td><td><strong>0.156</strong></td></tr>
+                </tbody>
+                <tbody>
+                  <tr class="metric-head"><th scope="rowgroup" colspan="7">Depth L1 ↓ (cm)</th></tr>
+                  <tr><th scope="row">MAGiC-SLAM</th><td><strong>3.20</strong></td><td><strong>5.10</strong></td><td><strong>4.15</strong></td><td>1.92</td><td><strong>1.30</strong></td><td>1.61</td></tr>
+                  <tr><th scope="row">MAC-Ego3D*</th><td>90.81</td><td>33.78</td><td>62.30</td><td>36.22</td><td>23.41</td><td>29.82</td></tr>
+                  <tr><th scope="row">CoKo-SLAM</th><td>3.48</td><td>6.12</td><td>4.80</td><td><strong>1.43</strong></td><td>1.66</td><td><strong>1.55</strong></td></tr>
+                  <tr class="ours"><th scope="row">Co-GS SLAM (w/ PD)</th><td>3.26</td><td>5.65</td><td>4.46</td><td>3.97</td><td>3.04</td><td>3.51</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /TABLE:novel -->
+          </details>
+          <p class="source-note">
+            <strong>Bold</strong> marks the best result as ranked in the paper.
+            “Map only” is our refinement with the keyframe poses held fixed.
+            All methods run with the authors’ code under an unknown relative
+            pose, with the transform between agents initialized to the
+            identity. *MAC-Ego3D assumes that transform to be known, so it is
+            reported outside the setting it was designed for.
+          </p>
+        </div>
+      </section>
+      <section class="block tint" id="qualitative">
+        <div class="wrap wide">
+          <div class="section-heading">
+            <p class="eyebrow">Qualitative results</p>
+            <h2>One surface, seen from both agents.</h2>
+            <p>
+              The merged map rendered at a keyframe of each agent, with no
+              initial transform between the agents.
+            </p>
+          </div>
+          <div class="qual-tabs" role="tablist" aria-label="Sequence" hidden>
+            <button
+              type="button"
+              role="tab"
+              id="tab-dream1"
+              aria-controls="qual-dream1"
+              aria-selected="true"
+            >
+              In-house · Dream 1</button
+            ><button
+              type="button"
+              role="tab"
+              id="tab-tum"
+              aria-controls="qual-tum"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              TUM desk
+            </button>
+          </div>
+          <div
+            class="qualitative"
+            id="qual-dream1"
+            role="tabpanel"
+            aria-labelledby="tab-dream1"
+          >
+            <h3 class="qual-title">In-house · Dream 1</h3>
+            <div class="comparison-scroll">
+              <div class="comparison-row">
+                <span class="agent-label">Agent 1</span>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/dream1_a0_magic.webp" width="640" height="480" alt="Dream 1, agent 1: MAGiC-SLAM rendering" />
+                  <figcaption>MAGiC-SLAM</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/dream1_a0_macego.webp" width="640" height="480" alt="Dream 1, agent 1: MAC-Ego3D rendering" />
+                  <figcaption>MAC-Ego3D*</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/dream1_a0_coko.webp" width="640" height="480" alt="Dream 1, agent 1: CoKo-SLAM rendering" />
+                  <figcaption>CoKo-SLAM</figcaption>
+                </figure>
+                <figure class="ours">
+                  <img loading="lazy" src="./static/images/paper/dream1_a0_ours.webp" width="640" height="480" alt="Dream 1, agent 1: Co-GS SLAM rendering" />
+                  <figcaption>Co-GS SLAM</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/dream1_a0_gt.webp" width="640" height="480" alt="Dream 1, agent 1: ground truth" />
+                  <figcaption>Ground truth</figcaption>
+                </figure>
+              </div>
+              <div class="comparison-row">
+                <span class="agent-label">Agent 2</span>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/dream1_a1_magic.webp" width="640" height="480" alt="Dream 1, agent 2: MAGiC-SLAM rendering" />
+                  <figcaption>MAGiC-SLAM</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/dream1_a1_macego.webp" width="640" height="480" alt="Dream 1, agent 2: MAC-Ego3D rendering" />
+                  <figcaption>MAC-Ego3D*</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/dream1_a1_coko.webp" width="640" height="480" alt="Dream 1, agent 2: CoKo-SLAM rendering" />
+                  <figcaption>CoKo-SLAM</figcaption>
+                </figure>
+                <figure class="ours">
+                  <img loading="lazy" src="./static/images/paper/dream1_a1_ours.webp" width="640" height="480" alt="Dream 1, agent 2: Co-GS SLAM rendering" />
+                  <figcaption>Co-GS SLAM</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/dream1_a1_gt.webp" width="640" height="480" alt="Dream 1, agent 2: ground truth" />
+                  <figcaption>Ground truth</figcaption>
+                </figure>
+              </div>
+            </div>
+            <p class="caption">
+              The two rows are the two overlapping viewpoints whose disagreement
+              the refinement uses. The baselines absorb the residual of the
+              merge as blur and duplicated surfaces over the desk and the chair,
+              while refining the poses together with the map recovers the
+              keyboard, the monitor and the chair frame from both sides.
+            </p>
+          </div>
+          <div
+            class="qualitative"
+            id="qual-tum"
+            role="tabpanel"
+            aria-labelledby="tab-tum"
+          >
+            <h3 class="qual-title">TUM desk</h3>
+            <div class="comparison-scroll">
+              <div class="comparison-row">
+                <span class="agent-label">Agent 1</span>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/tum_a0_magic.webp" width="540" height="380" alt="TUM desk, agent 1: MAGiC-SLAM rendering" />
+                  <figcaption>MAGiC-SLAM</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/tum_a0_macego.webp" width="540" height="380" alt="TUM desk, agent 1: MAC-Ego3D rendering" />
+                  <figcaption>MAC-Ego3D*</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/tum_a0_coko.webp" width="540" height="380" alt="TUM desk, agent 1: CoKo-SLAM rendering" />
+                  <figcaption>CoKo-SLAM</figcaption>
+                </figure>
+                <figure class="ours">
+                  <img loading="lazy" src="./static/images/paper/tum_a0_ours.webp" width="540" height="380" alt="TUM desk, agent 1: Co-GS SLAM rendering" />
+                  <figcaption>Co-GS SLAM</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/tum_a0_gt.webp" width="540" height="380" alt="TUM desk, agent 1: ground truth" />
+                  <figcaption>Ground truth</figcaption>
+                </figure>
+              </div>
+              <div class="comparison-row">
+                <span class="agent-label">Agent 2</span>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/tum_a1_magic.webp" width="540" height="380" alt="TUM desk, agent 2: MAGiC-SLAM rendering" />
+                  <figcaption>MAGiC-SLAM</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/tum_a1_macego.webp" width="540" height="380" alt="TUM desk, agent 2: MAC-Ego3D rendering" />
+                  <figcaption>MAC-Ego3D*</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/tum_a1_coko.webp" width="540" height="380" alt="TUM desk, agent 2: CoKo-SLAM rendering" />
+                  <figcaption>CoKo-SLAM</figcaption>
+                </figure>
+                <figure class="ours">
+                  <img loading="lazy" src="./static/images/paper/tum_a1_ours.webp" width="540" height="380" alt="TUM desk, agent 2: Co-GS SLAM rendering" />
+                  <figcaption>Co-GS SLAM</figcaption>
+                </figure>
+                <figure>
+                  <img loading="lazy" src="./static/images/paper/tum_a1_gt.webp" width="540" height="380" alt="TUM desk, agent 2: ground truth" />
+                  <figcaption>Ground truth</figcaption>
+                </figure>
+              </div>
+            </div>
+            <p class="caption">
+              Each TUM agent drifts on its own, so this is the hardest case of
+              intra-agent odometry error. The baselines absorb the pose error
+              as blur and smeared surfaces, while refining the poses together
+              with the map recovers the monitor, the keyboard and the books from
+              both viewpoints.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="block" id="dataset">
+        <div class="wrap wide">
+          <div class="section-heading">
+            <p class="eyebrow">Real-world evaluation</p>
+            <h2>Our in-house multi-agent sequences.</h2>
+            <p>
+              Two indoor sequences, each pairing two independent recordings as
+              two agents.
+            </p>
+          </div>
+          <dl class="dataset-specs">
+            <div>
+              <dt>Sequences</dt>
+              <dd>Dream 1 · Dream 2</dd>
+            </div>
+            <div>
+              <dt>Agents</dt>
+              <dd>2 <span>per sequence, 460–1103 frames each</span></dd>
+            </div>
+            <div>
+              <dt>Sensor</dt>
+              <dd>Intel RealSense D455f <span>RGB-D</span></dd>
+            </div>
+            <div>
+              <dt>Ground truth</dt>
+              <dd>NOKOV <span>motion capture</span></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+      <section class="block tint" id="bibtex">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="eyebrow">Citation</p>
+            <h2>BibTeX</h2>
+          </div>
+          <div class="bibtex">
+            <button type="button" class="copy-button" hidden>Copy</button>
+            <pre><code id="bibtex-code">@inproceedings{sim2026cogsslam,
+  title     = {Co-GS SLAM: Collaborative 3D Gaussian Splatting SLAM with Pose-Dependent Gaussian Model},
+  author    = {Sim, Taehu and Kim, Hogyun and Choi, Jiwon and Lee, Juhui and Cho, Younggun},
+  booktitle = {IROS 2026 Workshop and Competition on Intelligent Information Gathering for Single and Multi-Robot Systems},
+  year      = {2026}
+}</code></pre>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="wrap">
+          <a class="brand" href="#top">Co-GS <span>SLAM</span></a>
+          <p>
+            Collaborative 3D Gaussian Splatting SLAM <br />with Pose-Dependent
+            Gaussian Model
+          </p>
+          <small
+            ><a href="https://sparolab.github.io/">SPARO Lab</a>, Inha University
+            ·
+            <a href="https://sparolab.github.io/research/iros_2026/"
+              >SPARO Lab at IROS 2026</a
+            ></small
+          >
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

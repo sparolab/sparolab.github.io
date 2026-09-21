@@ -27,6 +27,7 @@
     Our code will be available upon acceptance.
   sessions:
     - "The Workshop and Competition on Intelligent Information Gathering for Single and Multi-Robot Systems / Sunday, 8:30-12:30 / Paper #16"
+  page_link: /research/cogs_slam/
   image: /img/research/paper/23_cogs.png
   
 - title: "Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment"
