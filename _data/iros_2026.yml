@@ -12,6 +12,22 @@
   page_link: /research/radloc/
   image: /img/research/paper/21_radloc.gif
   
+- title: "Co-GS SLAM: Collaborative 3D Gaussian Splatting SLAM with Pose-Dependent Gaussian Model"
+  authors: "<strong>Taehu Sim</strong>, Hogyun Kim, Jiwon Choi, Juhui Lee, and Younggun Cho"
+  abstract: >
+    Collaborative 3D Gaussian splatting (3DGS) simultaneous localization and mapping (SLAM) provides scalable intelligence by merging the Gaussian maps that multiple agents build. 
+    To bring those maps into a common frame, each agent tracks its own odometry, and the server then closes loops between the agents by recognizing revisited places and estimating the relative pose of the matched keyframes. 
+    Building on this, state-of-the-art multi-agent 3DGS SLAM methods reconstruct scenes with remarkable rendering quality. 
+    However, once they are deployed in the real-world, they often suffer from two challenges: 
+    (i) intra-agent odometry error, where the odometry of each agent is not consistently accurate, 
+    and (ii) inter-agent constraint noise, where sensor noise corrupts the loop closures between the agents. 
+    To address these challenges, we present Co-GS SLAM, which refines the merged map and the keyframe poses of every agent together using a pose-dependent (PD) Gaussian model, achieving a geometrically and photometrically consistent merged map. 
+    Experiments on nine multi-agent sequences from four datasets demonstrate the highest rendering fidelity and the lowest trajectory error on all but one sequence. 
+    In addition, on our in-house dataset, recorded in the real-world, our Co-GS SLAM shows robust performance compared with state-of-the-art methods, averaging 4.1 cm of trajectory error against 11.8 cm and 10.0 dB more PSNR. 
+    Our code will be available upon acceptance.
+  sessions:
+    - "The Workshop and Competition on Intelligent Information Gathering for Single and Multi-Robot Systems / Sunday, 8:30-12:30 / Paper #16"
+  image: /img/research/paper/23_cogs.png
   
 - title: "Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment"
   authors: "<strong>Seokhwan Jeong</strong> and Younggun Cho"
