@@ -47,11 +47,13 @@ title: SPARO Lab at ICRA 2026
                   Session: {{ project.session }}
                 </p>
               {% endif %}
+              {% if project.page_link and project.page_link != "" %}
               <a href="{{ project.page_link | relative_url }}"
                  class="button is-gradient is-fullwidth is-small project-page-btn"
                  target="_blank" rel="noopener noreferrer">
                 Project Page
               </a>
+              {% endif %}
             </div>          
           </div>
 

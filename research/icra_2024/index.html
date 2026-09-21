@@ -30,11 +30,13 @@ title: SPARO in ICRA 2024
               Session: {{ project.session }}
             </p>
             <!-- <br> -->
+            {% if project.page_link and project.page_link != "" %}
             <a href="{{ project.page_link | relative_url }}"
               class="button is-gradient is-fullwidth is-small project-page-btn"
               target="_blank" rel="noopener noreferrer">
               Project Page
             </a>
+            {% endif %}
           </div>
         </div>
         {% unless forloop.last %}

@@ -29,11 +29,13 @@ title: SPARO Lab at ICRA 2025
               <p class="has-text-weight-bold content" style="font-size: 0.9rem; line-height: 1.4;">
                 Session: {{ project.session }}
               </p>
+              {% if project.page_link and project.page_link != "" %}
               <a href="{{ project.page_link | relative_url }}"
                  class="button is-gradient is-fullwidth is-small project-page-btn"
                  target="_blank" rel="noopener noreferrer">
                 Project Page
               </a>
+              {% endif %}
             </div>
           </div>
           {% unless forloop.last %}
