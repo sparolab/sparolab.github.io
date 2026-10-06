@@ -58,3 +58,19 @@
     - "3rd AI Meets Autonomy: Vision, Language, and Autonomous Systems Workshop / Thursday, 08:30-12:30 / TBD"
   page_link: /research/miscalib/
   image: /img/research/paper/22_miscalib.png
+
+- title: "Single-Head IMU Velocity Estimation Across Platforms via a Multi-Scale, Embodiment-Aware Encoder"
+  authors: "<strong>Jiwon Choi</strong>, Hogyun Kim, Jungwoo Lee, Geonmo Yang, Seunghee Yun, and Younggun Cho"
+  abstract: >
+    Inertial measurement units (IMUs) are mounted on almost every robot, which makes them a natural basis for one inertial model shared across platforms.
+    However, the same IMU signal describes different motion on a car, a quadruped, a drone and a handheld device, and the platform is not given at test time.
+    We propose a single network with one velocity head for all four platforms, built on two principles.
+    Multi-Scale: the encoder reads the IMU from tens of milliseconds to the whole trajectory, using a residual stem, S4D state-space layers and a bidirectional GRU.
+    Embodiment: a head infers the platform from the IMU alone, and its posterior conditions the encoder, the head and the output scale.
+    We further adapt the network to unseen recording sessions by self-distillation on the unlabelled test inputs, towards a teacher refined by strapdown IMU integration.
+    Our experiments showed that embodiment conditioning is necessary, since a model trained without one platform failed on it with 3.8–27× its in-distribution error.
+    Our submission achieved a TartanIMU Score of 0.18405 over the 89 test sequences (ATE20 0.498 m, AVE 0.147 m/s, RTE 0.680 m) and 0.23110 on the public leaderboard.
+  sessions:
+    - "Beyond Exteroception: Interoceptive Perception for Resilient Robotics Workshop / IMU Odometry Challenge / 2nd place (out of 131 teams)"
+  page_link: /research/imu_challenge/
+  image: /img/research/paper/24_imu_challenge.png
