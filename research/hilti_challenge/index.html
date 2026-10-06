@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>√VINS-Based 360 Visual-Inertial SLAM | Hilti–Trimble SLAM Challenge 2026 | SPARO Lab</title>
+  <meta name="description"
+        content="SPARO Lab, 2nd place in the SLAM category of the Hilti–Trimble SLAM Challenge 2026: a 360-camera visual-inertial SLAM system using only dual-fisheye images and IMU.">
+  <meta name="keywords" content="SLAM, Visual-Inertial Odometry, 360 Camera, Fisheye, Factor Graph, Hilti Challenge, ICRA 2026">
+  <meta property="og:title" content="√VINS-Based 360 Visual-Inertial SLAM, Hilti–Trimble SLAM Challenge 2026">
+  <meta property="og:description" content="2nd Place, SLAM Category, Hilti–Trimble SLAM Challenge 2026 @ ICRA 2026">
+  <meta property="og:image" content="https://sparolab.github.io/img/research/project/hilti_challenge_2026.jpg">
+  <link rel="icon" href="./static/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+<!-- ============================== nav ============================== -->
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="https://sparolab.github.io/">
+      <img src="./static/images/favicon.png" alt=""><span>SPARO Lab</span>
+    </a>
+    <div class="nav-links">
+      <a href="#abstract">Abstract</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#maps">Maps</a>
+      <a href="#score">Score</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================== hero ============================== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><i class="fas fa-route"></i> Hilti&ndash;Trimble SLAM Challenge 2026 &middot; ICRA 2026</div>
+    <h1>
+      <span class="hl">&radic;VINS</span>-Based <span class="hl">360</span> Visual-Inertial SLAM Systems
+    </h1>
+    <div class="award"><i class="fas fa-trophy"></i> 2nd Place <span>(SLAM Category)</span></div>
+    <div class="venue">ICRA 2026 Workshop on Open Challenges in Robotics for Asset Inspection and Management (OCRAIM)</div>
+
+    <div class="authors">
+      <a href="https://scholar.google.com/citations?hl=ko&user=H0rvKXYAAAAJ" target="_blank" rel="noopener">Jungwoo Lee</a><sup>1</sup><span class="sep">,</span>
+      <a href="https://scholar.google.com/citations?user=t5UEbooAAAAJ&hl=ko" target="_blank" rel="noopener">Hogyun Kim</a><sup>1</sup><span class="sep">,</span>
+      <a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ&hl=ko" target="_blank" rel="noopener">Jiwon Choi</a><sup>1</sup><span class="sep">,</span>
+      <a href="https://scholar.google.com/citations?hl=ko&user=_RDRRWwAAAAJ" target="_blank" rel="noopener">Jinyong Jeong</a><sup>2</sup><span class="sep">, and</span>
+      <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko" target="_blank" rel="noopener">Younggun Cho</a><sup>1</sup>
+    </div>
+    <div class="affil">
+      <span><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University</span>
+      <span><sup>2</sup>Riibotics</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b class="gold">2nd</b><small>SLAM category</small></div>
+      <div class="stat"><b>2393.9</b><small>final score, 25 sequences</small></div>
+      <div class="stat"><b>0.109 m</b><small>mean RMSE</small></div>
+      <div class="stat"><b>360&deg; + IMU</b><small>dual-fisheye images and IMU only</small></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============================== abstract ============================== -->
+  <section class="block" id="abstract">
+    <div class="kicker">Abstract</div>
+    <h2 class="title">A 360-camera visual-inertial SLAM system</h2>
+    <div class="prose">
+      <p>
+        This report describes our submission to the 2026 Hilti&ndash;Trimble SLAM Challenge. The system is a
+        360-camera visual-inertial pipeline that uses only the provided dual-fisheye image streams and IMU
+        measurements. First, raw images are preprocessed with low-light enhancement and static/dynamic masking, and
+        then fed into a <b>&radic;VINS</b> frontend as the local odometry, with deep learning-based SuperPoint
+        features, ELSED line segments, and LightGlue matching. The resulting trajectory is refined using a
+        <b>GTSAM-based backend</b> that performs tightly-coupled factor graph optimization with SALAD global
+        descriptors and visual bundle adjustment (BA).
+      </p>
+      <p>
+        The backend performs local-to-global structureless BA, tightly regularized intrinsic and extrinsic refinement,
+        and global scale adjustment supported by the known inter-camera baseline and cross-view constraints. The
+        design targets long indoor sequences with dark regions, repetitive corridors, dynamic objects, and limited
+        geometric parallax, while keeping the pipeline reproducible in the provided ROS2 workspace.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== pipeline ============================== -->
+  <section class="block" id="pipeline">
+    <div class="kicker">Pipeline</div>
+    <h2 class="title">From two fisheye views to one optimized map</h2>
+    <figure class="frame">
+      <img src="./static/images/pipeline.png" alt="Overview of the 360-camera visual-inertial SLAM pipeline">
+      <figcaption>
+        <b>Overview.</b> Raw dual-fisheye frames are conditioned by low-light enhancement and dynamic masking, then
+        tracked by a &radic;VINS-based frontend with SuperPoint&ndash;LightGlue point features and ELSED line
+        segments. Loop closures and short-term cross-camera matches are geometrically verified and inserted as smart
+        projection factors into a GTSAM backend that jointly optimizes poses, calibration and a global scale.
+      </figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step" style="--c0: var(--a);">
+        <span class="tag">(a)</span><h3>Input</h3>
+        <p>The 360 camera as two calibrated fisheye views (EUCM model) with the IMU; all poses live in the
+           <code>cam0</code> frame.</p>
+      </div>
+      <div class="step" style="--c0: var(--b);">
+        <span class="tag">(b)</span><h3>Pre-processing</h3>
+        <p>Static masks, low-light enhancement (Zero-DCE++) and YOLO26 masks that suppress features on moving
+           people.</p>
+      </div>
+      <div class="step" style="--c0: var(--c);">
+        <span class="tag">(c)</span><h3>Point &amp; line VINS</h3>
+        <p>&radic;VINS frontend with SuperPoint + LightGlue points and ELSED lines under a vertical-world
+           assumption.</p>
+      </div>
+      <div class="step" style="--c0: var(--d);">
+        <span class="tag">(d)</span><h3>Loop detection</h3>
+        <p>SALAD global descriptors propose loops; SuperPoint&ndash;LightGlue verification across both fisheye
+           views.</p>
+      </div>
+      <div class="step" style="--c0: var(--e);">
+        <span class="tag">(e)</span><h3>Factor graph</h3>
+        <p>Odometry, BA, loop and cross-camera factors, plus regularized extrinsic, intrinsic and scale
+           variables.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== maps ============================== -->
+  <section class="block" id="maps">
+    <div class="kicker">Results</div>
+    <h2 class="title">Maps on the floorplan</h2>
+    <p class="lead">
+      Bundle-adjusted landmarks and optimized trajectories on several indoor sequences of the challenge, overlaid on
+      the building floorplan. The alignment to the floorplan was done manually, for visualization only.
+    </p>
+    <figure class="frame">
+      <img src="./static/images/maps.jpg" alt="Estimated maps on the floorplans of six sequences">
+    </figure>
+  </section>
+
+  <!-- ============================== score ============================== -->
+  <section class="block" id="score">
+    <div class="kicker">Official evaluation</div>
+    <h2 class="title">Score</h2>
+    <div class="score">
+      <div class="main"><b>2393.90</b><small>final score (sum over 25 evaluated sequences)</small></div>
+      <div><b>0.109 m</b><small>mean RMSE</small></div>
+      <div><b>0.095 m</b><small>mean position error</small></div>
+      <div><b>99.85%</b><small>mean trajectory coverage</small></div>
+    </div>
+    <p class="note">
+      From the official evaluator report. The mean position error stays below 0.1&nbsp;m across the evaluated
+      sequences, with an average of 95.8 points per sequence.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 SPARO Lab, Inha University</span>
+    <span>
+      <a href="https://sparolab.github.io/"><i class="fas fa-home"></i> SPARO Lab</a>
+      <a href="https://sparolab.github.io/research/icra_2026/">ICRA 2026</a>
+      <a href="https://github.com/sparolab"><i class="fab fa-github"></i></a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const targets = links.map(a => document.querySelector(a.getAttribute('href')));
+  addEventListener('scroll', () => {
+    const y = scrollY + 120;
+    let cur = -1;
+    targets.forEach((s, i) => { if (s && s.offsetTop <= y) cur = i; });
+    links.forEach((a, i) => a.classList.toggle('active', i === cur));
+  }, { passive: true });
+</script>
+</body>
+</html>

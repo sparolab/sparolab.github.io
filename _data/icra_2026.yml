@@ -57,7 +57,7 @@
   image: /img/research/paper/19_gsat.png
 
 - title: 'Hilti-Trimble SLAM Challenge 2026 <span style="color: red; font-weight: 700;">(2nd Place for SLAM Category)</span>'
-  authors: "<strong>Jungwoo Lee</strong>, Hogyun Kim, Jiwon Choi, Jinyoung Jeong, and Younggun Cho"
+  authors: "<strong>Jungwoo Lee</strong>, Hogyun Kim, Jiwon Choi, Jinyong Jeong, and Younggun Cho"
   abstract: >
     This report describes our submission to the 2026 Hilti-Trimble SLAM Challenge.
     The system is a 360-camera visual-inertial pipeline that uses only the provided dual-fisheye image streams and IMU measurements.
@@ -66,5 +66,5 @@
     The backend performs local-to-global structureless BA, tightly regularized intrinsic and extrinsic refinement, and global scale adjustment supported by the known inter-camera baseline and cross-view constraints.
     The design targets long indoor sequences with dark regions, repetitive corridors, dynamic objects, and limited geometric parallax, while keeping the pipeline reproducible in the provided ROS2 workspace.
   session: "Friday, 11:40-12:10 / Workshop on Open Challenges in Robotics for Asset Inspection and Management (OCRAIM)"
-  page_link:
+  page_link: /research/hilti_challenge/
   image: /img/research/project/icra_2026_challenge.png

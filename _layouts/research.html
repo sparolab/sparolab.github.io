@@ -211,6 +211,13 @@ layout: default
 
 {% endif %}
 
+{% if page.gallery == "research_project" %}
+  <div id="tag-filter">
+    <span>Filter by Tags: </span>
+    <span class="tag-button active" data-tag="All">All</span>
+  </div>
+{% endif %}
+
 <div id="year-filter">
   <span>Filter by Year: </span>
   <span class="tag-button active" data-year="All">All</span>
@@ -282,12 +289,13 @@ layout: default
             <!-- 카드 본문: 논문명·저자 -->
             <div class="card-content" style="padding:10px;">
               <div class="content card-title-clamp" style="text-align:left; font-size:1rem; color:black; font-weight:bold;">
-                {% if image.award %}<span class="award-badge">🏆 {{ image.award }}</span>{% endif %}
+                {% if image.award and gallery.title != "Project" %}<span class="award-badge">🏆 {{ image.award }}</span>{% endif %}
                 {% if image.alt_link %}
                   <a class="venue-badge" href="{{ image.alt_link }}" target="_blank">{{ image.alt | default: "No Title" }}</a>
                 {% else %}
                   <span class="venue-badge">{{ image.alt }}</span>
                 {% endif %}
+                {% if image.award and gallery.title == "Project" %}<br><span class="award-badge" style="display:inline-block; margin-top:8px;">🏆 {{ image.award }}</span>{% endif %}
                 {% if image.paper %}
                   {{ image.paper }}
                 {% endif %}

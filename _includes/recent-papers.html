@@ -227,9 +227,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const isExternal = item.page_link && item.page_link.startsWith('http');
 
-    // Project는 Conference, Paper는 Publication으로 표시
-    let categoryLabel = item.type === 'project' ? 'Conference' : 'Publication';
-    let categoryColor = item.type === 'project' ? '#90CAF9' : '#FFB74D';
+    // Project는 자신의 태그(Conference, Challenge, ...), Paper는 Publication으로 표시
+    const projectColors = { 'Conference': '#90CAF9', 'Challenge': '#FFAB91' };
+    let categoryLabel = item.type === 'project' ? ((item.tags && item.tags[0]) || 'Conference') : 'Publication';
+    let categoryColor = item.type === 'project' ? (projectColors[categoryLabel] || '#90CAF9') : '#FFB74D';
     let tagsHtml = `<span class="paper-card-tag" style="background:${categoryColor}; border-color:${categoryColor}; color:black;">${categoryLabel}</span>`;
 
 
@@ -239,11 +240,15 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (item.project_date) {
       dateHtml = `<p style="margin:10px 0; text-align:center;"><span class="card-date">${shortMonth(item.project_date)}</span></p>`;
     }
-    let titleHtml = item.award ? `<span class="award-badge">🏆 ${item.award}</span>` : '';
+    // Paper: award badge first. Project: title pill first, award on the next line (as on the Project page).
+    let titleHtml = (item.award && item.type !== 'project') ? `<span class="award-badge">🏆 ${item.award}</span>` : '';
     if (item.alt_link) {
       titleHtml += `<a class="venue-badge" href="${item.alt_link}" target="_blank">${item.alt || "No Title"}</a>`;
     } else {
       titleHtml += `<span class="venue-badge">${item.alt || "No Title"}</span>`;
+    }
+    if (item.award && item.type === 'project') {
+      titleHtml += `<br><span class="award-badge" style="margin-top:8px;">🏆 ${item.award}</span>`;
     }
     if (item.paper) {
       titleHtml += ` ${item.paper}`;
