@@ -30,7 +30,7 @@
   page_link: /research/cogs_slam/
   image: /img/research/paper/23_cogs.png
   
-- title: "Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment"
+- title: 'Cross-Environment LiDAR–Camera Misalignment Detection via Object-Level VLM Assessment <span style="color: red; font-weight: 700;">(Spotlight & Best Paper Award)</span>'
   authors: "<strong>Seokhwan Jeong</strong> and Younggun Cho"
   abstract: >
     This paper presents an introspective perception
@@ -59,7 +59,7 @@
   page_link: /research/miscalib/
   image: /img/research/paper/22_miscalib.png
 
-- title: "Single-Head IMU Velocity Estimation Across Platforms via a Multi-Scale, Embodiment-Aware Encoder"
+- title: 'IMU Odometry Challenge 2026 <span style="color: red; font-weight: 700;">(2nd Place out of 131 teams)</span>'
   authors: "<strong>Jiwon Choi</strong>, Hogyun Kim, Jungwoo Lee, Geonmo Yang, Seunghee Yun, and Younggun Cho"
   abstract: >
     Inertial measurement units (IMUs) are mounted on almost every robot, which makes them a natural basis for one inertial model shared across platforms.
@@ -71,6 +71,6 @@
     Our experiments showed that embodiment conditioning is necessary, since a model trained without one platform failed on it with 3.8–27× its in-distribution error.
     Our submission achieved a TartanIMU Score of 0.18405 over the 89 test sequences (ATE20 0.498 m, AVE 0.147 m/s, RTE 0.680 m) and 0.23110 on the public leaderboard.
   sessions:
-    - "Beyond Exteroception: Interoceptive Perception for Resilient Robotics Workshop / IMU Odometry Challenge / 2nd place (out of 131 teams)"
+    - "Beyond Exteroception: Interoceptive Perception for Resilient Robotics Workshop / IMU Odometry Challenge"
   page_link: /research/imu_challenge/
   image: /img/research/paper/24_imu_challenge.png

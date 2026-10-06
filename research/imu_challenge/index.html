@@ -260,15 +260,24 @@
       <span style="--c: var(--accent);">ours, from the IMU only</span>
     </div>
 
-    <h2 class="title" style="margin-top: 72px; font-size: 28px;">The encoder separates the platforms</h2>
-    <p class="lead">
-      t-SNE of window-encoder features. On the test set, the platform inferred without any label matches the official
-      per-platform counts exactly: 18 car, 16 quadruped, 45 drone and 10 handheld trajectories.
-    </p>
-    <div class="tsne-legend" style="margin-top: 24px;"><img src="./static/images/tsne_legend.png" alt="Legend"></div>
-    <div class="tsne">
-      <figure><img src="./static/images/tsne_val.png" alt="t-SNE, validation"><figcaption>(a) Validation, true platform</figcaption></figure>
-      <figure><img src="./static/images/tsne_test.png" alt="t-SNE, test"><figcaption>(b) Test, inferred platform</figcaption></figure>
+    <div class="tsne-card">
+      <div>
+        <h3>The encoder separates the platforms</h3>
+        <p>t-SNE of window-encoder features. On the test set, the platform inferred without any label matches the
+           official per-platform counts exactly: 18 car, 16 quadruped, 45 drone and 10 handheld trajectories.
+           The drones whose IMU reports in the world frame and in the body frame form separate clusters.</p>
+        <div class="chips">
+          <span style="--c: #4d8cf5;">Car</span>
+          <span style="--c: #2bb673;">Quadruped</span>
+          <span style="--c: #a88ff5;">Handheld</span>
+          <span style="--c: #f28c28;">Drone (world frame)</span>
+          <span style="--c: #f2545b;">Drone (body frame)</span>
+        </div>
+      </div>
+      <div class="tsne-panels">
+        <figure><img src="./static/images/tsne_val_dark.png" alt="t-SNE, validation"><figcaption>Validation &middot; true platform</figcaption></figure>
+        <figure><img src="./static/images/tsne_test_dark.png" alt="t-SNE, test"><figcaption>Test &middot; inferred platform</figcaption></figure>
+      </div>
     </div>
   </section>
 

@@ -217,3 +217,22 @@ footer a:hover { color: var(--fg); }
 /* team leader */
 .authors a.leader { color: var(--accent); font-weight: 700; border-color: rgba(245, 184, 0, 0.5); }
 .person b.leader { color: var(--accent); }
+
+/* ---------- t-SNE card (dark, compact) ---------- */
+.tsne-card {
+  display: grid; grid-template-columns: 5fr 7fr; gap: 32px; align-items: center;
+  margin-top: 72px; padding: 28px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.tsne-card h3 { margin: 0; font-size: 24px; letter-spacing: -0.01em; }
+.tsne-card p { color: var(--muted); font-size: 15.5px; margin: 12px 0 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.chips span {
+  display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px;
+  border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--fg);
+}
+.chips span::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.tsne-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tsne-panels figure { margin: 0; }
+.tsne-panels img { border-radius: 12px; border: 1px solid var(--line); }
+.tsne-panels figcaption { text-align: center; margin-top: 8px; font-size: 13.5px; }
+@media (max-width: 900px) { .tsne-card { grid-template-columns: 1fr; } }
