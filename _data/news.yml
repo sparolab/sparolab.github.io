@@ -224,6 +224,9 @@ awards:
 
   - date: "Feb. 2026"
     description: "<strong>Dongjin</strong> received the AFCV Award @KRoC 2026!"
+    links:
+      - text: "AFCV Award"
+        href: "/album/album/#album-2026-02-05"
 
   - date: "Jan. 2026"
     description: "<strong>Geonmo</strong>, <strong>Hogyun</strong>, <strong>Jiwon</strong>, and <strong>Juwon</strong> received the Grand Prize, Graduate Research Award @Inha Univ.!"
@@ -233,6 +236,9 @@ awards:
 
   - date: "Oct. 2025"
     description: "Prof. <strong>Younggun</strong> received the New Generation Star Project Award @IROS 2025!"
+    links:
+      - text: "New Generation Star Project Award"
+        href: "/album/album/#album-2025-10-19"
 
   - date: "Aug. 2025"
     description: "<strong>Hogyun</strong> awarded the Ph.D Candidate Fellowship @NRF!"
@@ -245,6 +251,9 @@ awards:
 
   - date: "Feb. 2025"
     description: "<strong>Jiyun</strong> received the AFCV Award @KRoC 2025!"
+    links:
+      - text: "AFCV Award"
+        href: "/album/album/#album-2025-02-12"
 
   - date: "Dec. 2024"
     description: "<strong>Jungwoo</strong>, <strong>Dongjin</strong>, <strong>Minho</strong>, and <strong>Gihyeon</strong> won the Minister of Trade, Industry and Energy Award @Embedded Software Competition 2024!"
