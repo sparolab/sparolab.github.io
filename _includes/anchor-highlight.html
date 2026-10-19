@@ -15,7 +15,7 @@
   /* 테두리 색은 SPARO Lab 남색(#010042) */
   .anchor-flash {
     border-radius: 10px;
-    animation: anchor-flash-ring 2.4s ease-out 1;
+    animation: anchor-flash-ring 4s ease-out 1;
   }
 
   @keyframes anchor-flash-ring {
@@ -23,7 +23,7 @@
       box-shadow: 0 0 0 3px #010042;
       background-color: rgba(1, 0, 66, 0.07);
     }
-    60% {
+    70% {
       box-shadow: 0 0 0 3px #010042;
       background-color: rgba(1, 0, 66, 0.07);
     }
@@ -43,7 +43,7 @@
 
 <script>
 (function () {
-  var FLASH_MS = 2600;
+  var FLASH_MS = 4200;
 
   // 대상이 필터로 숨겨져 있을 수 있으므로 All 버튼을 눌러 원래 목록을 되살린다.
   function resetFilters() {
