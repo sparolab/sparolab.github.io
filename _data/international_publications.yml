@@ -11,7 +11,7 @@
       key: radiation-guided
       authors: "Miryeong Park, Taehyun Jung, Sanghyun Kim, and Younggun Cho"
       conf: "IEEE International Symposium on Safety, Security, and Rescue Robotics (SSRR)"
-      conf_link: "https://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/ssrr"
+      conf_link: "https://www.ssrr-ieee.org/"
 
     - alt: "SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions with Field Deployments at Analog Sites"
       key: skid-slam
