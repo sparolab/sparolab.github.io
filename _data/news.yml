@@ -179,6 +179,9 @@ awards:
 
   - date: "July. 2026"
     description: "Team INHA United (<strong>Dongjin</strong> and <strong>Minho</strong>) won 4th place in the Home Service category @RoboCup!"
+    links:
+      - text: "4th place"
+        href: "/album/album/#album-2026-07-03"
 
   - date: "July. 2026"
     description: "<strong>Gihyeon</strong> received the ICRA 2001 Participation Fund Award for ICRA 2026 @ICROS!"
@@ -188,6 +191,9 @@ awards:
 
   - date: "June. 2026"
     description: "<strong>Jiwon</strong> selected as the Winner of the Outstanding WiRA Student Paper Award @ICRA 2026!"
+    links:
+      - text: "Outstanding WiRA Student Paper Award"
+        href: "/album/album/#album-2026-06-03"
     
   - date: "May. 2026"
     description: "<strong>Jungwoo</strong>, <strong>Hogyun</strong>, and <strong>Jiwon</strong> won 2nd place in the SLAM category of Hilti-Trimble SLAM Challenge @ICRA 2026!"
@@ -197,15 +203,24 @@ awards:
   
   - date: "May. 2026"
     description: "<strong>Jiwon</strong> named Finalist for the Outstanding WiRA Student Paper Award @ICRA 2026!"
+    links:
+      - text: "Outstanding WiRA Student Paper Award"
+        href: "/pulication/international/#kiss-imu"
 
   - date: "May. 2026"
     description: "<strong>Jiwon</strong> selected as an Award Finalist @ICRA 2026!"
+    links:
+      - text: "Award Finalist"
+        href: "/pulication/international/#kiss-imu"
 
   - date: "Mar. 2026"
     description: "<strong>Jiwon</strong> received travel support @ICRA 2026!"
 
   - date: "Feb. 2026"
     description: "<strong>Hogyun</strong> won the Silver Prize @32nd Samsung HumanTech Paper Award!"
+    links:
+      - text: "Silver Prize"
+        href: "/album/album/#album-2026-02-11"
 
   - date: "Feb. 2026"
     description: "<strong>Dongjin</strong> received the AFCV Award @KRoC 2026!"
@@ -233,21 +248,36 @@ awards:
 
   - date: "Dec. 2024"
     description: "<strong>Jungwoo</strong>, <strong>Dongjin</strong>, <strong>Minho</strong>, and <strong>Gihyeon</strong> won the Minister of Trade, Industry and Energy Award @Embedded Software Competition 2024!"
+    links:
+      - text: "Minister of Trade, Industry and Energy Award"
+        href: "/album/album/#album-2024-11-29"
 
   - date: "July. 2024"
     description: "<strong>Juwon</strong>, <strong>Euncheol</strong>, <strong>Minho</strong>, and <strong>Gihyeon</strong> won @Hanwha Aerospace Future Tech Challenge!"
+    links:
+      - text: "Hanwha Aerospace Future Tech Challenge"
+        href: "/album/album/#album-2024-11-29-2"
 
   - date: "June. 2024"
     description: "<strong>Gihyeon</strong> and <strong>Dongjin</strong> received the Best Paper Award @ICROS 2024!"
+    links:
+      - text: "Best Paper Award"
+        href: "/album/album/#album-2024-07-01"
 
   - date: "May. 2024"
     description: "<strong>Gilhwan</strong> received the Best Research Award (3rd prize) @ICRA 2024 Construction Robotics Workshop!"
 
   - date: "Nov. 2023"
     description: "Our lab (4-luca team) won the industry-academia collaboration challenge (한국산업기술진흥원장상) — Top 20 of 489 teams!"
+    links:
+      - text: "industry-academia collaboration challenge"
+        href: "/album/album/#album-2023-11-21"
 
   - date: "Oct. 2023"
     description: "VI2RE (Ugrad. Autonomous Driving Team) received the Excellent Algorithm Award @Virtual Seoul Driving Challenge!"
+    links:
+      - text: "Excellent Algorithm Award"
+        href: "/album/album/#album-2023-11-01"
 
   - date: "Aug. 2023"
     description: "<strong>Seungjun</strong> received a scholarship @Hyundai Motors Company!"
@@ -263,6 +293,9 @@ awards:
 
   - date: "Jul. 2022"
     description: "<strong>Seungjun</strong> and <strong>Seokhwan</strong> received the Excellent Paper Award (우수논문상) @KRoC 2022!"
+    links:
+      - text: "Excellent Paper Award"
+        href: "/album/album/#album-2022-05-11"
 
   - date: "Jun. 2022"
     description: "Prof. <strong>Younggun</strong> received 우수신진연구자상 @ICROS 2022!"

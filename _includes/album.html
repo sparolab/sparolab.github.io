@@ -43,7 +43,7 @@
                     {%- assign ytoks = item.date | replace: ".", " " | replace: ",", " " | replace: "~", " " | split: " " -%}
                     {%- assign yrs = "" -%}
                     {%- for t in ytoks -%}{%- if t.size == 4 -%}{%- assign yrs = yrs | append: t | append: "," -%}{%- endif -%}{%- endfor -%}
-                    <div class="column is-one-quarter album-item" data-years="{{ yrs }}">
+                    <div class="column is-one-quarter album-item"{% if item.key %} id="{{ item.key }}"{% endif %} data-years="{{ yrs }}">
                         <div class="card">
                             <!-- 이미지 슬라이드 (캐러셀) -->
                             <div class="slideshow-container" data-index="0">
@@ -455,3 +455,5 @@ document.addEventListener('DOMContentLoaded', function () {
   background-color: rgba(0, 0, 0, 0.8);
 }
 </style>
+
+{% include anchor-highlight.html %}
