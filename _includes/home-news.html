@@ -15,6 +15,25 @@
     margin-top: 0;
   }
 
+  /* News 문구 안에서 publication / project 항목으로 바로 가는 링크.
+     파란 링크색 대신 본문색을 유지하고, 회색 밑줄로만 눌리는 곳임을 알린다. */
+  .home-news-section .news-link,
+  .home-news-section .news-link:visited {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #b9bdc9;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.15s, text-decoration-color 0.15s, background 0.15s;
+  }
+  .home-news-section .news-link:hover {
+    color: #010042;
+    text-decoration-color: #010042;
+    background: rgba(1, 0, 66, 0.06);
+    border-radius: 3px;
+  }
+
   .home-news-section .news-date {
     display: inline-block;
     min-width: 5.2rem;
@@ -90,6 +109,7 @@
       {
         date: {{ award.date | jsonify }},
         description: {{ award.description | jsonify }},
+        links: {% if award.links %}{{ award.links | jsonify }}{% else %}null{% endif %},
         link: {{ award.link | default: '' | jsonify }}
       },
     {% endfor %}
@@ -97,25 +117,29 @@
       {
         date: {{ paper.date | jsonify }},
         description: {{ paper.description | jsonify }},
+        links: {% if paper.links %}{{ paper.links | jsonify }}{% else %}null{% endif %},
         authors: {{ paper.authors | default: '' | jsonify }}
       },
     {% endfor %}
     {% for project in site.data.news.projects %}
       {
         date: {{ project.date | jsonify }},
-        description: {{ project.description | jsonify }}
+        description: {{ project.description | jsonify }},
+        links: {% if project.links %}{{ project.links | jsonify }}{% else %}null{% endif %}
       },
     {% endfor %}
     {% for person in site.data.news.people %}
       {
         date: {{ person.date | jsonify }},
-        description: {{ person.description | jsonify }}
+        description: {{ person.description | jsonify }},
+        links: {% if person.links %}{{ person.links | jsonify }}{% else %}null{% endif %}
       },
     {% endfor %}
     {% for etc in site.data.news.etc %}
       {
         date: {{ etc.date | jsonify }},
         description: {{ etc.description | jsonify }},
+        links: {% if etc.links %}{{ etc.links | jsonify }}{% else %}null{% endif %},
         link: {{ etc.link | default: '' | jsonify }}
       },
     {% endfor %}
@@ -124,6 +148,19 @@
   allNews.sort((a, b) => parseDateValue(b.date) - parseDateValue(a.date));
 
   const latestNews = allNews.slice(0, 10);
+  // description 안의 지정된 문구를 publication / project 항목 링크로 바꾼다.
+  // 삽입한 HTML 이 다시 매칭되지 않도록 placeholder 를 거쳐 두 단계로 치환한다.
+  function linkify(item) {
+    let desc = item.description || '';
+    const links = item.links || [];
+    links.forEach((l, i) => { desc = desc.replace(l.text, '@@newslink' + i + '@@'); });
+    links.forEach((l, i) => {
+      const anchor = '<a class="news-link" href="' + l.href + '">' + l.text + '</a>';
+      desc = desc.split('@@newslink' + i + '@@').join(anchor);
+    });
+    return desc;
+  }
+
   const listEl = document.getElementById('home-news-list');
 
   latestNews.forEach((item) => {
@@ -136,7 +173,7 @@
     // description 은 신뢰된 사이트 데이터(_data/news.yml)이며 <strong> 등 마크업을
     // 포함할 수 있으므로 텍스트 노드가 아니라 HTML 로 렌더링한다.
     const descSpan = document.createElement('span');
-    descSpan.innerHTML = item.description || '';
+    descSpan.innerHTML = linkify(item);
     li.appendChild(descSpan);
 
     if (item.authors) {

@@ -9,30 +9,53 @@ papers:
 
   - date: "Aug. 2026"
     description: "SKiD-SLAM accepted @IEEE T-FR 2026!"
+    links:
+      - text: "SKiD-SLAM"
+        href: "/pulication/international/#skid-slam"
     authors: "Hogyun"
 
   - date: "June. 2026"
     description: "Commerge accepted @IJRR 2026!"
+    links:
+      - text: "Commerge"
+        href: "/pulication/international/#commerge"
     authors: "Hogyun"
 
   - date: "June. 2026"
     description: "RadLoc accepted @IEEE/RSJ IROS 2026!"
+    links:
+      - text: "RadLoc"
+        href: "/pulication/international/#radloc"
     authors: "Hogyun"
 
   - date: "Feb. 2026"
     description: "KISS-IMU and GSAT accepted @ICRA 2026!"
+    links:
+      - text: "KISS-IMU"
+        href: "/pulication/international/#kiss-imu"
+      - text: "GSAT"
+        href: "/pulication/international/#gsat"
     authors: "Jiwon and Dongjin"
 
   - date: "Dec. 2025"
     description: "CUTE-Planner accepted @iSpaRo 2025!"
+    links:
+      - text: "CUTE-Planner"
+        href: "/pulication/international/#cute-planner"
     authors: "Miryeong"
 
   - date: "Nov. 2025"
     description: "MSG-Loc accepted @RA-L!"
+    links:
+      - text: "MSG-Loc"
+        href: "/pulication/international/#msg-loc"
     authors: "Gihyeon"
 
   - date: "Oct. 2025"
     description: "StaticNeRF accepted @RA-L!"
+    links:
+      - text: "StaticNeRF"
+        href: "/pulication/international/#staticnerf"
     authors: "Juhui"
 
   - date: "Sep. 2025"
@@ -41,53 +64,96 @@ papers:
 
   - date: "Jun. 2025"
     description: "MARSCalib accepted @IROS 2025!"
+    links:
+      - text: "MARSCalib"
+        href: "/pulication/international/#marscalib"
     authors: "Seokhwan"
 
   - date: "Jun. 2025"
     description: "Uni-Mapper accepted @T-IV!"
+    links:
+      - text: "Uni-Mapper"
+        href: "/pulication/international/#uni-mapper"
     authors: "Gilhwan"
 
   - date: "Feb. 2025"
     description: "DiTer++ and PoLaRIS accepted @ICRA 2025!"
+    links:
+      - text: "DiTer++"
+        href: "/pulication/international/#diter-plus"
+      - text: "PoLaRIS"
+        href: "/pulication/international/#polaris"
     authors: "Juwon, Jiwon, and Dongjin"
 
   - date: "Oct. 2024"
     description: "TRIDENT accepted @IEEE Sensors Journal!"
+    links:
+      - text: "TRIDENT"
+        href: "/pulication/international/#trident"
     authors: "Geonmo"
 
   - date: "Sep. 2024"
     description: "ReFeree accepted @RA-L!"
+    links:
+      - text: "ReFeree"
+        href: "/pulication/international/#referee"
     authors: "Hogyun and Byunghee"
 
   - date: "Aug. 2024"
     description: "SOLiD accepted @RA-L!"
+    links:
+      - text: "SOLiD"
+        href: "/pulication/international/#solid"
     authors: "Hogyun"
 
   - date: "Feb. 2024"
     description: "Robust delivery robot localization accepted @ICRA 2024!"
+    links:
+      - text: "Robust delivery robot localization"
+        href: "/pulication/international/#salience-ground"
     authors: "Jooyoung"
 
   - date: "Jan. 2024"
     description: "DiTer accepted @IEEE Sensors Letters!"
+    links:
+      - text: "DiTer"
+        href: "/pulication/international/#diter"
     authors: "Seokhwan and Hogyun"
 
   - date: "Nov. 2023"
     description: "Joint-ID accepted @IEEE Sensors Journal!"
+    links:
+      - text: "Joint-ID"
+        href: "/pulication/international/#joint-id"
     authors: "Geonmo"
 
   - date: "Feb. 2023"
     description: "Sonar Context and Thermal-to-RGB/TIR Translation accepted @ICRA 2023!"
+    links:
+      - text: "Sonar Context"
+        href: "/pulication/international/#sonar-context"
+      - text: "Thermal-to-RGB/TIR Translation"
+        href: "/pulication/international/#rgb-to-tir"
     authors: "Hogyun"
 
   - date: "Jan. 2023"
     description: "One paper accepted @MDPI Sensors!"
+    links:
+      - text: "One paper"
+        href: "/pulication/international/#sparse-depth-guided"
     authors: "Geonmo and Juhui"
 
   - date: "Aug. 2022"
     description: "Nonparametric background model-based LiDAR SLAM accepted @T-ITS!"
+    links:
+      - text: "Nonparametric background model-based LiDAR SLAM"
+        href: "/pulication/international/#nonparametric-bg-slam"
 
   - date: "Apr. 2022"
     description: "ViViD++ accepted @RA-L!"
+    links:
+      - text: "ViViD++"
+        href: "/pulication/international/#vivid-plus"
 
 awards:
   - date: "Oct. 2026"
@@ -95,6 +161,9 @@ awards:
 
   - date: "Oct. 2026"
     description: "<strong>Jiwon</strong> won 2nd place among 131 teams in the IMU Odometry Challenge, Beyond Exteroception Workshop @IROS 2026!"
+    links:
+      - text: "IMU Odometry Challenge"
+        href: "/research/project/#imu-challenge"
 
   - date: "Sep. 2026"
     description: "Prof. <strong>Younggun</strong> received the Young Scientist Award @KROS!"
@@ -116,6 +185,9 @@ awards:
     
   - date: "May. 2026"
     description: "<strong>Jungwoo</strong>, <strong>Hogyun</strong>, and <strong>Jiwon</strong> won 2nd place in the SLAM category of Hilti-Trimble SLAM Challenge @ICRA 2026!"
+    links:
+      - text: "Hilti-Trimble SLAM Challenge"
+        href: "/research/project/#hilti-challenge"
   
   - date: "May. 2026"
     description: "<strong>Jiwon</strong> named Finalist for the Outstanding WiRA Student Paper Award @ICRA 2026!"

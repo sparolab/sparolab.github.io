@@ -290,24 +290,25 @@
       </article>
     </div>
 
-    <figure class="figure-container">
-      <img src="./static/images/majang_site.webp" alt="Field deployment at the Majang lava-tube cave on Jeju Island">
-      <figcaption>
-        Field deployment at the <b>Majang lava-tube cave</b> on Jeju Island. The cave floor is covered with loose
-        rocks and rubble, and its geometrically self-similar walls receive no natural light &mdash; conditions
-        representative of planetary lava tubes.
-      </figcaption>
-    </figure>
+    <div class="panel-grid panel-grid-2">
+      <figure>
+        <img src="./static/images/majang_site.webp" alt="Field deployment at the Majang lava-tube cave on Jeju Island">
+        <figcaption>
+          <b>Majang lava-tube cave</b>, Jeju Island. The floor is covered with loose rocks and rubble, and the
+          geometrically self-similar walls receive no natural light &mdash; conditions representative of planetary
+          lava tubes.
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/yeoncheon_site.webp" alt="Field deployment at the KICT planetary analog terrain in Yeoncheon">
+        <figcaption>
+          <b>KICT planetary analog terrain</b>, Yeoncheon. The surface is shaped by numerous impact-crater-like
+          depressions and scattered rocks that emulate the open surface conditions of the Moon.
+        </figcaption>
+      </figure>
+    </div>
 
-    <figure class="figure-container">
-      <img src="./static/images/yeoncheon_site.webp" alt="Field deployment at the KICT planetary analog terrain in Yeoncheon">
-      <figcaption>
-        Field deployment at the <b>KICT planetary analog terrain</b> in Yeoncheon. The surface is shaped by numerous
-        impact-crater-like depressions and scattered rocks that emulate the open surface conditions of the Moon.
-      </figcaption>
-    </figure>
-
-    <figure class="figure-container">
+    <figure class="figure-container is-compact">
       <img src="./static/images/hardware.webp" alt="Robot platforms and sensors used in the field experiments">
       <figcaption>
         Robot platforms and sensors. Each robot carried an Ouster OS1-64 LiDAR, a MicroStrain 3DM-GX5-25 IMU, and an
@@ -437,7 +438,7 @@
       </div>
     </div>
 
-    <figure class="figure-container">
+    <figure class="figure-container is-wide">
       <img src="./static/images/pipeline.webp" alt="Overview of the SKiD-SLAM distributed LiDAR SLAM framework">
       <figcaption>
         Overview of <span class="kiss-imu">SKiD-SLAM</span>, built on <b>SOLiD</b> and <b>KISS-Matcher</b>. Three
@@ -578,7 +579,7 @@
       </div>
     </div>
 
-    <div class="panel-grid panel-grid-2">
+    <div class="panel-grid is-equal-height" style="--row-height: 300px;">
       <figure>
         <img src="./static/images/pr_curve.webp" alt="Precision-recall curves for inter-robot place recognition">
         <figcaption>Inter-robot place recognition PR curves on <code>Tunnel</code> (left) and <code>Moon</code> (right).</figcaption>
@@ -781,7 +782,7 @@
       </p>
     </div>
 
-    <div class="panel-grid panel-grid-4">
+    <div class="panel-grid is-equal-height" style="--row-height: 430px;">
       <figure>
         <img src="./static/images/bw_raw.webp" alt="SKiD-SLAM map merging without a bandwidth limit">
         <figcaption>Raw (no limit)</figcaption>

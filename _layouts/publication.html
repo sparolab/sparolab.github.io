@@ -208,7 +208,7 @@ layout: default
           {%- assign vtype = "conference" -%}
         {%- endif -%}
 
-        <div class="column is-12 pub-item" data-type="{{ vtype }}">
+        <div class="column is-12 pub-item" data-type="{{ vtype }}"{% if image.key %} id="{{ image.key }}"{% endif %}>
           <div class="pub-entry">
             <!-- 번호 (필터링 시 JS 가 다시 매긴다) -->
             <div class="pub-entry__index">
@@ -321,4 +321,6 @@ layout: default
     apply();
   });
   </script>
+
+  {% include anchor-highlight.html %}
 {% endif %}

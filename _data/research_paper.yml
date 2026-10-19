@@ -11,6 +11,7 @@
       tags:
           - Calibration
           - Field
+      key: miscalib
       page_link: /research/miscalib/
 
     - link: /img/research/paper/25_skid_slam_tfr.gif
@@ -24,6 +25,7 @@
       tags:
           - SLAM
           - Field
+      key: skid-slam
       page_link: /research/skid_slam/
 
     - link: /img/research/paper/20_commerge.gif
@@ -37,6 +39,7 @@
       tags:
           - SLAM
           - Field
+      key: commerge
       page_link: /research/commerge/
 
     - link: /img/research/paper/21_radloc.gif
@@ -50,6 +53,7 @@
       tags:
           - SLAM
           - Field
+      key: radloc
       page_link: /research/radloc/
 
     - link: /img/research/paper/18_kiss_imu.png
@@ -64,6 +68,7 @@
       tags:
           - Learning
           - Field
+      key: kiss-imu
       page_link: /research/kiss_imu/
 
     - link: /img/research/paper/19_gsat.png
@@ -77,6 +82,7 @@
       tags:
           - Traverability
           - Field
+      key: gsat
       page_link: /research/gsat/
 
     - link: /img/research/paper/17_cute_planner.png
@@ -90,6 +96,7 @@
       tags:
           - Exploration
           - Field
+      key: cute-planner
       page_link: /research/cute_planner/
 
     - link: /img/research/paper/16_msg-loc.png
@@ -103,6 +110,7 @@
       tags:
           - Semantic
           - Indoor
+      key: msg-loc
       page_link: /research/msg-loc/
 
     - link: /img/research/paper/15_staticnerf.jpg
@@ -116,6 +124,7 @@
       tags:
           - Neural Rendering
           - Indoor
+      key: staticnerf
       page_link: /research/staticnerf/
       
     - link: /img/research/paper/14_uni_mapper.png
@@ -129,6 +138,7 @@
       tags:
           - SLAM
           - Urban
+      key: uni-mapper
       page_link: /research/uni_mapper/
 
     - link: /img/research/paper/13_cloi_nav.png
@@ -142,6 +152,7 @@
       tags:
           - VLN
           - Indoor
+      key: cloi-nav
       page_link: /research/cloi_nav/
 
     - link: /img/research/paper/12_must-loc.png
@@ -155,6 +166,7 @@
       tags:
           - Semantic
           - Indoor
+      key: must-loc
       page_link: /research/must-loc/
 
     - link: /img/research/paper/11_marscalib.png
@@ -168,6 +180,7 @@
       tags:
           - Calibration
           - Field
+      key: marscalib
       page_link: /research/marscalib/
 
     # === SKiD-SLAM Workshop (ICRA-W 2025) — renamed folder skid_slam_w ===
@@ -182,6 +195,7 @@
       tags:
           - SLAM
           - Field
+      key: skid-slam-w
       page_link: /research/skid_slam_w/
 
     - link: /img/research/paper/9_polaris.gif
@@ -195,6 +209,7 @@
       tags:
           - Dataset
           - Maritime
+      key: polaris
       page_link: /research/polaris/
 
     - link: /img/research/paper/8_diter_plus.png
@@ -208,6 +223,7 @@
       tags:
           - Dataset
           - Field
+      key: diter-plus
       page_link: /research/diter_plus/
 
     - link: /img/research/paper/7_referee.png
@@ -221,6 +237,7 @@
       tags:
           - SLAM
           - Urban
+      key: referee
       page_link: /research/referee/
 
     - link: /img/research/paper/6_trident.gif
@@ -234,6 +251,7 @@
       tags:
           - Robust sensing
           - Underwater
+      key: trident
       page_link: /research/trident/
 
     - link: /img/research/paper/5_solid.gif
@@ -247,6 +265,7 @@
       tags:
           - SLAM
           - Urban
+      key: solid
       page_link: /research/solid/
 
     - link: /img/research/paper/4_saliency_feature.png
@@ -260,6 +279,7 @@
       tags:
           - SLAM
           - Urban
+      key: salient-ground-feature
       page_link: /research/salient-ground-feature/
 
     - link: /img/research/paper/3_diter.gif
@@ -273,6 +293,7 @@
       tags:
           - Dataset
           - Field
+      key: diter
       page_link: /research/diter/
 
     - link: /img/research/paper/2_joint_id.png
@@ -286,6 +307,7 @@
       tags:
           - Robust sensing
           - Underwater
+      key: joint-id
       page_link: /research/joint_id/
 
     - link: /img/research/paper/1_sonar_context.png
@@ -299,4 +321,5 @@
       tags:
           - SLAM
           - Underwater
+      key: sonar-context
       page_link: /research/sonar_context/

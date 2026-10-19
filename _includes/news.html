@@ -105,6 +105,25 @@
     margin-top: 0;
   }
 
+  /* News 문구 안에서 publication / project 항목으로 바로 가는 링크.
+     파란 링크색 대신 본문색을 유지하고, 회색 밑줄로만 눌리는 곳임을 알린다. */
+  .news-list .news-link,
+  .news-list .news-link:visited {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #b9bdc9;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: color 0.15s, text-decoration-color 0.15s, background 0.15s;
+  }
+  .news-list .news-link:hover {
+    color: #010042;
+    text-decoration-color: #010042;
+    background: rgba(1, 0, 66, 0.06);
+    border-radius: 3px;
+  }
+
   .news-icon {
     color: #010042;
     margin-right: 8px;
@@ -144,7 +163,19 @@
     {% for paper in site.data.news.papers %}
       {% assign dp = paper.date | split: " " %}
       <li class="news-item" data-category="papers" data-year="{{ dp | last }}">
-        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = paper.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ paper.description }}
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = paper.date | remove_first: dp[0] %}{%- assign desc = paper.description -%}
+        {%- if paper.links -%}
+          {%- for l in paper.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- assign desc = desc | replace_first: l.text, ph -%}
+          {%- endfor -%}
+          {%- for l in paper.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- capture anchor -%}<a class="news-link" href="{{ l.href }}">{{ l.text }}</a>{%- endcapture -%}
+            {%- assign desc = desc | replace: ph, anchor -%}
+          {%- endfor -%}
+        {%- endif -%}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
         {% if paper.authors %}
           {%- comment -%} 이름만 굵게, 'and' 같은 연결어는 굵게 표시하지 않는다. {%- endcomment -%}
           <span style="color:#1f2a44;">(<strong>{{ paper.authors | replace: ' and ', '</strong> and <strong>' }}</strong>)</span>
@@ -160,7 +191,19 @@
     {% for award in site.data.news.awards %}
       {% assign dp = award.date | split: " " %}
       <li class="news-item" data-category="awards" data-year="{{ dp | last }}">
-        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = award.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ award.description }}
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = award.date | remove_first: dp[0] %}{%- assign desc = award.description -%}
+        {%- if award.links -%}
+          {%- for l in award.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- assign desc = desc | replace_first: l.text, ph -%}
+          {%- endfor -%}
+          {%- for l in award.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- capture anchor -%}<a class="news-link" href="{{ l.href }}">{{ l.text }}</a>{%- endcapture -%}
+            {%- assign desc = desc | replace: ph, anchor -%}
+          {%- endfor -%}
+        {%- endif -%}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
         {% if award.link %}
           <a href="{{ award.link }}" target="_blank">[Read more]</a>
         {% endif %}
@@ -175,7 +218,19 @@
     {% for project in site.data.news.projects %}
       {% assign dp = project.date | split: " " %}
       <li class="news-item" data-category="projects" data-year="{{ dp | last }}">
-        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = project.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ project.description }}
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = project.date | remove_first: dp[0] %}{%- assign desc = project.description -%}
+        {%- if project.links -%}
+          {%- for l in project.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- assign desc = desc | replace_first: l.text, ph -%}
+          {%- endfor -%}
+          {%- for l in project.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- capture anchor -%}<a class="news-link" href="{{ l.href }}">{{ l.text }}</a>{%- endcapture -%}
+            {%- assign desc = desc | replace: ph, anchor -%}
+          {%- endfor -%}
+        {%- endif -%}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
       </li>
     {% endfor %}
   </ul>
@@ -187,7 +242,19 @@
     {% for person in site.data.news.people %}
       {% assign dp = person.date | split: " " %}
       <li class="news-item" data-category="people" data-year="{{ dp | last }}">
-        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = person.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ person.description }}
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = person.date | remove_first: dp[0] %}{%- assign desc = person.description -%}
+        {%- if person.links -%}
+          {%- for l in person.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- assign desc = desc | replace_first: l.text, ph -%}
+          {%- endfor -%}
+          {%- for l in person.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- capture anchor -%}<a class="news-link" href="{{ l.href }}">{{ l.text }}</a>{%- endcapture -%}
+            {%- assign desc = desc | replace: ph, anchor -%}
+          {%- endfor -%}
+        {%- endif -%}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
       </li>
     {% endfor %}
   </ul>
@@ -199,7 +266,19 @@
     {% for etc in site.data.news.etc %}
       {% assign dp = etc.date | split: " " %}
       <li class="news-item" data-category="etc" data-year="{{ dp | last }}">
-        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = etc.date | remove_first: dp[0] %}<span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ etc.description }}
+        {% assign mon3 = dp[0] | replace: ".", "" | replace: ",", "" | slice: 0, 3 %}{% assign drest = etc.date | remove_first: dp[0] %}{%- assign desc = etc.description -%}
+        {%- if etc.links -%}
+          {%- for l in etc.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- assign desc = desc | replace_first: l.text, ph -%}
+          {%- endfor -%}
+          {%- for l in etc.links -%}
+            {%- capture ph -%}@@newslink{{ forloop.index }}@@{%- endcapture -%}
+            {%- capture anchor -%}<a class="news-link" href="{{ l.href }}">{{ l.text }}</a>{%- endcapture -%}
+            {%- assign desc = desc | replace: ph, anchor -%}
+          {%- endfor -%}
+        {%- endif -%}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
         {% if etc.link %}
           <a href="{{ etc.link }}" target="_blank">[Read more]</a>
         {% endif %}

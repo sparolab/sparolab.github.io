@@ -6,6 +6,7 @@
       project_date: Oct, 2026
       tags:
           - Challenge
+      key: imu-challenge
       page_link: /research/imu_challenge/
 
     - link: /img/research/project/iros_2026.png
@@ -13,6 +14,7 @@
       project_date: Sep, 2026
       tags:
           - Conference
+      key: iros-2026
       page_link: /research/iros_2026/
 
     - link: /img/research/project/hilti_challenge_2026.jpg
@@ -21,6 +23,7 @@
       project_date: Jun, 2026
       tags:
           - Challenge
+      key: hilti-challenge
       page_link: /research/hilti_challenge/
 
     - link: /img/research/project/icra_2026.png
@@ -28,6 +31,7 @@
       project_date: June, 2026
       tags:
           - Conference
+      key: icra-2026
       page_link: /research/icra_2026/
 
     - link: /img/research/project/iros_2025.png
@@ -35,6 +39,7 @@
       project_date: Oct, 2025
       tags:
           - Conference
+      key: iros-2025
       page_link: /research/iros_2025/
 
     - link: /img/research/project/icra_2025.jpg
@@ -42,6 +47,7 @@
       project_date: May, 2025
       tags:
           - Conference
+      key: icra-2025
       page_link: /research/icra_2025/
       
     - link: /img/research/project/icra_2024.png
@@ -49,6 +55,7 @@
       project_date: May, 2024
       tags:
           - Conference
+      key: icra-2024
       page_link: /research/icra_2024/
 
     

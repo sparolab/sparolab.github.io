@@ -1,0 +1,90 @@
+{%- comment -%}
+  URL 해시(#<key>)로 들어온 항목을 찾아가 잠깐 테두리를 비추는 공용 스크립트.
+  News 에서 특정 논문/수상/프로젝트로 바로 연결할 때 사용한다.
+  필터가 걸린 페이지에서는 대상이 숨겨져 있을 수 있으므로, 먼저 필터를 All 로 되돌린다.
+  주의: 필터 스크립트보다 뒤에 include 해야 DOMContentLoaded 순서가 맞는다.
+{%- endcomment -%}
+
+<style>
+  /* 상단 고정 네비게이션에 가려지지 않도록 여유를 둔다 */
+  .pub-item,
+  .gallery-item {
+    scroll-margin-top: 90px;
+  }
+
+  /* 테두리 색은 SPARO Lab 남색(#010042) */
+  .anchor-flash {
+    border-radius: 10px;
+    animation: anchor-flash-ring 2.4s ease-out 1;
+  }
+
+  @keyframes anchor-flash-ring {
+    0% {
+      box-shadow: 0 0 0 3px #010042;
+      background-color: rgba(1, 0, 66, 0.07);
+    }
+    60% {
+      box-shadow: 0 0 0 3px #010042;
+      background-color: rgba(1, 0, 66, 0.07);
+    }
+    100% {
+      box-shadow: 0 0 0 3px rgba(1, 0, 66, 0);
+      background-color: transparent;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anchor-flash {
+      animation: none;
+      box-shadow: 0 0 0 3px rgba(1, 0, 66, 0.35);
+    }
+  }
+</style>
+
+<script>
+(function () {
+  var FLASH_MS = 2600;
+
+  // 대상이 필터로 숨겨져 있을 수 있으므로 All 버튼을 눌러 원래 목록을 되살린다.
+  function resetFilters() {
+    var alls = document.querySelectorAll(
+      '.filter-card .tag-button[data-year="All"],' +
+      '.filter-card .tag-button[data-type="All"],' +
+      '.filter-card .tag-button[data-category="All"],' +
+      '.filter-card .tag-button[data-tag="All"],' +
+      '.filter-card .tag-button[data-venue="All"]'
+    );
+    alls.forEach(function (btn) {
+      if (!btn.classList.contains('active')) { btn.click(); }
+    });
+  }
+
+  function flash(el) {
+    el.classList.remove('anchor-flash');
+    void el.offsetWidth; // 같은 항목을 다시 눌러도 애니메이션이 재생되도록 리플로우를 강제한다
+    el.classList.add('anchor-flash');
+    setTimeout(function () { el.classList.remove('anchor-flash'); }, FLASH_MS);
+  }
+
+  function go() {
+    var id = window.location.hash.slice(1);
+    if (!id) { return; }
+    try { id = decodeURIComponent(id); } catch (e) { /* 그대로 사용 */ }
+
+    var el = document.getElementById(id);
+    if (!el) { return; }
+
+    resetFilters();
+
+    // 필터 복원 직후에는 레이아웃이 아직 반영되지 않아 다음 프레임에서 위치를 잡는다
+    requestAnimationFrame(function () {
+      var top = el.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+      flash(el);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', go);
+  window.addEventListener('hashchange', go);
+})();
+</script>

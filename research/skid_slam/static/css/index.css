@@ -537,6 +537,20 @@ html {
   max-height: none;
 }
 
+/* 넓은 그림에서는 캡션을 760px 로 묶지 않고 그림 너비에 맞춘다 */
+.figure-container.is-wide figcaption {
+  max-width: none;
+}
+
+/* 본문보다 작게 보여줄 그림 */
+.figure-container.is-compact img {
+  max-width: 760px;
+}
+
+.figure-container.is-compact figcaption {
+  max-width: 760px;
+}
+
 .figure-container figcaption {
   color: #666;
   font-size: 0.92rem;
@@ -1215,6 +1229,7 @@ code, pre, kbd {
 
 /* ==================== Demo video ==================== */
 .video-frame {
+  max-width: 720px;   /* 원본 해상도. 더 키우면 업스케일되어 화질이 떨어진다 */
   margin: 0 auto;
   border-radius: 12px;
   overflow: hidden;
@@ -1347,4 +1362,37 @@ code, pre, kbd {
 @media screen and (max-width: 560px) {
   .panel-grid-2,
   .panel-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* --- 원본 비율이 제각각인 패널 모음: 너비 대신 높이를 맞춘다 --- */
+.panel-grid.is-equal-height {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.panel-grid.is-equal-height figure {
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+.panel-grid.is-equal-height img {
+  width: auto;
+  height: var(--row-height, 300px);
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 900px) {
+  .panel-grid.is-equal-height img {
+    height: calc(var(--row-height, 300px) * 0.7);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .panel-grid.is-equal-height img {
+    width: 100%;
+    height: auto;
+  }
 }

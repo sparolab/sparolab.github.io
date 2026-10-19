@@ -262,6 +262,7 @@ layout: default
       {% assign yparts = ydate | split: " " %}
       {% assign yr = yparts | last | replace: ",", "" %}
       <div class="column is-3-desktop is-half-tablet is-full-mobile gallery-item"
+           {% if image.key %}id="{{ image.key }}"{% endif %}
            data-year="{{ yr }}"
            data-category="{{ image.category }}"
            data-venue="{{ image.venue_type }}"
@@ -550,3 +551,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
+{% include anchor-highlight.html %}
