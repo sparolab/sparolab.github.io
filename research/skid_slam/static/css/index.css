@@ -1212,3 +1212,139 @@ code, pre, kbd {
     grid-template-columns: 112px minmax(0, 1fr) 46px;
   }
 }
+
+/* ==================== Demo video ==================== */
+.video-frame {
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(1, 0, 66, 0.14);
+  background: #000;
+  line-height: 0;
+}
+
+.video-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ==================== Key figures strip (hero stats) ==================== */
+.key-stats {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 1.6rem 0 0.4rem;
+}
+
+.key-stat {
+  background: var(--cm-card);
+  border: 1px solid var(--cm-border);
+  border-top: 3px solid var(--cm-ink);
+  border-radius: 10px;
+  padding: 0.9rem 0.8rem;
+  text-align: center;
+}
+
+.key-stat b {
+  display: block;
+  color: var(--cm-ink);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.key-stat small {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--cm-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ==================== Figure panel grids ==================== */
+.panel-grid {
+  display: grid;
+  gap: 14px;
+  margin: 1.4rem 0 0.4rem;
+}
+
+.panel-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.panel-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.panel-grid figure {
+  margin: 0;
+  text-align: center;
+}
+
+.panel-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--cm-border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.panel-grid figcaption {
+  margin-top: 0.45rem;
+  color: var(--cm-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.panel-grid figure.is-ours img {
+  border: 2px solid var(--cm-ink);
+}
+
+.panel-grid figure.is-ours figcaption {
+  color: var(--cm-ink);
+}
+
+/* ==================== Deployment table ==================== */
+.fact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0 0.4rem;
+  font-size: 0.86rem;
+}
+
+.fact-table th,
+.fact-table td {
+  border-bottom: 1px solid var(--cm-border);
+  padding: 0.55rem 0.7rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.fact-table thead th {
+  color: var(--cm-ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 2px solid var(--cm-ink);
+}
+
+.fact-table tbody th {
+  text-align: left;
+  font-weight: 700;
+  color: #2d3d44;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .key-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .panel-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media screen and (max-width: 560px) {
+  .panel-grid-2,
+  .panel-grid-4 { grid-template-columns: 1fr; }
+}

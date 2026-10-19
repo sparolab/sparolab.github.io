@@ -28,13 +28,14 @@
   <ul>
     <li><a href="#overview">Overview</a></li>
     <li><a href="#abstract">Abstract</a></li>
-    <li><a href="#motivation">Motivation</a></li>
-    <li><a href="#key-insight">Key Insight</a></li>
-    <li><a href="#contributions">Contributions</a></li>
+    <li><a href="#mission">Mission Concepts</a></li>
+    <li><a href="#budgets">Planetary Budgets</a></li>
     <li><a href="#pipeline">Pipeline</a></li>
     <li><a href="#method">Method</a></li>
-    <li><a href="#evaluation">Evaluation</a></li>
+    <li><a href="#modules">Module Selection</a></li>
+    <li><a href="#field">Field Evaluation</a></li>
     <li><a href="#ablation">Ablation Study</a></li>
+    <li><a href="#lessons">Lessons Learned</a></li>
     <li><a href="#BibTeX">BibTeX</a></li>
   </ul>
 </nav>
@@ -89,9 +90,9 @@
       <div style="margin-top: 1.25rem;">
         <div class="publication-links">
           <span class="link-block">
-            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://ieeexplore.ieee.org/document/11644760" target="_blank" rel="noopener">
               <span class="icon"><i class="fas fa-file-pdf"></i></span>
-              <span>Paper (TBD)</span>
+              <span>Paper</span>
             </a>
           </span>
           <span class="link-block">
@@ -107,9 +108,9 @@
             </a>
           </span>
           <span class="link-block">
-            <a class="external-link button is-normal is-rounded is-dark" target="_blank">
-              <span class="icon"><i class="fab fa-youtube"></i></span>
-              <span>Video (TBD)</span>
+            <a class="external-link button is-normal is-rounded is-dark" href="#overview">
+              <span class="icon"><i class="fas fa-play"></i></span>
+              <span>Demo</span>
             </a>
           </span>
         </div>
@@ -175,13 +176,42 @@
 <!-- ==================== Overview / Teaser ==================== -->
 <section class="section content-section" id="overview" data-toc-title="Overview">
   <div class="container is-max-fullhd">
-    <!-- PLACEHOLDER: replace with teaser figure or video -->
-    <figure class="figure-container hero-figure">
-      <img src="./static/images/pipeline.png" alt="SKiD-SLAM Overview" style="border-radius: 10px; width: 100%;">
-      <figcaption>
-        <b>TL;DR:</b> Robust, lightweight, and distributed multi-robot LiDAR SLAM for resource-constrained field environments. <em>(placeholder caption)</em>
-      </figcaption>
-    </figure>
+    <div class="video-frame">
+      <video autoplay muted loop playsinline controls preload="metadata" poster="./static/images/demo_poster.webp">
+        <source src="./static/videos/demo.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="content has-text-justified" style="margin-top: 1.5rem;">
+      <p>
+        <b>TL;DR:</b> <span class="kiss-imu">SKiD-SLAM</span> is a distributed multi-robot LiDAR SLAM system
+        assembled to fit the budgets of an actual planetary mission &mdash; <b>250&nbsp;kbps</b> of inter-robot
+        bandwidth, embedded-class onboard compute, and <b>no central server</b>. We deployed it at two planetary
+        analog sites in South Korea: three wheeled rovers mapping the <b>Majang lava-tube cave</b> on Jeju Island,
+        and two quadrupeds carrying out a crater-and-rock science scenario on the <b>KICT planetary analog
+        terrain</b> in Yeoncheon. Under the imposed communication budget, SKiD-SLAM was the only evaluated
+        method that completed distributed map merging.
+      </p>
+    </div>
+
+    <div class="key-stats">
+      <div class="key-stat">
+        <b>250 kbps</b>
+        <small>inter-robot bandwidth budget, the only method to merge maps under it</small>
+      </div>
+      <div class="key-stat">
+        <b>320 B</b>
+        <small>SOLiD descriptor payload &mdash; 6.4&ndash;720&times; lighter than the alternatives</small>
+      </div>
+      <div class="key-stat">
+        <b>2 sites</b>
+        <small>lava-tube cave &amp; cratered planetary analog terrain</small>
+      </div>
+      <div class="key-stat">
+        <b>5 robots</b>
+        <small>3 wheeled rovers (cave) + 2 quadrupeds (surface)</small>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -191,79 +221,179 @@
   <div class="container is-max-fullhd">
     <h2 class="title is-3">Abstract</h2>
     <div class="content has-text-justified">
-      <!-- PLACEHOLDER: paste the final abstract here -->
       <p>
-        <em>[Placeholder] Add the SKiD-SLAM abstract here.</em>
+        In future planetary exploration missions, teams of robots will need to collaboratively build maps in
+        unknown environments, from subsurface caves and lava tubes to crater-strewn surface terrains. Such
+        collaboration enables faster and more robust mapping than a single robot can achieve by sharing
+        observations and computation across the team. However, this collaboration typically assumes seamless
+        communication and abundant computing resources, whereas planetary environments impose severe
+        communication limits, constrained onboard computation, and the absence of any central infrastructure.
+      </p>
+      <p>
+        In this field report, we present <i>SKiD-SLAM</i>, a distributed multi-robot LiDAR SLAM system for such
+        communication-constrained planetary environments, and report its deployment across two representative
+        mission concepts, i.e. (i) cave exploration and (ii) scientific surface exploration. To build the system,
+        we survey the communication and computation budgets of actual planetary missions, and select modules that
+        fit these budgets for each core function of distributed multi-robot LiDAR SLAM. These core functions are
+        recognizing revisited places across robots' maps, estimating inter-robot relative poses, and fusing
+        trajectories without a central server.
+      </p>
+      <p>
+        Before field deployment, we verify the assembled system on public datasets that resemble planetary
+        environments and in a simulator built on NASA JPL's Open Source Rover. We then validate our SKiD-SLAM in
+        both mission concepts through field deployments in South Korea, where (i) a team of wheeled rovers explores
+        the Majang lava-tube cave on Jeju Island, and (ii) quadruped robots carry out a crater-and-rock science
+        scenario on a planetary analog terrain at the Korea Institute of Civil Engineering and Building Technology
+        (KICT) in Yeoncheon. Across both deployments, our SKiD-SLAM reliably performed distributed multi-robot
+        LiDAR SLAM within the 250&nbsp;kbps inter-robot communication budget, demonstrating its feasibility under
+        challenging field conditions.
       </p>
     </div>
   </div>
 </section>
 
 
-<!-- ==================== Motivation ==================== -->
-<section class="section content-section" id="motivation" data-toc-title="Motivation">
+<!-- ==================== Mission Concepts ==================== -->
+<section class="section content-section" id="mission" data-toc-title="Mission Concepts">
   <div class="container is-max-fullhd">
-    <h2 class="title is-3">Motivation</h2>
+    <h2 class="title is-3">Two Mission Concepts</h2>
     <div class="content has-text-justified">
-      <!-- PLACEHOLDER -->
-      <p><em>[Placeholder] Describe the problem SKiD-SLAM targets.</em></p>
+      <p>
+        The study is organized around two representative planetary mission concepts, distinguished by terrain,
+        platform, and team composition. Both start from the same condition: <i>N</i> robots are deployed in an
+        unknown environment, each in its own local coordinate frame, with no shared global reference, no GPS, no
+        base station, and no central server. A consistent global map must be built on site, from the robots' own
+        onboard observations.
+      </p>
     </div>
 
     <div class="claim-grid">
       <article>
-        <h3>Resource limitation</h3>
-        <p style="text-align: justify;"><em>[Placeholder] Describe the resource-limitation challenge (network/memory/onboard compute in the field).</em></p>
+        <h3>(i) Cave exploration</h3>
+        <p style="text-align: justify;">
+          A team cooperatively maps a confined, lightless lava tube &mdash; the kind of subsurface environment that
+          may shelter future habitats, but that no planetary robot has yet entered. The entire team shares a single
+          objective: one consistent map of the passages. <b>Site:</b> the Majang lava-tube cave on Jeju Island,
+          roughly 20&nbsp;m &times; 40&nbsp;m with ceilings from 1&nbsp;m to 5&nbsp;m, no natural light, and a floor
+          of loose rock. <b>Team:</b> three wheeled rovers.
+        </p>
       </article>
       <article>
-        <h3>Inter/intra-robot association</h3>
-        <p style="text-align: justify;"><em>[Placeholder] Describe the loop-closure / association challenge under large viewpoint differences.</em></p>
+        <h3>(ii) Scientific surface exploration</h3>
+        <p style="text-align: justify;">
+          A team explores open, cratered terrain with the robots divided across complementary roles rather than
+          sharing one objective: one robot traverses the crater field to map its geometry, while another inspects
+          scattered rocks for science observations. <b>Site:</b> the KICT planetary analog terrain in Yeoncheon,
+          roughly 40&nbsp;m &times; 60&nbsp;m of scattered rocks and impact-crater-like depressions up to 1&nbsp;m
+          deep. <b>Team:</b> two quadruped robots.
+        </p>
       </article>
     </div>
 
-    <!-- PLACEHOLDER: add motivation figure/video -->
     <figure class="figure-container">
-      <img src="./static/images/pipeline.png" alt="Motivation" style="border-radius: 10px; width: 100%;">
+      <img src="./static/images/majang_site.webp" alt="Field deployment at the Majang lava-tube cave on Jeju Island">
+      <figcaption>
+        Field deployment at the <b>Majang lava-tube cave</b> on Jeju Island. The cave floor is covered with loose
+        rocks and rubble, and its geometrically self-similar walls receive no natural light &mdash; conditions
+        representative of planetary lava tubes.
+      </figcaption>
     </figure>
-  </div>
-</section>
 
+    <figure class="figure-container">
+      <img src="./static/images/yeoncheon_site.webp" alt="Field deployment at the KICT planetary analog terrain in Yeoncheon">
+      <figcaption>
+        Field deployment at the <b>KICT planetary analog terrain</b> in Yeoncheon. The surface is shaped by numerous
+        impact-crater-like depressions and scattered rocks that emulate the open surface conditions of the Moon.
+      </figcaption>
+    </figure>
 
-<!-- ==================== Key Insight ==================== -->
-<section class="section content-section" id="key-insight" data-toc-title="Key Insight">
-  <div class="container is-max-fullhd">
-    <h2 class="title is-3">Key Insight</h2>
-    <div class="content has-text-justified">
-      <!-- PLACEHOLDER -->
-      <p><b>[Placeholder key insight sentence.]</b> Add the one-line core idea of SKiD-SLAM here, then expand.</p>
-      <figure class="figure-container">
-        <img src="./static/images/pipeline.png" alt="Key insight" style="border-radius: 10px; width: 100%;">
-      </figure>
+    <figure class="figure-container">
+      <img src="./static/images/hardware.webp" alt="Robot platforms and sensors used in the field experiments">
+      <figcaption>
+        Robot platforms and sensors. Each robot carried an Ouster OS1-64 LiDAR, a MicroStrain 3DM-GX5-25 IMU, and an
+        Intel NUC Pro Mini PC running SKiD-SLAM onboard. (Left) a wheeled rover for the cave, (right) a quadruped for
+        the surface scenario. The camera and thermal camera are used only for visual inspection, not by the pipeline.
+      </figcaption>
+    </figure>
+
+    <div class="table-scroll">
+      <table class="fact-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Sequence</th>
+            <th># of robots</th>
+            <th>Duration [s]</th>
+            <th>Length [m]</th>
+            <th># of keyframes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Majang lava-tube cave</th>
+            <td>3</td>
+            <td>227.4 / 153.3 / 343.1</td>
+            <td>24.4 / 18.8 / 50.3</td>
+            <td>102 / 52 / 156</td>
+          </tr>
+          <tr>
+            <th>KICT planetary analog terrain</th>
+            <td>2</td>
+            <td>443.9 / 519.8</td>
+            <td>225.2 / 200.0</td>
+            <td>431 / 468</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <p class="note">Scale of the field deployments, reported per robot.</p>
   </div>
 </section>
 
 
-<!-- ==================== Contributions ==================== -->
-<section class="section content-section" id="contributions" data-toc-title="Contributions">
+<!-- ==================== Planetary Budgets ==================== -->
+<section class="section content-section" id="budgets" data-toc-title="Planetary Budgets">
   <div class="container is-max-fullhd">
-    <h2 class="title is-3">What <span class="kiss-imu">SKiD-SLAM</span> adds</h2>
+    <h2 class="title is-3">What a Planetary Mission Can Actually Afford</h2>
+    <div class="content has-text-justified">
+      <p>
+        Most distributed multi-robot LiDAR SLAM systems are developed and validated on urban and indoor benchmarks,
+        where distinctive geometric structure, high-bandwidth links, and supporting infrastructure are available.
+        Those assumptions do not hold on a planetary surface. Rather than proposing another algorithm, we surveyed
+        what flown missions actually provide, and treat the result as the budget that <i>every</i> module of
+        SKiD-SLAM must respect.
+      </p>
+    </div>
+
     <div class="claim-grid">
       <article>
-        <h3>Contribution 1</h3>
-        <p style="text-align: justify;"><em>[Placeholder]</em></p>
+        <h3>Communication is kilobit-class</h3>
+        <p style="text-align: justify;">
+          Curiosity's direct-to-Earth link runs at 500&nbsp;bps&ndash;32&nbsp;kbps; orbital relay reaches
+          256&nbsp;kbps&ndash;2&nbsp;Mbps but is visible only around eight minutes per sol. Robot-to-robot links are
+          no more generous: Ingenuity talked to Perseverance over a 20/250&nbsp;kbps Zigbee radio, and the CADRE
+          rovers share a 1&nbsp;Mbps mesh across the whole team, with drive-motor interference ruling out continuous
+          transmission. <b>We assume at most 250&nbsp;kbps per robot within a 1&nbsp;km range</b> &mdash; roughly
+          1/38,000 of a Wi-Fi 6 link.
+        </p>
       </article>
       <article>
-        <h3>Contribution 2</h3>
-        <p style="text-align: justify;"><em>[Placeholder]</em></p>
+        <h3>Computation lags by decades</h3>
+        <p style="text-align: justify;">
+          The radiation-hardened RAD750 that powers Curiosity and Perseverance runs at 133&ndash;200&nbsp;MHz with
+          256&nbsp;MB of RAM. Recent missions turn to COTS processors instead &mdash; Ingenuity flew a Snapdragon
+          801 &mdash; but solar power, battery capacity, and thermal limits still cap what is sustainable during a
+          traverse. <b>We target compact onboard computers</b> and validate that every module runs to completion
+          without exhausting onboard memory, with real-time performance as a secondary goal.
+        </p>
       </article>
-      <article>
-        <h3>Contribution 3</h3>
-        <p style="text-align: justify;"><em>[Placeholder]</em></p>
-      </article>
-      <article>
-        <h3>Contribution 4</h3>
-        <p style="text-align: justify;"><em>[Placeholder]</em></p>
-      </article>
+    </div>
+
+    <div class="content has-text-justified" style="margin-top: 1.2rem;">
+      <p>
+        Among the candidate methods for each module, we therefore select the one that runs within these
+        communication and memory budgets while remaining as fast and accurate as possible, and assemble the selected
+        modules into SKiD-SLAM.
+      </p>
     </div>
   </div>
 </section>
@@ -274,36 +404,48 @@
   <div class="container is-max-fullhd">
     <h2 class="title is-3">Pipeline</h2>
     <div class="content has-text-justified">
-      <!-- PLACEHOLDER -->
-      <p><em>[Placeholder] Describe the SKiD-SLAM pipeline flow.</em></p>
+      <p>
+        SKiD-SLAM runs entirely onboard each robot, with no central server. Each robot estimates its own keyframe
+        poses, broadcasts a compact descriptor per keyframe through a shared message pool, and &mdash; whenever a
+        teammate's descriptor matches one of its own places &mdash; registers the two scans, verifies the resulting
+        link twice, and folds it into its own pose graph. Inter-robot and intra-robot loop closing share the same
+        modules.
+      </p>
     </div>
 
     <div class="pipeline-flow">
       <div class="flow-step">
-        <span class="flow-actor is-robot">Robots</span>
-        <h4>Intra-robot SLAM</h4>
+        <span class="flow-actor is-robot">Each robot</span>
+        <h4>LiDAR-inertial odometry<br>&amp; SOLiD extraction</h4>
       </div>
       <div class="flow-arrow">
-        <span class="flow-chip flow-chip-top">SOLiD</span>
+        <span class="flow-chip flow-chip-top">320 B</span>
         <span class="flow-arrow-line">&rarr;</span>
-        <span class="flow-chip flow-chip-bottom">Pose</span>
+        <span class="flow-chip flow-chip-bottom">Message pool</span>
       </div>
       <div class="flow-step">
-        <span class="flow-actor is-server">Server</span>
-        <h4>Robust inter-robot loop closure</h4>
+        <span class="flow-actor is-robot">Each robot</span>
+        <h4>Inter-robot place<br>recognition &amp; registration</h4>
       </div>
       <div class="flow-arrow">
-        <span class="flow-chip flow-chip-top">Loop</span>
+        <span class="flow-chip flow-chip-top">t-MSE + PCM</span>
         <span class="flow-arrow-line">&rarr;</span>
       </div>
       <div class="flow-step">
-        <span class="flow-actor is-server">Server</span>
-        <h4>Distributed map optimization</h4>
+        <span class="flow-actor is-server">Distributed</span>
+        <h4>Two-stage pose graph<br>optimization</h4>
       </div>
     </div>
 
     <figure class="figure-container">
-      <img src="./static/images/pipeline.png" alt="SKiD-SLAM pipeline" style="border-radius: 10px; width: 100%;">
+      <img src="./static/images/pipeline.webp" alt="Overview of the SKiD-SLAM distributed LiDAR SLAM framework">
+      <figcaption>
+        Overview of <span class="kiss-imu">SKiD-SLAM</span>, built on <b>SOLiD</b> and <b>KISS-Matcher</b>. Three
+        robots are denoted &alpha;, &beta;, and &gamma;; robot &alpha; receives shared data from &beta; and &gamma;.
+        (a) LIO-SAM-based pose estimation, (b) inter-robot place recognition with SOLiD descriptors,
+        (c) coarse-to-fine registration with KISS-Matcher and Small-GICP, (d) two-stage outlier rejection with
+        truncated MSE and PCM, and (e) the final distributed multi-robot map centered on robot &alpha;.
+      </figcaption>
     </figure>
   </div>
 </section>
@@ -314,88 +456,427 @@
   <div class="container is-max-fullhd">
     <h2 class="title is-3">Method</h2>
     <div class="content has-text-justified">
-      <!-- PLACEHOLDER -->
-      <p><em>[Placeholder] Describe the method components.</em></p>
+      <p>
+        Instead of optimizing over all <i>N</i> robots on a central server, each robot &alpha; optimizes its own
+        poses plus only those teammate poses that form inter-robot loops with it. Four module choices make that
+        objective solvable within the planetary budgets.
+      </p>
     </div>
 
-    <div class="method-grid method-grid-3">
+    <div class="method-grid">
       <article>
-        <h3>Component (A)</h3>
+        <h3>(A) Place recognition &mdash; SOLiD</h3>
         <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
-          <em>[Placeholder] Why this component is needed.</em></p>
+          Robots must decide whether they have seen the same place by exchanging descriptors over a kilobit-class
+          link, so descriptor <i>size</i> matters as much as accuracy. Cave walls are geometrically self-similar
+          and their intensity varies little, which defeats descriptors built on raw geometric or intensity features.</p>
         <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
-          <em>[Placeholder] How it works.</em></p>
+          SOLiD maps each scan to a 320-byte rotation-invariant global descriptor. Candidate pairs are accepted when
+          the Euclidean descriptor distance falls below <code>&tau;<sub>dist</sub></code>, retrieved through a KD-tree.
+          SOLiD works across fields of view from 60&deg; to 360&deg; and stays effective under occlusion.</p>
       </article>
       <article>
-        <h3>Component (B)</h3>
+        <h3>(B) Registration &mdash; KISS-Matcher + Small-GICP</h3>
         <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
-          <em>[Placeholder]</em></p>
+          Unlike intra-robot loops, inter-robot loops connect robots observing the same place from markedly
+          different viewpoints. ICP-style local registration has too narrow a convergence basin to handle that
+          discrepancy without an initial guess.</p>
         <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
-          <em>[Placeholder]</em></p>
+          KISS-Matcher performs global registration over a wide pose space using Faster-PFH features and
+          k-core-based graph-theoretic pruning, which replaces the maximum-clique bottleneck with a linear-time
+          step. Small-GICP then refines that coarse alignment to fine accuracy.</p>
       </article>
       <article>
-        <h3>Component (C)</h3>
+        <h3>(C) Outlier rejection &mdash; truncated MSE</h3>
         <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
-          <em>[Placeholder]</em></p>
+          Laser-ray reflections and repetitive structure produce false-positive links that severely distort the map.
+          When robots traverse an area in opposite directions, overlap is limited and a few large residuals dominate
+          a plain MSE score.</p>
         <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
-          <em>[Placeholder]</em></p>
+          A truncated MSE discards correspondences beyond <code>&tau;<sub>MSE</sub></code> and scores only the
+          overlapping region, accepting a link only when it retains enough inliers
+          (<code>N<sub>inliers</sub> &ge; N<sub>min</sub></code>) and attains a small enough score.</p>
+      </article>
+      <article>
+        <h3>(D) Outlier rejection &mdash; PCM &amp; distributed PGO</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          Measurement-level verification alone cannot catch a false link that happens to align well locally, and the
+          rotation component lies in the non-convex SO(3), so direct optimization from a poor initial guess may
+          converge to a local minimum.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          Pairwise consistency maximization checks loop closures against each other at the pose level and keeps the
+          maximum consistent clique. The surviving constraints enter a two-stage global&ndash;local optimization that
+          first solves for the inter-robot frame transformations, then refines all poses.</p>
       </article>
     </div>
-
-    <figure class="figure-container">
-      <img src="./static/images/pipeline.png" alt="SKiD-SLAM method" style="border-radius: 10px; width: 100%;">
-    </figure>
   </div>
 </section>
 
 
-<!-- ==================== Evaluation ==================== -->
-<section class="section content-section" id="evaluation" data-toc-title="Evaluation">
+<!-- ==================== Module Selection ==================== -->
+<section class="section content-section" id="modules" data-toc-title="Module Selection">
   <div class="container is-max-fullhd">
-    <h2 class="title is-3">Evaluation</h2>
+    <h2 class="title is-3">Why These Modules?</h2>
     <div class="content has-text-justified">
-      <!-- PLACEHOLDER -->
-      <p><em>[Placeholder] Summarize the evaluation datasets and headline results.</em></p>
+      <p>
+        Before going to the field, we validated each module choice on public sequences that resemble our target
+        environments: <code>Tunnel</code> for the cave concept and <code>Moon</code> for the cratered surface.
+      </p>
     </div>
 
-    <!-- PLACEHOLDER metric dashboard — replace labels and numbers with real results.
-         Bars are driven by --bar-target (0%–100%); values shown are placeholders. -->
-    <div class="metric-dashboard" data-animate-bars aria-label="Placeholder metric comparison">
+    <!-- --- Descriptor payload --- -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Descriptor payload comparison">
       <div class="metric-dashboard-header">
         <div>
-          <span class="chart-kicker">Placeholder</span>
-          <h3>Metric Name</h3>
+          <span class="chart-kicker">Place recognition</span>
+          <h3>Descriptor payload per exchange</h3>
         </div>
         <div class="chart-legend" aria-label="Chart legend">
-          <span><i style="--legend-color: #8a98a4;"></i>Baseline</span>
-          <span><i style="--legend-color: #010042;"></i>SKiD-SLAM (Proposed)</span>
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines</span>
+          <span><i style="--legend-color: #010042;"></i>SOLiD (ours)</span>
         </div>
       </div>
 
-      <p class="tau-note">[Placeholder] Describe what this chart reports and on which dataset.</p>
+      <p class="tau-note">
+        SOLiD matches the most accurate descriptor (LiDAR Iris) on the PR curves below, while sending
+        <b>720&times; less data</b>. Bar lengths are drawn on a <b>log scale</b> because the range spans three
+        orders of magnitude; the printed values are the real descriptor sizes.
+      </p>
 
       <div class="metric-grid metric-grid-1">
         <article class="metric-card">
           <div class="metric-card-header">
-            <h4>Metric (unit) &darr;</h4>
+            <h4>Descriptor size [B] &darr;</h4>
           </div>
           <div class="metric-bars">
             <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
-              <span class="metric-label">Baseline</span>
+              <span class="metric-label">LiDAR Iris</span>
               <span class="bar-track"><span class="bar-fill"></span></span>
-              <span class="metric-value">TBD</span>
+              <span class="metric-value">230,400</span>
             </div>
-            <div class="metric-row best" style="--method-color: #010042; --bar-target: 30%;">
-              <span class="metric-label">SKiD-SLAM</span>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 74.3%;">
+              <span class="metric-label">Scan Context</span>
               <span class="bar-track"><span class="bar-fill"></span></span>
-              <span class="metric-value">TBD</span>
+              <span class="metric-value">9,600</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 61.8%;">
+              <span class="metric-label">OverlapTransformer / LoGG3D-Net</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">2,048</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 46.7%;">
+              <span class="metric-label">SOLiD</span>
+              <span class="bar-track"><span class="bar-fill"></span></span>
+              <span class="metric-value">320</span>
             </div>
           </div>
         </article>
       </div>
 
       <div class="chart-notes">
-        <span>⚠ Placeholder values — replace with real results.</span>
+        <span>Total descriptor memory shared over <code>Tunnel</code>: 1.164 GB (LiDAR Iris) &rarr; <b>1.617 MB (SOLiD)</b></span>
+      </div>
+    </div>
+
+    <div class="panel-grid panel-grid-2">
+      <figure>
+        <img src="./static/images/pr_curve.webp" alt="Precision-recall curves for inter-robot place recognition">
+        <figcaption>Inter-robot place recognition PR curves on <code>Tunnel</code> (left) and <code>Moon</code> (right).</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/success_rate.webp" alt="Registration success rate under synthetic relative rotations">
+        <figcaption>Registration success rate under synthetic relative rotations on <code>Moon</code>. Local methods collapse; KISS-Matcher is agnostic to the initial rotation.</figcaption>
+      </figure>
+    </div>
+
+    <!-- --- Registration --- -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Registration comparison" style="margin-top: 1.6rem;">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Registration &middot; <code>Moon</code> sequence</span>
+          <h3>Global coarse alignment, then local refinement</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines</span>
+          <span><i style="--legend-color: #010042;"></i>Ours</span>
+        </div>
+      </div>
+
+      <p class="tau-note">
+        Local methods are accurate once they converge but only within a narrow basin; a global method converges
+        almost always but leaves a coarse residual. Pairing the two gives both.
+      </p>
+
+      <div class="metric-grid metric-grid-3 ablation-metrics">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Success rate [%] &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 2.01%;">
+              <span class="metric-label">ICP</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">2.01</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 83.33%;">
+              <span class="metric-label">Small-GICP</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">83.33</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 92.24%;">
+              <span class="metric-label">TEASER++ <br>w/ S-GICP</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">92.24</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 99.71%;">
+              <span class="metric-label">KISS-M. <br>w/ S-GICP</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">99.71</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>RTE [cm] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">ICP</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">173.96</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 14.4%;">
+              <span class="metric-label">KISS-M. <br>(coarse only)</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">25.12</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 5.2%;">
+              <span class="metric-label">Small-GICP</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">8.98</span>
+            </div>
+            <div class="metric-row" style="--method-color: #010042; --bar-target: 4.9%;">
+              <span class="metric-label">KISS-M. <br>w/ S-GICP</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">8.61</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Runtime [s] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">TEASER++ <br>w/ S-GICP</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.683</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 98.5%;">
+              <span class="metric-label">TEASER++</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.673</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 7.5%;">
+              <span class="metric-label">KISS-M. <br>w/ S-GICP</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.051</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chart-notes">
+        <span>RTE is averaged over successful attempts only &mdash; ICP's 173.96 cm comes from just 2.01% of attempts</span>
+        <span>Runtime measured on an Intel NUC 11 Pro (mean per pair)</span>
+      </div>
+    </div>
+
+    <!-- --- Whole-system alignment --- -->
+    <div class="metric-dashboard" data-animate-bars aria-label="Multi-robot alignment error" style="margin-top: 1.6rem;">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Whole system</span>
+          <h3>Inter-robot alignment error (robot &beta; w.r.t. robot &alpha;)</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines</span>
+          <span><i style="--legend-color: #010042;"></i>SKiD-SLAM</span>
+        </div>
+      </div>
+
+      <p class="tau-note">
+        Single-robot trajectory accuracy is comparable across methods; the advantage of SKiD-SLAM is in
+        <b>aligning one robot's map to another's</b>, which is the central requirement of distributed multi-robot SLAM.
+      </p>
+
+      <div class="metric-grid metric-grid-3 ablation-metrics">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4><code>Tunnel</code> ATE [m] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">DiSCo-SLAM</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">16.938</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 32.8%;">
+              <span class="metric-label">DCL-SLAM</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">5.551</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 2.4%;">
+              <span class="metric-label">SKiD-SLAM</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.403</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4><code>Moon</code> ATE [m] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">DiSCo-SLAM</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">40.924</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 4.5%;">
+              <span class="metric-label">DCL-SLAM</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">1.851</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 2.6%;">
+              <span class="metric-label">SKiD-SLAM</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">1.046</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4><code>Moon</code> ARE [&deg;] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100%;">
+              <span class="metric-label">DCL-SLAM</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">5.674</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 41.9%;">
+              <span class="metric-label">DiSCo-SLAM</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">2.380</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 1.4%;">
+              <span class="metric-label">SKiD-SLAM</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.080</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chart-notes">
+        <span>Rotation ground truth is not provided for <code>Tunnel</code>, so ARE is reported on <code>Moon</code> only</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Field Evaluation ==================== -->
+<section class="section content-section" id="field" data-toc-title="Field Evaluation">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Field Evaluation</h2>
+    <div class="content has-text-justified">
+      <p>
+        We compared SKiD-SLAM against DiSCo-SLAM, DCL-SLAM, and Multi-Proxy on the data collected at both sites.
+        At the Majang cave, all three baselines fail to merge the robots' maps into a consistent estimate. At the
+        KICT terrain without bandwidth constraints, DiSCo-SLAM produces misaligned maps while the other three
+        succeed &mdash; the module choices validated in the lab carry over to real field conditions.
+      </p>
+    </div>
+
+    <div class="panel-grid panel-grid-4">
+      <figure>
+        <img src="./static/images/majang_disco.webp" alt="DiSCo-SLAM map merging at the Majang cave">
+        <figcaption>DiSCo-SLAM</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/majang_dcl.webp" alt="DCL-SLAM map merging at the Majang cave">
+        <figcaption>DCL-SLAM</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/majang_multi_proxy.webp" alt="Multi-Proxy map merging at the Majang cave">
+        <figcaption>Multi-Proxy</figcaption>
+      </figure>
+      <figure class="is-ours">
+        <img src="./static/images/majang_skid.webp" alt="SKiD-SLAM map merging at the Majang cave">
+        <figcaption>SKiD-SLAM (ours)</figcaption>
+      </figure>
+    </div>
+    <p class="note">
+      Multi-robot map merging at the <b>Majang lava-tube cave</b>. Only SKiD-SLAM produces a coherent global map of
+      the cave.
+    </p>
+
+    <h3 class="title is-4" style="margin-top: 2.4rem;">Operating under the communication budget</h3>
+    <div class="content has-text-justified">
+      <p>
+        We then tightened the available bandwidth with NetEm, which emulates network conditions by controlling
+        bandwidth, latency, and packet loss. SKiD-SLAM keeps merging the maps consistently as the limit drops from
+        1,000&nbsp;kbps to 500&nbsp;kbps and down to <b>250&nbsp;kbps</b> &mdash; the inter-robot budget assumed from
+        the mission survey.
+      </p>
+    </div>
+
+    <div class="panel-grid panel-grid-4">
+      <figure>
+        <img src="./static/images/bw_raw.webp" alt="SKiD-SLAM map merging without a bandwidth limit">
+        <figcaption>Raw (no limit)</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/bw_1000.webp" alt="SKiD-SLAM map merging at 1000 kbps">
+        <figcaption>1,000 kbps</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/bw_500.webp" alt="SKiD-SLAM map merging at 500 kbps">
+        <figcaption>500 kbps</figcaption>
+      </figure>
+      <figure class="is-ours">
+        <img src="./static/images/bw_250.webp" alt="SKiD-SLAM map merging at 250 kbps">
+        <figcaption>250 kbps &mdash; the budget</figcaption>
+      </figure>
+    </div>
+    <p class="note">
+      SKiD-SLAM at the Majang lava-tube cave under bandwidth limits imposed via NetEm.
+    </p>
+
+    <div class="metric-dashboard" data-animate-bars aria-label="Scan drop ratio under bandwidth limits" style="margin-top: 1.8rem;">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">KICT planetary analog terrain</span>
+          <h3>Scan drop ratio under a bandwidth cap</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines</span>
+          <span><i style="--legend-color: #010042;"></i>SKiD-SLAM</span>
+        </div>
+      </div>
+
+      <p class="tau-note">
+        Under the same 250&nbsp;kbps cap, DiSCo-SLAM, DCL-SLAM, and Multi-Proxy all <b>fail to merge their maps</b>,
+        while SKiD-SLAM completes merging. Their average transmitted message sizes and scan drop ratios are higher
+        at every tested limit.
+      </p>
+
+      <div class="metric-grid metric-grid-3 ablation-metrics">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>1,000 kbps [%] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 88.64%;">
+              <span class="metric-label">DCL</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">88.64</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 61.27%;">
+              <span class="metric-label">DiSCo</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">61.27</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 58.93%;">
+              <span class="metric-label">M-Proxy</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">58.93</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 53.18%;">
+              <span class="metric-label">Ours</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">53.18</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>500 kbps [%] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 96.38%;">
+              <span class="metric-label">DCL</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">96.38</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 77.53%;">
+              <span class="metric-label">DiSCo</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">77.53</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 66.26%;">
+              <span class="metric-label">M-Proxy</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">66.26</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 62.65%;">
+              <span class="metric-label">Ours</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">62.65</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>250 kbps [%] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 99.71%;">
+              <span class="metric-label">DCL</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">99.71</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 93.34%;">
+              <span class="metric-label">DiSCo</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">93.34</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 92.52%;">
+              <span class="metric-label">M-Proxy</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">92.52</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 73.18%;">
+              <span class="metric-label">Ours</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">73.18</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="chart-notes">
+        <span>Avg. transmitted message size: DCL 230,400 B &middot; DiSCo 9,600 B &middot; Multi-Proxy 1,585 B &middot; <b>Ours 320 B</b></span>
       </div>
     </div>
   </div>
@@ -407,37 +888,161 @@
   <div class="container is-max-fullhd">
     <h2 class="title is-3">Ablation Study</h2>
     <div class="content has-text-justified">
-      <!-- PLACEHOLDER -->
-      <p><em>[Placeholder] Describe ablation setup and findings.</em></p>
+      <p>
+        To identify which design choices are responsible for this reliability, we disabled one component at a time
+        and measured its effect on the cave and crater sequences. The decisive module turns out to be
+        <b>site-dependent</b> &mdash; except PCM, which matters everywhere.
+      </p>
     </div>
 
-    <div class="metric-dashboard" data-animate-bars aria-label="Placeholder ablation">
-      <div class="metric-dashboard-header">
-        <div>
-          <span class="chart-kicker">Placeholder</span>
-          <h3>Ablation</h3>
-        </div>
-      </div>
+    <div class="panel-grid panel-grid-4">
+      <figure>
+        <img src="./static/images/abl_scan_context.webp" alt="SKiD-SLAM without SOLiD at the Majang cave">
+        <figcaption>w/o SOLiD (Scan Context)</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/abl_kiss_matcher_off.webp" alt="SKiD-SLAM without KISS-Matcher at the Majang cave">
+        <figcaption>w/o KISS-Matcher</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/abl_tmse_off.webp" alt="SKiD-SLAM without truncated MSE at the Majang cave">
+        <figcaption>w/o t-MSE</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/abl_pcm_off.webp" alt="SKiD-SLAM without PCM at the Majang cave">
+        <figcaption>w/o PCM</figcaption>
+      </figure>
+    </div>
+    <p class="note">
+      Component ablation at the Majang lava-tube cave. Removing SOLiD causes a clear failure and removing PCM
+      degrades the merge, whereas the other modules have a smaller effect <i>in this environment</i>.
+    </p>
 
-      <p class="tau-note">[Placeholder] Ablation description.</p>
+    <div class="method-grid" style="margin-top: 1.6rem;">
+      <article>
+        <h3>SOLiD &mdash; decisive in the cave</h3>
+        <p style="text-align: justify;">
+          On the open crater terrain, Scan Context still recognizes inter-robot places and the merge succeeds: the
+          terrain provides distinct height variation along each azimuth. The cave removes that cue &mdash; narrow,
+          enclosed geometry with repetitive walls and little vertical structure &mdash; and the merge collapses.
+        </p>
+      </article>
+      <article>
+        <h3>KISS-Matcher &mdash; decisive on the crater terrain</h3>
+        <p style="text-align: justify;">
+          Without global registration, Small-GICP has no reliable coarse alignment to start from. On the crater
+          terrain the descriptor alone underconstrains the alignment and the two maps never converge; in the cave,
+          removing it has a smaller effect.
+        </p>
+      </article>
+      <article>
+        <h3>t-MSE &mdash; matters when viewpoints diverge</h3>
+        <p style="text-align: justify;">
+          Both deployments used homogeneous teams sharing a near-identical sensor viewpoint, so the truncated MSE
+          shows no visible effect at either site. Its benefit appears once the inter-robot viewpoint diverges, as in
+          heterogeneous ground&ndash;aerial teams.
+        </p>
+      </article>
+      <article>
+        <h3>PCM &mdash; necessary at both sites</h3>
+        <p style="text-align: justify;">
+          Removing PCM degrades the merge in the cave and on the crater terrain alike. The effect is most pronounced
+          on the crater terrain, where the larger map scale admits more candidate loop closures and raises the chance
+          that a false positive slips past geometric verification.
+        </p>
+      </article>
+    </div>
 
-      <div class="metric-grid metric-grid-1">
-        <article class="metric-card">
-          <div class="metric-card-header"><h4>Metric (unit) &darr;</h4></div>
-          <div class="metric-bars">
-            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90%;">
-              <span class="metric-label">Variant A</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">TBD</span>
-            </div>
-            <div class="metric-row best" style="--method-color: #010042; --bar-target: 40%;">
-              <span class="metric-label">Full</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">TBD</span>
-            </div>
-          </div>
-        </article>
-      </div>
+    <h3 class="title is-4" style="margin-top: 2.4rem;">Robustness limits</h3>
+    <div class="claim-grid">
+      <article>
+        <h3>Limited inter-robot overlap</h3>
+        <p style="text-align: justify;">
+          Cropping each robot's scan to a forward-facing FOV of 36&deg;, 72&deg;, or 108&deg; &mdash; 10%, 20%, and
+          30% of a full 360&deg; scan &mdash; still yields a consistent global map at <b>every tested FOV</b>,
+          including the narrowest. This suits the narrow-FOV solid-state LiDARs attractive for close-range planetary
+          survey.
+        </p>
+      </article>
+      <article>
+        <h3>Delay and packet loss</h3>
+        <p style="text-align: justify;">
+          SKiD-SLAM merges maps with a <b>2&nbsp;ms delay</b> and under <b>50% packet loss</b>, the latter thanks to
+          redundant keyframe exchange. It fails at a 200&nbsp;ms delay or 75% packet loss &mdash; the system is
+          designed for local robot-to-robot coordination, not Earth-to-Mars operation.
+        </p>
+      </article>
+      <article>
+        <h3>Onboard computation</h3>
+        <p style="text-align: justify;">
+          The complete pipeline ran onboard an Intel NUC 11 Pro with no external compute. Average per-keyframe
+          processing stays around <b>100&ndash;200&nbsp;ms</b>, with peaks occasionally exceeding 500&nbsp;ms during
+          inter-robot loop closures.
+        </p>
+      </article>
+      <article>
+        <h3>What still has to be proven</h3>
+        <p style="text-align: justify;">
+          Cross-platform inter-robot loop closure remains unverified in the field, since each site used a homogeneous
+          team. The outlier-rejection thresholds are selected empirically rather than derived, and the memory
+          footprint grows with trajectory length.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
 
-      <div class="chart-notes">
-        <span>⚠ Placeholder values — replace with real results.</span>
-      </div>
+
+<!-- ==================== Lessons Learned ==================== -->
+<section class="section content-section" id="lessons" data-toc-title="Lessons Learned">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Lessons Learned</h2>
+    <div class="content has-text-justified">
+      <p>
+        Beyond the quantitative results, the field deployments surfaced operational lessons that benchmark
+        evaluation does not expose.
+      </p>
+    </div>
+
+    <div class="method-grid">
+      <article>
+        <h3>Communication is more than bandwidth</h3>
+        <p style="text-align: justify;">
+          Staying within the bandwidth budget is necessary but not sufficient. In the Majang cave, curved passages
+          and self-similar walls repeatedly placed robots out of line of sight, so the link dropped regardless of the
+          nominal data rate, and the shared wireless medium was subject to contention from teleoperation links and
+          nearby equipment. Budget compliance and link robustness are <b>distinct requirements</b>, and both must be
+          met &mdash; which is why ARCHES deployed a dedicated relay rover, and why the CADRE rovers cannot transmit
+          continuously.
+        </p>
+      </article>
+      <article>
+        <h3>An analog site is not a planet</h3>
+        <p style="text-align: justify;">
+          Our deployments reproduce the <i>geometry</i> of planetary caves and cratered terrain, but not the physics:
+          full Earth gravity instead of reduced gravity, damp rock instead of fine abrasive electrostatically charged
+          regolith, and a breathable atmosphere instead of thermal cycling in near-vacuum. Validating a perception
+          system for those conditions needs thermal-vacuum and dust-ingress testing that no analog site can provide.
+        </p>
+      </article>
+      <article>
+        <h3>Geometry alone leaves cues on the table</h3>
+        <p style="text-align: justify;">
+          Our pipeline relies solely on LiDAR geometry to stay light on embedded hardware. Because the Majang lava
+          tube receives no natural light, illumination-independent modalities &mdash; thermal imaging, ground-
+          penetrating radar &mdash; are a natural complement. We recorded thermal imagery alongside the LiDAR data
+          and release it so the community can test whether such cues help.
+        </p>
+      </article>
+      <article>
+        <h3>Autonomy has to outlast the link</h3>
+        <p style="text-align: justify;">
+          Multi-minute communication delays and extended blackouts rule out remote intervention, so a real mission
+          demands more autonomy than ground supervision can supply. Coupling geometric distributed SLAM with learned,
+          multimodal priors &mdash; and with heterogeneous ground&ndash;aerial teams sharing one map &mdash; is, in our
+          view, the more compelling long-term direction.
+        </p>
+      </article>
     </div>
   </div>
 </section>
@@ -448,10 +1053,11 @@
   <div class="container is-max-fullhd">
     <div class="content">
       <h2 class="title is-3">BibTeX</h2>
-      <!-- PLACEHOLDER: update with the final citation -->
       <pre><code>@article{kim2026skidslam,
-  author    = {Kim, Hogyun and Choi, Jiwon and Kim, Juwon and Yang, Geonmo and Cho, Dongjin and Lim, Hyungtae and Cho, Younggun},
-  title     = {SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions with Field Deployments at Analog Sites},
+  author    = {Kim, Hogyun and Kim, Juwon and Cho, Dongjin and Choi, Jiwon and Yang, Geonmo
+               and Jeong, Seokhwan and Lee, Jiyun and Park, Miryeong and Lim, Hyungtae and Cho, Younggun},
+  title     = {SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions
+               with Field Deployments at Analog Sites},
   journal   = {IEEE Transactions on Field Robotics (T-FR)},
   year      = {2026},
 }</code></pre>
