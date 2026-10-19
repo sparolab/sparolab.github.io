@@ -7,6 +7,12 @@
       conf_link: "https://www.ai-meets-autonomy.com/"
       project: "/research/miscalib/"
       
+    - alt: "Seek, Don't Avoid: Radiation-Guided Exploration for Early Contamination Discovery"
+      key: radiation-guided
+      authors: "Miryeong Park, Taehyun Jung, Sanghyun Kim, and Younggun Cho"
+      conf: "IEEE International Symposium on Safety, Security, and Rescue Robotics (SSRR)"
+      conf_link: "https://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/ssrr"
+
     - alt: "SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions with Field Deployments at Analog Sites"
       key: skid-slam
       authors: "Hogyun Kim, Juwon Kim, Dongjin Cho, Jiwon Choi, Geonmo Yang, Seokhwan Jeong, Jiyun Lee, Miryeong Park, Hyungtae Lim, and Younggun Cho"

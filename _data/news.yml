@@ -5,6 +5,9 @@ papers:
 
   - date: "Sep. 2026"
     description: "Radiation-Guided Exploration accepted @SSRR 2026!"
+    links:
+      - text: "Radiation-Guided Exploration"
+        href: "/pulication/international/#radiation-guided"
     authors: "Miryeong"
 
   - date: "Aug. 2026"
