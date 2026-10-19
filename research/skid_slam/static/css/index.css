@@ -1372,27 +1372,27 @@ code, pre, kbd {
   justify-content: center;
 }
 
+/* figure 폭은 캡션 길이가 아니라 '행 높이 x 그림 비율(--ar)' 로 정한다.
+   그래야 캡션이 길어도 그림들이 한 줄에 나란히 남고, 높이가 서로 맞는다. */
 .panel-grid.is-equal-height figure {
   flex: 0 1 auto;
+  width: calc(var(--row-height, 300px) * var(--ar, 1.6));
   max-width: 100%;
 }
 
 .panel-grid.is-equal-height img {
-  width: auto;
-  height: var(--row-height, 300px);
-  max-width: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width: 900px) {
-  .panel-grid.is-equal-height img {
-    height: calc(var(--row-height, 300px) * 0.7);
+  .panel-grid.is-equal-height figure {
+    width: calc(var(--row-height, 300px) * var(--ar, 1.6) * 0.7);
   }
 }
 
 @media screen and (max-width: 560px) {
-  .panel-grid.is-equal-height img {
+  .panel-grid.is-equal-height figure {
     width: 100%;
-    height: auto;
   }
 }

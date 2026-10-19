@@ -581,11 +581,11 @@
     </div>
 
     <div class="panel-grid is-equal-height" style="--row-height: 300px;">
-      <figure>
+      <figure style="--ar: 1.93;">
         <img src="./static/images/pr_curve.webp" alt="Precision-recall curves for inter-robot place recognition">
         <figcaption>Inter-robot place recognition PR curves on <code>Tunnel</code> (left) and <code>Moon</code> (right).</figcaption>
       </figure>
-      <figure>
+      <figure style="--ar: 1.81;">
         <img src="./static/images/success_rate.webp" alt="Registration success rate under synthetic relative rotations">
         <figcaption>Registration success rate under synthetic relative rotations on <code>Moon</code>. Local methods collapse; KISS-Matcher is agnostic to the initial rotation.</figcaption>
       </figure>
@@ -784,19 +784,19 @@
     </div>
 
     <div class="panel-grid is-equal-height" style="--row-height: 430px;">
-      <figure>
+      <figure style="--ar: 0.99;">
         <img src="./static/images/bw_raw.webp" alt="SKiD-SLAM map merging without a bandwidth limit">
         <figcaption>Raw (no limit)</figcaption>
       </figure>
-      <figure>
+      <figure style="--ar: 0.34;">
         <img src="./static/images/bw_1000.webp" alt="SKiD-SLAM map merging at 1000 kbps">
         <figcaption>1,000 kbps</figcaption>
       </figure>
-      <figure>
+      <figure style="--ar: 0.34;">
         <img src="./static/images/bw_500.webp" alt="SKiD-SLAM map merging at 500 kbps">
         <figcaption>500 kbps</figcaption>
       </figure>
-      <figure class="is-ours">
+      <figure class="is-ours" style="--ar: 0.34;">
         <img src="./static/images/bw_250.webp" alt="SKiD-SLAM map merging at 250 kbps">
         <figcaption>250 kbps &mdash; the budget</figcaption>
       </figure>
@@ -1055,13 +1055,12 @@
   <div class="container is-max-fullhd">
     <div class="content">
       <h2 class="title is-3">BibTeX</h2>
-      <pre><code>@article{kim2026skidslam,
-  author    = {Kim, Hogyun and Kim, Juwon and Cho, Dongjin and Choi, Jiwon and Yang, Geonmo
-               and Jeong, Seokhwan and Lee, Jiyun and Park, Miryeong and Lim, Hyungtae and Cho, Younggun},
-  title     = {SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions
-               with Field Deployments at Analog Sites},
-  journal   = {IEEE Transactions on Field Robotics (T-FR)},
-  year      = {2026},
+      <pre><code>@article{kim2026skid,
+  title={SKiD-SLAM: Resource-Aware Distributed Multi-Robot LiDAR SLAM for Planetary Missions with Field Deployments at Analog Sites},
+  author={Kim, Hogyun and Kim, Juwon and Cho, Dongjin and Choi, Jiwon and Yang, Geonmo and Jeong, Seokhwan and Lee, Jiyun and Park, Miryeong and Lim, Hyungtae and Cho, Younggun},
+  journal={IEEE Transactions on Field Robotics},
+  year={2026},
+  publisher={IEEE}
 }</code></pre>
     </div>
   </div>
