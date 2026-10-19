@@ -161,6 +161,9 @@ papers:
 awards:
   - date: "Oct. 2026"
     description: "<strong>Seokhwan</strong> received the Best Paper Award, 3rd AI Meets Autonomy Workshop @IROS 2026!"
+    links:
+      - text: "Best Paper Award"
+        href: "/pulication/international/#miscalib"
 
   - date: "Oct. 2026"
     description: "<strong>Jiwon</strong> won 2nd place among 131 teams in the IMU Odometry Challenge, Beyond Exteroception Workshop @IROS 2026!"
