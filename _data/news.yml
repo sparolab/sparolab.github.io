@@ -1,6 +1,9 @@
 papers:
   - date: "Sep. 2026"
     description: "Three workshop papers accepted @IROSW 2026!"
+    links:
+      - text: "Three workshop papers"
+        href: "/album/album/#album-2026-10-01"
     authors: "Geonmo, Seokhwan, and Taehu"
 
   - date: "Sep. 2026"
@@ -63,6 +66,9 @@ papers:
 
   - date: "Sep. 2025"
     description: "Two workshop papers accepted @IROSW 2025!"
+    links:
+      - text: "Two workshop papers"
+        href: "/album/album/#album-2025-10-19"
     authors: "Gihyeon and Minho"
 
   - date: "Jun. 2025"
