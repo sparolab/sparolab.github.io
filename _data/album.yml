@@ -186,7 +186,19 @@ categories:
       id: awards
       images:
         # 2026 ---------------------------------------------------------------------------------------
-        - description: "2026년 삼성휴먼테크 논문대상 은상 수상" 
+        - description: "2026년 IROS IMU Odometry Challenge 2등 수상"
+          key: album-2026-10-01-2
+          date: "2026.10.01"
+          image_list:
+            - link: /img/album/research/awards/2026/2026_iros_imu_challenge/1.png
+
+        - description: "2026년 ICRA Hilti x Trimble SLAM Challenge 2등 수상"
+          key: album-2026-06-03-2
+          date: "2026.06.03"
+          image_list:
+            - link: /img/album/research/awards/2026/2026_hilti_slam_challenge/1.jpg
+
+        - description: "2026년 삼성휴먼테크 논문대상 은상 수상"
           key: album-2026-02-11
           date: "2026.02.11"
           image_list:
