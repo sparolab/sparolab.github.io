@@ -7,7 +7,22 @@ categories:
       id: conference
       images:
         # 2026 ---------------------------------------------------------------------------------------
-        - description: "2026년 Robocup 대회 참석 및 4등 수상" 
+        - description: "2026년 IROS 학회 참석"
+          key: album-2026-10-01
+          date: "2026.10.01"
+          image_list:
+            - link: /img/album/research/conference/2026/2026_iros/1.jpg
+            - link: /img/album/research/conference/2026/2026_iros/2.jpg
+            - link: /img/album/research/conference/2026/2026_iros/3.jpg
+            - link: /img/album/research/conference/2026/2026_iros/4.jpg
+            - link: /img/album/research/conference/2026/2026_iros/5.jpg
+            - link: /img/album/research/conference/2026/2026_iros/6.jpg
+            - link: /img/album/research/conference/2026/2026_iros/7.jpg
+            - link: /img/album/research/conference/2026/2026_iros/8.jpg
+            - link: /img/album/research/conference/2026/2026_iros/9.jpg
+            - link: /img/album/research/conference/2026/2026_iros/10.jpg
+
+        - description: "2026년 Robocup 대회 참석 및 4등 수상"
           key: album-2026-07-03
           date: "2026.07.03"
           image_list:
