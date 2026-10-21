@@ -111,7 +111,7 @@
   }
 
   // 아래 정렬은 안정 정렬이라 날짜가 같으면 여기에 담은 순서가 그대로 유지된다.
-  // 같은 달 항목 중에서는 Awards 를 가장 위에 보여주기 위해 awards 를 먼저 담는다.
+  // 같은 달에는 priority가 높은 소식을 먼저, 나머지는 아래 입력 순서대로 표시한다.
   const allNews = [
     {% for award in site.data.news.awards %}
       {
@@ -139,6 +139,7 @@
     {% for person in site.data.news.people %}
       {
         date: {{ person.date | jsonify }},
+        priority: {{ person.priority | default: 0 | jsonify }},
         description: {% capture linked_description %}{% include news-person-links.html content=person.description %}{% endcapture %}{{ linked_description | jsonify }},
         links: {% if person.links %}{{ person.links | jsonify }}{% else %}null{% endif %}
       },
@@ -153,7 +154,10 @@
     {% endfor %}
   ];
 
-  allNews.sort((a, b) => parseDateValue(b.date) - parseDateValue(a.date));
+  allNews.sort((a, b) =>
+    parseDateValue(b.date) - parseDateValue(a.date) ||
+    (b.priority || 0) - (a.priority || 0)
+  );
 
   const latestNews = allNews.slice(0, 10);
   // description 안의 지정된 문구를 publication / project 항목 링크로 바꾼다.
