@@ -42,6 +42,11 @@ layout: default
     white-space: nowrap;
   }
 
+  .kw-pills--compact .kw-pill {
+    padding-inline: 4px;
+    margin-inline: 1px;
+  }
+
   /* 연락처 아이콘: SPARO 네이비 → hover 시 accent 옐로우 */
   .member-icon {
     color: #010042 !important;
@@ -119,8 +124,12 @@ layout: default
                        {% endif %}">
                   {{ image.description | markdownify }}
 
-                  {% if image.affiliation %}
+                  {% if image.visiting_period or image.affiliation %}
                     <dl class="member-details">
+                      {% if image.visiting_period %}
+                        <dt>Visiting period</dt>
+                        <dd>{{ image.visiting_period | escape }}</dd>
+                      {% endif %}
                       {% if image.affiliation %}
                         <dt>Affiliation</dt>
                         <dd>{{ image.affiliation | escape }}</dd>
@@ -131,11 +140,12 @@ layout: default
                   {% if image.keywords %}
                     <div class="kw-block">
                       <p class="kw-label"><strong>{{ image.keywords_label | default: 'Keywords' | escape }}</strong></p>
-                      <p class="kw-pills">
+                      <p class="kw-pills{% if image.keywords_break_after %} kw-pills--compact{% endif %}">
                         {% assign kws = image.keywords | split: "," %}
                         {% for kw in kws %}
                           {% assign k = kw | strip %}
                           {% if k != "" %}<span class="kw-pill">{{ k }}</span>{% endif %}
+                          {% if forloop.index == image.keywords_break_after %}<br>{% endif %}
                         {% endfor %}
                       </p>
                     </div>

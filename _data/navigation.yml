@@ -5,8 +5,6 @@
   dropdown:
     - name: Current Members
       link: /people/current-members
-    - name: Visiting Students
-      link: /people/current-members/#visiting-students
     - name: Alumni
       link: /people/alumni
       
