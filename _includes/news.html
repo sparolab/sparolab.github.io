@@ -175,10 +175,9 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
         {% if paper.authors %}
-          {%- comment -%} 이름만 굵게, 'and' 같은 연결어는 굵게 표시하지 않는다. {%- endcomment -%}
-          <span style="color:#1f2a44;">(<strong>{{ paper.authors | replace: ' and ', '</strong> and <strong>' }}</strong>)</span>
+          <span style="color:#1f2a44;">({% include news-authors.html authors=paper.authors %})</span>
         {% endif %}
       </li>
     {% endfor %}
@@ -203,7 +202,7 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
         {% if award.link %}
           <a href="{{ award.link }}" target="_blank">[Read more]</a>
         {% endif %}
@@ -230,7 +229,7 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
       </li>
     {% endfor %}
   </ul>
@@ -254,7 +253,7 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
       </li>
     {% endfor %}
   </ul>
@@ -278,7 +277,7 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{{ desc }}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
         {% if etc.link %}
           <a href="{{ etc.link }}" target="_blank">[Read more]</a>
         {% endif %}

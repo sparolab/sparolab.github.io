@@ -1,0 +1,11 @@
+{%- assign author_names = include.authors | replace: ', and ', ', ' | replace: ' and ', ', ' | split: ', ' -%}
+{%- capture authors_markup -%}
+  {%- for author_name in author_names -%}
+    {%- unless forloop.first -%}
+      {%- if forloop.last -%}
+        {%- if author_names.size > 2 -%}, {% else %} {% endif -%}and {% else %}, {% endif -%}
+    {%- endunless -%}
+    <strong>{{ author_name | escape }}</strong>
+  {%- endfor -%}
+{%- endcapture -%}
+{%- include news-person-links.html content=authors_markup -%}

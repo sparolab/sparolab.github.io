@@ -50,6 +50,25 @@ layout: default
   .member-icon:hover {
     color: #ffc800 !important;
   }
+  .member-profile,
+  .member-section-title {
+    scroll-margin-top: 5rem;
+  }
+  .member-profile:target .card {
+    outline: 2px solid #010042;
+    outline-offset: 4px;
+  }
+  .member-details {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .member-details dt {
+    font-weight: 700;
+  }
+  .member-details dd {
+    margin: 0 0 0.6rem;
+  }
 </style>
 
 {% if page.gallery %}
@@ -58,13 +77,15 @@ layout: default
     <!-- 그룹 섹션 -->
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h1 class="has-text-left" style="font-size:35px;">{{ gallery.title }}</h1>
+        <h1 id="{{ gallery.title | slugify }}" class="has-text-left member-section-title" style="font-size:35px;">{{ gallery.title }}</h1>
       </div>
 
       {% for image in gallery.images %}
-        <div class="column 
+        <div id="{{ image.alt | slugify }}" class="column member-profile
                     {% if gallery.title == "Faculty" %}
                       is-3-desktop is-half-tablet is-full-mobile
+                    {% elsif gallery.title == "Visiting Students" %}
+                      is-one-third-desktop is-half-tablet is-full-mobile
                     {% else %}
                       is-one-fifth-desktop is-4-tablet is-full-mobile
                     {% endif %}">
@@ -99,9 +120,22 @@ layout: default
                        {% endif %}">
                   {{ image.description | markdownify }}
 
+                  {% if image.visiting_period or image.affiliation %}
+                    <dl class="member-details">
+                      {% if image.visiting_period %}
+                        <dt>Visiting period</dt>
+                        <dd>{{ image.visiting_period | escape }}</dd>
+                      {% endif %}
+                      {% if image.affiliation %}
+                        <dt>Affiliation</dt>
+                        <dd>{{ image.affiliation | escape }}</dd>
+                      {% endif %}
+                    </dl>
+                  {% endif %}
+
                   {% if image.keywords %}
                     <div class="kw-block">
-                      <p class="kw-label"><strong>Keywords</strong></p>
+                      <p class="kw-label"><strong>{{ image.keywords_label | default: 'Keywords' | escape }}</strong></p>
                       <p class="kw-pills">
                         {% assign kws = image.keywords | split: "," %}
                         {% for kw in kws %}
@@ -150,10 +184,12 @@ layout: default
                       </a>
                     {% endif %}
                     {% if image.homepage %}
-                      <a href="{{ image.homepage }}" target="_blank"
+                      <a href="{{ image.homepage }}" target="_blank" rel="noopener noreferrer"
+                         aria-label="{{ image.alt | escape }} webpage"
                          class="member-icon"
                          style="display:inline-block; font-size:20px;">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        {% if gallery.title == 'Visiting Students' %}<span style="font-size:0.85rem;">Webpage</span>{% endif %}
                       </a>
                     {% endif %}
                   </div>

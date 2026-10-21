@@ -108,7 +108,7 @@
     {% for award in site.data.news.awards %}
       {
         date: {{ award.date | jsonify }},
-        description: {{ award.description | jsonify }},
+        description: {% capture linked_description %}{% include news-person-links.html content=award.description %}{% endcapture %}{{ linked_description | jsonify }},
         links: {% if award.links %}{{ award.links | jsonify }}{% else %}null{% endif %},
         link: {{ award.link | default: '' | jsonify }}
       },
@@ -116,29 +116,29 @@
     {% for paper in site.data.news.papers %}
       {
         date: {{ paper.date | jsonify }},
-        description: {{ paper.description | jsonify }},
+        description: {% capture linked_description %}{% include news-person-links.html content=paper.description %}{% endcapture %}{{ linked_description | jsonify }},
         links: {% if paper.links %}{{ paper.links | jsonify }}{% else %}null{% endif %},
-        authors: {{ paper.authors | default: '' | jsonify }}
+        authors: {% capture linked_authors %}{% include news-authors.html authors=paper.authors %}{% endcapture %}{{ linked_authors | jsonify }}
       },
     {% endfor %}
     {% for project in site.data.news.projects %}
       {
         date: {{ project.date | jsonify }},
-        description: {{ project.description | jsonify }},
+        description: {% capture linked_description %}{% include news-person-links.html content=project.description %}{% endcapture %}{{ linked_description | jsonify }},
         links: {% if project.links %}{{ project.links | jsonify }}{% else %}null{% endif %}
       },
     {% endfor %}
     {% for person in site.data.news.people %}
       {
         date: {{ person.date | jsonify }},
-        description: {{ person.description | jsonify }},
+        description: {% capture linked_description %}{% include news-person-links.html content=person.description %}{% endcapture %}{{ linked_description | jsonify }},
         links: {% if person.links %}{{ person.links | jsonify }}{% else %}null{% endif %}
       },
     {% endfor %}
     {% for etc in site.data.news.etc %}
       {
         date: {{ etc.date | jsonify }},
-        description: {{ etc.description | jsonify }},
+        description: {% capture linked_description %}{% include news-person-links.html content=etc.description %}{% endcapture %}{{ linked_description | jsonify }},
         links: {% if etc.links %}{{ etc.links | jsonify }}{% else %}null{% endif %},
         link: {{ etc.link | default: '' | jsonify }}
       },
@@ -179,10 +179,8 @@
     if (item.authors) {
       const authorSpan = document.createElement('span');
       authorSpan.style.color = '#1f2a44';
-      // authors 역시 신뢰된 사이트 데이터이며, 이름만 굵게 하고 'and' 같은
-      // 연결어는 굵게 표시하지 않기 위해 HTML 로 렌더링한다.
-      authorSpan.innerHTML =
-        ' (<strong>' + item.authors.replace(/ and /g, '</strong> and <strong>') + '</strong>)';
+      // Author names and profile links are rendered by the shared Liquid include.
+      authorSpan.innerHTML = ' (' + item.authors + ')';
       li.appendChild(authorSpan);
     }
 

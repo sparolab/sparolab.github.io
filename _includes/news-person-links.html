@@ -1,0 +1,34 @@
+{%- comment -%}
+Link bold names to their current member or alumni cards. Matching is exact and
+case-insensitive, so ordinary bold text and ambiguous first names stay unchanged.
+{%- endcomment -%}
+{%- assign person_groups = site.data.current_members | concat: site.data.alumni -%}
+{%- assign name_parts = include.content | split: '<strong>' -%}
+{%- for name_part in name_parts -%}
+  {%- if forloop.first -%}
+    {{- name_part -}}
+  {%- else -%}
+    {%- assign person_name = name_part | split: '</strong>' | first -%}
+    {%- assign person_key = person_name | strip | downcase -%}
+    {%- assign person_matches = 0 -%}
+    {%- assign person_href = '' -%}
+    {%- for person_group in person_groups -%}
+      {%- for member in person_group.images -%}
+        {%- assign member_full_name = member.alt | downcase -%}
+        {%- assign member_first_name = member_full_name | split: ' ' | first -%}
+        {%- if person_key == member_full_name or person_key == member_first_name -%}
+          {%- assign person_matches = person_matches | plus: 1 -%}
+          {%- assign member_id = member.alt | slugify -%}
+          {%- if person_group.title == 'Alumni' -%}
+            {%- assign member_page = '/people/alumni/' | relative_url -%}
+          {%- else -%}
+            {%- assign member_page = '/people/current-members/' | relative_url -%}
+          {%- endif -%}
+          {%- assign person_href = member_page | append: '#' | append: member_id -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+    <strong>{%- if person_matches == 1 -%}<a class="news-link news-person-link" href="{{ person_href }}">{{ person_name | escape }}</a>{%- else -%}{{ person_name }}{%- endif -%}</strong>
+    {{- name_part | remove_first: person_name | remove_first: '</strong>' -}}
+  {%- endif -%}
+{%- endfor -%}

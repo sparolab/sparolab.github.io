@@ -120,7 +120,7 @@ papers:
     links:
       - text: "Robust delivery robot localization"
         href: "/pulication/international/#salience-ground"
-    authors: "Jooyoung"
+    authors: "Jooyong"
 
   - date: "Jan. 2024"
     description: "DiTer accepted @IEEE Sensors Letters!"
@@ -166,6 +166,9 @@ papers:
 
 awards:
   - date: "Oct. 2026"
+    description: "<strong>Gihyeon</strong> received the ICRA 2001 Participation Fund Award for ICRA 2026 @ICROS!"
+
+  - date: "Oct. 2026"
     description: "<strong>Seokhwan</strong> received the Best Paper Award, 3rd AI Meets Autonomy Workshop @IROS 2026!"
     links:
       - text: "Best Paper Award"
@@ -186,11 +189,8 @@ awards:
   - date: "July. 2026"
     description: "Team INHA United (<strong>Dongjin</strong> and <strong>Minho</strong>) won 4th place in the Home Service category @RoboCup!"
     links:
-      - text: "4th place"
+      - text: "Home Service category @RoboCup"
         href: "/album/album/#album-2026-07-03"
-
-  - date: "July. 2026"
-    description: "<strong>Gihyeon</strong> received the ICRA 2001 Participation Fund Award for ICRA 2026 @ICROS!"
 
   - date: "July. 2026"
     description: "<strong>Hogyun</strong> received the Travel Support @IROS 2026!"
@@ -341,6 +341,9 @@ projects:
     description: "SPARO Lab won a big grant @IITP (Deep Total Recall: Continual Learning for Human-Like Recall of Artificial Neural Networks)."
 
 people:
+  - date: "Oct. 2026"
+    description: "<strong>Nikolaos Stathoulopoulos</strong> from the Robotics and AI Group, Luleå University of Technology, Sweden, will join @SPARO Lab as a visiting student (Nov. 2026 – Feb. 2027). Welcome!"
+
   - date: "Mar. 2026"
     description: "<strong>Woonyoung</strong> joined @SPARO Lab. Welcome!"
 
