@@ -4,3 +4,8 @@ _site
 .jekyll-metadata
 vendor
 _config.local.yml
+
+# Local logs and macOS metadata
+*.log
+.DS_Store
+._*

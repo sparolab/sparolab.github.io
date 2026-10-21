@@ -1,6 +1,0 @@
-.DS_store
-.idea
-.vscode/
-.jekyll-cache/
-_site/
-Gemfile.lock
