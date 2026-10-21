@@ -177,11 +177,15 @@
 - title: Visiting Students
   images:
     - link: /img/people/visiting/niksta.jpg
+      image_fit: contain
       alt: Nikolaos Stathoulopoulos
       description: |-
         **Nikolaos Stathoulopoulos**
-      visiting_period: Nov. 2026 – Feb. 2027
       affiliation: Robotics and AI Group, Luleå University of Technology, Sweden
       keywords: Multi-robot/session SLAM, long-term mapping, loop closures, place recognition
       keywords_label: Research Interests
+      email: niksta@ltu.se
+      linkedin: https://www.linkedin.com/in/nikos-stathoulopoulos/
+      github: https://github.com/nstathou
+      scholar: https://scholar.google.com/citations?user=a_aBwmMAAAAJ
       homepage: https://nstathou.github.io/

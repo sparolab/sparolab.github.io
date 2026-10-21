@@ -84,8 +84,6 @@ layout: default
         <div id="{{ image.alt | slugify }}" class="column member-profile
                     {% if gallery.title == "Faculty" %}
                       is-3-desktop is-half-tablet is-full-mobile
-                    {% elsif gallery.title == "Visiting Students" %}
-                      is-one-third-desktop is-half-tablet is-full-mobile
                     {% else %}
                       is-one-fifth-desktop is-4-tablet is-full-mobile
                     {% endif %}">
@@ -106,6 +104,7 @@ layout: default
                   alt=image.alt
                   large_link=image.large_link
                   ratio="is-16by9"
+                  fit=image.image_fit
                 %}
               </div>
 
@@ -120,12 +119,8 @@ layout: default
                        {% endif %}">
                   {{ image.description | markdownify }}
 
-                  {% if image.visiting_period or image.affiliation %}
+                  {% if image.affiliation %}
                     <dl class="member-details">
-                      {% if image.visiting_period %}
-                        <dt>Visiting period</dt>
-                        <dd>{{ image.visiting_period | escape }}</dd>
-                      {% endif %}
                       {% if image.affiliation %}
                         <dt>Affiliation</dt>
                         <dd>{{ image.affiliation | escape }}</dd>
@@ -189,7 +184,6 @@ layout: default
                          class="member-icon"
                          style="display:inline-block; font-size:20px;">
                         <i class="fas fa-home" aria-hidden="true"></i>
-                        {% if gallery.title == 'Visiting Students' %}<span style="font-size:0.85rem;">Webpage</span>{% endif %}
                       </a>
                     {% endif %}
                   </div>

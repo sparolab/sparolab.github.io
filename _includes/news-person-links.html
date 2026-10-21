@@ -28,7 +28,7 @@ case-insensitive, so ordinary bold text and ambiguous first names stay unchanged
         {%- endif -%}
       {%- endfor -%}
     {%- endfor -%}
-    <strong>{%- if person_matches == 1 -%}<a class="news-link news-person-link" href="{{ person_href }}">{{ person_name | escape }}</a>{%- else -%}{{ person_name }}{%- endif -%}</strong>
+    <strong>{%- if person_matches == 1 -%}<a class="news-person-link" href="{{ person_href }}">{{ person_name | escape }}</a>{%- else -%}{{ person_name }}{%- endif -%}</strong>
     {{- name_part | remove_first: person_name | remove_first: '</strong>' -}}
   {%- endif -%}
 {%- endfor -%}
