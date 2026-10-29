@@ -116,6 +116,7 @@
     {% for award in site.data.news.awards %}
       {
         date: {{ award.date | jsonify }},
+        priority: {{ award.priority | default: 0 | jsonify }},
         description: {% capture linked_description %}{% include news-person-links.html content=award.description %}{% endcapture %}{{ linked_description | jsonify }},
         links: {% if award.links %}{{ award.links | jsonify }}{% else %}null{% endif %},
         link: {{ award.link | default: '' | jsonify }}

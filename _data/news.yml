@@ -166,6 +166,7 @@ papers:
 
 awards:
   - date: "Oct. 2026"
+    priority: 2
     description: "KISS-IMU was selected as a finalist at QIF 2026 South Korea! (<strong>Jiwon</strong>)"
     links:
       - text: "KISS-IMU"
