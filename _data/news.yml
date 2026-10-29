@@ -166,6 +166,14 @@ papers:
 
 awards:
   - date: "Oct. 2026"
+    description: "KISS-IMU was selected as a finalist at QIF 2026 South Korea! (<strong>Jiwon</strong>)"
+    links:
+      - text: "KISS-IMU"
+        href: "/research/kiss_imu/"
+      - text: "QIF 2026 South Korea"
+        href: "https://www.qualcomm.com/research/university-relations/innovation-fellowship/2026-south-korea"
+
+  - date: "Oct. 2026"
     description: "<strong>Gihyeon</strong> received the ICRA 2001 Participation Fund Award for ICRA 2026 @ICROS!"
 
   - date: "Oct. 2026"
