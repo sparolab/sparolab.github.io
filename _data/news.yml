@@ -379,6 +379,23 @@ people:
     description: "<strong>Geonmo</strong>, <strong>Jooyong</strong>, and <strong>Juhui</strong> joined @SPARO Lab. Welcome!"
 
 etc:
+  - date: "Nov. 2026"
+    priority: 1
+    description: "SPARO Lab successfully hosted IEEE SSRR 2026 in Incheon, Korea (Nov. 2–4)! Thanks to the organizing committee, Prof. <strong>Younggun</strong> and <strong>Hogyun</strong>, and our volunteers, <strong>Seokhwan</strong>, <strong>Jiwon</strong>, and <strong>Taehu</strong>!"
+    links:
+      - text: "IEEE SSRR 2026"
+        href: "/album/album/#album-2026-11-02"
+      - text: "Younggun"
+        href: "/people/current-members/#younggun-cho"
+      - text: "Hogyun"
+        href: "/people/current-members/#hogyun-kim"
+      - text: "Seokhwan"
+        href: "/people/current-members/#seokhwan-jeong"
+      - text: "Jiwon"
+        href: "/people/current-members/#jiwon-choi"
+      - text: "Taehu"
+        href: "/people/current-members/#taehu-sim"
+
   - date: "Sep. 2026"
     description: "<strong>Juhui</strong> will join @NAVER LABS as a research intern (Sep. 2026 - Feb. 2027). Congrats!"
 
