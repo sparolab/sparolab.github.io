@@ -7,7 +7,7 @@ categories:
       id: conference
       images:
         # 2026 ---------------------------------------------------------------------------------------
-        - description: "2026년 SSRR 학회 개최"
+        - description: "2026년 SSRR 학회 개최 및 참석"
           key: album-2026-11-02
           date: "2026.11.02"
           image_list:
@@ -16,6 +16,14 @@ categories:
             - link: /img/album/research/conference/2026/2026_ssrr/3.jpg
             - link: /img/album/research/conference/2026/2026_ssrr/4.jpg
             - link: /img/album/research/conference/2026/2026_ssrr/5.jpg
+            - link: /img/album/research/conference/2026/2026_ssrr/6.jpg
+
+        - description: "2026년 ICCAS 학회 참석 및 기금상 수상"
+          key: album-2026-10-iccas
+          date: "2026.10"
+          image_list:
+            - link: /img/album/research/conference/2026/2026_iccas/1.jpg
+            - link: /img/album/research/conference/2026/2026_iccas/2.jpg
 
         - description: "2026년 IROS 학회 참석"
           key: album-2026-10-01
