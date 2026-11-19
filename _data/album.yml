@@ -411,6 +411,12 @@ categories:
       id: etc
       images: 
       # 2026 ---------------------------------------------------------------------------------------
+      - description: "2026년 Nikos 교수님 방문 기념 점심 회식"
+        key: album-2026-11-20
+        date: "2026.11.20"
+        image_list:
+          - link: /img/album/activity/etc/2026/nikos_방문_점심.jpg
+
       - description: "2026년도 SPARO 회식 모음"
         key: album-2026
         date: "2026"
