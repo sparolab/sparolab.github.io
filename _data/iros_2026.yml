@@ -59,6 +59,28 @@
   page_link: /research/miscalib/
   image: /img/research/paper/22_miscalib.png
 
+- title: "PGSPN: Physics-Guided Spatial Propagation Network for Sparsity-Robust Underwater Depth Completion"
+  authors: "<strong>Geonmo Yang</strong>, Juhui Lee, Jiwon Choi, Jungwoo Lee, Ivana Collado-Gonzalez, Brendan Englot, and Younggun Cho"
+  abstract: >
+    Depth completion recovers dense metric depth from an RGB image and sparse range measurements, a capability underwater vehicles need for seafloor mapping, inspection, and navigation.
+    Many existing methods assume the uniformly distributed sparse input of terrestrial LiDAR.
+    Underwater sources such as Structure-from-Motion, stereo, and sonar instead yield spatially biased measurements with frame-varying density and occasional gross errors, which severely degrade these methods.
+    Underwater scenes also pose a second challenge.
+    Open-water regions contain no physical surface and receive no ground-truth supervision.
+    Without such supervision, estimated depth extends beyond object boundaries into empty water, a failure mode we term depth bleeding.
+    To address both challenges, we propose PGSPN, a physics-guided spatial propagation network that exploits underwater optical attenuation as a dense depth cue.
+    A transmission network trained with photometric restoration supervision predicts per-channel transmission maps.
+    A physics-derived affine calibration with residual-based outlier rejection converts them into a sparsity-robust metric depth prior.
+    Our Physics-Guided Propagation Suppression (PGPS) module then verifies the sparse anchors against this prior and attenuates propagation across prior-derived depth discontinuities.
+    We further introduce the Depth Bleeding Index (DBI) to quantify boundary preservation where ground truth is unavailable.
+    We evaluate PGSPN on real field datasets with sequence-level splits, a held-out dataset, real stereo measurements, and controlled turbidity and outlier studies.
+    PGSPN reduces the mean absolute error by up to 53.6% relative to the best baseline and achieves a lower DBI than every baseline in all tested conditions.
+    It runs at 8.1 Hz on an embedded NVIDIA Jetson AGX Orin.
+  sessions:
+    - "Workshop on Perception and Navigation for Marine Robotics / Thursday, 08:30-17:25 / Paper #7"
+  page_link: /research/pgspn/
+  image: /img/research/paper/26_pgspn.png
+
 - title: 'IMU Odometry Challenge 2026 <span style="color: red; font-weight: 700;">(2nd Place out of 131 teams)</span>'
   authors: "<strong>Jiwon Choi</strong>, Hogyun Kim, Jungwoo Lee, Geonmo Yang, Seunghee Yun, and Younggun Cho"
   abstract: >

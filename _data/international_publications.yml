@@ -7,6 +7,14 @@
       conf_link: "https://www.ai-meets-autonomy.com/"
       project: "/research/miscalib/"
       
+    - alt: "PGSPN: Physics-Guided Spatial Propagation Network for Sparsity-Robust Underwater Depth Completion"
+      key: pgspn
+      authors: "Geonmo Yang, Juhui Lee, Jiwon Choi, Jungwoo Lee, Ivana Collado-Gonzalez, Brendan Englot, and Younggun Cho"
+      conf: "IROS workshop: Perception and Navigation for Marine Robotics"
+      conf_link: "https://www.marinerobotics.info/"
+      paper: "https://openreview.net/forum?id=jYriaaSwr8"
+      project: "/research/pgspn/"
+
     - alt: "Seek, Don't Avoid: Radiation-Guided Exploration for Early Contamination Discovery"
       key: radiation-guided
       authors: "Miryeong Park, Taehyun Jung, Sanghyun Kim, and Younggun Cho"

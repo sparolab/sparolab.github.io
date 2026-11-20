@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PGSPN: Physics-Guided Spatial Propagation Network for Sparsity-Robust Underwater Depth Completion</title>
+  <meta name="description" content="PGSPN: Physics-Guided Spatial Propagation Network for Sparsity-Robust Underwater Depth Completion. IROS 2026 Workshop on Perception and Navigation for Marine Robotics.">
+  <meta name="keywords" content="PGSPN, underwater depth completion, depth bleeding, transmission map, underwater image formation, spatial propagation">
+  <meta property="og:title" content="PGSPN">
+  <meta property="og:description" content="Physics-Guided Spatial Propagation Network for Sparsity-Robust Underwater Depth Completion (IROS 2026 Workshop)">
+  <meta property="og:image" content="https://sparolab.github.io/img/research/paper/26_pgspn.png">
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #5f6b76;
+      --line: #e3e7eb;
+      --tint: #f5f8fa;
+      --accent: #0b6e8a;
+      --dark: #363636;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+    .wide { max-width: 1120px; }
+
+    .topbar { border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+    .topbar .wrap { display: flex; justify-content: space-between; gap: 1rem; padding-top: 0.7rem; padding-bottom: 0.7rem; }
+    .topbar a { color: var(--muted); }
+
+    header.hero { text-align: center; padding: 2.8rem 0 1.6rem; }
+    .eyebrow { margin: 0 0 0.6rem; color: var(--accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+    h1 { margin: 0; font-weight: 700; line-height: 1.2; }
+    h1 .name { display: block; font-size: 3rem; letter-spacing: 0.02em; }
+    h1 .sub { display: block; margin-top: 0.5rem; font-size: 1.55rem; font-weight: 600; }
+    .authors { margin: 1.4rem 0 0.3rem; font-size: 1.08rem; }
+    .authors span { display: inline-block; margin: 0 0.35rem; }
+    .affiliation { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .venue { margin: 1.3rem auto 0; padding: 0.75rem 1rem; max-width: 640px; border: 1px solid var(--line); border-radius: 10px; background: var(--tint); }
+    .venue strong { display: block; }
+    .venue span { color: var(--muted); font-size: 0.95rem; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.3rem; }
+    .btn { display: inline-block; padding: 0.45rem 1.15rem; border-radius: 999px; background: var(--dark); color: #fff; font-size: 0.95rem; font-weight: 600; }
+    .btn:hover { background: #111; text-decoration: none; }
+    .btn.outline { background: #fff; color: var(--dark); border: 1px solid var(--dark); }
+    .btn.outline:hover { background: var(--tint); }
+
+    section { padding: 2.2rem 0; }
+    section.tint { background: var(--tint); }
+    h2 { margin: 0 0 1rem; font-size: 1.7rem; text-align: center; }
+    h3 { margin: 0 0 0.4rem; font-size: 1.08rem; }
+    p { margin: 0 0 1rem; }
+    .lead { text-align: center; font-size: 1.15rem; color: var(--muted); margin: 0 auto; max-width: 820px; }
+    .justify { text-align: justify; }
+
+    figure { margin: 0 0 1.6rem; }
+    figure a { display: block; }
+    figcaption { margin-top: 0.6rem; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.4rem; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; font-size: 0.96rem; line-height: 1.6; }
+    .card p { margin: 0; }
+
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 0.6rem; }
+    table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.93rem; background: #fff; }
+    th, td { padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--line); text-align: center; white-space: nowrap; }
+    thead th { background: var(--tint); font-weight: 700; }
+    thead tr:first-child th { border-bottom: none; }
+    td.left, th.left { text-align: left; }
+    td.ours, th.ours { background: #eef6f9; }
+    .table-note { color: var(--muted); font-size: 0.88rem; line-height: 1.55; margin-bottom: 1.4rem; }
+    .highlight { border-left: 4px solid var(--accent); padding: 0.2rem 0 0.2rem 1rem; margin: 0 0 1.6rem; }
+
+    pre { margin: 0; padding: 1rem 1.1rem; overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: 10px; font-size: 0.85rem; line-height: 1.55; }
+
+    footer { border-top: 1px solid var(--line); padding: 1.6rem 0 2.2rem; text-align: center; color: var(--muted); font-size: 0.9rem; }
+    footer p { margin: 0.2rem 0; }
+
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      h1 .name { font-size: 2.3rem; }
+      h1 .sub { font-size: 1.2rem; }
+      .cards { grid-template-columns: 1fr; }
+      .justify { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Site">
+    <div class="wrap">
+      <a href="/">Spatial AI and Robotics (SPARO) Lab</a>
+      <a href="/research/iros_2026/">SPARO Lab at IROS 2026</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">IROS 2026 Workshop</p>
+      <h1>
+        <span class="name">PGSPN</span>
+        <span class="sub">Physics-Guided Spatial Propagation Network for Sparsity-Robust Underwater Depth Completion</span>
+      </h1>
+      <p class="authors">
+        <span><a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ" target="_blank" rel="noopener">Geonmo Yang</a><sup>1</sup>,</span>
+        <span><a href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ" target="_blank" rel="noopener">Juhui Lee</a><sup>1</sup>,</span>
+        <span><a href="https://scholar.google.com/citations?user=wL8VdUMAAAAJ" target="_blank" rel="noopener">Jiwon Choi</a><sup>1</sup>,</span>
+        <span><a href="https://scholar.google.com/citations?user=H0rvKXYAAAAJ" target="_blank" rel="noopener">Jungwoo Lee</a><sup>1</sup>,</span>
+        <span>Ivana Collado-Gonzalez<sup>2</sup>,</span>
+        <span>Brendan Englot<sup>2</sup>,</span>
+        <span>and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ" target="_blank" rel="noopener">Younggun Cho</a><sup>1&dagger;</sup></span>
+      </p>
+      <p class="affiliation"><sup>1</sup><a href="/">Spatial AI and Robotics (SPARO) Lab</a>, Inha University, South Korea</p>
+      <p class="affiliation"><sup>2</sup>Department of Mechanical Engineering, Stevens Institute of Technology, USA</p>
+      <p class="affiliation">&dagger; Corresponding author</p>
+
+      <div class="venue">
+        <strong>Workshop on Perception and Navigation for Marine Robotics</strong>
+        <span>IROS 2026 &middot; Thursday, Oct. 1 &middot; Poster &amp; Lightning Talk &middot; Paper #7</span>
+      </div>
+
+      <div class="links">
+        <a class="btn" href="https://openreview.net/forum?id=jYriaaSwr8" target="_blank" rel="noopener">Paper (OpenReview)</a>
+        <a class="btn" href="#bibtex">BibTeX</a>
+        <a class="btn outline" href="/research/iros_2026/">SPARO Lab at IROS 2026</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding-top: 0.6rem;">
+      <div class="wrap">
+        <figure>
+          <a href="./static/images/teaser.webp" target="_blank" rel="noopener">
+            <img src="./static/images/teaser.webp" width="1600" height="859"
+                 alt="RGB input, sparse depth, BP-Net, and PGSPN results under high sparsity, spatially biased points, and open water">
+          </a>
+          <figcaption>
+            <strong>Challenges in underwater depth completion.</strong>
+            Comparison with BP-Net under three underwater conditions.
+            Top: under extreme sparsity, PGSPN stays robust across the tested densities.
+            Middle: spatially biased sparse input makes BP-Net fail catastrophically, while the physics-based prior keeps PGSPN stable.
+            Bottom: open-water regions cause severe depth bleeding, which PGSPN suppresses.
+          </figcaption>
+        </figure>
+        <p class="lead">PGSPN uses underwater light attenuation as a dense depth cue, so depth completion stays stable under sparse, spatially biased input and does not bleed into open water.</p>
+      </div>
+    </section>
+
+    <section class="tint">
+      <div class="wrap">
+        <h2>Abstract</h2>
+        <p class="justify">
+          Depth completion recovers dense metric depth from an RGB image and sparse range measurements, a capability underwater vehicles need for seafloor mapping, inspection, and navigation.
+          Many existing methods assume the uniformly distributed sparse input of terrestrial LiDAR.
+          Underwater sources such as Structure-from-Motion, stereo, and sonar instead yield spatially biased measurements with frame-varying density and occasional gross errors, which severely degrade these methods.
+          Underwater scenes also pose a second challenge.
+          Open-water regions contain no physical surface and receive no ground-truth supervision.
+          Without such supervision, estimated depth extends beyond object boundaries into empty water, a failure mode we term <em>depth bleeding</em>.
+          To address both challenges, we propose PGSPN, a physics-guided spatial propagation network that exploits underwater optical attenuation as a dense depth cue.
+          A transmission network trained with photometric restoration supervision predicts per-channel transmission maps.
+          A physics-derived affine calibration with residual-based outlier rejection converts them into a sparsity-robust metric depth prior.
+          Our Physics-Guided Propagation Suppression (PGPS) module then verifies the sparse anchors against this prior and attenuates propagation across prior-derived depth discontinuities.
+          We further introduce the Depth Bleeding Index (DBI) to quantify boundary preservation where ground truth is unavailable.
+          We evaluate PGSPN on real field datasets with sequence-level splits, a held-out dataset, real stereo measurements, and controlled turbidity and outlier studies.
+          PGSPN reduces the mean absolute error by up to 53.6% relative to the best baseline and achieves a lower DBI than every baseline in all tested conditions.
+          It runs at 8.1&nbsp;Hz on an embedded NVIDIA Jetson AGX Orin.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap wide">
+        <h2>Method</h2>
+        <figure>
+          <a href="./static/images/pipeline.webp" target="_blank" rel="noopener">
+            <img src="./static/images/pipeline.webp" width="1900" height="668" loading="lazy"
+                 alt="PGSPN architecture: Stage 1 transmission map estimation and Stage 2 sparsity-robust depth completion with PGPS">
+          </a>
+          <figcaption>
+            <strong>Overall architecture.</strong>
+            Stage 1 estimates per-channel transmission and backscatter maps through photometric restoration, which preserves object boundaries without depth ground truth.
+            A robust affine calibration converts the transmission into a metric depth prior.
+            Stage 2 refines the prior by spatial propagation with PGPS, which suppresses depth bleeding.
+          </figcaption>
+        </figure>
+        <div class="cards">
+          <div class="card">
+            <h3>1. Physics-guided metric prior</h3>
+            <p>Underwater light attenuates with distance, so per-channel transmission is a dense depth cue. Stage 1 estimates it from the RGB image and sparse depth, supervised by photometric restoration over the whole image. A per-frame affine fit with residual-based outlier rejection then converts the most consistent channel into a metric depth prior that stays stable under sparse and biased input.</p>
+          </div>
+          <div class="card">
+            <h3>2. Physics-Guided Propagation Suppression</h3>
+            <p>The prior initializes recurrent spatial propagation. PGPS keeps only the sparse anchors that agree with the prior, and it attenuates propagation weights across prior-derived depth discontinuities, so refinement does not erase open-water boundaries.</p>
+          </div>
+          <div class="card">
+            <h3>3. Depth Bleeding Index</h3>
+            <p>Standard metrics score only pixels with ground truth, so they cannot see bleeding into open water. DBI measures, on synthetic open-water regions with controlled boundaries, whether the depth discontinuity at a foreground boundary survives. Lower is better.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tint">
+      <div class="wrap wide">
+        <h2>Results</h2>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th class="left" rowspan="2">Sequence</th>
+                <th class="left" rowspan="2">Sparse input</th>
+                <th colspan="2">MAE (m) &darr;</th>
+                <th colspan="2">&delta;<sub>1</sub> &uarr;</th>
+                <th colspan="2">DBI &darr;</th>
+              </tr>
+              <tr>
+                <th>Best baseline</th><th class="ours">PGSPN</th>
+                <th>Best baseline</th><th class="ours">PGSPN</th>
+                <th>Best baseline</th><th class="ours">PGSPN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="left">rock_garden1</td><td class="left">Feature matching</td><td>0.273</td><td class="ours"><strong>0.194</strong></td><td>0.819</td><td class="ours"><strong>0.890</strong></td><td>0.362</td><td class="ours"><strong>0.313</strong></td></tr>
+              <tr><td class="left">rock_garden1</td><td class="left">SfM 100%</td><td>0.164</td><td class="ours"><strong>0.087</strong></td><td>0.950</td><td class="ours"><strong>0.974</strong></td><td>0.296</td><td class="ours"><strong>0.211</strong></td></tr>
+              <tr><td class="left">rock_garden1</td><td class="left">Bias 60%</td><td>0.261</td><td class="ours"><strong>0.173</strong></td><td>0.927</td><td class="ours"><strong>0.965</strong></td><td>0.245</td><td class="ours"><strong>0.203</strong></td></tr>
+              <tr><td class="left">flatiron</td><td class="left">SfM 100%</td><td><strong>0.016</strong></td><td class="ours">0.025</td><td><strong>0.999</strong></td><td class="ours">0.998</td><td>0.498</td><td class="ours"><strong>0.411</strong></td></tr>
+              <tr><td class="left">flatiron</td><td class="left">Bias 60%</td><td>0.183</td><td class="ours"><strong>0.085</strong></td><td>0.955</td><td class="ours"><strong>0.993</strong></td><td>0.481</td><td class="ours"><strong>0.430</strong></td></tr>
+              <tr><td class="left">SeaThru-D3 (held out)</td><td class="left">Bias 60%</td><td>0.056</td><td class="ours"><strong>0.049</strong></td><td>0.960</td><td class="ours"><strong>0.979</strong></td><td>0.423</td><td class="ours"><strong>0.365</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          Best of ten retrained baselines for each metric versus PGSPN; the better value is in bold.
+          rock_garden1 (FLSea-Stereo) and flatiron (FLSea-VI) are sequence-level test splits, and SeaThru-D3 is evaluated without fine-tuning.
+          Feature matching: real stereo matches. SfM 100%: all projected SfM points. Bias 60%: points kept only in a central band covering 60% of the image height.
+        </p>
+        <p class="highlight">
+          PGSPN achieves a lower DBI than every baseline in all tested conditions and reduces MAE by up to <strong>53.6%</strong> relative to the best baseline (flatiron, Bias 60%: 0.085&nbsp;m vs. 0.183&nbsp;m).
+          When measurements are abundant (flatiron, SfM 100%), propagation-based methods interpolate them directly and reach a lower MAE, but they still bleed into open water.
+        </p>
+
+        <figure>
+          <a href="./static/images/qualitative.webp" target="_blank" rel="noopener">
+            <img src="./static/images/qualitative.webp" width="2000" height="607" loading="lazy"
+                 alt="Qualitative depth completion comparison with PENet, TWISE, DySPN, and BP-Net on FLSea">
+          </a>
+          <figcaption>
+            <strong>Qualitative comparison.</strong>
+            Depth completion on FLSea-VI (top) and FLSea-Stereo (bottom) under SfM 100% and Bias 60% input, compared with PENet, TWISE, DySPN, and BP-Net.
+            PGSPN-prior is the calibrated transmission prior alone. Blue boxes mark zoomed-in areas.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <a href="./static/images/pgps_3d.webp" target="_blank" rel="noopener">
+            <img src="./static/images/pgps_3d.webp" width="1800" height="587" loading="lazy"
+                 alt="Depth maps and 3-D point clouds with and without PGPS on a flatiron scene">
+          </a>
+          <figcaption>
+            <strong>Effect of PGPS in 3-D</strong> on a real flatiron scene (SfM 100%).
+            Without PGPS, depth bleeding creates spurious geometry at the open-water boundary. With PGPS, the discontinuity is preserved.
+            The bottom row shows the corresponding 3-D point clouds.
+          </figcaption>
+        </figure>
+
+        <p class="highlight" style="margin-bottom: 0;">
+          <strong>Embedded deployment.</strong>
+          PGSPN runs at 8.1&nbsp;Hz on 640&times;384 input on an NVIDIA Jetson AGX Orin with TensorRT (FP16), which is enough for keyframe-based underwater mapping.
+        </p>
+      </div>
+    </section>
+
+    <section id="bibtex">
+      <div class="wrap">
+        <h2>BibTeX</h2>
+        <pre><code>@inproceedings{yang2026pgspn,
+  title     = {PGSPN: Physics-Guided Spatial Propagation Network for Sparsity-Robust Underwater Depth Completion},
+  author    = {Yang, Geonmo and Lee, Juhui and Choi, Jiwon and Lee, Jungwoo and Collado-Gonzalez, Ivana and Englot, Brendan and Cho, Younggun},
+  booktitle = {IROS 2026 Workshop on Perception and Navigation for Marine Robotics},
+  year      = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><a href="/">Spatial AI and Robotics (SPARO) Lab</a>, Inha University &middot; <a href="/research/iros_2026/">SPARO Lab at IROS 2026</a></p>
+      <p>This website is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
