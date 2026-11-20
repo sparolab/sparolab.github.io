@@ -179,6 +179,15 @@
       video: "https://youtu.be/RJ_netgAOT8"
       code: "https://github.com/sparolab/DiTer-plusplus"
 
+    - alt: "TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth and Uncertainty Estimation for Underwater 3D Robot Visual Perception"
+      key: trident
+      authors: "Geonmo Yang and Younggun Cho"
+      conf: "IEEE Sensors Journal"
+      conf_link: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361"
+      project: "/research/trident/"
+      video: "https://www.youtube.com/watch?v=EU_o8CCR71U"
+      code: "https://github.com/sparolab/TRIDENT"
+
 - title: "2024"
   images:
     - alt: "Dynamic Multi-Object Analysis Using Particles for Social Navigation"
@@ -195,15 +204,6 @@
       conf_link: "https://www.ieee-ras.org/publications/ra-l"
       arxiv: "https://arxiv.org/abs/2410.18340"
       code: "https://github.com/donkeymouse/ThermalChameleon"
-
-    - alt: "TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth and Uncertainty Estimation for Underwater 3D Robot Visual Perception"
-      key: trident
-      authors: "Geonmo Yang and Younggun Cho"
-      conf: "IEEE Sensors Journal"
-      conf_link: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361"
-      project: "/research/trident/"
-      video: "https://www.youtube.com/watch?v=EU_o8CCR71U"
-      code: "https://github.com/sparolab/TRIDENT"
 
     - alt: "ReFeree: Radar-Based Lightweight and Robust Localization Using Feature and Free space"
       key: referee
@@ -232,6 +232,15 @@
       conf_link: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra"
       arxiv: "https://arxiv.org/abs/2405.11855"
 
+    - alt: "Joint-ID: Transformer-based Joint Image Enhancement and Depth Estimation for Underwater Environments"
+      key: joint-id
+      authors: "Geonmo Yang, Gilhwan Kang, Juhui Lee, and Younggun Cho"
+      conf: "IEEE Sensors Journal"
+      conf_link: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361"
+      project: "/research/joint_id/"
+      video: "https://www.youtube.com/watch?v=1GOoHCSpNXE"
+      code: "https://github.com/sparolab/Joint_ID"
+
     - alt: "DiTer: Diverse Terrain and Multi-Modal Dataset for Field Robot Navigation in Outdoor Environments"
       key: diter
       authors: "Seokhwan Jeong*, Hogyun Kim*, and Younggun Cho"
@@ -244,15 +253,6 @@
 
 - title: "2023"
   images:
-    - alt: "Joint-ID: Transformer-based Joint Image Enhancement and Depth Estimation for Underwater Environments"
-      key: joint-id
-      authors: "Geonmo Yang, Gilhwan Kang, Juhui Lee, and Younggun Cho"
-      conf: "IEEE Sensors Journal"
-      conf_link: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361"
-      project: "/research/joint_id/"
-      video: "https://www.youtube.com/watch?v=1GOoHCSpNXE"
-      code: "https://github.com/sparolab/Joint_ID"
-
     - alt: "Robust Imaging Sonar-based Place Recognition and Localization in Underwater Environments"
       key: sonar-context
       authors: "Hogyun Kim, Gilhwan Kang, Seokhwan Jeong, Seungjun Ma, and Younggun Cho"

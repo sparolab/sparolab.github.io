@@ -240,6 +240,20 @@
       key: diter-plus
       page_link: /research/diter_plus/
 
+    - link: /img/research/paper/6_trident.gif
+      alt: IEEE Sensors Journal
+      alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
+      pulished_date: Jan, 2025
+      paper: "TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth and Uncertainty Estimation for Underwater 3D Robot Visual Perception"
+      authors: Geonmo Yang, and Younggun Cho
+      venue_type: "IEEE SJ"
+      category: "Spatial AI"
+      tags:
+          - Robust sensing
+          - Underwater
+      key: trident
+      page_link: /research/trident/
+
     - link: /img/research/paper/7_referee.png
       alt: IEEE RA-L
       alt_link: https://www.ieee-ras.org/publications/ra-l
@@ -253,20 +267,6 @@
           - Urban
       key: referee
       page_link: /research/referee/
-
-    - link: /img/research/paper/6_trident.gif
-      alt: IEEE Sensors Journal
-      alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
-      pulished_date: Nov 05, 2024
-      paper: "TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth and Uncertainty Estimation for Underwater 3D Robot Visual Perception"
-      authors: Geonmo Yang, and Younggun Cho
-      venue_type: "IEEE SJ"
-      category: "Spatial AI"
-      tags:
-          - Robust sensing
-          - Underwater
-      key: trident
-      page_link: /research/trident/
 
     - link: /img/research/paper/5_solid.gif
       alt: IEEE RA-L
@@ -296,6 +296,20 @@
       key: salient-ground-feature
       page_link: /research/salient-ground-feature/
 
+    - link: /img/research/paper/2_joint_id.png
+      alt: IEEE Sensors Journal
+      alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
+      pulished_date: Feb, 2024
+      paper: "Joint-ID: Transformer-based joint image enhancement and depth estimation for underwater environments"
+      authors: Geonmo Yang, Gilhwan Kang, Juhui Lee, and Younggun Cho
+      venue_type: "IEEE SJ"
+      category: "Spatial AI"
+      tags:
+          - Robust sensing
+          - Underwater
+      key: joint-id
+      page_link: /research/joint_id/
+
     - link: /img/research/paper/3_diter.gif
       alt: IEEE Sensors Letters
       alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7782634
@@ -309,20 +323,6 @@
           - Field
       key: diter
       page_link: /research/diter/
-
-    - link: /img/research/paper/2_joint_id.png
-      alt: IEEE Sensors Journal
-      alt_link: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=7361
-      pulished_date: Dec 08, 2023
-      paper: "Joint-ID: Transformer-based joint image enhancement and depth estimation for underwater environments"
-      authors: Geonmo Yang, Gilhwan Kang, Juhui Lee, and Younggun Cho
-      venue_type: "IEEE SJ"
-      category: "Spatial AI"
-      tags:
-          - Robust sensing
-          - Underwater
-      key: joint-id
-      page_link: /research/joint_id/
 
     - link: /img/research/paper/1_sonar_context.png
       alt: IEEE ICRA
