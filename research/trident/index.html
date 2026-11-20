@@ -1,240 +1,1459 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="TRIDENT:  Efficient Triple-Task Learning of Dehazing, Depth, and Uncertainty Estimation for Underwater 3D Robot Visual Perception">
-  <meta name="keywords" content="Underwater Image Enhancement and Depth Estimation">
+        content="TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth, and Uncertainty Estimation for Underwater 3-D Robot Visual Perception">
+  <meta name="keywords" content="TRIDENT, underwater image enhancement, underwater depth estimation, depth uncertainty, multitask learning, robot vision">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRIDENT:  Efficient Triple-Task Learning of Dehazing, Depth, and Uncertainty Estimation for Underwater 3D Robot Visual Perception</title>
+  <title>TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth, and Uncertainty Estimation for Underwater 3-D Robot Visual Perception</title>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/logo.png">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
 </head>
 <body>
 
-<section class="hero">
+<!-- ==================== Table of Contents (left rail) ==================== -->
+<nav class="toc-nav" aria-label="Page navigation">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#uncertainty">Uncertainty</a></li>
+    <li><a href="#enhancement">Enhancement</a></li>
+    <li><a href="#depth">Depth</a></li>
+    <li><a href="#efficiency">Efficiency</a></li>
+    <li><a href="#ablation">Ablation</a></li>
+    <li><a href="#robot-vision">Robot Vision</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#BibTeX">BibTeX</a></li>
+  </ul>
+</nav>
+
+<!-- ==================== Hero Title Bar + Authors ==================== -->
+<section class="hero is-medium is-bold is-primary" id="top">
+  <a href="https://sparolab.github.io/" class="sparo-logo-link" aria-label="SPARO Lab home">
+    <img src="./static/images/logo.png" alt="SPARO Lab" width="358" height="395">
+  </a>
   <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth, and Uncertainty Estimation for Underwater 3D Robot Visual Perception</h1>
-          <div class="is-size-6 publication-authors">
-            <span class="author-block">IEEE Sensors Journal 2024</span>            
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=en">Geonmo Yang</a><sup>1</sup>,</span>
-            <span class="author-block">
-              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=en">Younggun Cho</a><sup>1*</sup>
-            </span>            
-          </div>
+    <div class="container is-max-fullhd has-text-centered">
+      <img class="project-logo" src="./static/images/trident_logo.webp" alt="TRIDENT logo" width="360" height="449">
+      <h1 class="title is-2 publication-title">
+        <span style="color: #ffc800;">TRIDENT</span>: Efficient Triple-Task Learning of Dehazing,<br>
+        Depth, and Uncertainty Estimation for<br>
+        Underwater 3-D Robot Visual Perception
+      </h1>
+      <div class="is-size-6 publication-authors" style="margin-top: 1rem;">
+        <span class="author-block">IEEE Sensors Journal 2025</span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=en" target="_blank" rel="noopener">Geonmo Yang</a><sup>1</sup>,</span>
+        <span class="author-block">
+          and <strong><a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=en" target="_blank" rel="noopener">Younggun Cho</a></strong><sup>1</sup>
+        </span>
+      </div>
+      <div class="is-size-6 publication-authors" style="margin-top: 0.25rem;">
+        <span class="author-block"><strong>Bold</strong>: Corresponding author</span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.25rem;">
+        <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>
+      </div>
+      <div style="margin-top: 1.25rem;">
+        <div class="publication-links">
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://ieeexplore.ieee.org/document/10745206" target="_blank" rel="noopener">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2611.22224" target="_blank" rel="noopener">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://www.youtube.com/watch?v=EU_o8CCR71U" target="_blank" rel="noopener">
+              <span class="icon"><i class="fab fa-youtube"></i></span>
+              <span>Video</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/sparolab/TRIDENT" target="_blank" rel="noopener">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://www.dropbox.com/scl/fo/olr8awsue6uion5fng25j/h?rlkey=jy6pbnbop6ppc0703it7lmite&e=1&dl=0" target="_blank" rel="noopener">
+              <span class="icon"><i class="far fa-images"></i></span>
+              <span>Data</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
-          </div>
+<!-- ==================== Related Research Sidebar ==================== -->
+<div id="related-sidebar" class="related-sidebar">
+  <div class="sidebar-toggle" id="sidebar-toggle">
+    <span class="icon">
+      <i class="fas fa-chevron-left chevron-desktop chevron-closed"></i>
+      <i class="fas fa-chevron-right chevron-desktop chevron-open"></i>
+      <i class="fas fa-chevron-up chevron-mobile chevron-closed"></i>
+      <i class="fas fa-chevron-down chevron-mobile chevron-open"></i>
+    </span>
+    <span class="sidebar-toggle-text">Related Research</span>
+  </div>
+  <div class="sidebar-content">
+    <h4 class="sidebar-title">Related Research</h4>
+    <a href="/research/joint_id/" class="sidebar-card" style="margin-bottom: 10px;">
+      <div class="sidebar-card-img">
+        <img data-src="/img/research/paper/2_joint_id.png" alt="Joint-ID" width="960" height="768">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">Joint-ID</p>
+        <p class="sidebar-card-venue">IEEE Sensors J. 2024</p>
+      </div>
+    </a>
+    <a href="/research/pgspn/" class="sidebar-card" style="margin-bottom: 10px;">
+      <div class="sidebar-card-img">
+        <img data-src="/img/research/paper/26_pgspn_1.jpg" alt="PGSPN" width="900" height="803">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">PGSPN</p>
+        <p class="sidebar-card-venue">IROS-W 2026</p>
+      </div>
+    </a>
+    <a href="/research/sparse_depth_guided/" class="sidebar-card">
+      <div class="sidebar-card-img">
+        <img data-src="/img/research/paper/27_sparse_depth_guided.jpg" alt="Sparse depth-guided image enhancement" width="908" height="811">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">Sparse Depth-Guided Enhancement</p>
+        <p class="sidebar-card-venue">MDPI Sensors 2023</p>
+      </div>
+    </a>
+  </div>
+</div>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://ieeexplore.ieee.org/document/10745206"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=EU_o8CCR71U"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/sparolab/TRIDENT"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://www.dropbox.com/scl/fo/olr8awsue6uion5fng25j/h?rlkey=jy6pbnbop6ppc0703it7lmite&e=1&dl=0"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-              </span>
+
+<!-- ==================== Overview ==================== -->
+<section class="section content-section" id="overview" data-toc-title="Overview">
+  <div class="container is-max-fullhd">
+    <div class="video-frame is-wide">
+      <video autoplay muted loop playsinline controls preload="auto" poster="./static/images/overview_poster.webp"
+             aria-label="TRIDENT highlights: enhancement, depth with uncertainty, and object localization">
+        <source src="./static/videos/overview.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="content has-text-justified" style="margin-top: 1.5rem;">
+      <p>
+        <b>TL;DR:</b> <span class="kiss-imu">TRIDENT</span> gives an underwater robot three outputs from one camera frame
+        in a single forward pass: a dehazed image, a dense depth map, and a map of where that depth should not be trusted.
+        One backbone shares its features with three parallel lightweight decoders, so all three tasks fit in
+        <b>0.96&nbsp;M parameters</b> and run at <b>102&nbsp;Hz</b> on a GPU &mdash; while beating our previous
+        Joint-ID (150&nbsp;M parameters) on its own test set in both enhancement and depth.
+      </p>
+    </div>
+
+    <div class="key-stats">
+      <div class="key-stat">
+        <b>3 tasks</b>
+        <small>dehazing, depth, and depth uncertainty from one shared backbone</small>
+      </div>
+      <div class="key-stat">
+        <b>0.96 M</b>
+        <small>parameters for all three outputs (4.1&nbsp;MB) &mdash; 156&times; fewer than Joint-ID</small>
+      </div>
+      <div class="key-stat">
+        <b>102 Hz</b>
+        <small>on an RTX 3090 Ti at 256&times;256 with uncertainty; 16.5&nbsp;Hz on a CPU</small>
+      </div>
+      <div class="key-stat">
+        <b>8 / 8</b>
+        <small>best on all five enhancement and three depth metrics of the Joint-ID test set</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Abstract ==================== -->
+<section class="section content-section" id="abstract" data-toc-title="Abstract">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        Underwater visual systems often suffer from blurry textures and low color contrast due to the inevitable light
+        propagation. These issues can significantly degrade the perception of stable robotic operations. In this
+        article, we introduce a novel learning-based sensing system that tackles the multidimensional vision tasks in
+        underwater; concretely, we deal with image enhancement, depth estimation, and uncertainty for 3-D visual
+        systems. Also, we propose a <b>TRIDENT</b> model in a fast and lightweight manner; TRIDENT consists of three
+        parallelized decoders and one backbone structure for efficient feature sharing. In addition, it is designed to
+        be trained to express complex parameterization. In experimental evaluation on several standard datasets, we
+        demonstrate that TRIDENT significantly outperforms other existing methods on image enhancement and depth
+        estimation. Despite performing three tasks, our model has better efficiency than the others for both memory
+        size and inference time. Finally, our joint learning approach demonstrates robustness in feature matching and
+        seamlessly extends from 2-D to 3-D vision tasks.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Motivation ==================== -->
+<section class="section content-section" id="motivation" data-toc-title="Motivation">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">One Frame, Three Questions</h2>
+    <div class="content has-text-justified">
+      <p>
+        A camera-guided underwater robot has to answer three questions about every frame, and the physics of light in
+        water ties the answers together. Following McGlamery's model, the observed image is
+      </p>
+    </div>
+    <p class="equation">
+      <span>I<sub>c</sub>(x) = J<sub>c</sub>(x)&middot;T<sub>c</sub>(x) + B<sub>c</sub>&middot;(1 &minus; T<sub>c</sub>(x)),</span>
+      <span>T<sub>c</sub>(x) = e<sup>&minus;&beta;<sub>c</sub>&middot;d(x)</sup></span>
+    </p>
+    <div class="content has-text-justified">
+      <p>
+        so log(1/T<sub>c</sub>) &prop; d: the farther a point is, the stronger the haze. Restoring color needs depth,
+        and the amount of haze is itself a depth cue.
+      </p>
+    </div>
+
+    <div class="method-grid method-grid-3">
+      <article>
+        <h3>What would it look like without water?</h3>
+        <p>Absorption and backscatter wash out color and contrast, and the damage grows with distance. Feature trackers
+          and detectors lose exactly the distant, low-contrast regions. <b>&rarr; Image enhancement</b></p>
+      </article>
+      <article>
+        <h3>How far away is it?</h3>
+        <p>Range sensors such as LiDAR struggle under water, so dense depth has to come from the image itself &mdash;
+          and it is hardest where the haze is thickest. <b>&rarr; Monocular depth estimation</b></p>
+      </article>
+      <article>
+        <h3>Can I trust that depth?</h3>
+        <p>Monocular depth fails silently at object edges and in far, turbid regions. A robot needs a per-pixel warning
+          to decide which depth to use. <b>&rarr; Depth uncertainty</b></p>
+      </article>
+    </div>
+
+    <div class="content has-text-justified" style="margin-top: 1.2rem;">
+      <p>
+        Existing methods answer these questions separately, and the accurate ones are heavy: U-Shape spends
+        31.6&nbsp;M parameters on enhancement alone, NewCRF 270&nbsp;M on depth alone, and our previous joint model
+        Joint-ID 150&nbsp;M on both. TRIDENT answers all three at once and stays small enough for a robot.
+      </p>
+    </div>
+
+    <figure class="figure-container is-compact">
+      <img src="./static/images/overview.webp" alt="TRIDENT outputs and robot-vision applications" width="1322" height="1007" loading="lazy" decoding="async">
+      <figcaption>
+        One raw frame in, three outputs out. The enhanced image, depth map, and depth uncertainty feed robot-vision
+        tasks such as saliency detection, 3-D reconstruction, and 3-D salient-object localization.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Architecture ==================== -->
+<section class="section content-section" id="architecture" data-toc-title="Architecture">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Architecture</h2>
+    <div class="content has-text-justified">
+      <p>
+        TRIDENT keeps a single encoder and spends its small parameter budget on sharing. Features from four backbone
+        stages are split channel-wise into two light branches; enhancement and depth features are extracted in parallel
+        and exchanged at every scale; and three small heads turn them into the enhanced image, the depth map, and the
+        uncertainty map.
+      </p>
+    </div>
+
+    <div class="pipeline-flow">
+      <div class="flow-step">
+        <span class="flow-actor is-robot">Shared backbone</span>
+        <h4>Split-feature extraction<br>at four scales</h4>
+      </div>
+      <div class="flow-arrow">
+        <span class="flow-chip flow-chip-top">SF1 &middot; SF2</span>
+        <span class="flow-arrow-line">&rarr;</span>
+        <span class="flow-chip flow-chip-bottom">half channels</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-actor is-robot">Parallel decoders</span>
+        <h4>Enhancement &amp; depth features,<br>shared at every scale</h4>
+      </div>
+      <div class="flow-arrow">
+        <span class="flow-chip flow-chip-top">EF &middot; DF</span>
+        <span class="flow-arrow-line">&rarr;</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-actor is-server">Three heads</span>
+        <h4>Enhanced image &middot; Depth<br>&middot; Uncertainty</h4>
+      </div>
+    </div>
+
+    <figure class="figure-container is-compact">
+      <img src="./static/images/pipeline.webp" alt="Six-step TRIDENT process" width="1369" height="818" loading="lazy" decoding="async">
+      <figcaption>
+        TRIDENT in six steps: (a) split-feature (SF) extraction, (b) enhancement-feature (EF) extraction,
+        (c) depth-feature (DF) extraction, (d) enhanced-image prediction (EEB), (e) depth-map prediction (DEB), and
+        (f) uncertainty estimation (UEB).
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Method ==================== -->
+<section class="section content-section" id="method" data-toc-title="Method">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Method</h2>
+    <div class="content has-text-justified">
+      <p>Four design choices keep three tasks inside a sub-million-parameter network.</p>
+    </div>
+
+    <div class="method-grid">
+      <article>
+        <h3>(A) Split features &amp; three-stage decoder</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          Giving each task its own U-Net decoder multiplies the parameters, and the heavy decoders of terrestrial
+          depth networks are too slow for a robot.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          Features from backbone layers k&nbsp;&isin;&nbsp;{1,&nbsp;3,&nbsp;6,&nbsp;12} are split channel-wise into two
+          half-width branches s<sub>1</sub> and s<sub>2</sub>. Three stages learn from them &mdash; convolution and
+          up-convolution on s<sub>1</sub>, convolution and bilinear upsampling on s<sub>2</sub>, and the depth
+          features &mdash; and a ConcatConvBlock fuses all three at every scale.</p>
+      </article>
+      <article>
+        <h3>(B) Physics-guided restoration &mdash; EEB</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          By the light model, haze is a function of distance, log(1/T<sub>c</sub>)&nbsp;&prop;&nbsp;d. A network that
+          predicts the clean image directly ignores this structure.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          The enhancement extraction block inverts the model, J<sub>c</sub> = I<sub>c</sub>&middot;t<sub>c</sub> +
+          b<sub>c</sub>&middot;t<sub>c</sub>, by estimating a per-channel inverse transmission
+          t<sub>c</sub>&nbsp;=&nbsp;1/T<sub>c</sub> and a backscatter term b<sub>c</sub>. The learned
+          t<sub>c</sub> grows with distance, as the physics predicts.</p>
+      </article>
+      <article>
+        <h3>(C) Lightweight, haze-aware depth &mdash; DEB</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          Terrestrial depth decoders stack many convolution layers and never see the haze that underwater depth
+          depends on; Joint-ID showed that degradation features make depth more accurate.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          A trimmed depth-feature extractor mixes depth features with the attenuation features of both branches at
+          every scale. The multi-scale depth features are concatenated, passed through a sigmoid, and scaled by the
+          maximum depth.</p>
+      </article>
+      <article>
+        <h3>(D) Uncertainty from depth error &mdash; UEB</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          Learning aleatoric uncertainty jointly makes training unstable in a small multitask network and drags down
+          the other two tasks.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          After joint training the network is frozen and only the uncertainty block is trained, with an MAE loss that
+          regresses each pixel's depth error from s<sub>1</sub>, s<sub>2</sub>, and t<sub>c</sub> &mdash; inputs that
+          already encode depth and haze.</p>
+      </article>
+    </div>
+
+    <p class="note">
+      Training runs in two steps on Joint-ID's synthetic training set: (1) enhancement and depth jointly with
+      15.5&middot;L<sub>SSIM</sub> + 1.5&middot;L<sub>SILog</sub>, then (2) uncertainty with 512&middot;L<sub>MAE</sub>
+      (Adam, learning rate 2&times;10<sup>&minus;4</sup>, 40 epochs, batch 32, RTX 3090 Ti).
+    </p>
+
+    <figure class="figure-container is-wide">
+      <img src="./static/images/architecture.webp" alt="Detailed TRIDENT training architecture" width="2877" height="1770" loading="lazy" decoding="async">
+      <figcaption>
+        Training architecture. Hierarchical backbone features are shared through the three-stage decoder (UCB, CB, UB,
+        and CCB blocks) and the extraction blocks EEB, DEB, and UEB: (a) split-feature extraction, (b)&ndash;(c)
+        enhancement and depth features, (d)&ndash;(e) enhanced image and depth map, (f) uncertainty.
+      </figcaption>
+    </figure>
+
+    <div class="panel-grid panel-grid-2">
+      <figure>
+        <img src="./static/images/transmission.webp" alt="Learned inverse transmission maps" width="1415" height="487" loading="lazy" decoding="async">
+        <figcaption>Learned inverse transmission t<sub>r</sub>, t<sub>g</sub>, t<sub>b</sub>: the correction grows with distance.</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/dfe.webp" alt="Depth from TRIDENT versus BTS" width="1419" height="357" loading="lazy" decoding="async">
+        <figcaption>Depth from TRIDENT's lightweight extractor (0.92&nbsp;M parameters in total) versus BTS (113&nbsp;M).</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Uncertainty ==================== -->
+<section class="section content-section" id="uncertainty" data-toc-title="Uncertainty">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Knowing Where Depth Fails</h2>
+    <div class="content has-text-justified">
+      <p>
+        The uncertainty map is trained to predict the error of the depth map, so high values mark the pixels a robot
+        should not trust: object edges, unstable regions, and distant water where restoration starts to fail. Over 126
+        hazed images of the Joint-ID test set, the predicted uncertainty correlates positively with the true depth
+        error (mean correlation 0.5651).
+      </p>
+    </div>
+
+    <figure class="figure-container is-compact">
+      <img src="./static/images/uncertainty.webp" alt="Enhanced image, depth, and uncertainty for three samples" width="1545" height="713" loading="lazy" decoding="async">
+      <figcaption>
+        Enhanced image, depth, and uncertainty for three samples. Red boxes mark regions where the depth is wrong and
+        the uncertainty is high.
+      </figcaption>
+    </figure>
+
+    <div class="panel-grid panel-grid-2">
+      <figure>
+        <img src="./static/images/correlation.webp" alt="Correlation between uncertainty and depth error" width="1495" height="567" loading="lazy" decoding="async">
+        <figcaption>(a) Uncertainty and depth error for a test sample. (b) Their correlation over 126 test images (mean 0.5651).</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/failures.webp" alt="Depth failures with high uncertainty" width="1424" height="719" loading="lazy" decoding="async">
+        <figcaption>Depth failures at (a) far, (b) middle, and (c) close range all come with high uncertainty (yellow boxes).</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="title is-4" style="margin-top: 2.4rem;">Uncertainty pays off twice</h3>
+    <div class="content has-text-justified">
+      <p>
+        Thresholding the uncertainty map and discarding the least reliable pixels improves PSNR, RMSE, SILog, and
+        Sq Rel at every threshold on the Joint-ID test set; depth Abs Rel rises slightly, by at most 0.005.
+      </p>
+    </div>
+    <div class="table-scroll">
+      <table class="fact-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Pixels kept</th>
+            <th>PSNR &uarr;</th>
+            <th>RMSE &darr;</th>
+            <th>SILog &darr;</th>
+            <th>Abs Rel &darr;</th>
+            <th>Sq Rel &darr;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>All pixels</th>
+            <td>22.56</td>
+            <td>0.084</td>
+            <td>12.35</td>
+            <td class="is-best">0.136</td>
+            <td>0.091</td>
+          </tr>
+          <tr>
+            <th>Uncertainty &lt; 7</th>
+            <td>23.06</td>
+            <td>0.083</td>
+            <td>12.26</td>
+            <td>0.141</td>
+            <td>0.079</td>
+          </tr>
+          <tr>
+            <th>Uncertainty &lt; 6</th>
+            <td>23.24</td>
+            <td>0.080</td>
+            <td>12.15</td>
+            <td>0.140</td>
+            <td>0.076</td>
+          </tr>
+          <tr class="is-ours">
+            <th>Uncertainty &lt; 5</th>
+            <td class="is-best">23.82</td>
+            <td class="is-best">0.074</td>
+            <td class="is-best">11.98</td>
+            <td>0.138</td>
+            <td class="is-best">0.073</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Joint-ID test set. PSNR and RMSE are for enhancement; SILog, Abs Rel, and Sq Rel are for depth. A lower threshold discards more pixels. Underlined: best in each column.</p>
+
+    <div class="metric-dashboard" data-animate-bars aria-label="Aleatoric uncertainty versus the proposed uncertainty block" style="margin-top: 1.6rem;">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Uncertainty training</span>
+          <h3>Joint aleatoric learning vs. our two-step UEB</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Aleatoric (joint)</span>
+          <span><i style="--legend-color: #010042;"></i>TRIDENT</span>
+        </div>
+      </div>
+      <p class="tau-note">Learning aleatoric uncertainty together with the other two tasks lowers enhancement and depth accuracy on every dataset; training the uncertainty block afterwards, on depth error, leaves both heads intact.</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics wide-labels">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>PSNR &middot; Joint-ID set &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90.1%;">
+              <span class="metric-label">Aleatoric</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">20.32</span>
             </div>
-
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">22.56</span>
+            </div>
           </div>
-        </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>SILog &middot; Sea-thru &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">Aleatoric</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">18.81</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 91.3%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">17.17</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Sq Rel &middot; SQUID &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">Aleatoric</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">3.68</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 56.2%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">2.07</span>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </div>
 </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="./static/images/trident.png" style="max-width: 40%; margin: 20px auto; display: block;">
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">TL;DR  Dehazing, Depth, and Uncertainty Estimation for Underwater Visual Perception!</span>
-      </h2>
+
+<!-- ==================== Image Enhancement ==================== -->
+<section class="section content-section" id="enhancement" data-toc-title="Enhancement">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Image Enhancement</h2>
+    <div class="content has-text-justified">
+      <p>
+        We compared TRIDENT with eight enhancement models &mdash; DeepWave, FUnIE-GAN, UGAN, UIE-Dal, U-Shape, UWCNN,
+        Joint-ID, and UIEC&sup2;. On the Joint-ID test set, which has true ground truth and severe haze, TRIDENT is the
+        best on all five supervised metrics.
+      </p>
     </div>
+    <div class="metric-dashboard" data-animate-bars aria-label="Image enhancement comparison on the Joint-ID test set">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Enhancement &middot; Joint-ID test set</span>
+          <h3>Best on every supervised metric</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines</span>
+          <span><i style="--legend-color: #010042;"></i>TRIDENT</span>
+        </div>
+      </div>
+      <p class="tau-note">All models were trained on the same Joint-ID training set. The three strongest of eight baselines are shown per metric; TRIDENT also has the lowest Abs Rel (41.58) and Sq Rel (10.5).</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics wide-labels">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>PSNR [dB] &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 83.0%;">
+              <span class="metric-label">UGAN</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">18.73</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 87.6%;">
+              <span class="metric-label">UIEC&sup2;</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">19.76</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90.7%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">20.46</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">22.56</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>SSIM &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 94.0%;">
+              <span class="metric-label">DeepWave</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.800</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 95.3%;">
+              <span class="metric-label">UIEC&sup2;</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.811</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 98.7%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.840</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.851</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>RMSE &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">UGAN</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.127</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 92.1%;">
+              <span class="metric-label">UIEC&sup2;</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.117</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 85.8%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.109</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 66.1%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.084</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <h3 class="title is-4" style="margin-top: 2.4rem;">Real underwater images</h3>
+    <div class="content has-text-justified">
+      <p>
+        Real data has no clean reference, so we use the no-reference metrics UIQM and UCIQE. TRIDENT has the best UCIQE
+        (color contrast) on three of five datasets; on UIQM it is second on four of them and never first. UIEC&sup2; is
+        the closest competitor overall.
+      </p>
+    </div>
+    <div class="table-scroll">
+      <table class="fact-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Dataset</th>
+            <th>UIQM &uarr;<br>TRIDENT</th>
+            <th>UIQM &uarr;<br>best other</th>
+            <th>UCIQE &uarr;<br>TRIDENT</th>
+            <th>UCIQE &uarr;<br>best other</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>UFO-120</th>
+            <td>2.96</td>
+            <td>2.98 <span class="muted">UWCNN</span></td>
+            <td class="is-best">0.644</td>
+            <td>0.632 <span class="muted">UIEC&sup2;</span></td>
+          </tr>
+          <tr>
+            <th>U-90</th>
+            <td>2.47</td>
+            <td>2.68 <span class="muted">U-Shape</span></td>
+            <td>0.584</td>
+            <td>0.624 <span class="muted">UIEC&sup2;</span></td>
+          </tr>
+          <tr>
+            <th>USOD</th>
+            <td>2.92</td>
+            <td>2.99 <span class="muted">UWCNN</span></td>
+            <td>0.615</td>
+            <td>0.631 <span class="muted">UIEC&sup2;</span></td>
+          </tr>
+          <tr>
+            <th>USR-248</th>
+            <td>3.05</td>
+            <td>3.07 <span class="muted">UIEC&sup2;</span></td>
+            <td class="is-best">0.638</td>
+            <td>0.636 <span class="muted">UIEC&sup2;</span></td>
+          </tr>
+          <tr>
+            <th>Jamaica</th>
+            <td>2.86</td>
+            <td>3.00 <span class="muted">DeepWave</span></td>
+            <td class="is-best">0.541</td>
+            <td>0.517 <span class="muted">Joint-ID</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">No-reference metrics on real underwater datasets. Underlined: TRIDENT is the best of all nine models.</p>
+
+    <figure class="figure-container is-wide">
+      <img src="./static/images/uie_qual.webp" alt="Qualitative enhancement comparison with eight models" width="2812" height="886" loading="lazy" decoding="async">
+      <figcaption>
+        Comparison with DeepWave, FUnIE-GAN, UGAN, UIE-Dal, U-Shape, UWCNN, Joint-ID, and UIEC&sup2;. Rows 1&ndash;2
+        compare colorfulness and brightness; rows 3&ndash;5 compare the restoration of distant regions.
+      </figcaption>
+    </figure>
+
+    <figure class="figure-container">
+      <div class="video-frame is-wide">
+        <video muted loop playsinline controls preload="none" poster="./static/images/uie_poster.webp" data-lazy-play aria-label="Enhancement comparison on a coral reef">
+          <source src="./static/videos/uie.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption>From the supplementary video: input, Joint-ID, UIEC&sup2;, and TRIDENT on a real coral-reef sequence.</figcaption>
+    </figure>
+
+    <div class="content has-text-justified">
+      <p>
+        On L400, a real dataset with pseudo ground truth, TRIDENT is the best on Abs Rel and Sq Rel but not on PSNR,
+        SSIM, or RMSE, where Joint-ID leads (20.72&nbsp;dB). The pseudo references are themselves under-corrected in
+        distant regions, which is exactly where TRIDENT keeps restoring:
+      </p>
+    </div>
+    <figure class="figure-container is-compact" style="margin-top: 0.6rem;">
+      <img src="./static/images/distance.webp" alt="Near and far region scores on L400" width="1417" height="770" loading="lazy" decoding="async">
+      <figcaption>
+        Near (yellow) and far (red) regions scored separately (UIQM / UCIQE). TRIDENT has the highest far-region
+        scores, above even the reference image (GT).
+      </figcaption>
+    </figure>
   </div>
 </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Underwater visual systems greatly suffer from blurry textures and low color contrast due to the inevitable light propagation. 
-            These issues can significantly degrade the perception for stable robotic operations. 
-            In this paper, we introduce a novel learning-based sensing system that tackles the multidimensional vision tasks underwater; 
-            concretely, we deal with image enhancement, depth estimation, and uncertainty for 3D visual systems. 
-            Also, we propose a <strong>TRIDENT</strong> model that takes three objectives with fast and light weight; 
-            TRIDENT consists of parallelized three decoders and one backbone structure for efficient feature sharing. 
-            In addition, it is designed to be trained on a three-stage hierarchical feature space to express complex parameterization. 
-            In experimental evaluation on several standard datasets, we demonstrate that <strong>TRIDENT</strong> significantly outperforms other existing methods on image enhancement and depth estimation. 
-            It also has better efficiency than the others for both memory size and reference time, despite performing three tasks. 
-            Finally, we prove that our proposed joint learning is robust to feature matching and has no limitations in extending 2D to 3D vision tasks.
-          </p>
+<!-- ==================== Depth ==================== -->
+<section class="section content-section" id="depth" data-toc-title="Depth">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Depth Estimation</h2>
+    <div class="content has-text-justified">
+      <p>
+        We compared against BTS, GLPDepth, NewCRF, Joint-ID, and UDepth, and against the large foundation-style models
+        MariGold and Depth Anything V2. On the Joint-ID test set TRIDENT has the lowest error on all three metrics.
+      </p>
+    </div>
+    <div class="metric-dashboard" data-animate-bars aria-label="Depth estimation comparison on the Joint-ID test set">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Depth &middot; Joint-ID test set</span>
+          <h3>Lowest error on all three depth metrics</h3>
         </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines</span>
+          <span><i style="--legend-color: #010042;"></i>TRIDENT</span>
+        </div>
+      </div>
+      <p class="tau-note">Seven baselines: BTS, GLPDepth, NewCRF, Joint-ID, UDepth, MariGold, and Depth Anything V2; the three strongest are shown per metric.</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics wide-labels">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>SILog &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">Depth Anything V2</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">17.13</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 96.0%;">
+              <span class="metric-label">BTS</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">16.45</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 87.2%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">14.94</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 72.1%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">12.35</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Abs Rel &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">UDepth</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.238</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 86.6%;">
+              <span class="metric-label">BTS</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.206</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 71.4%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.170</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 57.1%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.136</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Sq Rel &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">BTS</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.189</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 94.2%;">
+              <span class="metric-label">Depth Anything V2</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.178</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 82.5%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.156</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 48.1%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.091</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <h3 class="title is-4" style="margin-top: 2.4rem;">Real scenes: competitive at a fraction of the size</h3>
+    <div class="content has-text-justified">
+      <p>
+        On the real Sea-thru and SQUID datasets, Depth Anything V2 (335&nbsp;M parameters) and MariGold (1.29&nbsp;B)
+        are the most accurate overall, but they run at 2.8&nbsp;Hz and 0.05&nbsp;Hz. TRIDENT is the best on SQUID
+        Sq Rel, third on Sea-thru SILog and SQUID Abs Rel, and weaker on SQUID SILog &mdash; with 0.96&nbsp;M
+        parameters at 102&nbsp;Hz.
+      </p>
+    </div>
+    <div class="table-scroll">
+      <table class="fact-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Method</th>
+            <th>Params</th>
+            <th>GPU</th>
+            <th>Sea-thru<br>SILog &darr;</th>
+            <th>Sea-thru<br>Abs Rel &darr;</th>
+            <th>Sea-thru<br>Sq Rel &darr;</th>
+            <th>SQUID<br>SILog &darr;</th>
+            <th>SQUID<br>Abs Rel &darr;</th>
+            <th>SQUID<br>Sq Rel &darr;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>MariGold</th>
+            <td>1290 M</td>
+            <td>0.052 Hz</td>
+            <td>16.59</td>
+            <td>0.205</td>
+            <td>0.181</td>
+            <td>21.32</td>
+            <td>0.411</td>
+            <td>2.52</td>
+          </tr>
+          <tr>
+            <th>Depth Anything V2</th>
+            <td>335.4 M</td>
+            <td>2.8 Hz</td>
+            <td class="is-best">14.71</td>
+            <td class="is-best">0.183</td>
+            <td class="is-best">0.173</td>
+            <td class="is-best">19.14</td>
+            <td class="is-best">0.382</td>
+            <td>2.21</td>
+          </tr>
+          <tr>
+            <th>BTS</th>
+            <td>113 M</td>
+            <td>67 Hz</td>
+            <td>17.60</td>
+            <td>0.231</td>
+            <td>0.198</td>
+            <td>27.76</td>
+            <td>0.689</td>
+            <td>4.50</td>
+          </tr>
+          <tr>
+            <th>UDepth</th>
+            <td>15.6 M</td>
+            <td>135 Hz*</td>
+            <td>17.78</td>
+            <td>0.268</td>
+            <td>0.203</td>
+            <td>24.94</td>
+            <td>0.687</td>
+            <td>4.63</td>
+          </tr>
+          <tr>
+            <th>Joint-ID</th>
+            <td>150 M</td>
+            <td>15.3 Hz</td>
+            <td>21.06</td>
+            <td>0.259</td>
+            <td>0.224</td>
+            <td>31.26</td>
+            <td>0.530</td>
+            <td>3.34</td>
+          </tr>
+          <tr class="is-ours">
+            <th>TRIDENT</th>
+            <td>0.96 M</td>
+            <td>102 Hz</td>
+            <td>17.17</td>
+            <td>0.248</td>
+            <td>0.196</td>
+            <td>33.43</td>
+            <td>0.481</td>
+            <td class="is-best">2.07</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Real underwater depth. Underlined: best of all eight models in the paper. *UDepth outputs depth at half resolution (128&times;128).</p>
+
+    <figure class="figure-container is-wide">
+      <img src="./static/images/depth_qual.webp" alt="Qualitative depth comparison" width="2848" height="600" loading="lazy" decoding="async">
+      <figcaption>
+        Depth compared with GLPDepth, BTS, NewCRF, UDepth, MariGold, and Depth Anything V2. Row 1: synthetic data;
+        rows 2&ndash;3: real underwater scenes.
+      </figcaption>
+    </figure>
+
+    <figure class="figure-container">
+      <div class="video-frame is-wide">
+        <video muted loop playsinline controls preload="none" poster="./static/images/depth_poster.webp" data-lazy-play aria-label="Depth and uncertainty comparison">
+          <source src="./static/videos/depth.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption>From the supplementary video: depth from Joint-ID and NewCRF next to TRIDENT's depth and uncertainty.</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Efficiency ==================== -->
+<section class="section content-section" id="efficiency" data-toc-title="Efficiency">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Small Enough for a Robot</h2>
+    <div class="content has-text-justified">
+      <p>
+        Sharing one backbone pays off in size and speed. At 256&times;256 on an RTX 3090 Ti, TRIDENT runs at
+        111&nbsp;Hz for enhancement and depth and at 102&nbsp;Hz with uncertainty, in under 1&nbsp;M parameters.
+        Only enhancement-only models are smaller (DeepWave 0.28&nbsp;M, UIEC&sup2; 0.55&nbsp;M), and only FUnIE-GAN,
+        UGAN, UIE-Dal, and UDepth (at half resolution) are faster on the GPU &mdash; none of them produces both an
+        enhanced image and a depth map.
+      </p>
+    </div>
+    <div class="metric-dashboard" data-animate-bars aria-label="Joint-ID versus TRIDENT efficiency">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Efficiency &middot; 256&times;256 input</span>
+          <h3>One generation later: 156&times; smaller, 6.7&times; faster</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Joint-ID</span>
+          <span><i style="--legend-color: #010042;"></i>TRIDENT</span>
+        </div>
+      </div>
+      <p class="tau-note">Both models estimate an enhanced image and a depth map; TRIDENT also estimates depth uncertainty. GPU: NVIDIA RTX 3090 Ti; CPU: 11th-gen Intel i7.</p>
+      <div class="metric-grid metric-grid-2 ablation-metrics wide-labels">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Parameters [M] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">150</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 0.6%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.96</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Memory [MB] &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">601.9</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 0.7%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">4.1</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>GPU speed [Hz] &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 15.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">15.3</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">102</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>CPU speed [Hz] &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 18.8%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">3.1</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">TRIDENT</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">16.5</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table class="fact-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Method</th>
+            <th>Tasks</th>
+            <th>Params</th>
+            <th>Memory</th>
+            <th>GPU FPS</th>
+            <th>CPU FPS</th>
+            <th>Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group-row"><th colspan="7">Enhancement</th></tr>
+          <tr>
+            <th>DeepWave</th>
+            <td>2*</td>
+            <td>0.28 M</td>
+            <td>1.2 MB</td>
+            <td>17 Hz</td>
+            <td>3.2 Hz</td>
+            <td>3&times;256&times;256</td>
+          </tr>
+          <tr>
+            <th>FUnIE-GAN</th>
+            <td>1</td>
+            <td>7.02 M</td>
+            <td>28.1 MB</td>
+            <td>417 Hz</td>
+            <td>32.4 Hz</td>
+            <td>3&times;256&times;256</td>
+          </tr>
+          <tr>
+            <th>UGAN</th>
+            <td>1</td>
+            <td>54.4 M</td>
+            <td>217.7 MB</td>
+            <td>330 Hz</td>
+            <td>15.4 Hz</td>
+            <td>3&times;256&times;256</td>
+          </tr>
+          <tr>
+            <th>UIE-Dal</th>
+            <td>1</td>
+            <td>13.4 M</td>
+            <td>53.7 MB</td>
+            <td>211 Hz</td>
+            <td>8.2 Hz</td>
+            <td>3&times;256&times;256</td>
+          </tr>
+          <tr>
+            <th>UIEC&sup2;</th>
+            <td>1</td>
+            <td>0.55 M</td>
+            <td>2.2 MB</td>
+            <td>60 Hz</td>
+            <td>3.7 Hz</td>
+            <td>3&times;256&times;256</td>
+          </tr>
+          <tr>
+            <th>U-Shape</th>
+            <td>1</td>
+            <td>31.6 M</td>
+            <td>126.6 MB</td>
+            <td>38 Hz</td>
+            <td>4.3 Hz</td>
+            <td>3&times;256&times;256</td>
+          </tr>
+          <tr class="group-row"><th colspan="7">Depth estimation</th></tr>
+          <tr>
+            <th>BTS</th>
+            <td>1</td>
+            <td>113 M</td>
+            <td>452.2 MB</td>
+            <td>67 Hz</td>
+            <td>4.5 Hz</td>
+            <td>1&times;256&times;256</td>
+          </tr>
+          <tr>
+            <th>GLPDepth</th>
+            <td>1</td>
+            <td>61.2 M</td>
+            <td>245.2 MB</td>
+            <td>47 Hz</td>
+            <td>5.8 Hz</td>
+            <td>1&times;256&times;256</td>
+          </tr>
+          <tr>
+            <th>NewCRF</th>
+            <td>1</td>
+            <td>270 M</td>
+            <td>1082 MB</td>
+            <td>56 Hz</td>
+            <td>1.2 Hz</td>
+            <td>1&times;256&times;256</td>
+          </tr>
+          <tr>
+            <th>UDepth</th>
+            <td>1</td>
+            <td>15.6 M</td>
+            <td>62.7 MB</td>
+            <td>135 Hz</td>
+            <td>25.1 Hz</td>
+            <td>1&times;128&times;128</td>
+          </tr>
+          <tr>
+            <th>MariGold</th>
+            <td>1</td>
+            <td>1290 M</td>
+            <td>5157 MB</td>
+            <td>0.052 Hz</td>
+            <td>&ndash;</td>
+            <td>1&times;256&times;256</td>
+          </tr>
+          <tr>
+            <th>Depth Anything V2</th>
+            <td>1</td>
+            <td>335.4 M</td>
+            <td>1341 MB</td>
+            <td>2.8 Hz</td>
+            <td>0.095 Hz</td>
+            <td>1&times;256&times;256</td>
+          </tr>
+          <tr class="group-row"><th colspan="7">Enhancement + depth (+ uncertainty)</th></tr>
+          <tr>
+            <th>Joint-ID</th>
+            <td>2</td>
+            <td>150 M</td>
+            <td>601.9 MB</td>
+            <td>15.3 Hz</td>
+            <td>3.1 Hz</td>
+            <td>image + depth</td>
+          </tr>
+          <tr class="is-ours">
+            <th>TRIDENT</th>
+            <td>2</td>
+            <td>0.92 M</td>
+            <td>3.9 MB</td>
+            <td>111 Hz</td>
+            <td>18.7 Hz</td>
+            <td>image + depth</td>
+          </tr>
+          <tr class="is-ours">
+            <th>TRIDENT + uncertainty</th>
+            <td>3</td>
+            <td>0.96 M</td>
+            <td>4.1 MB</td>
+            <td>102 Hz</td>
+            <td>16.5 Hz</td>
+            <td>image + depth + uncertainty</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">*DeepWave's second task is super-resolution. GPU: RTX 3090 Ti; CPU: 11th-gen Intel i7; 256&times;256 input.</p>
+
+    <figure class="figure-container">
+      <div class="video-frame is-wide">
+        <video muted loop playsinline controls preload="none" poster="./static/images/speed_poster.webp" data-lazy-play aria-label="Speed comparison on real video">
+          <source src="./static/videos/speed.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption>Speed on real video at 768&times;432 (mean FPS): Joint-ID 9.8&nbsp;Hz, UIEC&sup2; 13.4&nbsp;Hz, TRIDENT 32.2&nbsp;Hz.</figcaption>
+    </figure>
+
+    <figure class="figure-container is-compact">
+      <img src="./static/images/efficiency_qual.webp" alt="Restoration quality versus model size and speed" width="1417" height="523" loading="lazy" decoding="async">
+      <figcaption>
+        (a) Against fast models: TRIDENT (0.92&nbsp;M) restores color better than FUnIE-GAN (7.02&nbsp;M) and UGAN
+        (54.4&nbsp;M). (b) Against strong models: TRIDENT restores the whole scene and is the fastest (111&nbsp;Hz vs.
+        60&nbsp;Hz for UIEC&sup2; and 17&nbsp;Hz for DeepWave).
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Ablation ==================== -->
+<section class="section content-section" id="ablation" data-toc-title="Ablation">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">How Many Decoder Branches?</h2>
+    <div class="content has-text-justified">
+      <p>
+        Adding parallel decoder branches helps both tasks, with diminishing returns. The jump from one to two branches
+        is the largest; the third still improves PSNR by 12.1% and SILog by 12.6%; the fourth and fifth change the
+        metrics by 0.04&ndash;3.5% while each costs 11&ndash;16% of the speed. Three branches is the compromise
+        TRIDENT uses.
+      </p>
+    </div>
+    <div class="metric-dashboard" data-animate-bars aria-label="Ablation over the number of decoder branches">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Ablation &middot; decoder branches</span>
+          <h3>Accuracy saturates at three branches; speed keeps falling</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Other configurations</span>
+          <span><i style="--legend-color: #010042;"></i>TRIDENT (3 branches)</span>
+        </div>
+      </div>
+      <p class="tau-note">Each added branch costs about 0.08&nbsp;M parameters. Enhancement PSNR and depth SILog on the Joint-ID test set; speed on GPU.</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics wide-labels">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>PSNR [dB] &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 74.0%;">
+              <span class="metric-label">1 branch</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">16.73</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 89.0%;">
+              <span class="metric-label">2 branches</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">20.12</span>
+            </div>
+            <div class="metric-row is-ours" style="--method-color: #010042; --bar-target: 99.8%;">
+              <span class="metric-label">3 (ours)</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">22.56</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">4 branches</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">22.60</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">5 branches</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">22.61</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>SILog &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">1 branch</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">19.56</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 72.3%;">
+              <span class="metric-label">2 branches</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">14.14</span>
+            </div>
+            <div class="metric-row is-ours" style="--method-color: #010042; --bar-target: 62.9%;">
+              <span class="metric-label">3 (ours)</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">12.31</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 62.2%;">
+              <span class="metric-label">4 branches</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">12.16</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 61.4%;">
+              <span class="metric-label">5 branches</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">12.01</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Speed [Hz] &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">1 branch</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">122</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 91.8%;">
+              <span class="metric-label">2 branches</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">112</span>
+            </div>
+            <div class="metric-row is-ours" style="--method-color: #010042; --bar-target: 83.6%;">
+              <span class="metric-label">3 (ours)</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">102</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 74.6%;">
+              <span class="metric-label">4 branches</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">91</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 62.3%;">
+              <span class="metric-label">5 branches</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">76</span>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Dataset. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Dataset</h2>
-        <div class="content has-text-justified">
-          <p>
-            We tried to form a synthetic dataset with depth D ∈ [1.5, 3, 5, 7.5, 10, 15] according to the water types in 'Inherent optical properties of Jerlov water types' paper. For water types I, IA, and IB, the depth was [3, 5, 7.5, 10, 15]. For type II, the depth was [3, 5, 7.5, 10]. For III and IC types, the depth was [3, 5, 7.5]. For 3C and 5C, the depth was [3, 5]. Finally, for 9C, it was [1.5, 3]. The ground dataset used was a dataset with an object detail called 'diml'. A total of 48,000 synthetic data were generated, of which <strong>47,000</strong> were selected for the training set and <strong>1,000</strong> for the test set.
-          </p>
-          <p>
-            This dataset was created through distortion optical modeling, and has <strong>Enhanced Images</strong> and <strong>Dense Depth Images</strong> as ground truth. This dataset will be of great help to those working on <strong>Underwater Depth Estimation</strong> and <strong>Underwater Image Enhancement</strong>.
-          </p>
-          <img src="./static/images/dataset.png" style="width: 120%; margin: 20px auto; display: block;">
-          
-          <h4 class="title is-4">Data in the Joint-ID_Dataset</h4>
-          <ul>
-            <li><em>Synthetic Underwater Train Set:</em> 47,000</li>
-            <li><em>Synthetic Underwater Test Set:</em> 1,000</li>
-          </ul>
 
-          <h4 class="title is-4">The structure in the Joint-ID_Dataset</h4>
-          <pre style="background-color: #f5f5f5; padding: 15px; border-radius: 5px;">
-/ train
-    /    LR
-    /    ...
-         / color
-             / &lt;enhanced images&gt;.png
-         / depth_filed    #
-             / &lt;dense depth images&gt;.png
-    /    synthetic
-         / &lt;synthetic distorted images&gt;.jpg
-/ test</pre>
-        </div>
+<!-- ==================== Robot Vision ==================== -->
+<section class="section content-section" id="robot-vision" data-toc-title="Robot Vision">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">From 2-D to 3-D Robot Vision</h2>
+
+    <h3 class="title is-4">Feature matching</h3>
+    <div class="content has-text-justified">
+      <p>
+        Restoring distant regions gives SLAM and 3-D reconstruction more to hold on to. On two real underwater videos,
+        TRIDENT keeps the most feature correspondences between consecutive frames: FUnIE-GAN and the raw input lose
+        the distant keypoints, and UIEC&sup2; keeps fewer of them.
+      </p>
+    </div>
+    <figure class="figure-container" style="max-width: 640px; margin-left: auto; margin-right: auto;">
+      <img src="./static/images/matching.webp" alt="Feature matching on real underwater videos" width="1484" height="2169" loading="lazy" decoding="async">
+      <figcaption>
+        (a) Matches between consecutive frames in near (yellow) and far (orange) regions. (b) Correspondences per scene
+        on two real test videos. (c) Samples of the two videos.
+      </figcaption>
+    </figure>
+
+    <h3 class="title is-4" style="margin-top: 2.4rem;">3-D salient-object localization</h3>
+    <div class="content has-text-justified">
+      <p>
+        The three outputs work together: enhancement keeps a salient object intact for saliency detection, depth lifts
+        it into 3-D, and uncertainty trims the unreliable object edges before localization.
+      </p>
+    </div>
+    <div class="panel-grid panel-grid-2">
+      <figure>
+        <img src="./static/images/robot_vision.webp" alt="Saliency detection and 3-D salient-object localization" width="1424" height="1091" loading="lazy" decoding="async">
+        <figcaption>(a) Saliency on the original vs. TRIDENT image. (b) Saliency, 3-D reconstruction with depth, uncertainty filtering, 3-D salient object.</figcaption>
+      </figure>
+      <figure>
+      <div class="video-frame is-wide">
+        <video muted loop playsinline controls preload="none" poster="./static/images/localization_poster.webp" data-lazy-play aria-label="Object localization with YOLOv8">
+          <source src="./static/videos/localization.mp4" type="video/mp4">
+        </video>
+      </div>
+        <figcaption>From the supplementary video: TRIDENT's enhanced image and depth feed YOLOv8 object localization.</figcaption>
+      </figure>
+    </div>
+
+    <div class="claim-grid" style="margin-top: 2rem;">
+      <article>
+        <h3>Limitation: unknown depth scale</h3>
+        <p style="text-align: justify;">
+          TRIDENT's depth is normalized and scaled by a fixed maximum depth, so its metric scale is unknown. That is a
+          problem for large-scale 3-D reconstruction and SLAM.
+        </p>
+      </article>
+      <article>
+        <h3>Next: metric depth from sparse measurements</h3>
+        <p style="text-align: justify;">
+          Recovering metric depth from sparse range measurements is the direction of our follow-up
+          <a href="/research/pgspn/">PGSPN</a> (IROS 2026 workshop), which uses underwater attenuation as a dense
+          depth cue for depth completion.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Video ==================== -->
+<section class="section content-section" id="video" data-toc-title="Video">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Supplementary Video</h2>
+    <div class="video-embed">
+      <div class="publication-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/EU_o8CCR71U?rel=0" title="TRIDENT supplementary video" loading="lazy"
+                frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
 
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-4">BibTeX</h2>
-          <pre><code>@article{yang2023joint,
-  author    = {Yang, Geonmo and Kang, Gilhwan and Lee, Juhui and Cho, Younggun},
-  title     = {Joint-ID: Transformer-based Joint Image Enhancement and Depth Estimation for Underwater Environments},
+<!-- ==================== BibTeX ==================== -->
+<section class="section content-section" id="BibTeX" data-toc-title="BibTeX">
+  <div class="container is-max-fullhd">
+    <div class="content">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre><code>@article{yang2025trident,
+  author    = {Yang, Geonmo and Cho, Younggun},
+  title     = {TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth, and Uncertainty Estimation for Underwater 3-D Robot Visual Perception},
   journal   = {IEEE Sensors Journal},
-  year      = {2023}
+  volume    = {25},
+  number    = {1},
+  pages     = {858--870},
+  year      = {2025},
+  doi       = {10.1109/JSEN.2024.3488495}
 }</code></pre>
-      </div>
     </div>
   </div>
 </section>
 
 
+<!-- ==================== Footer ==================== -->
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link"
-         href="https://ieeexplore.ieee.org/document/10745206">
-        <i class="fas fa-file-pdf"></i>
+      <a class="icon-link" href="https://sparolab.github.io/" aria-label="SPARO Lab home">
+        <i class="fas fa-home"></i>
       </a>
-      <a class="icon-link" href="https://github.com/sparolab/TRIDENT" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/sparolab" aria-label="SPARO Lab on GitHub">
         <i class="fab fa-github"></i>
       </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-          </p>
-        </div>
-      </div>
+      <p class="figure-credit">Figures and video clips are from the authors' article in IEEE Sensors Journal (&copy; IEEE) and its supplementary video.</p>
     </div>
   </div>
 </footer>
+
+
+<!-- ==================== Custom Scripts ==================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var targetId = this.getAttribute('href').substring(1);
+      var target = document.getElementById(targetId);
+      if (!target) { return; }
+      e.preventDefault();
+      var targetPos = target.getBoundingClientRect().top + window.pageYOffset - 20;
+      window.scrollTo({ top: targetPos, behavior: 'smooth' });
+    });
+  });
+
+  // Active link highlight on scroll (left TOC)
+  var sections = document.querySelectorAll('section[id]');
+  var tocItems = document.querySelectorAll('.toc-nav li');
+  window.addEventListener('scroll', function() {
+    var scrollPos = window.pageYOffset + 120;
+    sections.forEach(function(section) {
+      var top = section.offsetTop;
+      var height = section.offsetHeight;
+      var id = section.getAttribute('id');
+      if (scrollPos >= top && scrollPos < top + height) {
+        tocItems.forEach(function(item) {
+          var a = item.querySelector('a');
+          item.classList.toggle('active', a && a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  });
+
+  // Animate metric bars when they scroll into view
+  var barBlocks = document.querySelectorAll('[data-animate-bars]');
+  if ('IntersectionObserver' in window && barBlocks.length) {
+    var barObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) { return; }
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0.18 });
+    barBlocks.forEach(function(block) { barObserver.observe(block); });
+  } else {
+    barBlocks.forEach(function(block) { block.classList.add('is-visible'); });
+  }
+
+  // Play section clips only while they are on screen (saves bandwidth on long pages)
+  var clips = document.querySelectorAll('video[data-lazy-play]');
+  if ('IntersectionObserver' in window && clips.length) {
+    var clipObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) {
+          if (v.preload === 'none') { v.preload = 'auto'; }
+          var p = v.play();
+          if (p && p.catch) { p.catch(function() {}); }
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.3 });
+    clips.forEach(function(v) { clipObserver.observe(v); });
+  } else {
+    clips.forEach(function(v) { v.autoplay = true; });
+  }
+
+  // Sidebar toggle
+  var sidebar = document.getElementById('related-sidebar');
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  if (sidebarToggle && sidebar) {
+    // thumbnails are fetched only when the reader opens (or points at) the panel
+    var loadThumbs = function() {
+      sidebar.querySelectorAll('img[data-src]').forEach(function(img) {
+        img.src = img.getAttribute('data-src');
+        img.removeAttribute('data-src');
+      });
+    };
+    sidebarToggle.addEventListener('pointerenter', loadThumbs);
+    sidebarToggle.addEventListener('click', function() {
+      loadThumbs();
+      sidebar.classList.toggle('is-open');
+    });
+  }
+});
+</script>
 
 </body>
 </html>

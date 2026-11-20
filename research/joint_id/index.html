@@ -1,261 +1,974 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Joint-ID: Transformer-Based Joint Image Enhancement and Depth Estimation for Underwater Environment">
-  <meta name="keywords" content="Underwater Image Enhancement and Depth Estimation">
+        content="Joint-ID: Transformer-Based Joint Image Enhancement and Depth Estimation for Underwater Environments">
+  <meta name="keywords" content="Joint-ID, underwater image enhancement, underwater depth estimation, multitask learning, transformer, synthetic dataset">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Joint-ID: Transformer-Based Joint Image Enhancement and Depth Estimation for Underwater Environment</title>
+  <title>Joint-ID: Transformer-Based Joint Image Enhancement and Depth Estimation for Underwater Environments</title>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/logo.png">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
 </head>
 <body>
 
-<section class="hero">
+<!-- ==================== Table of Contents (left rail) ==================== -->
+<nav class="toc-nav" aria-label="Page navigation">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#dataset">Dataset</a></li>
+    <li><a href="#enhancement">Enhancement</a></li>
+    <li><a href="#depth">Depth</a></li>
+    <li><a href="#ablation">Joint vs. Single</a></li>
+    <li><a href="#robot-vision">Robot Vision</a></li>
+    <li><a href="#next">What Came Next</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#BibTeX">BibTeX</a></li>
+  </ul>
+</nav>
+
+<!-- ==================== Hero Title Bar + Authors ==================== -->
+<section class="hero is-medium is-bold is-primary" id="top">
+  <a href="https://sparolab.github.io/" class="sparo-logo-link" aria-label="SPARO Lab home">
+    <img src="./static/images/logo.png" alt="SPARO Lab" width="358" height="395">
+  </a>
   <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Joint-ID: Transformer-Based Joint Image Enhancement and Depth Estimation for Underwater Environment</h1>
-          <div class="is-size-6 publication-authors">
-            <span class="author-block">IEEE Sensors Journal 2023</span>            
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=en">Geonmo Yang</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=F6dY8DoAAAAJ&hl=en">Gilhwan Kang</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ&hl=en">Juhui Lee</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=en">Younggun Cho</a><sup>1*</sup>
-            </span>            
-          </div>
+    <div class="container is-max-fullhd has-text-centered">
+      <h1 class="title is-2 publication-title">
+        <span style="color: #ffc800;">Joint-ID</span>: Transformer-Based Joint Image Enhancement<br>
+        and Depth Estimation for Underwater Environments
+      </h1>
+      <div class="is-size-6 publication-authors" style="margin-top: 1rem;">
+        <span class="author-block">IEEE Sensors Journal 2024</span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=en" target="_blank" rel="noopener">Geonmo Yang</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=F6dY8DoAAAAJ&hl=en" target="_blank" rel="noopener">Gilhwan Kang</a><sup>1</sup>,</span>
+        <span class="author-block">
+          <a href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ&hl=en" target="_blank" rel="noopener">Juhui Lee</a><sup>1</sup>,</span>
+        <span class="author-block">
+          and <strong><a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=en" target="_blank" rel="noopener">Younggun Cho</a></strong><sup>1</sup>
+        </span>
+      </div>
+      <div class="is-size-6 publication-authors" style="margin-top: 0.25rem;">
+        <span class="author-block"><strong>Bold</strong>: Corresponding author</span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.25rem;">
+        <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>
+      </div>
+      <div style="margin-top: 1.25rem;">
+        <div class="publication-links">
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://ieeexplore.ieee.org/document/10351035" target="_blank" rel="noopener">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2611.22212" target="_blank" rel="noopener">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://www.youtube.com/watch?v=1GOoHCSpNXE" target="_blank" rel="noopener">
+              <span class="icon"><i class="fab fa-youtube"></i></span>
+              <span>Video</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/sparolab/Joint_ID" target="_blank" rel="noopener">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-dark" href="https://www.dropbox.com/scl/fo/olr8awsue6uion5fng25j/h?rlkey=jy6pbnbop6ppc0703it7lmite&e=1&dl=0" target="_blank" rel="noopener">
+              <span class="icon"><i class="far fa-images"></i></span>
+              <span>Data</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Spatial AI and Robotics (SPARO) Lab, Inha University, South Korea</span>            
-          </div>
+<!-- ==================== Related Research Sidebar ==================== -->
+<div id="related-sidebar" class="related-sidebar">
+  <div class="sidebar-toggle" id="sidebar-toggle">
+    <span class="icon">
+      <i class="fas fa-chevron-left chevron-desktop chevron-closed"></i>
+      <i class="fas fa-chevron-right chevron-desktop chevron-open"></i>
+      <i class="fas fa-chevron-up chevron-mobile chevron-closed"></i>
+      <i class="fas fa-chevron-down chevron-mobile chevron-open"></i>
+    </span>
+    <span class="sidebar-toggle-text">Related Research</span>
+  </div>
+  <div class="sidebar-content">
+    <h4 class="sidebar-title">Related Research</h4>
+    <a href="/research/trident/" class="sidebar-card" style="margin-bottom: 10px;">
+      <div class="sidebar-card-img">
+        <img data-src="/img/research/paper/6_trident.gif" alt="TRIDENT" width="300" height="235">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">TRIDENT</p>
+        <p class="sidebar-card-venue">IEEE Sensors J. 2025</p>
+      </div>
+    </a>
+    <a href="/research/sparse_depth_guided/" class="sidebar-card" style="margin-bottom: 10px;">
+      <div class="sidebar-card-img">
+        <img data-src="/img/research/paper/27_sparse_depth_guided.jpg" alt="Sparse depth-guided image enhancement" width="908" height="811">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">Sparse Depth-Guided Enhancement</p>
+        <p class="sidebar-card-venue">MDPI Sensors 2023</p>
+      </div>
+    </a>
+    <a href="/research/pgspn/" class="sidebar-card">
+      <div class="sidebar-card-img">
+        <img data-src="/img/research/paper/26_pgspn_1.jpg" alt="PGSPN" width="900" height="803">
+      </div>
+      <div class="sidebar-card-info">
+        <p class="sidebar-card-title">PGSPN</p>
+        <p class="sidebar-card-venue">IROS-W 2026</p>
+      </div>
+    </a>
+  </div>
+</div>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://ieeexplore.ieee.org/document/10351035"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=1GOoHCSpNXE"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/sparolab/Joint_ID"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://www.dropbox.com/scl/fo/olr8awsue6uion5fng25j/h?rlkey=jy6pbnbop6ppc0703it7lmite&e=1&dl=0"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-              </span>
+
+<!-- ==================== Overview ==================== -->
+<section class="section content-section" id="overview" data-toc-title="Overview">
+  <div class="container is-max-fullhd">
+    <figure class="figure-container hero-figure" style="margin-top: 0;">
+      <img src="./static/images/teaser.webp" alt="Raw underwater images, Joint-ID enhancement, and estimated depth" width="2200" height="1208">
+      <figcaption>Raw underwater frames (left), Joint-ID's enhanced images (middle), and estimated depth (right).</figcaption>
+    </figure>
+
+    <div class="content has-text-justified" style="margin-top: 1.5rem;">
+      <p>
+        <b>TL;DR:</b> <span class="kiss-imu">Joint-ID</span> restores underwater images and estimates their depth
+        <i>together</i>. Two transformer U-Nets &mdash; one per task &mdash; exchange features through joint blocks built
+        on the underwater light model, so depth helps undo the haze and the haze helps estimate depth. Trained on our
+        synthetic dataset of 48,000 images across ten water types, the joint model beats its own single-task versions
+        on both tasks.
+      </p>
+    </div>
+
+    <div class="key-stats">
+      <div class="key-stat">
+        <b>2 tasks</b>
+        <small>image enhancement and depth estimation, learned in one shared feature space</small>
+      </div>
+      <div class="key-stat">
+        <b>48,000</b>
+        <small>synthetic training pairs with a clean image and dense depth, across ten Jerlov water types</small>
+      </div>
+      <div class="key-stat">
+        <b>+1.4 dB</b>
+        <small>PSNR gain of joint over single-task enhancement on our synthetic test set</small>
+      </div>
+      <div class="key-stat">
+        <b>12.41</b>
+        <small>SILog on real SQUID scenes, the lowest among the compared depth models</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Abstract ==================== -->
+<section class="section content-section" id="abstract" data-toc-title="Abstract">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        Underwater imaging is a challenging task due to factors such as scattering, absorption, and turbulence, which
+        degrade image quality and limit visibility. In this article, we propose a novel approach for enhancing
+        underwater images that leverages the benefits of joint learning for simultaneous image enhancement and depth
+        estimation. We introduce <b>Joint-ID</b>, a transformer-based neural network that can obtain high-perceptual
+        image quality and depth information from raw underwater images. Our approach formulates a multimodal objective
+        function that addresses invalid depth, lack of sharpness, and image degradation based on color and local
+        texture. We design an end-to-end training pipeline that enables joint restoration and depth estimation in a
+        shared hierarchical feature space. In addition, we propose a <b>synthetic dataset</b> with various distortions
+        and scene depths for multitask learning. We evaluate Joint-ID on synthetic and standard datasets, as well as
+        real underwater images with diverse spectra and harsh turbidity, demonstrating its effectiveness for
+        <b>underwater image enhancement (UIE)</b> and <b>depth estimation</b>. Furthermore, we demonstrate the ability
+        of Joint-ID to perform feature matching and saliency detection for visually guided underwater robots. Our
+        proposed method has the potential to improve the visual perception of underwater environments and benefit
+        applications such as oceanography and underwater robotics.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Motivation ==================== -->
+<section class="section content-section" id="motivation" data-toc-title="Motivation">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Why Learn Them Together?</h2>
+    <div class="content has-text-justified">
+      <p>
+        Under water, how badly an image is degraded depends on how far the scene is. McGlamery's light-propagation
+        model writes the observed image as
+      </p>
+    </div>
+    <p class="equation">
+      <span>I<sub>c</sub>(x) = J<sub>c</sub>(x)&middot;e<sup>&minus;&beta;<sub>c</sub>d(x)</sup> +
+      B<sub>c</sub><sup>&infin;</sup>&middot;(1 &minus; e<sup>&minus;&beta;<sub>c</sub>d(x)</sup>)</span>
+    </p>
+    <div class="content has-text-justified">
+      <p>
+        so a full restoration needs both the distortion coefficients (B<sub>c</sub><sup>&infin;</sup>,
+        &beta;<sub>c</sub>) and the depth d. Image enhancement and depth estimation are usually trained separately,
+        which throws this coupling away.
+      </p>
+    </div>
+
+    <div class="claim-grid">
+      <article>
+        <h3>Depth tells enhancement how much was lost</h3>
+        <p style="text-align: justify;">
+          Color loss and haze grow with distance and depend on the water type. A restoration network that knows the
+          depth can estimate the transmission and ambient-light terms instead of applying one global correction.
+        </p>
+      </article>
+      <article>
+        <h3>Haze tells depth how far things are</h3>
+        <p style="text-align: justify;">
+          Contrast and color attenuation are distance cues. Feeding them to the depth network helps it keep the depth
+          scale all the way to the background, where a single-task model gives up.
+        </p>
+      </article>
+    </div>
+
+    <figure class="figure-container is-compact">
+      <img src="./static/images/overview.webp" alt="Single-task versus multi-task learning on two inputs" width="1267" height="666" loading="lazy" decoding="async">
+      <figcaption>
+        Single-task versus multi-task (joint) learning on two raw inputs. Joint learning gives cleaner color and
+        recovers depth further into the scene (orange boxes).
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Architecture ==================== -->
+<section class="section content-section" id="architecture" data-toc-title="Architecture">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Architecture</h2>
+    <div class="content has-text-justified">
+      <p>
+        Joint-ID runs two U-Nets side by side: <b>Single-I</b> for enhancement and <b>Single-D</b> for depth. Each has a
+        four-stage Mix Transformer++ encoder, from H/4 down to H/32, and a mix decoder. Joint blocks between the two
+        decoders exchange features at every stage, following the light model.
+      </p>
+    </div>
+
+    <div class="pipeline-flow">
+      <div class="flow-step">
+        <span class="flow-actor is-robot">Single-I</span>
+        <h4>Enhancement U-Net<br>MTP encoder + mix decoder</h4>
+      </div>
+      <div class="flow-arrow">
+        <span class="flow-chip flow-chip-top">E-joint</span>
+        <span class="flow-arrow-line">&harr;</span>
+        <span class="flow-chip flow-chip-bottom">M-joint</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-actor is-robot">Single-D</span>
+        <h4>Depth U-Net<br>MTP encoder + mix decoder</h4>
+      </div>
+      <div class="flow-arrow">
+        <span class="flow-chip flow-chip-top">joint loss</span>
+        <span class="flow-arrow-line">&rarr;</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-actor is-server">Outputs</span>
+        <h4>Enhanced image<br>&amp; depth map</h4>
+      </div>
+    </div>
+
+    <figure class="figure-container is-wide">
+      <img src="./static/images/architecture.webp" alt="Joint-ID architecture" width="2814" height="1759" loading="lazy" decoding="async">
+      <figcaption>
+        (a) End-to-end architecture: two independent models connected by joint blocks. (b) Mix Transformer++ encoder
+        block. (c) Mix decoder, joint, and dividing blocks. (d) Legend.
+      </figcaption>
+    </figure>
+
+    <div class="panel-grid panel-grid-2">
+      <figure>
+        <img src="./static/images/joint_structure.webp" alt="From two single-task U-Nets to Joint-ID" width="1311" height="869" loading="lazy" decoding="async">
+        <figcaption>From two single-task U-Nets to Joint-ID: joint blocks share features between them.</figcaption>
+      </figure>
+      <figure>
+        <img src="./static/images/joint_block.webp" alt="E-joint and M-joint blocks" width="1388" height="437" loading="lazy" decoding="async">
+        <figcaption>(a) E-joint block: depth from Single-D drives the transmission and ambient-light terms. (b) M-joint block: the reverse direction.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Method ==================== -->
+<section class="section content-section" id="method" data-toc-title="Method">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Method</h2>
+    <div class="method-grid">
+      <article>
+        <h3>(A) Mix Transformer++ encoder</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          Both tasks need global context &mdash; the absolute depth scale and the overall color cast &mdash; as well as
+          local detail.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          A SegFormer-style Mix Transformer with [4,&nbsp;7,&nbsp;12,&nbsp;4] blocks per stage instead of
+          [3,&nbsp;4,&nbsp;18,&nbsp;4], and Rescale Layer Normalization, which keeps the feature scale and bias that
+          standard LayerNorm discards &mdash; a known problem for dehazing. Channels: [64,&nbsp;128,&nbsp;320,&nbsp;512].</p>
+      </article>
+      <article>
+        <h3>(B) Mix decoder with dividing blocks</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          Dense restoration and depth rely on global features more than detection or classification do, and stacked
+          1&times;1 convolutions in a deep decoder lose gradient.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          Each decoder layer runs an MLP (global) and a CNN (local) in parallel and merges them with the encoder
+          features; a dividing block then splits the result into a skip connection and the input of the next layer.</p>
+      </article>
+      <article>
+        <h3>(C) Physics-based joint blocks</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          The distortion coefficients are easier to estimate when the depth is known, and the depth is easier to
+          estimate when the haze features are known.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          The E-joint block injects Single-D's depth into Single-I through a transmission term
+          P<sup>1</sup>&nbsp;=&nbsp;e<sup>&minus;&beta;<sub>c</sub>d</sup> and ambient-light terms
+          P<sup>2</sup>, P<sup>3</sup>&nbsp;=&nbsp;B<sub>c</sub><sup>&infin;</sup>(1&nbsp;&minus;&nbsp;e<sup>&minus;&beta;<sub>c</sub>d</sup>);
+          the M-joint block passes contrast and haze features from Single-I to Single-D.</p>
+      </article>
+      <article>
+        <h3>(D) Multimodal objective</h3>
+        <p style="text-align: justify; margin-bottom: 0.7rem;"><span class="stage-tag is-reason">Reason</span>
+          The loss has to penalize invalid depth, missing sharpness, and color and texture degradation at the same
+          time.</p>
+        <p style="text-align: justify;"><span class="stage-tag is-method">Method</span>
+          Enhancement uses an L2 loss plus a Laplacian edge loss, and depth uses the scale-invariant log loss S(g).
+          Jointly: L = 2.0&middot;(L<sub>2</sub> + 0.1&middot;L<sub>Lap</sub>) + 1.5&middot;&radic;S(g).</p>
+      </article>
+    </div>
+
+    <figure class="figure-container is-compact">
+      <img src="./static/images/attention.webp" alt="Depth output and attention maps of the joint blocks" width="1346" height="593" loading="lazy" decoding="async">
+      <figcaption>
+        (a) Depth output and (b)&ndash;(e) attention maps of the depth features passed to each joint block:
+        (b)&ndash;(c) global and (d)&ndash;(e) local depth features.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Dataset ==================== -->
+<section class="section content-section" id="dataset" data-toc-title="Dataset">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">A Synthetic Dataset for Joint Learning</h2>
+    <div class="content has-text-justified">
+      <p>
+        No real underwater dataset gives a clean image <i>and</i> dense depth for every frame, so we built one. Starting
+        from the DIML RGB-D dataset, we render underwater images with the light model for the ten Jerlov water types
+        (I, IA, IB, II, III, 1C, 3C, 5C, 7C, and 9C). Absorption and scattering follow each water type; the green
+        ambient light B<sub>g</sub> is drawn from {0.4,&nbsp;0.5,&nbsp;0.6,&nbsp;0.7} and B<sub>r</sub>,
+        B<sub>b</sub> follow from it; and the distance from the surface ranges from 1.5&nbsp;m to 15&nbsp;m, with
+        shorter ranges for the murkier coastal types.
+      </p>
+    </div>
+
+    <div class="key-stats">
+      <div class="key-stat"><b>48,000</b><small>image pairs in total</small></div>
+      <div class="key-stat"><b>47,000 / 1,000</b><small>training / test split</small></div>
+      <div class="key-stat"><b>10</b><small>Jerlov water types, from clear ocean to turbid coastal</small></div>
+      <div class="key-stat"><b>1.5&ndash;15 m</b><small>distance from the surface</small></div>
+    </div>
+
+    <figure class="figure-container is-compact">
+      <img src="./static/images/dataset.webp" alt="Samples from the ten water types" width="1280" height="586" loading="lazy" decoding="async">
+      <figcaption>Samples from the ten water types. The dataset is available from the Data link at the top of this page.</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Image Enhancement ==================== -->
+<section class="section content-section" id="enhancement" data-toc-title="Enhancement">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Image Enhancement</h2>
+    <div class="content has-text-justified">
+      <p>
+        We report two of our models against eight baselines (Berman et al., UWCNN, UGAN, UIEC&sup2;, FUnIE-GAN,
+        UIE-DAL, U-Shape, and DeepWave). <b>Single-I</b> is the enhancement network alone, trained on each benchmark
+        like the learning-based baselines. <b>Joint-ID</b> is the joint model, trained only on our synthetic data.
+        They win in different ways.
+      </p>
+    </div>
+    <div class="metric-dashboard" data-animate-bars aria-label="Supervised enhancement comparison">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Enhancement &middot; supervised</span>
+          <h3>Single-I: the highest PSNR and SSIM on all three benchmarks</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines</span>
+          <span><i style="--legend-color: #010042;"></i>Single-I (ours)</span>
+        </div>
+      </div>
+      <p class="tau-note">PSNR against ground truth; every learning-based model is trained on the benchmark it is tested on. The three strongest of eight baselines are shown per benchmark. Single-I is also the best in SSIM on all three; on Sq Rel, U-Shape is better on EUVP and LUSI.</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics wide-labels">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>EUVP &middot; PSNR [dB] &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 93.7%;">
+              <span class="metric-label">UIEC&sup2;</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">24.49</span>
             </div>
-
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 95.4%;">
+              <span class="metric-label">UIE-DAL</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">24.93</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 99.6%;">
+              <span class="metric-label">U-Shape</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">26.02</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">Single-I</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">26.13</span>
+            </div>
           </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>LUSI &middot; PSNR [dB] &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90.9%;">
+              <span class="metric-label">UIE-DAL</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">25.82</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 92.8%;">
+              <span class="metric-label">UGAN</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">26.38</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 94.4%;">
+              <span class="metric-label">U-Shape</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">26.84</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">Single-I</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">28.42</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>UIEB &middot; PSNR [dB] &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 97.1%;">
+              <span class="metric-label">DeepWave</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">19.67</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 97.2%;">
+              <span class="metric-label">U-Shape</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">19.70</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">UIE-DAL</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">20.25</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">Single-I</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">20.26</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="metric-dashboard" data-animate-bars aria-label="No-reference color-contrast comparison" style="margin-top: 1.6rem;">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Enhancement &middot; color contrast (UCIQE)</span>
+          <h3>Joint-ID: first or second in every setting</h3>
         </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines</span>
+          <span><i style="--legend-color: #010042;"></i>Joint-ID (ours)</span>
+        </div>
+      </div>
+      <p class="tau-note">UCIQE scores colorfulness, saturation, and contrast without a reference. Joint-ID is trained only on our synthetic data, never on these benchmarks, yet it has the highest UCIQE on EUVP and on SQUID when every model is retrained on our data, and the second highest in the other four settings.</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics wide-labels">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>EUVP &middot; UCIQE &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 92.7%;">
+              <span class="metric-label">UGAN</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.581</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 94.2%;">
+              <span class="metric-label">FUnIE</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.590</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 98.8%;">
+              <span class="metric-label">Berman</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.619</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.627</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>SQUID, all retrained &middot; UCIQE &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 93.6%;">
+              <span class="metric-label">U-Shape</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.537</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 95.3%;">
+              <span class="metric-label">DeepWave</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.547</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 96.2%;">
+              <span class="metric-label">UIEC&sup2;</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.552</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.574</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>MHL, given weights &middot; UCIQE &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 90.2%;">
+              <span class="metric-label">UIE-DAL</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.562</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 94.2%;">
+              <span class="metric-label">Berman</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.587</span>
+            </div>
+            <div class="metric-row is-ours" style="--method-color: #010042; --bar-target: 95.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.592</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">UIEC&sup2;</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.623</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="chart-notes">
+        <span>Second on LUSI (Berman 0.615), UIEB (Single-I 0.619), and on MHL and SQUID with each model's given weights (UIEC&sup2; 0.623 and 0.613).</span>
+      </div>
+    </div>
+
+    <div class="content has-text-justified" style="margin-top: 1.2rem;">
+      <p>
+        Joint-ID scores lower than Single-I on the supervised metrics: it never saw these benchmarks, and their
+        reference images themselves carry a slight color bias and haze. Its results are sharper and more saturated
+        than the references &mdash; worse for PSNR, better for robot vision, where color contrast matters.
+      </p>
+    </div>
+
+    <figure class="figure-container is-wide">
+      <img src="./static/images/uie_qual.webp" alt="Qualitative enhancement comparison" width="2787" height="1236" loading="lazy" decoding="async">
+      <figcaption>
+        Rows 1&ndash;6: models trained and tested on EUVP, LUSI, and UIEB. Rows 7&ndash;8: real underwater images
+        (SQUID and MHL) with each model's reference weights.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Depth ==================== -->
+<section class="section content-section" id="depth" data-toc-title="Depth">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Depth Estimation</h2>
+    <div class="content has-text-justified">
+      <p>
+        We compared with BTS, GLPDepth, and NewCRF, each pretrained on terrestrial data and then fine-tuned on our
+        synthetic set. On the synthetic test set Joint-ID has the lowest SILog and RMS error and the highest
+        &delta;<sub>1</sub> accuracy. On real SQUID scenes it reaches SILog 12.41 and Abs Rel 0.09, the best of all
+        models (Single-D: 14.21 and 0.19).
+      </p>
+    </div>
+    <div class="metric-dashboard" data-animate-bars aria-label="Depth estimation comparison on the synthetic test set">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Depth &middot; synthetic test set</span>
+          <h3>Against fine-tuned terrestrial depth networks</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #8a98a4;"></i>Baselines (fine-tuned)</span>
+          <span><i style="--legend-color: #5b5fa8;"></i>Single-D (ours)</span>
+          <span><i style="--legend-color: #010042;"></i>Joint-ID (ours)</span>
+        </div>
+      </div>
+      <p class="tau-note">BTS, GLPDepth, and NewCRF were fine-tuned on our synthetic set (_f). BTS_f keeps the lowest Sq Rel (0.18 vs. 0.65) and ties Joint-ID on Abs Rel (0.21); Joint-ID is the best on SILog, RMS error, and &delta;<sub>1</sub>&ndash;&delta;<sub>3</sub>.</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics wide-labels">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>SILog &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">NewCRF_f</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">22.29</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 82.9%;">
+              <span class="metric-label">BTS_f</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">18.47</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 77.6%;">
+              <span class="metric-label">GLPDepth_f</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">17.30</span>
+            </div>
+            <div class="metric-row" style="--method-color: #5b5fa8; --bar-target: 74.1%;">
+              <span class="metric-label">Single-D</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">16.52</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 72.1%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">16.08</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>RMS error &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 100.0%;">
+              <span class="metric-label">NewCRF_f</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">2.43</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 26.3%;">
+              <span class="metric-label">BTS_f</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.64</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 83.1%;">
+              <span class="metric-label">GLPDepth_f</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">2.02</span>
+            </div>
+            <div class="metric-row" style="--method-color: #5b5fa8; --bar-target: 28.0%;">
+              <span class="metric-label">Single-D</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.68</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 25.5%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.62</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>&delta;<sub>1</sub> accuracy &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 83.8%;">
+              <span class="metric-label">NewCRF_f</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.57</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 94.1%;">
+              <span class="metric-label">BTS_f</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.64</span>
+            </div>
+            <div class="metric-row" style="--method-color: #8a98a4; --bar-target: 98.5%;">
+              <span class="metric-label">GLPDepth_f</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.67</span>
+            </div>
+            <div class="metric-row" style="--method-color: #5b5fa8; --bar-target: 92.6%;">
+              <span class="metric-label">Single-D</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.63</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.68</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <figure class="figure-container is-wide">
+      <img src="./static/images/depth_qual.webp" alt="Qualitative depth comparison" width="2736" height="914" loading="lazy" decoding="async">
+      <figcaption>
+        Depth on the synthetic set and SQUID (_p: pretrained, _f: fine-tuned). Joint-ID gives clearer object
+        boundaries (orange boxes).
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Joint vs. Single ==================== -->
+<section class="section content-section" id="ablation" data-toc-title="Joint vs. Single">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Does Joint Learning Help?</h2>
+    <div class="content has-text-justified">
+      <p>
+        Training the two networks together improves both of them. With the same architecture, the joint model beats
+        the single-task models on every enhancement and depth metric of our synthetic test set. The single models
+        handle nearby objects but lose the depth scale toward the background.
+      </p>
+    </div>
+    <div class="metric-dashboard" data-animate-bars aria-label="Single-task versus joint learning">
+      <div class="metric-dashboard-header">
+        <div>
+          <span class="chart-kicker">Ablation &middot; synthetic test set</span>
+          <h3>Joint beats single on all ten metrics</h3>
+        </div>
+        <div class="chart-legend" aria-label="Chart legend">
+          <span><i style="--legend-color: #5b5fa8;"></i>Single-task model</span>
+          <span><i style="--legend-color: #010042;"></i>Joint-ID</span>
+        </div>
+      </div>
+      <p class="tau-note">Same architecture, trained with and without the joint blocks: Single-I for enhancement and Single-D for depth. Six of the ten metrics are shown; the other four (enhancement Abs Rel, depth Sq Rel, &delta;<sub>2</sub>, &delta;<sub>3</sub>) improve as well.</p>
+      <div class="metric-grid metric-grid-3 ablation-metrics wide-labels">
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Enhancement &middot; PSNR &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #5b5fa8; --bar-target: 94.6%;">
+              <span class="metric-label">Single-I</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">24.45</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">25.85</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Enhancement &middot; SSIM &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #5b5fa8; --bar-target: 90.4%;">
+              <span class="metric-label">Single-I</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.658</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.728</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Enhancement &middot; Sq Rel &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #5b5fa8; --bar-target: 100.0%;">
+              <span class="metric-label">Single-I</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.803</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 33.6%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.270</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Depth &middot; Abs Rel &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #5b5fa8; --bar-target: 100.0%;">
+              <span class="metric-label">Single-D</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.231</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 91.3%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.211</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Depth &middot; RMS error &darr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #5b5fa8; --bar-target: 100.0%;">
+              <span class="metric-label">Single-D</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.686</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 91.3%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.626</span>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-card-header"><h4>Depth &middot; &delta;<sub>1</sub> &uarr;</h4></div>
+          <div class="metric-bars">
+            <div class="metric-row" style="--method-color: #5b5fa8; --bar-target: 95.1%;">
+              <span class="metric-label">Single-D</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.637</span>
+            </div>
+            <div class="metric-row best" style="--method-color: #010042; --bar-target: 100.0%;">
+              <span class="metric-label">Joint-ID</span><span class="bar-track"><span class="bar-fill"></span></span><span class="metric-value">0.670</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <figure class="figure-container is-compact">
+      <img src="./static/images/ablation.webp" alt="Single models versus Joint-ID on a synthetic sample" width="1376" height="459" loading="lazy" decoding="async">
+      <figcaption>(a) Enhancement and (b) depth from the single models and from Joint-ID on a strongly distorted synthetic sample.</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== Robot Vision ==================== -->
+<section class="section content-section" id="robot-vision" data-toc-title="Robot Vision">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Robot Vision</h2>
+    <div class="content has-text-justified">
+      <p>
+        On a public underwater video, Joint-ID-enhanced frames give far more ORB inlier matches than the raw input and
+        the other enhancement methods over most of the 200 frames, and it finds extra features in the boxed regions,
+        where depth helps the restoration. Saliency maps on Joint-ID images also outline objects more completely than
+        SESR, which performs enhancement, super-resolution, and saliency detection together.
+      </p>
+    </div>
+    <figure class="figure-container" style="max-width: 620px; margin-left: auto; margin-right: auto;">
+      <img src="./static/images/matching.webp" alt="ORB feature matching before and after Joint-ID" width="1340" height="1364" loading="lazy" decoding="async">
+      <figcaption>(a) ORB matches before (top) and after (bottom) Joint-ID enhancement. (b) Inliers per frame over 200 frames.</figcaption>
+    </figure>
+    <figure class="figure-container is-compact">
+      <img src="./static/images/saliency.webp" alt="Saliency detection compared with SESR" width="1401" height="392" loading="lazy" decoding="async">
+      <figcaption>Saliency detection on a real underwater image: (a) input, (b) SESR, (c) Joint-ID.</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ==================== What came next ==================== -->
+<section class="section content-section" id="next" data-toc-title="What Came Next">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">What Came Next</h2>
+    <div class="claim-grid">
+      <article>
+        <h3>Limitation: size and speed</h3>
+        <p style="text-align: justify;">
+          Two transformer U-Nets cost 150&nbsp;M parameters and run at 15.3&nbsp;Hz at 256&times;256 on an RTX 3090 Ti
+          (measured in the TRIDENT paper) &mdash; heavy for an underwater robot's onboard computer. Joint-ID also gives
+          no signal of where its depth can be trusted.
+        </p>
+      </article>
+      <article>
+        <h3>Next: TRIDENT</h3>
+        <p style="text-align: justify;">
+          Our follow-up <a href="/research/trident/">TRIDENT</a> (IEEE Sensors Journal 2025) keeps the joint idea, adds
+          depth uncertainty, and fits all three tasks into 0.96&nbsp;M parameters at 102&nbsp;Hz.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== Video ==================== -->
+<section class="section content-section" id="video" data-toc-title="Video">
+  <div class="container is-max-fullhd">
+    <h2 class="title is-3">Supplementary Video</h2>
+    <div class="video-embed">
+      <div class="publication-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/1GOoHCSpNXE?rel=0" title="Joint-ID supplementary video" loading="lazy"
+                frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="./static/images/joint_id.png" style="max-width: 90%; margin: 0px auto; display: block;">
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">TL;DR  Image Enhancement and Depth Estimation for Underwater Environments!</span>
-      </h2>
-    </div>
-  </div>
-</section>
 
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Underwater imaging is a challenging task due to factors such as scattering, absorption, and turbulence, which degrade image quality and limit visibility. 
-            In this article, we propose a novel approach for enhancing underwater images that leverages the benefits of joint learning for simultaneous image enhancement and depth estimation. 
-            We introduce Joint-ID, a transformer-based neural network that can obtain high-perceptual image quality and depth information from raw underwater images. 
-            Our approach formulates a multimodal objective function that addresses invalid depth, lack of sharpness, and image degradation based on color and local texture. 
-            We design an end-to-end training pipeline that enables joint restoration and depth estimation in a shared hierarchical feature space. 
-            In addition, we propose a <strong>synthetic dataset</strong> with various distortions and scene depths for multitask learning. 
-            We evaluate Joint-ID on synthetic and standard datasets, as well as real underwater images with diverse spectra and harsh turbidity, 
-            demonstrating its effectiveness for <strong>underwater image enhancement (UIE)</strong> and <strong>depth estimation</strong>. 
-            Our proposed method has the potential to improve the visual perception of underwater environments and benefit applications such as oceanography and underwater robotics.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Method. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
-        <div class="content has-text-justified">
-          <img src="./static/images/method.png" style="width: 120%; margin: 20px auto; display: block;">
-          <p>
-            Our model Joint-ID has a Segformer as its backbone, which is a Transformer. Segformer is a model for the segmentation task, but it is also a good model for estimating the correlation between pixels. Understanding the correlation between pixels is very important for this study, which is to perform the Underwater Image Enhancement Task and Depth Estimation Task. In the decoder part of Joint-ID, a mix decoder is proposed to estimate the relationship from the local region to the global region.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Dataset. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Dataset</h2>
-        <div class="content has-text-justified">
-          <p>
-            We tried to form a synthetic dataset with depth D ∈ [1.5, 3, 5, 7.5, 10, 15] according to the water types in 'Inherent optical properties of Jerlov water types' paper. For water types I, IA, and IB, the depth was [3, 5, 7.5, 10, 15]. For type II, the depth was [3, 5, 7.5, 10]. For III and IC types, the depth was [3, 5, 7.5]. For 3C and 5C, the depth was [3, 5]. Finally, for 9C, it was [1.5, 3]. The ground dataset used was a dataset with an object detail called 'diml'. A total of 48,000 synthetic data were generated, of which <strong>47,000</strong> were selected for the training set and <strong>1,000</strong> for the test set.
-          </p>
-          <p>
-            This dataset was created through distortion optical modeling, and has <strong>Enhanced Images</strong> and <strong>Dense Depth Images</strong> as ground truth. This dataset will be of great help to those working on <strong>Underwater Depth Estimation</strong> and <strong>Underwater Image Enhancement</strong>.
-          </p>
-          <img src="./static/images/dataset.png" style="width: 120%; margin: 20px auto; display: block;">
-          
-          <h4 class="title is-4">Data in the Joint-ID_Dataset</h4>
-          <ul>
-            <li><em>Synthetic Underwater Train Set:</em> 47,000</li>
-            <li><em>Synthetic Underwater Test Set:</em> 1,000</li>
-          </ul>
-
-          <h4 class="title is-4">The structure in the Joint-ID_Dataset</h4>
-          <pre style="background-color: #f5f5f5; padding: 15px; border-radius: 5px;">
-/ train
-    /    LR
-    /    ...
-         / color
-             / &lt;enhanced images&gt;.png
-         / depth_filed    #
-             / &lt;dense depth images&gt;.png
-    /    synthetic
-         / &lt;synthetic distorted images&gt;.jpg
-/ test</pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-4">BibTeX</h2>
-          <pre><code>@article{yang2023joint,
+<!-- ==================== BibTeX ==================== -->
+<section class="section content-section" id="BibTeX" data-toc-title="BibTeX">
+  <div class="container is-max-fullhd">
+    <div class="content">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre><code>@article{yang2024joint,
   author    = {Yang, Geonmo and Kang, Gilhwan and Lee, Juhui and Cho, Younggun},
-  title     = {Joint-ID: Transformer-based Joint Image Enhancement and Depth Estimation for Underwater Environments},
+  title     = {Joint-ID: Transformer-Based Joint Image Enhancement and Depth Estimation for Underwater Environments},
   journal   = {IEEE Sensors Journal},
-  year      = {2023}
+  volume    = {24},
+  number    = {3},
+  pages     = {3113--3122},
+  year      = {2024},
+  doi       = {10.1109/JSEN.2023.3338730}
 }</code></pre>
-      </div>
     </div>
   </div>
 </section>
 
 
+<!-- ==================== Footer ==================== -->
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link"
-         href="https://ieeexplore.ieee.org/document/10351035">
-        <i class="fas fa-file-pdf"></i>
+      <a class="icon-link" href="https://sparolab.github.io/" aria-label="SPARO Lab home">
+        <i class="fas fa-home"></i>
       </a>
-      <a class="icon-link" href="https://github.com/sparolab/Joint_ID" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/sparolab" aria-label="SPARO Lab on GitHub">
         <i class="fab fa-github"></i>
       </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-          </p>
-        </div>
-      </div>
+      <p class="figure-credit">Figures are from the authors' article in IEEE Sensors Journal (&copy; IEEE).</p>
     </div>
   </div>
 </footer>
+
+
+<!-- ==================== Custom Scripts ==================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var targetId = this.getAttribute('href').substring(1);
+      var target = document.getElementById(targetId);
+      if (!target) { return; }
+      e.preventDefault();
+      var targetPos = target.getBoundingClientRect().top + window.pageYOffset - 20;
+      window.scrollTo({ top: targetPos, behavior: 'smooth' });
+    });
+  });
+
+  // Active link highlight on scroll (left TOC)
+  var sections = document.querySelectorAll('section[id]');
+  var tocItems = document.querySelectorAll('.toc-nav li');
+  window.addEventListener('scroll', function() {
+    var scrollPos = window.pageYOffset + 120;
+    sections.forEach(function(section) {
+      var top = section.offsetTop;
+      var height = section.offsetHeight;
+      var id = section.getAttribute('id');
+      if (scrollPos >= top && scrollPos < top + height) {
+        tocItems.forEach(function(item) {
+          var a = item.querySelector('a');
+          item.classList.toggle('active', a && a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  });
+
+  // Animate metric bars when they scroll into view
+  var barBlocks = document.querySelectorAll('[data-animate-bars]');
+  if ('IntersectionObserver' in window && barBlocks.length) {
+    var barObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) { return; }
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0.18 });
+    barBlocks.forEach(function(block) { barObserver.observe(block); });
+  } else {
+    barBlocks.forEach(function(block) { block.classList.add('is-visible'); });
+  }
+
+  // Play section clips only while they are on screen (saves bandwidth on long pages)
+  var clips = document.querySelectorAll('video[data-lazy-play]');
+  if ('IntersectionObserver' in window && clips.length) {
+    var clipObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) {
+          if (v.preload === 'none') { v.preload = 'auto'; }
+          var p = v.play();
+          if (p && p.catch) { p.catch(function() {}); }
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.3 });
+    clips.forEach(function(v) { clipObserver.observe(v); });
+  } else {
+    clips.forEach(function(v) { v.autoplay = true; });
+  }
+
+  // Sidebar toggle
+  var sidebar = document.getElementById('related-sidebar');
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  if (sidebarToggle && sidebar) {
+    // thumbnails are fetched only when the reader opens (or points at) the panel
+    var loadThumbs = function() {
+      sidebar.querySelectorAll('img[data-src]').forEach(function(img) {
+        img.src = img.getAttribute('data-src');
+        img.removeAttribute('data-src');
+      });
+    };
+    sidebarToggle.addEventListener('pointerenter', loadThumbs);
+    sidebarToggle.addEventListener('click', function() {
+      loadThumbs();
+      sidebar.classList.toggle('is-open');
+    });
+  }
+});
+</script>
 
 </body>
 </html>
