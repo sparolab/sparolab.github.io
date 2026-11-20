@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sparse Depth-Guided Image Enhancement Using Incremental GP with Informative Point Selection</title>
+  <meta name="description" content="Sparse Depth-Guided Image Enhancement Using Incremental GP with Informative Point Selection. Sensors (MDPI), 2023.">
+  <meta name="keywords" content="image enhancement, dehazing, Gaussian process, incremental GP, mutual information, sparse depth, underwater">
+  <meta property="og:title" content="Sparse Depth-Guided Image Enhancement Using Incremental GP">
+  <meta property="og:description" content="Online dehazing of color and grayscale images from sparse depth with an incremental Gaussian process (Sensors 2023)">
+  <meta property="og:image" content="https://sparolab.github.io/img/research/paper/27_sparse_depth_guided.jpg">
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #5f6b76;
+      --line: #e3e7eb;
+      --tint: #f5f8fa;
+      --accent: #0b6e8a;
+      --dark: #363636;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+    .wide { max-width: 1120px; }
+
+    .topbar { border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+    .topbar .wrap { display: flex; justify-content: space-between; gap: 1rem; padding-top: 0.7rem; padding-bottom: 0.7rem; }
+    .topbar a { color: var(--muted); }
+
+    header.hero { text-align: center; padding: 2.8rem 0 1.6rem; }
+    .eyebrow { margin: 0 0 0.6rem; color: var(--accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+    h1 { margin: 0 auto; max-width: 900px; font-size: 2.1rem; font-weight: 700; line-height: 1.25; }
+    .authors { margin: 1.4rem 0 0.3rem; font-size: 1.08rem; }
+    .authors span { display: inline-block; margin: 0 0.35rem; }
+    .affiliation { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .venue { margin: 1.3rem auto 0; padding: 0.75rem 1rem; max-width: 640px; border: 1px solid var(--line); border-radius: 10px; background: var(--tint); }
+    .venue strong { display: block; }
+    .venue span { color: var(--muted); font-size: 0.95rem; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.3rem; }
+    .btn { display: inline-block; padding: 0.45rem 1.15rem; border-radius: 999px; background: var(--dark); color: #fff; font-size: 0.95rem; font-weight: 600; }
+    .btn:hover { background: #111; text-decoration: none; }
+    .btn.outline { background: #fff; color: var(--dark); border: 1px solid var(--dark); }
+    .btn.outline:hover { background: var(--tint); }
+
+    section { padding: 2.2rem 0; }
+    section.tint { background: var(--tint); }
+    h2 { margin: 0 0 1rem; font-size: 1.7rem; text-align: center; }
+    h3 { margin: 0 0 0.4rem; font-size: 1.08rem; }
+    p { margin: 0 0 1rem; }
+    .lead { text-align: center; font-size: 1.15rem; color: var(--muted); margin: 0 auto; max-width: 820px; }
+    .justify { text-align: justify; }
+
+    figure { margin: 0 0 1.6rem; }
+    figure a { display: block; }
+    figcaption { margin-top: 0.6rem; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+    .narrow { max-width: 760px; margin-left: auto; margin-right: auto; }
+    .pair { display: grid; grid-template-columns: 0.75fr 1fr; gap: 1.4rem; align-items: start; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.4rem; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; font-size: 0.96rem; line-height: 1.6; }
+    .card p { margin: 0; }
+
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 0.6rem; }
+    table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 0.93rem; background: #fff; }
+    th, td { padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--line); text-align: center; white-space: nowrap; }
+    thead th { background: var(--tint); font-weight: 700; }
+    thead tr:first-child th { border-bottom: none; }
+    td.left, th.left { text-align: left; }
+    td.ours, th.ours { background: #eef6f9; }
+    .table-note { color: var(--muted); font-size: 0.88rem; line-height: 1.55; margin-bottom: 1.4rem; }
+    .highlight { border-left: 4px solid var(--accent); padding: 0.2rem 0 0.2rem 1rem; margin: 0 0 1.6rem; }
+
+    pre { margin: 0; padding: 1rem 1.1rem; overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: 10px; font-size: 0.85rem; line-height: 1.55; }
+
+    footer { border-top: 1px solid var(--line); padding: 1.6rem 0 2.2rem; text-align: center; color: var(--muted); font-size: 0.9rem; }
+    footer p { margin: 0.2rem 0; }
+
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      h1 { font-size: 1.5rem; }
+      .cards, .pair { grid-template-columns: 1fr; }
+      .justify { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Site">
+    <div class="wrap">
+      <a href="/">Spatial AI and Robotics (SPARO) Lab</a>
+      <a href="/research/paper/">Research</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">MDPI Sensors 2023</p>
+      <h1>Sparse Depth-Guided Image Enhancement Using Incremental GP with Informative Point Selection</h1>
+      <p class="authors">
+        <span><a href="https://scholar.google.com/citations?user=kiBTkqMAAAAJ" target="_blank" rel="noopener">Geonmo Yang</a><sup>1*</sup>,</span>
+        <span><a href="https://scholar.google.com/citations?user=4-5Fi9kAAAAJ" target="_blank" rel="noopener">Juhui Lee</a><sup>1*</sup>,</span>
+        <span>Ayoung Kim<sup>2</sup>,</span>
+        <span>and <a href="https://scholar.google.com/citations?user=W5MOKWIAAAAJ" target="_blank" rel="noopener">Younggun Cho</a><sup>1&dagger;</sup></span>
+      </p>
+      <p class="affiliation"><sup>1</sup><a href="/">Spatial AI and Robotics (SPARO) Lab</a>, Inha University, South Korea</p>
+      <p class="affiliation"><sup>2</sup>Department of Mechanical Engineering, Seoul National University, South Korea</p>
+      <p class="affiliation">* Equal contribution &middot; &dagger; Corresponding author</p>
+
+      <div class="venue">
+        <strong>Sensors (MDPI), vol. 23, no. 3, 1212</strong>
+        <span>Published Jan. 20, 2023 &middot; Open access (CC BY 4.0)</span>
+      </div>
+
+      <div class="links">
+        <a class="btn" href="https://doi.org/10.3390/s23031212" target="_blank" rel="noopener">Paper (MDPI)</a>
+        <a class="btn" href="#bibtex">BibTeX</a>
+        <a class="btn outline" href="/research/paper/">SPARO Lab Research</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding-top: 0.6rem;">
+      <div class="wrap">
+        <figure class="narrow">
+          <a href="./static/images/overview.webp" target="_blank" rel="noopener">
+            <img src="./static/images/overview.webp" width="1500" height="943"
+                 alt="Clean image, true transmission, synthetic haze image, selected depth points, estimated transmission, and dehazing result">
+          </a>
+          <figcaption>
+            <strong>Dehazing a synthetic haze image (ICL-NUIM).</strong>
+            (a) Clean image. (b) True transmission (red: high, blue: low). (c) Synthetic haze image.
+            (d) Depth points chosen by SMI (red stars) from the candidate points (blue) of each update.
+            (e) Transmission map estimated by the incremental GP. (f) Dehazing result.
+          </figcaption>
+        </figure>
+        <p class="lead">A few sparse depth points are enough to dehaze color and grayscale images online: an incremental Gaussian process turns them into a dense depth map, and mutual information keeps only the most informative points.</p>
+      </div>
+    </section>
+
+    <section class="tint">
+      <div class="wrap">
+        <h2>Abstract</h2>
+        <p class="justify">
+          We propose an online dehazing method with sparse depth priors using an incremental Gaussian Process (iGP).
+          Conventional approaches focus on achieving single image dehazing by using multiple channels.
+          In many robotics platforms, range measurements are directly available, except in a sparse form.
+          This paper exploits direct and possibly sparse depth data in order to achieve efficient and effective dehazing that works for both color and grayscale images.
+          The proposed algorithm is not limited to the channel information and works equally well for both color and gray images.
+          However, efficient depth map estimations (from sparse depth priors) are additionally required.
+          This paper focuses on a highly sparse depth prior for online dehazing.
+          For efficient dehazing, we adopted iGP for incremental depth map estimation and dehazing.
+          Incremental selection of the depth prior was conducted in an information-theoretic way by evaluating mutual information (MI) and other information-based metrics.
+          As per updates, only the most informative depth prior was added, and haze-free images were reconstructed from the atmospheric scattering model with incrementally estimated depth.
+          The proposed method was validated using different scenarios, color images under synthetic fog, real color, and grayscale haze indoors, outdoors, and underwater scenes.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap wide">
+        <h2>Method</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>1. Online depth with incremental GP</h3>
+            <p>Each sparse depth point is a training input made of its pixel location and color, [u, v, r, g, b], or [u, v, i] for gray images. A GP with a mixture of squared-exponential and neural-network kernels predicts dense depth, and Givens-rotation QR updates let it add new points online without refitting from scratch.</p>
+          </div>
+          <div class="card">
+            <h3>2. Informative point selection</h3>
+            <p>Among the new candidates, the point that shares the least mutual information with the existing training points (minimum Sum of Mutual Information, SMI) is added, so each update covers the region the model knows least. Training stops once the information gain of the Gram matrix drops below 80% of the previous step.</p>
+          </div>
+          <div class="card">
+            <h3>3. Depth-based haze removal</h3>
+            <p>The dense depth drives the atmospheric scattering model. Airlight comes from the brightest pixel among the deepest 0.1% of the depth map, the attenuation coefficient from the nearest and deepest pixels, and a white balance step corrects color casts underwater and indoors. No color-channel prior is involved, so gray images work too.</p>
+          </div>
+        </div>
+        <figure class="narrow" style="margin-top: 1.6rem; max-width: 620px;">
+          <a href="./static/images/point_selection.webp" target="_blank" rel="noopener">
+            <img src="./static/images/point_selection.webp" width="1100" height="871" loading="lazy"
+                 alt="Mean error, largest uncertainty, and mutual information for random, correlated, and proposed point selection">
+          </a>
+          <figcaption>
+            <strong>Why point selection matters.</strong>
+            Top left: previous inputs (magenta) and the point each rule picks from the candidate line (yellow).
+            The proposed SMI selection (red) shows better results than random (blue) and correlated (green) selection in mean error, largest uncertainty, and mutual information of the Gram matrix.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="tint">
+      <div class="wrap wide">
+        <h2>Results</h2>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th class="left" rowspan="2">Metric &uarr;</th>
+                <th colspan="2">Synthetic haze (24 images)</th>
+                <th colspan="2">O-HAZE (45 real images)</th>
+              </tr>
+              <tr>
+                <th>Best other method</th><th class="ours">Proposed</th>
+                <th>Best other method</th><th class="ours">Proposed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="left">PSNR (dB)</td><td>18.598 (He)</td><td class="ours"><strong>19.945</strong></td><td>22.012 (He)</td><td class="ours"><strong>24.302</strong></td></tr>
+              <tr><td class="left">SSIM</td><td>0.537 (He)</td><td class="ours"><strong>0.567</strong></td><td><strong>0.600</strong> (He)</td><td class="ours">0.588</td></tr>
+              <tr><td class="left">level</td><td>0.554 (He)</td><td class="ours"><strong>0.590</strong></td><td>0.162 (GridDehaze)</td><td class="ours"><strong>0.170</strong></td></tr>
+              <tr><td class="left">r</td><td>1.826 (GridDehaze)</td><td class="ours"><strong>2.152</strong></td><td><strong>1.165</strong> (He)</td><td class="ours">1.011</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          Averages over 14 HazeRD and 10 synthetic ICL-NUIM images (synthetic haze) and over 45 O-HAZE outdoor images, against eight model-based and learning-based methods
+          (He, Kim, Cai, Cho, GridDehaze, FFA-Net, AOD-Net, and DehazeFormer). level and r are edge-visibility metrics. Better value in bold.
+        </p>
+        <p class="highlight">
+          With ground truth available, the proposed method scores best on all four metrics on synthetic haze.
+          On real outdoor haze it has the best PSNR (24.30&nbsp;dB) and level, and the second-best SSIM and r.
+        </p>
+
+        <figure>
+          <a href="./static/images/underwater.webp" target="_blank" rel="noopener">
+            <img src="./static/images/underwater.webp" width="2067" height="1213" loading="lazy"
+                 alt="Underwater enhancement results compared with Cai, Meng, Zhu, UGAN, Berman, FUnIE, and UWCNN">
+          </a>
+          <figcaption>
+            <strong>Real underwater images.</strong>
+            Compared with Cai, Meng, Zhu, UGAN, Berman, FUnIE, and UWCNN. The number on each image is the input size used by that method.
+            Over 20 underwater images, the proposed method reaches the second-best UIQM (0.999), just below UGAN (1.035), a GAN with about 54M parameters that needs a GPU.
+          </figcaption>
+        </figure>
+
+        <div class="pair">
+          <figure>
+            <a href="./static/images/grayscale.webp" target="_blank" rel="noopener">
+              <img src="./static/images/grayscale.webp" width="856" height="867" loading="lazy"
+                   alt="Grayscale haze image and results of the proposed method, He et al., and Tarel and Hautiere">
+            </a>
+            <figcaption>
+              <strong>Grayscale images under artificial fog.</strong>
+              (a) Input. (b) Proposed. (c) He et al. (d) Tarel and Hauti&egrave;re.
+            </figcaption>
+          </figure>
+          <figure>
+            <a href="./static/images/features.webp" target="_blank" rel="noopener">
+              <img src="./static/images/features.webp" width="1400" height="1051" loading="lazy"
+                   alt="SIFT and A-KAZE matches on the original, hazy, and dehazed images">
+            </a>
+            <figcaption>
+              <strong>Feature matching after dehazing.</strong>
+              SIFT and A-KAZE matches on (a) the haze-free image, (b) the hazy image, and (c) our dehazed image.
+              SIFT finds no matches on the hazy image and 88 matches (30 inliers) after dehazing; the inlier ratio is 34.1%, against 31.7% on the clean image.
+            </figcaption>
+          </figure>
+        </div>
+
+        <p class="highlight" style="margin-bottom: 0;">
+          <strong>Runtime.</strong>
+          The method processes a 640&times;480 image in about 0.53&ndash;0.59&nbsp;s in MATLAB on a laptop CPU (Intel i7-9750H), while the compared model-based methods take 1.2&ndash;79&nbsp;s.
+        </p>
+      </div>
+    </section>
+
+    <section id="bibtex">
+      <div class="wrap">
+        <h2>BibTeX</h2>
+        <pre><code>@article{yang2023sparse,
+  title   = {Sparse Depth-Guided Image Enhancement Using Incremental GP with Informative Point Selection},
+  author  = {Yang, Geonmo and Lee, Juhui and Kim, Ayoung and Cho, Younggun},
+  journal = {Sensors},
+  volume  = {23},
+  number  = {3},
+  pages   = {1212},
+  year    = {2023},
+  doi     = {10.3390/s23031212}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><a href="/">Spatial AI and Robotics (SPARO) Lab</a>, Inha University &middot; <a href="/research/paper/">Research</a></p>
+      <p>Figures are reproduced from Yang et al., <em>Sensors</em> 2023, 23(3), 1212, under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.</p>
+    </div>
+  </footer>
+</body>
+</html>

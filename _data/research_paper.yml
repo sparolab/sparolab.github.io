@@ -337,3 +337,17 @@
           - Underwater
       key: sonar-context
       page_link: /research/sonar_context/
+
+    - link: /img/research/paper/27_sparse_depth_guided.jpg
+      alt: MDPI Sensors
+      alt_link: https://www.mdpi.com/journal/sensors
+      pulished_date: Jan 20, 2023
+      paper: "Sparse Depth-Guided Image Enhancement Using Incremental GP with Informative Point Selection"
+      authors: Geonmo Yang*, Juhui Lee*, Ayoung Kim, and Younggun Cho
+      venue_type: "MDPI Sensors"
+      category: "Spatial AI"
+      tags:
+          - Robust sensing
+          - Underwater
+      key: sparse-depth-guided
+      page_link: /research/sparse_depth_guided/

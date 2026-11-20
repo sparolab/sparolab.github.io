@@ -273,13 +273,14 @@
       video: "https://youtu.be/zq8Qh9ygm6w"
       code: "https://github.com/RPM-Robotics-Lab/sRGB-TIR"
 
-    - alt: "Sparse depth-guided image enhancement using incremental GP with informative point selection"
+    - alt: "Sparse Depth-Guided Image Enhancement Using Incremental GP with Informative Point Selection"
       key: sparse-depth-guided
       authors: "Geonmo Yang*, Juhui Lee*, Ayoung Kim, and Younggun Cho"
       conf: "MDPI Sensors"
       venue_type: "journal"   # conf 문자열로는 자동 분류 불가하여 명시
       conf_link: "https://www.mdpi.com/journal/sensors"
       paper: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9920918/"
+      project: "/research/sparse_depth_guided/"
 
 
 - title: "2022"
