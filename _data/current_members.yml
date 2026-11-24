@@ -161,10 +161,14 @@
 
 - title: Undergraduate Student
   images:
-    - link: /img/people/undergraduate/placeholder.jpg
-      alt: Undergraduate Student
+    - link: /img/people/undergraduate/정원혁_증명사진.jpg
+      alt: Wonhyuk Jeong
       description: |-
-        **TBA**
+        **Wonhyuk Jeong** (2027.03~)
+      email: rebullu3159@inha.edu
+      github: https://github.com/RB3159
+      linkedin: https://www.linkedin.com/in/RB3159
+      keywords: Vision-Language-Action, Policy Adaptation
     - link: /img/people/undergraduate/placeholder.jpg
       alt: Undergraduate Student
       description: |-
