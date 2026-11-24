@@ -160,7 +160,19 @@
       keywords: Sensor Fusion, Uncertainty-Aware Prediction
 
 - title: Undergraduate Student
-  images: []
+  images:
+    - link: /img/people/undergraduate/placeholder.jpg
+      alt: Undergraduate Student
+      description: |-
+        **TBA**
+    - link: /img/people/undergraduate/placeholder.jpg
+      alt: Undergraduate Student
+      description: |-
+        **TBA**
+    - link: /img/people/undergraduate/placeholder.jpg
+      alt: Undergraduate Student
+      description: |-
+        **TBA**
 
 - title: Part-Time
   images:
