@@ -204,6 +204,13 @@ categories:
       id: awards
       images:
         # 2026 ---------------------------------------------------------------------------------------
+        - description: "2026년 Qualcomm Innovation Fellowship Korea 수상 (KISS-IMU)"
+          key: album-2026-11-25
+          date: "2026.11.25"
+          image_list:
+            - link: /img/album/research/awards/2026/2026_qifk/1.jpg
+            - link: /img/album/research/awards/2026/2026_qifk/2.jpg
+
         - description: "2026년 IROS IMU Odometry Challenge 2등 수상"
           key: album-2026-10-01-2
           date: "2026.10.01"

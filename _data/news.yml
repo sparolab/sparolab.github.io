@@ -165,6 +165,15 @@ papers:
         href: "/pulication/international/#vivid-plus"
 
 awards:
+  - date: "Nov. 2026"
+    priority: 3
+    description: "KISS-IMU won the Qualcomm Innovation Fellowship Korea 2026! (<strong>Jiwon</strong>)"
+    links:
+      - text: "KISS-IMU"
+        href: "/research/kiss_imu/"
+      - text: "Qualcomm Innovation Fellowship Korea 2026"
+        href: "/album/album/#album-2026-11-25"
+
   - date: "Oct. 2026"
     priority: 2
     description: "KISS-IMU was selected as a finalist at QIF 2026 South Korea! (<strong>Jiwon</strong>)"
