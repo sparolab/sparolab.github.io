@@ -211,6 +211,13 @@ categories:
             - link: /img/album/research/awards/2026/2026_qifk/1.jpg
             - link: /img/album/research/awards/2026/2026_qifk/2.jpg
 
+        - description: "2026년 ICCAS ICRA 2001 참여기금상 수상"
+          key: album-2026-10-29-2
+          date: "2026.10.29"
+          image_list:
+            - link: /img/album/research/awards/2026/2026_iccas_icra_fund/1.jpg
+            - link: /img/album/research/awards/2026/2026_iccas_icra_fund/2.jpg
+
         - description: "2026년 IROS IMU Odometry Challenge 2등 수상"
           key: album-2026-10-01-2
           date: "2026.10.01"
