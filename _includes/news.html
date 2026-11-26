@@ -99,7 +99,12 @@
   ul.news-list li {
     margin-bottom: 0.15rem;
     line-height: 1.4;
+    /* 날짜 배지 옆에 본문 블록을 두어, 두 번째 줄도 첫 줄 본문 시작 위치에 맞춘다. */
+    display: flex;
+    align-items: baseline;
   }
+  ul.news-list li .news-date { flex: none; }
+  ul.news-list li .news-body { flex: 1; min-width: 0; }
 
   .content ul.news-list li + li {
     margin-top: 0;
@@ -183,10 +188,11 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span><span class="news-body">{% include news-person-links.html content=desc %}
         {% if paper.authors %}
           <span style="color:#1f2a44;">({% include news-authors.html authors=paper.authors %})</span>
         {% endif %}
+        </span>
       </li>
     {% endfor %}
   </ul>
@@ -210,10 +216,11 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span><span class="news-body">{% include news-person-links.html content=desc %}
         {% if award.link %}
           <a href="{{ award.link }}" target="_blank">[Read more]</a>
         {% endif %}
+        </span>
       </li>
     {% endfor %}
   </ul>
@@ -237,7 +244,8 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span><span class="news-body">{% include news-person-links.html content=desc %}
+        </span>
       </li>
     {% endfor %}
   </ul>
@@ -261,7 +269,8 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span><span class="news-body">{% include news-person-links.html content=desc %}
+        </span>
       </li>
     {% endfor %}
   </ul>
@@ -285,10 +294,11 @@
             {%- assign desc = desc | replace: ph, anchor -%}
           {%- endfor -%}
         {%- endif -%}
-        <span class="news-date">{{ mon3 }}.{{ drest }}</span>{% include news-person-links.html content=desc %}
+        <span class="news-date">{{ mon3 }}.{{ drest }}</span><span class="news-body">{% include news-person-links.html content=desc %}
         {% if etc.link %}
           <a href="{{ etc.link }}" target="_blank">[Read more]</a>
         {% endif %}
+        </span>
       </li>
     {% endfor %}
   </ul>

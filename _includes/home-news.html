@@ -9,7 +9,12 @@
   .home-news-section ul#home-news-list li {
     margin-bottom: 0.15rem;
     line-height: 1.4;
+    /* 날짜 배지 옆에 본문 블록을 두어, 두 번째 줄도 첫 줄 본문 시작 위치에 맞춘다. */
+    display: flex;
+    align-items: baseline;
   }
+  .home-news-section ul#home-news-list li .news-date { flex: none; }
+  .home-news-section ul#home-news-list li .news-body { flex: 1; min-width: 0; }
 
   .home-news-section .content ul#home-news-list li + li {
     margin-top: 0;
@@ -183,18 +188,21 @@
     dateBadge.textContent = shortMonth(item.date);
 
     li.appendChild(dateBadge);
+    const body = document.createElement('span');
+    body.className = 'news-body';
+    li.appendChild(body);
     // description 은 신뢰된 사이트 데이터(_data/news.yml)이며 <strong> 등 마크업을
     // 포함할 수 있으므로 텍스트 노드가 아니라 HTML 로 렌더링한다.
     const descSpan = document.createElement('span');
     descSpan.innerHTML = linkify(item);
-    li.appendChild(descSpan);
+    body.appendChild(descSpan);
 
     if (item.authors) {
       const authorSpan = document.createElement('span');
       authorSpan.style.color = '#1f2a44';
       // Author names and profile links are rendered by the shared Liquid include.
       authorSpan.innerHTML = ' (' + item.authors + ')';
-      li.appendChild(authorSpan);
+      body.appendChild(authorSpan);
     }
 
     if (item.link) {
@@ -203,7 +211,7 @@
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.textContent = ' [Read more]';
-      li.appendChild(link);
+      body.appendChild(link);
     }
 
     listEl.appendChild(li);
